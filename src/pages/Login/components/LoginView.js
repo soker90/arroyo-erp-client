@@ -1,0 +1,59 @@
+import React, {memo} from 'react';
+import PropTypes from 'prop-types';
+import {Grid, LinearProgress} from '@material-ui/core';
+import AuthLayout from './AuthLayout';
+import LoginForm from './LoginForm';
+import {useStyles} from './Login.styles';
+
+const LoginView = ({login, loginError, isLoading}) => {
+  const classes = useStyles();
+
+  /**
+   * Render loading bar
+   * @returns {boolean || LinearProgress}
+   */
+  const renderLoadingBar = () => isLoading && <LinearProgress/>;
+
+  return (
+    <AuthLayout>
+      <div className={classes.root}>
+        <Grid
+          className={classes.grid}
+          container
+        >
+          <Grid
+            className={classes.quoteContainer}
+            item
+            lg={5}
+          >
+            <div className={classes.quote}>
+
+            </div>
+          </Grid>
+          <Grid
+            className={classes.content}
+            item
+            lg={7}
+            xs={12}
+          >
+            <div className={classes.content}>
+              <div className={classes.contentBody}>
+                <LoginForm login={login} loginError={loginError} isLoading={isLoading}/>
+              </div>
+              {renderLoadingBar()}
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    </AuthLayout>
+  );
+};
+
+LoginView.propTypes = {
+  login: PropTypes.func.isRequired,
+  loginError: PropTypes.object,
+};
+
+LoginView.displayName = 'LoginView';
+
+export default memo(LoginView);
