@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import {Header, Page} from 'components';
 import {useStyles} from './Providers.styles';
-import {navigateTo} from 'utils';
+// import {navigateTo} from 'utils';
 import Box from '@material-ui/core/Box';
 
 const Providers = ({providers, getProviders}) => {
@@ -14,7 +14,7 @@ const Providers = ({providers, getProviders}) => {
   }, [getProviders]);*/
 
   const _onRowClick = (event, row) => {
-    navigateTo(`proveedor/${row._id}`)
+    // navigateTo(`proveedor/${row._id}`)
   };
 
   return (
