@@ -162,9 +162,9 @@ function NavBar({openMobile, onMobileClose}) {
         </Box>
         <Divider/>
         <Box p={2}>
-          {navConfig.map(config => (
+          {navConfig.map((config, idx) => (
             <List
-              key={config.subheader}
+              key={idx}
               subheader={(
                 <ListSubheader
                   disableGutters
