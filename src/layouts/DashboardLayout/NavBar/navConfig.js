@@ -1,4 +1,3 @@
-import React from 'react';
 import {PieChart as PieChartIcon, Users as UsersIcon} from 'react-feather';
 
 export const navConfig = [

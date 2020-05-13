@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-// import {getProviders} from '../actions';
+import {getProviders} from 'modules/providers/actions';
 import Providers from '../components/Providers';
 
 const mapStateToProps = ({providers: {providers}}) => ({
@@ -7,7 +7,7 @@ const mapStateToProps = ({providers: {providers}}) => ({
 });
 
 const mapDispatchToProps = {
-  // getProviders,
+  getProviders,
 };
 
 export default connect(
