@@ -3,12 +3,14 @@ import {Router} from 'react-router-dom';
 import MomentUtils from '@date-io/moment';
 import {createStyles, makeStyles, ThemeProvider} from '@material-ui/core';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+
 import Auth from 'components/Auth';
 import ScrollReset from 'components/ScrollReset';
 import useSettings from 'hooks/useSettings';
 import {createTheme} from 'theme';
 import Routes from 'Routes';
 import history from 'store/history';
+import {ModalRoot} from 'components';
 import './utils/axios';
 
 const useStyles = makeStyles(() => createStyles({
@@ -47,6 +49,7 @@ function App() {
           <Auth>
             <ScrollReset/>
             <Routes/>
+            <ModalRoot/>
           </Auth>
         </Router>
       </MuiPickersUtilsProvider>

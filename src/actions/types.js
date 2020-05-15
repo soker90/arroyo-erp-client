@@ -6,3 +6,7 @@ export const REGISTER = '@account/register';
 export const UPDATE_PROFILE = '@account/update-profile';
 
 export const LOGIN = requestActions('@account/login')
+
+/* MODALS */
+export const HIDE_MODAL = 'HIDE_MODAL';
+export const SHOW_MODAL = 'SHOW_MODAL';
