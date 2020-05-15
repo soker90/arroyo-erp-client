@@ -1,46 +1,43 @@
-import React, { useState, useRef } from 'react';
-import { capitalCase } from 'change-case';
+import React, {memo, useRef, useState} from 'react';
 import {
   Badge,
   Box,
   Button,
-  FormControlLabel,
   IconButton,
+  makeStyles,
   Popover,
   SvgIcon,
-  Switch,
   TextField,
   Tooltip,
   Typography,
-  makeStyles
 } from '@material-ui/core';
-import { Settings as SettingsIcon } from 'react-feather';
+import {Settings as SettingsIcon} from 'react-feather';
 import useSettings from 'hooks/useSettings';
-import { THEMES } from 'constants/common';
+import {THEMES, THEMES_NAME} from 'constants/common';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   badge: {
     height: 10,
     width: 10,
     borderRadius: 5,
     marginTop: 10,
-    marginRight: 5
+    marginRight: 5,
   },
   popover: {
     width: 320,
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }));
 
-function Settings() {
+const Settings = () => {
   const classes = useStyles();
   const ref = useRef(null);
-  const { settings, saveSettings } = useSettings();
+  const {settings, saveSettings} = useSettings();
   const [isOpen, setOpen] = useState(false);
   const [values, setValues] = useState({
     direction: settings.direction,
     responsiveFontSizes: settings.responsiveFontSizes,
-    theme: settings.theme
+    theme: settings.theme,
   });
 
   const handleOpen = () => {
@@ -54,7 +51,7 @@ function Settings() {
   const handleChange = (field, value) => {
     setValues({
       ...values,
-      [field]: value
+      [field]: value,
     });
   };
 
@@ -69,7 +66,7 @@ function Settings() {
         <Badge
           color="secondary"
           variant="dot"
-          classes={{ badge: classes.badge }}
+          classes={{badge: classes.badge}}
         >
           <IconButton
             color="inherit"
@@ -77,7 +74,7 @@ function Settings() {
             ref={ref}
           >
             <SvgIcon fontSize="small">
-              <SettingsIcon />
+              <SettingsIcon/>
             </SvgIcon>
           </IconButton>
         </Badge>
@@ -85,9 +82,9 @@ function Settings() {
       <Popover
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
-        classes={{ paper: classes.popover }}
+        classes={{paper: classes.popover}}
         anchorEl={ref.current}
         onClose={handleClose}
         open={isOpen}
@@ -96,59 +93,25 @@ function Settings() {
           variant="h4"
           color="textPrimary"
         >
-          Settings
+          Configuración
         </Typography>
-        <Box
-          mt={2}
-          px={1}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
-                checked={values.direction === 'rtl'}
-                edge="start"
-                name="direction"
-                onChange={(event) => handleChange('direction', event.target.checked ? 'rtl' : 'ltr')}
-              />
-            )}
-            label="RTL"
-          />
-        </Box>
-        <Box
-          mt={2}
-          px={1}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
-                checked={values.responsiveFontSizes}
-                edge="start"
-                name="direction"
-                onChange={(event) => handleChange('responsiveFontSizes', event.target.checked)}
-              />
-            )}
-            label="Responsive font sizes"
-          />
-        </Box>
         <Box mt={2}>
           <TextField
             fullWidth
-            label="Theme"
+            label="Tema"
             name="theme"
-            onChange={(event) => handleChange('theme', event.target.value)}
+            onChange={event => handleChange('theme', event.target.value)}
             select
-            SelectProps={{ native: true }}
+            SelectProps={{native: true}}
             value={values.theme}
             variant="outlined"
           >
-            {Object.keys(THEMES).map((theme) => (
-              <option
-                key={theme}
-                value={theme}
-              >
-                {capitalCase(theme)}
-              </option>
-            ))}
+            {Object.keys(THEMES)
+              .map(theme => (
+                <option key={theme} value={theme}>
+                  {THEMES_NAME[theme]}
+                </option>
+              ))}
           </TextField>
         </Box>
         <Box mt={2}>
@@ -158,12 +121,13 @@ function Settings() {
             fullWidth
             onClick={handleSave}
           >
-            Save Settings
+            Guardar
           </Button>
         </Box>
       </Popover>
     </>
   );
-}
+};
 
-export default Settings;
+Settings.displayName = 'Settings';
+export default memo(Settings);

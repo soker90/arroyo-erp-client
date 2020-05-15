@@ -2,5 +2,11 @@
 export const THEMES = {
   LIGHT: 'LIGHT',
   ONE_DARK: 'ONE_DARK',
-  UNICORN: 'UNICORN'
+  UNICORN: 'UNICORN',
+};
+
+export const THEMES_NAME = {
+  ONE_DARK: 'Oscuro',
+  LIGHT: 'Claro',
+  UNICORN: 'Unicornio Oscuro',
 };

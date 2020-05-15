@@ -1,107 +1,94 @@
-import React, {useRef, useState} from 'react';
+import React, {memo, useRef, useState} from 'react';
 import {
   ClickAwayListener,
-  colors,
   Hidden,
   Input,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  makeStyles,
   Paper,
   Popper,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    boxShadow: 'none',
-  },
-  flexGrow: {
-    flexGrow: 1,
-  },
-  search: {
-    backgroundColor: 'rgba(255,255,255, 0.1)',
-    borderRadius: 4,
-    flexBasis: 300,
-    height: 36,
-    padding: theme.spacing(0, 2),
-    display: 'flex',
-    alignItems: 'center',
-  },
-  searchIcon: {
-    marginRight: theme.spacing(2),
-    color: 'inherit',
-  },
-  searchInput: {
-    flexGrow: 1,
-    color: 'inherit',
-    '& input::placeholder': {
-      opacity: 1,
-      color: 'inherit',
-    },
-  },
-  searchPopper: {
-    zIndex: theme.zIndex.appBar + 100,
-  },
-  searchPopperContent: {
-    marginTop: theme.spacing(1),
-  },
-  trialButton: {
-    marginLeft: theme.spacing(2),
-    color: theme.palette.common.white,
-    backgroundColor: colors.green[600],
-    '&:hover': {
-      backgroundColor: colors.green[900],
-    },
-  },
-  trialIcon: {
-    marginRight: theme.spacing(1),
-  },
-  menuButton: {
-    marginRight: theme.spacing(1),
-  },
-  chatButton: {
-    marginLeft: theme.spacing(1),
-  },
-  notificationsButton: {
-    marginLeft: theme.spacing(1),
-  },
-  notificationsBadge: {
-    backgroundColor: colors.orange[600],
-  },
-  logoutButton: {
-    marginLeft: theme.spacing(1),
-  },
-  logoutIcon: {
-    marginRight: theme.spacing(1),
-  },
-}));
+import {navigateTo} from 'utils';
+import {useStyles} from './Search.styles';
 
-function Search() {
+/**
+ * Barra de busqueda de proveedores
+ */
+const Search = () => {
   const classes = useStyles();
   const searchRef = useRef(null);
   const [openSearchPopover, setOpenSearchPopover] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const providers = useSelector(({providers}) => providers.providers);
 
-  const handleSearchChange = event => {
-    setSearchValue(event.target.value);
+  /**
+   * Establece el texto buscado en el estado
+   * abre o cierra la lista de sugerencias
+   * @param {String} value
+   * @private
+   */
+  const _handleSearchChange = ({target: {value}}) => {
+    setSearchValue(value);
 
-    if (event.target.value) {
-      if (!openSearchPopover) {
-        setOpenSearchPopover(true);
-      }
-    } else {
+    value ?
+      !openSearchPopover && setOpenSearchPopover(true) :
       setOpenSearchPopover(false);
-    }
   };
 
-  const handleSearchPopverClose = () => {
+  /**
+   * Cierra la lista de sugerencias a pinchar en otro
+   * sitio de la pantalla
+   * @private
+   */
+  const _handleSearchPopverClose = () => {
     setOpenSearchPopover(false);
   };
+
+  /**
+   * Navigate to provider selected
+   * @param {String} idProvider
+   * @private
+   */
+  const _handleSelectProvider = idProvider => {
+    _handleSearchPopverClose();
+    navigateTo(`providers/${idProvider}`);
+ };
+
+  /**
+   * Filtra los posibles proveedores que coincidan
+   * con la búsqueda
+   * @param {{name: String}} provider
+   * @return {boolean}
+   * @private
+   */
+  const _filterPossibles = provider =>
+    provider.name
+      .toLowerCase()
+      .includes(searchValue.toLowerCase());
+
+  /**
+   * Renderiza un elemento de la busqueda
+   * @param {{_id: String, name: String}} search
+   * @return {ListItem}
+   * @private
+   */
+  const _renderSearchedItem = search => (
+    <ListItem
+      button
+      key={search._id}
+      onClick={() => _handleSelectProvider(search._id)}
+    >
+      <ListItemIcon>
+        <SearchIcon/>
+      </ListItemIcon>
+      <ListItemText primary={search.name}/>
+    </ListItem>
+  );
 
   return (
     <>
@@ -114,8 +101,8 @@ function Search() {
           <Input
             className={classes.searchInput}
             disableUnderline
-            onChange={handleSearchChange}
-            placeholder="Search people &amp; places"
+            onChange={_handleSearchChange}
+            placeholder="Buscar proveedor"
             value={searchValue}
           />
         </div>
@@ -125,24 +112,15 @@ function Search() {
           open={openSearchPopover}
           transition
         >
-          <ClickAwayListener onClickAway={handleSearchPopverClose}>
+          <ClickAwayListener onClickAway={_handleSearchPopverClose}>
             <Paper
               className={classes.searchPopperContent}
               elevation={3}
             >
               <List>
-                {providers.map(search => (
-                  <ListItem
-                    button
-                    key={search._id}
-                    onClick={handleSearchPopverClose}
-                  >
-                    <ListItemIcon>
-                      <SearchIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary={search.name}/>
-                  </ListItem>
-                ))}
+                {providers
+                  .filter(_filterPossibles)
+                  .map(_renderSearchedItem)}
               </List>
             </Paper>
           </ClickAwayListener>
@@ -150,6 +128,8 @@ function Search() {
       </Hidden>
     </>
   );
-}
+};
 
-export default Search;
+Search.displayName = 'Search';
+
+export default memo(Search);
