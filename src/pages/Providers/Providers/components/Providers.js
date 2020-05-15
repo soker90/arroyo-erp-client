@@ -10,11 +10,11 @@ const Providers = ({providers}) => {
   const classes = useStyles();
 
   const _onRowClick = ({_id}) => {
-    navigateTo(`proveedor/${_id}`);
+    navigateTo(`proveedores/${_id}`);
   };
 
   return (
-    <Page className={classes.root} title="Detalle de tarificación">
+    <Page className={classes.root} title="Proveedores">
       <Container maxWidth={false} className={classes.container}>
         <Header title="Provedores"/>
         <Box mt={3}>
