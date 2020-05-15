@@ -1,20 +1,16 @@
-import React, {memo, useEffect} from 'react';
-import {Container} from '@material-ui/core';
+import React, {memo} from 'react';
+import {Container, Box} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import {Header, Page} from 'components';
+import {Header, Page, TableMaterial} from 'components';
+import {navigateTo} from 'utils';
 import {useStyles} from './Providers.styles';
-// import {navigateTo} from 'utils';
-import Box from '@material-ui/core/Box';
 
-const Providers = ({providers, getProviders}) => {
+const Providers = ({providers}) => {
   const classes = useStyles();
-  /*useEffect(() => {
-    getProviders();
-  }, [getProviders]);*/
 
-  const _onRowClick = (event, row) => {
-    // navigateTo(`proveedor/${row._id}`)
+  const _onRowClick = ({_id}) => {
+    navigateTo(`proveedor/${_id}`);
   };
 
   return (
@@ -22,11 +18,22 @@ const Providers = ({providers, getProviders}) => {
       <Container maxWidth={false} className={classes.container}>
         <Header title="Provedores"/>
         <Box mt={3}>
-
+          <TableMaterial
+            className={classes.table}
+            columns={[
+              {
+                title: 'Nombre',
+                field: 'name',
+              },
+            ]}
+            data={providers}
+            title={`Proveedores (${providers.length})`}
+            onRowClick={_onRowClick}
+          />
         </Box>
       </Container>
     </Page>
-  )
+  );
 };
 
 Providers.propTypes = {

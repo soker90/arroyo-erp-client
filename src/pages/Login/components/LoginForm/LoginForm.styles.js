@@ -12,6 +12,7 @@ export const useStyles = makeStyles(theme => ({
     },
   },
   title: {
+    color: theme.palette.text.primary,
     marginTop: theme.spacing(3),
   },
   textField: {
