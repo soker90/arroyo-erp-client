@@ -11,10 +11,10 @@ const INITIAL_STATE = {
   cif: '',
 };
 
-const NewProviderModal = ({show, close, createProvider}) => {
+const NewProviderModal = ({show, close, createProvider, idProvider, provider, editProvider}) => {
   const [state, setState] = useReducer(
     (state, newState) => ({...state, ...newState}),
-    INITIAL_STATE,
+    provider || INITIAL_STATE,
   );
 
   useEffect(() => {
@@ -23,14 +23,25 @@ const NewProviderModal = ({show, close, createProvider}) => {
     }
   }, [show]);
 
+  /**
+   * Handle event onChange input
+   * @param {String} name
+   * @param {String} value
+   * @private
+   */
   const _handleChange = ({target: {name, value}}) => {
     setState({[name]: value});
   };
 
+  /**
+   * Handle event save button
+   * @private
+   */
   const _handleSubmit = () => {
-    createProvider(state, close);
+    idProvider ?
+      editProvider(idProvider, state, close) :
+      createProvider(state, close);
   };
-
 
   /**
    * Render a input element
@@ -51,7 +62,7 @@ const NewProviderModal = ({show, close, createProvider}) => {
     <ModalGrid
       show={show}
       close={close}
-      title='Crear proveedor'
+      title={idProvider ? `Editar ${provider.name}` : 'Crear proveedor'}
       action={_handleSubmit}>
       {_renderInput('name', 'Nombre')}
       {_renderInput('businessName', 'Razón Social')}
@@ -67,6 +78,8 @@ NewProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createProvider: PropTypes.func.isRequired,
+  idProvider: PropTypes.string,
+  provider: PropTypes.object,
 };
 
 NewProviderModal.displayName = 'NewProviderModal';

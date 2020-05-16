@@ -15,15 +15,15 @@ import {ItemGroupsCard} from 'components';
 import {useStyles} from './ProviderInfo.styles';
 import {adapterProviderInfo} from './adapterProviderInfo';
 
-const ProviderInfo = ({showEditProviderModal, ...info}) => {
+const ProviderInfo = ({showEditModal, ...info}) => {
   const classes = useStyles();
 
   /**
    * Show modal for edit provider
    * @private
    */
-  const _showEditProviderModal = () => {
-    showEditProviderModal();
+  const _showEditModal = () => {
+    showEditModal();
   };
 
   /**
@@ -33,7 +33,7 @@ const ProviderInfo = ({showEditProviderModal, ...info}) => {
    */
   const _renderEditButton = () =>
     <Tooltip title='Editar infomación'>
-      <IconButton size="small" onClick={_showEditProviderModal}>
+      <IconButton size="small" onClick={_showEditModal}>
         <EditIcon/>
       </IconButton>
     </Tooltip>;

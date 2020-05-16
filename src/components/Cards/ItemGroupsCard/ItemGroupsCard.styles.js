@@ -14,6 +14,8 @@ export const useStyles = makeStyles(theme => ({
   listFirst: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: theme.spacing(2),
+    [theme.breakpoints.up('lg')]: {
+      marginLeft: theme.spacing(2),
+    },
   },
 }));

@@ -9,11 +9,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}}) => {
+const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   useEffect(() => {
     getProvider(idProvider);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idProvider]);
 
   /**
@@ -24,10 +25,18 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
     setExpand(!expand);
   };
 
+  /**
+   * Abre el modal de edición de proveedor
+   * @private
+   */
+  const _showEditModal = () => {
+    showEditModal(idProvider, provider);
+  }
+
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
-        <Header title="Proveedor" buttonsSecondary={[{
+        <Header title="Proveedor" description={provider.name} buttonsSecondary={[{
           variant: 'text',
           onClick: _toggleExpand,
           Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
@@ -37,7 +46,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
         {expand &&
         <Box mt={3}>
           <Grid container spacing={3}>
-            <ProviderInfo {...provider}/>
+            <ProviderInfo {...provider} showEditModal={_showEditModal}/>
             <ProviderBilling {...billing} />
           </Grid>
         </Box>
@@ -52,6 +61,7 @@ Provider.propTypes = {
   providers: PropTypes.array.isRequired,
   billing: PropTypes.object,
   getProvider: PropTypes.func.isRequired,
+  showEditModal: PropTypes.func.isRequired,
 };
 
 Provider.displayName = 'Providers';
