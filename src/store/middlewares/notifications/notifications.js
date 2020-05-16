@@ -9,7 +9,7 @@ const setPayload = payload => {
 
 // Mandatory payload.level
 const notifications = {
-  [CREATE_PROVIDER]: setPayload,
+  [CREATE_PROVIDER.SUCCESS]: setPayload,
 };
 
 export default notifications;

@@ -27,7 +27,6 @@ const _parseErrorMessage = data => {
 
 const notificationsMiddleware = store => next => action => {
   const notification = notifications[action.type];
-  console.log(notification)
 
   if (notification) {
     const notificationParams = notification(action.payload);

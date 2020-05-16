@@ -8,7 +8,6 @@ import {useStyles} from './Notification.styles';
 const Notification = ({notification}) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  console.log(notification)
 
   useEffect(() => {
     if (notification.message) setOpen(true);

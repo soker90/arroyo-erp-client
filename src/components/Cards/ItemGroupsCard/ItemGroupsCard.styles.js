@@ -1,0 +1,19 @@
+import {makeStyles} from '@material-ui/styles';
+
+export const useStyles = makeStyles(theme => ({
+  root: {},
+  grid: {
+    width: '100%',
+    paddingBottom: theme.spacing(3),
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'column',
+    // marginLeft: theme.spacing(2),
+  },
+  listFirst: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: theme.spacing(2),
+  },
+}));

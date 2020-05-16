@@ -2,13 +2,13 @@ import React, {memo} from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {Breadcrumbs, Button, Grid, Link, SvgIcon, Typography} from '@material-ui/core';
+import {Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box} from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import uniqId from 'uniqid';
 
 import {useStyles} from './Header.styles';
 
-const Header = ({className, routes, title, description, buttons, ...rest}) => {
+const Header = ({className, routes, title, description, buttons, buttonsSecondary, ...rest}) => {
   const classes = useStyles();
 
   /**
@@ -51,7 +51,7 @@ const Header = ({className, routes, title, description, buttons, ...rest}) => {
       onClick={onClick}
     >
       {disableSvg ?
-        <Icon/> :
+        <Icon className={classes.actionIcon}/> :
         <SvgIcon
           fontSize="small"
           className={classes.actionIcon}
@@ -92,6 +92,12 @@ const Header = ({className, routes, title, description, buttons, ...rest}) => {
         >
           {description || title}
         </Typography>
+        {
+          buttonsSecondary &&
+          <Box mt={2} style={{marginLeft: '-1rem'}}>
+            {buttonsSecondary.map(_renderButton)}
+          </Box>
+        }
       </Grid>
       {
         buttons &&
@@ -112,6 +118,14 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   buttons: PropTypes.arrayOf(PropTypes.shape({
+    color: PropTypes.string,
+    variant: PropTypes.string,
+    disableSvg: PropTypes.bool,
+    Icon: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired,
+  })),
+  buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
     variant: PropTypes.string,
     disableSvg: PropTypes.bool,

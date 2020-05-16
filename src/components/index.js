@@ -3,3 +3,4 @@ export {default as Page} from './Page';
 export {default as TableMaterial} from './TableMaterial';
 export * from './Modals';
 export * from './Forms';
+export * from './Cards';
