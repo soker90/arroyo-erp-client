@@ -1,12 +1,15 @@
 import {combineReducers} from 'redux';
-import account from './account';
-import providers from 'modules/providers';
+import notifications from './notifications';
 import modal from './modal';
 
+import account from './account';
+import providers from 'modules/providers';
+
 const rootReducer = combineReducers({
+  notifications,
+  modal,
   account,
   providers,
-  modal,
 });
 
 export default rootReducer;

@@ -1,12 +1,14 @@
 import React, {memo} from 'react';
-import {Container, Box} from '@material-ui/core';
+import {Box, Container} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import {PlusCircle as PlusCircleIcon} from 'react-feather';
 
 import {Header, Page, TableMaterial} from 'components';
 import {navigateTo} from 'utils';
+
 import {useStyles} from './Providers.styles';
 
-const Providers = ({providers}) => {
+const Providers = ({providers, showCreateModal}) => {
   const classes = useStyles();
 
   const _onRowClick = ({_id}) => {
@@ -16,7 +18,11 @@ const Providers = ({providers}) => {
   return (
     <Page className={classes.root} title="Proveedores">
       <Container maxWidth={false} className={classes.container}>
-        <Header title="Provedores"/>
+        <Header title="Provedores" buttons={[{
+          onClick: showCreateModal,
+          Icon: PlusCircleIcon,
+          label: 'Nuevo Proveedor',
+        }]}/>
         <Box mt={3}>
           <TableMaterial
             className={classes.table}
@@ -37,7 +43,7 @@ const Providers = ({providers}) => {
 };
 
 Providers.propTypes = {
-  getProviders: PropTypes.func.isRequired,
+  showCreateModal: PropTypes.func.isRequired,
   providers: PropTypes.array.isRequired,
 };
 

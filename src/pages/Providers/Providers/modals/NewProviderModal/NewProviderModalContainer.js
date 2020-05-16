@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
 
+import {createProvider} from 'modules/providers/actions';
 import ModifyReceiptView from './NewProviderModalView';
 
-// TODO: Create action
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  createProvider,
+};
 
 export default connect(
   null,

@@ -32,7 +32,7 @@ const ModalGrid =
         <Button onClick={close} className={classes.buttonCancel}>
           {action ? 'Cancelar' : 'Cerrar'}
         </Button>
-        {action && <Button onClick={action} className={classes.buttonAccept}>
+        {action && <Button onClick={action} color='primary' variant='contained'>
           Aceptar
         </Button>}
       </Fragment>;

@@ -2,16 +2,25 @@ import React, {memo} from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {Breadcrumbs, Grid, Link, Typography} from '@material-ui/core';
+import {Breadcrumbs, Button, Grid, Link, SvgIcon, Typography} from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import uniqId from 'uniqid';
+
 import {useStyles} from './Header.styles';
 
-const Header = ({className, routes, title, description, ...rest}) => {
+const Header = ({className, routes, title, description, buttons, ...rest}) => {
   const classes = useStyles();
 
-  const _itemNav = (link, title, idx) =>
+  /**
+   * Renderiza un elemento de la cabecera de navegación
+   * @param {String} link
+   * @param {String} title
+   * @return {Link}
+   * @private
+   */
+  const _itemNav = (link, title) =>
     <Link
-      key={idx || 'none'}
+      key={uniqId()}
       variant="body1"
       color="inherit"
       to={link}
@@ -19,6 +28,39 @@ const Header = ({className, routes, title, description, ...rest}) => {
     >
       {title}
     </Link>;
+
+  /**
+   * Render button in header
+   * @param {String} color
+   * @param {String} variant
+   * @param {Boolean} disableSvg
+   * @param {Comment} Icon
+   * @param {Function} onClick
+   * @param {String} label
+   * @return {Button}
+   * @private
+   */
+  const _renderButton = ({
+    color, variant, disableSvg, Icon, onClick, label,
+  }) => (
+    <Button
+      key={uniqId()}
+      color={color || 'secondary'}
+      variant={variant || 'contained'}
+      className={classes.action}
+      onClick={onClick}
+    >
+      {disableSvg ?
+        <Icon/> :
+        <SvgIcon
+          fontSize="small"
+          className={classes.actionIcon}
+        >
+          <Icon/>
+        </SvgIcon>
+      }
+      {label}
+    </Button>);
 
   return (
     <Grid
@@ -35,7 +77,7 @@ const Header = ({className, routes, title, description, ...rest}) => {
         >
           {_itemNav('/app', 'Inicio')}
           {
-            routes.map(({link, title}, idx) => _itemNav(link, title, idx))
+            routes.map(({link, title}) => _itemNav(link, title))
           }
           <Typography
             variant="body1"
@@ -51,6 +93,12 @@ const Header = ({className, routes, title, description, ...rest}) => {
           {description || title}
         </Typography>
       </Grid>
+      {
+        buttons &&
+        <Grid item>
+          {buttons.map(_renderButton)}
+        </Grid>
+      }
     </Grid>
   );
 };
@@ -63,6 +111,14 @@ Header.propTypes = {
   })),
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
+  buttons: PropTypes.arrayOf(PropTypes.shape({
+    color: PropTypes.string,
+    variant: PropTypes.string,
+    disableSvg: PropTypes.bool,
+    Icon: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired,
+  })),
 };
 
 Header.defaultProps = {

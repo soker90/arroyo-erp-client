@@ -16,18 +16,4 @@ export const useStyles = makeStyles(theme => ({
   actions: {
     justifyContent: 'flex-end',
   },
-  buttonAccept: {
-    color: theme.palette.white,
-    backgroundColor: theme.palette.button.success.root,
-    '&:hover': {
-      backgroundColor: theme.palette.button.success.hover,
-    },
-  },
-  buttonCancel: {
-    color: theme.palette.white,
-    backgroundColor: theme.palette.button.danger.root,
-    '&:hover': {
-      backgroundColor: theme.palette.button.danger.hover,
-    },
-  },
 }));
