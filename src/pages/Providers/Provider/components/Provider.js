@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useState} from 'react';
-import {Box, Container, Grid} from '@material-ui/core';
+import {Box, Container, Grid, Tabs, Tab} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import {Header, Page} from 'components';
@@ -8,10 +8,13 @@ import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
+import {TABS} from '../constants';
 
 const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
+  const [currentTab, setCurrentTab] = useState(TABS[0]);
+
   useEffect(() => {
     getProvider(idProvider);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,6 +36,16 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
     showEditModal(idProvider, provider);
   }
 
+  /**
+   * Event onChange tabs
+   * @param {Object} event
+   * @param {String} value
+   * @private
+   */
+  const _handleTabsChange = (event, value) => {
+    setCurrentTab(value);
+  };
+
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
@@ -51,6 +64,23 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
           </Grid>
         </Box>
         }
+
+        <Tabs
+          onChange={_handleTabsChange}
+          scrollButtons="auto"
+          textColor="secondary"
+          value={currentTab}
+          variant="scrollable"
+        >
+          {TABS.map((tab) => (
+            <Tab
+              key={tab}
+              value={tab}
+              label={tab}
+            />
+          ))}
+        </Tabs>
+
       </Container>
     </Page>
   );

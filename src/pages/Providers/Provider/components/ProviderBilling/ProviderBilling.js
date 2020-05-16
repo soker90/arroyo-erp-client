@@ -21,7 +21,7 @@ const ProviderBilling = (
       <Card
         className={classes.root}
       >
-        <CardHeader title='Datos de interés'/>
+        <CardHeader title='Facturación'/>
         <Divider/>
         <CardContent className={classes.content}>
           <List>
@@ -42,6 +42,13 @@ ProviderBilling.propTypes = {
   third: PropTypes.number,
   four: PropTypes.number,
 };
+
+ProviderBilling.defaultProps = {
+  first: 0,
+  second: 0,
+  third: 0,
+  four: 0,
+}
 
 ProviderBilling.displayName = 'ProviderStats';
 
