@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {lazy, memo, Suspense, useEffect, useMemo, useState} from 'react';
-import {Box, Container, Grid, Tab, Tabs, Card} from '@material-ui/core';
+import {Box, Card, Container, Grid, Tab, Tabs} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
@@ -11,13 +12,16 @@ import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling
 import LoadingScreen from 'components/LoadingScreen';
 import {TABS} from '../constants';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, getProducts, products}) => {
+const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.PRODUCTS);
 
+
   useEffect(() => {
-    getProvider(idProvider);
+    if (idProvider) {
+      getProvider(idProvider);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idProvider]);
 
@@ -35,6 +39,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
    */
   const _components = useMemo(
     () => ({
+      [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrderTable')),
       [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
     }),
     [],
@@ -66,7 +71,10 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
-        <Header routes={[{link: '/app/proveedores', title: 'Proveedores'}]} title={provider.name} buttonsSecondary={[{
+        <Header routes={[{
+          link: '/app/proveedores',
+          title: 'Proveedores',
+        }]} title={provider.name} buttonsSecondary={[{
           variant: 'text',
           onClick: _toggleExpand,
           Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
@@ -83,25 +91,26 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
         }
 
         <Card className={classes.tabs}>
-        <Tabs
-          onChange={_handleTabsChange}
-          scrollButtons="auto"
-          textColor="secondary"
-          value={currentTab}
-          variant="scrollable"
-        >
-          {Object.values(TABS).map(tab => (
-            <Tab
-              key={tab}
-              value={tab}
-              label={tab}
-            />
-          ))}
-        </Tabs>
+          <Tabs
+            onChange={_handleTabsChange}
+            scrollButtons="auto"
+            textColor="secondary"
+            value={currentTab}
+            variant="scrollable"
+          >
+            {Object.values(TABS)
+              .map(tab => (
+                <Tab
+                  key={tab}
+                  value={tab}
+                  label={tab}
+                />
+              ))}
+          </Tabs>
         </Card>
 
         <Box py={3} pb={6}>
-          <Suspense fallback={<LoadingScreen />}>
+          <Suspense fallback={<LoadingScreen/>}>
             <TabComponent/>
           </Suspense>
         </Box>
@@ -112,8 +121,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
 };
 
 Provider.propTypes = {
-  getProviders: PropTypes.func.isRequired,
-  providers: PropTypes.array.isRequired,
+  provider: PropTypes.object.isRequired,
   billing: PropTypes.object,
   getProvider: PropTypes.func.isRequired,
   showEditModal: PropTypes.func.isRequired,

@@ -7,15 +7,23 @@ const ProductsTable = ({products, getProducts, idProvider}) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getProducts(idProvider);
+    if (idProvider) {
+      getProducts(idProvider);
+    }
   }, [idProvider]);
 
-  return (
+  return idProvider && (
     <TableMaterial
       className={classes.table}
       columns={[
-        {title: 'Código', field: 'code'},
-        {title: 'Nombre', field: 'name'},
+        {
+          title: 'Código',
+          field: 'code',
+        },
+        {
+          title: 'Nombre',
+          field: 'name',
+        },
       ]}
       data={products}
     />
@@ -24,7 +32,7 @@ const ProductsTable = ({products, getProducts, idProvider}) => {
 
 ProductsTable.propTypes = {
   products: PropTypes.array.isRequired,
-  idProvider: PropTypes.string.isRequired,
+  idProvider: PropTypes.string,
 };
 
 ProductsTable.displayName = 'ProductsTable';

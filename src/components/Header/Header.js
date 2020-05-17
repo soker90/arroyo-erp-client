@@ -115,7 +115,7 @@ Header.propTypes = {
     link: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   })),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   description: PropTypes.string,
   buttons: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
