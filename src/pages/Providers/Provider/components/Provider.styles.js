@@ -13,4 +13,10 @@ export const useStyles = makeStyles(theme => ({
       paddingRight: 64,
     },
   },
+  tabs: {
+    marginBottom: -theme.spacing(1),
+  },
+  cards: {
+    marginBottom: theme.spacing(3),
+  },
 }));

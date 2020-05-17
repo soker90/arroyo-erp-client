@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {getProvider} from 'modules/providers/actions';
+import {getProducts, getProvider} from 'modules/providers/actions';
 import Providers from 'pages/Providers/Provider/components/Provider';
-import {showModal} from '../../../../reducers/modal';
+import {showModal} from 'reducers/modal';
 import {NEW_PROVIDER_MODAL} from '../../Providers/modals/types';
 
 const mapStateToProps = ({providers: {provider}}) => ({
@@ -14,6 +14,7 @@ const mapDispatchToProps = {
     modalType: NEW_PROVIDER_MODAL,
     modalProps: {idProvider, provider},
   }),
+  getProducts,
 };
 
 export default connect(

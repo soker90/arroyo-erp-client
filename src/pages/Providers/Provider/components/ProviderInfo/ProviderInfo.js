@@ -43,9 +43,10 @@ const ProviderInfo = ({showEditModal, ...info}) => {
       item
       md={6}
       xs={12}
+      className={classes.root}
     >
       <Card
-        className={classes.root}
+
       >
         <CardHeader
           action={_renderEditButton()}

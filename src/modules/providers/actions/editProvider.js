@@ -44,7 +44,7 @@ export const editProvider = (id, data, callback) => async dispatch => {
   dispatch(_editProviderRequest());
 
   try {
-    await axios.patch(`providers/${id}`, data);
+    await axios.put(`providers/${id}`, data);
 
     dispatch(_editProviderSuccess(data.name));
     // eslint-disable-next-line no-unused-expressions

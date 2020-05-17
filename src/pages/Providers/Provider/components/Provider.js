@@ -1,19 +1,20 @@
-import React, {memo, useEffect, useState} from 'react';
-import {Box, Container, Grid, Tabs, Tab} from '@material-ui/core';
+import React, {lazy, memo, Suspense, useEffect, useMemo, useState} from 'react';
+import {Box, Container, Grid, Tab, Tabs, Card} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 import {Header, Page} from 'components';
 import {useStyles} from 'pages/Providers/Provider/components/Provider.styles';
 import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
+import LoadingScreen from 'components/LoadingScreen';
 import {TABS} from '../constants';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal}) => {
+const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, getProducts, products}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
-  const [currentTab, setCurrentTab] = useState(TABS[0]);
+  const [currentTab, setCurrentTab] = useState(TABS.PRODUCTS);
 
   useEffect(() => {
     getProvider(idProvider);
@@ -29,12 +30,28 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   };
 
   /**
+   * imports de los componentes de cada pestaña
+   * @private
+   */
+  const _components = useMemo(
+    () => ({
+      [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
+    }),
+    [],
+  );
+
+  /**
+   * Componente de la pestaña actual
+   */
+  const TabComponent = useMemo(() => _components[currentTab], [currentTab]);
+
+  /**
    * Abre el modal de edición de proveedor
    * @private
    */
   const _showEditModal = () => {
     showEditModal(idProvider, provider);
-  }
+  };
 
   /**
    * Event onChange tabs
@@ -49,7 +66,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
-        <Header title="Proveedor" description={provider.name} buttonsSecondary={[{
+        <Header routes={[{link: '/app/proveedores', title: 'Proveedores'}]} title={provider.name} buttonsSecondary={[{
           variant: 'text',
           onClick: _toggleExpand,
           Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
@@ -57,7 +74,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
           label: expand ? 'Ocultar información' : 'Mostrar información',
         }]}/>
         {expand &&
-        <Box mt={3}>
+        <Box mt={3} className={classes.cards}>
           <Grid container spacing={3}>
             <ProviderInfo {...provider} showEditModal={_showEditModal}/>
             <ProviderBilling {...billing} />
@@ -65,6 +82,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
         </Box>
         }
 
+        <Card className={classes.tabs}>
         <Tabs
           onChange={_handleTabsChange}
           scrollButtons="auto"
@@ -72,7 +90,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
           value={currentTab}
           variant="scrollable"
         >
-          {TABS.map((tab) => (
+          {Object.values(TABS).map(tab => (
             <Tab
               key={tab}
               value={tab}
@@ -80,6 +98,13 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
             />
           ))}
         </Tabs>
+        </Card>
+
+        <Box py={3} pb={6}>
+          <Suspense fallback={<LoadingScreen />}>
+            <TabComponent/>
+          </Suspense>
+        </Box>
 
       </Container>
     </Page>

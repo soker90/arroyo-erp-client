@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, {useState, memo} from 'react';
+import React, {memo, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -14,6 +14,7 @@ import {
   TableRow,
   Typography,
 } from '@material-ui/core';
+import uniqId from 'uniqid';
 import {useStyles} from './TableMaterial.styles';
 
 const TableMaterial = ({className, columns, actions, data, title, refresh, count, onRowClick, ...rest}) => {
@@ -23,12 +24,18 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
 
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
-    refresh({offset: newPage, limit});
+    refresh({
+      offset: newPage,
+      limit,
+    });
   };
 
   const handleLimitChange = event => {
     setLimit(event.target.value);
-    refresh({offset: page, limit});
+    refresh({
+      offset: page,
+      limit,
+    });
   };
 
   const _labelOfRows = ({from, to, count}) =>
@@ -45,6 +52,7 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
       className={clsx(classes.root, className)}
       {...rest}
     >
+      {title &&
       <Box p={2}>
         <Box
           display="flex"
@@ -58,6 +66,7 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
           </Typography>
         </Box>
       </Box>
+      }
       <PerfectScrollbar>
         <Box>
           <Table>
@@ -76,14 +85,14 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((row, idx) =>
+              {data.map(row =>
                 <TableRow
                   onMouseDown={() => onRowClick?.(row)}
                   hover
-                  key={idx}
+                  key={uniqId()}
                 >
-                  {columns.map(({field, render}, id) =>
-                    <TableCell key={id}>
+                  {columns.map(({field, render}) =>
+                    <TableCell key={uniqId()}>
                       {render?.(row) || row[field]}
                     </TableCell>,
                   )}
@@ -91,6 +100,18 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
               )}
             </TableBody>
           </Table>
+          {
+            data.length === 0 &&
+            <Box p={2}>
+              <Typography
+                variant="body1"
+                color="textPrimary"
+                align='center'
+              >
+                No se han encontrado datos
+              </Typography>
+            </Box>
+          }
         </Box>
       </PerfectScrollbar>
       {!!count &&
@@ -110,7 +131,7 @@ const TableMaterial = ({className, columns, actions, data, title, refresh, count
       }
     </Card>
   );
-}
+};
 
 TableMaterial.propTypes = {
   className: PropTypes.string,
