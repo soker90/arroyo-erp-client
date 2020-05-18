@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {InputForm, ModalGrid} from 'components';
 
 const INITIAL_STATE = {
-  'code': '',
-  'name': '',
-  'amount': 0,
-  'iva': 0,
-  're': 0,
+  code: '',
+  name: '',
+  iva: 0,
+  re: 0,
+  fee: 0,
 };
 
 const NewProductModal = ({show, close, createProduct, idProvider, product, editProduct}) => {
@@ -40,9 +40,9 @@ const NewProductModal = ({show, close, createProduct, idProvider, product, editP
     const model = {
       code: state.code,
       name: state.name,
-      amount: Number(state.amount),
       iva: Number(state.iva),
-      re: Number(state.re),
+      ...(state.re && {re: Number(state.re)}),
+      ...(state.fee && {fee: Number(state.fee)}),
       provider: idProvider,
     };
 
@@ -76,9 +76,9 @@ const NewProductModal = ({show, close, createProduct, idProvider, product, editP
       action={_handleSubmit}>
       {_renderInput('code', 'Código')}
       {_renderInput('name', 'Nombre')}
-      {_renderInput('amount', 'Precio', {type: 'number'})}
       {_renderInput('iva', 'IVA', {type: 'number'})}
       {_renderInput('re', 'RE', {type: 'number'})}
+      {_renderInput('fee', 'Tasa', {type: 'number'})}
     </ModalGrid>
   );
 };
