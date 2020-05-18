@@ -4,6 +4,7 @@ import {Box, Card, Container, Grid, Tab, Tabs} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import AddIcon from '@material-ui/icons/Add';
 
 import {Header, Page} from 'components';
 import {useStyles} from 'pages/Providers/Provider/components/Provider.styles';
@@ -12,7 +13,7 @@ import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling
 import LoadingScreen from 'components/LoadingScreen';
 import {TABS} from '../constants';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal}) => {
+const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.PRODUCTS);
@@ -46,6 +47,28 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   );
 
   /**
+   * Generate buttons for header
+   * @return {Array}
+   * @private
+   */
+  const _generateButtons = [
+    ...(currentTab === TABS.PRODUCTS && [{
+      variant: 'contained',
+      onClick: () => showEditProductModal(),
+      Icon: AddIcon,
+      disableSvg: true,
+      label: 'Nuevo producto',
+    }]),
+    /*...(currentTab === TABS.DELIVERY_ORDERS && [{
+      variant: 'contained',
+      onClick: showEditProductModal,
+      Icon: AddIcon,
+      disableSvg: true,
+      label: 'Nuevo albarán',
+    }]),*/
+  ];
+
+  /**
    * Componente de la pestaña actual
    */
   const TabComponent = useMemo(() => _components[currentTab], [currentTab]);
@@ -71,16 +94,21 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
-        <Header routes={[{
-          link: '/app/proveedores',
-          title: 'Proveedores',
-        }]} title={provider.name} buttonsSecondary={[{
-          variant: 'text',
-          onClick: _toggleExpand,
-          Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
-          disableSvg: true,
-          label: expand ? 'Ocultar información' : 'Mostrar información',
-        }]}/>
+        <Header
+          routes={[{
+            link: '/app/proveedores',
+            title: 'Proveedores',
+          }]}
+          title={provider.name}
+          buttonsSecondary={[{
+            variant: 'text',
+            onClick: _toggleExpand,
+            Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
+            disableSvg: true,
+            label: expand ? 'Ocultar información' : 'Mostrar información',
+          }]}
+          buttons={_generateButtons}
+        />
         {expand &&
         <Box mt={3} className={classes.cards}>
           <Grid container spacing={3}>

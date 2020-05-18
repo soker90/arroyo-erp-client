@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getProvider} from 'modules/providers/actions';
 import Providers from 'pages/Providers/Provider/components/Provider';
 import {showModal} from 'reducers/modal';
-import {NEW_PROVIDER_MODAL} from '../../Providers/modals/types';
+import {NEW_PRODUCT_MODAL, NEW_PROVIDER_MODAL} from '../../Providers/modals/types';
 
 const mapStateToProps = ({providers: {provider}}) => ({
   provider,
@@ -15,6 +15,12 @@ const mapDispatchToProps = {
     modalProps: {
       idProvider,
       provider,
+    },
+  }),
+  showEditProductModal: product => showModal({
+    modalType: NEW_PRODUCT_MODAL,
+    modalProps: {
+      product,
     },
   }),
 };
