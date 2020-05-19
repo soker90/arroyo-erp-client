@@ -11,13 +11,12 @@ import {useStyles} from 'pages/Providers/Provider/components/Provider.styles';
 import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
 import LoadingScreen from 'components/LoadingScreen';
-import {TABS} from '../constants';
+import {TABS, HASH_TABS} from '../constants';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal}) => {
+const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal, location: {hash}, ...rest}) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
-  const [currentTab, setCurrentTab] = useState(TABS.PRODUCTS);
-
+  const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
 
   useEffect(() => {
     if (idProvider) {
@@ -26,6 +25,10 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idProvider]);
 
+  useEffect(() => {
+    HASH_TABS[hash] &&
+    setCurrentTab(HASH_TABS[hash]);
+  }, [hash])
   /**
    * Expande o contrae la información
    * @private
@@ -47,26 +50,25 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   );
 
   /**
-   * Generate buttons for header
-   * @return {Array}
+   * Buttons for header
    * @private
    */
-  const _generateButtons = [
-    ...(currentTab === TABS.PRODUCTS && [{
+  const _buttons = useMemo(() => ({
+    [TABS.PRODUCTS]: {
       variant: 'contained',
       onClick: () => showEditProductModal(),
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo producto',
-    }]),
-    /*...(currentTab === TABS.DELIVERY_ORDERS && [{
+    },
+    [TABS.DELIVERY_ORDERS]: {
       variant: 'contained',
       onClick: showEditProductModal,
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo albarán',
-    }]),*/
-  ];
+    },
+  }), []);
 
   /**
    * Componente de la pestaña actual
@@ -107,7 +109,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
             disableSvg: true,
             label: expand ? 'Ocultar información' : 'Mostrar información',
           }]}
-          buttons={_generateButtons}
+          buttons={[_buttons[currentTab]]}
         />
         {expand &&
         <Box mt={3} className={classes.cards}>
