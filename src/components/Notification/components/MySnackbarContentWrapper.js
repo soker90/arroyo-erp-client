@@ -52,4 +52,5 @@ MySnackbarContentWrapper.propTypes = {
 
 MySnackbarContentWrapper.displayName = 'MySnackbarContentWrapper';
 
+export const story = MySnackbarContentWrapper;
 export default memo(MySnackbarContentWrapper);

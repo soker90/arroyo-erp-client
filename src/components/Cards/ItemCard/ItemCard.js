@@ -33,4 +33,5 @@ ItemCard.propTypes = {
 
 ItemCard.displayName = 'ItemCard';
 
+export const story = ItemCard;
 export default memo(ItemCard);

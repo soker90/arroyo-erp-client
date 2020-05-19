@@ -149,4 +149,5 @@ TableMaterial.defaultProps = {
   count: 0,
 };
 
+export const story = TableMaterial;
 export default memo(TableMaterial);
