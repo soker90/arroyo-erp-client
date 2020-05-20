@@ -50,6 +50,11 @@ const routesConfig = [
         component: lazy(() => import('pages/Providers/Provider')),
       },
       {
+        exact: true,
+        path: '/app/albaranes/nuevo/:idProvider',
+        component: lazy(() => import('pages/DeliveryOrder')),
+      },
+      {
         component: () => <NotFound/>,
       },
     ],

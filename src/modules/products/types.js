@@ -1,0 +1,11 @@
+import {requestActions} from 'utils/requestActions';
+
+export const GET_PROVIDERS = requestActions('GET_PROVIDERS');
+export const CREATE_PROVIDER = requestActions('CREATE_PROVIDER');
+export const GET_PROVIDER = requestActions('GET_PROVIDER');
+export const EDIT_PROVIDER = requestActions('EDIT_PROVIDER');
+
+export const GET_PRODUCTS = requestActions('GET_PRODUCTS');
+export const CREATE_PRODUCTS = requestActions('CREATE_PRODUCTS');
+
+export const GET_DELIVERY_ORDERS = requestActions('GET_DELIVERY_ORDERS');

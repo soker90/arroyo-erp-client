@@ -12,6 +12,7 @@ import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
 import LoadingScreen from 'components/LoadingScreen';
 import {TABS, HASH_TABS} from '../constants';
+import { navigateTo } from 'utils';
 
 const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal, location: {hash}, ...rest}) => {
   const classes = useStyles();
@@ -36,6 +37,14 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
   const _toggleExpand = () => {
     setExpand(!expand);
   };
+
+  /**
+   * Navega a la página de nuevo albarán
+   * @private
+   */
+  const _handleClickNewDeliveryOrder = () => {
+    navigateTo(`albaranes/nuevo/${idProvider}`)
+  }
 
   /**
    * imports de los componentes de cada pestaña
@@ -63,7 +72,7 @@ const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}
     },
     [TABS.DELIVERY_ORDERS]: {
       variant: 'contained',
-      onClick: showEditProductModal,
+      onClick: _handleClickNewDeliveryOrder,
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo albarán',

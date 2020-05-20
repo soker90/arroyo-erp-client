@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {CREATE_PRODUCTS} from '../types';
-import {getProducts} from 'modules/providers/actions/getProducts';
+import {getProducts} from 'modules/products/actions/getProducts';
 
 /**
  * Request action for createProduct
