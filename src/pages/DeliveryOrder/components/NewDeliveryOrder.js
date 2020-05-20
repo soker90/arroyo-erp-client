@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Button} from '@material-ui/core';
 
 import {ContainerTab, ContentTab, DividerTab, HeaderGeneric} from 'components';
-import NewDeliveryOrderData from './NewDeliveryOrderData';
-import NewDeliveryOrderProducts from './NewDeliveryOrderProducts';
+import NewDeliveryOrderData from './DeliveryOrderData';
+import NewDeliveryOrderProducts from './DeliveryOrderProducts';
 import {useStyles} from './NewDeliveryOrder.styles';
 
 const NewDeliveryOrder = (

@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 
-import {createDeliveryOrder, getProducts} from '../modules/actions';
+// import {createDeliveryOrder, getProducts} from '../modules/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
 import {showModal} from 'reducers/modal';
 import {DELETE_PRODUCT_DELIVERY_ORDER} from 'pages/DeliveryOrder/modals/types';
+import {getProducts} from 'modules/products/actions';
 
 const mapStateToProps = ({products: {products}}) => ({
   products,
@@ -19,7 +20,7 @@ const mapDispatchToProps = {
         onClickDelete,
       },
     }),
-  createDeliveryOrder,
+  // createDeliveryOrder,
 };
 
 export default connect(

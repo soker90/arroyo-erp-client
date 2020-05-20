@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {Grid, IconButton, Tooltip} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import {InputForm, SelectForm} from 'components/Forms';
-import {useStyles} from './NewDeliveryOrderProductsSelect.styles';
+import {InputForm, SelectForm} from 'components';
 import {stringToNumber} from 'utils';
+import {useStyles} from './DeliveryOrderProductSelect.styles';
 
-const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {product, quantity}, deleteProduct}) => {
+const DeliveryOrderProductSelect = ({index, products, updateProduct, data: {product, quantity, price, amount}, deleteProduct}) => {
   const classes = useStyles();
   const [code, setCode] = useState('');
 
@@ -18,7 +18,10 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
    */
   const _handleSelect = ({target: {value}}) => {
     const selected = products.find(product => product._id === value);
-    updateProduct(index, {product: value, quantity});
+    updateProduct(index, {
+      product: value,
+      quantity,
+    });
     setCode(selected?.code || '');
   };
 
@@ -29,7 +32,10 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
    */
   const _handleCode = ({target: {value}}) => {
     const selected = products.find(product => product.code === value);
-    updateProduct(index, {product: selected?._id || '', quantity});
+    updateProduct(index, {
+      product: selected?._id || '',
+      quantity,
+    });
     setCode(value);
   };
 
@@ -39,7 +45,10 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
    * @private
    */
   const _handleChangeQuantity = ({target: {value}}) => {
-    updateProduct(index, {product, quantity: stringToNumber(value)});
+    updateProduct(index, {
+      product,
+      quantity: stringToNumber(value),
+    });
   };
 
   /**
@@ -67,7 +76,7 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
 
   return <Grid spacing={3} container>
     <InputForm
-      label='Código' value={code} onChange={_handleCode} size={4}
+      label='Código' value={code} onChange={_handleCode} size={2}
       InputLabelProps={{
         shrink: true,
       }}/>
@@ -77,7 +86,7 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
       name='provider'
       onChange={_handleSelect}
       disabled={!products?.length}
-      size={4}
+      size={3}
     >
       <option value="">--------</option>
       {products?.map((item, idx) =>
@@ -86,12 +95,17 @@ const NewDeliveryOrderProductSelect = ({index, products, updateProduct, data: {p
         </option>,
       )}
     </SelectForm>
-    <InputForm label='Peso / Cantidad' defaultValue={quantity} onChange={_handleChangeQuantity} size={3} type='number'/>
+    <InputForm label='Peso / Cantidad' defaultValue={quantity} onChange={_handleChangeQuantity}
+               size={2} type='number'/>
+    <InputForm label='Precio' defaultValue={price} onChange={_handleChangeQuantity} size={2}
+               type='number'/>
+    <InputForm label='Importe' defaultValue={amount} onChange={_handleChangeQuantity} size={2}
+               type='number'/>
     {_renderDeleteButton()}
-  </Grid>
+  </Grid>;
 };
 
-NewDeliveryOrderProductSelect.propTypes = {
+DeliveryOrderProductSelect.propTypes = {
   products: PropTypes.array,
   deleteProduct: PropTypes.func.isRequired,
   updateProduct: PropTypes.func.isRequired,
@@ -99,6 +113,6 @@ NewDeliveryOrderProductSelect.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-NewDeliveryOrderProductSelect.displayName = 'NewDeliveryOrderProductSelect';
+DeliveryOrderProductSelect.displayName = 'NewDeliveryOrderProductSelect';
 
-export default memo(NewDeliveryOrderProductSelect);
+export default memo(DeliveryOrderProductSelect);

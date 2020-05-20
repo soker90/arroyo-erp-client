@@ -1,12 +1,11 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardContent, CardHeader, Divider, IconButton, Tooltip} from '@material-ui/core';
-
-import NewDeliveryOrderProductSelect from '../NewDeliveryOrderProductSelect';
-import {useStyles} from './NewDeliveryOrderProducts.styles';
+import DeliveryOrderProductSelect from '../DeliveryOrderProductSelect';
+import {useStyles} from 'pages/DeliveryOrder/components/DeliveryOrderProducts/DeliveryOrderProducts.styles';
 import AddIcon from '@material-ui/icons/Add';
 
-const NewDeliveryOrderProducts = ({products, selectedProducts, addProduct, updateProduct, deleteProduct}) => {
+const DeliveryOrderProducts = ({products, selectedProducts, addProduct, updateProduct, deleteProduct}) => {
   const classes = useStyles();
 
   /**
@@ -28,7 +27,7 @@ const NewDeliveryOrderProducts = ({products, selectedProducts, addProduct, updat
    * @return {NewDeliveryOrderProductSelect}
    * @private
    */
-  const _renderRow = (data, index) => <NewDeliveryOrderProductSelect
+   const _renderRow = (data, index) => <DeliveryOrderProductSelect
     key={index}
     products={products} updateProduct={updateProduct}
     deleteProduct={deleteProduct}
@@ -43,7 +42,7 @@ const NewDeliveryOrderProducts = ({products, selectedProducts, addProduct, updat
   </Card>;
 };
 
-NewDeliveryOrderProducts.propTypes = {
+DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
   selectedProducts: PropTypes.array.isRequired,
   addProduct: PropTypes.func.isRequired,
@@ -51,10 +50,10 @@ NewDeliveryOrderProducts.propTypes = {
   deleteProduct: PropTypes.func.isRequired,
 };
 
-NewDeliveryOrderProducts.defaultProps = {
+DeliveryOrderProducts.defaultProps = {
   date: new Date(),
 };
 
-NewDeliveryOrderProducts.displayName = 'NewDeliveryOrderProducts';
+DeliveryOrderProducts.displayName = 'NewDeliveryOrderProducts';
 
-export default memo(NewDeliveryOrderProducts);
+export default memo(DeliveryOrderProducts);
