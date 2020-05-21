@@ -1,4 +1,4 @@
-import React, {Fragment, Suspense} from 'react';
+import React, {Fragment, Suspense, memo} from 'react';
 import PropTypes from 'prop-types';
 import {makeStyles} from '@material-ui/styles';
 import {LinearProgress} from '@material-ui/core';
@@ -29,4 +29,7 @@ Auth.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-export default Auth;
+Auth.displayName = 'Auth';
+
+export const story = Auth;
+export default memo(Auth);

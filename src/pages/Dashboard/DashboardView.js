@@ -33,4 +33,7 @@ const DashboardView = () => {
   );
 };
 
+DashboardView.displayName = 'DashboardView';
+
+export const story = DashboardView;
 export default memo(DashboardView);

@@ -51,9 +51,10 @@ const LoginView = ({login, loginError, isLoading}) => {
 
 LoginView.propTypes = {
   login: PropTypes.func.isRequired,
-  loginError: PropTypes.object,
+  loginError: PropTypes.string,
 };
 
 LoginView.displayName = 'LoginView';
 
+export const story = LoginView;
 export default memo(LoginView);

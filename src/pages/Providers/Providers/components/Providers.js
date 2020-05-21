@@ -49,4 +49,5 @@ Providers.propTypes = {
 
 Providers.displayName = 'Providers';
 
+export const story = Providers;
 export default memo(Providers);

@@ -84,4 +84,5 @@ NewProviderModal.propTypes = {
 
 NewProviderModal.displayName = 'NewProviderModal';
 
+export const story = NewProviderModal;
 export default memo(NewProviderModal);

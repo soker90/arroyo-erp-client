@@ -29,6 +29,9 @@ const _loginSuccess = () => ({
 const _loginError = error => ({
   type: LOGIN.FAILURE,
   error,
+  payload: {
+    loginError: error?.response?.data?.message,
+  },
 })
 
 /**

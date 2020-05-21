@@ -34,7 +34,7 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
    */
   const renderError = () => {
     return loginError && <Box bgcolor="error.main" color="secondary.contrastText" p={2}
-                              className={classes.error}>{loginError?.message}</Box>
+                              className={classes.error}>{loginError}</Box>
   };
 
   /**
@@ -107,9 +107,10 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
-  loginError: PropTypes.object,
+  loginError: PropTypes.string,
 };
 
 LoginForm.displayName = 'LoginForm';
 
+export const story = LoginForm;
 export default LoginForm;

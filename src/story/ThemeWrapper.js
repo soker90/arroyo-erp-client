@@ -17,7 +17,7 @@ const ThemeWrapper = ({children}) => {
     'Tema',
     Object.keys(THEMES),
     THEMES.LIGHT,
-    'Temas',
+    'General',
   );
 
   return <ThemeProvider theme={createTheme({theme})}>

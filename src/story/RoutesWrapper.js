@@ -1,21 +1,18 @@
 import React from 'react';
-import history from '../redux/history';
+import history from '../store/history';
 import {Router} from 'react-router-dom';
-import ThemeWrapper from './ThemeWrapper';
 
 /**
  * Wrapper for routes with storybook
  * @param children
- * @return {ThemeProvider}
+ * @return {Router}
  * @constructor
  */
 
-const RoutesWrapper = ({children, theme}) =>
-  <ThemeWrapper theme={theme}>
-    <Router history={history}>
-      {children}
-    </Router>
-  </ThemeWrapper>
+const RoutesWrapper = ({children}) =>
+  <Router history={history}>
+    {children}
+  </Router>;
 
 RoutesWrapper.displayName = 'RoutesWrapper';
 

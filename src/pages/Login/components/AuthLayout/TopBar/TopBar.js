@@ -30,4 +30,5 @@ TopBar.propTypes = {
 
 TopBar.displayName = 'TopBar';
 
+export const story = TopBar;
 export default memo(TopBar);
