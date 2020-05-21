@@ -106,7 +106,6 @@
     "@storybook/storybook-deployer": "^2.8.6",
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
-    "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
