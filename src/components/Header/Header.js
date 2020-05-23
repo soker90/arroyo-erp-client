@@ -90,7 +90,7 @@ const Header = ({className, routes, title, description, buttons, buttonsSecondar
           variant="h3"
           color="textPrimary"
         >
-          {description || title}
+          {description ?? title}
         </Typography>
         {
           buttonsSecondary &&

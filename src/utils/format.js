@@ -12,9 +12,14 @@ const euro = cell => {
   return n.format(cell);
 };
 
+/**
+ *
+ * @param cell
+ * @return {string}
+ */
 const number = cell => {
-  const n = new Intl.NumberFormat('es-ES', {style: 'decimal', maximumFractionDigits: 2});
-  return n.format(cell);
+  const num = new Intl.NumberFormat('es-ES', {style: 'decimal', maximumFractionDigits: 3});
+  return num.format(cell);
 };
 
 export default {

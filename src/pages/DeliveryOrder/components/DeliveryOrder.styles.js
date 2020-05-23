@@ -14,6 +14,6 @@ export const useStyles = makeStyles(theme => ({
     },
   },
   cards: {
-    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(2),
   },
 }));

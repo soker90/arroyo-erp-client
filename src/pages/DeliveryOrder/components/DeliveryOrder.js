@@ -1,36 +1,41 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {memo, useEffect, useReducer, useState} from 'react';
-import {Box, Container} from '@material-ui/core';
+import React, {memo, useEffect} from 'react';
+import {Box, Container, Grid} from '@material-ui/core';
 import PropTypes from 'prop-types';
+import AddIcon from '@material-ui/icons/Add';
 
 import {Header, Page} from 'components';
-import DeliveryOrderData from './DeliveryOrderData';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
+import DeliveryOrderData from 'pages/DeliveryOrder/components/DeliveryOrderData';
 import {useStyles} from './DeliveryOrder.styles';
 
 
-const DeliveryOrder = ({products, match: {params: {idProvider}}, getProducts}) => {
+const DeliveryOrder = ({
+  match: {params: {idDeliveryOrder}},
+  getProducts, deliveryOrder, getDeliveryOrder,
+}) => {
   const classes = useStyles();
-  const [data, setData] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    {
-      date: null,
-      provider: idProvider,
-    });
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  // const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    if (idProvider) {
-      getProducts(idProvider);
+    if (idDeliveryOrder) {
+      getDeliveryOrder(idDeliveryOrder);
     }
-  }, [idProvider]);
+
+  }, [idDeliveryOrder]);
+
+  useEffect(() => {
+    if (deliveryOrder.provider) {
+      getProducts(deliveryOrder.provider);
+    }
+  }, [deliveryOrder.provider]);
 
 
   /**
    * Add product to selected product
    * @private
    */
-  const _addProduct = () => {
+  /* const _addProduct = () => {
     setSelectedProducts([...selectedProducts, {
       product: '',
       quantity: 0,
@@ -38,7 +43,7 @@ const DeliveryOrder = ({products, match: {params: {idProvider}}, getProducts}) =
       price: 0,
       amount: 0,
     }]);
-  };
+  };*/
 
   /**
    * Actualiza los datos del producto seleccionado en es estado
@@ -46,21 +51,21 @@ const DeliveryOrder = ({products, match: {params: {idProvider}}, getProducts}) =
    * @param {object} dataProduct
    * @private
    */
-  const _updateProduct = (index, dataProduct) => {
+  /*const _updateProduct = (index, dataProduct) => {
     const _selectedProducts = selectedProducts.slice();
     _selectedProducts[index] = dataProduct;
     setSelectedProducts(_selectedProducts);
-  };
+  };*/
 
   /**
    * Delete product
    * @param {number} index
    * @private
    */
-  const _deleteProduct = index => {
+  /*const _deleteProduct = index => {
     const _newProducts = selectedProducts.filter((i, idx) => idx !== index);
     setSelectedProducts(_newProducts);
-  };
+  };*/
 
   /**
    * Show modal to delete product
@@ -80,25 +85,45 @@ const DeliveryOrder = ({products, match: {params: {idProvider}}, getProducts}) =
       <Container maxWidth={false} className={classes.container}>
         <Header
           routes={[{
-            link: `/app/proveedores/${idProvider}`,
-            title: 'Proveedor X',
+            link: `/app/proveedores/${deliveryOrder.provider}`,
+            title: `${deliveryOrder.nameProvider}`,
           },
             {
-              link: `/app/proveedores/${idProvider}#Albaranes`,
+              link: `/app/proveedores/${deliveryOrder.provider}#Albaranes`,
               title: 'Albaranes',
             }]}
-          title='Nuevo'
+          title='Albarán'
+          description=''
+          buttons={[{
+            variant: 'contained',
+            onClick: () => console.log('Añadir producto'),
+            Icon: AddIcon,
+            disableSvg: true,
+            label: 'Añadir',
+          }]}
         />
 
         <Box py={3} pb={1}>
-          <DeliveryOrderData setData={setData} date={data.date}/>
+          {/*<DeliveryOrderData setData={setData} date={data.date}/>*/}
         </Box>
+
         <DeliveryOrderProducts
+          products={deliveryOrder.products}
+        />
+        {/*<DeliveryOrderProducts
           products={products}
           addProduct={_addProduct}
           selectedProducts={selectedProducts}
           deleteProduct={_showModalDelete}
-          updateProduct={_updateProduct}/>
+          updateProduct={_updateProduct}/>*/}
+        <Grid container spacing={3} className={classes.cards}>
+          <Grid item xs={12} md={6}>
+            <DeliveryOrderData date={deliveryOrder.date}/>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <DeliveryOrderData date={deliveryOrder.date}/>
+          </Grid>
+        </Grid>
 
       </Container>
     </Page>
@@ -113,5 +138,5 @@ DeliveryOrder.propTypes = {
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';
-
+export const story = DeliveryOrder;
 export default memo(DeliveryOrder);

@@ -1,11 +1,11 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardContent, CardHeader, Divider, IconButton, Tooltip} from '@material-ui/core';
-import DeliveryOrderProductSelect from '../DeliveryOrderProductSelect';
+import {Tooltip, Typography} from '@material-ui/core';
 import {useStyles} from 'pages/DeliveryOrder/components/DeliveryOrderProducts/DeliveryOrderProducts.styles';
-import AddIcon from '@material-ui/icons/Add';
+import {TableMaterial} from 'components';
+import {format} from 'utils';
 
-const DeliveryOrderProducts = ({products, selectedProducts, addProduct, updateProduct, deleteProduct}) => {
+const DeliveryOrderProducts = ({products}) => {
   const classes = useStyles();
 
   /**
@@ -13,12 +13,12 @@ const DeliveryOrderProducts = ({products, selectedProducts, addProduct, updatePr
    * @return {Tooltip}
    * @private
    */
-  const _renderAddButton = () =>
+  /* const _renderAddButton = () =>
     <Tooltip title="Añadir producto">
       <IconButton size="small" className={classes.button} onClick={addProduct}>
         <AddIcon/>
       </IconButton>
-    </Tooltip>;
+    </Tooltip>; */
 
   /**
    * Render row of product
@@ -27,19 +27,60 @@ const DeliveryOrderProducts = ({products, selectedProducts, addProduct, updatePr
    * @return {NewDeliveryOrderProductSelect}
    * @private
    */
-   const _renderRow = (data, index) => <DeliveryOrderProductSelect
-    key={index}
-    products={products} updateProduct={updateProduct}
-    deleteProduct={deleteProduct}
-    data={data} index={index}/>;
+  /* const _renderRow = (data, index) => <DeliveryOrderProductSelect
+   key={index}
+   products={products} updateProduct={updateProduct}
+   deleteProduct={deleteProduct}
+   data={data} index={index}/>; */
 
-  return <Card className={classes.root}>
-    <CardHeader title='Productos' action={_renderAddButton()}/>
-    <Divider/>
-    <CardContent>
-      {selectedProducts.map(_renderRow)}
-    </CardContent>
-  </Card>;
+  /**
+   * Diff > 0 darkgreen
+   * Diff < 0 red
+   * Diff === 0 false
+   * @param diff
+   * @return {string}
+   * @private
+   */
+  const _diffColor = diff =>
+    !!diff && (diff > 0 ?  'darkgreen' : 'red');
+
+  const _formatDiff = ({diff}) =>
+    <Typography variant="body" style={{color: _diffColor(diff)}}>
+      {diff}
+    </Typography>;
+  /**
+   * code, productName, quantity, price, amount, diff
+   */
+  return <TableMaterial
+    className={classes.table}
+    columns={[
+      {
+        title: 'Código',
+        field: 'code',
+      },
+      {
+        title: 'Producto',
+        field: 'productName',
+      },
+      {
+        title: 'Cantidad / Peso',
+        render: ({quantity}) => format.number(quantity),
+      },
+      {
+        title: 'Precio',
+        render: ({price}) => format.euro(price),
+      },
+      {
+        title: 'Importe',
+        render: ({amount}) => format.euro(amount),
+      },
+      {
+        title: 'Diferencia',
+        render: _formatDiff,
+      },
+    ]}
+    data={products}
+  />;
 };
 
 DeliveryOrderProducts.propTypes = {
