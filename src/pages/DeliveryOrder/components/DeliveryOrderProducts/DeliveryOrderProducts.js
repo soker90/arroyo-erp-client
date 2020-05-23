@@ -1,53 +1,26 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
-import {Tooltip, Typography} from '@material-ui/core';
-import {useStyles} from 'pages/DeliveryOrder/components/DeliveryOrderProducts/DeliveryOrderProducts.styles';
+import {Typography} from '@material-ui/core';
+
 import {TableMaterial} from 'components';
 import {format} from 'utils';
+import {diffColor} from './utils';
+import {useStyles} from './DeliveryOrderProducts.styles';
 
 const DeliveryOrderProducts = ({products}) => {
   const classes = useStyles();
 
   /**
-   * Render button add product
-   * @return {Tooltip}
-   * @private
-   */
-  /* const _renderAddButton = () =>
-    <Tooltip title="Añadir producto">
-      <IconButton size="small" className={classes.button} onClick={addProduct}>
-        <AddIcon/>
-      </IconButton>
-    </Tooltip>; */
-
-  /**
-   * Render row of product
-   * @param {Object} data
-   * @param {number} index
-   * @return {NewDeliveryOrderProductSelect}
-   * @private
-   */
-  /* const _renderRow = (data, index) => <DeliveryOrderProductSelect
-   key={index}
-   products={products} updateProduct={updateProduct}
-   deleteProduct={deleteProduct}
-   data={data} index={index}/>; */
-
-  /**
-   * Diff > 0 darkgreen
-   * Diff < 0 red
-   * Diff === 0 false
+   * Rencer cell of diff
    * @param diff
-   * @return {string}
+   * @return {Typography}
    * @private
    */
-  const _diffColor = diff =>
-    !!diff && (diff > 0 ?  'darkgreen' : 'red');
-
   const _formatDiff = ({diff}) =>
-    <Typography variant="body" style={{color: _diffColor(diff)}}>
-      {diff}
+    <Typography variant="body" style={{color: diffColor(diff)}}>
+      {format.euro(diff)}
     </Typography>;
+
   /**
    * code, productName, quantity, price, amount, diff
    */
@@ -85,16 +58,8 @@ const DeliveryOrderProducts = ({products}) => {
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
-  selectedProducts: PropTypes.array.isRequired,
-  addProduct: PropTypes.func.isRequired,
-  updateProduct: PropTypes.func.isRequired,
-  deleteProduct: PropTypes.func.isRequired,
 };
 
-DeliveryOrderProducts.defaultProps = {
-  date: new Date(),
-};
-
-DeliveryOrderProducts.displayName = 'NewDeliveryOrderProducts';
-
+DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';
+export const story = DeliveryOrderProducts;
 export default memo(DeliveryOrderProducts);

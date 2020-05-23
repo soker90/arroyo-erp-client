@@ -5,6 +5,7 @@ import modal from './modal';
 import account from './account';
 import providers from 'modules/providers';
 import products from 'modules/products';
+import deliveryOrders from 'pages/DeliveryOrder/modules';
 
 const rootReducer = combineReducers({
   account,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
    */
   notifications,
   modal,
+  deliveryOrders,
 });
 
 export default rootReducer;

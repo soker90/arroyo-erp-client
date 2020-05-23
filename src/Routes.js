@@ -51,7 +51,7 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/albaranes/nuevo/:idProvider',
+        path: '/app/albaranes/:idProvider',
         component: lazy(() => import('pages/DeliveryOrder')),
       },
       {

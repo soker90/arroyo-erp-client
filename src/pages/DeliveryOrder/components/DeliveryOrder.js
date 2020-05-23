@@ -6,30 +6,28 @@ import AddIcon from '@material-ui/icons/Add';
 
 import {Header, Page} from 'components';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
-import DeliveryOrderData from 'pages/DeliveryOrder/components/DeliveryOrderData';
+import DeliveryOrderData from './DeliveryOrderData';
 import {useStyles} from './DeliveryOrder.styles';
+import DeliveryOrderTotals from 'pages/DeliveryOrder/components/DeliveryOrderTotals';
 
 
 const DeliveryOrder = ({
   match: {params: {idDeliveryOrder}},
-  getProducts, deliveryOrder, getDeliveryOrder,
+  getProducts, getDeliveryOrder, provider, nameProvider, products, date, totals, _id,
 }) => {
   const classes = useStyles();
   // const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    if (idDeliveryOrder) {
+    if (idDeliveryOrder && idDeliveryOrder !== _id)
       getDeliveryOrder(idDeliveryOrder);
-    }
-
   }, [idDeliveryOrder]);
 
   useEffect(() => {
-    if (deliveryOrder.provider) {
-      getProducts(deliveryOrder.provider);
+    if (provider) {
+      getProducts(provider);
     }
-  }, [deliveryOrder.provider]);
-
+  }, [provider]);
 
   /**
    * Add product to selected product
@@ -85,11 +83,11 @@ const DeliveryOrder = ({
       <Container maxWidth={false} className={classes.container}>
         <Header
           routes={[{
-            link: `/app/proveedores/${deliveryOrder.provider}`,
-            title: `${deliveryOrder.nameProvider}`,
+            link: `/app/proveedores/${provider}`,
+            title: `${nameProvider}`,
           },
             {
-              link: `/app/proveedores/${deliveryOrder.provider}#Albaranes`,
+              link: `/app/proveedores/${provider}#Albaranes`,
               title: 'Albaranes',
             }]}
           title='Albarán'
@@ -108,7 +106,7 @@ const DeliveryOrder = ({
         </Box>
 
         <DeliveryOrderProducts
-          products={deliveryOrder.products}
+          products={products}
         />
         {/*<DeliveryOrderProducts
           products={products}
@@ -118,10 +116,10 @@ const DeliveryOrder = ({
           updateProduct={_updateProduct}/>*/}
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={6}>
-            <DeliveryOrderData date={deliveryOrder.date}/>
+            <DeliveryOrderData date={date}/>
           </Grid>
           <Grid item xs={12} md={6}>
-            <DeliveryOrderData date={deliveryOrder.date}/>
+            <DeliveryOrderTotals {...totals}/>
           </Grid>
         </Grid>
 

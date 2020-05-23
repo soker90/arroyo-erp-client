@@ -1,27 +1,40 @@
 import axios from 'axios';
-import {CREATE_DELIVERY_ORDER} from 'actions/types';
-import {dateSend} from 'utils';
+import {CREATE_DELIVERY_ORDER} from '../types';
+import {navigateTo} from 'utils';
 
 /**
  * Request action for createDeliveryOrder
  * @returns {{type: string}}
  * @private
  */
-const _createDeliveryOrderRequest = () => ({type: CREATE_DELIVERY_ORDER.REQUEST});
+const _createDeliveryOrderRequest = () => ({
+  type: CREATE_DELIVERY_ORDER.REQUEST,
+});
 
 /**
  * Success action for createDeliveryOrder
- * @param {Object} data
- * @returns {{notification: {level: string, message: ((function({date?: *, provider: *, products: *}): function(...[*]=))|createDeliveryOrder)}, type: string}}
+ * @returns {{notification: {level: string, message: string}, type: string}}
  * @private
  */
-const _createDeliveryOrderSuccess = ({data}) => ({
+const _createDeliveryOrderSuccess = () => ({
   type: CREATE_DELIVERY_ORDER.SUCCESS,
   notification: {
     level: 'success',
-    message: data.createDeliveryOrder,
+    message: 'Albarán creado',
   },
 });
+
+/**
+ * Set data
+ * @param {array} deliveryOrders
+ * @return {{payload: {deliveryOrders: array}, type: string}}
+ * @private
+ */
+const _createDeliveryOrderSet = ({data}) => ({
+  type: CREATE_DELIVERY_ORDER.SET,
+  payload: data,
+});
+
 
 /**
  * Error action for createDeliveryOrder
@@ -38,31 +51,18 @@ const _createDeliveryOrderError = error => ({
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
-export const createDeliveryOrder = ({date, provider, products}) => async dispatch => {
+export const createDeliveryOrder = provider => async dispatch => {
   dispatch(_createDeliveryOrderRequest());
 
   try {
-    const {data} = await axios.post('',
-      {
-        query: `
-          mutation ($date: String, $provider: String!, $products: [DeliveryOrderProductInput]) { 
-            createDeliveryOrder(date: $date, provider: $provider, products: $products)
-          }`,
-        variables: {
-          products,
-          date: dateSend(date),
-          provider,
-        },
-      },
-    );
+    const response = await axios.post('deliveryorders', {provider});
+    console.log(response);
 
-    if (data.errors)
-      dispatch(_createDeliveryOrderError(data.errors[0]));
-    else
-      dispatch(_createDeliveryOrderSuccess(data));
-
+    dispatch(_createDeliveryOrderSuccess());
+    dispatch(_createDeliveryOrderSet(response));
+    navigateTo(`albaranes/${response.data._id}`);
   } catch (error) {
-    console.log('oo', error);
-    dispatch(_createDeliveryOrderError(error))
+    console.error(error);
+    dispatch(_createDeliveryOrderError(error));
   }
 };

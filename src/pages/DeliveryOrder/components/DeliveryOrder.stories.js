@@ -29,35 +29,40 @@ export default {
 const DeliveryOrderStory = () =>
   <DeliveryOrder
     match={{params: {idDeliveryOrder: 'ggggg7777'}}}
-    deliveryOrder={{
-      provider: 'ssssbbb33',
-      nameProvider: 'La abuela',
-      products: [
-        {
-          code: '2345',
-          productName: 'Pollo',
-          quantity: 6.6,
-          price: 1.3,
-          amount: 15,
-          diff: -1.2,
-        },
-        {
-          code: '1111',
-          productName: 'Lentejas',
-          quantity: 2,
-          price: 3.3,
-          amount: 1,
-          diff: 6.35,
-        },
-        {
-          code: '6846',
-          productName: 'Pan',
-          quantity: 2,
-          price: 0.5,
-          amount: 1,
-          diff: 0,
-        },
-      ],
+    provider='ssssbbb33'
+    nameProvider='La abuela'
+    date={Date.now()}
+    selectedProducts={[]}
+    products={[
+      {
+        code: '2345',
+        productName: 'Pollo',
+        quantity: 6.6,
+        price: 1.3,
+        amount: 15,
+        diff: -1.2,
+      },
+      {
+        code: '1111',
+        productName: 'Lentejas',
+        quantity: 2,
+        price: 3.3,
+        amount: 1,
+        diff: 6.35,
+      },
+      {
+        code: '6846',
+        productName: 'Pan',
+        quantity: 2,
+        price: 0.5,
+        amount: 1,
+        diff: 0,
+      },
+    ]}
+    totals={{
+      iva: 19.3,
+      re: 2.6,
+      total: 63.25,
     }}
     getDeliveryOrder={action('getDeliveryOrder')}
     getProducts={action('getProducts')}

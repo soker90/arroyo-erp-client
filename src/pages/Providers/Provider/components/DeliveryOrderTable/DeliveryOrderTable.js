@@ -1,8 +1,8 @@
 import React, {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {TableMaterial} from 'components';
-import {useStyles} from 'pages/Providers/Provider/components/ProductsTable/ProductsTable.styles';
-import {format} from 'utils';
+import {useStyles} from './DeliveryOrderTable.styles';
+import {format, navigateTo} from 'utils';
 
 const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => {
   const classes = useStyles();
@@ -10,6 +10,15 @@ const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => 
   useEffect(() => {
     getDeliveryOrders(idProvider);
   }, [idProvider]);
+
+  /**
+   * Navega al albarán seleccionado
+   * @param _id
+   * @private
+   */
+  const _onRowClick = ({_id}) => {
+    navigateTo(`albaranes/${_id}`);
+  }
 
   return (
     <TableMaterial
@@ -29,6 +38,7 @@ const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => 
         },
       ]}
       data={deliveryOrders}
+      onRowClick={_onRowClick}
     />
   );
 };
