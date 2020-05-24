@@ -14,7 +14,7 @@ import {useStyles} from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     match: {params: {idDeliveryOrder}}, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id,
+    products, date, totals, _id, updateDateDeliveryOrder,
   }) => {
   const classes = useStyles();
   // const [selectedProducts, setSelectedProducts] = useState([]);
@@ -27,6 +27,15 @@ const DeliveryOrder = (
   useEffect(() => {
     if (provider) getProducts(provider);
   }, [provider]);
+
+  /**
+   * Handle change date
+   * @param {Date} value
+   * @private
+   */
+  const _handleChangeDate = value => {
+    updateDateDeliveryOrder(idDeliveryOrder, value);
+  };
 
   /**
    * Add product to selected product
@@ -115,7 +124,7 @@ const DeliveryOrder = (
           updateProduct={_updateProduct}/>*/}
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={6}>
-            <DeliveryOrderData date={date}/>
+            <DeliveryOrderData date={date} setDate={_handleChangeDate}/>
           </Grid>
           <Grid item xs={12} md={6}>
             <DeliveryOrderTotals {...totals}/>
@@ -128,9 +137,8 @@ const DeliveryOrder = (
 };
 
 DeliveryOrder.propTypes = {
-  provider: PropTypes.object.isRequired,
+  provider: PropTypes.string,
   billing: PropTypes.object,
-  getProvider: PropTypes.func.isRequired,
   showEditModal: PropTypes.func.isRequired,
 };
 

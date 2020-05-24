@@ -4,33 +4,23 @@ import {Card, CardContent, CardHeader, Divider} from '@material-ui/core';
 
 import {DatePickerForm} from 'components';
 
-const DeliveryOrderData = ({date, setData}) => {
-  /**
-   * Handle change date
-   * @param {Date} value
-   * @private
-   */
-  const _handleChangeDate = value => {
-    setData({date: value});
-  };
-
-  return <Card>
+const DeliveryOrderData = ({date, setDate}) =>
+  <Card>
     <CardHeader title='Datos del albarán'/>
     <Divider/>
     <CardContent>
       <DatePickerForm
         size={3}
         label='Fecha'
-        value={date}
-        onChange={_handleChangeDate}
+        value={new Date(date)}
+        onChange={setDate}
       />
     </CardContent>
   </Card>;
-};
 
 DeliveryOrderData.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  setData: PropTypes.func.isRequired,
+  date: PropTypes.number,
+  setDate: PropTypes.func.isRequired,
 };
 
 DeliveryOrderData.displayName = 'DeliveryOrderData';

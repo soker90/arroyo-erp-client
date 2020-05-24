@@ -26,8 +26,9 @@ const DeliveryOrderTotals = ({iva, re, total}) => {
 };
 
 DeliveryOrderTotals.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  setData: PropTypes.func.isRequired,
+  iva: PropTypes.number.isRequired,
+  re: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 DeliveryOrderTotals.displayName = 'DeliveryOrderTotals';

@@ -5,7 +5,7 @@ import DeliveryOrder from '../components/DeliveryOrder';
 import {showModal} from 'reducers/modal';
 import {DELETE_PRODUCT_DELIVERY_ORDER} from 'pages/DeliveryOrder/modals/types';
 import {getProducts} from 'modules/products/actions';
-import {getDeliveryOrder} from '../modules/actions';
+import {getDeliveryOrder, updateDateDeliveryOrder} from '../modules/actions';
 
 /**
  *  _id: null,
@@ -25,6 +25,7 @@ const mapStateToProps = ({deliveryOrders}) => ({
 const mapDispatchToProps = {
   getProducts,
   getDeliveryOrder,
+  updateDateDeliveryOrder,
   showDeleteProductModal: (onClickDelete, product) =>
     showModal({
       modalType: DELETE_PRODUCT_DELIVERY_ORDER,
