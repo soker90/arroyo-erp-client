@@ -24,5 +24,5 @@ DeliveryOrderData.propTypes = {
 };
 
 DeliveryOrderData.displayName = 'DeliveryOrderData';
-
+export const story = DeliveryOrderData;
 export default memo(DeliveryOrderData);
