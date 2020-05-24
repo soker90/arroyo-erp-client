@@ -4,3 +4,4 @@ export {default as TableMaterial} from './TableMaterial';
 export * from './Modals';
 export * from './Forms';
 export * from './Cards';
+export {default as LoadingScreen} from './LoadingScreen';

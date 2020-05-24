@@ -1,7 +1,7 @@
 import React, {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {TableMaterial} from 'components';
-import {useStyles} from 'pages/Providers/Provider/components/ProductsTable/ProductsTable.styles';
+import {useStyles} from './ProductsTable.styles';
 
 const ProductsTable = ({products, getProducts, idProvider}) => {
   const classes = useStyles();

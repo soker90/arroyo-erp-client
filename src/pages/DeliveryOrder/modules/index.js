@@ -1,5 +1,5 @@
 import {
-  CREATE_DELIVERY_ORDER,
+  CREATE_DELIVERY_ORDER, GET_DELIVERY_ORDER,
 } from './types';
 import {createReducer, setPayload} from 'store/utils';
 
@@ -19,6 +19,7 @@ const INITIAL_STATE = {
 
 const ACTION_HANDLERS = {
   [CREATE_DELIVERY_ORDER.SET]: setPayload,
+  [GET_DELIVERY_ORDER.SET]: setPayload,
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

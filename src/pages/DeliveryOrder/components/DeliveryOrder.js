@@ -7,14 +7,15 @@ import AddIcon from '@material-ui/icons/Add';
 import {Header, Page} from 'components';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
 import DeliveryOrderData from './DeliveryOrderData';
+import DeliveryOrderTotals from './DeliveryOrderTotals';
 import {useStyles} from './DeliveryOrder.styles';
-import DeliveryOrderTotals from 'pages/DeliveryOrder/components/DeliveryOrderTotals';
 
 
-const DeliveryOrder = ({
-  match: {params: {idDeliveryOrder}},
-  getProducts, getDeliveryOrder, provider, nameProvider, products, date, totals, _id,
-}) => {
+const DeliveryOrder = (
+  {
+    match: {params: {idDeliveryOrder}}, getProducts, getDeliveryOrder, provider, nameProvider,
+    products, date, totals, _id,
+  }) => {
   const classes = useStyles();
   // const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -24,9 +25,7 @@ const DeliveryOrder = ({
   }, [idDeliveryOrder]);
 
   useEffect(() => {
-    if (provider) {
-      getProducts(provider);
-    }
+    if (provider) getProducts(provider);
   }, [provider]);
 
   /**

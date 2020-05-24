@@ -56,7 +56,7 @@ const Search = () => {
    */
   const _handleSelectProvider = idProvider => {
     _handleSearchPopverClose();
-    navigateTo(`providers/${idProvider}`);
+    navigateTo(`proveedores/${idProvider}`);
  };
 
   /**

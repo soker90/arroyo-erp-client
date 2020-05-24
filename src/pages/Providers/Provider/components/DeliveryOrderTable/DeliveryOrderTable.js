@@ -1,8 +1,9 @@
 import React, {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
+
 import {TableMaterial} from 'components';
-import {useStyles} from './DeliveryOrderTable.styles';
 import {format, navigateTo} from 'utils';
+import {useStyles} from './DeliveryOrderTable.styles';
 
 const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => {
   const classes = useStyles();
@@ -21,12 +22,13 @@ const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => 
   }
 
   return (
+    idProvider &&
     <TableMaterial
       className={classes.table}
       columns={[
         {
           title: 'Fecha',
-          render: ({date}) => format.date(Date.now()),
+          render: ({date}) => format.date(date),
         },
         {
           title: 'Productos',
@@ -45,11 +47,11 @@ const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => 
 
 DeliveryOrderTable.propTypes = {
   deliveryOrders: PropTypes.array.isRequired,
-  idProvider: PropTypes.string.isRequired,
+  idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
 };
 
-DeliveryOrderTable.displayName = 'ProductsTable';
+DeliveryOrderTable.displayName = 'DeliveryOrderTable';
 
 export default memo(DeliveryOrderTable);
 

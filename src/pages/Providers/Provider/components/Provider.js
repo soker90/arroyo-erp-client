@@ -6,24 +6,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
 
-import {Header, Page} from 'components';
+import {Header, Page, LoadingScreen} from 'components';
 import {useStyles} from 'pages/Providers/Provider/components/Provider.styles';
 import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
-import LoadingScreen from 'components/LoadingScreen';
 import {TABS, HASH_TABS} from '../constants';
-import { navigateTo } from 'utils';
-import { createDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
 
-const Provider = ({provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal, location: {hash}, createDeliveryOrder}) => {
+const Provider = (
+  {
+    provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal,
+    location: {hash}, createDeliveryOrder,
+  }) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
 
   useEffect(() => {
-    if (idProvider) {
-      getProvider(idProvider);
-    }
+    if (idProvider) getProvider(idProvider);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idProvider]);
 
@@ -170,4 +169,5 @@ Provider.propTypes = {
 
 Provider.displayName = 'Providers';
 
+export const story = Provider;
 export default memo(Provider);
