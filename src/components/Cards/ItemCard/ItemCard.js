@@ -1,15 +1,12 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {
-  ListItem,
-  Typography,
-} from '@material-ui/core';
+import {ListItem, Typography} from '@material-ui/core';
 
 import {useStyles} from './ItemCard.styles';
 
 
-const ItemCard = ({label, value, divider = true, className}) => {
+const ItemCard = ({label, value, divider, className}) => {
   const classes = useStyles();
 
   return <ListItem
@@ -21,7 +18,7 @@ const ItemCard = ({label, value, divider = true, className}) => {
     <Typography variant="h6">
       {value}
     </Typography>
-  </ListItem>
+  </ListItem>;
 };
 
 ItemCard.propTypes = {
@@ -29,6 +26,10 @@ ItemCard.propTypes = {
   value: PropTypes.any,
   divider: PropTypes.bool,
   className: PropTypes.string,
+};
+
+ItemCard.propTypes = {
+  divider: true,
 };
 
 ItemCard.displayName = 'ItemCard';

@@ -1,47 +1,35 @@
 import React from 'react';
 import {action} from '@storybook/addon-actions';
 
-import {story as NewProviderModal} from './NewProviderModalView';
+import {story as AddProductModalView} from './AddProductModalView';
 
 export default {
   title: 'Rutas|Albarán/Modales/Añadir prducto',
   parameters: {
-    component: NewProviderModal,
+    component: AddProductModalView,
     componentSubtitle: 'Modal para añadir un producto al albarán',
   },
 };
 
-const ProviderNew = () =>
-  <NewProviderModal
+const AddProduct = () =>
+  <AddProductModalView
     show={true}
     close={action('Cerrar modal')}
-    createProvider={action('Crea el proveedor')}
-    idProvider='888883h339'
-    provider={false}
+    addProductToDeliveryOrder={action('Añade el producto')}
+    products={[{
+      '_id': '5e5c14f032363ddc735c12cc',
+      'name': 'Pollo',
+      'code': '200',
+    }, {
+      '_id': '5e63f6e60cbb826a53a78e25',
+      'name': 'Chorizo',
+      'code': '2222',
+    },
+    ]}
   />;
 
-ProviderNew.story = {
-  name: 'Crear',
+AddProduct.story = {
+  name: 'Añadir producto',
 };
 
-const ProviderEdit = () =>
-  <NewProviderModal
-    show={true}
-    close={action('Cerrar modal')}
-    editProvider={action('Edita el proveedor')}
-    idProvider='888883h339'
-    provider={{
-      name: 'Mi proveedor',
-      address: 'C/ Falsa, 9',
-      phone: '66677766677',
-      email: 'email@email.com',
-      businessName: 'Email SL',
-      cif: 'B5555552',
-    }}
-  />;
-
-ProviderEdit.story  = {
-  name: 'Editar',
-};
-
-export {ProviderNew, ProviderEdit};
+export {AddProduct};

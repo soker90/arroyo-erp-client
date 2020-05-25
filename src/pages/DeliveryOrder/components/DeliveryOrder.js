@@ -14,7 +14,7 @@ import {useStyles} from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     match: {params: {idDeliveryOrder}}, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, updateDateDeliveryOrder,
+    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
   }) => {
   const classes = useStyles();
   // const [selectedProducts, setSelectedProducts] = useState([]);
@@ -87,7 +87,7 @@ const DeliveryOrder = (
   };
 
   return (
-    <Page className={classes.root} title='Nuevo albarán'>
+    <Page className={classes.root} title='Albarán'>
       <Container maxWidth={false} className={classes.container}>
         <Header
           routes={[{
@@ -102,7 +102,7 @@ const DeliveryOrder = (
           description=''
           buttons={[{
             variant: 'contained',
-            onClick: () => console.log('Añadir producto'),
+            onClick: showAddProductModal,
             Icon: AddIcon,
             disableSvg: true,
             label: 'Añadir',

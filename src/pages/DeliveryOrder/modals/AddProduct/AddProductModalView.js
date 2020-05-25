@@ -1,16 +1,16 @@
 import React, {memo, useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
-import {InputForm, ModalGrid} from 'components';
+
+import {InputForm, ModalGrid, SelectForm} from 'components';
 
 const INITIAL_STATE = {
   code: '',
-  name: '',
-  iva: 0,
-  re: 0,
-  fee: 0,
+  product: '',
+  quantity: 0,
+  price: 0,
 };
 
-const AddProductModal = ({show, close, products, addProductToDeliveryOrder, idDeliveryOrder}) => {
+const AddProductModal = ({show, close, products, addProductToDeliveryOrder, index}) => {
   const [state, setState] = useReducer(
     (state, newState) => ({...state, ...newState}),
     INITIAL_STATE,
@@ -32,7 +32,7 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, idDe
     setState({
       product: value,
       code: selected?.code,
-    })
+    });
   };
 
   /**
@@ -46,21 +46,34 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, idDe
   };
 
   /**
+   * Handle event onChange input
+   * @param {String} name
+   * @param {String} value
+   * @private
+   */
+  const _handleChangeCode = ({target: {value}}) => {
+    const selected = products.find(product => product.code === value);
+    setState({
+      code: value,
+      product: selected?._id || '',
+    });
+  };
+
+  /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = () => {
     const model = {
       code: state.code,
-      name: state.name,
-      iva: Number(state.iva),
-      ...(state.re && {re: Number(state.re)}),
-      ...(state.fee && {fee: Number(state.fee)}),
+      product: state.product,
+      quantity: Number(state.quantity),
+      price: Number(state.price),
     };
 
-    //idProvider ?
-    //  editProduct(idProvider, state, close) :
-    // createProduct(model, close);
+    index === undefined ?
+      addProductToDeliveryOrder(model, close) :
+      console.log('Editar producto');
   };
 
   /**
@@ -73,21 +86,27 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, idDe
    */
   const _renderInput = (name, label, options = {}) =>
     <InputForm
-      value={state[name] || ' '}
+      value={state[name] || ''}
       onChange={_handleChange}
       name={name}
       label={label}
+      InputLabelProps={{
+        shrink: true,
+      }}
       {...options}
     />;
 
   const _renderSelectProduct = () =>
     <SelectForm
       label='Selecciona un producto'
-      value={product}
+      value={state.product}
       name='provider'
       onChange={_handleSelect}
       disabled={!products?.length}
-      size={3}
+      size={6}
+      InputLabelProps={{
+        shrink: true,
+      }}
     >
       <option value="">--------</option>
       {products?.map((item, idx) =>
@@ -103,29 +122,21 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, idDe
       close={close}
       title='Añadir producto'
       action={_handleSubmit}>
-      <InputForm
-        label='Código' value={code} onChange={_handleCode} size={2}
-        InputLabelProps={{
-          shrink: true,
-        }}/>
+      {_renderInput('code', 'Código', {onChange: _handleChangeCode})}
       {_renderSelectProduct()}
-      <InputForm label='Peso / Cantidad' defaultValue={quantity} onChange={_handleChangeQuantity}
-                 size={2} type='number'/>
-      <InputForm label='Precio' defaultValue={price} onChange={_handleChangeQuantity} size={2}
-                 type='number'/>
-      <InputForm label='Importe' defaultValue={amount} onChange={_handleChangeQuantity} size={2}
-                 type='number'/>
+      {_renderInput('quantity', 'Peso / Cantidad', {type: 'number'})}
+      {_renderInput('price', 'Precio', {type: 'number'})}
     </ModalGrid>
   );
 };
 
-NewProductModal.propTypes = {
+AddProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createProduct: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
 };
 
-NewProductModal.displayName = 'NewProductModal';
-
-export default memo(NewProductModal);
+AddProductModal.displayName = 'AddProductModal';
+export const story = AddProductModal;
+export default memo(AddProductModal);

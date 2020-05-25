@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
-
 // import {createDeliveryOrder, getProducts} from '../modules/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
 import {showModal} from 'reducers/modal';
-import {DELETE_PRODUCT_DELIVERY_ORDER} from 'pages/DeliveryOrder/modals/types';
+import {
+  ADD_PRODUCT_TO_DELIVERY_ORDER,
+  DELETE_PRODUCT_DELIVERY_ORDER,
+} from 'pages/DeliveryOrder/modals/types';
 import {getProducts} from 'modules/products/actions';
 import {getDeliveryOrder, updateDateDeliveryOrder} from '../modules/actions';
 
@@ -33,6 +35,10 @@ const mapDispatchToProps = {
         product,
         onClickDelete,
       },
+    }),
+  showAddProductModal: () =>
+    showModal({
+      modalType: ADD_PRODUCT_TO_DELIVERY_ORDER,
     }),
   // createDeliveryOrder,
 };
