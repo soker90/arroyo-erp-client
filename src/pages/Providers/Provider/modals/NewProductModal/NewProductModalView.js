@@ -1,25 +1,26 @@
-import React, {memo, useEffect, useReducer} from 'react';
+import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import {InputForm, ModalGrid} from 'components';
+import { InputForm, ModalGrid } from 'components';
 
 const INITIAL_STATE = {
   code: '',
   name: '',
   iva: 0,
   re: 0,
-  fee: 0,
+  rate: 0,
+  amount: 0,
 };
 
-const NewProductModal = ({show, close, createProduct, idProvider, product, editProduct}) => {
+const NewProductModal = ({
+  show, close, createProduct, idProvider, product, editProduct,
+}) => {
   const [state, setState] = useReducer(
-    (state, newState) => ({...state, ...newState}),
+    (oldState, newState) => ({ ...oldState, ...newState }),
     product || INITIAL_STATE,
   );
 
   useEffect(() => {
-    if (!show) {
-      setState(INITIAL_STATE);
-    }
+    if (!show) setState(INITIAL_STATE);
   }, [show]);
 
   /**
@@ -28,8 +29,8 @@ const NewProductModal = ({show, close, createProduct, idProvider, product, editP
    * @param {String} value
    * @private
    */
-  const _handleChange = ({target: {name, value}}) => {
-    setState({[name]: value});
+  const _handleChange = ({ target: { name, value } }) => {
+    setState({ [name]: value });
   };
 
   /**
@@ -37,18 +38,23 @@ const NewProductModal = ({show, close, createProduct, idProvider, product, editP
    * @private
    */
   const _handleSubmit = () => {
-    const model = {
-      code: state.code,
-      name: state.name,
-      iva: Number(state.iva),
-      ...(state.re && {re: Number(state.re)}),
-      ...(state.fee && {fee: Number(state.fee)}),
-      provider: idProvider,
-    };
+    try {
+      const model = {
+        code: state.code,
+        name: state.name,
+        iva: Number(state.iva) / 100,
+        re: Number(state.re) / 100,
+        ...(state.rate && { rate: Number(state.rate) }),
+        provider: idProvider,
+        amount: Number(state.amount),
+      };
 
-    //idProvider ?
-    //  editProduct(idProvider, state, close) :
-    createProduct(model, close);
+      // idProvider ?
+      //  editProduct(idProvider, state, close) :
+      createProduct(model, close);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   /**
@@ -59,26 +65,29 @@ const NewProductModal = ({show, close, createProduct, idProvider, product, editP
    * @returns {InputForm}
    * @private
    */
-  const _renderInput = (name, label, options = {}) =>
+  const _renderInput = (name, label, options = {}) => (
     <InputForm
       value={state[name] || ' '}
       onChange={_handleChange}
       name={name}
       label={label}
       {...options}
-    />;
+    />
+  );
 
   return (
     <ModalGrid
       show={show}
       close={close}
       title={product ? `Editar ${'provider.name'}` : 'Crear producto'}
-      action={_handleSubmit}>
+      action={_handleSubmit}
+    >
       {_renderInput('code', 'Código')}
       {_renderInput('name', 'Nombre')}
-      {_renderInput('iva', 'IVA', {type: 'number'})}
-      {_renderInput('re', 'RE', {type: 'number'})}
-      {_renderInput('fee', 'Tasa', {type: 'number'})}
+      {_renderInput('iva', 'IVA', { type: 'number' })}
+      {_renderInput('re', 'RE', { type: 'number' })}
+      {_renderInput('rate', 'Tasa', { type: 'number' })}
+      {_renderInput('amount', 'Precio', { type: 'number' })}
     </ModalGrid>
   );
 };

@@ -1,7 +1,9 @@
-import React, {memo, useEffect, useReducer} from 'react';
+import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import {InputForm, ModalGrid, SelectForm} from 'components';
+import { InputForm, ModalGrid, SelectForm } from 'components';
+import moment from 'moment';
+import { Typography, Box } from '@material-ui/core';
 
 const INITIAL_STATE = {
   code: '',
@@ -10,24 +12,41 @@ const INITIAL_STATE = {
   price: 0,
 };
 
-const AddProductModal = ({show, close, products, addProductToDeliveryOrder, index}) => {
+const AddProductModal = ({
+  show, close, products, addProductToDeliveryOrder, index, ...rest
+}) => {
   const [state, setState] = useReducer(
-    (state, newState) => ({...state, ...newState}),
+    (state, newState) => ({ ...state, ...newState }),
     INITIAL_STATE,
   );
 
+  console.log(products);
   useEffect(() => {
-    if (!show) {
-      setState(INITIAL_STATE);
-    }
+    if (!show) setState(INITIAL_STATE);
   }, [show]);
+
+  if (!products?.length) {
+    return (
+      <ModalGrid
+        show={show}
+        close={close}
+        title="Añadir producto"
+      >
+        <Box p={3}>
+          <Typography variant="h5">
+            El proveedor no tiene productos
+          </Typography>
+        </Box>
+      </ModalGrid>
+    );
+  }
 
   /**
    * Handle change select
    * @param {String} value
    * @private
    */
-  const _handleSelect = ({target: {value}}) => {
+  const _handleSelect = ({ target: { value } }) => {
     const selected = products.find(product => product._id === value);
     setState({
       product: value,
@@ -41,8 +60,8 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
    * @param {String} value
    * @private
    */
-  const _handleChange = ({target: {name, value}}) => {
-    setState({[name]: value});
+  const _handleChange = ({ target: { name, value } }) => {
+    setState({ [name]: value });
   };
 
   /**
@@ -51,7 +70,7 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
    * @param {String} value
    * @private
    */
-  const _handleChangeCode = ({target: {value}}) => {
+  const _handleChangeCode = ({ target: { value } }) => {
     const selected = products.find(product => product.code === value);
     setState({
       code: value,
@@ -71,9 +90,9 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
       price: Number(state.price),
     };
 
-    index === undefined ?
-      addProductToDeliveryOrder(model, close) :
-      console.log('Editar producto');
+    index === undefined
+      ? addProductToDeliveryOrder(model, close)
+      : console.log('Editar producto');
   };
 
   /**
@@ -84,7 +103,7 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
    * @returns {InputForm}
    * @private
    */
-  const _renderInput = (name, label, options = {}) =>
+  const _renderInput = (name, label, options = {}) => (
     <InputForm
       value={state[name] || ''}
       onChange={_handleChange}
@@ -94,13 +113,14 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
         shrink: true,
       }}
       {...options}
-    />;
+    />
+  );
 
-  const _renderSelectProduct = () =>
+  const _renderSelectProduct = () => (
     <SelectForm
-      label='Selecciona un producto'
+      label="Selecciona un producto"
       value={state.product}
-      name='provider'
+      name="provider"
       onChange={_handleSelect}
       disabled={!products?.length}
       size={6}
@@ -109,23 +129,26 @@ const AddProductModal = ({show, close, products, addProductToDeliveryOrder, inde
       }}
     >
       <option value="">--------</option>
-      {products?.map((item, idx) =>
+      {products?.map((item, idx) => (
         <option key={idx} value={item._id}>
           {item.name}
-        </option>,
+        </option>
+      ),
       )}
-    </SelectForm>;
+    </SelectForm>
+  );
 
   return (
     <ModalGrid
       show={show}
       close={close}
-      title='Añadir producto'
-      action={_handleSubmit}>
-      {_renderInput('code', 'Código', {onChange: _handleChangeCode})}
+      title="Añadir producto"
+      action={_handleSubmit}
+    >
+      {_renderInput('code', 'Código', { onChange: _handleChangeCode })}
       {_renderSelectProduct()}
-      {_renderInput('quantity', 'Peso / Cantidad', {type: 'number'})}
-      {_renderInput('price', 'Precio', {type: 'number'})}
+      {_renderInput('quantity', 'Peso / Cantidad', { type: 'number' })}
+      {_renderInput('price', 'Precio', { type: 'number' })}
     </ModalGrid>
   );
 };

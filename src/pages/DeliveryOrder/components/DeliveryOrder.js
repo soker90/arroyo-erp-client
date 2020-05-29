@@ -1,27 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {memo, useEffect} from 'react';
-import {Box, Container, Grid} from '@material-ui/core';
+import React, { memo, useEffect } from 'react';
+import { Box, Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 
-import {Header, Page} from 'components';
+import { Header, Page } from 'components';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
 import DeliveryOrderData from './DeliveryOrderData';
 import DeliveryOrderTotals from './DeliveryOrderTotals';
-import {useStyles} from './DeliveryOrder.styles';
+import { useStyles } from './DeliveryOrder.styles';
 
 
 const DeliveryOrder = (
   {
-    match: {params: {idDeliveryOrder}}, getProducts, getDeliveryOrder, provider, nameProvider,
+    match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
-  }) => {
+  }
+) => {
   const classes = useStyles();
   // const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    if (idDeliveryOrder && idDeliveryOrder !== _id)
-      getDeliveryOrder(idDeliveryOrder);
+    if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
   }, [idDeliveryOrder]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const DeliveryOrder = (
       price: 0,
       amount: 0,
     }]);
-  };*/
+  }; */
 
   /**
    * Actualiza los datos del producto seleccionado en es estado
@@ -57,21 +57,21 @@ const DeliveryOrder = (
    * @param {object} dataProduct
    * @private
    */
-  /*const _updateProduct = (index, dataProduct) => {
+  /* const _updateProduct = (index, dataProduct) => {
     const _selectedProducts = selectedProducts.slice();
     _selectedProducts[index] = dataProduct;
     setSelectedProducts(_selectedProducts);
-  };*/
+  }; */
 
   /**
    * Delete product
    * @param {number} index
    * @private
    */
-  /*const _deleteProduct = index => {
+  /* const _deleteProduct = index => {
     const _newProducts = selectedProducts.filter((i, idx) => idx !== index);
     setSelectedProducts(_newProducts);
-  };*/
+  }; */
 
   /**
    * Show modal to delete product
@@ -87,19 +87,19 @@ const DeliveryOrder = (
   };
 
   return (
-    <Page className={classes.root} title='Albarán'>
+    <Page className={classes.root} title="Albarán">
       <Container maxWidth={false} className={classes.container}>
         <Header
           routes={[{
             link: `/app/proveedores/${provider}`,
             title: `${nameProvider}`,
           },
-            {
-              link: `/app/proveedores/${provider}#Albaranes`,
-              title: 'Albaranes',
-            }]}
-          title='Albarán'
-          description=''
+          {
+            link: `/app/proveedores/${provider}#Albaranes`,
+            title: 'Albaranes',
+          }]}
+          title="Albarán"
+          description=""
           buttons={[{
             variant: 'contained',
             onClick: showAddProductModal,
@@ -110,24 +110,24 @@ const DeliveryOrder = (
         />
 
         <Box py={3} pb={1}>
-          {/*<DeliveryOrderData setData={setData} date={data.date}/>*/}
+          {/* <DeliveryOrderData setData={setData} date={data.date}/> */}
         </Box>
 
         <DeliveryOrderProducts
           products={products}
         />
-        {/*<DeliveryOrderProducts
+        {/* <DeliveryOrderProducts
           products={products}
           addProduct={_addProduct}
           selectedProducts={selectedProducts}
           deleteProduct={_showModalDelete}
-          updateProduct={_updateProduct}/>*/}
+          updateProduct={_updateProduct}/> */}
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={6}>
-            <DeliveryOrderData date={date} setDate={_handleChangeDate}/>
+            <DeliveryOrderData date={date} setDate={_handleChangeDate} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <DeliveryOrderTotals {...totals}/>
+            <DeliveryOrderTotals {...totals} />
           </Grid>
         </Grid>
 

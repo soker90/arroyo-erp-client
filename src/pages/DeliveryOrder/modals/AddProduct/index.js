@@ -1,1 +1,1 @@
-export {default} from './AddProductModalContainer'
+export {default} from './AddProductModalContainer';

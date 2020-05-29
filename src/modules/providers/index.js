@@ -1,17 +1,15 @@
-import {GET_DELIVERY_ORDERS, GET_PRODUCTS, GET_PROVIDER, GET_PROVIDERS} from './types';
-import {createReducer, setPayload} from 'store/utils';
+import { createReducer, setPayload } from 'store/utils';
+import { GET_DELIVERY_ORDERS, GET_PROVIDER, GET_PROVIDERS } from './types';
 
 const INITIAL_STATE = {
   providers: [],
   provider: {},
-  products: [],
   deliveryOrders: [],
 };
 
 const ACTION_HANDLERS = {
   [GET_PROVIDERS.SET]: setPayload,
   [GET_PROVIDER.SET]: setPayload,
-  [GET_PRODUCTS.SET]: setPayload,
   [GET_DELIVERY_ORDERS.SET]: setPayload,
 };
 
