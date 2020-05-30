@@ -1,22 +1,25 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardContent, CardHeader, Divider} from '@material-ui/core';
+import {
+  Card, CardContent, CardHeader, Divider,
+} from '@material-ui/core';
 
-import {DatePickerForm} from 'components';
+import { DatePickerForm } from 'components';
 
-const DeliveryOrderData = ({date, setDate}) =>
+const DeliveryOrderData = ({ date, setDate }) => (
   <Card>
-    <CardHeader title='Datos del albarán'/>
-    <Divider/>
+    <CardHeader title="Datos del albarán" />
+    <Divider />
     <CardContent>
       <DatePickerForm
         size={3}
-        label='Fecha'
-        value={new Date(date)}
+        label="Fecha"
+        value={date}
         onChange={setDate}
       />
     </CardContent>
-  </Card>;
+  </Card>
+);
 
 DeliveryOrderData.propTypes = {
   date: PropTypes.number,

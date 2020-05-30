@@ -20,7 +20,6 @@ const AddProductModal = ({
     INITIAL_STATE,
   );
 
-  console.log(products);
   useEffect(() => {
     if (!show) setState(INITIAL_STATE);
   }, [show]);
@@ -83,16 +82,17 @@ const AddProductModal = ({
    * @private
    */
   const _handleSubmit = () => {
-    const model = {
-      code: state.code,
-      product: state.product,
-      quantity: Number(state.quantity),
-      price: Number(state.price),
-    };
+    try {
+      const model = {
+        product: state.product,
+        quantity: Number(state.quantity),
+        price: Number(state.price),
+      };
 
-    index === undefined
-      ? addProductToDeliveryOrder(model, close)
-      : console.log('Editar producto');
+      addProductToDeliveryOrder(model, close);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   /**

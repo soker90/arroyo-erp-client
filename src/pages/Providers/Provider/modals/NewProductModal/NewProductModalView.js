@@ -12,11 +12,11 @@ const INITIAL_STATE = {
 };
 
 const NewProductModal = ({
-  show, close, createProduct, idProvider, product, editProduct,
+  show, close, createProduct, idProvider,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    product || INITIAL_STATE,
+    INITIAL_STATE,
   );
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const NewProductModal = ({
         re: Number(state.re) / 100,
         ...(state.rate && { rate: Number(state.rate) }),
         provider: idProvider,
-        amount: Number(state.amount),
+        historicPrice: Number(state.historicPrice),
       };
 
       // idProvider ?
@@ -67,7 +67,7 @@ const NewProductModal = ({
    */
   const _renderInput = (name, label, options = {}) => (
     <InputForm
-      value={state[name] || ' '}
+      value={state[name] || ''}
       onChange={_handleChange}
       name={name}
       label={label}
@@ -79,7 +79,7 @@ const NewProductModal = ({
     <ModalGrid
       show={show}
       close={close}
-      title={product ? `Editar ${'provider.name'}` : 'Crear producto'}
+      title={'Crear producto'}
       action={_handleSubmit}
     >
       {_renderInput('code', 'Código')}
@@ -87,7 +87,7 @@ const NewProductModal = ({
       {_renderInput('iva', 'IVA', { type: 'number' })}
       {_renderInput('re', 'RE', { type: 'number' })}
       {_renderInput('rate', 'Tasa', { type: 'number' })}
-      {_renderInput('amount', 'Precio', { type: 'number' })}
+      {_renderInput('historicPrice', 'Precio comparado', { type: 'number' })}
     </ModalGrid>
   );
 };
