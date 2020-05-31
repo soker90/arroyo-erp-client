@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {actions} from 'reducers/modal';
+import { LinearProgress } from '@material-ui/core';
+import { connect } from 'react-redux';
 
+import { actions } from 'reducers/modal';
 import MODAL_COMPONENTS from '../modal-components';
 
-const ModalRoot = ({modalType, modalProps, show, close, showModal}) => {
+const ModalRoot = ({
+  modalType, modalProps, show, close, showModal,
+}) => {
   const SpecificModal = MODAL_COMPONENTS[modalType];
 
-  if (!modalType || !SpecificModal) {
-    return null;
-  }
+  if (!modalType || !SpecificModal) return null;
+
 
   return (
-    <SpecificModal
-      show={show}
-      close={close}
-      showModal={showModal}
-      {...modalProps}
-    />
+    <Suspense fallback={<LinearProgress />}>
+      <SpecificModal
+        show={show}
+        close={close}
+        showModal={showModal}
+        {...modalProps}
+      />
+    </Suspense>
   );
 };
 
@@ -30,7 +34,7 @@ ModalRoot.propTypes = {
   showModal: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({modal}) => ({
+const mapStateToProps = ({ modal }) => ({
   modalType: modal.modalType,
   modalProps: modal.modalProps,
   show: modal.show,
@@ -38,7 +42,7 @@ const mapStateToProps = ({modal}) => ({
   showModal: modal.showModal,
 });
 
-const mapDispatchToProps = {...actions};
+const mapDispatchToProps = { ...actions };
 
 export default connect(
   mapStateToProps,

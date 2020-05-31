@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { showModal } from 'reducers/modal';
 import {
   ADD_PRODUCT_TO_DELIVERY_ORDER,
-  DELETE_PRODUCT_DELIVERY_ORDER,
+  DELETE_PRODUCT_DELIVERY_ORDER, EDIT_PRODUCT_TO_DELIVERY_ORDER,
 } from 'pages/DeliveryOrder/modals/types';
 import { getProducts } from 'modules/products/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
@@ -30,7 +30,13 @@ const mapDispatchToProps = {
   showAddProductModal: () => showModal({
     modalType: ADD_PRODUCT_TO_DELIVERY_ORDER,
   }),
-  // createDeliveryOrder,
+  showEditProductModal: (product, index) => showModal({
+    modalType: EDIT_PRODUCT_TO_DELIVERY_ORDER,
+    modalProps: {
+      product,
+      index,
+    },
+  }),
 };
 
 export default connect(

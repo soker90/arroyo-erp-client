@@ -9,7 +9,7 @@ import { format } from 'utils';
 import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
 
-const DeliveryOrderProducts = ({ products, showDeleteProductModal }) => {
+const DeliveryOrderProducts = ({ products, showDeleteProductModal, showEditProductModal }) => {
   const classes = useStyles();
 
   /**
@@ -32,6 +32,16 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal }) => {
    */
   const _showDeleteProductModal = (row, index) => {
     showDeleteProductModal(index);
+  };
+
+  /**
+   * Muesta el modal para editar el producto añadido
+   * @param {Object} row
+   * @param {Number} index
+   * @private
+   */
+  const _showEditProductModal = (row, index) => {
+    showEditProductModal(row, index);
   };
 
   return (
@@ -68,7 +78,7 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal }) => {
         {
           icon: EditIcon,
           tooltip: 'Editar',
-          onClick: () => { console.log(); },
+          onClick: _showEditProductModal,
         },
         {
           icon: DeleteIcon,
@@ -82,7 +92,8 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal }) => {
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
-  showDeleteProductModal: PropTypes.array.isRequired,
+  showDeleteProductModal: PropTypes.func.isRequired,
+  showEditProductModal: PropTypes.func.isRequired,
 };
 
 DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';

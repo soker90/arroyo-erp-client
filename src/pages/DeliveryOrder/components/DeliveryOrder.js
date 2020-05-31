@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useEffect } from 'react';
-import { Box, Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -14,11 +14,11 @@ import { useStyles } from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal, showDeleteProductModal
-  }
+    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
+    showDeleteProductModal, showEditProductModal,
+  },
 ) => {
   const classes = useStyles();
-  // const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
     if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
@@ -37,57 +37,8 @@ const DeliveryOrder = (
     updateDateDeliveryOrder(idDeliveryOrder, value);
   };
 
-  /**
-   * Add product to selected product
-   * @private
-   */
-  /* const _addProduct = () => {
-    setSelectedProducts([...selectedProducts, {
-      product: '',
-      quantity: 0,
-      code: '',
-      price: 0,
-      amount: 0,
-    }]);
-  }; */
-
-  /**
-   * Actualiza los datos del producto seleccionado en es estado
-   * @param {number} index
-   * @param {object} dataProduct
-   * @private
-   */
-  /* const _updateProduct = (index, dataProduct) => {
-    const _selectedProducts = selectedProducts.slice();
-    _selectedProducts[index] = dataProduct;
-    setSelectedProducts(_selectedProducts);
-  }; */
-
-  /**
-   * Delete product
-   * @param {number} index
-   * @private
-   */
-  /* const _deleteProduct = index => {
-    const _newProducts = selectedProducts.filter((i, idx) => idx !== index);
-    setSelectedProducts(_newProducts);
-  }; */
-
-  /**
-   * Show modal to delete product
-   * @param {number} index
-   * @private
-   */
-  const _showModalDelete = index => {
-    // showDeleteProductModal(_deleteProduct, index);
-  };
-
-  const _handleClickSave = () => {
-    // createDeliveryOrder({...data, products: selectedProducts});
-  };
-
   return (
-    <Page className={classes.root} title="Albarán">
+    <Page className={classes.root} title={`${nameProvider} | Albarán`}>
       <Container maxWidth={false} className={classes.container}>
         <Header
           routes={[{
@@ -109,20 +60,12 @@ const DeliveryOrder = (
           }]}
         />
 
-        <Box py={3} pb={1}>
-          {/* <DeliveryOrderData setData={setData} date={data.date}/> */}
-        </Box>
-
         <DeliveryOrderProducts
           products={products}
           showDeleteProductModal={showDeleteProductModal}
+          showEditProductModal={showEditProductModal}
         />
-        {/* <DeliveryOrderProducts
-          products={products}
-          addProduct={_addProduct}
-          selectedProducts={selectedProducts}
-          deleteProduct={_showModalDelete}
-          updateProduct={_updateProduct}/> */}
+
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={6}>
             <DeliveryOrderData date={date} setDate={_handleChangeDate} />
@@ -138,10 +81,23 @@ const DeliveryOrder = (
 };
 
 DeliveryOrder.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      idDeliveryOrder: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  getProducts: PropTypes.func.isRequired,
+  getDeliveryOrder: PropTypes.func.isRequired,
   provider: PropTypes.string,
-  billing: PropTypes.object,
-  showEditModal: PropTypes.func.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired
+  nameProvider: PropTypes.string,
+  products: PropTypes.array.isRequired,
+  date: PropTypes.number,
+  totals: PropTypes.object,
+  _id: PropTypes.string,
+  updateDateDeliveryOrder: PropTypes.func.isRequired,
+  showAddProductModal: PropTypes.func.isRequired,
+  showDeleteProductModal: PropTypes.func.isRequired,
+  showEditProductModal: PropTypes.func.isRequired,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

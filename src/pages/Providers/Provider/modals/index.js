@@ -1,6 +1,6 @@
-import {NEW_PRODUCT_MODAL} from './types';
-import NewProductModal from './NewProductModal';
+import { lazy } from 'react';
+import { NEW_PRODUCT_MODAL } from './types';
 
 export default {
-  [NEW_PRODUCT_MODAL]: NewProductModal,
-}
+  [NEW_PRODUCT_MODAL]: lazy(() => import('./NewProductModal')),
+};

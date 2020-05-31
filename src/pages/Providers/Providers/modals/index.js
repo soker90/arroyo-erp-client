@@ -1,6 +1,7 @@
-import {NEW_PROVIDER_MODAL} from './types';
-import NewProviderModal from './NewProviderModal';
+import { lazy } from 'react';
+
+import { NEW_PROVIDER_MODAL } from './types';
 
 export default {
-  [NEW_PROVIDER_MODAL]: NewProviderModal,
-}
+  [NEW_PROVIDER_MODAL]: lazy(() => import('./NewProviderModal')),
+};

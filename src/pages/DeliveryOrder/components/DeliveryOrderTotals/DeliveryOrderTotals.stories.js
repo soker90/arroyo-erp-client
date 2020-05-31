@@ -1,5 +1,5 @@
 import React from 'react';
-import {story as DeliveryOrderTotals} from './DeliveryOrderTotals';
+import { story as DeliveryOrderTotals } from './DeliveryOrderTotals';
 
 export default {
   title: 'Rutas|Albarán/Totales',
@@ -14,11 +14,16 @@ export default {
  */
 
 
-const DeliveryOrderTotalsStory = () =>
-  <DeliveryOrderTotals />;
+const DeliveryOrderTotalsStory = () => (
+  <DeliveryOrderTotals
+    iva={19.3}
+    re={2.6}
+    total={63.25}
+  />
+);
 
 DeliveryOrderTotalsStory.story = {
   name: 'Totales',
 };
 
-export {DeliveryOrderTotalsStory};
+export { DeliveryOrderTotalsStory };

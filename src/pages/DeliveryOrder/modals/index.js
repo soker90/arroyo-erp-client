@@ -1,8 +1,11 @@
-import { ADD_PRODUCT_TO_DELIVERY_ORDER, DELETE_PRODUCT_DELIVERY_ORDER } from 'pages/DeliveryOrder/modals/types';
-import AddProductModal from 'pages/DeliveryOrder/modals/AddProduct';
-import DeleteConfirmationModal from 'pages/DeliveryOrder/modals/DeleteConfirmationModal';
+import { lazy } from 'react';
+
+import {
+  ADD_PRODUCT_TO_DELIVERY_ORDER, DELETE_PRODUCT_DELIVERY_ORDER, EDIT_PRODUCT_TO_DELIVERY_ORDER,
+} from './types';
 
 export default {
-  [DELETE_PRODUCT_DELIVERY_ORDER]: DeleteConfirmationModal,
-  [ADD_PRODUCT_TO_DELIVERY_ORDER]: AddProductModal,
+  [DELETE_PRODUCT_DELIVERY_ORDER]: lazy(() => import('./DeleteConfirmationModal')),
+  [ADD_PRODUCT_TO_DELIVERY_ORDER]: lazy(() => import('./AddProduct')),
+  [EDIT_PRODUCT_TO_DELIVERY_ORDER]: lazy(() => import('./EditProduct')),
 };
