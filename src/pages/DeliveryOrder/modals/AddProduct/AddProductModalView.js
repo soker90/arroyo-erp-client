@@ -1,9 +1,7 @@
 import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import { InputForm, ModalGrid, SelectForm } from 'components';
-import moment from 'moment';
-import { Typography, Box } from '@material-ui/core';
+import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
 
 const INITIAL_STATE = {
   code: '',
@@ -13,10 +11,10 @@ const INITIAL_STATE = {
 };
 
 const AddProductModal = ({
-  show, close, products, addProductToDeliveryOrder, index, ...rest
+  show, close, products, addProductToDeliveryOrder,
 }) => {
   const [state, setState] = useReducer(
-    (state, newState) => ({ ...state, ...newState }),
+    (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE,
   );
 
@@ -24,64 +22,11 @@ const AddProductModal = ({
     if (!show) setState(INITIAL_STATE);
   }, [show]);
 
-  if (!products?.length) {
-    return (
-      <ModalGrid
-        show={show}
-        close={close}
-        title="Añadir producto"
-      >
-        <Box p={3}>
-          <Typography variant="h5">
-            El proveedor no tiene productos
-          </Typography>
-        </Box>
-      </ModalGrid>
-    );
-  }
-
-  /**
-   * Handle change select
-   * @param {String} value
-   * @private
-   */
-  const _handleSelect = ({ target: { value } }) => {
-    const selected = products.find(product => product._id === value);
-    setState({
-      product: value,
-      code: selected?.code,
-    });
-  };
-
-  /**
-   * Handle event onChange input
-   * @param {String} name
-   * @param {String} value
-   * @private
-   */
-  const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
-  };
-
-  /**
-   * Handle event onChange input
-   * @param {String} name
-   * @param {String} value
-   * @private
-   */
-  const _handleChangeCode = ({ target: { value } }) => {
-    const selected = products.find(product => product.code === value);
-    setState({
-      code: value,
-      product: selected?._id || '',
-    });
-  };
-
   /**
    * Handle event save button
    * @private
    */
-  const _handleSubmit = () => {
+  const _saveProduct = callback => {
     try {
       const model = {
         product: state.product,
@@ -89,75 +34,56 @@ const AddProductModal = ({
         price: Number(state.price),
       };
 
-      addProductToDeliveryOrder(model, close);
+      addProductToDeliveryOrder(model, callback);
     } catch (e) {
       console.error(e);
     }
   };
 
-  /**
-   * Render a input element
-   * @param {string} name
-   * @param {String} label
-   * @param {Object} options
-   * @returns {InputForm}
-   * @private
-   */
-  const _renderInput = (name, label, options = {}) => (
-    <InputForm
-      value={state[name] || ''}
-      onChange={_handleChange}
-      name={name}
-      label={label}
-      InputLabelProps={{
-        shrink: true,
-      }}
-      {...options}
-    />
-  );
+  const _handleSave = () => {
+    _saveProduct(close);
+  };
 
-  const _renderSelectProduct = () => (
-    <SelectForm
-      label="Selecciona un producto"
-      value={state.product}
-      name="provider"
-      onChange={_handleSelect}
-      disabled={!products?.length}
-      size={6}
-      InputLabelProps={{
-        shrink: true,
-      }}
-    >
-      <option value="">--------</option>
-      {products?.map((item, idx) => (
-        <option key={idx} value={item._id}>
-          {item.name}
-        </option>
-      ),
-      )}
-    </SelectForm>
-  );
+  const _handleSaveAndNew = () => {
+    _saveProduct(() => {
+      setState(INITIAL_STATE);
+    });
+  };
 
   return (
-    <ModalGrid
-      show={show}
+    <GenericProductModal
+      products={products}
       close={close}
+      state={state}
+      setState={setState}
+      show={show}
       title="Añadir producto"
-      action={_handleSubmit}
-    >
-      {_renderInput('code', 'Código', { onChange: _handleChangeCode })}
-      {_renderSelectProduct()}
-      {_renderInput('quantity', 'Peso / Cantidad', { type: 'number' })}
-      {_renderInput('price', 'Precio', { type: 'number' })}
-    </ModalGrid>
+      actions={[
+        { onClick: close, value: 'Cerrar', 'data-cy': 'modal-close-button' },
+        {
+          onClick: _handleSave,
+          value: 'Guardar',
+          variant: 'outlined',
+          color: 'secondary',
+          'data-cy': 'modal-save-button',
+        },
+        {
+          onClick: _handleSaveAndNew,
+          value: 'Guardar y nuevo',
+          variant: 'contained',
+          color: 'primary',
+          'data-cy': 'modal-new-button',
+        },
+      ]}
+    />
   );
 };
 
 AddProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  createProduct: PropTypes.func.isRequired,
-  idProvider: PropTypes.string,
+  addProductToDeliveryOrder: PropTypes.func.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 AddProductModal.displayName = 'AddProductModal';

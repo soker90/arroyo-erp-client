@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { navigateTo } from 'utils';
 import { ADD_PRODUCT_TO_DELIVERY_ORDER } from '../types';
 
 /**
@@ -13,14 +12,14 @@ const _addProductToDeliveryOrderRequest = () => ({
 
 /**
  * Success action for createDeliveryOrder
- * @returns {{notification: {level: string, message: string}, type: string}}
+ * @returns {{payload: {level: string, message: string}, type: string}}
  * @private
  */
 const _addProductToDeliveryOrderSuccess = () => ({
   type: ADD_PRODUCT_TO_DELIVERY_ORDER.SUCCESS,
-  notification: {
+  payload: {
     level: 'success',
-    message: 'Albarán creado',
+    message: 'Producto añadido',
   },
 });
 
@@ -51,8 +50,11 @@ const _addProductToDeliveryOrderError = error => ({
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
-export const addProductToDeliveryOrder = (id, model, callback) => async dispatch => {
+export const addProductToDeliveryOrder = (
+  model, callback
+) => async (dispatch, getState) => {
   dispatch(_addProductToDeliveryOrderRequest());
+  const id = getState().deliveryOrders._id;
 
   try {
     const response = await axios.post(`deliveryorders/${id}/product`, model);

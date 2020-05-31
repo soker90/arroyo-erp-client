@@ -14,7 +14,7 @@ import { useStyles } from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
+    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal, showDeleteProductModal
   }
 ) => {
   const classes = useStyles();
@@ -115,6 +115,7 @@ const DeliveryOrder = (
 
         <DeliveryOrderProducts
           products={products}
+          showDeleteProductModal={showDeleteProductModal}
         />
         {/* <DeliveryOrderProducts
           products={products}
@@ -140,6 +141,7 @@ DeliveryOrder.propTypes = {
   provider: PropTypes.string,
   billing: PropTypes.object,
   showEditModal: PropTypes.func.isRequired,
+  showDeleteProductModal: PropTypes.func.isRequired
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

@@ -21,11 +21,10 @@ const mapDispatchToProps = {
   getProducts,
   getDeliveryOrder,
   updateDateDeliveryOrder,
-  showDeleteProductModal: (onClickDelete, product) => showModal({
+  showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {
-      product,
-      onClickDelete,
+      index,
     },
   }),
   showAddProductModal: () => showModal({

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { addProductToDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
 import AddProductModalView from './AddProductModalView';
 
 const mapStateToProps = ({ products: { products } }) => ({
@@ -7,7 +8,7 @@ const mapStateToProps = ({ products: { products } }) => ({
 });
 
 const mapDispatchToProps = {
-  addProductToDeliveryOrder: da => console.log(da),
+  addProductToDeliveryOrder,
 };
 
 export default connect(

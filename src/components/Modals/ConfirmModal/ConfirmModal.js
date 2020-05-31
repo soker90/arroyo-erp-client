@@ -1,0 +1,30 @@
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import { Grid, Typography } from '@material-ui/core';
+import { ModalGrid } from '../index';
+
+const ConfirmModal = ({ description, ...props }) => (
+  <ModalGrid {...props}>
+    <Grid
+      item
+      md={12}
+      xs={12}
+    >
+      <Typography variant="body1">
+        {description}
+      </Typography>
+    </Grid>
+  </ModalGrid>
+);
+
+ConfirmModal.propTypes = {
+  close: PropTypes.func,
+  show: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired,
+};
+
+ConfirmModal.displayName = 'ConfirmModal';
+
+export default memo(ConfirmModal);

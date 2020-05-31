@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {CREATE_DELIVERY_ORDER} from '../types';
-import {navigateTo} from 'utils';
+import { navigateTo } from 'utils';
+import { CREATE_DELIVERY_ORDER } from '../types';
 
 /**
  * Request action for createDeliveryOrder
@@ -30,7 +30,7 @@ const _createDeliveryOrderSuccess = () => ({
  * @return {{payload: {deliveryOrders: array}, type: string}}
  * @private
  */
-const _createDeliveryOrderSet = ({data}) => ({
+const _createDeliveryOrderSet = ({ data }) => ({
   type: CREATE_DELIVERY_ORDER.SET,
   payload: data,
 });
@@ -55,8 +55,7 @@ export const createDeliveryOrder = provider => async dispatch => {
   dispatch(_createDeliveryOrderRequest());
 
   try {
-    const response = await axios.post('deliveryorders', {provider});
-    console.log(response);
+    const response = await axios.post('deliveryorders', { provider });
 
     dispatch(_createDeliveryOrderSuccess());
     dispatch(_createDeliveryOrderSet(response));
