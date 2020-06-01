@@ -1,16 +1,14 @@
-import React, {memo, useEffect} from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {TableMaterial} from 'components';
-import {useStyles} from './ProductsTable.styles';
+import { TableMaterial } from 'components';
+import { useStyles } from './ProductsTable.styles';
 
-const ProductsTable = ({products, getProducts, idProvider}) => {
+const ProductsTable = ({ products, getProducts, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    if (idProvider) {
-      getProducts(idProvider);
-    }
-  }, [idProvider]);
+    if (idProvider) getProducts(idProvider);
+  }, [getProducts, idProvider]);
 
   return idProvider && (
     <TableMaterial
@@ -33,10 +31,9 @@ const ProductsTable = ({products, getProducts, idProvider}) => {
 ProductsTable.propTypes = {
   products: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
+  getProducts: PropTypes.func.isRequired,
 };
 
 ProductsTable.displayName = 'ProductsTable';
 
 export default memo(ProductsTable);
-
-

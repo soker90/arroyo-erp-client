@@ -1,4 +1,4 @@
-import React, { memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
@@ -61,6 +61,17 @@ const GenericProductModal = ({
   };
 
   /**
+   * Handle press enter key
+   * @param {string} key
+   * @private
+   */
+  const _handleKeyPress = ({ key }) => {
+    const { actions } = rest;
+    // eslint-disable-next-line
+    if (key === 'Enter') actions[actions.length - 1].onClick();
+  };
+
+  /**
    * Render a input element
    * @param {string} name
    * @param {String} label
@@ -77,6 +88,7 @@ const GenericProductModal = ({
       InputLabelProps={{
         shrink: true,
       }}
+      onKeyPress={_handleKeyPress}
       {...options}
     />
   );
@@ -97,6 +109,7 @@ const GenericProductModal = ({
       InputLabelProps={{
         shrink: true,
       }}
+      onKeyPress={_handleKeyPress}
     >
       <option value="">--------</option>
       {products?.map((item, idx) => (
@@ -125,7 +138,7 @@ const GenericProductModal = ({
 GenericProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  initialState: PropTypes.object.isRequired,
+  initialState: PropTypes.object,
   products: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,

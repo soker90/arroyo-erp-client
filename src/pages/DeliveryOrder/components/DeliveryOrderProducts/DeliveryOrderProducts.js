@@ -20,7 +20,7 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal, showEditProdu
    */
   // eslint-disable-next-line react/prop-types
   const _formatDiff = ({ diff }) => (
-    <Typography variant="body" style={{ color: diffColor(diff) }}>
+    <Typography variant="subtitle1" style={{ color: diffColor(diff) }}>
       {format.euro(diff)}
     </Typography>
   );

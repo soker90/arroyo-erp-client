@@ -56,8 +56,10 @@ const TableMaterial = ({
   const _renderActionsButtons = (row, index) => actions && (
     <TableCell align="right">
       {actions?.filter(({ isFreeAction }) => !isFreeAction)
-        .map(({ icon: Icon, tooltip, onClick, ...restButton }) => (
-          <Tooltip title={tooltip} className={classes.tooltip}>
+        .map(({
+          icon: Icon, tooltip, onClick, ...restButton
+        }) => (
+          <Tooltip key={uniqId()} title={tooltip} className={classes.tooltip}>
             <IconButton
               onClick={() => onClick(row, index)}
               {...restButton}

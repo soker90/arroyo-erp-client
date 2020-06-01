@@ -32,7 +32,7 @@ ItemCard.propTypes = {
   className: PropTypes.string,
 };
 
-ItemCard.propTypes = {
+ItemCard.defaultProps = {
   divider: true,
 };
 

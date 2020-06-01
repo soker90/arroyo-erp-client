@@ -13,6 +13,7 @@ const EditProductModal = ({
 
   useEffect(() => {
     if (!show) setState(product);
+    // eslint-disable-next-line
   }, [show]);
 
   const _handleUpdate = () => {

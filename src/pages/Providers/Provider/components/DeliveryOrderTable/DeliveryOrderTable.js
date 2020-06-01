@@ -1,34 +1,35 @@
-import React, {memo, useEffect} from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import {TableMaterial} from 'components';
-import {format, navigateTo} from 'utils';
-import {useStyles} from './DeliveryOrderTable.styles';
+import { TableMaterial } from 'components';
+import { format, navigateTo } from 'utils';
+import { useStyles } from './DeliveryOrderTable.styles';
 
-const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => {
+const DeliveryOrderTable = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
     getDeliveryOrders(idProvider);
-  }, [idProvider]);
+  }, [getDeliveryOrders, idProvider]);
 
   /**
    * Navega al albarán seleccionado
    * @param _id
    * @private
    */
-  const _onRowClick = ({_id}) => {
+  const _onRowClick = ({ _id }) => {
     navigateTo(`albaranes/${_id}`);
-  }
+  };
 
   return (
-    idProvider &&
+    idProvider
+    && (
     <TableMaterial
       className={classes.table}
       columns={[
         {
           title: 'Fecha',
-          render: ({date}) => format.date(date),
+          render: ({ date }) => format.date(date),
         },
         {
           title: 'Productos',
@@ -36,12 +37,13 @@ const DeliveryOrderTable = ({deliveryOrders, getDeliveryOrders, idProvider}) => 
         },
         {
           title: 'Total',
-          render: ({total}) => format.euro(total),
+          render: ({ total }) => format.euro(total),
         },
       ]}
       data={deliveryOrders}
       onRowClick={_onRowClick}
     />
+    )
   );
 };
 
@@ -54,5 +56,3 @@ DeliveryOrderTable.propTypes = {
 DeliveryOrderTable.displayName = 'DeliveryOrderTable';
 
 export default memo(DeliveryOrderTable);
-
-
