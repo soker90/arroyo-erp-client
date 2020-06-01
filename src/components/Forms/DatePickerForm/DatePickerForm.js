@@ -1,8 +1,8 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Grid} from '@material-ui/core';
-import {DatePicker} from '@material-ui/pickers';
-import {useStyles} from './DatePickerForm.styles';
+import { Grid } from '@material-ui/core';
+import { DatePicker } from '@material-ui/pickers';
+import { useStyles } from './DatePickerForm.styles';
 
 const DatePickerForm = (
   {
@@ -12,7 +12,8 @@ const DatePickerForm = (
     children,
     autoOk,
     ...rest
-  }) => {
+  }
+) => {
   const classes = useStyles();
 
   return (

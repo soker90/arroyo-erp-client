@@ -1,12 +1,12 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {getProvider} from 'modules/providers/actions';
-import {showModal} from 'reducers/modal';
-import {createDeliveryOrder} from 'pages/DeliveryOrder/modules/actions/createDeliveryOrder';
-import {NEW_PRODUCT_MODAL, NEW_PROVIDER_MODAL} from '../../Providers/modals/types';
+import { getProvider } from 'modules/providers/actions';
+import { showModal } from 'reducers/modal';
+import { createDeliveryOrder } from 'pages/DeliveryOrder/modules/actions/createDeliveryOrder';
 import Providers from 'pages/Providers/Provider/components/Provider';
+import { NEW_PRODUCT_MODAL, NEW_PROVIDER_MODAL } from '../../Providers/modals/types';
 
-const mapStateToProps = ({providers: {provider}}) => ({
+const mapStateToProps = ({ providers: { provider } }) => ({
   provider,
 });
 

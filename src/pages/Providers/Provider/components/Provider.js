@@ -1,22 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {lazy, memo, Suspense, useEffect, useMemo, useState} from 'react';
-import {Box, Card, Container, Grid, Tab, Tabs} from '@material-ui/core';
+import React, {
+  lazy, memo, Suspense, useEffect, useMemo, useState,
+} from 'react';
+import {
+  Box, Card, Container, Grid, Tab, Tabs,
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
 
-import {Header, Page, LoadingScreen} from 'components';
-import {useStyles} from 'pages/Providers/Provider/components/Provider.styles';
+import { Header, Page, LoadingScreen } from 'components';
+import { useStyles } from 'pages/Providers/Provider/components/Provider.styles';
 import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
-import {TABS, HASH_TABS} from '../constants';
+import { TABS, HASH_TABS } from '../constants';
 
 const Provider = (
   {
-    provider, billing, getProvider, match: {params: {idProvider}}, showEditModal, showEditProductModal,
-    location: {hash}, createDeliveryOrder,
-  }) => {
+    provider, billing, getProvider, match: { params: { idProvider } }, showEditModal,
+    showEditProductModal, location: { hash }, createDeliveryOrder,
+  }
+) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
@@ -27,9 +32,10 @@ const Provider = (
   }, [idProvider]);
 
   useEffect(() => {
-    HASH_TABS[hash] &&
-    setCurrentTab(HASH_TABS[hash]);
-  }, [hash])
+    // eslint-disable-next-line
+    HASH_TABS[hash]
+    && setCurrentTab(HASH_TABS[hash]);
+  }, [hash]);
   /**
    * Expande o contrae la información
    * @private
@@ -44,7 +50,7 @@ const Provider = (
    */
   const _handleClickNewDeliveryOrder = () => {
     createDeliveryOrder(idProvider);
-  }
+  };
 
   /**
    * imports de los componentes de cada pestaña
@@ -54,6 +60,7 @@ const Provider = (
     () => ({
       [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrderTable')),
       [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
+      [TABS.INVOICES]: lazy(() => import('./InvoicesTable')),
     }),
     [],
   );
@@ -76,6 +83,13 @@ const Provider = (
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo albarán',
+    },
+    [TABS.INVOICES]: {
+      variant: 'contained',
+      onClick: _handleClickNewDeliveryOrder,
+      Icon: AddIcon,
+      disableSvg: true,
+      label: 'Nueva factura',
     },
   }), []);
 
@@ -120,14 +134,15 @@ const Provider = (
           }]}
           buttons={[_buttons[currentTab]]}
         />
-        {expand &&
+        {expand
+        && (
         <Box mt={3} className={classes.cards}>
           <Grid container spacing={3}>
-            <ProviderInfo {...provider} showEditModal={_showEditModal}/>
+            <ProviderInfo {...provider} showEditModal={_showEditModal} />
             <ProviderBilling {...billing} />
           </Grid>
         </Box>
-        }
+        )}
 
         <Card className={classes.tabs}>
           <Tabs
@@ -149,8 +164,8 @@ const Provider = (
         </Card>
 
         <Box py={3} pb={6}>
-          <Suspense fallback={<LoadingScreen/>}>
-            <TabComponent/>
+          <Suspense fallback={<LoadingScreen />}>
+            <TabComponent />
           </Suspense>
         </Box>
 
@@ -165,6 +180,7 @@ Provider.propTypes = {
   getProvider: PropTypes.func.isRequired,
   showEditModal: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 Provider.displayName = 'Providers';

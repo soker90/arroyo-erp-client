@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   providers: [],
   provider: {},
   deliveryOrders: [],
+  invoices: [],
 };
 
 const ACTION_HANDLERS = {
