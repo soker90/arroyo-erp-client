@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useMemo} from 'react';
-import {Router} from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { Router } from 'react-router-dom';
 import MomentUtils from '@date-io/moment';
-import {createStyles, makeStyles, ThemeProvider} from '@material-ui/core';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
-import {LoadingBar} from 'react-redux-loading-bar';
+import { createStyles, makeStyles, ThemeProvider } from '@material-ui/core';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { LoadingBar } from 'react-redux-loading-bar';
 
 import Auth from 'components/Auth';
 import ScrollReset from 'components/ScrollReset';
 import useSettings from 'hooks/useSettings';
-import {createTheme} from 'theme';
+import { createTheme } from 'theme';
 import Routes from 'Routes';
 import history from 'store/history';
-import {ModalRoot} from 'components';
+import { ModalRoot } from 'components';
 import Notification from './components/Notification';
 import './utils/axios';
 
@@ -43,7 +43,7 @@ const useStyles = makeStyles(() => createStyles({
 function App() {
   useStyles();
 
-  const {settings} = useSettings();
+  const { settings } = useSettings();
   const theme = useMemo(() => createTheme(settings), [settings.theme]);
 
   return (
@@ -57,11 +57,11 @@ function App() {
               height: '5px',
             }}
           />
-          <Notification/>
+          <Notification />
           <Auth>
-            <ScrollReset/>
-            <Routes/>
-            <ModalRoot/>
+            <ScrollReset />
+            <Routes />
+            <ModalRoot />
           </Auth>
         </Router>
       </MuiPickersUtilsProvider>

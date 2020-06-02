@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {ARROYO_TOKEN} from 'config';
+import { ARROYO_TOKEN } from 'config';
 
-const {REACT_APP_API_HOST} = process.env;
+const { REACT_APP_API_HOST } = process.env;
 
 // ========================================================
 // Axios config
@@ -9,9 +9,9 @@ const {REACT_APP_API_HOST} = process.env;
 axios.defaults.baseURL = REACT_APP_API_HOST;
 axios.interceptors.response.use(
   response => {
-    const token = response.headers.token;
+    const { token } = response.headers;
     localStorage.setItem(ARROYO_TOKEN, token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     return response;
   },
 );
