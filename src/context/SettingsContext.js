@@ -1,29 +1,24 @@
 import React, {
   createContext,
   useState,
-  useEffect
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { THEMES } from 'constants/common';
 import { storeSettings } from 'utils/settings';
 
 const SettingsContext = createContext();
 
 const defaultSettings = {
-  direction: 'ltr',
-  responsiveFontSizes: true,
-  theme: THEMES.ONE_DARK
+  theme: THEMES.ONE_DARK,
 };
 
 export function SettingsProvider({ settings, children }) {
   const [currentSettings, setCurrentSettings] = useState(settings || defaultSettings);
 
   const handleSaveSettings = (updatedSettings = {}) => {
-    const mergedSettings = _.merge({}, currentSettings, updatedSettings);
-
-    setCurrentSettings(mergedSettings);
-    storeSettings(mergedSettings);
+    setCurrentSettings(updatedSettings);
+    storeSettings(updatedSettings);
   };
 
   useEffect(() => {
@@ -34,7 +29,7 @@ export function SettingsProvider({ settings, children }) {
     <SettingsContext.Provider
       value={{
         settings: currentSettings,
-        saveSettings: handleSaveSettings
+        saveSettings: handleSaveSettings,
       }}
     >
       {children}
@@ -44,7 +39,7 @@ export function SettingsProvider({ settings, children }) {
 
 SettingsProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  settings: PropTypes.object
+  settings: PropTypes.object,
 };
 
 export const SettingsConsumer = SettingsContext.Consumer;
