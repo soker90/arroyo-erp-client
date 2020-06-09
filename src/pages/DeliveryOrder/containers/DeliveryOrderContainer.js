@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import {createDeliveryOrder, getProducts} from '../modules/actions';
 import { showModal } from 'reducers/modal';
 import {
   ADD_PRODUCT_TO_DELIVERY_ORDER,
@@ -7,7 +6,7 @@ import {
 } from 'pages/DeliveryOrder/modals/types';
 import { getProducts } from 'modules/products/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
-import { getDeliveryOrder, updateDateDeliveryOrder } from '../modules/actions';
+import { getDeliveryOrder, updateDateDeliveryOrder, updatePrice } from '../modules/actions';
 
 /**
  * @param products
@@ -21,6 +20,7 @@ const mapDispatchToProps = {
   getProducts,
   getDeliveryOrder,
   updateDateDeliveryOrder,
+  updatePrice,
   showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {

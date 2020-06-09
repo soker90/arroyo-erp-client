@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
 import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
 
-const DeliveryOrderProducts = ({ products, showDeleteProductModal, showEditProductModal }) => {
+const DeliveryOrderProducts = ({
+  products, showDeleteProductModal, showEditProductModal, updatePrice,
+}) => {
   const classes = useStyles();
 
   /**
@@ -44,6 +47,17 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal, showEditProdu
     showEditProductModal(row, index);
   };
 
+  /**
+   * Añade el precio como precio de referencia para próximos
+   * albaranes
+   * @param {String} product
+   * @param {Number} price
+   * @private
+   */
+  const _updatePrice = ({ product, price }) => {
+    updatePrice(product, price);
+  };
+
   return (
     <TableMaterial
       className={classes.root}
@@ -75,6 +89,11 @@ const DeliveryOrderProducts = ({ products, showDeleteProductModal, showEditProdu
       ]}
       data={products}
       actions={[
+        {
+          icon: RefreshIcon,
+          tooltip: 'Actualizar precio',
+          onClick: _updatePrice,
+        },
         {
           icon: EditIcon,
           tooltip: 'Editar',

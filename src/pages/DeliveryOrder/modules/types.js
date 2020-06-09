@@ -6,3 +6,4 @@ export const GET_DELIVERY_ORDER = requestActions('GET_DELIVERY_ORDER');
 export const UPDATE_DATE_DELIVERY_ORDER = requestActions('UPDATE_DATE_DELIVERY_ORDER');
 export const DELETE_PRODUCT_TO_DELIVERY_ORDER = requestActions('@deliveryOrder/remove_product');
 export const UPDATE_PRODUCT_OF_DELIVERY_ORDER = requestActions('@deliveryOrder/update_product');
+export const UPDATE_PRICE_PRODUCT = requestActions('@deliveryOrder/update_price');

@@ -2,6 +2,7 @@ import { CREATE_PRODUCTS, CREATE_PROVIDER, EDIT_PROVIDER } from 'modules/provide
 import {
   ADD_PRODUCT_TO_DELIVERY_ORDER,
   UPDATE_DATE_DELIVERY_ORDER,
+  UPDATE_PRICE_PRODUCT,
 } from 'pages/DeliveryOrder/modules/types';
 
 const setPayload = payload => {
@@ -17,6 +18,7 @@ const notifications = {
   [CREATE_PRODUCTS.SUCCESS]: setPayload,
   [UPDATE_DATE_DELIVERY_ORDER.SUCCESS]: setPayload,
   [ADD_PRODUCT_TO_DELIVERY_ORDER.SUCCESS]: setPayload,
+  [UPDATE_PRICE_PRODUCT.SUCCESS]: setPayload,
 };
 
 export default notifications;

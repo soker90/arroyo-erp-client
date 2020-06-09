@@ -15,7 +15,7 @@ const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
-    showDeleteProductModal, showEditProductModal,
+    showDeleteProductModal, showEditProductModal, updatePrice
   },
 ) => {
   const classes = useStyles();
@@ -64,13 +64,14 @@ const DeliveryOrder = (
           products={products}
           showDeleteProductModal={showDeleteProductModal}
           showEditProductModal={showEditProductModal}
+          updatePrice={updatePrice}
         />
 
         <Grid container spacing={3} className={classes.cards}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <DeliveryOrderData date={date} setDate={_handleChangeDate} />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <DeliveryOrderTotals {...totals} />
           </Grid>
         </Grid>
@@ -98,6 +99,7 @@ DeliveryOrder.propTypes = {
   showAddProductModal: PropTypes.func.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
+  updatePrice: PropTypes.func.isRequired,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';
