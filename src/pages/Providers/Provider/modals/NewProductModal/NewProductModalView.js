@@ -46,7 +46,6 @@ const NewProductModal = ({
         re: Number(state.re) / 100,
         ...(state.rate && { rate: Number(state.rate) }),
         provider: idProvider,
-        historicPrice: Number(state.historicPrice),
       };
 
       // idProvider ?
@@ -87,7 +86,6 @@ const NewProductModal = ({
       {_renderInput('iva', 'IVA', { type: 'number' })}
       {_renderInput('re', 'RE', { type: 'number' })}
       {_renderInput('rate', 'Tasa', { type: 'number' })}
-      {_renderInput('historicPrice', 'Precio comparado', { type: 'number' })}
     </ModalGrid>
   );
 };
