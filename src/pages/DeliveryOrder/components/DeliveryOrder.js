@@ -15,7 +15,7 @@ const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
-    showDeleteProductModal, showEditProductModal, updatePrice
+    showDeleteProductModal, showEditProductModal, updatePrice,
   },
 ) => {
   const classes = useStyles();
@@ -60,12 +60,17 @@ const DeliveryOrder = (
           }]}
         />
 
-        <DeliveryOrderProducts
-          products={products}
-          showDeleteProductModal={showDeleteProductModal}
-          showEditProductModal={showEditProductModal}
-          updatePrice={updatePrice}
-        />
+        {
+          date && (
+          <DeliveryOrderProducts
+            products={products}
+            showDeleteProductModal={showDeleteProductModal}
+            showEditProductModal={showEditProductModal}
+            updatePrice={updatePrice}
+            date={date}
+          />
+          )
+        }
 
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={4}>

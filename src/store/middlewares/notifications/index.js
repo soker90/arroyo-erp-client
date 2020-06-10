@@ -5,7 +5,7 @@ export const notificationDefaultParams = {
   message: '',
   level: 'success', // success | error | warning | info
   position: 'tr', // tr | tl | tc | br | bl | bc
-  autoDismiss: 4,
+  autoDismiss: 2000,
 };
 
 const failureRegexp = /_FAILURE$/;
@@ -47,7 +47,7 @@ const notificationsMiddleware = store => next => action => {
         ...notificationDefaultParams,
         level: 'error',
         message,
-        autoDismiss: 3,
+        autoDismiss: 6000,
         dismissible: true,
       });
 

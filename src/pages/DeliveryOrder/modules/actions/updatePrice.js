@@ -37,13 +37,14 @@ const _updatePriceError = error => ({
  * Actualiza el precio del producto
  * @param {string} id
  * @param {Number} price
+ * @param {Number} date
  * @returns {function(...[*]=)}
  */
-export const updatePrice = (id, price) => async dispatch => {
+export const updatePrice = (id, price, date) => async dispatch => {
   dispatch(_updatePriceRequest());
 
   try {
-    await axios.post(`products/${id}/prices`, { price });
+    await axios.post(`products/${id}/prices`, { price, date });
 
     dispatch(_updatePriceSuccess());
   } catch (error) {

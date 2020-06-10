@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UPDATE_DATE_DELIVERY_ORDER} from '../types';
+import { UPDATE_DATE_DELIVERY_ORDER } from '../types';
 
 /**
  * Request action for updateDateDeliveryOrder
@@ -29,7 +29,7 @@ const _updateDateDeliveryOrderSuccess = () => ({
  * @return {{payload: {deliveryOrders: array}, type: string}}
  * @private
  */
-const _updateDateDeliveryOrderSet = ({data}) => ({
+const _updateDateDeliveryOrderSet = ({ data }) => ({
   type: UPDATE_DATE_DELIVERY_ORDER.SET,
   payload: data,
 });
@@ -55,8 +55,8 @@ const _updateDateDeliveryOrderError = error => ({
 export const updateDateDeliveryOrder = (id, date) => async dispatch => {
   dispatch(_updateDateDeliveryOrderRequest());
   const data = {
-    date: new Date(date).getTime()
-  }
+    date: new Date(date).getTime(),
+  };
 
   try {
     const response = await axios.patch(`deliveryorders/${id}`, data);

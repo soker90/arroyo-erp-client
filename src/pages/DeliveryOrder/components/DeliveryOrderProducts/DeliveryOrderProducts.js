@@ -11,7 +11,7 @@ import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
 
 const DeliveryOrderProducts = ({
-  products, showDeleteProductModal, showEditProductModal, updatePrice,
+  products, showDeleteProductModal, showEditProductModal, updatePrice, date,
 }) => {
   const classes = useStyles();
 
@@ -55,7 +55,7 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _updatePrice = ({ product, price }) => {
-    updatePrice(product, price);
+    updatePrice(product, price, new Date(date).getTime());
   };
 
   return (
@@ -113,6 +113,8 @@ DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
+  date: PropTypes.any,
+  updatePrice: PropTypes.func.isRequired,
 };
 
 DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';

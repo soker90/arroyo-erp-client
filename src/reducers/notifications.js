@@ -1,11 +1,11 @@
-import {setPayload, createReducer} from 'store/utils';
+import { setPayload, createReducer } from 'store/utils';
 
 export const NEW_NOTIFICATION = 'notifications/NEW_NOTIFICATION';
 
 export const addNotification = notification => dispatch => {
   dispatch({
     type: NEW_NOTIFICATION,
-    payload: {notification},
+    payload: { notification },
   });
 };
 
