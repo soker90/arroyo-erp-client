@@ -9,20 +9,22 @@ import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
+import { useHistory } from 'react-router';
 
-import { Header, Page, LoadingScreen } from 'components';
+import { Header, LoadingScreen, Page } from 'components';
 import { useStyles } from 'pages/Providers/Provider/components/Provider.styles';
 import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
-import { TABS, HASH_TABS } from '../constants';
+import { HASH_TABS, TABS } from '../constants';
 
 const Provider = (
   {
     provider, billing, getProvider, match: { params: { idProvider } }, showEditModal,
     showEditProductModal, location: { hash }, createDeliveryOrder,
-  }
+  },
 ) => {
   const classes = useStyles();
+  const history = useHistory();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
 
@@ -58,7 +60,7 @@ const Provider = (
    */
   const _components = useMemo(
     () => ({
-      [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrderTable')),
+      [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrder')),
       [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
       [TABS.INVOICES]: lazy(() => import('./InvoicesTable')),
     }),
@@ -113,7 +115,7 @@ const Provider = (
    * @private
    */
   const _handleTabsChange = (event, value) => {
-    setCurrentTab(value);
+    history.push(`#${value}`);
   };
 
   return (
@@ -136,12 +138,12 @@ const Provider = (
         />
         {expand
         && (
-        <Box mt={3} className={classes.cards}>
-          <Grid container spacing={3}>
-            <ProviderInfo {...provider} showEditModal={_showEditModal} />
-            <ProviderBilling {...billing} />
-          </Grid>
-        </Box>
+          <Box mt={3} className={classes.cards}>
+            <Grid container spacing={3}>
+              <ProviderInfo {...provider} showEditModal={_showEditModal} />
+              <ProviderBilling {...billing} />
+            </Grid>
+          </Box>
         )}
 
         <Card className={classes.tabs}>
