@@ -4,7 +4,8 @@ import { GET_DELIVERY_ORDERS, GET_PROVIDER, GET_PROVIDERS } from './types';
 const INITIAL_STATE = {
   providers: [],
   provider: {},
-  deliveryOrders: [],
+  deliveryOrdersFree: [],
+  deliveryOrdersInInvoices: [],
   invoices: [],
 };
 

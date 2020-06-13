@@ -1,10 +1,13 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import InInvoices from './components/InInvoices';
 import NoInvoices from './components/NoInvoices';
 import { useStyles } from './DeliveryOrder.styles';
 
-const DeliveryOrder = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
+const DeliveryOrder = ({
+  free, inInvoices, getDeliveryOrders, idProvider,
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -14,13 +17,17 @@ const DeliveryOrder = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
   return (
     idProvider
     && (
-      <NoInvoices deliveryOrders={deliveryOrders}/>
+      <>
+        <NoInvoices deliveryOrders={free} />
+        <InInvoices deliveryOrders={inInvoices} />
+      </>
     )
   );
 };
 
 DeliveryOrder.propTypes = {
-  deliveryOrders: PropTypes.array.isRequired,
+  free: PropTypes.array.isRequired,
+  inInvoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
 };

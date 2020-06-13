@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import React, { memo, useState } from 'react';
+import React, {
+  Fragment, memo, useState, useMemo,
+} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -20,7 +22,7 @@ import uniqId from 'uniqid';
 import { useStyles } from './TableMaterial.styles';
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, ...rest
+  className, columns, actions, data, title, refresh, count, onRowClick, withCard, ...rest
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
@@ -71,9 +73,10 @@ const TableMaterial = ({
     </TableCell>
   );
 
+  const Wrapper = useMemo(() => (withCard ? Card : 'div'), [withCard]);
 
   return (
-    <Card
+    <Wrapper
       className={clsx(classes.root, className)}
       {...rest}
     >
@@ -160,7 +163,7 @@ const TableMaterial = ({
           nextIconButtonText="Siguiente"
         />
       )}
-    </Card>
+    </Wrapper>
   );
 };
 
@@ -173,11 +176,13 @@ TableMaterial.propTypes = {
   refresh: PropTypes.func,
   count: PropTypes.number,
   onRowClick: PropTypes.func,
+  withCard: PropTypes.bool,
 };
 
 TableMaterial.defaultProps = {
   data: [],
   count: 0,
+  withCard: true,
 };
 
 export const story = TableMaterial;

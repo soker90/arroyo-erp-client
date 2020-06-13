@@ -10,3 +10,5 @@ export const THEMES_NAME = {
   LIGHT: 'Claro',
   UNICORN: 'Unicornio Oscuro',
 };
+
+export const BASE_PATH = process.env.REACT_APP_ROUTER_BASE_PATH;

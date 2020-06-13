@@ -1,35 +1,68 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import {
+  Checkbox,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  FormControlLabel,
+  IconButton,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import uniqueId from 'uniqid';
-import { format } from 'utils';
+import EditIcon from '@material-ui/icons/Edit';
+import { Link as RouterLink } from 'react-router-dom';
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-});
+import { format } from 'utils';
+import NoInvoicesTable from './NoInvoicesTable';
+
 
 const NoInvoices = ({ deliveryOrders }) => {
-  const classes = useStyles();
+  /**
+   * Render controlated component for expansion panel
+   * @param {Component} Component
+   * @return {FormControlLabel}
+   * @private
+   */
+  const _renderControledComponent = Component => (
+    <FormControlLabel
+      onClick={event => event.stopPropagation()}
+      onFocus={event => event.stopPropagation()}
+      control={Component}
+    />
+  );
 
-  const _renderRow = ({ date, total }) => (
+  /**
+   * Render delivery order row
+   * @param {Number} date
+   * @param {Number} total
+   * @param {Array} products
+   * @return {*}
+   * @private
+   */
+  const _renderRow = ({
+    // eslint-disable-next-line react/prop-types
+    _id, date, total, products,
+  }) => (
     <ExpansionPanel TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-label="Expand"
       >
-        <FormControlLabel
-          onClick={event => event.stopPropagation()}
-          onFocus={event => event.stopPropagation()}
-          control={<Checkbox />}
-        />
+        {_renderControledComponent(<Checkbox />)}
+        {_renderControledComponent(
+          <Tooltip title="Editar">
+            <IconButton
+              component={RouterLink}
+              to={`/app/albaranes/${_id}`}
+              size="small"
+            >
+              <EditIcon />
+            </IconButton>
+          </Tooltip>,
+        )}
         <Typography color="textPrimary" variant="body1" style={{ marginTop: '0.5rem' }}>
           <strong>{format.date(date)}</strong>
           {' - '}
@@ -37,9 +70,7 @@ const NoInvoices = ({ deliveryOrders }) => {
         </Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <Typography color="textSecondary">
-          No hay productos
-        </Typography>
+        <NoInvoicesTable products={products} />
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
@@ -47,6 +78,10 @@ const NoInvoices = ({ deliveryOrders }) => {
   return deliveryOrders.map(_renderRow);
 };
 
-NoInvoices.displayName = 'NoInvoices';
+NoInvoices.propTypes = {
+  deliveryOrders: PropTypes.array.isRequired,
+};
 
-export default NoInvoices;
+NoInvoices.displayName = 'NoInvoices';
+export const story = NoInvoices;
+export default memo(NoInvoices);

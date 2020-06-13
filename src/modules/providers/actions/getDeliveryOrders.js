@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {GET_DELIVERY_ORDERS} from '../types';
+import { GET_DELIVERY_ORDERS } from '../types';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrdersRequest = () => ({type: GET_DELIVERY_ORDERS.REQUEST});
+const _getDeliveryOrdersRequest = () => ({ type: GET_DELIVERY_ORDERS.REQUEST });
 
 /**
  * Success action
@@ -23,10 +23,11 @@ const _getDeliveryOrdersSuccess = () => ({
  * @return {{payload: {deliveryOrders: array}, type: string}}
  * @private
  */
-const _getDeliveryOrdersSet = deliveryOrders => ({
+const _getDeliveryOrdersSet = ({ free, inInvoices }) => ({
   type: GET_DELIVERY_ORDERS.SET,
   payload: {
-    deliveryOrders,
+    deliveryOrdersFree: free,
+    deliveryOrdersInInvoices: inInvoices,
   },
 });
 
@@ -50,7 +51,7 @@ export const getDeliveryOrders = id => async dispatch => {
   dispatch(_getDeliveryOrdersRequest());
 
   try {
-    const {data} = await axios(`deliveryorders?provider=${id}`);
+    const { data } = await axios(`deliveryorders?provider=${id}`);
 
     dispatch(_getDeliveryOrdersSuccess());
     dispatch(_getDeliveryOrdersSet(data));

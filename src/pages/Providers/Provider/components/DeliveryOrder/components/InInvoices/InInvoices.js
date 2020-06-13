@@ -2,14 +2,15 @@ import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { TableMaterial } from 'components';
-import { format, navigateTo } from 'utils';
-import { useStyles } from './DeliveryOrderTable.styles';
+import { format } from 'utils';
+import { BASE_PATH } from 'constants/common';
+import { useStyles } from './InInvoices.styles';
 
-const DeliveryOrderTable = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
+const InInvoices = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getDeliveryOrders(idProvider);
+    // getDeliveryOrders(idProvider);
   }, [getDeliveryOrders, idProvider]);
 
   /**
@@ -17,13 +18,9 @@ const DeliveryOrderTable = ({ deliveryOrders, getDeliveryOrders, idProvider }) =
    * @param _id
    * @private
    */
-  const _onRowClick = ({ _id }) => {
-    navigateTo(`albaranes/${_id}`);
-  };
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/albaranes/${_id}`;
 
   return (
-    idProvider
-    && (
     <TableMaterial
       className={classes.table}
       columns={[
@@ -41,18 +38,17 @@ const DeliveryOrderTable = ({ deliveryOrders, getDeliveryOrders, idProvider }) =
         },
       ]}
       data={deliveryOrders}
-      onRowClick={_onRowClick}
+      href={_hrefRow}
     />
-    )
   );
 };
 
-DeliveryOrderTable.propTypes = {
+InInvoices.propTypes = {
   deliveryOrders: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
 };
 
-DeliveryOrderTable.displayName = 'DeliveryOrderTable';
+InInvoices.displayName = 'DeliveryOrderTable';
 
-export default memo(DeliveryOrderTable);
+export default memo(InInvoices);
