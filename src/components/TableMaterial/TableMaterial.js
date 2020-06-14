@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
-import React, {
-  memo, useState, useMemo,
-} from 'react';
+/* TODO Limpiar componente */
+import React, { memo, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -121,6 +120,11 @@ const TableMaterial = ({
                   onMouseDown={() => onRowClick?.(row)}
                   hover
                   key={uniqId()}
+                  {...(href && {
+                    component: Link,
+                    to: href(row),
+                    style: { textDecoration: 'none' },
+                  })}
                 >
                   {columns.map(({ field, render }) => (
                     <TableCell key={uniqId()}>
@@ -178,6 +182,7 @@ TableMaterial.propTypes = {
   count: PropTypes.number,
   onRowClick: PropTypes.func,
   withCard: PropTypes.bool,
+  href: PropTypes.func,
 };
 
 TableMaterial.defaultProps = {
