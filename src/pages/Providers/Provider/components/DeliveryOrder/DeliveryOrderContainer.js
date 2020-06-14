@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getDeliveryOrders } from 'modules/providers/actions';
-import DeliveryOrderTable from 'pages/Providers/Provider/components/DeliveryOrder/DeliveryOrder';
+import DeliveryOrder from './DeliveryOrder';
 
 const mapStateToProps = ({
   providers: {
@@ -19,4 +19,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DeliveryOrderTable);
+)(DeliveryOrder);

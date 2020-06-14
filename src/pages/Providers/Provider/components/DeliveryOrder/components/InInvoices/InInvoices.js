@@ -6,7 +6,7 @@ import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
 import { useStyles } from './InInvoices.styles';
 
-const InInvoices = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
+const InInvoices = ({ deliveryOrders: { data, count }, getDeliveryOrders, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -37,18 +37,22 @@ const InInvoices = ({ deliveryOrders, getDeliveryOrders, idProvider }) => {
           render: ({ total }) => format.euro(total),
         },
       ]}
-      data={deliveryOrders}
+      data={data}
       href={_hrefRow}
+      count={count}
     />
   );
 };
 
 InInvoices.propTypes = {
-  deliveryOrders: PropTypes.array.isRequired,
+  deliveryOrders: PropTypes.shape({
+    data: PropTypes.array,
+    count: PropTypes.number,
+  }).isRequired,
   idProvider: PropTypes.string,
-  getDeliveryOrders: PropTypes.func.isRequired,
+  // getDeliveryOrders: PropTypes.func.isRequired,
 };
 
-InInvoices.displayName = 'DeliveryOrderTable';
+InInvoices.displayName = 'InInvoices';
 
 export default memo(InInvoices);

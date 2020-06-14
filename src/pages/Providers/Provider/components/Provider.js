@@ -183,6 +183,7 @@ Provider.propTypes = {
   showEditModal: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
+  showEditProductModal: PropTypes.func.isRequired,
 };
 
 Provider.displayName = 'Providers';

@@ -1,11 +1,14 @@
-import { createReducer, setPayload } from 'store/utils';
-import { GET_DELIVERY_ORDERS, GET_PROVIDER, GET_PROVIDERS } from './types';
+import {createReducer, setPayload} from 'store/utils';
+import {GET_DELIVERY_ORDERS, GET_PROVIDER, GET_PROVIDERS} from './types';
 
 const INITIAL_STATE = {
   providers: [],
   provider: {},
   deliveryOrdersFree: [],
-  deliveryOrdersInInvoices: [],
+  deliveryOrdersInInvoices: {
+    data: [],
+    count: 0,
+  },
   invoices: [],
 };
 

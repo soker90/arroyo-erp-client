@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {
-  Fragment, memo, useState, useMemo,
+  memo, useState, useMemo,
 } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -19,10 +19,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import uniqId from 'uniqid';
+import { Link } from 'react-router-dom';
 import { useStyles } from './TableMaterial.styles';
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, withCard, ...rest
+  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, ...rest
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);

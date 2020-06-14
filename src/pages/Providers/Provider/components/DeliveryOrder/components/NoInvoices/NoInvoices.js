@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Checkbox,
@@ -18,8 +18,40 @@ import { Link as RouterLink } from 'react-router-dom';
 import { format } from 'utils';
 import NoInvoicesTable from './NoInvoicesTable';
 
-
 const NoInvoices = ({ deliveryOrders }) => {
+  const [selected, setSelected] = useState([]);
+
+  /**
+   * Add elemento to selected array
+   * @param {String} element
+   * @private
+   */
+  const _addSelected = element => {
+    const newSelected = selected.slice();
+    newSelected.push(element);
+    setSelected(newSelected);
+  };
+
+  /**
+   * Remove element from selected array
+   * @param {string} element
+   * @private
+   */
+  const _removeSelected = element => {
+    const newSelected = selected.filter(item => item !== element);
+    setSelected(newSelected);
+  };
+
+  /**
+   * Toggle checkbox
+   * @param {String} id
+   * @param {Boolean} value
+   * @private
+   */
+  const _handleChangeCheckbox = (id, value) => {
+    value ? _addSelected(id) : _removeSelected(id);
+  };
+
   /**
    * Render controlated component for expansion panel
    * @param {Component} Component
@@ -36,6 +68,7 @@ const NoInvoices = ({ deliveryOrders }) => {
 
   /**
    * Render delivery order row
+   * @param {String} _id
    * @param {Number} date
    * @param {Number} total
    * @param {Array} products
@@ -51,7 +84,12 @@ const NoInvoices = ({ deliveryOrders }) => {
         expandIcon={<ExpandMoreIcon />}
         aria-label="Expand"
       >
-        {_renderControledComponent(<Checkbox />)}
+        {_renderControledComponent(
+          <Checkbox
+            onChange={(ev, value) => _handleChangeCheckbox(_id, value)}
+            checked={selected.includes(_id)}
+          />,
+        )}
         {_renderControledComponent(
           <Tooltip title="Editar">
             <IconButton
