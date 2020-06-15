@@ -120,15 +120,17 @@ const TableMaterial = ({
                   onMouseDown={() => onRowClick?.(row)}
                   hover
                   key={uniqId()}
-                  {...(href && {
-                    component: Link,
-                    to: href(row),
-                    style: { textDecoration: 'none' },
-                  })}
                 >
                   {columns.map(({ field, render }) => (
                     <TableCell key={uniqId()}>
+                      <Box
+                        {...(href && {
+                        component: Link,
+                        to: href(row),
+                        className: classes.cell
+                      })}>
                       {render?.(row) || row[field]}
+                      </Box>
                     </TableCell>
                   ))}
                   {_renderActionsButtons(row, index)}

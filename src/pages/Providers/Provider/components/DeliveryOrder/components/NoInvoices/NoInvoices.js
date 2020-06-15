@@ -18,8 +18,12 @@ import { Link as RouterLink } from 'react-router-dom';
 import { format } from 'utils';
 import NoInvoicesTable from './NoInvoicesTable';
 
-const NoInvoices = ({ deliveryOrders }) => {
+const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
   const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    setDisableInvoice(selected.length < 1);
+  }, [selected.length])
 
   /**
    * Add elemento to selected array

@@ -10,6 +10,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
 import { useHistory } from 'react-router';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+
 
 import { Header, LoadingScreen, Page } from 'components';
 import { useStyles } from 'pages/Providers/Provider/components/Provider.styles';
@@ -27,6 +29,7 @@ const Provider = (
   const history = useHistory();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
+  const [disableInvoice, setDisableInvoice] = useState(true);
 
   useEffect(() => {
     if (idProvider) getProvider(idProvider);
@@ -72,28 +75,30 @@ const Provider = (
    * @private
    */
   const _buttons = useMemo(() => ({
-    [TABS.PRODUCTS]: {
+    [TABS.PRODUCTS]: [{
       variant: 'contained',
       onClick: () => showEditProductModal(),
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo producto',
+    }],
+    [TABS.DELIVERY_ORDERS]: [{
+      variant: 'contained',
+      onClick: _handleClickNewDeliveryOrder,
+      Icon: PostAddIcon,
+      disableSvg: true,
+      label: 'Crear factura',
+      disabled: disableInvoice,
     },
-    [TABS.DELIVERY_ORDERS]: {
+    {
       variant: 'contained',
       onClick: _handleClickNewDeliveryOrder,
       Icon: AddIcon,
       disableSvg: true,
       label: 'Nuevo albarán',
-    },
-    [TABS.INVOICES]: {
-      variant: 'contained',
-      onClick: _handleClickNewDeliveryOrder,
-      Icon: AddIcon,
-      disableSvg: true,
-      label: 'Nueva factura',
-    },
-  }), []);
+    }],
+    [TABS.INVOICES]: [],
+  }), [disableInvoice]);
 
   /**
    * Componente de la pestaña actual
@@ -134,7 +139,7 @@ const Provider = (
             disableSvg: true,
             label: expand ? 'Ocultar información' : 'Mostrar información',
           }]}
-          buttons={[_buttons[currentTab]]}
+          buttons={_buttons[currentTab]}
         />
         {expand
         && (
@@ -167,7 +172,7 @@ const Provider = (
 
         <Box py={3} pb={6}>
           <Suspense fallback={<LoadingScreen />}>
-            <TabComponent />
+            <TabComponent setDisableInvoice={setDisableInvoice} />
           </Suspense>
         </Box>
 

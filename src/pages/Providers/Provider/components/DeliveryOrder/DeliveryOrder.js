@@ -1,6 +1,4 @@
-import React, {
-  lazy, memo, Suspense, useEffect, useState,
-} from 'react';
+import React, { lazy, memo, Suspense, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { LinearProgress } from '@material-ui/core';
 
@@ -10,7 +8,7 @@ import { useStyles } from './DeliveryOrder.styles';
 const InInvoices = lazy(() => import('./components/InInvoices'));
 
 const DeliveryOrder = ({
-  free, inInvoices, getDeliveryOrders, idProvider,
+  free, inInvoices, getDeliveryOrders, idProvider, setDisableInvoice,
 }) => {
   const classes = useStyles();
   const [showInInvoices, setShowInInvoices] = useState(true);
@@ -23,11 +21,11 @@ const DeliveryOrder = ({
     idProvider
     && (
       <>
-        <NoInvoices deliveryOrders={free} />
+        <NoInvoices deliveryOrders={free} setDisableInvoice={setDisableInvoice}/>
         {showInInvoices
         && (
-          <Suspense fallback={<LinearProgress />}>
-            <InInvoices deliveryOrders={inInvoices} />
+          <Suspense fallback={<LinearProgress/>}>
+            <InInvoices deliveryOrders={inInvoices}/>
           </Suspense>
         )}
       </>
@@ -43,6 +41,7 @@ DeliveryOrder.propTypes = {
   }),
   idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
+  setDisableInvoice: PropTypes.func.isRequired,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

@@ -41,7 +41,7 @@ const Header = ({className, routes, title, description, buttons, buttonsSecondar
    * @private
    */
   const _renderButton = ({
-    color, variant, disableSvg, Icon, onClick, label,
+    color, variant, disableSvg, Icon, onClick, label, ...rest
   }) => (
     <Button
       key={uniqId()}
@@ -49,6 +49,7 @@ const Header = ({className, routes, title, description, buttons, buttonsSecondar
       variant={variant || 'contained'}
       className={classes.action}
       onClick={onClick}
+      {...rest}
     >
       {disableSvg ?
         <Icon className={classes.actionIcon}/> :
