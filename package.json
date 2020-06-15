@@ -63,7 +63,7 @@
     "@storybook/addon-actions": "^6.0.0-beta.25",
     "@storybook/addon-docs": "^6.0.0-beta.25",
     "@storybook/addon-knobs": "^6.0.0-beta.25",
-    "@storybook/addon-links": "^6.0.0-beta.25",
+    "@storybook/addon-links": "^6.0.0-beta.27",
     "@storybook/addons": "^6.0.0-beta.25",
     "@storybook/preset-create-react-app": "^3.0.1",
     "@storybook/react": "^6.0.0-beta.25",
