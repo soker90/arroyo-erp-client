@@ -23,7 +23,7 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
 
   useEffect(() => {
     setDisableInvoice(selected.length < 1);
-  }, [selected.length])
+  }, [selected.length]);
 
   /**
    * Add elemento to selected array
