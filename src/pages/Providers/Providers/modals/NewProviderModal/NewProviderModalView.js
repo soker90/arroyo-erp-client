@@ -1,6 +1,6 @@
-import React, {memo, useEffect, useReducer} from 'react';
+import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import {InputForm, ModalGrid} from 'components';
+import { InputForm, ModalGrid } from 'components';
 
 const INITIAL_STATE = {
   name: '',
@@ -8,13 +8,20 @@ const INITIAL_STATE = {
   phone: '',
   email: '',
   businessName: '',
-  cif: '',
+  cif: ''
 };
 
-const NewProviderModal = ({show, close, createProvider, idProvider, provider, editProvider}) => {
+const NewProviderModal = ({
+  show,
+  close,
+  createProvider,
+  idProvider,
+  provider,
+  editProvider
+}) => {
   const [state, setState] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    provider || INITIAL_STATE,
+    (state, newState) => ({ ...state, ...newState }),
+    provider || INITIAL_STATE
   );
 
   useEffect(() => {
@@ -29,8 +36,8 @@ const NewProviderModal = ({show, close, createProvider, idProvider, provider, ed
    * @param {String} value
    * @private
    */
-  const _handleChange = ({target: {name, value}}) => {
-    setState({[name]: value});
+  const _handleChange = ({ target: { name, value } }) => {
+    setState({ [name]: value });
   };
 
   /**
@@ -38,9 +45,9 @@ const NewProviderModal = ({show, close, createProvider, idProvider, provider, ed
    * @private
    */
   const _handleSubmit = () => {
-    idProvider ?
-      editProvider(idProvider, state, close) :
-      createProvider(state, close);
+    idProvider
+      ? editProvider(idProvider, state, close)
+      : createProvider(state, close);
   };
 
   /**
@@ -50,20 +57,22 @@ const NewProviderModal = ({show, close, createProvider, idProvider, provider, ed
    * @returns {InputForm}
    * @private
    */
-  const _renderInput = (name, label) =>
+  const _renderInput = (name, label) => (
     <InputForm
-      value={state[name] || ' '}
+      value={state[name] || ''}
       onChange={_handleChange}
       name={name}
       label={label}
-    />;
+    />
+  );
 
   return (
     <ModalGrid
       show={show}
       close={close}
       title={idProvider ? `Editar ${provider.name}` : 'Crear proveedor'}
-      action={_handleSubmit}>
+      action={_handleSubmit}
+    >
       {_renderInput('name', 'Nombre')}
       {_renderInput('businessName', 'Razón Social')}
       {_renderInput('cif', 'CIF/NIF')}
@@ -79,7 +88,7 @@ NewProviderModal.propTypes = {
   close: PropTypes.func.isRequired,
   createProvider: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
-  provider: PropTypes.object,
+  provider: PropTypes.object
 };
 
 NewProviderModal.displayName = 'NewProviderModal';
