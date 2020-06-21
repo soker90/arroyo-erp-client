@@ -8,7 +8,7 @@ import {
   FormControlLabel,
   IconButton,
   Tooltip,
-  Typography,
+  Typography
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import uniqueId from 'uniqid';
@@ -23,14 +23,14 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
 
   useEffect(() => {
     setDisableInvoice(selected.length < 1);
-  }, [selected.length]);
+  }, [selected.length, setDisableInvoice]);
 
   /**
    * Add elemento to selected array
    * @param {String} element
    * @private
    */
-  const _addSelected = element => {
+  const _addSelected = (element) => {
     const newSelected = selected.slice();
     newSelected.push(element);
     setSelected(newSelected);
@@ -41,8 +41,8 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
    * @param {string} element
    * @private
    */
-  const _removeSelected = element => {
-    const newSelected = selected.filter(item => item !== element);
+  const _removeSelected = (element) => {
+    const newSelected = selected.filter((item) => item !== element);
     setSelected(newSelected);
   };
 
@@ -62,10 +62,10 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
    * @return {FormControlLabel}
    * @private
    */
-  const _renderControledComponent = Component => (
+  const _renderControledComponent = (Component) => (
     <FormControlLabel
-      onClick={event => event.stopPropagation()}
-      onFocus={event => event.stopPropagation()}
+      onClick={(event) => event.stopPropagation()}
+      onFocus={(event) => event.stopPropagation()}
       control={Component}
     />
   );
@@ -81,7 +81,10 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
    */
   const _renderRow = ({
     // eslint-disable-next-line react/prop-types
-    _id, date, total, products,
+    _id,
+    date,
+    total,
+    products
   }) => (
     <ExpansionPanel TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
       <ExpansionPanelSummary
@@ -92,7 +95,7 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
           <Checkbox
             onChange={(ev, value) => _handleChangeCheckbox(_id, value)}
             checked={selected.includes(_id)}
-          />,
+          />
         )}
         {_renderControledComponent(
           <Tooltip title="Editar">
@@ -103,9 +106,13 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
             >
               <EditIcon />
             </IconButton>
-          </Tooltip>,
+          </Tooltip>
         )}
-        <Typography color="textPrimary" variant="body1" style={{ marginTop: '0.5rem' }}>
+        <Typography
+          color="textPrimary"
+          variant="body1"
+          style={{ marginTop: '0.5rem' }}
+        >
           <strong>{format.date(date)}</strong>
           {' - '}
           {format.euro(total)}
@@ -121,7 +128,7 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
 };
 
 NoInvoices.propTypes = {
-  deliveryOrders: PropTypes.array.isRequired,
+  deliveryOrders: PropTypes.array.isRequired
 };
 
 NoInvoices.displayName = 'NoInvoices';
