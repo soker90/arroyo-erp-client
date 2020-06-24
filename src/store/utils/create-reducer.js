@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Create reducer with the new style from {key: value}
  * @param {Object} INITIAL_STATE

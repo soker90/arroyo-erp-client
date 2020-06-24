@@ -3,24 +3,28 @@ import PropTypes from 'prop-types';
 import { TableMaterial } from 'components';
 import { useStyles } from './InvoicesTable.styles';
 
-const InvoicesTable = ({ invoices, getInvoices, idProvider }) => {
+const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    if (idProvider) getInvoices(idProvider);
-  }, [getInvoices, idProvider]);
+    if (idProvider) getInvoicesByProvider(idProvider);
+  }, [getInvoicesByProvider, idProvider]);
 
   return idProvider && (
     <TableMaterial
       className={classes.table}
       columns={[
         {
-          title: 'Código',
-          field: 'code',
+          title: 'Nº de Orden',
+          field: 'nOrder',
         },
         {
-          title: 'Nombre',
-          field: 'name',
+          title: 'Fecha',
+          field: 'dateInvoice',
+        },
+        {
+          title: 'Importe',
+          field: 'total',
         },
       ]}
       data={invoices}
@@ -31,7 +35,7 @@ const InvoicesTable = ({ invoices, getInvoices, idProvider }) => {
 InvoicesTable.propTypes = {
   invoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
-  getInvoices: PropTypes.func.isRequired,
+  getInvoicesByProvider: PropTypes.func.isRequired,
 };
 
 InvoicesTable.displayName = 'InvoicesTable';

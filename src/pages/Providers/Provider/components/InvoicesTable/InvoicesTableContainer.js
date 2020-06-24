@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getProducts } from 'modules/products/actions';
+import { getInvoicesByProvider } from 'modules/providers/actions';
 import InvoicesTable from './InvoicesTable';
 
 const mapStateToProps = ({ providers: { provider, invoices } }) => ({
@@ -9,7 +9,7 @@ const mapStateToProps = ({ providers: { provider, invoices } }) => ({
 });
 
 const mapDispatchToProps = {
-  getInvoices: getProducts,
+  getInvoicesByProvider,
 };
 
 export default connect(
