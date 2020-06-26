@@ -1,7 +1,11 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import EditIcon from '@material-ui/icons/Edit';
+
 import { TableMaterial } from 'components';
+import { Link } from 'react-router-dom';
 import { useStyles } from './InvoicesTable.styles';
+import { BASE_PATH } from '../../../../../constants';
 
 const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
   const classes = useStyles();
@@ -28,6 +32,14 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
         },
       ]}
       data={invoices}
+      actions={[
+        {
+          icon: EditIcon,
+          tooltip: 'Editar',
+          component: Link,
+          to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
+        },
+      ]}
     />
   );
 };

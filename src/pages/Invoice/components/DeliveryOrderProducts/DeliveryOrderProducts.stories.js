@@ -1,7 +1,5 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
-import { story as DeliveryOrder } from '../DeliveryOrder';
 
 export default {
   title: 'Rutas|Albarán/Productos',
@@ -43,9 +41,6 @@ const DeliveryOrderProductsStory = () => (
         diff: 0,
       },
     ]}
-    updatePrice={action('updatePrice')}
-    showEditProductModal={action('showEditProductModal')}
-    showDeleteProductModal={action('showDeleteProductModal')}
   />
 );
 

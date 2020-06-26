@@ -59,11 +59,12 @@ const TableMaterial = ({
     <TableCell align="right">
       {actions?.filter(({ isFreeAction }) => !isFreeAction)
         .map(({
-          icon: Icon, tooltip, onClick, ...restButton
+          icon: Icon, tooltip, onClick, to, ...restButton
         }) => (
           <Tooltip key={uniqId()} title={tooltip} className={classes.tooltip}>
             <IconButton
-              onClick={() => onClick(row, index)}
+              {...(onClick && { onClick: onClick(row, index) })}
+              {...(to && { to: to(row, index) })}
               {...restButton}
             >
               <Icon className={classes.actionIcon} />
@@ -125,11 +126,12 @@ const TableMaterial = ({
                     <TableCell key={uniqId()}>
                       <Box
                         {...(href && {
-                        component: Link,
-                        to: href(row),
-                        className: classes.cell
-                      })}>
-                      {render?.(row) || row[field]}
+                          component: Link,
+                          to: href(row),
+                          className: classes.cell,
+                        })}
+                      >
+                        {render?.(row) || row[field]}
                       </Box>
                     </TableCell>
                   ))}

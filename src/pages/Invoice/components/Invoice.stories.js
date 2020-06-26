@@ -1,23 +1,23 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
+import DatePickerProvider from 'contexts/DatePickerProvider';
 import RoutesWrapper from 'story/RoutesWrapper';
-import { story as DeliveryOrder } from './DeliveryOrder';
+import { story as Invoice } from './Invoice';
 
 export default {
-  title: 'Rutas|Albarán',
+  title: 'Rutas|Factura',
   parameters: {
-    component: DeliveryOrder,
-    componentSubtitle: 'Vista de albarán',
+    component: Invoice,
+    componentSubtitle: 'Vista de factura',
   },
   decorators: [storyFn => (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <DatePickerProvider>
       <RoutesWrapper>
         {storyFn()}
       </RoutesWrapper>
-    </MuiPickersUtilsProvider>
+    </DatePickerProvider>
   ),
   ],
 };
@@ -26,8 +26,8 @@ export default {
  * code, productName, quantity, price, amount, diff
  */
 
-const DeliveryOrderStory = () => (
-  <DeliveryOrder
+const InvoiceStory = () => (
+  <Invoice
     match={{ params: { idDeliveryOrder: 'ggggg7777' } }}
     provider="ssssbbb33"
     nameProvider="La abuela"
@@ -68,14 +68,12 @@ const DeliveryOrderStory = () => (
     showAddProductModal={action('showAddProductModal')}
     showDeleteProductModal={action('showDeleteProductModal')}
     updateDateDeliveryOrder={action('updateDateDeliveryOrder')}
-    updatePrice={action('updatePrice')}
-    showEditProductModal={action('showEditProductModal')}
     _id="3456789okhd"
   />
 );
 
-DeliveryOrderStory.story = {
+InvoiceStory.story = {
   name: 'Vista',
 };
 
-export { DeliveryOrderStory };
+export { InvoiceStory };

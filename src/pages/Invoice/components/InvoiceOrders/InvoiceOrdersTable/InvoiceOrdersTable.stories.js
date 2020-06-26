@@ -1,12 +1,10 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
-import { story as DeliveryOrder } from '../DeliveryOrder';
+import { story as NoInvoicesTable } from './InvoiceOrdersTable';
 
 export default {
-  title: 'Rutas|Albarán/Productos',
+  title: 'Rutas|Proveedor/Albaranes/Productos',
   parameters: {
-    component: DeliveryOrderProducts,
+    component: NoInvoicesTable,
     componentSubtitle: 'Tabla de productos',
   },
 };
@@ -15,8 +13,8 @@ export default {
  * code, productName, quantity, price, amount, diff
  */
 
-const DeliveryOrderProductsStory = () => (
-  <DeliveryOrderProducts
+const NoInvoicesTableStory = () => (
+  <NoInvoicesTable
     products={[
       {
         code: '2345',
@@ -43,14 +41,11 @@ const DeliveryOrderProductsStory = () => (
         diff: 0,
       },
     ]}
-    updatePrice={action('updatePrice')}
-    showEditProductModal={action('showEditProductModal')}
-    showDeleteProductModal={action('showDeleteProductModal')}
   />
 );
 
-DeliveryOrderProductsStory.story = {
+NoInvoicesTableStory.story = {
   name: 'Productos',
 };
 
-export { DeliveryOrderProductsStory };
+export { NoInvoicesTableStory };
