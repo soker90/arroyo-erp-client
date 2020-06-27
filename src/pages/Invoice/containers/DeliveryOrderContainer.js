@@ -6,7 +6,7 @@ import {
 } from 'pages/DeliveryOrder/modals/types';
 import { getProducts } from 'modules/products/actions';
 import DeliveryOrder from '../components/Invoice';
-import { getDeliveryOrder, updateDateDeliveryOrder, updatePrice } from '../modules/actions';
+import { getInvoice, updateDateDeliveryOrder, updatePrice } from '../modules/actions';
 
 /**
  * @param products
@@ -18,7 +18,7 @@ const mapStateToProps = ({ deliveryOrders }) => ({
 
 const mapDispatchToProps = {
   getProducts,
-  getDeliveryOrder,
+  getDeliveryOrder: getInvoice,
   updateDateDeliveryOrder,
   updatePrice,
   showDeleteProductModal: index => showModal({

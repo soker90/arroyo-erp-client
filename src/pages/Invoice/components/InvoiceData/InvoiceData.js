@@ -8,12 +8,18 @@ import { DatePickerForm } from 'components';
 
 const InvoiceData = ({ date, setDate }) => (
   <Card>
-    <CardHeader title="Datos del albarán" />
+    <CardHeader title="Datos de la factura" />
     <Divider />
     <CardContent>
       <DatePickerForm
         size={3}
-        label="Fecha"
+        label="Fecha de registro"
+        value={date}
+        onChange={setDate}
+      />
+      <DatePickerForm
+        size={3}
+        label="Fecha de factura"
         value={date}
         onChange={setDate}
       />
@@ -26,6 +32,6 @@ InvoiceData.propTypes = {
   setDate: PropTypes.func.isRequired,
 };
 
-InvoiceData.displayName = 'DeliveryOrderData';
+InvoiceData.displayName = 'InvoiceData';
 export const story = InvoiceData;
 export default memo(InvoiceData);

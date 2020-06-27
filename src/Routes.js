@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import React, {Fragment, lazy, Suspense} from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import React, { Fragment, lazy, Suspense } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
 import DashboardLayout from 'layouts/DashboardLayout';
 import LoadingScreen from 'components/LoadingScreen';
 import AuthGuard from 'components/AuthGuard';
@@ -11,7 +12,7 @@ const routesConfig = [
   {
     exact: true,
     path: '/',
-    component: () => <Redirect to="/login"/>,
+    component: () => <Redirect to="/login" />,
   },
   {
     exact: true,
@@ -27,7 +28,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app',
-        component: () => <Redirect to="/app/informes/inicio"/>,
+        component: () => <Redirect to="/app/informes/inicio" />,
       },
       {
         exact: true,
@@ -37,7 +38,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/informes',
-        component: () => <Redirect to="/app/informes/inicio"/>,
+        component: () => <Redirect to="/app/informes/inicio" />,
       },
       {
         exact: true,
@@ -55,14 +56,19 @@ const routesConfig = [
         component: lazy(() => import('pages/DeliveryOrder')),
       },
       {
-        component: () => <NotFound/>,
+        exact: true,
+        path: 'app/facturas/:idInvoice',
+        component: lazy(() => import('pages/Invoice')),
+      },
+      {
+        component: () => <NotFound />,
       },
     ],
   },
 ];
 
 const renderRoutes = routes => (routes ? (
-  <Suspense fallback={<LoadingScreen/>}>
+  <Suspense fallback={<LoadingScreen />}>
     <Switch>
       {routes.map((route, i) => {
         const Guard = route.guard || Fragment;
@@ -78,8 +84,8 @@ const renderRoutes = routes => (routes ? (
               <Guard>
                 <Layout>
                   {route.routes
-                   ? renderRoutes(route.routes)
-                   : <Component {...props} />}
+                    ? renderRoutes(route.routes)
+                    : <Component {...props} />}
                 </Layout>
               </Guard>
             )}
