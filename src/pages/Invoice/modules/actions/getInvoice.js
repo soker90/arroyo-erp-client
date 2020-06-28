@@ -1,20 +1,20 @@
 import axios from 'axios';
-import { GET_DELIVERY_ORDER } from '../types';
+import { GET_INVOICE } from '../types';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrderRequest = () => ({ type: GET_DELIVERY_ORDER.REQUEST });
+const _getInvoiceRequest = () => ({ type: GET_INVOICE.REQUEST });
 
 /**
  * Success action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrderSuccess = () => ({
-  type: GET_DELIVERY_ORDER.SUCCESS,
+const _getInvoiceSuccess = () => ({
+  type: GET_INVOICE.SUCCESS,
 });
 
 /**
@@ -23,8 +23,8 @@ const _getDeliveryOrderSuccess = () => ({
  * @return {{payload: {provider: Object}, type: string}}
  * @private
  */
-const _getDeliveryOrderSet = data => ({
-  type: GET_DELIVERY_ORDER.SET,
+const _getInvoiceSet = data => ({
+  type: GET_INVOICE.SET,
   payload: data,
 });
 
@@ -34,8 +34,8 @@ const _getDeliveryOrderSet = data => ({
  * @returns {{type: string, error: _getProvidersError.props}}
  * @private
  */
-const _getDeliveryOrderError = error => ({
-  type: GET_DELIVERY_ORDER.FAILURE,
+const _getInvoiceError = error => ({
+  type: GET_INVOICE.FAILURE,
   error,
 });
 
@@ -44,14 +44,14 @@ const _getDeliveryOrderError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getInvoice = id => async dispatch => {
-  dispatch(_getDeliveryOrderRequest());
+  dispatch(_getInvoiceRequest());
 
   try {
-    const { data } = await axios(`deliveryorders/${id}`);
+    const { data } = await axios(`invoices/${id}`);
 
-    dispatch(_getDeliveryOrderSuccess());
-    dispatch(_getDeliveryOrderSet(data));
+    dispatch(_getInvoiceSuccess());
+    dispatch(_getInvoiceSet(data));
   } catch (error) {
-    dispatch(_getDeliveryOrderError(error));
+    dispatch(_getInvoiceError(error));
   }
 };

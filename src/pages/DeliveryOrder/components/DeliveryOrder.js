@@ -10,7 +10,6 @@ import DeliveryOrderData from './DeliveryOrderData';
 import DeliveryOrderTotals from './DeliveryOrderTotals';
 import { useStyles } from './DeliveryOrder.styles';
 
-
 const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,

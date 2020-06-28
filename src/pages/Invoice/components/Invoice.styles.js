@@ -1,4 +1,4 @@
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -14,6 +14,9 @@ export const useStyles = makeStyles(theme => ({
     },
   },
   cards: {
+    marginTop: theme.spacing(2),
+  },
+  orders: {
     marginTop: theme.spacing(2),
   },
 }));

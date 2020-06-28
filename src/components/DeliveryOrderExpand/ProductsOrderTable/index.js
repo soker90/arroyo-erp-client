@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-const NoInvoicesTable = ({ products }) => {
+const ProductsOrderTable = ({ products }) => {
   const classes = useStyles();
 
   /**
@@ -54,10 +54,10 @@ const NoInvoicesTable = ({ products }) => {
   return products?.length ? _renderTable() : _renderNoProducts();
 };
 
-NoInvoicesTable.propTypes = {
+ProductsOrderTable.propTypes = {
   products: PropTypes.array,
 };
 
-NoInvoicesTable.displayName = 'NoInvoicesTable';
-export const story = NoInvoicesTable;
-export default memo(NoInvoicesTable);
+ProductsOrderTable.displayName = 'ProductsOrderTable';
+export const story = ProductsOrderTable;
+export default memo(ProductsOrderTable);

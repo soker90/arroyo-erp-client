@@ -1,5 +1,5 @@
 import React from 'react';
-import { story as NoInvoicesTable } from './NoInvoicesTable';
+import { story as NoInvoicesTable } from './index';
 
 export default {
   title: 'Rutas|Proveedor/Albaranes/Productos',

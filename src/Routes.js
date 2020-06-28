@@ -57,7 +57,7 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: 'app/facturas/:idInvoice',
+        path: '/app/facturas/:idInvoice',
         component: lazy(() => import('pages/Invoice')),
       },
       {

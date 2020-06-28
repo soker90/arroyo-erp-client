@@ -63,7 +63,7 @@ const TableMaterial = ({
         }) => (
           <Tooltip key={uniqId()} title={tooltip} className={classes.tooltip}>
             <IconButton
-              {...(onClick && { onClick: onClick(row, index) })}
+              {...(onClick && { onClick: () => onClick(row, index) })}
               {...(to && { to: to(row, index) })}
               {...restButton}
             >

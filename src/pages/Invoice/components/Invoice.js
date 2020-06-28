@@ -1,31 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useEffect } from 'react';
-import { Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
+import { Container, Grid } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 import { Header, Page } from 'components';
-import DeliveryOrderProducts from './DeliveryOrderProducts';
+import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
 import DeliveryOrderData from './InvoiceData';
 import DeliveryOrderTotals from './InvoiceTotals';
 import { useStyles } from './Invoice.styles';
 
 const Invoice = (
   {
-    match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, updateDateDeliveryOrder, showAddProductModal,
-    showDeleteProductModal, showEditProductModal, updatePrice,
-  },
+    getInvoice, _id, nameProvider, provider, deliveryOrders, totals, data,
+  }
 ) => {
+  const { idInvoice } = useParams();
   const classes = useStyles();
 
   useEffect(() => {
-    if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
-  }, [idDeliveryOrder]);
-
-  useEffect(() => {
-    if (provider) getProducts(provider);
-  }, [provider]);
+    if (idInvoice && idInvoice !== _id) getInvoice(idInvoice);
+  }, [idInvoice]);
 
   /**
    * Handle change date
@@ -33,7 +29,7 @@ const Invoice = (
    * @private
    */
   const _handleChangeDate = value => {
-    updateDateDeliveryOrder(idDeliveryOrder, value);
+    // updateDateDeliveryOrder(idDeliveryOrder, value);
   };
 
   return (
@@ -52,33 +48,30 @@ const Invoice = (
           description=""
           buttons={[{
             variant: 'contained',
-            onClick: showAddProductModal,
+            // onClick: showAddProductModal,
             Icon: AddIcon,
             disableSvg: true,
             label: 'Añadir',
           }]}
         />
 
-        {
-          false && (
-          <DeliveryOrderProducts
-            products={products}
-            showDeleteProductModal={showDeleteProductModal}
-            showEditProductModal={showEditProductModal}
-            updatePrice={updatePrice}
-            date={date}
-          />
-          )
-        }
-
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={4}>
-            <DeliveryOrderData date={date} setDate={_handleChangeDate} />
+            <DeliveryOrderData
+              {...data}
+              setDate={_handleChangeDate}
+            />
           </Grid>
           <Grid item xs={12} md={8}>
             <DeliveryOrderTotals {...totals} />
           </Grid>
         </Grid>
+
+        <div className={classes.orders}>
+          {deliveryOrders?.map(props => (
+            <DeliveryOrderExpand {...props} />
+          ))}
+        </div>
 
       </Container>
     </Page>
@@ -86,26 +79,16 @@ const Invoice = (
 };
 
 Invoice.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      idDeliveryOrder: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  getProducts: PropTypes.func.isRequired,
-  getDeliveryOrder: PropTypes.func.isRequired,
-  provider: PropTypes.string,
-  nameProvider: PropTypes.string,
-  products: PropTypes.array.isRequired,
-  date: PropTypes.number,
-  totals: PropTypes.object,
-  _id: PropTypes.string,
-  updateDateDeliveryOrder: PropTypes.func.isRequired,
-  showAddProductModal: PropTypes.func.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
-  updatePrice: PropTypes.func.isRequired,
+  getInvoice: PropTypes.func.isRequired,
+  invoice: PropTypes.object.isRequired,
+  deliveryOrders: PropTypes.array.isRequired,
+  _id: PropTypes.string.isRequired,
+  nameProvider: PropTypes.string.isRequired,
+  provider: PropTypes.string.isRequired,
+  totals: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
-Invoice.displayName = 'DeliveryOrder';
+Invoice.displayName = 'Invoice';
 export const story = Invoice;
 export default memo(Invoice);
