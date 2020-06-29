@@ -61,7 +61,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@storybook/addon-actions": "^6.0.0-beta.37",
-    "@storybook/addon-docs": "^6.0.0-beta.36",
+    "@storybook/addon-docs": "^6.0.0-beta.37",
     "@storybook/addon-knobs": "^6.0.0-beta.37",
     "@storybook/addon-links": "^6.0.0-beta.36",
     "@storybook/addons": "^6.0.0-beta.37",
