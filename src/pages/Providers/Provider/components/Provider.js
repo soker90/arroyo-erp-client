@@ -9,9 +9,8 @@ import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-
 
 import { Header, LoadingScreen, Page } from 'components';
 import { useStyles } from 'pages/Providers/Provider/components/Provider.styles';
@@ -22,11 +21,12 @@ import { HASH_TABS, TABS } from '../constants';
 const Provider = (
   {
     provider, billing, getProvider, match: { params: { idProvider } }, showEditModal,
-    showEditProductModal, location: { hash }, createDeliveryOrder,
+    showEditProductModal, createDeliveryOrder, createInvoice,
   },
 ) => {
   const classes = useStyles();
   const history = useHistory();
+  const { hash } = useLocation();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
   const [disableInvoice, setDisableInvoice] = useState(true);
@@ -57,6 +57,9 @@ const Provider = (
     createDeliveryOrder(idProvider);
   };
 
+  const _handleClickNewInvoice = () => {
+    createInvoice();
+  };
   /**
    * imports de los componentes de cada pestaña
    * @private
@@ -84,7 +87,7 @@ const Provider = (
     }],
     [TABS.DELIVERY_ORDERS]: [{
       variant: 'contained',
-      onClick: _handleClickNewDeliveryOrder,
+      onClick: _handleClickNewInvoice,
       Icon: PostAddIcon,
       disableSvg: true,
       label: 'Crear factura',
@@ -189,6 +192,7 @@ Provider.propTypes = {
   createDeliveryOrder: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
+  createInvoice: PropTypes.func.isRequired,
 };
 
 Provider.displayName = 'Providers';

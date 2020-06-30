@@ -10,3 +10,4 @@ export const CREATE_PRODUCTS = requestActions('CREATE_PRODUCTS');
 export const GET_DELIVERY_ORDERS = requestActions('GET_DELIVERY_ORDERS');
 
 export const GET_INVOICES_BY_PROVIDER = requestActions('GET_INVOICES');
+export const CREATE_INVOICE = requestActions('CREATE_INVOICE');

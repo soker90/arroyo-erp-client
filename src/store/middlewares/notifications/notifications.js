@@ -1,4 +1,9 @@
-import { CREATE_PRODUCTS, CREATE_PROVIDER, EDIT_PROVIDER } from 'modules/providers/types';
+import {
+  CREATE_INVOICE,
+  CREATE_PRODUCTS,
+  CREATE_PROVIDER,
+  EDIT_PROVIDER,
+} from 'modules/providers/types';
 import {
   ADD_PRODUCT_TO_DELIVERY_ORDER,
   UPDATE_DATE_DELIVERY_ORDER,
@@ -19,6 +24,7 @@ const notifications = {
   [UPDATE_DATE_DELIVERY_ORDER.SUCCESS]: setPayload,
   [ADD_PRODUCT_TO_DELIVERY_ORDER.SUCCESS]: setPayload,
   [UPDATE_PRICE_PRODUCT.SUCCESS]: setPayload,
+  [CREATE_INVOICE.SUCCESS]: setPayload,
 };
 
 export default notifications;

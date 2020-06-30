@@ -22,6 +22,7 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
     const newSelected = selected.slice();
     newSelected.push(element);
     setSelected(newSelected);
+    // añadir a redux
   };
 
   /**
