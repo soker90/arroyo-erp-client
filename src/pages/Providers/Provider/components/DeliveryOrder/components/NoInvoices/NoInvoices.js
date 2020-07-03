@@ -1,18 +1,15 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Checkbox,
 } from '@material-ui/core';
+import uniqId from 'uniqid';
 
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
 
-const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
-  const [selected, setSelected] = useState([]);
-
-  useEffect(() => {
-    setDisableInvoice(selected.length < 1);
-  }, [selected.length, setDisableInvoice]);
-
+const NoInvoices = ({
+  deliveryOrders, selected, setSelected,
+}) => {
   /**
    * Add elemento to selected array
    * @param {String} element
@@ -22,7 +19,6 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
     const newSelected = selected.slice();
     newSelected.push(element);
     setSelected(newSelected);
-    // añadir a redux
   };
 
   /**
@@ -47,7 +43,7 @@ const NoInvoices = ({ deliveryOrders, setDisableInvoice }) => {
   };
 
   return deliveryOrders.map(props => (
-    <DeliveryOrderExpand {...props}>
+    <DeliveryOrderExpand {...props} key={uniqId()}>
       <Checkbox
         onChange={(ev, value) => _handleChangeCheckbox(props._id, value)}
         checked={selected.includes(props._id)}

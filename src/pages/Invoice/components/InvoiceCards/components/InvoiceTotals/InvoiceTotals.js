@@ -4,6 +4,7 @@ import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
 import { format } from 'utils';
@@ -15,7 +16,7 @@ const InvoiceTotals = ({
     <CardHeader
       title="Totales"
       action={[
-        <Tooltip title="Editar">
+        <Tooltip title="Editar" key={uniqId()}>
           <IconButton
             size="small"
           >
@@ -51,6 +52,6 @@ InvoiceTotals.propTypes = {
   taxBase: PropTypes.number.isRequired,
 };
 
-InvoiceTotals.displayName = 'DeliveryOrderTotals';
+InvoiceTotals.displayName = 'InvoiceTotals';
 export const story = InvoiceTotals;
 export default memo(InvoiceTotals);

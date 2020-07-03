@@ -1,8 +1,7 @@
 import React, {
-  lazy, memo, Suspense, useEffect, useState,
+  lazy, memo, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { LinearProgress } from '@material-ui/core';
 
 import NoInvoices from './components/NoInvoices';
 // import { useStyles } from './DeliveryOrder.styles';
@@ -14,7 +13,8 @@ const DeliveryOrder = ({
   inInvoices,
   getDeliveryOrders,
   idProvider,
-  setDisableInvoice,
+  selected,
+  setSelected,
 }) => {
   // const classes = useStyles();
   const [showInInvoices, setShowInInvoices] = useState(true);
@@ -29,12 +29,11 @@ const DeliveryOrder = ({
       <>
         <NoInvoices
           deliveryOrders={free}
-          setDisableInvoice={setDisableInvoice}
+          selected={selected}
+          setSelected={setSelected}
         />
         {showInInvoices && (
-          <Suspense fallback={<LinearProgress />}>
-            <InInvoices deliveryOrders={inInvoices} />
-          </Suspense>
+          <InInvoices deliveryOrders={inInvoices} />
         )}
       </>
     )
@@ -49,7 +48,8 @@ DeliveryOrder.propTypes = {
   }),
   idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
-  setDisableInvoice: PropTypes.func.isRequired,
+  setSelected: PropTypes.func.isRequired,
+  selected: PropTypes.array.isRequired,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

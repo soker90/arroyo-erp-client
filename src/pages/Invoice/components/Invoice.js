@@ -2,74 +2,37 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
-import { Container, Grid } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Container } from '@material-ui/core';
+import uniqId from 'uniqid';
 
-import { Header, Page } from 'components';
+import { LoadingScreen, Page } from 'components';
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
-import DeliveryOrderData from './InvoiceData';
-import DeliveryOrderTotals from './InvoiceTotals';
+import Header from './Header';
 import { useStyles } from './Invoice.styles';
+import InvoiceCards from './InvoiceCards';
 
-const Invoice = (
-  {
-    getInvoice, _id, nameProvider, provider, deliveryOrders, totals, data,
-  }
-) => {
+const Invoice = ({
+  getInvoice, id, nameProvider, provider, deliveryOrders, totals, data,
+}) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
 
   useEffect(() => {
-    if (idInvoice && idInvoice !== _id) getInvoice(idInvoice);
+    if (idInvoice && idInvoice !== id) getInvoice(idInvoice);
   }, [idInvoice]);
 
-  /**
-   * Handle change date
-   * @param {Date} value
-   * @private
-   */
-  const _handleChangeDate = value => {
-    // updateDateDeliveryOrder(idDeliveryOrder, value);
-  };
+  if (!id) return <LoadingScreen />;
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
       <Container maxWidth={false} className={classes.container}>
-        <Header
-          routes={[{
-            link: `/app/proveedores/${provider}`,
-            title: `${nameProvider}`,
-          },
-          {
-            link: `/app/proveedores/${provider}#Facturas`,
-            title: 'Facturas',
-          }]}
-          title="Factura"
-          description=""
-          buttons={[{
-            variant: 'contained',
-            // onClick: showAddProductModal,
-            Icon: AddIcon,
-            disableSvg: true,
-            label: 'Añadir',
-          }]}
-        />
+        <Header provider={provider} nameProvider={nameProvider} />
 
-        <Grid container spacing={3} className={classes.cards}>
-          <Grid item xs={12} md={4}>
-            <DeliveryOrderData
-              {...data}
-              setDate={_handleChangeDate}
-            />
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <DeliveryOrderTotals {...totals} />
-          </Grid>
-        </Grid>
+        <InvoiceCards totals={totals} data={data} />
 
         <div className={classes.orders}>
           {deliveryOrders?.map(props => (
-            <DeliveryOrderExpand {...props} />
+            <DeliveryOrderExpand {...props} key={uniqId()} />
           ))}
         </div>
 
@@ -80,13 +43,13 @@ const Invoice = (
 
 Invoice.propTypes = {
   getInvoice: PropTypes.func.isRequired,
-  invoice: PropTypes.object.isRequired,
-  deliveryOrders: PropTypes.array.isRequired,
-  _id: PropTypes.string.isRequired,
-  nameProvider: PropTypes.string.isRequired,
-  provider: PropTypes.string.isRequired,
-  totals: PropTypes.array.isRequired,
-  data: PropTypes.object.isRequired,
+  invoice: PropTypes.object,
+  deliveryOrders: PropTypes.array,
+  id: PropTypes.string,
+  nameProvider: PropTypes.string,
+  provider: PropTypes.string,
+  totals: PropTypes.object,
+  data: PropTypes.object,
 };
 
 Invoice.displayName = 'Invoice';

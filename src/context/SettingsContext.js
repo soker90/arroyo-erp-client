@@ -1,7 +1,6 @@
 import React, {
   createContext,
   useState,
-  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { THEMES } from 'constants/common';
@@ -20,10 +19,6 @@ export function SettingsProvider({ settings, children }) {
     setCurrentSettings(updatedSettings);
     storeSettings(updatedSettings);
   };
-
-  useEffect(() => {
-    document.dir = currentSettings.direction;
-  }, [currentSettings]);
 
   return (
     <SettingsContext.Provider

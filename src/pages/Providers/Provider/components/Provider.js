@@ -18,18 +18,19 @@ import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
 import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
 import { HASH_TABS, TABS } from '../constants';
 
+// TODO: refact pls
 const Provider = (
   {
     provider, billing, getProvider, match: { params: { idProvider } }, showEditModal,
     showEditProductModal, createDeliveryOrder, createInvoice,
-  },
+  }
 ) => {
   const classes = useStyles();
   const history = useHistory();
   const { hash } = useLocation();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
-  const [disableInvoice, setDisableInvoice] = useState(true);
+  const [deliveryOrdersSelected, setDeliveryOrdersSelected] = useState([]);
 
   useEffect(() => {
     if (idProvider) getProvider(idProvider);
@@ -58,7 +59,7 @@ const Provider = (
   };
 
   const _handleClickNewInvoice = () => {
-    createInvoice();
+    createInvoice(deliveryOrdersSelected);
   };
   /**
    * imports de los componentes de cada pestaña
@@ -70,7 +71,7 @@ const Provider = (
       [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
       [TABS.INVOICES]: lazy(() => import('./InvoicesTable')),
     }),
-    [],
+    []
   );
 
   /**
@@ -91,7 +92,7 @@ const Provider = (
       Icon: PostAddIcon,
       disableSvg: true,
       label: 'Crear factura',
-      disabled: disableInvoice,
+      disabled: deliveryOrdersSelected.length === 0,
     },
     {
       variant: 'contained',
@@ -101,7 +102,7 @@ const Provider = (
       label: 'Nuevo albarán',
     }],
     [TABS.INVOICES]: [],
-  }), [disableInvoice]);
+  }), [deliveryOrdersSelected.length === 0]);
 
   /**
    * Componente de la pestaña actual
@@ -175,7 +176,10 @@ const Provider = (
 
         <Box py={3} pb={6}>
           <Suspense fallback={<LoadingScreen />}>
-            <TabComponent setDisableInvoice={setDisableInvoice} />
+            <TabComponent
+              selected={deliveryOrdersSelected}
+              setSelected={setDeliveryOrdersSelected}
+            />
           </Suspense>
         </Box>
 
