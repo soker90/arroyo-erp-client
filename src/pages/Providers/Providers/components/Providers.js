@@ -1,15 +1,17 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
 
 import { Header, Page, TableMaterial } from 'components';
 
-import { useStyles } from './Providers.styles';
 import { BASE_PATH } from 'constants/index';
+import { useStyles } from './Providers.styles';
+import NewProviderModal from '../modals/NewProviderModal';
 
-const Providers = ({ providers, showCreateModal }) => {
+const Providers = ({ providers }) => {
   const classes = useStyles();
+  const [showModal, setShowModal] = useState(false);
 
   /**
    * Navega al proveedor seleccionado
@@ -19,40 +21,42 @@ const Providers = ({ providers, showCreateModal }) => {
   const _hrefRow = ({ _id }) => `${BASE_PATH}/proveedores/${_id}`;
 
   return (
-    <Page className={classes.root} title="Proveedores">
-      <Container maxWidth={false} className={classes.container}>
-        <Header
-          title="Provedores"
-          buttons={[
-            {
-              onClick: showCreateModal,
-              Icon: PlusCircleIcon,
-              label: 'Nuevo Proveedor'
-            }
-          ]}
-        />
-        <Box mt={3}>
-          <TableMaterial
-            className={classes.table}
-            columns={[
+    <>
+      <Page className={classes.root} title="Proveedores">
+        <Container maxWidth={false} className={classes.container}>
+          <Header
+            title="Provedores"
+            buttons={[
               {
-                title: 'Nombre',
-                field: 'name'
-              }
+                onClick: () => setShowModal(true),
+                Icon: PlusCircleIcon,
+                label: 'Nuevo Proveedor2',
+              },
             ]}
-            data={providers}
-            title={`Proveedores (${providers.length})`}
-            href={_hrefRow}
           />
-        </Box>
-      </Container>
-    </Page>
+          <Box mt={3}>
+            <TableMaterial
+              className={classes.table}
+              columns={[
+                {
+                  title: 'Nombre',
+                  field: 'name',
+                },
+              ]}
+              data={providers}
+              title={`Proveedores (${providers.length})`}
+              href={_hrefRow}
+            />
+          </Box>
+        </Container>
+      </Page>
+      <NewProviderModal show={showModal} close={setShowModal} />
+    </>
   );
 };
 
 Providers.propTypes = {
-  showCreateModal: PropTypes.func.isRequired,
-  providers: PropTypes.array.isRequired
+  providers: PropTypes.array.isRequired,
 };
 
 Providers.displayName = 'Providers';

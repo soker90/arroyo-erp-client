@@ -1,22 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {
-  lazy, memo, Suspense, useEffect, useMemo, useState,
+  lazy, memo, useEffect, useMemo, useState,
 } from 'react';
 import {
-  Box, Card, Container, Grid, Tab, Tabs,
+  Box, Container,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
-import { useHistory, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 
-import { Header, LoadingScreen, Page } from 'components';
+import { Page } from 'components';
 import { useStyles } from 'pages/Providers/Provider/components/Provider.styles';
-import ProviderInfo from 'pages/Providers/Provider/components/ProviderInfo';
-import ProviderBilling from 'pages/Providers/Provider/components/ProviderBilling';
 import { HASH_TABS, TABS } from '../constants';
+import Header from './Header';
+import ProviderTabs from './ProviderTabs';
+import ProviderExpandedInfo from './ProviderExpandedInfo/ProviderExpandedInfo';
 
 // TODO: refact pls
 const Provider = (
@@ -26,7 +25,6 @@ const Provider = (
   }
 ) => {
   const classes = useStyles();
-  const history = useHistory();
   const { hash } = useLocation();
   const [expand, setExpand] = useState(false);
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
@@ -78,7 +76,7 @@ const Provider = (
    * Buttons for header
    * @private
    */
-  const _buttons = useMemo(() => ({
+  const _buttons = {
     [TABS.PRODUCTS]: [{
       variant: 'contained',
       onClick: () => showEditProductModal(),
@@ -102,7 +100,7 @@ const Provider = (
       label: 'Nuevo albarán',
     }],
     [TABS.INVOICES]: [],
-  }), [deliveryOrdersSelected.length === 0]);
+  };
 
   /**
    * Componente de la pestaña actual
@@ -117,70 +115,29 @@ const Provider = (
     showEditModal(idProvider, provider);
   };
 
-  /**
-   * Event onChange tabs
-   * @param {Object} event
-   * @param {String} value
-   * @private
-   */
-  const _handleTabsChange = (event, value) => {
-    history.push(`#${value}`);
-  };
-
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
         <Header
-          routes={[{
-            link: '/app/proveedores',
-            title: 'Proveedores',
-          }]}
-          title={provider.name}
-          buttonsSecondary={[{
-            variant: 'text',
-            onClick: _toggleExpand,
-            Icon: expand ? ExpandLessIcon : ExpandMoreIcon,
-            disableSvg: true,
-            label: expand ? 'Ocultar información' : 'Mostrar información',
-          }]}
           buttons={_buttons[currentTab]}
+          expanded={expand}
+          onExpand={_toggleExpand}
+          title={provider?.name}
         />
-        {expand
-        && (
-          <Box mt={3} className={classes.cards}>
-            <Grid container spacing={3}>
-              <ProviderInfo {...provider} showEditModal={_showEditModal} />
-              <ProviderBilling {...billing} />
-            </Grid>
-          </Box>
-        )}
+        <ProviderExpandedInfo
+          expanded={expand}
+          billing={billing}
+          provider={provider}
+          showEditModal={_showEditModal}
+        />
 
-        <Card className={classes.tabs}>
-          <Tabs
-            onChange={_handleTabsChange}
-            scrollButtons="auto"
-            textColor="secondary"
-            value={currentTab}
-            variant="scrollable"
-          >
-            {Object.values(TABS)
-              .map(tab => (
-                <Tab
-                  key={tab}
-                  value={tab}
-                  label={tab}
-                />
-              ))}
-          </Tabs>
-        </Card>
+        <ProviderTabs currentTab={currentTab} />
 
         <Box py={3} pb={6}>
-          <Suspense fallback={<LoadingScreen />}>
-            <TabComponent
-              selected={deliveryOrdersSelected}
-              setSelected={setDeliveryOrdersSelected}
-            />
-          </Suspense>
+          <TabComponent
+            selected={deliveryOrdersSelected}
+            setSelected={setDeliveryOrdersSelected}
+          />
         </Box>
 
       </Container>

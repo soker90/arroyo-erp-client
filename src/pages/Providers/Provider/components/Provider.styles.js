@@ -1,4 +1,4 @@
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -12,11 +12,5 @@ export const useStyles = makeStyles(theme => ({
       paddingLeft: 64,
       paddingRight: 64,
     },
-  },
-  tabs: {
-    marginBottom: -theme.spacing(1),
-  },
-  cards: {
-    marginBottom: theme.spacing(3),
   },
 }));

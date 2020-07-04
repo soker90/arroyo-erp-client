@@ -8,26 +8,21 @@ const INITIAL_STATE = {
   phone: '',
   email: '',
   businessName: '',
-  cif: ''
+  cif: '',
 };
 
 const NewProviderModal = ({
   show,
   close,
   createProvider,
-  idProvider,
-  provider,
-  editProvider
 }) => {
   const [state, setState] = useReducer(
-    (state, newState) => ({ ...state, ...newState }),
-    provider || INITIAL_STATE
+    (oldState, newState) => ({ ...oldState, ...newState }),
+    INITIAL_STATE
   );
 
   useEffect(() => {
-    if (!show) {
-      setState(INITIAL_STATE);
-    }
+    if (!show) setState(INITIAL_STATE);
   }, [show]);
 
   /**
@@ -45,9 +40,7 @@ const NewProviderModal = ({
    * @private
    */
   const _handleSubmit = () => {
-    idProvider
-      ? editProvider(idProvider, state, close)
-      : createProvider(state, close);
+    createProvider(state, close);
   };
 
   /**
@@ -70,7 +63,7 @@ const NewProviderModal = ({
     <ModalGrid
       show={show}
       close={close}
-      title={idProvider ? `Editar ${provider.name}` : 'Crear proveedor'}
+      title="Crear proveedor"
       action={_handleSubmit}
     >
       {_renderInput('name', 'Nombre')}
@@ -87,8 +80,6 @@ NewProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createProvider: PropTypes.func.isRequired,
-  idProvider: PropTypes.string,
-  provider: PropTypes.object
 };
 
 NewProviderModal.displayName = 'NewProviderModal';

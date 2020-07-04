@@ -13,20 +13,23 @@ import {
 
 import { useStyles } from './ModalGrid.styles';
 
-
 const ModalGrid = ({
-  show, close, title, children, action, actions,
+  show, close, title, children, action, actions, setShow,
 }) => {
   const classes = useStyles();
 
-  if (!show) return null;
-
+  /**
+   * Close Modal
+   */
+  const onClose = () => {
+    setShow(false);
+  };
 
   /**
-     * Render all buttons
-     * @returns {CardActions}
-     * @private
-     */
+   * Render all buttons
+   * @returns {CardActions}
+   * @private
+   */
   const _renderButtons = () => (
     <>
       <Button onClick={close} className={classes.buttonCancel}>
@@ -41,23 +44,22 @@ const ModalGrid = ({
   );
 
   /**
-     *
-     * @param  value
-     * @param rest
-     * @param {number} index
-     * @returns {Button}
-     * @private
-     */
+   *
+   * @param  value
+   * @param rest
+   * @param {number} index
+   * @returns {Button}
+   * @private
+   */
   const _renderButton = ({ value, ...rest }, index) => (
     <Button key={index} {...rest}>
       {value}
     </Button>
   );
 
-
   return (
     <Modal
-      onClose={close}
+      onClose={close || onClose}
       open={show}
     >
       <Card
@@ -91,6 +93,7 @@ ModalGrid.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   action: PropTypes.func,
   actions: PropTypes.array,
+  setShow: PropTypes.func,
 };
 
 ModalGrid.displayName = 'ModalGrid';
