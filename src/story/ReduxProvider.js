@@ -1,11 +1,9 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
-import {select} from '@storybook/addon-knobs';
 
-import {configureStore} from '../store';
-import {ROLE_ADMIN, userRoles} from '../utils';
-import auth from '../reducers/auth';
+import account from 'reducers/account';
+import { configureStore } from '../store';
 
 /**
  * Provider of redux for storybook
@@ -14,20 +12,20 @@ import auth from '../reducers/auth';
  * @return {Provider}
  * @constructor
  */
-const ReduxProvider = ({state, children}) => {
-  const role = select('Rol', Object.keys(userRoles), ROLE_ADMIN, 'General');
-
+const ReduxProvider = ({ state, children }) => {
   const store = configureStore({
-    ...state, auth: {
-      ...auth,
-      userPermissions: userRoles[role],
-      userRole: role,
+    ...state,
+    account: {
+      ...account,
+      user: 'storybook',
     },
   });
 
-  return <Provider store={store}>
-    {children}
-  </Provider>
+  return (
+    <Provider store={store}>
+      {children}
+    </Provider>
+  );
 };
 
 ReduxProvider.propTypes = {

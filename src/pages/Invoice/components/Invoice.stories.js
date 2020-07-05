@@ -3,7 +3,8 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import DatePickerProvider from 'contexts/DatePickerProvider';
-import RoutesWrapper from 'story/RoutesWrapper';
+import { RoutesWrapper, ReduxProvider } from 'story';
+import { number } from '@storybook/addon-knobs';
 import { story as Invoice } from './Invoice';
 
 export default {
@@ -14,64 +15,103 @@ export default {
   },
   decorators: [storyFn => (
     <DatePickerProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
+      <ReduxProvider>
+        <RoutesWrapper>
+          {storyFn()}
+        </RoutesWrapper>
+      </ReduxProvider>
     </DatePickerProvider>
   ),
   ],
 };
 
-/**
- * code, productName, quantity, price, amount, diff
- */
+const deliveryOrders = [{
+  _id: '5eefbd56ddb4f9d2bbdae69b',
+  date: 1591905840000,
+  total: 4.248,
+  products: [
+    {
+      price: 1,
+      quantity: 3,
+      name: 'Test',
+      total: 4.248,
+    },
+    {
+      price: 1,
+      quantity: 3,
+      name: 'Test',
+      total: 4.248,
+    },
+  ],
+},
+{
+  _id: '5eefbd56ddb4f9d2bbdae69b',
+  date: 1591905840000,
+  total: 4.248,
+  products: [
+    {
+      price: 1,
+      quantity: 3,
+      name: 'Test',
+      total: 4.248,
+    },
+  ],
+}];
 
 const InvoiceStory = () => (
   <Invoice
-    match={{ params: { idDeliveryOrder: 'ggggg7777' } }}
     provider="ssssbbb33"
     nameProvider="La abuela"
-    date={Date.now()}
-    products={[
-      {
-        code: '2345',
-        productName: 'Pollo',
-        quantity: 6.6,
-        price: 1.3,
-        taxBase: 15,
-        diff: -1.2,
-      },
-      {
-        code: '1111',
-        productName: 'Lentejas',
-        quantity: 2,
-        price: 3.3,
-        taxBase: 1,
-        diff: 6.35,
-      },
-      {
-        code: '6846',
-        productName: 'Pan',
-        quantity: 2,
-        price: 0.5,
-        taxBase: 1,
-        diff: 0,
-      },
-    ]}
+    deliveryOrders={deliveryOrders}
     totals={{
+      taxBase: 3.6,
       iva: 19.3,
       re: 2.6,
       total: 63.25,
     }}
-    getDeliveryOrder={action('getDeliveryOrder')}
+    data={{
+      dateRegister: 1593796150946,
+      dateInvoice: 1593796150946,
+      nInvoice: '12/2020',
+      nOrder: number('Nº de orden', undefined, {}, 'Componente'),
+    }}
+    getInvoice={action('getInvoice')}
     getProducts={action('getProducts')}
     showAddProductModal={action('showAddProductModal')}
     showDeleteProductModal={action('showDeleteProductModal')}
     updateDateDeliveryOrder={action('updateDateDeliveryOrder')}
-    _id="3456789okhd"
+    id="3456789okhd"
   />
 );
 
 InvoiceStory.storyName = 'Vista';
 
-export { InvoiceStory };
+const InvoiceConfirmed = () => (
+  <Invoice
+    provider="ssssbbb33"
+    nameProvider="La abuela"
+    deliveryOrders={deliveryOrders}
+    totals={{
+      taxBase: 3.6,
+      iva: 19.3,
+      re: 2.6,
+      total: 63.25,
+    }}
+    data={{
+      dateRegister: 1593796150946,
+      dateInvoice: 1593796150946,
+      nOrder: 25,
+      nInvoice: '12/2020',
+    }}
+    getInvoice={action('getInvoice')}
+    getProducts={action('getProducts')}
+    showAddProductModal={action('showAddProductModal')}
+    showDeleteProductModal={action('showDeleteProductModal')}
+    updateDateDeliveryOrder={action('updateDateDeliveryOrder')}
+    id="3456789okhd"
+  />
+);
+
+InvoiceConfirmed.storyName = 'Confirmada';
+
+export { InvoiceStory, InvoiceConfirmed };

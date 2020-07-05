@@ -1,4 +1,4 @@
-import {addNotification} from 'reducers/notifications';
+import { addNotification } from 'reducers/notifications';
 import notifications from './notifications';
 
 export const notificationDefaultParams = {
@@ -9,27 +9,23 @@ export const notificationDefaultParams = {
 };
 
 const failureRegexp = /_FAILURE$/;
+const successRegexp = /_SUCCESS/;
 const internalError = '500: Error en el servidor';
 
 const _parseErrorMessage = data => {
   const statusCatch = data.response?.status;
-  if (statusCatch === 500) {
-    return internalError;
-  }
+  if (statusCatch === 500) return internalError;
 
-  if (typeof data === 'string') {
-    return data;
-  }
+  if (typeof data === 'string') return data;
 
   return data?.response?.data?.message || data?.message;
 };
 
-
 const notificationsMiddleware = store => next => action => {
-  const notification = notifications[action.type];
+  const notification = notifications.includes(action.type);
 
-  if (notification) {
-    const notificationParams = notification(action.payload);
+  if (notification || successRegexp.test(action.type)) {
+    const notificationParams = action.payload;
 
     if (notificationParams) {
       const notificationAction = addNotification({

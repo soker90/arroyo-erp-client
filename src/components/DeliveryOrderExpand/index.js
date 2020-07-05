@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
 } from '@material-ui/core';
 import uniqueId from 'uniqid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -12,18 +12,18 @@ import ProductsOrderTable from './ProductsOrderTable';
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader';
 
 const DeliveryOrderExpand = ({ products, ...props }) => (
-  <ExpansionPanel TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
-    <ExpansionPanelSummary
+  <Accordion TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
+    <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
       aria-label="Expand"
     >
       <DeliveryOrderExpandHeader {...props} />
-    </ExpansionPanelSummary>
+    </AccordionSummary>
 
-    <ExpansionPanelDetails>
+    <AccordionDetails>
       <ProductsOrderTable products={products} />
-    </ExpansionPanelDetails>
-  </ExpansionPanel>
+    </AccordionDetails>
+  </Accordion>
 );
 
 DeliveryOrderExpand.propTypes = {

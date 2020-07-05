@@ -26,7 +26,7 @@ const Invoice = ({
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
       <Container maxWidth={false} className={classes.container}>
-        <Header provider={provider} nameProvider={nameProvider} />
+        <Header provider={provider} nameProvider={nameProvider} nOrder={data.nOrder} />
 
         <InvoiceCards totals={totals} data={data} />
 
@@ -43,7 +43,6 @@ const Invoice = ({
 
 Invoice.propTypes = {
   getInvoice: PropTypes.func.isRequired,
-  invoice: PropTypes.object,
   deliveryOrders: PropTypes.array,
   id: PropTypes.string,
   nameProvider: PropTypes.string,
