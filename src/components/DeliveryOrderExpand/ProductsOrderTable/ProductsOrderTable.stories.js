@@ -2,7 +2,7 @@ import React from 'react';
 import { story as NoInvoicesTable } from './index';
 
 export default {
-  title: 'Rutas|Proveedor/Albaranes/Productos',
+  title: 'Rutas/Proveedor/Albaranes/Productos',
   parameters: {
     component: NoInvoicesTable,
     componentSubtitle: 'Tabla de productos',
@@ -44,8 +44,6 @@ const NoInvoicesTableStory = () => (
   />
 );
 
-NoInvoicesTableStory.story = {
-  name: 'Productos',
-};
+NoInvoicesTableStory.storyName = 'Productos';
 
 export { NoInvoicesTableStory };

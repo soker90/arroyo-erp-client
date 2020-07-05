@@ -1,65 +1,64 @@
 import React from 'react';
-import {action} from '@storybook/addon-actions';
-import {number, select} from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { number, select } from '@storybook/addon-knobs';
 
 import ThemeWrapper from 'story/ThemeWrapper';
-import {story as TableMaterial} from './TableMaterial';
-import {THEMES} from 'constants/common';
-import {format} from 'utils';
+import { THEMES } from 'constants/common';
+import { format } from 'utils';
+import { story as TableMaterial } from './TableMaterial';
 
 export default {
-  title: 'Componentes|Tabla',
+  title: 'Componentes/Tabla',
   component: TableMaterial,
 };
 
-const _renderTable = () => <TableMaterial
-  columns={[
-    {
-      title: 'Columna 1',
-      field: 'column',
-    },
-    {
-      title: 'Columna 2',
-      field: 'date',
-      render: ({date}) => format.date(date),
-    },
-    {
-      title: 'Columna 3',
-      field: 'column3',
-    },
-  ]}
-  data={[{column: 'Valor 1', date: new Date(), column3: 'Otro valor'}]}
-  title="Mi tabla"
-  refresh={action('Actualiza la tabla')}
-  onRowClick={action('Se ha pulsado en una fila')}
-  count={number('Numero de elementos', 20)}
-/>;
+const _renderTable = () => (
+  <TableMaterial
+    columns={[
+      {
+        title: 'Columna 1',
+        field: 'column',
+      },
+      {
+        title: 'Columna 2',
+        field: 'date',
+        render: ({ date }) => format.date(date),
+      },
+      {
+        title: 'Columna 3',
+        field: 'column3',
+      },
+    ]}
+    data={[{ column: 'Valor 1', date: new Date(), column3: 'Otro valor' }]}
+    title="Mi tabla"
+    refresh={action('Actualiza la tabla')}
+    onRowClick={action('Se ha pulsado en una fila')}
+    count={number('Numero de elementos', 20)}
+  />
+);
 
-const TableLight = () =>
+const TableLight = () => (
   <ThemeWrapper theme={select('Tema', THEMES, THEMES.LIGHT)}>
     {_renderTable()}
-  </ThemeWrapper>;
+  </ThemeWrapper>
+);
 
-TableLight.story = {
-  name: 'Estandar',
-};
+TableLight.storyName = 'Estandar';
 
-const TableDark = () =>
+const TableDark = () => (
   <ThemeWrapper theme={THEMES.ONE_DARK}>
     {_renderTable()}
-  </ThemeWrapper>;
+  </ThemeWrapper>
+);
 
-TableDark.story = {
-  name: 'Oscuro',
-};
+TableDark.storyName = 'Oscuro';
 
-const TableUnicorn = () =>
+const TableUnicorn = () => (
   <ThemeWrapper theme={THEMES.UNICORN}>
     {_renderTable()}
-  </ThemeWrapper>;
+  </ThemeWrapper>
+);
 
-TableUnicorn.story = {
-  name: 'Unicornio',
-};
+TableUnicorn.storyName = 'Unicornio';
 
-export {TableLight, TableDark, TableUnicorn};
+export { TableLight, TableDark, TableUnicorn };

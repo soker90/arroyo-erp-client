@@ -2,7 +2,7 @@ import React from 'react';
 import { story as InvoiceTotals } from './InvoiceTotals';
 
 export default {
-  title: 'Rutas|Factura/Totales',
+  title: 'Rutas/Factura/Totales',
   parameters: {
     component: InvoiceTotals,
     componentSubtitle: 'Totales',
@@ -18,8 +18,6 @@ const InvoiceTotalsStory = () => (
   />
 );
 
-InvoiceTotalsStory.story = {
-  name: 'Totales',
-};
+InvoiceTotalsStory.storyName = 'Totales';
 
 export { InvoiceTotalsStory };

@@ -2,7 +2,7 @@ import React from 'react';
 import { story as DeliveryOrderTotals } from './DeliveryOrderTotals';
 
 export default {
-  title: 'Rutas|Albarán/Totales',
+  title: 'Rutas/Albarán/Totales',
   parameters: {
     component: DeliveryOrderTotals,
     componentSubtitle: 'Totales',
@@ -13,7 +13,6 @@ export default {
  * code, productName, quantity, price, amount, diff
  */
 
-
 const DeliveryOrderTotalsStory = () => (
   <DeliveryOrderTotals
     iva={19.3}
@@ -22,8 +21,6 @@ const DeliveryOrderTotalsStory = () => (
   />
 );
 
-DeliveryOrderTotalsStory.story = {
-  name: 'Totales',
-};
+DeliveryOrderTotalsStory.storyName = 'Totales';
 
 export { DeliveryOrderTotalsStory };

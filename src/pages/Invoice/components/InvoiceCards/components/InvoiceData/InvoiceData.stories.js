@@ -6,7 +6,7 @@ import RoutesWrapper from 'story/RoutesWrapper';
 import { story as InvoiceData } from './InvoiceData';
 
 export default {
-  title: 'Rutas|Factura/Datos',
+  title: 'Rutas/Factura/Datos',
   parameters: {
     component: InvoiceData,
     componentSubtitle: 'Datos de la factura',
@@ -32,8 +32,6 @@ const InvoiceDataStory = () => (
   />
 );
 
-InvoiceDataStory.story = {
-  name: 'Datos',
-};
+InvoiceDataStory.storyName = 'Datos';
 
 export { InvoiceDataStory };

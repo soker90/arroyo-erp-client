@@ -1,19 +1,17 @@
 import React from 'react';
 
-import {story as Auth} from './Auth';
+import { story as Auth } from './Auth';
 
 export default {
-  title: 'Rutas|Login/Layout',
+  title: 'Rutas/Login/Layout',
   parameters: {
     component: Auth,
     componentSubtitle: 'Layout de Login',
   },
 };
 
-const Layout = () => <Auth/>;
+const Layout = () => <Auth />;
 
-Layout.story = {
-  name: 'Layout',
-};
+Layout.storyName = 'Layout';
 
-export {Layout};
+export { Layout };

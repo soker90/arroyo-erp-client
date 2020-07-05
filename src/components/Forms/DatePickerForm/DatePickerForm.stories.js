@@ -1,14 +1,16 @@
 import React from 'react';
-import {boolean, date, number, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import {
+  boolean, date, number, text,
+} from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import MomentUtils from '@date-io/moment';
 import 'moment/locale/es';
 
-import {story as DatePickerForm} from './DatePickerForm';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { story as DatePickerForm } from './DatePickerForm';
 
 export default {
-  title: 'Formularios|DatePicker',
+  title: 'Formularios/DatePicker',
   parameters: {
     component: DatePickerForm,
     componentSubtitle: 'Selector de fecha',
@@ -16,31 +18,28 @@ export default {
   decorators: [storyFn => <MuiPickersUtilsProvider utils={MomentUtils}>{storyFn()}</MuiPickersUtilsProvider>],
 };
 
-const Generic = () =>
+const Generic = () => (
   <DatePickerForm
     size={number('Tamaño', 3)}
     clearable={boolean('Con botón de limpiar', false)}
     label={text('Label', 'Etiqueta')}
     value={date('Fecha', new Date())}
     onChange={action('Fecha cambiada')}
-  />;
+  />
+);
 
-Generic.story = {
-  name: 'DatePicker',
-};
+Generic.storyName = 'DatePicker';
 
-const DatePickerClear = () =>
+const DatePickerClear = () => (
   <DatePickerForm
     size={number('Tamaño', 3)}
-    clearable={true}
+    clearable
     label={text('Label', 'Etiqueta')}
     value={date('Fecha', new Date())}
     onChange={action('Fecha cambiada')}
-  />;
+  />
+);
 
-DatePickerClear.story = {
-  name: 'Con botón de limpiar',
-};
+DatePickerClear.storyName = 'Con botón de limpiar';
 
-
-export {Generic, DatePickerClear};
+export { Generic, DatePickerClear };

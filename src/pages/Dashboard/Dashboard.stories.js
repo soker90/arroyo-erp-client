@@ -1,11 +1,11 @@
 import React from 'react';
+
+import { withKnobs } from '@storybook/addon-knobs';
+import RoutesWrapper from 'story/RoutesWrapper';
 import DashboardView from './DashboardView';
 
-import {withKnobs} from '@storybook/addon-knobs';
-import RoutesWrapper from 'story/RoutesWrapper';
-
 export default {
-  title: 'Rutas|Inicio',
+  title: 'Rutas/Inicio',
   parameters: {
     component: DashboardView,
     componentSubtitle: 'Vista del dashboard de inicio',
@@ -13,14 +13,12 @@ export default {
   decorators: [withKnobs],
 };
 
-const Dashboard = () => {
-  return <RoutesWrapper>
-    <DashboardView/>
-  </RoutesWrapper>;
-}
+const Dashboard = () => (
+  <RoutesWrapper>
+    <DashboardView />
+  </RoutesWrapper>
+);
 
-Dashboard.story = {
-  name: 'Inicio',
-};
+Dashboard.storyName = 'Inicio';
 
-export {Dashboard};
+export { Dashboard };

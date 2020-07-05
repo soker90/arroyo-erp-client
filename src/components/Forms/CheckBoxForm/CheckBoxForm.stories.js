@@ -1,18 +1,20 @@
 import React from 'react';
-import {boolean, number, select, text} from '@storybook/addon-knobs';
-import {Grid} from '@material-ui/core';
-import {action} from '@storybook/addon-actions';
+import {
+  boolean, number, select, text,
+} from '@storybook/addon-knobs';
+import { Grid } from '@material-ui/core';
+import { action } from '@storybook/addon-actions';
 
-import {story as CheckBoxForm} from './CheckBoxForm';
+import { story as CheckBoxForm } from './CheckBoxForm';
 
 export default {
-  title: 'Formularios|Check',
+  title: 'Formularios/Check',
   parameters: {
     component: CheckBoxForm,
   },
 };
 
-const CheckBox = () =>
+const CheckBox = () => (
   <Grid container spacing={3}>
     <CheckBoxForm
       label={text('Label', 'Checkbox')}
@@ -22,10 +24,9 @@ const CheckBox = () =>
       onChange={action('Estado de checkbox cambiado')}
       color={select('Color', ['primary', 'secondary', 'default'], 'primary')}
     />
-  </Grid>;
+  </Grid>
+);
 
-CheckBox.story = {
-  name: 'CheckBox',
-}
+CheckBox.storyName = 'CheckBox';
 
-export {CheckBox};
+export { CheckBox };

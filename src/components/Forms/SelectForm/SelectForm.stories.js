@@ -1,17 +1,17 @@
 import React from 'react';
-import {number, select, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import { number, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
-import {story as SelectForm} from './SelectForm';
+import { story as SelectForm } from './SelectForm';
 
 export default {
-  title: 'Formularios|Select',
+  title: 'Formularios/Select',
   parameters: {
     component: SelectForm,
   },
 };
 
-const Select = () =>
+const Select = () => (
   <SelectForm
     size={number('Tamaño', 3)}
     label={text('Label', 'Selección')}
@@ -20,10 +20,9 @@ const Select = () =>
   >
     <option value={0}>Opción 1</option>
     <option value={1}>Opción 2</option>
-  </SelectForm>;
+  </SelectForm>
+);
 
-Select.story = {
-  name: 'Select',
-};
+Select.storyName = 'Select';
 
-export {Select};
+export { Select };

@@ -1,41 +1,56 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardContent, CardHeader, Divider, Grid,
+  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
 } from '@material-ui/core';
 
-import { DatePickerForm, ItemCard } from 'components';
+import { ItemCard } from 'components';
+import uniqId from 'uniqid';
+import EditIcon from '@material-ui/icons/Edit';
+import { format } from 'utils';
+import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 
 const InvoiceData = ({
   dateRegister, dateInvoice, nInvoice, nOrder, setDate,
-}) => (
-  <Card>
-    <CardHeader title="Datos de la factura" />
-    <Divider />
-    <CardContent>
-      <Grid spacing={3} container>
-        <Grid item xs={12} md={6}>
-          <ItemCard label="Nº Orden" value={nOrder} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ItemCard label="Nº Factura" value={nInvoice} />
-        </Grid>
-        <DatePickerForm
-          size={6}
-          label="Fecha de registro"
-          value={dateRegister}
-          onChange={setDate}
+}) => {
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <>
+      <Card>
+        <CardHeader
+          title="Datos de la factura"
+          action={[
+            <Tooltip title="Editar" key={uniqId()}>
+              <IconButton
+                size="small"
+              >
+                <EditIcon />
+              </IconButton>
+            </Tooltip>,
+          ]}
         />
-        <DatePickerForm
-          size={6}
-          label="Fecha de factura"
-          value={dateInvoice}
-          onChange={setDate}
-        />
-      </Grid>
-    </CardContent>
-  </Card>
-);
+        <Divider />
+        <CardContent>
+          <Grid spacing={3} container>
+            <Grid item xs={12} md={6}>
+              <ItemCard label="Nº Orden" value={nOrder} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ItemCard label="Nº Factura" value={nInvoice} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ItemCard label="Fecha de registro" value={format.date(dateRegister)} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ItemCard label="Fecha de factura" value={format.date(dateInvoice)} />
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+      <EditInvoiceDataModal show={showModal} />
+    </>
+  );
+};
 
 InvoiceData.propTypes = {
   dateRegister: PropTypes.number,

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { story as EditProductModalView } from './EditProductModalView';
 
 export default {
-  title: 'Rutas|Albarán/Modales/Editar prducto',
+  title: 'Rutas/Albarán/Modales/Editar prducto',
   parameters: {
     component: EditProductModalView,
     componentSubtitle: 'Modal para editar un producto del albarán',
@@ -30,8 +30,6 @@ const EditProduct = () => (
   />
 );
 
-EditProduct.story = {
-  name: 'Editar producto',
-};
+EditProduct.storyName = 'Editar producto';
 
 export { EditProduct };

@@ -1,19 +1,17 @@
 import React from 'react';
 
-import {story as TopBar} from './TopBar';
+import { story as TopBar } from './TopBar';
 
 export default {
-  title: 'Rutas|Login/Layout/TopBar',
+  title: 'Rutas/Login/Layout/TopBar',
   parameters: {
     component: TopBar,
     componentSubtitle: 'Barra superior del login',
   },
 };
 
-const TopBarStory = () => <TopBar/>;
+const TopBarStory = () => <TopBar />;
 
-TopBarStory.story = {
-  name: 'TopBar',
-};
+TopBarStory.storyName = 'TopBar';
 
-export {TopBarStory};
+export { TopBarStory };

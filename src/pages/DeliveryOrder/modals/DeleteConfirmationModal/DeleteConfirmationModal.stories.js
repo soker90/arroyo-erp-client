@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { story as DeleteConfirmationModal } from './DeleteConfirmationModal';
 
 export default {
-  title: 'Rutas|Albarán/Modales/Eliminar prducto',
+  title: 'Rutas/Albarán/Modales/Eliminar prducto',
   parameters: {
     component: DeleteConfirmationModal,
     componentSubtitle: 'Modal de confimación para eliminar un producto del albarán',
@@ -22,8 +22,6 @@ const DeleteModal = () => (
   />
 );
 
-DeleteModal.story = {
-  name: 'Eliminar producto',
-};
+DeleteModal.storyName = 'Eliminar producto';
 
 export { DeleteModal };

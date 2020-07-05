@@ -4,8 +4,9 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import { TableMaterial } from 'components';
 import { Link } from 'react-router-dom';
+import { BASE_PATH } from 'constants/index';
+import { format } from 'utils';
 import { useStyles } from './InvoicesTable.styles';
-import { BASE_PATH } from '../../../../../constants';
 
 const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
   const classes = useStyles();
@@ -24,7 +25,7 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
         },
         {
           title: 'Fecha',
-          field: 'dateInvoice',
+          render: ({ dateInvoice }) => format.date(dateInvoice),
         },
         {
           title: 'Importe',

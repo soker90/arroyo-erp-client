@@ -7,7 +7,7 @@ import RoutesWrapper from 'story/RoutesWrapper';
 import { story as Invoice } from './Invoice';
 
 export default {
-  title: 'Rutas|Factura',
+  title: 'Rutas/Factura',
   parameters: {
     component: Invoice,
     componentSubtitle: 'Vista de factura',
@@ -72,8 +72,6 @@ const InvoiceStory = () => (
   />
 );
 
-InvoiceStory.story = {
-  name: 'Vista',
-};
+InvoiceStory.storyName = 'Vista';
 
 export { InvoiceStory };

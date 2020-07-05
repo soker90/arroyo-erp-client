@@ -4,7 +4,7 @@ import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
 import { story as DeliveryOrder } from '../DeliveryOrder';
 
 export default {
-  title: 'Rutas|Albarán/Productos',
+  title: 'Rutas/Albarán/Productos',
   parameters: {
     component: DeliveryOrderProducts,
     componentSubtitle: 'Tabla de productos',
@@ -49,8 +49,6 @@ const DeliveryOrderProductsStory = () => (
   />
 );
 
-DeliveryOrderProductsStory.story = {
-  name: 'Productos',
-};
+DeliveryOrderProductsStory.storyName = 'Productos';
 
 export { DeliveryOrderProductsStory };

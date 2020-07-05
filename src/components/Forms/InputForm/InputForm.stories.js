@@ -1,17 +1,19 @@
 import React from 'react';
-import {boolean, number, select, text} from '@storybook/addon-knobs';
-import {action} from '@storybook/addon-actions';
+import {
+  boolean, number, select, text,
+} from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
-import {story as InputForm} from './InputForm';
+import { story as InputForm } from './InputForm';
 
 export default {
-  title: 'Formularios|Input Text',
+  title: 'Formularios/Input Text',
   parameters: {
     component: InputForm,
   },
 };
 
-const InputText = () =>
+const InputText = () => (
   <InputForm
     variant={select('Estilo', ['filled', 'outlined', 'standard'], 'standard')}
     onChange={action('Ha cambiado el contenido')}
@@ -20,38 +22,34 @@ const InputText = () =>
     value={text('Texto', 'mi texto')}
     size={number('Tamaño', 6)}
   />
+);
 
+InputText.storyName = 'InputText';
 
-InputText.story = {
-  name: 'InputText',
-};
-
-const Outlined = () =>
+const Outlined = () => (
   <InputForm
-    variant='outlined'
+    variant="outlined"
     onChange={action('Ha cambiado el contenido')}
     disabled={boolean('Deshabilitado', false)}
     label={text('Etiqueta', 'Etiqueta')}
     value={text('Texto', 'mi texto')}
     size={number('Tamaño', 12)}
   />
+);
 
-Outlined.story = {
-  name: 'Outlined',
-};
+Outlined.storyName = 'Outlined';
 
-const Filled = () =>
+const Filled = () => (
   <InputForm
-    variant='filled'
+    variant="filled"
     onChange={action('Ha cambiado el contenido')}
     disabled={boolean('Deshabilitado', false)}
     label={text('Etiqueta', 'Etiqueta')}
     value={text('Texto', 'mi texto')}
     size={number('Tamaño', 12)}
   />
+);
 
-Filled.story = {
-  name: 'Filled',
-};
+Filled.storyName = 'Filled';
 
-export {InputText, Outlined, Filled};
+export { InputText, Outlined, Filled };

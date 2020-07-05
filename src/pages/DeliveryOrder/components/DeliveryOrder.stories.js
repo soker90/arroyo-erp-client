@@ -7,7 +7,7 @@ import RoutesWrapper from 'story/RoutesWrapper';
 import { story as DeliveryOrder } from './DeliveryOrder';
 
 export default {
-  title: 'Rutas|Albarán',
+  title: 'Rutas/Albarán',
   parameters: {
     component: DeliveryOrder,
     componentSubtitle: 'Vista de albarán',
@@ -74,8 +74,6 @@ const DeliveryOrderStory = () => (
   />
 );
 
-DeliveryOrderStory.story = {
-  name: 'Vista',
-};
+DeliveryOrderStory.storyName = 'Vista';
 
 export { DeliveryOrderStory };

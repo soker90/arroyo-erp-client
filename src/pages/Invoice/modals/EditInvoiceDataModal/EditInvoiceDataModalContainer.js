@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { updateProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import EditProductModalView from './EditProductModalView';
+import EditInvoiceDataModalView from './EditInvoiceDataModalView';
 
 const mapStateToProps = ({ products: { products } }) => ({
   products,
@@ -13,5 +13,5 @@ const mapDispatchToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(EditProductModalView);
+  mapDispatchToProps
+)(EditInvoiceDataModalView);
