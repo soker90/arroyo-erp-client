@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ModalGrid, InputForm, DatePickerForm } from 'components';
 
 const EditInvoiceDataModalView = ({
-  show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, idInvoice,
+  show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -30,7 +30,7 @@ const EditInvoiceDataModalView = ({
   };
 
   const _handleSubmit = () => {
-    updateDataInvoice(idInvoice, state, _close);
+    updateDataInvoice(id, state, _close);
   };
 
   /**
@@ -78,17 +78,17 @@ const EditInvoiceDataModalView = ({
   /**
    * Renderiza un datepicker con opciones predeterimnadas
    * @param {String} label
-   * @param {String} id
+   * @param {String} name
    * @return {DatePickerForm}
    * @private
    */
-  const _renderDatePicker = (label, id) => (
+  const _renderDatePicker = (label, name) => (
     <DatePickerForm
       clearable
       size={4}
       label={label}
-      value={state[id]}
-      onAccept={date => _handleChangePicker(date, id)}
+      value={state[name]}
+      onAccept={date => _handleChangePicker(date, name)}
     />
   );
 
@@ -112,6 +112,8 @@ EditInvoiceDataModalView.propTypes = {
   dateInvoice: PropTypes.number,
   nInvoice: PropTypes.number,
   dateRegister: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  updateDataInvoice: PropTypes.func.isRequired,
 };
 
 EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView';

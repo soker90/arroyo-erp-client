@@ -14,6 +14,10 @@ const InvoiceData = ({
   dateRegister, dateInvoice, nInvoice, nOrder, setDate,
 }) => {
   const [showModal, setShowModal] = useState(false);
+
+  const _handleEditClick = () => {
+    setShowModal(true);
+  };
   return (
     <>
       <Card>
@@ -23,6 +27,7 @@ const InvoiceData = ({
             <Tooltip title="Editar" key={uniqId()}>
               <IconButton
                 size="small"
+                onClick={_handleEditClick}
               >
                 <EditIcon />
               </IconButton>
@@ -47,7 +52,7 @@ const InvoiceData = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditInvoiceDataModal show={showModal} />
+      <EditInvoiceDataModal show={showModal} setShow={setShowModal} />
     </>
   );
 };

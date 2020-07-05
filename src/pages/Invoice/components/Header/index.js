@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Header } from 'components';
 
-const HeaderInvoice = ({ provider, nameProvider }) => (
+const HeaderInvoice = ({ provider, nameProvider, nOrder }) => (
   <Header
     routes={[{
       link: `/app/proveedores/${provider}`,
@@ -16,13 +16,23 @@ const HeaderInvoice = ({ provider, nameProvider }) => (
     }]}
     title="Factura"
     description=""
-    buttons={[{
-      variant: 'contained',
-      onClick: () => 'showAddProductModal',
-      Icon: AddIcon,
-      disableSvg: true,
-      label: 'Añadir',
-    }]}
+    buttons={[
+      ...(!nOrder && [{
+        variant: 'contained',
+        color: 'secondary',
+        onClick: () => 'showAddProductModal',
+        Icon: AddIcon,
+        disableSvg: true,
+        label: 'Confirmar',
+      }]),
+      {
+        variant: 'contained',
+        onClick: () => 'showAddProductModal',
+        Icon: AddIcon,
+        disableSvg: true,
+        label: 'Añadir',
+      },
+    ]}
   />
 );
 

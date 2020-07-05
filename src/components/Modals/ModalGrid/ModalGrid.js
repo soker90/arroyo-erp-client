@@ -32,7 +32,7 @@ const ModalGrid = ({
    */
   const _renderButtons = () => (
     <>
-      <Button onClick={close} className={classes.buttonCancel}>
+      <Button onClick={close || onClose} className={classes.buttonCancel}>
         {action ? 'Cancelar' : 'Cerrar'}
       </Button>
       {action && (
