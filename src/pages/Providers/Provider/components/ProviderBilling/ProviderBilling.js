@@ -1,15 +1,18 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardContent, CardHeader, Divider, Grid, List} from '@material-ui/core';
+import {
+  Card, CardContent, CardHeader, Divider, Grid, List,
+} from '@material-ui/core';
 
-import {ItemCard} from 'components';
-import {useStyles} from './ProviderBilling.styles';
-import {format} from 'utils';
+import { ItemCard } from 'components';
+import { format } from 'utils';
+import { useStyles } from './ProviderBilling.styles';
 
 const ProviderBilling = (
   {
     first, second, third, four,
-  }) => {
+  }
+) => {
   const classes = useStyles();
 
   return (
@@ -21,14 +24,14 @@ const ProviderBilling = (
       <Card
         className={classes.root}
       >
-        <CardHeader title='Facturación'/>
-        <Divider/>
+        <CardHeader title="Facturación" />
+        <Divider />
         <CardContent className={classes.content}>
           <List>
-            <ItemCard label='1º trimestre' value={format.euro(first)}/>
-            <ItemCard label='2º trimestre' value={format.euro(second)}/>
-            <ItemCard label='3º trimestre' value={format.euro(third)}/>
-            <ItemCard label='4º trimestre' value={format.euro(four)}/>
+            <ItemCard label="1º trimestre" value={format.euro(first)} />
+            <ItemCard label="2º trimestre" value={format.euro(second)} />
+            <ItemCard label="3º trimestre" value={format.euro(third)} />
+            <ItemCard label="4º trimestre" value={format.euro(four)} />
           </List>
         </CardContent>
       </Card>
@@ -48,7 +51,7 @@ ProviderBilling.defaultProps = {
   second: 0,
   third: 0,
   four: 0,
-}
+};
 
 ProviderBilling.displayName = 'ProviderStats';
 

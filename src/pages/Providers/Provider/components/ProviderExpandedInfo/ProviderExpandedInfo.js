@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Grid } from '@material-ui/core';
-import ProviderInfo from '../ProviderInfo/ProviderInfo';
-import ProviderBilling from '../ProviderBilling/ProviderBilling';
+
+import ProviderInfo from '../ProviderInfo';
+import ProviderBilling from '../ProviderBilling';
 import { useStyles } from './ProviderExpandedInfo.styles';
 
 const ProviderExpandedInfo = ({
