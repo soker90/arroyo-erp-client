@@ -1,7 +1,7 @@
-import React, {Fragment, Suspense, memo} from 'react';
+import React, { Fragment, Suspense, memo } from 'react';
 import PropTypes from 'prop-types';
-import {makeStyles} from '@material-ui/styles';
-import {LinearProgress} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { LinearProgress } from '@material-ui/core';
 import TopBar from './TopBar';
 
 const useStyles = makeStyles(theme => ({
@@ -10,18 +10,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Auth = ({children}) => {
+const Auth = ({ children }) => {
   const classes = useStyles();
 
   return (
-    <Fragment>
-      <TopBar/>
+    <>
+      <TopBar />
       <main className={classes.content}>
-        <Suspense fallback={<LinearProgress/>}>
+        <Suspense fallback={<LinearProgress />}>
           {children}
         </Suspense>
       </main>
-    </Fragment>
+    </>
   );
 };
 
