@@ -28,6 +28,7 @@ const HeaderProvider = ({
       _handleClickNewDeliveryOrder,
       _handleClickNewInvoice,
       showEditProductModal,
+      // eslint-disable-next-line
     })), [currentTab]);
 
   return (

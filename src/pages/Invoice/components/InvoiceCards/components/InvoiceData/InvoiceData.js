@@ -11,28 +11,36 @@ import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 
 const InvoiceData = ({
-  dateRegister, dateInvoice, nInvoice, nOrder, setDate,
+  dateRegister, dateInvoice, nInvoice, nOrder,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
   const _handleEditClick = () => {
     setShowModal(true);
   };
+
+  /**
+   * Return the buttons of the card
+   * @returns {Array || false}
+   * @private
+   */
+  const _getActions = () => (!nOrder ? [
+    <Tooltip title="Editar" key={uniqId()}>
+      <IconButton
+        size="small"
+        onClick={_handleEditClick}
+      >
+        <EditIcon />
+      </IconButton>
+    </Tooltip>,
+  ] : false);
+
   return (
     <>
       <Card>
         <CardHeader
           title="Datos de la factura"
-          action={[
-            <Tooltip title="Editar" key={uniqId()}>
-              <IconButton
-                size="small"
-                onClick={_handleEditClick}
-              >
-                <EditIcon />
-              </IconButton>
-            </Tooltip>,
-          ]}
+          action={_getActions()}
         />
         <Divider />
         <CardContent>
@@ -60,7 +68,6 @@ const InvoiceData = ({
 InvoiceData.propTypes = {
   dateRegister: PropTypes.number,
   dateInvoice: PropTypes.number,
-  setDate: PropTypes.func.isRequired,
   nInvoice: PropTypes.string,
   nOrder: PropTypes.number.isRequired,
 };

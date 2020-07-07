@@ -5,7 +5,6 @@ import { ConfirmModal } from 'components/Modals';
 const ConfirmInvoiceModal = ({
   confirmInvoice, id, setShow, ...rest
 }) => {
-  console.log(confirmInvoice, rest);
   const _close = () => {
     setShow(false);
   };
@@ -41,10 +40,10 @@ const ConfirmInvoiceModal = ({
 
 ConfirmInvoiceModal.propTypes = {
   setShow: PropTypes.func,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   confirmInvoice: PropTypes.func.isRequired,
 };
 
-ConfirmInvoiceModal.displayName = 'DeleteConfirmationModal';
+ConfirmInvoiceModal.displayName = 'ConfirmInvoiceModal';
 export const story = ConfirmInvoiceModal;
 export default memo(ConfirmInvoiceModal);

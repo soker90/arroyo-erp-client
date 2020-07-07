@@ -2,6 +2,7 @@ import React, { memo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm, DatePickerForm } from 'components';
+import format from 'utils/format';
 
 const EditInvoiceDataModalView = ({
   show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id,
@@ -30,7 +31,13 @@ const EditInvoiceDataModalView = ({
   };
 
   const _handleSubmit = () => {
-    updateDataInvoice(id, state, _close);
+    updateDataInvoice(id, {
+      data: {
+        nInvoice: state.nInvoice,
+        dateInvoice: format.dateToSend(state.dateInvoice),
+        dateRegister: format.dateToSend(state.dateRegister),
+      },
+    }, _close);
   };
 
   /**
@@ -39,7 +46,7 @@ const EditInvoiceDataModalView = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') updateDataInvoice();
+    if (key === 'Enter') _handleSubmit();
   };
 
   /**
@@ -110,7 +117,7 @@ EditInvoiceDataModalView.propTypes = {
   show: PropTypes.bool.isRequired,
   setShow: PropTypes.func.isRequired,
   dateInvoice: PropTypes.number,
-  nInvoice: PropTypes.number,
+  nInvoice: PropTypes.string,
   dateRegister: PropTypes.number,
   id: PropTypes.string.isRequired,
   updateDataInvoice: PropTypes.func.isRequired,

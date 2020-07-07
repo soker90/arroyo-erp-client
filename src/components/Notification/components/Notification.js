@@ -1,11 +1,11 @@
-import React, {memo, useEffect} from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import MySnackbarContentWrapper from './MySnackbarContentWrapper';
-import {useStyles} from './Notification.styles';
+import { useStyles } from './Notification.styles';
 
-const Notification = ({notification}) => {
+const Notification = ({ notification }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -14,29 +14,29 @@ const Notification = ({notification}) => {
   }, [notification]);
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+    if (reason === 'clickaway') return;
 
     setOpen(false);
   };
 
-  return <Snackbar
-    anchorOrigin={{
-      vertical: 'top',
-      horizontal: 'right',
-    }}
-    open={open}
-    autoHideDuration={6000 || notification.autoDismiss}
-    onClose={handleClose}
-    className={classes.root}
-  >
-    <MySnackbarContentWrapper
+  return (
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={open}
+      autoHideDuration={2000 || notification.autoDismiss}
       onClose={handleClose}
-      variant={notification.level || 'success'}
-      message={notification.message}
-    />
-  </Snackbar>
+      className={classes.root}
+    >
+      <MySnackbarContentWrapper
+        onClose={handleClose}
+        variant={notification.level || 'success'}
+        message={notification.message}
+      />
+    </Snackbar>
+  );
 };
 
 Notification.propTypes = {
