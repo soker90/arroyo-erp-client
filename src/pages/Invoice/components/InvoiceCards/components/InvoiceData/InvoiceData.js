@@ -69,7 +69,7 @@ InvoiceData.propTypes = {
   dateRegister: PropTypes.number,
   dateInvoice: PropTypes.number,
   nInvoice: PropTypes.string,
-  nOrder: PropTypes.number.isRequired,
+  nOrder: PropTypes.number,
 };
 
 InvoiceData.displayName = 'InvoiceData';

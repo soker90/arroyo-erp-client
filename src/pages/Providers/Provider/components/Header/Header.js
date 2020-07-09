@@ -7,7 +7,7 @@ import { getButtons } from './utils';
 
 const HeaderProvider = ({
   title, onExpand, expanded, createDeliveryOrder, idProvider, deliveryOrdersSelected,
-  createInvoice, showEditProductModal, currentTab,
+  createInvoice, showEditProductModal, currentTab, resetSelected,
 }) => {
   /**
    * Navega a la página de nuevo albarán
@@ -15,6 +15,7 @@ const HeaderProvider = ({
    */
   const _handleClickNewDeliveryOrder = () => {
     createDeliveryOrder(idProvider);
+    resetSelected();
   };
 
   const _handleClickNewInvoice = () => {
@@ -29,7 +30,7 @@ const HeaderProvider = ({
       _handleClickNewInvoice,
       showEditProductModal,
       // eslint-disable-next-line
-    })), [currentTab]);
+    })), [currentTab, deliveryOrdersSelected.length === 0]);
 
   return (
     <Header
@@ -60,6 +61,7 @@ HeaderProvider.propTypes = {
   createInvoice: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   currentTab: PropTypes.string.isRequired,
+  resetSelected: PropTypes.func.isRequired,
 };
 
 HeaderProvider.displayName = 'Provider-Header';

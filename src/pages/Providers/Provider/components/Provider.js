@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {
-  lazy, memo, useEffect, useState,
+  lazy, memo, useCallback, useEffect, useState,
 } from 'react';
 import {
   Box, Container,
@@ -35,6 +35,7 @@ const Provider = ({
     HASH_TABS[hash]
     && setCurrentTab(HASH_TABS[hash]);
   }, [hash]);
+
   /**
    * Expande o contrae la información
    * @private
@@ -42,6 +43,14 @@ const Provider = ({
   const _toggleExpand = () => {
     setExpand(!expand);
   };
+
+  /**
+   * Reset delivery orders selected
+   * @private
+   */
+  const _resetSelectedOrders = useCallback(() => {
+    setDeliveryOrdersSelected([]);
+  }, [setDeliveryOrdersSelected]);
 
   /**
    * imports de los componentes de cada pestaña
@@ -76,6 +85,7 @@ const Provider = ({
           title={provider?.name}
           deliveryOrdersSelected={deliveryOrdersSelected}
           idProvider={idProvider}
+          resetSelected={_resetSelectedOrders}
           {...props}
         />
         <ProviderExpandedInfo

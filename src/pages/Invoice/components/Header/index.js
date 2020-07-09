@@ -22,7 +22,7 @@ const HeaderInvoice = ({
         }]}
         title="Factura"
         description=""
-        buttons={nOrder && [{
+        buttons={!nOrder && [{
           variant: 'contained',
           color: 'primary',
           onClick: () => setShowConfirmModal(true),

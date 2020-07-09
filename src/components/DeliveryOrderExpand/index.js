@@ -27,11 +27,7 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
 );
 
 DeliveryOrderExpand.propTypes = {
-  _id: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
   products: PropTypes.array.isRequired,
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 DeliveryOrderExpand.displayName = 'DeliveryOrderExpand';
