@@ -1,4 +1,6 @@
-export const adapterProviderInfo = ({name, address, phone, email, businessName, cif}) => [
+export const adapterProviderInfo = ({
+  name, address, city, postalCode, province, phone, email, businessName, cif,
+}) => [
   {
     label: 'Nombre',
     value: name,
@@ -14,6 +16,18 @@ export const adapterProviderInfo = ({name, address, phone, email, businessName, 
   {
     label: 'Dirección',
     value: address,
+  },
+  {
+    label: 'Localidad',
+    value: city,
+  },
+  {
+    label: 'Código postal',
+    value: postalCode,
+  },
+  {
+    label: 'Provincia',
+    value: province,
   },
   {
     label: 'Teléfono',

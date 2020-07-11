@@ -5,6 +5,9 @@ import { InputForm, ModalGrid } from 'components';
 const INITIAL_STATE = {
   name: '',
   address: '',
+  city: '',
+  postalCode: '',
+  province: '',
   phone: '',
   email: '',
   businessName: '',
@@ -44,18 +47,30 @@ const NewProviderModal = ({
   };
 
   /**
+   * Handle press enter key
+   * @param {string} key
+   * @private
+   */
+  const _handleKeyPress = ({ key }) => {
+    if (key === 'Enter') _handleSubmit();
+  };
+
+  /**
    * Render a input element
    * @param {string} name
    * @param {String} label
+   * @param {Object} options
    * @returns {InputForm}
    * @private
    */
-  const _renderInput = (name, label) => (
+  const _renderInput = (name, label, options = {}) => (
     <InputForm
       value={state[name] || ''}
       onChange={_handleChange}
       name={name}
       label={label}
+      onKeyPress={_handleKeyPress}
+      {...options}
     />
   );
 
@@ -66,10 +81,13 @@ const NewProviderModal = ({
       title="Crear proveedor"
       action={_handleSubmit}
     >
-      {_renderInput('name', 'Nombre')}
+      {_renderInput('name', 'Nombre', { autoFocus: true })}
       {_renderInput('businessName', 'Razón Social')}
       {_renderInput('cif', 'CIF/NIF')}
       {_renderInput('address', 'Dirección')}
+      {_renderInput('city', 'Localidad')}
+      {_renderInput('postalCode', 'Código Postal')}
+      {_renderInput('provincia', 'Provincia')}
       {_renderInput('phone', 'Teléfono')}
       {_renderInput('email', 'Correo electrónico')}
     </ModalGrid>

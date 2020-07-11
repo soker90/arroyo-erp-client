@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -11,32 +11,26 @@ import {
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
-import {ItemGroupsCard} from 'components';
-import {useStyles} from './ProviderInfo.styles';
-import {adapterProviderInfo} from './adapterProviderInfo';
+import { ItemGroupsCard } from 'components';
+import { useStyles } from './ProviderInfo.styles';
+import { adapterProviderInfo } from './adapterProviderInfo';
 
-const ProviderInfo = ({showEditModal, ...info}) => {
+const ProviderInfo = ({ ...info }) => {
   const classes = useStyles();
-
-  /**
-   * Show modal for edit provider
-   * @private
-   */
-  const _showEditModal = () => {
-    showEditModal();
-  };
+  const [showModal, setShowModal] = useState(false);
 
   /**
    * Render edit button
    * @return {Tooltip}
    * @private
    */
-  const _renderEditButton = () =>
-    <Tooltip title='Editar infomación'>
-      <IconButton size="small" onClick={_showEditModal}>
-        <EditIcon/>
+  const _renderEditButton = () => (
+    <Tooltip title="Editar infomación">
+      <IconButton size="small" onClick={() => setShowModal(true)}>
+        <EditIcon />
       </IconButton>
-    </Tooltip>;
+    </Tooltip>
+  );
 
   return (
     <Grid
@@ -45,16 +39,14 @@ const ProviderInfo = ({showEditModal, ...info}) => {
       xs={12}
       className={classes.root}
     >
-      <Card
-
-      >
+      <Card>
         <CardHeader
           action={_renderEditButton()}
-          title='Datos de contacto'
+          title="Datos de contacto"
         />
-        <Divider/>
+        <Divider />
         <CardContent className={classes.content}>
-          <ItemGroupsCard items={adapterProviderInfo(info)}/>
+          <ItemGroupsCard items={adapterProviderInfo(info)} />
         </CardContent>
       </Card>
     </Grid>
