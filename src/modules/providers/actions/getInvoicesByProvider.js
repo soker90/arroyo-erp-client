@@ -49,7 +49,7 @@ export const getInvoicesByProvider = id => async dispatch => {
   dispatch(_getInvoicesByProviderRequest());
 
   try {
-    const {data} = await axios(`invoices/provider/${id}`);
+    const {data} = await axios(`invoices/short?provider=${id}`);
 
     dispatch(_getInvoicesByProviderSuccess());
     dispatch(_getInvoicesByProviderSet(data));
