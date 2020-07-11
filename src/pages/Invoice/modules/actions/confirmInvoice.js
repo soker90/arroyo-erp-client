@@ -15,6 +15,10 @@ const _confirmInvoiceRequest = () => ({ type: CONFIRM_INVOICE.REQUEST });
  */
 const _confirmInvoiceSuccess = () => ({
   type: CONFIRM_INVOICE.SUCCESS,
+  payload: {
+    level: 'success',
+    message: 'Factura confirmada',
+  },
 });
 
 /**
@@ -25,7 +29,7 @@ const _confirmInvoiceSuccess = () => ({
  */
 const _confirmInvoiceSet = data => ({
   type: CONFIRM_INVOICE.SET,
-  payload: data,
+  payload: { data },
 });
 
 /**
