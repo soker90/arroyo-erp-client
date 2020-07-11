@@ -24,8 +24,12 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
           field: 'nOrder',
         },
         {
-          title: 'Fecha',
+          title: 'Fecha de factura',
           render: ({ dateInvoice }) => format.date(dateInvoice),
+        },
+        {
+          title: 'Nº de factura',
+          field: 'nInvoice',
         },
         {
           title: 'Importe',

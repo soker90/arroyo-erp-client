@@ -35,7 +35,6 @@ const _createDeliveryOrderSet = ({ data }) => ({
   payload: data,
 });
 
-
 /**
  * Error action for createDeliveryOrder
  * @param error
@@ -51,7 +50,7 @@ const _createDeliveryOrderError = error => ({
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
-export const createDeliveryOrder = provider => async dispatch => {
+export const createDeliveryOrder = (provider, callback) => async dispatch => {
   dispatch(_createDeliveryOrderRequest());
 
   try {
@@ -59,6 +58,8 @@ export const createDeliveryOrder = provider => async dispatch => {
 
     dispatch(_createDeliveryOrderSuccess());
     dispatch(_createDeliveryOrderSet(response));
+    // eslint-disable-next-line
+    callback?.();
     navigateTo(`albaranes/${response.data._id}`);
   } catch (error) {
     console.error(error);

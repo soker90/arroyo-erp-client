@@ -65,7 +65,6 @@ const DeliveryOrderStory = () => (
     }}
     getDeliveryOrder={action('getDeliveryOrder')}
     getProducts={action('getProducts')}
-    showAddProductModal={action('showAddProductModal')}
     showDeleteProductModal={action('showDeleteProductModal')}
     updateDateDeliveryOrder={action('updateDateDeliveryOrder')}
     updatePrice={action('updatePrice')}

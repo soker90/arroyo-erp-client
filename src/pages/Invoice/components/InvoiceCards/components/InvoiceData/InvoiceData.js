@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
 } from '@material-ui/core';
-
-import { ItemCard } from 'components';
 import uniqId from 'uniqid';
 import EditIcon from '@material-ui/icons/Edit';
+
+import { ItemCard } from 'components';
 import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 

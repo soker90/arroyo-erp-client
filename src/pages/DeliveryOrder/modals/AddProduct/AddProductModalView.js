@@ -2,20 +2,15 @@ import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
-
-const INITIAL_STATE = {
-  code: '',
-  product: '',
-  quantity: 0,
-  price: 0,
-};
+import { INITIAL_STATE } from './constants';
+import { hasInitialData } from './utils';
 
 const AddProductModal = ({
-  show, close, products, addProductToDeliveryOrder,
+  show, close, products, addProductToDeliveryOrder, createDeliveryOrder, idProvider,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -40,14 +35,25 @@ const AddProductModal = ({
     }
   };
 
+  /**
+   * Save product
+   * @private
+   */
   const _handleSave = () => {
     _saveProduct(close);
   };
 
+  /**
+   * Save product and create new product or create new delivery order
+   * @private
+   */
   const _handleSaveAndNew = () => {
-    _saveProduct(() => {
-      setState(INITIAL_STATE);
-    });
+    // eslint-disable-next-line
+    hasInitialData(state)
+      ? createDeliveryOrder(idProvider, close)
+      : _saveProduct(() => {
+        setState(INITIAL_STATE);
+      });
   };
 
   return (
@@ -59,7 +65,11 @@ const AddProductModal = ({
       show={show}
       title="Añadir producto"
       actions={[
-        { onClick: close, value: 'Cerrar', 'data-cy': 'modal-close-button' },
+        {
+          onClick: close,
+          value: 'Cerrar',
+          'data-cy': 'modal-close-button',
+        },
         {
           onClick: _handleSave,
           value: 'Guardar',
@@ -84,6 +94,8 @@ AddProductModal.propTypes = {
   close: PropTypes.func.isRequired,
   addProductToDeliveryOrder: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
+  createDeliveryOrder: PropTypes.func.isRequired,
+  idProvider: PropTypes.string.isRequired,
 };
 
 AddProductModal.displayName = 'AddProductModal';

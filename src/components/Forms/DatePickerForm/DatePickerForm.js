@@ -26,6 +26,9 @@ const DatePickerForm = (
         format={format}
         inputVariant={variant}
         autoOk={autoOk}
+        cancelLabel="Cancelar"
+        clearLabel="Limpiar"
+        okLabel="Aceptar"
         {...rest}
       />
     </Grid>

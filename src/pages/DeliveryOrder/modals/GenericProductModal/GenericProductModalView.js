@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
@@ -7,6 +7,7 @@ import { Typography, Box } from '@material-ui/core';
 const GenericProductModal = ({
   show, close, products, state, setState, ...rest
 }) => {
+  const inputCode = useRef(null);
   if (!products?.length) {
     return (
       <ModalGrid
@@ -67,8 +68,10 @@ const GenericProductModal = ({
    */
   const _handleKeyPress = ({ key }) => {
     const { actions } = rest;
-    // eslint-disable-next-line
-    if (key === 'Enter') actions[actions.length - 1].onClick();
+    if (key === 'Enter') {
+      inputCode.current.focus();
+      actions[actions.length - 1].onClick();
+    }
   };
 
   /**
@@ -116,7 +119,7 @@ const GenericProductModal = ({
         <option key={idx} value={item._id}>
           {item.name}
         </option>
-      ),
+      )
       )}
     </SelectForm>
   );
@@ -127,7 +130,11 @@ const GenericProductModal = ({
       close={close}
       {...rest}
     >
-      {_renderInput('code', 'Código', { onChange: _handleChangeCode })}
+      {_renderInput('code', 'Código', {
+        onChange: _handleChangeCode,
+        autoFocus: true,
+        inputRef: inputCode,
+      })}
       {_renderSelectProduct()}
       {_renderInput('quantity', 'Peso / Cantidad', { type: 'number' })}
       {_renderInput('price', 'Precio', { type: 'number' })}
