@@ -30,7 +30,7 @@ const Providers = ({ providers }) => {
               {
                 onClick: () => setShowModal(true),
                 Icon: PlusCircleIcon,
-                label: 'Nuevo Proveedor2',
+                label: 'Nuevo Proveedor',
               },
             ]}
           />

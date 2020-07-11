@@ -78,13 +78,13 @@ const NewProductModal = ({
     <ModalGrid
       show={show}
       close={close}
-      title={'Crear producto'}
+      title="Crear producto"
       action={_handleSubmit}
     >
       {_renderInput('code', 'Código')}
       {_renderInput('name', 'Nombre')}
-      {_renderInput('iva', 'IVA', { type: 'number' })}
-      {_renderInput('re', 'RE', { type: 'number' })}
+      {_renderInput('iva', 'IVA (%)', { type: 'number' })}
+      {_renderInput('re', 'RE (%)', { type: 'number' })}
       {_renderInput('rate', 'Tasa', { type: 'number' })}
     </ModalGrid>
   );
