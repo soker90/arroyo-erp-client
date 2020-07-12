@@ -30,7 +30,7 @@ const HeaderProvider = ({
       _handleClickNewInvoice,
       showEditProductModal,
       // eslint-disable-next-line
-    })), [currentTab, deliveryOrdersSelected.length === 0]);
+    })), [currentTab, deliveryOrdersSelected.length]);
 
   return (
     <Header
