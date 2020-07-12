@@ -23,9 +23,13 @@ const DeliveryOrderProducts = ({
    */
   // eslint-disable-next-line react/prop-types
   const _formatDiff = ({ diff }) => (
-    <Typography variant="subtitle1" style={{ color: diffColor(diff) }}>
-      {format.euro(diff)}
-    </Typography>
+    diff !== undefined
+      ? (
+        <Typography variant="subtitle1" style={{ color: diffColor(diff) }}>
+          {format.euro(diff)}
+        </Typography>
+      )
+      : 'Sin datos'
   );
 
   /**
