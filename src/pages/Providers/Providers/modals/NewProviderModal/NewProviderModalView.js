@@ -87,7 +87,7 @@ const NewProviderModal = ({
       {_renderInput('address', 'Dirección')}
       {_renderInput('city', 'Localidad')}
       {_renderInput('postalCode', 'Código Postal')}
-      {_renderInput('provincia', 'Provincia')}
+      {_renderInput('province', 'Provincia')}
       {_renderInput('phone', 'Teléfono')}
       {_renderInput('email', 'Correo electrónico')}
     </ModalGrid>

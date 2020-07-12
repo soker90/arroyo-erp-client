@@ -20,7 +20,8 @@ const DeliveryOrder = ({
   const [showInInvoices, setShowInInvoices] = useState(true);
 
   useEffect(() => {
-    getDeliveryOrders(idProvider);
+    if (idProvider) getDeliveryOrders(idProvider);
+
     setShowInInvoices(true); // remove
   }, [getDeliveryOrders, idProvider]);
 
