@@ -19,7 +19,7 @@ const Product = ({
     if (id) getProduct(id);
   }, [id]);
 
-  if (!id) return <LoadingScreen />;
+  if (!product._id) return <LoadingScreen />;
 
   return (
     <Page className={classes.root} title={`${product.name}`}>

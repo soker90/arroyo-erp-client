@@ -1,6 +1,6 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 import history from '../store/history';
-import {Router} from 'react-router-dom';
 
 /**
  * Wrapper for routes with storybook
@@ -9,10 +9,11 @@ import {Router} from 'react-router-dom';
  * @constructor
  */
 
-const RoutesWrapper = ({children}) =>
+const RoutesWrapper = ({ children }) => (
   <Router history={history}>
     {children}
-  </Router>;
+  </Router>
+);
 
 RoutesWrapper.displayName = 'RoutesWrapper';
 

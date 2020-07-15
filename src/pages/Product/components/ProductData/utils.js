@@ -17,7 +17,7 @@ export const generateLabels = ({
     title: 'Código',
     value: code,
   }, {
-    title: 'name',
+    title: 'Nombre',
     values: name,
   }, {
     title: 'Precio',

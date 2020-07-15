@@ -1,7 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
-import { story as DeliveryOrder } from '../DeliveryOrder';
 
 export default {
   title: 'Rutas/Albarán/Productos',

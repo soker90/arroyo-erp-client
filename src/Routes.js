@@ -61,6 +61,11 @@ const routesConfig = [
         component: lazy(() => import('pages/Invoice')),
       },
       {
+        exact: true,
+        path: '/app/productos/:id',
+        component: lazy(() => import('pages/Product')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],

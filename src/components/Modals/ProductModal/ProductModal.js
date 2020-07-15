@@ -1,28 +1,11 @@
-import React, { memo, useEffect, useReducer } from 'react';
+import React, { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { InputForm, ModalGrid } from 'components';
 
-const INITIAL_STATE = {
-  code: '',
-  name: '',
-  iva: 0,
-  re: 0,
-  rate: 0,
-  amount: 0,
-};
+import { InputForm, ModalGrid, SelectForm } from 'components';
 
-const NewProductModal = ({
-  show, close, createProduct, idProvider,
+const GenericProductModal = ({
+  show, close, state, setState, ...rest
 }) => {
-  const [state, setState] = useReducer(
-    (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
-
-  useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-  }, [show]);
-
   /**
    * Handle event onChange input
    * @param {String} name
@@ -74,12 +57,21 @@ const NewProductModal = ({
     />
   );
 
+
+  /**
+   * Handle press enter key
+   * @param {string} key
+   * @private
+   */
+  const _handleKeyPress = ({ key }) => {
+    if (key === 'Enter') _handleSubmit()
+  };
+
   return (
     <ModalGrid
       show={show}
       close={close}
-      title='Crear producto'
-      action={_handleSubmit}
+      {...rest}
     >
       {_renderInput('code', 'Código')}
       {_renderInput('name', 'Nombre')}
@@ -90,13 +82,15 @@ const NewProductModal = ({
   );
 };
 
-NewProductModal.propTypes = {
+GenericProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  createProduct: PropTypes.func.isRequired,
-  idProvider: PropTypes.string,
+  initialState: PropTypes.object,
+  products: PropTypes.array.isRequired,
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired,
 };
 
-NewProductModal.displayName = 'NewProductModal';
-
-export default memo(NewProductModal);
+GenericProductModal.displayName = 'GenericProductModal';
+export const story = GenericProductModal;
+export default memo(GenericProductModal);

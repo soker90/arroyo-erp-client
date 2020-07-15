@@ -13,10 +13,10 @@ const GenericProductModal = ({
       <ModalGrid
         show={show}
         close={close}
-        title="Añadir producto"
+        title='Añadir producto'
       >
         <Box p={3}>
-          <Typography variant="h5">
+          <Typography variant='h5'>
             El proveedor no tiene productos
           </Typography>
         </Box>
@@ -103,9 +103,9 @@ const GenericProductModal = ({
    */
   const _renderSelectProduct = () => (
     <SelectForm
-      label="Selecciona un producto"
+      label='Selecciona un producto'
       value={state.product}
-      name="provider"
+      name='provider'
       onChange={_handleSelect}
       disabled={!products?.length}
       size={6}
@@ -114,7 +114,7 @@ const GenericProductModal = ({
       }}
       onKeyPress={_handleKeyPress}
     >
-      <option value="">--------</option>
+      <option value=''>--------</option>
       {products?.map((item, idx) => (
         <option key={idx} value={item._id}>
           {item.name}
