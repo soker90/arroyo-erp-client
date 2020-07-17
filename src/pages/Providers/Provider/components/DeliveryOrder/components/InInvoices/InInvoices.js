@@ -4,21 +4,12 @@ import PropTypes from 'prop-types';
 import { TableMaterial } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Link } from 'react-router-dom';
 import { useStyles } from './InInvoices.styles';
 
-const InInvoices = ({ deliveryOrders: { data, count }, getDeliveryOrders, idProvider }) => {
+const InInvoices = ({ deliveryOrders: { data, count } }) => {
   const classes = useStyles();
-
-  useEffect(() => {
-    // getDeliveryOrders(idProvider);
-  }, [getDeliveryOrders, idProvider]);
-
-  /**
-   * Navega al albarán seleccionado
-   * @param _id
-   * @private
-   */
-  const _hrefRow = ({ _id }) => `${BASE_PATH}/albaranes/${_id}`;
 
   return (
     <TableMaterial
@@ -29,17 +20,21 @@ const InInvoices = ({ deliveryOrders: { data, count }, getDeliveryOrders, idProv
           render: ({ date }) => format.date(date),
         },
         {
-          title: 'Productos',
-          field: 'size',
-        },
-        {
           title: 'Total',
           render: ({ total }) => format.euro(total),
         },
       ]}
       data={data}
-      href={_hrefRow}
       count={count}
+      title='En factura'
+      actions={[
+        {
+          icon: VisibilityIcon,
+          tooltip: 'Ver',
+          component: Link,
+          to: ({ _id }) => `${BASE_PATH}/albaranes/${_id}`,
+        },
+      ]}
     />
   );
 };
@@ -49,8 +44,6 @@ InInvoices.propTypes = {
     data: PropTypes.array,
     count: PropTypes.number,
   }).isRequired,
-  idProvider: PropTypes.string,
-  // getDeliveryOrders: PropTypes.func.isRequired,
 };
 
 InInvoices.displayName = 'InInvoices';
