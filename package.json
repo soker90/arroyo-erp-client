@@ -61,7 +61,7 @@
     "@babel/core": "^7.10.5",
     "@storybook/addon-actions": "^6.0.0-rc.5",
     "@storybook/addon-docs": "^6.0.0-rc.5",
-    "@storybook/addon-knobs": "^6.0.0-rc.5",
+    "@storybook/addon-knobs": "^6.0.0-rc.8",
     "@storybook/addon-links": "^6.0.0-rc.5",
     "@storybook/addons": "^6.0.0-rc.5",
     "@storybook/preset-create-react-app": "^3.1.4",
