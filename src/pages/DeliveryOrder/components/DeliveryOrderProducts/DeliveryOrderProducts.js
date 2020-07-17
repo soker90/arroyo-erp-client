@@ -4,11 +4,14 @@ import { Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
+import { Link } from 'react-router-dom';
 import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
+import { BASE_PATH } from '../../../../constants';
 
 const DeliveryOrderProducts = ({
   products, showDeleteProductModal, showEditProductModal, updatePrice, date,
@@ -25,7 +28,7 @@ const DeliveryOrderProducts = ({
   const _formatDiff = ({ diff }) => (
     diff !== undefined
       ? (
-        <Typography variant="subtitle1" style={{ color: diffColor(diff) }}>
+        <Typography variant='subtitle1' style={{ color: diffColor(diff) }}>
           {format.euro(diff)}
         </Typography>
       )
@@ -93,6 +96,12 @@ const DeliveryOrderProducts = ({
       ]}
       data={products}
       actions={[
+        {
+          icon: VisibilityIcon,
+          tooltip: 'Ver producto',
+          component: Link,
+          to: ({ _id }) => `${BASE_PATH}/productos/${_id}`,
+        },
         {
           icon: RefreshIcon,
           tooltip: 'Actualizar precio',

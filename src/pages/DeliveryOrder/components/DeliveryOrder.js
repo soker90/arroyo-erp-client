@@ -55,14 +55,14 @@ const DeliveryOrder = (
               link: `/app/proveedores/${provider}#Albaranes`,
               title: 'Albaranes',
             }]}
-            title="Albarán"
-            description=""
+            title='Albarán'
+            description=''
             buttons={[{
               variant: 'contained',
               onClick: _openAddModal,
               Icon: AddIcon,
               disableSvg: true,
-              label: 'Añadir',
+              label: 'Producto',
             }]}
           />
 
