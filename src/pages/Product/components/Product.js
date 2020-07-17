@@ -8,6 +8,7 @@ import { LoadingScreen, Page } from 'components';
 import Header from './Header';
 import { useStyles } from './Product.styles';
 import ProductData from './ProductData/ProductData';
+import PricesTable from './PricesTable';
 
 const Product = ({
   product, prices, getProduct,
@@ -31,6 +32,7 @@ const Product = ({
         />
 
         <ProductData product={product} className={classes.table} />
+        <PricesTable prices={prices} />
 
       </Container>
     </Page>
@@ -40,6 +42,7 @@ const Product = ({
 Product.propTypes = {
   getProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
+  prices: PropTypes.array.isRequired,
 };
 
 Product.displayName = 'Product';

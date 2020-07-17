@@ -20,7 +20,7 @@ const ProductsOrderTable = ({ products }) => {
    * @private
    */
   const _renderNoProducts = () => (
-    <Typography color="textSecondary">
+    <Typography color='textSecondary'>
       No hay productos
     </Typography>
   );

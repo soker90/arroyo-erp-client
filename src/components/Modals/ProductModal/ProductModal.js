@@ -1,11 +1,15 @@
-import React, { memo, useRef } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
-import { InputForm, ModalGrid, SelectForm } from 'components';
+import { InputForm, ModalGrid } from 'components';
+import { addNotification } from 'reducers/notifications';
 
 const GenericProductModal = ({
-  show, close, state, setState, ...rest
+  show, close, state, setState, action, ...rest
 }) => {
+  const dispatch = useDispatch();
+
   /**
    * Handle event onChange input
    * @param {String} name
@@ -28,15 +32,25 @@ const GenericProductModal = ({
         iva: Number(state.iva) / 100,
         re: Number(state.re) / 100,
         ...(state.rate && { rate: Number(state.rate) }),
-        provider: idProvider,
       };
-
-      // idProvider ?
-      //  editProduct(idProvider, state, close) :
-      createProduct(model, close);
+      action(model, close);
     } catch (e) {
       console.error(e);
+      dispatch(addNotification({
+        level: 'error',
+        message: 'El IVA, el recargo o la tasa no son correctos',
+        dismissible: true,
+      }));
     }
+  };
+
+  /**
+   * Handle press enter key
+   * @param {string} key
+   * @private
+   */
+  const _handleKeyPress = ({ key }) => {
+    if (key === 'Enter') _handleSubmit();
   };
 
   /**
@@ -53,18 +67,10 @@ const GenericProductModal = ({
       onChange={_handleChange}
       name={name}
       label={label}
+      onKeyPress={_handleKeyPress}
       {...options}
     />
   );
-
-  /**
-   * Handle press enter key
-   * @param {string} key
-   * @private
-   */
-  const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
 
   return (
     <ModalGrid
@@ -88,6 +94,7 @@ GenericProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
+  action: PropTypes.func.isRequired,
 };
 
 GenericProductModal.displayName = 'GenericProductModal';

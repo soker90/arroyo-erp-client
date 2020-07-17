@@ -36,6 +36,15 @@ const ProductStory = () => (
     }}
     getProduct={action('getProduct')}
     match={{ params: { id: 'ggggg7777' } }}
+    prices={
+      [{
+        date: 1594288020000,
+        price: 1,
+      }, {
+        date: 1594927200000,
+        price: 2,
+      }]
+    }
   />
 );
 

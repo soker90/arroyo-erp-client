@@ -21,7 +21,7 @@ const DeliveryOrderExpandHeader = ({
       control={(
         <>
           {children}
-          <Tooltip title="Editar">
+          <Tooltip title='Editar'>
             <IconButton
               component={RouterLink}
               to={`/app/albaranes/${_id}`}
@@ -34,8 +34,8 @@ const DeliveryOrderExpandHeader = ({
     />
 
     <Typography
-      color="textPrimary"
-      variant="body1"
+      color='textPrimary'
+      variant='body1'
       style={{ marginTop: '0.75rem' }}
     >
       <strong>{format.date(date)}</strong>
