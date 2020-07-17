@@ -1,1 +1,1 @@
-export { default } from './GenericProductModalView';
+export { default } from './GenericProductModal';

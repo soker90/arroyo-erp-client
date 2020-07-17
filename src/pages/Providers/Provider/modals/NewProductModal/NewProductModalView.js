@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { InputForm, ModalGrid } from 'components';
+import ProductModal from 'components/Modals/ProductModal/ProductModal';
 
 const INITIAL_STATE = {
   code: '',
@@ -16,7 +16,7 @@ const NewProductModal = ({
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -24,69 +24,25 @@ const NewProductModal = ({
   }, [show]);
 
   /**
-   * Handle event onChange input
-   * @param {String} name
-   * @param {String} value
-   * @private
-   */
-  const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
-  };
-
-  /**
    * Handle event save button
    * @private
    */
-  const _handleSubmit = () => {
-    try {
-      const model = {
-        code: state.code,
-        name: state.name,
-        iva: Number(state.iva) / 100,
-        re: Number(state.re) / 100,
-        ...(state.rate && { rate: Number(state.rate) }),
-        provider: idProvider,
-      };
-
-      // idProvider ?
-      //  editProduct(idProvider, state, close) :
-      createProduct(model, close);
-    } catch (e) {
-      console.error(e);
-    }
+  const _handleSubmit = model => {
+    createProduct({
+      ...model,
+      provider: idProvider,
+    }, close);
   };
 
-  /**
-   * Render a input element
-   * @param {string} name
-   * @param {String} label
-   * @param {Object} options
-   * @returns {InputForm}
-   * @private
-   */
-  const _renderInput = (name, label, options = {}) => (
-    <InputForm
-      value={state[name] || ''}
-      onChange={_handleChange}
-      name={name}
-      label={label}
-      {...options}
-    />
-  );
-
   return (
-    <ModalGrid
+    <ProductModal
       show={show}
       close={close}
       title='Crear producto'
       action={_handleSubmit}
-    >
-      {_renderInput('code', 'Código')}
-      {_renderInput('name', 'Nombre')}
-      {_renderInput('iva', 'IVA (%)', { type: 'number' })}
-      {_renderInput('re', 'RE (%)', { type: 'number' })}
-      {_renderInput('rate', 'Tasa', { type: 'number' })}
-    </ModalGrid>
+      state={state}
+      setState={setState}
+    />
   );
 };
 

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { InputForm, ModalGrid } from 'components';
 import { addNotification } from 'reducers/notifications';
 
-const GenericProductModal = ({
+const ProductModal = ({
   show, close, state, setState, action, ...rest
 }) => {
   const dispatch = useDispatch();
@@ -87,7 +87,7 @@ const GenericProductModal = ({
   );
 };
 
-GenericProductModal.propTypes = {
+ProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   initialState: PropTypes.object,
@@ -97,6 +97,6 @@ GenericProductModal.propTypes = {
   action: PropTypes.func.isRequired,
 };
 
-GenericProductModal.displayName = 'GenericProductModal';
-export const story = GenericProductModal;
-export default memo(GenericProductModal);
+ProductModal.displayName = 'ProductModal';
+export const story = ProductModal;
+export default memo(ProductModal);
