@@ -57,14 +57,13 @@ const GenericProductModal = ({
     />
   );
 
-
   /**
    * Handle press enter key
    * @param {string} key
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit()
+    if (key === 'Enter') _handleSubmit();
   };
 
   return (

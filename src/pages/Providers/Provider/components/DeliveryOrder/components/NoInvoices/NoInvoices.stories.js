@@ -1,4 +1,7 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { action } from '@storybook/addon-actions';
+import RoutesWrapper from 'story/RoutesWrapper';
 import { story as NoInvoices } from './NoInvoices';
 
 export default {
@@ -7,6 +10,7 @@ export default {
     component: NoInvoices,
     componentSubtitle: 'Tabla de productos',
   },
+  decorators: [storyFn => <RoutesWrapper>{storyFn()}</RoutesWrapper>],
 };
 
 /**
@@ -15,6 +19,8 @@ export default {
 
 const NoInvoicesStory = () => (
   <NoInvoices
+    selected={[]}
+    setSelected={action('setSelected')}
     deliveryOrders={[{
       _id: '5ed3e474e5de9300173fdb3f',
       date: 1588612080000,
@@ -49,8 +55,7 @@ const NoInvoicesStory = () => (
       _id: '5ed6a0d722a52a0017cb6e9d',
       date: 1591210560000,
       total: 109.38,
-      products: [
-      ],
+      products: [],
     }, {
       _id: '5ee137dc0ff8bc0017ba0245',
       date: 1591904580000,

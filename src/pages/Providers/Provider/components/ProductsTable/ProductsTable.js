@@ -1,6 +1,10 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
 import { TableMaterial } from 'components';
+import { BASE_PATH } from 'constants/common';
 import { useStyles } from './ProductsTable.styles';
 
 const ProductsTable = ({ products, getProducts, idProvider }) => {
@@ -24,6 +28,14 @@ const ProductsTable = ({ products, getProducts, idProvider }) => {
         },
       ]}
       data={products}
+      actions={[
+        {
+          icon: VisibilityIcon,
+          tooltip: 'Ver',
+          component: Link,
+          to: ({ _id }) => `${BASE_PATH}/productos/${_id}`,
+        },
+      ]}
     />
   );
 };

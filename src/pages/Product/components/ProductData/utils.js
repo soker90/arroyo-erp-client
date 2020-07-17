@@ -11,25 +11,22 @@ import format from 'utils/format';
  * @returns {[]}
  */
 export const generateLabels = ({
-  code, name, price, iva, re, rate,
+  code, name, iva, re, rate,
 }) => [
   {
     title: 'Código',
     value: code,
   }, {
     title: 'Nombre',
-    values: name,
-  }, {
-    title: 'Precio',
-    value: format.euro(price),
+    value: name,
   }, {
     title: 'IVA',
     value: format.euro(iva),
   }, {
     title: 'Recargo',
     value: format.euro(re),
-  }, {
+  }, ...(rate ? [{
     title: 'Tasa',
     value: format.euro(rate),
-  },
+  }] : []),
 ];

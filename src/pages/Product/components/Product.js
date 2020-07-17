@@ -22,11 +22,15 @@ const Product = ({
   if (!product._id) return <LoadingScreen />;
 
   return (
-    <Page className={classes.root} title={`${product.name}`}>
+    <Page className={classes.root} title={`${product.name} | Producto`}>
       <Container maxWidth={false} className={classes.container}>
-        <Header provider={product.provider} nameProvider={product.nameProvider} />
+        <Header
+          provider={product.provider}
+          nameProvider={product.nameProvider}
+          product={product.name}
+        />
 
-        <ProductData product={product} />
+        <ProductData product={product} className={classes.table} />
 
       </Container>
     </Page>

@@ -13,7 +13,7 @@ export const useStyles = makeStyles(theme => ({
       paddingRight: 64,
     },
   },
-  cards: {
+  table: {
     marginTop: theme.spacing(2),
   },
   orders: {

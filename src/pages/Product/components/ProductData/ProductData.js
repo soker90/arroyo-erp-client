@@ -10,10 +10,11 @@ import ProductItemCard from './ProductItemCard';
 import { generateLabels } from './utils';
 
 const ProductData = ({
-  product,
+  product, className,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
+  console.log(product);
   /**
    * Show the modal
    * @private
@@ -24,13 +25,13 @@ const ProductData = ({
 
   return (
     <>
-      <Card>
+      <Card className={className}>
         <CardHeader
-          title="Totales"
+          title='Totales'
           action={[
-            <Tooltip title="Editar" key={uniqId()}>
+            <Tooltip title='Editar' key={uniqId()}>
               <IconButton
-                size="small"
+                size='small'
                 onClick={_handleEditClick}
               >
                 <EditIcon />
@@ -53,6 +54,7 @@ const ProductData = ({
 
 ProductData.propTypes = {
   product: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };
 
 ProductData.displayName = 'InvoiceTotals';
