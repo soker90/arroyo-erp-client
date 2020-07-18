@@ -76,6 +76,7 @@ const ProductModal = ({
     <ModalGrid
       show={show}
       close={close}
+      action={_handleSubmit}
       {...rest}
     >
       {_renderInput('code', 'Código')}
@@ -90,8 +91,6 @@ const ProductModal = ({
 ProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  initialState: PropTypes.object,
-  products: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,

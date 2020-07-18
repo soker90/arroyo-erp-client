@@ -29,9 +29,20 @@ const number = cell => {
   return num.format(cell);
 };
 
+/**
+ *
+ * @param cell
+ * @return {string}
+ */
+const percent = cell => {
+  const num = new Intl.NumberFormat('es-ES', { style: 'percent', maximumFractionDigits: 3 });
+  return num.format(cell);
+};
+
 export default {
   date,
   euro,
   number,
   dateToSend,
+  percent,
 };

@@ -1,1 +1,2 @@
-export { default } from './GenericProductModal';
+export { default } from './ProductModal';
+export * from './constants';

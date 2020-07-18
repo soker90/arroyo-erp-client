@@ -1,2 +1,2 @@
 export * from './getProduct';
-// export * from './updateDataInvoice';
+export * from './editProduct';

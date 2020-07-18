@@ -14,17 +14,18 @@ export const generateLabels = ({
   code, name, iva, re, rate,
 }) => [
   {
+    title: 'Nombre',
+    value: name,
+  },
+  {
     title: 'Código',
     value: code,
   }, {
-    title: 'Nombre',
-    value: name,
-  }, {
     title: 'IVA',
-    value: format.euro(iva),
+    value: format.percent(iva),
   }, {
     title: 'Recargo',
-    value: format.euro(re),
+    value: format.percent(re),
   }, ...(rate ? [{
     title: 'Tasa',
     value: format.euro(rate),

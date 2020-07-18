@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
@@ -8,13 +8,19 @@ import uniqId from 'uniqid';
 
 import ProductItemCard from './ProductItemCard';
 import { generateLabels } from './utils';
+import EditProductModal from '../../modals/EditProductModal';
 
 const ProductData = ({
   product, className,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
-  console.log(product);
+  /**
+   * Close the modal
+   * @private
+   */
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+
   /**
    * Show the modal
    * @private
@@ -43,11 +49,11 @@ const ProductData = ({
         <CardContent>
           <Grid container spacing={3}>
             {generateLabels(product)
-              .map(item => <ProductItemCard {...item} />)}
+              .map(item => <ProductItemCard {...item} key={uniqId()} />)}
           </Grid>
         </CardContent>
       </Card>
-      {/* <EditInvoiceTotalsModal show={showModal} setShow={setShowModal} /> */}
+      <EditProductModal show={showModal} close={_closeModal} product={product} />
     </>
   );
 };
