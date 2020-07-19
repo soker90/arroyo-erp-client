@@ -8,12 +8,12 @@ import { DatePickerForm } from 'components';
 
 const DeliveryOrderData = ({ date, setDate }) => (
   <Card>
-    <CardHeader title="Datos del albarán" />
+    <CardHeader title='Datos del albarán' />
     <Divider />
     <CardContent>
       <DatePickerForm
-        size={3}
-        label="Fecha"
+        size={12}
+        label='Fecha'
         value={date}
         onChange={setDate}
       />

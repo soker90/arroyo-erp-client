@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   provider: '',
   nameProvider: '',
   data: {},
-  deliveryOrders: {},
+  deliveryOrders: [],
   totals: {},
 };
 

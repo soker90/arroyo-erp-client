@@ -16,6 +16,7 @@ const INITIAL_STATE = {
     iva: 0,
     re: 0,
     total: 0,
+    taxBase: 0,
   },
 };
 

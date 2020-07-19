@@ -63,7 +63,7 @@ const AddProductModal = ({
       state={state}
       setState={setState}
       show={show}
-      title="Añadir producto"
+      title='Añadir producto'
       actions={[
         {
           onClick: close,
@@ -95,7 +95,7 @@ AddProductModal.propTypes = {
   addProductToDeliveryOrder: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
-  idProvider: PropTypes.string.isRequired,
+  idProvider: PropTypes.string,
 };
 
 AddProductModal.displayName = 'AddProductModal';

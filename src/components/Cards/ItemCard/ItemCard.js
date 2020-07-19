@@ -5,7 +5,6 @@ import { ListItem, Typography } from '@material-ui/core';
 
 import { useStyles } from './ItemCard.styles';
 
-
 const ItemCard = ({
   label, value, divider, className,
 }) => {
@@ -17,8 +16,8 @@ const ItemCard = ({
       disableGutters
       divider={divider}
     >
-      <Typography variant="subtitle2">{label}</Typography>
-      <Typography variant="h6">
+      <Typography variant='subtitle2'>{label}</Typography>
+      <Typography variant='h6'>
         {value}
       </Typography>
     </ListItem>

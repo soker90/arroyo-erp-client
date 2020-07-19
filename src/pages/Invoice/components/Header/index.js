@@ -20,8 +20,8 @@ const HeaderInvoice = ({
           link: `/app/proveedores/${provider}#Facturas`,
           title: 'Facturas',
         }]}
-        title="Factura"
-        description=""
+        title='Factura'
+        description=''
         buttons={!nOrder && [{
           variant: 'contained',
           color: 'primary',

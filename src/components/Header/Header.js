@@ -1,14 +1,18 @@
-import React, {memo} from 'react';
-import {Link as RouterLink} from 'react-router-dom';
+import React, { memo } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box} from '@material-ui/core';
+import {
+  Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box,
+} from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import uniqId from 'uniqid';
 
-import {useStyles} from './Header.styles';
+import { useStyles } from './Header.styles';
 
-const Header = ({className, routes, title, description, buttons, buttonsSecondary, ...rest}) => {
+const Header = ({
+  className, routes, title, description, buttons, buttonsSecondary, ...rest
+}) => {
   const classes = useStyles();
 
   /**
@@ -18,16 +22,17 @@ const Header = ({className, routes, title, description, buttons, buttonsSecondar
    * @return {Link}
    * @private
    */
-  const _itemNav = (link, title) =>
+  const _itemNav = (link, title) => (
     <Link
       key={uniqId()}
-      variant="body1"
-      color="inherit"
+      variant='body1'
+      color='inherit'
       to={link}
       component={RouterLink}
     >
       {title}
-    </Link>;
+    </Link>
+  );
 
   /**
    * Render button in header
@@ -51,60 +56,66 @@ const Header = ({className, routes, title, description, buttons, buttonsSecondar
       onClick={onClick}
       {...rest}
     >
-      {disableSvg ?
-        <Icon className={classes.actionIcon}/> :
-        <SvgIcon
-          fontSize="small"
-          className={classes.actionIcon}
-        >
-          <Icon/>
-        </SvgIcon>
-      }
+      {disableSvg
+        ? <Icon className={classes.actionIcon} />
+        : (
+          <SvgIcon
+            fontSize='small'
+            className={classes.actionIcon}
+          >
+            <Icon />
+          </SvgIcon>
+        )}
       {label}
-    </Button>);
+    </Button>
+  );
 
   return (
     <Grid
       container
       spacing={3}
-      justify="space-between"
+      justify='space-between'
       className={clsx(classes.root, className)}
       {...rest}
     >
       <Grid item>
         <Breadcrumbs
-          separator={<NavigateNextIcon fontSize="small"/>}
-          aria-label="breadcrumb"
+          separator={<NavigateNextIcon fontSize='small' />}
+          aria-label='breadcrumb'
         >
           {_itemNav('/app', 'Inicio')}
           {
-            routes.map(({link, title}) => _itemNav(link, title))
+            routes.map(({ link, title }) => _itemNav(link, title))
           }
           <Typography
-            variant="body1"
-            color="textPrimary"
+            variant='body1'
+            color='textPrimary'
           >
             {title}
           </Typography>
         </Breadcrumbs>
         <Typography
-          variant="h3"
-          color="textPrimary"
+          variant='h3'
+          color='textPrimary'
         >
           {description ?? title}
         </Typography>
         {
-          buttonsSecondary &&
-          <Box mt={2} style={{marginLeft: '-1rem'}}>
+          buttonsSecondary
+          && (
+          <Box mt={2} style={{ marginLeft: '-1rem' }}>
             {buttonsSecondary.map(_renderButton)}
           </Box>
+          )
         }
       </Grid>
       {
-        buttons &&
+        buttons
+        && (
         <Grid item>
           {buttons.map(_renderButton)}
         </Grid>
+        )
       }
     </Grid>
   );
@@ -118,14 +129,14 @@ Header.propTypes = {
   })),
   title: PropTypes.string,
   description: PropTypes.string,
-  buttons: PropTypes.arrayOf(PropTypes.shape({
+  buttons: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
     variant: PropTypes.string,
     disableSvg: PropTypes.bool,
     Icon: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
-  })),
+  })), PropTypes.bool]),
   buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
     variant: PropTypes.string,

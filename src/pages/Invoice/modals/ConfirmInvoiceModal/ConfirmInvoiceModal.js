@@ -17,8 +17,8 @@ const ConfirmInvoiceModal = ({
   return (
     <ConfirmModal
       {...rest}
-      title="Confirmación de factura"
-      description="Al aceptar confirmarás la factura y no permitirá realizar mas modificaciones"
+      title='Confirmación de factura'
+      description='Al aceptar confirmarás la factura y no permitirá realizar mas modificaciones'
       action={_handleSend}
       actions={[
         {

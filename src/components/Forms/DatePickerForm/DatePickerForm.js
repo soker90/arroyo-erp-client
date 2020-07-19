@@ -26,9 +26,9 @@ const DatePickerForm = (
         format={format}
         inputVariant={variant}
         autoOk={autoOk}
-        cancelLabel="Cancelar"
-        clearLabel="Limpiar"
-        okLabel="Aceptar"
+        cancelLabel='Cancelar'
+        clearLabel='Limpiar'
+        okLabel='Aceptar'
         {...rest}
       />
     </Grid>
@@ -47,7 +47,7 @@ DatePickerForm.propTypes = {
   /**
    * Fecha
    */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number, null]),
   /**
    * Función par el botón de aceptar
    */
@@ -82,6 +82,7 @@ DatePickerForm.defaultProps = {
   format: 'DD/MM/YYYY',
   size: 6,
   autoOk: true,
+  value: null,
 };
 
 DatePickerForm.displayName = 'DatePickerForm';

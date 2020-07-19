@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, List,
 } from '@material-ui/core';
+import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
 import { format } from 'utils';
@@ -10,8 +11,8 @@ import { useStyles } from './ProviderBilling.styles';
 
 const ProviderBilling = (
   {
-    first, second, third, four,
-  }
+    year, trimesters, annual,
+  },
 ) => {
   const classes = useStyles();
 
@@ -24,14 +25,21 @@ const ProviderBilling = (
       <Card
         className={classes.root}
       >
-        <CardHeader title="Facturación" />
+        <CardHeader title={`Facturación ${year}`} />
         <Divider />
         <CardContent className={classes.content}>
           <List>
-            <ItemCard label="1º trimestre" value={format.euro(first)} />
-            <ItemCard label="2º trimestre" value={format.euro(second)} />
-            <ItemCard label="3º trimestre" value={format.euro(third)} />
-            <ItemCard label="4º trimestre" value={format.euro(four)} />
+            {trimesters.map((value, index) => (
+              <ItemCard
+                label={`${index + 1}º trimestre`}
+                value={format.euro(value)}
+                key={uniqId()}
+              />
+            ))}
+            <ItemCard
+              label='Anual'
+              value={format.euro(annual)}
+            />
           </List>
         </CardContent>
       </Card>
@@ -40,19 +48,17 @@ const ProviderBilling = (
 };
 
 ProviderBilling.propTypes = {
-  first: PropTypes.number,
-  second: PropTypes.number,
-  third: PropTypes.number,
-  four: PropTypes.number,
+  trimesters: PropTypes.array,
+  year: PropTypes.number,
+  annual: PropTypes.number,
 };
 
 ProviderBilling.defaultProps = {
-  first: 0,
-  second: 0,
-  third: 0,
-  four: 0,
+  year: '',
+  trimesters: [],
+  annual: 0,
 };
 
-ProviderBilling.displayName = 'ProviderStats';
+ProviderBilling.displayName = 'ProviderBilling';
 
 export default memo(ProviderBilling);

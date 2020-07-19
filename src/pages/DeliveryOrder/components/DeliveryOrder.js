@@ -1,27 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {
-  memo, useCallback, useEffect, useState,
+  memo, useEffect,
 } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import AddIcon from '@material-ui/icons/Add';
 
-import { Header, Page } from 'components';
+import { Page } from 'components';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
 import DeliveryOrderData from './DeliveryOrderData';
 import DeliveryOrderTotals from './DeliveryOrderTotals';
+import Header from './Header';
 import { useStyles } from './DeliveryOrder.styles';
-import AddProductModal from '../modals/AddProduct';
 
 const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, updateDateDeliveryOrder,
     showDeleteProductModal, showEditProductModal, updatePrice,
-  }
+  },
 ) => {
   const classes = useStyles();
-  const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
@@ -31,8 +29,6 @@ const DeliveryOrder = (
     if (provider) getProducts(provider);
   }, [provider]);
 
-  const _closeAddModal = useCallback(() => setShowAddModal(false), [setShowAddModal]);
-  const _openAddModal = useCallback(() => setShowAddModal(true), [setShowAddModal]);
   /**
    * Handle change date
    * @param {Date} value
@@ -47,23 +43,8 @@ const DeliveryOrder = (
       <Page className={classes.root} title={`${nameProvider} | Albarán`}>
         <Container maxWidth={false} className={classes.container}>
           <Header
-            routes={[{
-              link: `/app/proveedores/${provider}`,
-              title: `${nameProvider}`,
-            },
-            {
-              link: `/app/proveedores/${provider}#Albaranes`,
-              title: 'Albaranes',
-            }]}
-            title='Albarán'
-            description=''
-            buttons={[{
-              variant: 'contained',
-              onClick: _openAddModal,
-              Icon: AddIcon,
-              disableSvg: true,
-              label: 'Producto',
-            }]}
+            nameProvider={nameProvider}
+            provider={provider}
           />
 
           {
@@ -83,13 +64,12 @@ const DeliveryOrder = (
               <DeliveryOrderData date={date} setDate={_handleChangeDate} />
             </Grid>
             <Grid item xs={12} md={8}>
-              <DeliveryOrderTotals {...totals} />
+              <DeliveryOrderTotals totals={totals} />
             </Grid>
           </Grid>
 
         </Container>
       </Page>
-      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal} />
     </>
   );
 };

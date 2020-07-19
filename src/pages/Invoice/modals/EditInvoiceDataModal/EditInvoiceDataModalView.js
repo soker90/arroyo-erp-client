@@ -1,4 +1,4 @@
-import React, { memo, useReducer } from 'react';
+import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm, DatePickerForm } from 'components';
@@ -13,8 +13,19 @@ const EditInvoiceDataModalView = ({
       nInvoice,
       dateInvoice,
       dateRegister,
-    }
+    },
   );
+
+  useEffect(() => {
+    if (show) {
+      setState({
+        nInvoice,
+        dateInvoice,
+        dateRegister,
+      });
+    }
+    // eslint-disable-next-line
+  }, [show]);
 
   /**
    * Handle event onChange input
@@ -103,7 +114,7 @@ const EditInvoiceDataModalView = ({
     <ModalGrid
       show={show}
       setShow={setShow}
-      title="Editar datos de la factuar"
+      title='Editar datos de la factuar'
       action={_handleSubmit}
     >
       {_renderDatePicker('Fecha de registro', 'dateRegister')}

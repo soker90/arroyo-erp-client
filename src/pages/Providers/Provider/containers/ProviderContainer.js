@@ -6,8 +6,9 @@ import { createDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
 import Providers from '../components/Provider';
 import { NEW_PRODUCT_MODAL } from '../modals/types';
 
-const mapStateToProps = ({ providers: { provider } }) => ({
+const mapStateToProps = ({ providers: { provider, billing } }) => ({
   provider,
+  billing,
 });
 
 const mapDispatchToProps = {

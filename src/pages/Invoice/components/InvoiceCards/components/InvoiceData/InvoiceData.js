@@ -25,9 +25,9 @@ const InvoiceData = ({
    * @private
    */
   const _getActions = () => (!nOrder ? [
-    <Tooltip title="Editar" key={uniqId()}>
+    <Tooltip title='Editar' key={uniqId()}>
       <IconButton
-        size="small"
+        size='small'
         onClick={_handleEditClick}
       >
         <EditIcon />
@@ -39,23 +39,23 @@ const InvoiceData = ({
     <>
       <Card>
         <CardHeader
-          title="Datos de la factura"
+          title='Datos de la factura'
           action={_getActions()}
         />
         <Divider />
         <CardContent>
           <Grid spacing={3} container>
             <Grid item xs={12} md={6}>
-              <ItemCard label="Nº Orden" value={nOrder} />
+              <ItemCard label='Nº Orden' value={nOrder} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <ItemCard label="Nº Factura" value={nInvoice} />
+              <ItemCard label='Nº Factura' value={nInvoice} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <ItemCard label="Fecha de registro" value={format.date(dateRegister)} />
+              <ItemCard label='Fecha de registro' value={format.date(dateRegister)} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <ItemCard label="Fecha de factura" value={format.date(dateInvoice)} />
+              <ItemCard label='Fecha de factura' value={format.date(dateInvoice)} />
             </Grid>
           </Grid>
         </CardContent>

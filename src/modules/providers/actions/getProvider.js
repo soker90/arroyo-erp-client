@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {GET_PROVIDER} from '../types';
+import { GET_PROVIDER } from '../types';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getProviderRequest = () => ({type: GET_PROVIDER.REQUEST});
+const _getProviderRequest = () => ({ type: GET_PROVIDER.REQUEST });
 
 /**
  * Success action
@@ -19,15 +19,13 @@ const _getProviderSuccess = () => ({
 
 /**
  * Set action
- * @param {Object} provider
- * @return {{payload: {provider: Object}, type: string}}
+ * @param {{provider: Object, billing: Object}} data
+ * @return {{payload: {provider: Object, billing: Object}, type: string}}
  * @private
  */
-const _getProviderSet = provider => ({
+const _getProviderSet = data => ({
   type: GET_PROVIDER.SET,
-  payload: {
-    provider,
-  },
+  payload: data,
 });
 
 /**
@@ -49,7 +47,7 @@ export const getProvider = id => async dispatch => {
   dispatch(_getProviderRequest());
 
   try {
-    const {data} = await axios(`providers/${id}`);
+    const { data } = await axios(`providers/${id}`);
 
     dispatch(_getProviderSuccess());
     dispatch(_getProviderSet(data));
