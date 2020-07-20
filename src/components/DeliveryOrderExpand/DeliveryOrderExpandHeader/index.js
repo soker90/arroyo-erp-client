@@ -7,7 +7,7 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { format } from 'utils';
 
@@ -21,12 +21,12 @@ const DeliveryOrderExpandHeader = ({
       control={(
         <>
           {children}
-          <Tooltip title='Editar'>
+          <Tooltip title='Ver'>
             <IconButton
               component={RouterLink}
               to={`/app/albaranes/${_id}`}
             >
-              <EditIcon />
+              <VisibilityIcon />
             </IconButton>
           </Tooltip>
         </>

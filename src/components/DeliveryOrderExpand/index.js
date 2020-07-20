@@ -15,7 +15,7 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
   <Accordion TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
-      aria-label="Expand"
+      aria-label='Expand'
     >
       <DeliveryOrderExpandHeader {...props} />
     </AccordionSummary>

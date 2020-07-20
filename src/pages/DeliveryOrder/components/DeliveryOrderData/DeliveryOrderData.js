@@ -6,7 +6,7 @@ import {
 
 import { DatePickerForm } from 'components';
 
-const DeliveryOrderData = ({ date, setDate }) => (
+const DeliveryOrderData = ({ date, setDate, readOnly }) => (
   <Card>
     <CardHeader title='Datos del albarán' />
     <Divider />
@@ -16,6 +16,7 @@ const DeliveryOrderData = ({ date, setDate }) => (
         label='Fecha'
         value={date}
         onChange={setDate}
+        readOnly={readOnly}
       />
     </CardContent>
   </Card>
@@ -24,6 +25,7 @@ const DeliveryOrderData = ({ date, setDate }) => (
 DeliveryOrderData.propTypes = {
   date: PropTypes.number,
   setDate: PropTypes.func.isRequired,
+  readOnly: PropTypes.bool.isRequired,
 };
 
 DeliveryOrderData.displayName = 'DeliveryOrderData';

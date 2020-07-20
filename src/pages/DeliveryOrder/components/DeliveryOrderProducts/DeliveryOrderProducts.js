@@ -14,7 +14,7 @@ import { useStyles } from './DeliveryOrderProducts.styles';
 import { BASE_PATH } from '../../../../constants';
 
 const DeliveryOrderProducts = ({
-  products, showDeleteProductModal, showEditProductModal, updatePrice, date,
+  products, showDeleteProductModal, showEditProductModal, updatePrice, date, isEditable,
 }) => {
   const classes = useStyles();
 
@@ -107,16 +107,18 @@ const DeliveryOrderProducts = ({
           tooltip: 'Actualizar precio',
           onClick: _updatePrice,
         },
-        {
-          icon: EditIcon,
-          tooltip: 'Editar',
-          onClick: _showEditProductModal,
-        },
-        {
-          icon: DeleteIcon,
-          tooltip: 'Eliminar',
-          onClick: _showDeleteProductModal,
-        },
+        ...(isEditable ? [
+          {
+            icon: EditIcon,
+            tooltip: 'Editar',
+            onClick: _showEditProductModal,
+          },
+          {
+            icon: DeleteIcon,
+            tooltip: 'Eliminar',
+            onClick: _showDeleteProductModal,
+          },
+        ] : []),
       ]}
     />
   );
@@ -127,6 +129,7 @@ DeliveryOrderProducts.propTypes = {
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   date: PropTypes.any,
+  isEditable: PropTypes.bool.isRequired,
   updatePrice: PropTypes.func.isRequired,
 };
 

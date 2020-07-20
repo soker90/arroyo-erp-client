@@ -15,7 +15,7 @@ import { useStyles } from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, updateDateDeliveryOrder,
+    products, date, totals, _id, nOrder, updateDateDeliveryOrder,
     showDeleteProductModal, showEditProductModal, updatePrice,
   },
 ) => {
@@ -55,13 +55,18 @@ const DeliveryOrder = (
                 showEditProductModal={showEditProductModal}
                 updatePrice={updatePrice}
                 date={date}
+                isEditable={!nOrder}
               />
             )
           }
 
           <Grid container spacing={3} className={classes.cards}>
             <Grid item xs={12} md={4}>
-              <DeliveryOrderData date={date} setDate={_handleChangeDate} />
+              <DeliveryOrderData
+                date={date}
+                setDate={_handleChangeDate}
+                readOnly={Boolean(nOrder)}
+              />
             </Grid>
             <Grid item xs={12} md={8}>
               <DeliveryOrderTotals totals={totals} />
@@ -88,6 +93,7 @@ DeliveryOrder.propTypes = {
   date: PropTypes.number,
   totals: PropTypes.object,
   _id: PropTypes.string,
+  nOrder: PropTypes.number,
   updateDateDeliveryOrder: PropTypes.func.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,

@@ -56,7 +56,7 @@ const TableMaterial = ({
    * Render actions buttons
    */
   const _renderActionsButtons = (row, index) => actions && (
-    <TableCell align="right">
+    <TableCell align='right'>
       {actions?.filter(({ isFreeAction }) => !isFreeAction)
         .map(({
           icon: Icon, tooltip, onClick, to, ...restButton
@@ -85,12 +85,12 @@ const TableMaterial = ({
       && (
         <Box p={2}>
           <Box
-            display="flex"
-            alignItems="center"
+            display='flex'
+            alignItems='center'
           >
             <Typography
-              variant="h4"
-              color="textPrimary"
+              variant='h4'
+              color='textPrimary'
             >
               {title}
             </Typography>
@@ -109,7 +109,7 @@ const TableMaterial = ({
                 ))}
                 {actions
                 && (
-                  <TableCell align="right">
+                  <TableCell align='right'>
                     Acciones
                   </TableCell>
                 )}
@@ -145,9 +145,9 @@ const TableMaterial = ({
             && (
               <Box p={2}>
                 <Typography
-                  variant="body1"
-                  color="textPrimary"
-                  align="center"
+                  variant='body1'
+                  color='textPrimary'
+                  align='center'
                 >
                   No se han encontrado datos
                 </Typography>
@@ -159,17 +159,17 @@ const TableMaterial = ({
       {!!count
       && (
         <TablePagination
-          component="div"
+          component='div'
           count={count}
           onChangePage={handlePageChange}
           onChangeRowsPerPage={handleLimitChange}
           page={page}
           rowsPerPage={limit}
           rowsPerPageOptions={[5, 10, 25]}
-          labelRowsPerPage="filas"
-          backIconButtonText="Anterior"
+          labelRowsPerPage='filas'
+          backIconButtonText='Anterior'
           labelDisplayedRows={_labelOfRows}
-          nextIconButtonText="Siguiente"
+          nextIconButtonText='Siguiente'
         />
       )}
     </Wrapper>
