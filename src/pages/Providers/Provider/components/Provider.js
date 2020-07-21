@@ -16,7 +16,7 @@ import ProviderExpandedInfo from './ProviderExpandedInfo';
 import { useStyles } from './Provider.styles';
 
 const Provider = ({
-  provider, billing, getProvider, showEditModal, ...props
+  provider, billing, getProvider, ...props
 }) => {
   const classes = useStyles();
   const { hash } = useLocation();
@@ -67,14 +67,6 @@ const Provider = ({
    */
   const TabComponent = _components[currentTab];
 
-  /**
-   * Abre el modal de edición de proveedor
-   * @private
-   */
-  const _showEditModal = () => {
-    showEditModal(idProvider, provider);
-  };
-
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false} className={classes.container}>
@@ -92,7 +84,6 @@ const Provider = ({
           expanded={expand}
           billing={billing}
           provider={provider}
-          showEditModal={_showEditModal}
         />
 
         <ProviderTabs currentTab={currentTab} />
@@ -113,7 +104,6 @@ Provider.propTypes = {
   provider: PropTypes.object.isRequired,
   billing: PropTypes.object,
   getProvider: PropTypes.func.isRequired,
-  showEditModal: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   createInvoice: PropTypes.func.isRequired,

@@ -14,13 +14,6 @@ const mapStateToProps = ({ providers: { provider, billing } }) => ({
 const mapDispatchToProps = {
   getProvider,
   createDeliveryOrder,
-  showEditModal: (idProvider, provider) => showModal({
-    modalType: 'NEW_PROVIDER_MODAL',
-    modalProps: {
-      idProvider,
-      provider,
-    },
-  }),
   showEditProductModal: product => showModal({
     modalType: NEW_PRODUCT_MODAL,
     modalProps: {

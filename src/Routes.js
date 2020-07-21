@@ -12,7 +12,7 @@ const routesConfig = [
   {
     exact: true,
     path: '/',
-    component: () => <Redirect to="/login" />,
+    component: () => <Redirect to='/login' />,
   },
   {
     exact: true,
@@ -28,7 +28,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app',
-        component: () => <Redirect to="/app/informes/inicio" />,
+        component: () => <Redirect to='/app/informes/inicio' />,
       },
       {
         exact: true,
@@ -38,7 +38,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/informes',
-        component: () => <Redirect to="/app/informes/inicio" />,
+        component: () => <Redirect to='/app/informes/inicio' />,
       },
       {
         exact: true,

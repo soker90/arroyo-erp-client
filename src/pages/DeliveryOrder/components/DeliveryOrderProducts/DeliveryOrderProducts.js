@@ -5,13 +5,13 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Link } from 'react-router-dom';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
-import { Link } from 'react-router-dom';
+import { BASE_PATH } from 'constants/index';
 import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
-import { BASE_PATH } from '../../../../constants';
 
 const DeliveryOrderProducts = ({
   products, showDeleteProductModal, showEditProductModal, updatePrice, date, isEditable,

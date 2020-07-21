@@ -1,20 +1,23 @@
 import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-
 import ProviderModal, { INITIAL_STATE } from 'components/Modals/ProviderModal';
 
-const NewProviderModal = ({
-  show,
-  close,
-  createProvider,
+const EditProviderModal = ({
+  show, close, editProvider, provider,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
+    if (show) {
+      setState({
+        ...INITIAL_STATE,
+        ...provider,
+      });
+    }
+    // eslint-disable-next-line
   }, [show]);
 
   /**
@@ -22,14 +25,14 @@ const NewProviderModal = ({
    * @private
    */
   const _handleSubmit = () => {
-    createProvider(state, close);
+    editProvider(provider._id, state, close);
   };
 
   return (
     <ProviderModal
       show={show}
       close={close}
-      title='Crear proveedor'
+      title={`Editar «${provider.name}»`}
       action={_handleSubmit}
       state={state}
       setState={setState}
@@ -37,13 +40,13 @@ const NewProviderModal = ({
   );
 };
 
-NewProviderModal.propTypes = {
+EditProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  createProvider: PropTypes.func.isRequired,
+  editProvider: PropTypes.func.isRequired,
+  provider: PropTypes.object.isRequired,
 };
 
-NewProviderModal.displayName = 'NewProviderModal';
+EditProviderModal.displayName = 'EditProviderModal';
 
-export const story = NewProviderModal;
-export default memo(NewProviderModal);
+export default memo(EditProviderModal);

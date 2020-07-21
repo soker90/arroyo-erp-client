@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -14,10 +14,17 @@ import EditIcon from '@material-ui/icons/Edit';
 import { ItemGroupsCard } from 'components';
 import { useStyles } from './ProviderInfo.styles';
 import { adapterProviderInfo } from './adapterProviderInfo';
+import EditProviderModal from '../../modals/EditProviderModal';
 
-const ProviderInfo = ({ ...info }) => {
+const ProviderInfo = props => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
+
+  /**
+   * Close modal
+   * @private
+   */
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
 
   /**
    * Render edit button
@@ -25,31 +32,34 @@ const ProviderInfo = ({ ...info }) => {
    * @private
    */
   const _renderEditButton = () => (
-    <Tooltip title="Editar infomación">
-      <IconButton size="small" onClick={() => setShowModal(true)}>
+    <Tooltip title='Editar infomación'>
+      <IconButton size='small' onClick={() => setShowModal(true)}>
         <EditIcon />
       </IconButton>
     </Tooltip>
   );
 
   return (
-    <Grid
-      item
-      md={6}
-      xs={12}
-      className={classes.root}
-    >
-      <Card>
-        <CardHeader
-          action={_renderEditButton()}
-          title="Datos de contacto"
-        />
-        <Divider />
-        <CardContent className={classes.content}>
-          <ItemGroupsCard items={adapterProviderInfo(info)} />
-        </CardContent>
-      </Card>
-    </Grid>
+    <>
+      <Grid
+        item
+        md={6}
+        xs={12}
+        className={classes.root}
+      >
+        <Card>
+          <CardHeader
+            action={_renderEditButton()}
+            title='Datos de contacto'
+          />
+          <Divider />
+          <CardContent className={classes.content}>
+            <ItemGroupsCard items={adapterProviderInfo(props)} />
+          </CardContent>
+        </Card>
+      </Grid>
+      <EditProviderModal show={showModal} provider={props} close={_closeModal} />
+    </>
   );
 };
 
