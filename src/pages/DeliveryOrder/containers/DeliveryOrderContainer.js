@@ -5,7 +5,9 @@ import {
 } from 'pages/DeliveryOrder/modals/types';
 import { getProducts } from 'modules/products/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
-import { getDeliveryOrder, updateDateDeliveryOrder, updatePrice } from '../modules/actions';
+import {
+  getDeliveryOrder, updateDateDeliveryOrder, updatePrice, resetDeliveryOrder,
+} from '../modules/actions';
 
 /**
  * @param products
@@ -20,6 +22,7 @@ const mapDispatchToProps = {
   getDeliveryOrder,
   updateDateDeliveryOrder,
   updatePrice,
+  resetDeliveryOrder,
   showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {
