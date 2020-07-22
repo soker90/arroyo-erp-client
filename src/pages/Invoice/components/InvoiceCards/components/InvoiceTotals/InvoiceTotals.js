@@ -11,7 +11,7 @@ import EditInvoiceTotalsModal from 'pages/Invoice/modals/EditInvoiceTotalsModal'
 import { format } from 'utils';
 
 const InvoiceTotals = ({
-  iva, re, total, taxBase, isEditable,
+  iva, re, total, taxBase, isEditable, className,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -29,9 +29,9 @@ const InvoiceTotals = ({
    * @private
    */
   const _getActions = () => (isEditable ? [
-    <Tooltip title="Editar" key={uniqId()}>
+    <Tooltip title='Editar' key={uniqId()}>
       <IconButton
-        size="small"
+        size='small'
         onClick={_handleEditClick}
       >
         <EditIcon />
@@ -41,25 +41,25 @@ const InvoiceTotals = ({
 
   return (
     <>
-      <Card>
+      <Card className={className}>
         <CardHeader
-          title="Totales"
+          title='Totales'
           action={_getActions()}
         />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>
-              <ItemCard label="Base imponible" value={format.euro(taxBase)} />
+              <ItemCard label='Base imponible' value={format.euro(taxBase)} />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label="IVA" value={format.euro(iva)} />
+              <ItemCard label='IVA' value={format.euro(iva)} />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label="RE" value={format.euro(re)} />
+              <ItemCard label='RE' value={format.euro(re)} />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label="TOTAL" value={format.euro(total)} />
+              <ItemCard label='TOTAL' value={format.euro(total)} />
             </Grid>
           </Grid>
         </CardContent>
@@ -75,6 +75,7 @@ InvoiceTotals.propTypes = {
   total: PropTypes.number.isRequired,
   taxBase: PropTypes.number.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 InvoiceTotals.displayName = 'InvoiceTotals';
