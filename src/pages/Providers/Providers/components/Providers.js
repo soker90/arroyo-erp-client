@@ -2,10 +2,11 @@ import React, { memo, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
-
-import { Header, Page, TableMaterial } from 'components';
+import { Link } from 'react-router-dom';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { BASE_PATH } from 'constants/index';
+import { Header, Page, TableMaterial } from 'components';
 import { useStyles } from './Providers.styles';
 import NewProviderModal from '../modals/NewProviderModal';
 
@@ -13,19 +14,12 @@ const Providers = ({ providers }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
 
-  /**
-   * Navega al proveedor seleccionado
-   * @param {String} _id
-   * @private
-   */
-  const _hrefRow = ({ _id }) => `${BASE_PATH}/proveedores/${_id}`;
-
   return (
     <>
-      <Page className={classes.root} title="Proveedores">
+      <Page className={classes.root} title='Proveedores'>
         <Container maxWidth={false} className={classes.container}>
           <Header
-            title="Provedores"
+            title='Provedores'
             buttons={[
               {
                 onClick: () => setShowModal(true),
@@ -45,7 +39,14 @@ const Providers = ({ providers }) => {
               ]}
               data={providers}
               title={`Proveedores (${providers.length})`}
-              href={_hrefRow}
+              actions={[
+                {
+                  icon: VisibilityIcon,
+                  tooltip: 'Editar',
+                  component: Link,
+                  to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
+                },
+              ]}
             />
           </Box>
         </Container>
