@@ -79,7 +79,7 @@ const ProductModal = ({
       action={_handleSubmit}
       {...rest}
     >
-      {_renderInput('code', 'Código')}
+      {_renderInput('code', 'Código', { autoFocus: true })}
       {_renderInput('name', 'Nombre')}
       {_renderInput('iva', 'IVA (%)', { type: 'number' })}
       {_renderInput('re', 'RE (%)', { type: 'number' })}

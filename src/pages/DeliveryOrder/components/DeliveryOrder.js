@@ -16,13 +16,14 @@ const DeliveryOrder = (
   {
     match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDateDeliveryOrder,
-    showDeleteProductModal, showEditProductModal, updatePrice,
+    showDeleteProductModal, showEditProductModal, updatePrice, resetDeliveryOrder,
   },
 ) => {
   const classes = useStyles();
 
   useEffect(() => {
     if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
+    return () => resetDeliveryOrder();
   }, [idDeliveryOrder]);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const DeliveryOrder = (
           <Header
             nameProvider={nameProvider}
             provider={provider}
+            readOnly={Boolean(nOrder)}
           />
 
           {
@@ -98,6 +100,7 @@ DeliveryOrder.propTypes = {
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   updatePrice: PropTypes.func.isRequired,
+  resetDeliveryOrder: PropTypes.func.isRequired,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

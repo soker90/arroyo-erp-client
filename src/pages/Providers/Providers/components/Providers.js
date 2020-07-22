@@ -44,7 +44,7 @@ const Providers = ({ providers }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
+                  to: ({ _id }) => `${BASE_PATH}/proveedores/${_id}`,
                 },
               ]}
             />

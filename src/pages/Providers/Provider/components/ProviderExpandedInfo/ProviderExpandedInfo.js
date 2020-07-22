@@ -7,7 +7,7 @@ import ProviderBilling from '../ProviderBilling';
 import { useStyles } from './ProviderExpandedInfo.styles';
 
 const ProviderExpandedInfo = ({
-  expanded, provider, showEditModal, billing,
+  expanded, provider, billing,
 }) => {
   const classes = useStyles();
 
@@ -16,7 +16,7 @@ const ProviderExpandedInfo = ({
   return (
     <Box mt={3} className={classes.cards}>
       <Grid container spacing={3}>
-        <ProviderInfo {...provider} showEditModal={showEditModal} />
+        <ProviderInfo {...provider} />
         <ProviderBilling {...billing} />
       </Grid>
     </Box>
@@ -26,7 +26,6 @@ const ProviderExpandedInfo = ({
 ProviderExpandedInfo.propTypes = {
   expanded: PropTypes.bool.isRequired,
   provider: PropTypes.object,
-  showEditModal: PropTypes.func.isRequired,
   billing: PropTypes.object,
 };
 

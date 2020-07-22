@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { Header } from 'components';
 import AddProductModal from '../../modals/AddProduct';
 
-const HeaderDeliveryOrder = ({ provider, nameProvider }) => {
+const HeaderDeliveryOrder = ({ provider, nameProvider, readOnly }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const _closeAddModal = useCallback(() => setShowAddModal(false), [setShowAddModal]);
   const _openAddModal = useCallback(() => setShowAddModal(true), [setShowAddModal]);
@@ -29,6 +29,7 @@ const HeaderDeliveryOrder = ({ provider, nameProvider }) => {
           Icon: AddIcon,
           disableSvg: true,
           label: 'Producto',
+          disabled: readOnly,
         }]}
       />
       <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal} />
@@ -39,6 +40,7 @@ const HeaderDeliveryOrder = ({ provider, nameProvider }) => {
 HeaderDeliveryOrder.propTypes = {
   provider: PropTypes.string,
   nameProvider: PropTypes.string,
+  readOnly: PropTypes.bool.isRequired,
 };
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder';
