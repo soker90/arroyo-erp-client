@@ -11,7 +11,7 @@ import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 
 const InvoiceData = ({
-  dateRegister, dateInvoice, nInvoice, nOrder,
+  dateRegister, dateInvoice, nInvoice, nOrder, className,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -37,7 +37,7 @@ const InvoiceData = ({
 
   return (
     <>
-      <Card>
+      <Card className={className}>
         <CardHeader
           title='Datos de la factura'
           action={_getActions()}
@@ -45,16 +45,16 @@ const InvoiceData = ({
         <Divider />
         <CardContent>
           <Grid spacing={3} container>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={3}>
               <ItemCard label='Nº Orden' value={nOrder} />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={3}>
               <ItemCard label='Nº Factura' value={nInvoice} />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={3}>
               <ItemCard label='Fecha de registro' value={format.date(dateRegister)} />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={3}>
               <ItemCard label='Fecha de factura' value={format.date(dateInvoice)} />
             </Grid>
           </Grid>
@@ -70,6 +70,7 @@ InvoiceData.propTypes = {
   dateInvoice: PropTypes.number,
   nInvoice: PropTypes.string,
   nOrder: PropTypes.number,
+  className: PropTypes.string.isRequired,
 };
 
 InvoiceData.displayName = 'InvoiceData';

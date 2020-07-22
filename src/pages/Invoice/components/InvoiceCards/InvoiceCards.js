@@ -10,16 +10,10 @@ const InvoiceCards = ({ data, totals }) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={3} className={classes.cards}>
-      <Grid item xs={12} md={4}>
-        <DeliveryOrderData
-          {...data}
-        />
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <DeliveryOrderTotals {...totals} isEditable={!data.nOrder} />
-      </Grid>
-    </Grid>
+    <>
+      <DeliveryOrderData {...data} className={classes.data} />
+      <DeliveryOrderTotals {...totals} isEditable={!data.nOrder} className={classes.totals} />
+    </>
   );
 };
 
