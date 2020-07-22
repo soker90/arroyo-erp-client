@@ -17,7 +17,7 @@ const PricesTable = ({ prices }) => {
           render: ({ date }) => format.date(date),
         },
         {
-          title: 'Prices',
+          title: 'Precio',
           render: ({ price }) => format.euro(price),
         },
       ]}

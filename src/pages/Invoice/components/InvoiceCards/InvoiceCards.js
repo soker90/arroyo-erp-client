@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import DeliveryOrderData from './components/InvoiceData/InvoiceData';
