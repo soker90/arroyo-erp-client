@@ -12,7 +12,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { format } from 'utils';
 
 const DeliveryOrderExpandHeader = ({
-  children, _id, date, total,
+  children, _id, date, taxBase,
 }) => (
   <>
     <FormControlLabel
@@ -40,7 +40,7 @@ const DeliveryOrderExpandHeader = ({
     >
       <strong>{format.date(date)}</strong>
       {' - '}
-      {format.euro(total)}
+      {format.euro(taxBase)}
     </Typography>
   </>
 );
@@ -48,7 +48,7 @@ const DeliveryOrderExpandHeader = ({
 DeliveryOrderExpandHeader.propTypes = {
   _id: PropTypes.string.isRequired,
   date: PropTypes.number,
-  total: PropTypes.number.isRequired,
+  taxBase: PropTypes.number.isRequired,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
