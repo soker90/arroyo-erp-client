@@ -1,0 +1,39 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {
+  memo, useEffect,
+} from 'react';
+import { Container } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
+
+import { Page } from 'components';
+import Header from './Header';
+import { useStyles } from './Book.styles';
+import InvoicesTable from './InvoicesTable';
+
+const Book = ({ invoices, getInvoices }) => {
+  const classes = useStyles();
+  const { year } = useParams();
+
+  useEffect(() => {
+    getInvoices(year);
+  }, [year]);
+
+  return (
+    <Page className={classes.root} title='Libro'>
+      <Container maxWidth={false} className={classes.container}>
+        <Header year={year} />
+
+        <InvoicesTable invoices={invoices} />
+      </Container>
+    </Page>
+  );
+};
+Book.propTypes = {
+  invoices: PropTypes.array.isRequired,
+  getInvoices: PropTypes.func.isRequired,
+};
+
+Book.displayName = 'Book';
+export const story = Book;
+export default memo(Book);

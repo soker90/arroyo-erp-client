@@ -5,6 +5,7 @@ import products from 'modules/products';
 import deliveryOrders from 'pages/DeliveryOrder/modules';
 import invoice from 'pages/Invoice/modules';
 import product from 'pages/Product/modules';
+import book from 'pages/Book/modules';
 
 import notifications from './notifications';
 import modal from './modal';
@@ -12,11 +13,12 @@ import account from './account';
 
 const rootReducer = combineReducers({
   account,
-  products,
-  product,
-  providers,
+  book,
   deliveryOrders,
   invoice,
+  product,
+  products,
+  providers,
   /**
    * Reducers del sistema
    */

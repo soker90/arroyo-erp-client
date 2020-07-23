@@ -12,7 +12,7 @@ const DatePickerForm = (
     children,
     autoOk,
     ...rest
-  }
+  },
 ) => {
   const classes = useStyles();
 
@@ -47,7 +47,7 @@ DatePickerForm.propTypes = {
   /**
    * Fecha
    */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number, null]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number]),
   /**
    * Función par el botón de aceptar
    */
