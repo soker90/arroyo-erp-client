@@ -28,6 +28,6 @@ export const generateLabels = ({
     value: format.percent(re),
   }, ...(rate ? [{
     title: 'Tasa',
-    value: format.euro(rate),
+    value: format.euro(rate, { maximumFractionDigits: 3 }),
   }] : []),
 ];

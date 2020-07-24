@@ -74,6 +74,16 @@ const GenericProductModal = ({
     }
   };
 
+  const _handleLostFocus = () => {
+    let evalNum;
+    try {
+      evalNum = eval(state.quantity);
+    } catch (e) {
+      console.log('La cantidad no es numérica');
+    }
+    if (evalNum) setState({ quantity: evalNum });
+  };
+
   /**
    * Render a input element
    * @param {string} name
@@ -119,7 +129,7 @@ const GenericProductModal = ({
         <option key={idx} value={item._id}>
           {item.name}
         </option>
-      )
+      ),
       )}
     </SelectForm>
   );
@@ -136,7 +146,7 @@ const GenericProductModal = ({
         inputRef: inputCode,
       })}
       {_renderSelectProduct()}
-      {_renderInput('quantity', 'Peso / Cantidad', { type: 'number' })}
+      {_renderInput('quantity', 'Peso / Cantidad', { onBlur: _handleLostFocus })}
       {_renderInput('price', 'Precio', { type: 'number' })}
     </ModalGrid>
   );
