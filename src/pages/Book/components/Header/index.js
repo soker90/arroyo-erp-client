@@ -30,9 +30,9 @@ const HeaderBook = ({ year }) => (
 );
 
 HeaderBook.propTypes = {
-  year: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
 };
 
 HeaderBook.displayName = 'HeaderBook';
 export const story = HeaderBook;
-export default memo(HeaderBook, () => false);
+export default memo(HeaderBook);

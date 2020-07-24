@@ -42,8 +42,8 @@ const ProductsOrderTable = ({ products }) => {
           render: ({ price }) => format.euro(price),
         },
         {
-          title: 'Total',
-          render: ({ total }) => format.euro(total),
+          title: 'Base imponible',
+          render: ({ taxBase }) => format.euro(taxBase),
         },
       ]}
       data={products}
