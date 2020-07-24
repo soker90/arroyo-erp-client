@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
-import React, {useEffect} from 'react';
-import {matchPath, useLocation} from 'react-router';
-import {Link as RouterLink} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { matchPath, useLocation } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import {
@@ -20,14 +20,14 @@ import {
 } from '@material-ui/core';
 
 import Logo from 'components/Logo';
+import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';
 import NavItem from './NavItem';
-import {navConfig} from 'layouts/DashboardLayout/NavBar/navConfig';
 
-function renderNavItems({items, ...rest}) {
+function renderNavItems({ items, ...rest }) {
   return (
     <List disablePadding>
       {items.reduce(
-        (acc, item) => reduceChildRoutes({acc, item, ...rest}),
+        (acc, item) => reduceChildRoutes({ acc, item, ...rest }),
         [],
       )}
     </List>
@@ -35,11 +35,11 @@ function renderNavItems({items, ...rest}) {
 }
 
 function reduceChildRoutes({
-                             acc,
-                             pathname,
-                             item,
-                             depth = 0,
-                           }) {
+  acc,
+  pathname,
+  item,
+  depth = 0,
+}) {
   const key = item.title + depth;
 
   if (item.items) {
@@ -96,44 +96,43 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function NavBar({openMobile, onMobileClose}) {
+function NavBar({ openMobile, onMobileClose }) {
   const classes = useStyles();
   const location = useLocation();
-  const {user} = useSelector(state => state.account);
+  const { user } = useSelector(state => state.account);
 
   useEffect(() => {
-    if (openMobile && onMobileClose) {
-      onMobileClose();
-    }
+    if (openMobile && onMobileClose) onMobileClose();
+
     // eslint-disable-next-line
   }, [location.pathname]);
 
   const content = (
     <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
+      height='100%'
+      display='flex'
+      flexDirection='column'
     >
-      <PerfectScrollbar options={{suppressScrollX: true}}>
+      <PerfectScrollbar options={{ suppressScrollX: true }}>
         <Hidden lgUp>
           <Box
             p={2}
-            display="flex"
-            justifyContent="center"
+            display='flex'
+            justifyContent='center'
           >
-            <RouterLink to="/">
-              <Logo/>
+            <RouterLink to='/'>
+              <Logo />
             </RouterLink>
           </Box>
         </Hidden>
         <Box p={2}>
           <Box
-            display="flex"
-            justifyContent="center"
+            display='flex'
+            justifyContent='center'
           >
-            <RouterLink to="/app/account">
+            <RouterLink to='/app/account'>
               <Avatar
-                alt="User"
+                alt='User'
                 className={classes.avatar}
                 src={null}
               />
@@ -141,26 +140,26 @@ function NavBar({openMobile, onMobileClose}) {
           </Box>
           <Box
             mt={2}
-            textAlign="center"
+            textAlign='center'
           >
             <Link
               component={RouterLink}
-              to="/app/account"
-              variant="h5"
-              color="textPrimary"
-              underline="none"
+              to='/app/account'
+              variant='h5'
+              color='textPrimary'
+              underline='none'
             >
               {user}
             </Link>
             <Typography
-              variant="body2"
-              color="textSecondary"
+              variant='body2'
+              color='textSecondary'
             >
               {user.bio}
             </Typography>
           </Box>
         </Box>
-        <Divider/>
+        <Divider />
         <Box p={2}>
           {navConfig.map((config, idx) => (
             <List
@@ -174,28 +173,28 @@ function NavBar({openMobile, onMobileClose}) {
                 </ListSubheader>
               )}
             >
-              {renderNavItems({items: config.items, pathname: location.pathname})}
+              {renderNavItems({ items: config.items, pathname: location.pathname })}
             </List>
           ))}
         </Box>
-        <Divider/>
+        <Divider />
         <Box p={2}>
           <Box
             p={2}
-            borderRadius="borderRadius"
-            bgcolor="background.dark"
+            borderRadius='borderRadius'
+            bgcolor='background.dark'
           >
             <Typography
-              variant="h6"
-              color="textPrimary"
+              variant='h6'
+              color='textPrimary'
             >
               Need Help?
             </Typography>
             <Link
-              variant="subtitle1"
-              color="secondary"
+              variant='subtitle1'
+              color='secondary'
               component={RouterLink}
-              to="/docs"
+              to='/docs'
             >
               Check our docs
             </Link>
@@ -209,21 +208,21 @@ function NavBar({openMobile, onMobileClose}) {
     <>
       <Hidden lgUp>
         <Drawer
-          anchor="left"
-          classes={{paper: classes.mobileDrawer}}
+          anchor='left'
+          classes={{ paper: classes.mobileDrawer }}
           onClose={onMobileClose}
           open={openMobile}
-          variant="temporary"
+          variant='temporary'
         >
           {content}
         </Drawer>
       </Hidden>
       <Hidden mdDown>
         <Drawer
-          anchor="left"
-          classes={{paper: classes.desktopDrawer}}
+          anchor='left'
+          classes={{ paper: classes.desktopDrawer }}
           open
-          variant="persistent"
+          variant='persistent'
         >
           {content}
         </Drawer>

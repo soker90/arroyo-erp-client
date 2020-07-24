@@ -1,4 +1,5 @@
-import {PieChart as PieChartIcon, Users as UsersIcon} from 'react-feather';
+import { PieChart as PieChartIcon, Users as UsersIcon } from 'react-feather';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 export const navConfig = [
   {
@@ -17,7 +18,11 @@ export const navConfig = [
         title: 'Provedores',
         icon: UsersIcon,
         href: '/app/proveedores',
-        // items: []
+      },
+      {
+        title: 'Libro',
+        icon: MenuBookIcon,
+        href: `/app/libro/${new Date().getFullYear()}`,
       },
     ],
   },

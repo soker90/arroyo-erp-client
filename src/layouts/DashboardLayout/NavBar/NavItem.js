@@ -6,21 +6,21 @@ import {
   Button,
   Collapse,
   ListItem,
-  makeStyles
+  makeStyles,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   item: {
     display: 'block',
     paddingTop: 0,
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   itemLeaf: {
     display: 'flex',
     paddingTop: 0,
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   button: {
     color: theme.palette.text.secondary,
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     textTransform: 'none',
     letterSpacing: 0,
-    width: '100%'
+    width: '100%',
   },
   buttonLeaf: {
     color: theme.palette.text.secondary,
@@ -40,27 +40,27 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     '&.depth-0': {
       '& $title': {
-        fontWeight: theme.typography.fontWeightMedium
-      }
-    }
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+    },
   },
   icon: {
     display: 'flex',
     alignItems: 'center',
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   title: {
-    marginRight: 'auto'
+    marginRight: 'auto',
   },
   active: {
     color: theme.palette.secondary.main,
     '& $title': {
-      fontWeight: theme.typography.fontWeightMedium
+      fontWeight: theme.typography.fontWeightMedium,
     },
     '& $icon': {
-      color: theme.palette.secondary.main
-    }
-  }
+      color: theme.palette.secondary.main,
+    },
+  },
 }));
 
 function NavItem({
@@ -78,14 +78,12 @@ function NavItem({
   const [open, setOpen] = useState(openProp);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   };
 
   let paddingLeft = 8;
 
-  if (depth > 0) {
-    paddingLeft = 32 + 8 * depth;
-  }
+  if (depth > 0) paddingLeft = 32 + 8 * depth;
 
   const style = { paddingLeft };
 
@@ -105,7 +103,7 @@ function NavItem({
           {Icon && (
             <Icon
               className={classes.icon}
-              size="20"
+              size='20'
             />
           )}
           <span className={classes.title}>
@@ -113,13 +111,13 @@ function NavItem({
           </span>
           {open ? (
             <ExpandLessIcon
-              size="small"
-              color="inherit"
+              size='small'
+              color='inherit'
             />
           ) : (
             <ExpandMoreIcon
-              size="small"
-              color="inherit"
+              size='small'
+              color='inherit'
             />
           )}
         </Button>
@@ -148,7 +146,7 @@ function NavItem({
         {Icon && (
           <Icon
             className={classes.icon}
-            size="20"
+            size='20'
           />
         )}
         <span className={classes.title}>
@@ -168,11 +166,11 @@ NavItem.propTypes = {
   icon: PropTypes.any,
   info: PropTypes.any,
   open: PropTypes.bool,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 NavItem.defaultProps = {
-  open: false
+  open: false,
 };
 
 export default NavItem;
