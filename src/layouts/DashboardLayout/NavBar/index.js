@@ -21,13 +21,18 @@ import {
 
 import Logo from 'components/Logo';
 import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';
+import { format } from 'utils';
 import NavItem from './NavItem';
 
 function renderNavItems({ items, ...rest }) {
   return (
     <List disablePadding>
       {items.reduce(
-        (acc, item) => reduceChildRoutes({ acc, item, ...rest }),
+        (acc, item) => reduceChildRoutes({
+          acc,
+          item,
+          ...rest,
+        }),
         [],
       )}
     </List>
@@ -173,7 +178,10 @@ function NavBar({ openMobile, onMobileClose }) {
                 </ListSubheader>
               )}
             >
-              {renderNavItems({ items: config.items, pathname: location.pathname })}
+              {renderNavItems({
+                items: config.items,
+                pathname: location.pathname,
+              })}
             </List>
           ))}
         </Box>
@@ -188,16 +196,10 @@ function NavBar({ openMobile, onMobileClose }) {
               variant='h6'
               color='textPrimary'
             >
-              Need Help?
+              {format.dayOfWeek(new Date())}
+              {', '}
+              {format.date(new Date())}
             </Typography>
-            <Link
-              variant='subtitle1'
-              color='secondary'
-              component={RouterLink}
-              to='/docs'
-            >
-              Check our docs
-            </Link>
           </Box>
         </Box>
       </PerfectScrollbar>
