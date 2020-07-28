@@ -1,5 +1,6 @@
 import { PieChart as PieChartIcon, Users as UsersIcon } from 'react-feather';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import EuroIcon from '@material-ui/icons/Euro';
 
 export const navConfig = [
   {
@@ -23,6 +24,11 @@ export const navConfig = [
         title: 'Libro',
         icon: MenuBookIcon,
         href: `/app/libro/${new Date().getFullYear()}`,
+      },
+      {
+        title: 'Pagos',
+        icon: EuroIcon,
+        href: '/app/pagos',
       },
     ],
   },

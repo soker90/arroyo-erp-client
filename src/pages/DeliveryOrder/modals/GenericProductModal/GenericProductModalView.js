@@ -77,6 +77,7 @@ const GenericProductModal = ({
   const _handleLostFocus = () => {
     let evalNum;
     try {
+      // eslint-disable-next-line no-eval
       evalNum = eval(state.quantity);
     } catch (e) {
       console.log('La cantidad no es numérica');
