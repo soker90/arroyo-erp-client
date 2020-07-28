@@ -87,7 +87,7 @@ const DeliveryOrderProducts = ({
         },
         {
           title: 'Base imponible',
-          render: ({ taxBase }) => format.euro(taxBase),
+          render: ({ taxBase }) => format.euro(taxBase, { maximumFractionDigits: 3 }),
         },
         {
           title: 'Diferencia',
