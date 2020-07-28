@@ -12,7 +12,7 @@ const EditProductModal = ({
   );
 
   useEffect(() => {
-    if (!show) setState(product);
+    setState(product);
     // eslint-disable-next-line
   }, [show]);
 
@@ -37,7 +37,7 @@ const EditProductModal = ({
       state={state}
       setState={setState}
       show={show}
-      title="Editar producto"
+      title='Editar producto'
       actions={[
         { onClick: close, value: 'Cerrar', 'data-cy': 'modal-close-button' },
         {
