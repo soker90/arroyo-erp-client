@@ -1,24 +1,49 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components/Modals';
+import { ModalGrid } from 'components/Modals';
+import { DatePickerForm, SelectForm } from 'components/Forms';
+import { TYPE_PAYMENT } from 'constants/invoices';
 
 const ConfirmInvoiceModal = ({
   confirmInvoice, id, setShow, ...rest
 }) => {
+  const [datePayment, setDatePayment] = useState(null);
+  const [type, setType] = useState('?');
+
   const _close = () => {
     setShow(false);
   };
 
   const _handleSend = () => {
-    confirmInvoice(id);
+    confirmInvoice(id, {
+      datePayment,
+      type,
+    });
     _close();
   };
 
+  /**
+   * Handle change picker
+   * @param {String} date
+   * @private
+   */
+  const _handleChangePicker = date => {
+    setDatePayment((date));
+  };
+
+  /**
+   * Handle change select
+   * @param {String} string
+   * @private
+   */
+  const _handleSelect = ({ target: { value } }) => {
+    setType(value);
+  };
+
   return (
-    <ConfirmModal
+    <ModalGrid
       {...rest}
       title='Confirmación de factura'
-      description='Al aceptar confirmarás la factura y no permitirá realizar mas modificaciones'
       action={_handleSend}
       actions={[
         {
@@ -34,7 +59,32 @@ const ConfirmInvoiceModal = ({
           'data-cy': 'modal-close-button',
         },
       ]}
-    />
+    >
+      <DatePickerForm
+        clearable
+        size={4}
+        label='Fecha de cobro'
+        value={datePayment}
+        onAccept={_handleChangePicker}
+      />
+
+      <SelectForm
+        label='Tipo de cobro'
+        value={type}
+        onChange={_handleSelect}
+        size={6}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      >
+        {TYPE_PAYMENT?.map((item, idx) => (
+          <option key={idx} value={item}>
+            {item}
+          </option>
+        ),
+        )}
+      </SelectForm>
+    </ModalGrid>
   );
 };
 

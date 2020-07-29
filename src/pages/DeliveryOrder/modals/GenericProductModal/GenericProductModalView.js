@@ -80,7 +80,7 @@ const GenericProductModal = ({
       // eslint-disable-next-line no-eval
       evalNum = eval(state.quantity);
     } catch (e) {
-      console.log('La cantidad no es numérica');
+      console.error('La cantidad no es numérica');
     }
     if (evalNum) setState({ quantity: evalNum });
   };

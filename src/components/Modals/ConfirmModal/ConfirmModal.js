@@ -10,7 +10,7 @@ const ConfirmModal = ({ description, ...props }) => (
       md={12}
       xs={12}
     >
-      <Typography variant="body1">
+      <Typography variant='body1'>
         {description}
       </Typography>
     </Grid>
