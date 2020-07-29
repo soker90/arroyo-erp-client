@@ -59,13 +59,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
-    "@storybook/addon-actions": "^6.0.0-rc.15",
-    "@storybook/addon-docs": "^6.0.0-rc.15",
-    "@storybook/addon-knobs": "^6.0.0-rc.15",
-    "@storybook/addon-links": "^6.0.0-rc.15",
-    "@storybook/addons": "^6.0.0-rc.15",
+    "@storybook/addon-actions": "^6.0.0-rc.16",
+    "@storybook/addon-docs": "^6.0.0-rc.16",
+    "@storybook/addon-knobs": "^6.0.0-rc.16",
+    "@storybook/addon-links": "^6.0.0-rc.16",
+    "@storybook/addons": "^6.0.0-rc.16",
     "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.0-rc.15",
+    "@storybook/react": "^6.0.0-rc.16",
     "@storybook/storybook-deployer": "^2.8.6",
     "babel-loader": "^8.1.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -74,7 +74,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-mdx": "^1.7.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.4",
+    "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "prettier": "^2.0.5"
   }
