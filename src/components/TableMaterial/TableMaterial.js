@@ -7,19 +7,15 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
   Card,
-  IconButton,
   Table,
-  TableBody,
-  TableCell,
-  TableHead,
   TablePagination,
-  TableRow,
-  Tooltip,
-  Typography,
 } from '@material-ui/core';
-import uniqId from 'uniqid';
-import { Link } from 'react-router-dom';
+
+import NoData from './components/NoData';
 import { useStyles } from './TableMaterial.styles';
+import HeadTable from './components/HeadTable';
+import BodyTable from './components/BodyTable';
+import TitleTable from './components/TitleTable';
 
 const TableMaterial = ({
   className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, ...rest
@@ -52,28 +48,6 @@ const TableMaterial = ({
       : `más de ${to}`
   }`;
 
-  /**
-   * Render actions buttons
-   */
-  const _renderActionsButtons = (row, index) => actions && (
-    <TableCell align='right'>
-      {actions?.filter(({ isFreeAction }) => !isFreeAction)
-        .map(({
-          icon: Icon, tooltip, onClick, to, ...restButton
-        }) => (
-          <Tooltip key={uniqId()} title={tooltip} className={classes.tooltip}>
-            <IconButton
-              {...(onClick && { onClick: () => onClick(row, index) })}
-              {...(to && { to: to(row, index) })}
-              {...restButton}
-            >
-              <Icon className={classes.actionIcon} />
-            </IconButton>
-          </Tooltip>
-        ))}
-    </TableCell>
-  );
-
   const Wrapper = useMemo(() => (withCard ? Card : 'div'), [withCard]);
 
   return (
@@ -81,79 +55,22 @@ const TableMaterial = ({
       className={clsx(classes.root, className)}
       {...rest}
     >
-      {title
-      && (
-        <Box p={2}>
-          <Box
-            display='flex'
-            alignItems='center'
-          >
-            <Typography
-              variant='h4'
-              color='textPrimary'
-            >
-              {title}
-            </Typography>
-          </Box>
-        </Box>
-      )}
+      <TitleTable title={title} />
       <PerfectScrollbar>
         <Box>
           <Table>
-            <TableHead styles={{ fontSize: 20 }}>
-              <TableRow>
-                {columns.map(({ title }, idCol) => (
-                  <TableCell key={idCol}>
-                    {title}
-                  </TableCell>
-                ))}
-                {actions
-                && (
-                  <TableCell align='right'>
-                    Acciones
-                  </TableCell>
-                )}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row, index) => (
-                <TableRow
-                  onMouseDown={() => onRowClick?.(row)}
-                  hover
-                  key={uniqId()}
-                >
-                  {columns.map(({ field, render }) => (
-                    <TableCell key={uniqId()}>
-                      <Box
-                        {...(href && {
-                          component: Link,
-                          to: href(row),
-                          className: classes.cell,
-                        })}
-                      >
-                        {render?.(row) || row[field]}
-                      </Box>
-                    </TableCell>
-                  ))}
-                  {_renderActionsButtons(row, index)}
-                </TableRow>
-              ))}
-            </TableBody>
+            <HeadTable actions={actions} columns={columns} />
+            <BodyTable
+              columns={columns}
+              actions={actions}
+              classes={classes}
+              data={data}
+              href={href}
+              onRowClick={onRowClick}
+            />
           </Table>
-          {
-            data.length === 0
-            && (
-              <Box p={2}>
-                <Typography
-                  variant='body1'
-                  color='textPrimary'
-                  align='center'
-                >
-                  No se han encontrado datos
-                </Typography>
-              </Box>
-            )
-          }
+
+          <NoData elements={data.length} />
         </Box>
       </PerfectScrollbar>
       {!!count
