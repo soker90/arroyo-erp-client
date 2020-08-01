@@ -1,24 +1,33 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
-import { DatePickerForm, SelectForm } from 'components/Forms';
+import { DatePickerForm, InputForm, SelectForm } from 'components/Forms';
 import { TYPE_PAYMENT } from 'constants/invoices';
 import { format } from '../../../../utils';
 
-const ConfirmInvoiceModal = ({
-  confirmInvoice, id, setShow, ...rest
+const ConfirmPaymentModal = ({
+  confirmPayment, payment, setShow, ...rest
 }) => {
   const [paymentDate, setPaymentDate] = useState(null);
   const [type, setType] = useState('?');
+  const [numCheque, setNumCheque] = useState(null);
+
+  useEffect(() => {
+    if (payment) {
+      setType(payment.type);
+      setPaymentDate(payment.paymentDate);
+    }
+  }, [payment]);
 
   const _close = () => {
     setShow(false);
   };
 
   const _handleSend = () => {
-    confirmInvoice(id, {
+    confirmPayment(payment._id, {
       paymentDate: format.dateToSend(paymentDate),
       type,
+      ...(numCheque && { numCheque }),
     });
     _close();
   };
@@ -41,9 +50,47 @@ const ConfirmInvoiceModal = ({
     setType(value);
   };
 
+  /**
+   * Handle change number of cheque
+   * @param {String} value
+   * @private
+   */
+  const _handleCheque = ({ target: { value } }) => {
+    setNumCheque(value);
+  };
+
+  /**
+   * Handle press enter key
+   * @param {string} key
+   * @private
+   */
+  const _handleKeyPress = ({ key }) => {
+    if (key === 'Enter') _handleSend();
+  };
+
+  /**
+   * Render input of number cheque
+   * @returns {InputForm|null}
+   * @private
+   */
+  const _renderNumberCheque = () => (
+    type === 'Talón'
+      ? (
+        <InputForm
+          label='Número de talón'
+          value={numCheque}
+          onChange={_handleCheque}
+          onKeyPress={_handleKeyPress}
+          size={4}
+        />
+      )
+      : null
+  );
+
   return (
     <ModalGrid
       {...rest}
+      show={Boolean(payment)}
       title='Confirmación de factura'
       action={_handleSend}
       actions={[
@@ -64,19 +111,20 @@ const ConfirmInvoiceModal = ({
       <DatePickerForm
         clearable
         size={4}
-        label='Fecha de pago'
+        label='Fecha de cobro'
         value={paymentDate}
         onAccept={_handleChangePicker}
       />
 
       <SelectForm
-        label='Tipo de pago'
+        label='Tipo de cobro'
         value={type}
         onChange={_handleSelect}
-        size={6}
+        size={4}
         InputLabelProps={{
           shrink: true,
         }}
+        onKeyPress={_handleKeyPress}
       >
         {TYPE_PAYMENT?.map((item, idx) => (
           <option key={idx} value={item}>
@@ -85,16 +133,17 @@ const ConfirmInvoiceModal = ({
         ),
         )}
       </SelectForm>
+      {_renderNumberCheque()}
     </ModalGrid>
   );
 };
 
-ConfirmInvoiceModal.propTypes = {
+ConfirmPaymentModal.propTypes = {
   setShow: PropTypes.func,
-  id: PropTypes.string.isRequired,
-  confirmInvoice: PropTypes.func.isRequired,
+  payment: PropTypes.object,
+  confirmPayment: PropTypes.func.isRequired,
 };
 
-ConfirmInvoiceModal.displayName = 'ConfirmInvoiceModal';
-export const story = ConfirmInvoiceModal;
-export default memo(ConfirmInvoiceModal);
+ConfirmPaymentModal.displayName = 'ConfirmPaymentModal';
+export const story = ConfirmPaymentModal;
+export default memo(ConfirmPaymentModal);

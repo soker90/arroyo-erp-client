@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {
-  memo, useEffect,
+  memo, useEffect, useState,
 } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -11,6 +11,7 @@ import PaymentsTable from './PaymentsTable';
 import { useStyles } from './Payments.styles';
 
 const Payments = ({ payments, getPayments }) => {
+  const [selected, setSelected] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
@@ -20,9 +21,9 @@ const Payments = ({ payments, getPayments }) => {
   return (
     <Page className={classes.root} title='Pagos'>
       <Container maxWidth={false} className={classes.container}>
-        <Header />
+        <Header selected={selected} />
 
-        <PaymentsTable payments={payments} />
+        <PaymentsTable payments={payments} selected={selected} setSelected={setSelected} />
       </Container>
     </Page>
   );
