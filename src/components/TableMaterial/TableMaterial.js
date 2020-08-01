@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* TODO Limpiar componente */
 import React, { memo, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -12,13 +11,14 @@ import {
 } from '@material-ui/core';
 
 import NoData from './components/NoData';
-import { useStyles } from './TableMaterial.styles';
 import HeadTable from './components/HeadTable';
 import BodyTable from './components/BodyTable';
 import TitleTable from './components/TitleTable';
+import { labelOfRows } from './utils';
+import { useStyles } from './TableMaterial.styles';
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, ...rest
+  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect, onSelected, ...rest
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
@@ -40,14 +40,6 @@ const TableMaterial = ({
     });
   };
 
-  const _labelOfRows = ({ from, to, count }) => `${from}-${
-    to === -1 ? count : to
-  } de ${
-    count !== -1
-      ? count
-      : `más de ${to}`
-  }`;
-
   const Wrapper = useMemo(() => (withCard ? Card : 'div'), [withCard]);
 
   return (
@@ -59,7 +51,7 @@ const TableMaterial = ({
       <PerfectScrollbar>
         <Box>
           <Table>
-            <HeadTable actions={actions} columns={columns} />
+            <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
             <BodyTable
               columns={columns}
               actions={actions}
@@ -67,6 +59,8 @@ const TableMaterial = ({
               data={data}
               href={href}
               onRowClick={onRowClick}
+              multiSelect={multiSelect}
+              onSelected={onSelected}
             />
           </Table>
 
@@ -85,7 +79,7 @@ const TableMaterial = ({
           rowsPerPageOptions={[5, 10, 25]}
           labelRowsPerPage='filas'
           backIconButtonText='Anterior'
-          labelDisplayedRows={_labelOfRows}
+          labelDisplayedRows={labelOfRows}
           nextIconButtonText='Siguiente'
         />
       )}
@@ -104,6 +98,8 @@ TableMaterial.propTypes = {
   onRowClick: PropTypes.func,
   withCard: PropTypes.bool,
   href: PropTypes.func,
+  multiSelect: PropTypes.func,
+  onSelected: PropTypes.func,
 };
 
 TableMaterial.defaultProps = {

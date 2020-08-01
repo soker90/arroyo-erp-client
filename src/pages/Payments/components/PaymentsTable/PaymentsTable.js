@@ -1,16 +1,27 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import EuroIcon from '@material-ui/icons/Euro';
 
 import { TableMaterial } from 'components';
 import { BASE_PATH } from 'constants/index';
-import { format } from 'utils';
+import { addSelectedToState, format, removeSelectedFromState } from 'utils';
 import { useStyles } from './PaymentsTable.styles';
 
 const PaymentsTable = ({ payments }) => {
+  const [selected, setSelected] = useState([]);
   const classes = useStyles();
+
+  /**
+   * Toggle checkbox
+   * @param {String} id
+   * @param {Object} event
+   * @private
+   */
+  const _handleChangeCheckbox = (event, { _id }) => {
+    const func = selected.includes(_id) ? removeSelectedFromState : addSelectedToState;
+    func(_id, selected, setSelected);
+  };
 
   return (
     <TableMaterial
@@ -45,13 +56,9 @@ const PaymentsTable = ({ payments }) => {
           component: Link,
           to: ({ _id }) => `${BASE_PATH}/pagos/${_id}`,
         },
-        {
-          icon: VisibilityIcon,
-          tooltip: 'Ver',
-          component: Link,
-          to: ({ _id }) => `${BASE_PATH}/pagos/${_id}`,
-        },
       ]}
+      multiSelect={row => selected.includes(row._id)}
+      onSelected={_handleChangeCheckbox}
     />
   );
 };
