@@ -1,12 +1,12 @@
 import { createReducer, setPayload } from 'store/utils';
-import { GET_INVOICES } from './types';
+import { GET_PAYMENTS } from './types';
 
 const INITIAL_STATE = {
-  invoices: [],
+  payments: [],
 };
 
 const ACTION_HANDLERS = {
-  [GET_INVOICES.SET]: setPayload,
+  [GET_PAYMENTS.SET]: setPayload,
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

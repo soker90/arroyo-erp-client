@@ -5,12 +5,12 @@ export const useStyles = makeStyles(theme => ({
     width: 'auto',
   },
   tooltip: {
-    marginRight: 0,
+    marginRight: theme.spacing(1.5),
     padding: 0,
+
   },
   actionIcon: {
     padding: theme.spacing(0.1),
-    marginRight: theme.spacing(1),
   },
   cell: {
     textDecoration: 'none',

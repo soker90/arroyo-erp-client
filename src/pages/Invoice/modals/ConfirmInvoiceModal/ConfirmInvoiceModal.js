@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, SelectForm } from 'components/Forms';
 import { TYPE_PAYMENT } from 'constants/invoices';
+import { format } from '../../../../utils';
 
 const ConfirmInvoiceModal = ({
   confirmInvoice, id, setShow, ...rest
 }) => {
-  const [datePayment, setDatePayment] = useState(null);
+  const [paymentDate, setPaymentDate] = useState(null);
   const [type, setType] = useState('?');
 
   const _close = () => {
@@ -16,7 +17,7 @@ const ConfirmInvoiceModal = ({
 
   const _handleSend = () => {
     confirmInvoice(id, {
-      datePayment,
+      paymentDate: format.dateToSend(paymentDate),
       type,
     });
     _close();
@@ -28,7 +29,7 @@ const ConfirmInvoiceModal = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setDatePayment((date));
+    setPaymentDate((date));
   };
 
   /**
@@ -64,7 +65,7 @@ const ConfirmInvoiceModal = ({
         clearable
         size={4}
         label='Fecha de cobro'
-        value={datePayment}
+        value={paymentDate}
         onAccept={_handleChangePicker}
       />
 

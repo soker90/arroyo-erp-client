@@ -13,12 +13,16 @@ import { useStyles } from './Payments.styles';
 const Payments = ({ payments, getPayments }) => {
   const classes = useStyles();
 
+  useEffect(() => {
+    getPayments();
+  }, [getPayments]);
+
   return (
     <Page className={classes.root} title='Pagos'>
       <Container maxWidth={false} className={classes.container}>
         <Header />
 
-        <PaymentsTable payments={[]} />
+        <PaymentsTable payments={payments} />
       </Container>
     </Page>
   );

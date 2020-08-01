@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 
-import { getInvoices } from '../modules/actions';
-import Book from '../components/Payments';
+import { getPayments } from '../modules/actions';
+import Payments from '../components/Payments';
 
 /**
  * @param products
  * @return {{products: *}}
  */
-const mapStateToProps = ({ book }) => book;
+const mapStateToProps = ({ payments }) => payments;
 
 const mapDispatchToProps = {
-  getInvoices,
+  getPayments,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Book);
+)(Payments);

@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
@@ -13,6 +13,13 @@ import NewProviderModal from '../modals/NewProviderModal';
 const Providers = ({ providers }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
+
+  /**
+   * Oculta el modal de crear proveedor
+   * @type {function(): void}
+   * @private
+   */
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
 
   return (
     <>
@@ -51,7 +58,7 @@ const Providers = ({ providers }) => {
           </Box>
         </Container>
       </Page>
-      <NewProviderModal show={showModal} close={setShowModal} />
+      <NewProviderModal show={showModal} close={_closeModal} />
     </>
   );
 };

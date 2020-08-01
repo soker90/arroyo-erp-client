@@ -1,3 +1,3 @@
 import { requestActions } from 'utils';
 
-export const GET_INVOICES = requestActions('@book/GET_INVOICES');
+export const GET_PAYMENTS = requestActions('@payments/GET_PAYMENTS');
