@@ -92,20 +92,7 @@ const ConfirmPaymentModal = ({
       show={Boolean(payment)}
       title='Confirmación de factura'
       action={_handleSend}
-      actions={[
-        {
-          onClick: _close,
-          value: 'Cerrar',
-          'data-cy': 'modal-close-button',
-        },
-        {
-          onClick: _handleSend,
-          color: 'secondary',
-          variant: 'contained',
-          value: 'Confirmar',
-          'data-cy': 'modal-close-button',
-        },
-      ]}
+      close={_close}
     >
       <DatePickerForm
         clearable

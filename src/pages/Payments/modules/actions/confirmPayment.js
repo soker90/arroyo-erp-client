@@ -23,6 +23,18 @@ const _confirmPaymentSuccess = () => ({
 });
 
 /**
+ * Set action
+ * @returns {{type: string}}
+ * @private
+ */
+const _confirmPaymentSet = ({ data }) => ({
+  type: CONFIRM_PAYMENT.SET,
+  payload: {
+    payments: data,
+  },
+});
+
+/**
  * Error action
  * @param error
  * @returns {{type: string, error: _confirmPaymentError.props}}
@@ -43,11 +55,11 @@ export const confirmPayment = (id, data, callback) => async dispatch => {
   dispatch(_confirmPaymentRequest());
 
   try {
-    await axios.patch(`payments/${id}/confirm`, data);
+    const response = await axios.patch(`payments/${id}/confirm`, data);
 
     dispatch(_confirmPaymentSuccess());
+    dispatch(_confirmPaymentSet(response));
     callback();
-    dispatch(getPayments());
   } catch (error) {
     dispatch(_confirmPaymentError(error));
   }

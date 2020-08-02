@@ -1,4 +1,4 @@
-import React, {memo, useRef, useState} from 'react';
+import React, { memo, useRef, useState } from 'react';
 import {
   ClickAwayListener,
   Hidden,
@@ -11,10 +11,10 @@ import {
   Popper,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import {navigateTo} from 'utils';
-import {useStyles} from './Search.styles';
+import { navigateTo } from 'utils';
+import { useStyles } from './Search.styles';
 
 /**
  * Barra de busqueda de proveedores
@@ -24,7 +24,7 @@ const Search = () => {
   const searchRef = useRef(null);
   const [openSearchPopover, setOpenSearchPopover] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const providers = useSelector(({providers}) => providers.providers);
+  const providers = useSelector(({ providers }) => providers.providers);
 
   /**
    * Establece el texto buscado en el estado
@@ -32,12 +32,12 @@ const Search = () => {
    * @param {String} value
    * @private
    */
-  const _handleSearchChange = ({target: {value}}) => {
+  const _handleSearchChange = ({ target: { value } }) => {
     setSearchValue(value);
 
-    value ?
-      !openSearchPopover && setOpenSearchPopover(true) :
-      setOpenSearchPopover(false);
+    value
+      ? !openSearchPopover && setOpenSearchPopover(true)
+      : setOpenSearchPopover(false);
   };
 
   /**
@@ -57,7 +57,7 @@ const Search = () => {
   const _handleSelectProvider = idProvider => {
     _handleSearchPopverClose();
     navigateTo(`proveedores/${idProvider}`);
- };
+  };
 
   /**
    * Filtra los posibles proveedores que coincidan
@@ -66,10 +66,9 @@ const Search = () => {
    * @return {boolean}
    * @private
    */
-  const _filterPossibles = provider =>
-    provider.name
-      .toLowerCase()
-      .includes(searchValue.toLowerCase());
+  const _filterPossibles = provider => provider.name
+    .toLowerCase()
+    .includes(searchValue.toLowerCase());
 
   /**
    * Renderiza un elemento de la busqueda
@@ -84,9 +83,9 @@ const Search = () => {
       onClick={() => _handleSelectProvider(search._id)}
     >
       <ListItemIcon>
-        <SearchIcon/>
+        <SearchIcon />
       </ListItemIcon>
-      <ListItemText primary={search.name}/>
+      <ListItemText primary={search.name} />
     </ListItem>
   );
 
@@ -97,12 +96,12 @@ const Search = () => {
           className={classes.search}
           ref={searchRef}
         >
-          <SearchIcon className={classes.searchIcon}/>
+          <SearchIcon className={classes.searchIcon} />
           <Input
             className={classes.searchInput}
             disableUnderline
             onChange={_handleSearchChange}
-            placeholder="Buscar proveedor"
+            placeholder='Buscar proveedor'
             value={searchValue}
           />
         </div>

@@ -36,7 +36,7 @@ const ModalGrid = ({
         {action ? 'Cancelar' : 'Cerrar'}
       </Button>
       {action && (
-        <Button onClick={action} color="primary" variant="contained">
+        <Button onClick={action} color='primary' variant='contained'>
           Aceptar
         </Button>
       )}
