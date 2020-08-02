@@ -28,8 +28,7 @@ const ConfirmPaymentModal = ({
       paymentDate: format.dateToSend(paymentDate),
       type,
       ...(numCheque && { numCheque }),
-    });
-    _close();
+    }, _close);
   };
 
   /**
