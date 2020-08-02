@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { ListItem, Typography } from '@material-ui/core';
 
+import { BooleanIcon } from 'components';
 import { useStyles } from './ItemCard.styles';
 
 const ItemCard = ({
@@ -17,9 +18,17 @@ const ItemCard = ({
       divider={divider}
     >
       <Typography variant='subtitle2'>{label}</Typography>
-      <Typography variant='h6'>
-        {value}
-      </Typography>
+
+      {
+        typeof value === 'boolean'
+          ? <BooleanIcon value={value} />
+          : (
+            <Typography variant='h6'>
+              {value}
+            </Typography>
+          )
+      }
+
     </ListItem>
   );
 };

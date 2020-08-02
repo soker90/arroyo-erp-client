@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { CONFIRM_PAYMENT } from '../types';
-import { getPayments } from './getPayments';
 
 /**
  * Request action

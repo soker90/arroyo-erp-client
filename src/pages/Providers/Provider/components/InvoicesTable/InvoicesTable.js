@@ -15,6 +15,8 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
     if (idProvider) getInvoicesByProvider(idProvider);
   }, [getInvoicesByProvider, idProvider]);
 
+  console.log(invoices);
+
   return idProvider && (
     <TableMaterial
       className={classes.table}
@@ -34,6 +36,13 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
         {
           title: 'Importe',
           field: 'total',
+        },
+        {
+          title: 'Pago',
+          render: ({ payment }) => {
+            console.log(payment);
+            return (payment?.paid ? payment.type : null);
+          },
         },
       ]}
       data={invoices}

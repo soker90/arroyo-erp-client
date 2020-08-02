@@ -12,7 +12,7 @@ import { useStyles } from './Invoice.styles';
 import InvoiceCards from './InvoiceCards';
 
 const Invoice = ({
-  getInvoice, id, nameProvider, provider, deliveryOrders, totals, data,
+  getInvoice, id, nameProvider, provider, deliveryOrders, totals, data, payment, resetInvoiceState,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -21,6 +21,8 @@ const Invoice = ({
     if (idInvoice && idInvoice !== id) getInvoice(idInvoice);
   }, [idInvoice]);
 
+  useEffect(() => () => resetInvoiceState(), []);
+
   if (!id) return <LoadingScreen />;
 
   return (
@@ -28,7 +30,7 @@ const Invoice = ({
       <Container maxWidth={false} className={classes.container}>
         <Header provider={provider} nameProvider={nameProvider} nOrder={data.nOrder} />
 
-        <InvoiceCards totals={totals} data={data} />
+        <InvoiceCards totals={totals} data={data} payment={payment} />
 
         <div className={classes.orders}>
           {deliveryOrders?.map(props => (
@@ -49,6 +51,8 @@ Invoice.propTypes = {
   provider: PropTypes.string,
   totals: PropTypes.object,
   data: PropTypes.object,
+  payment: PropTypes.object,
+  resetInvoiceState: PropTypes.func.isRequired,
 };
 
 Invoice.displayName = 'Invoice';

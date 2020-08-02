@@ -46,6 +46,7 @@ const ConfirmInvoiceModal = ({
       {...rest}
       title='Confirmación de factura'
       action={_handleSend}
+      close={_close}
       actions={[
         {
           onClick: _close,

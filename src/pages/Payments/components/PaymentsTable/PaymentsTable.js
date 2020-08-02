@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import EuroIcon from '@material-ui/icons/Euro';
 

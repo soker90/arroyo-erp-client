@@ -23,7 +23,7 @@ const HeadTable = ({ columns, actions, multiSelect }) => (
 
 HeadTable.propTypes = {
   columns: PropTypes.array.isRequired,
-  actions: PropTypes.array.isRequired,
+  actions: PropTypes.array,
   multiSelect: PropTypes.func,
 };
 
