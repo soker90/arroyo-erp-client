@@ -15,7 +15,13 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
     if (idProvider) getInvoicesByProvider(idProvider);
   }, [getInvoicesByProvider, idProvider]);
 
-  console.log(invoices);
+  /**
+   * Render payment type
+   * @param {object} payment
+   * @returns {string|null}
+   * @private
+   */
+  const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null);
 
   return idProvider && (
     <TableMaterial
@@ -39,10 +45,7 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
         },
         {
           title: 'Pago',
-          render: ({ payment }) => {
-            console.log(payment);
-            return (payment?.paid ? payment.type : null);
-          },
+          render: _renderPaymentType,
         },
       ]}
       data={invoices}
