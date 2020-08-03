@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
+import { mergePayments } from '../../modules/actions';
 import MergePaymentModal from './MergePaymentModal';
 
 const mapDispatchToProps = {
-  // mergePayments: () => {},
+  mergePayments,
 };
 
 export default connect(

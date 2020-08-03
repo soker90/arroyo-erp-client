@@ -3,5 +3,5 @@ export const CONCEPT = {
 };
 
 export const TYPE_PAYMENT = [
-  '?', 'Efectivo', 'Talón', 'Giro', 'Transferencia',
+  '?', 'Efectivo', 'Talón', 'Giro', 'Transferencia', 'Tarjeta',
 ];

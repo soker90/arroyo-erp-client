@@ -10,8 +10,7 @@ const MergePaymentModal = ({
    * @private
    */
   const _handleSend = () => {
-    // eslint-disable-next-line
-    mergePayments?.(selected);
+    mergePayments(selected);
     rest.close();
   };
 
