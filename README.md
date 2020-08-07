@@ -1,6 +1,13 @@
+# ARROYO CLIENT
+
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=soker90/arroyo-erp-client)](https://dependabot.com)
 
-### TODO
+## Descripción
+Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas. 
+
+Es un proyecto desarrollado en `React`. (v.16.13.1) y gestiona el **state** de la aplicación mediante `redux` (v.4.0.5). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.5.2.0) se haga cargo de la gestión de las **URLS**.
+
+## TODO
 
 - DOCS: Readme and more Storybook
 - TESTING: Definiendo estrategia..., probaré esta vez el combo Storybook + Crypess para el testing de componentes aislados
@@ -15,41 +22,227 @@ Futuros epics:
  - Generación de los excell necesarios
  - Dashboard funcional y gráfica muuchas gráficas
  - ¿Temas de autónomos?
+ 
+## Changelog
+- Sin changelog hasta la versión 1.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Testing
 
-## Available Scripts
+Para realizar la ejecución de tests:
 
-In the project directory, you can run:
+`npm test`
 
-### `npm start` or `yarn start`
+## Puesta en marcha
 
-Runs the app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Config - Variables de entorno
 
-The page will automatically reload if you make changes to the code.<br>
-You will see the build errors and lint warnings in the console.
+Se declaran en los archivos `.env` del proyecto y en las properties, y van precedidas por el flag `REACT_APP_`:
 
-<p align='center'>
-<img src='https://cdn.jsdelivr.net/gh/marionebl/create-react-app@9f6282671c54f0874afd37a72f6689727b562498/screencast-error.svg' width='600' alt='Build errors'>
-</p>
+- REACT_APP_ROUTER_BASE_PATH
+- REACT_APP_VERSION
+- REACT_APP_API_HOST
 
-### `npm test` or `yarn test`
+### Instalar dependencias
 
-Runs the test watcher in an interactive mode.<br>
-By default, runs tests related to files changed since the last commit.
+`npm install`
 
-[Read more about testing.](https://facebook.github.io/create-react-app/docs/running-tests)
+### Ejecución en local con DB Local
 
-### `npm run build` or `yarn build`
+*NOTA: *Necesita tener backend levantado en local*
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm start`
 
-The build is minified and the filenames include the hashes.<br>
+Se sirve en <http://localhost:3000>
 
-Your app is ready to be deployed.
+### Ejecución en local contra PRE
 
-## User Guide
+Para levantar el servidor conectando con la base de datos de PRE ejecutar:
 
-You can find detailed instructions on using Create React App and many tips in [its documentation](https://facebook.github.io/create-react-app/).
+`npm run start:pre` - Sin configurar
+
+Se sirve en <http://localhost:3000>
+
+# Ejemplos
+
+## How to create a new view
+
+  - Crear una nueva carpeta en `src/pages` con la siguiente estructura
+```
+└───routes
+│   │
+│   └───Route
+│        └───components
+│             └───Route.js
+│             └───Route.stories.js
+│             └───Route.styles.js
+│        └───containers
+│             └───RouteContainer.js
+│        └───modals
+│             └───RouteModal
+│                   └───RouteModalContainer.js
+│                   └───RouteModal.js
+│                   └───RouteModal.styles.js
+│                   └───index.js
+│        └───modules
+│             └───actions
+│                   └───index.js
+│                   └───action1.js
+│             └───types.js
+│             └───index.js
+│        │   index.js
+```
+
+### Componente
+
+Componente funcional standar de React, con memo:
+```js
+
+import React, { memo } from 'react'
+import PropTypes from 'prop-types';
+
+const ComponentName = () => 
+      <div>
+        Hello World!!
+      </div>;
+
+ComponentName.propTypes = {
+};
+
+ComponentName.displayName = 'ComponentName';
+export const story = ComponentName;
+export default memo(ComponentName);
+```
+
+### Container
+
+El contenedor es el responsable de inyectar Redux o cualquier otro accesorio desde el exterior.
+
+```js
+import {connect} from 'react-redux';
+
+import Route from '../components/Route';
+import {myAction} from '../modules/actions';
+
+const mapStateToProps = ({myState}) => ({ // Receiver (state)
+  hello: myState.hello,
+});
+
+const mapDispatchToProps = {
+  myAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Route);
+
+
+```
+
+### Modals
+Los modales utilizados son loa de Material UI, y su uso es muy simple, tienen las props `show` y `close`,
+la primera es un booleano que indica si debe mostrarse el modal y la segunda la función que se ejecuta para cerrar el modal.
+
+Hay algunos wrappers creado para realizar modales más rápido en `components/Modals`
+
+RouteModal.jsx
+```js
+return (
+<ModalGrid
+    title={`TITLE`}
+    action={_handleClick} // actions for more buttons
+    {...rest}
+  >
+// Any JSX, like children
+</ModalGeneric>
+);
+```
+
+
+### Modules
+This file is responsible to handle actions from redux and to have the state of the route
+Este archivo es responsable de manejar las acciones de redux y de tener el estado de la ruta, pueden crearse modules fuera de una ruta en caso de ser necesario.
+
+#### Action
+
+```js
+import {GET_MY_DATA} from '../types';
+import axios from 'axios';
+
+/**
+ * Return actions for init request model
+ * @private
+ */
+const _getMyDataRequest = () => ({
+  type: GET_MY_DATA.REQUEST,
+});
+
+/**
+ * Return actions for success request model
+ */
+const _getMyDataSuccess = () => ({
+  type: GET_MY_DATA.SUCCESS,
+});
+
+/**
+ * Set data in redux
+ * @param {Array} data
+ * @private
+ */
+const _getMyDataSet = ({data}) => ({
+  type: GET_MY_DATA.SET,
+  payload: {
+    myData: data,
+  },
+});
+
+/**
+ * Return action with error cause
+ * @param {Object}  error
+ * @returns {{payload: {error: *}, type: *}}
+ */
+const _getMyDataError = error => ({
+  type: GET_MY_DATA.FAILURE,
+  error,
+});
+
+
+export const getMyData = () => async dispatch => {
+  dispatch(_getMyDataRequest());
+
+  try {
+    const response = await axios('api/getMyData');
+
+    dispatch(_getMyDataSuccess());
+    dispatch(_getMyDataSet(response));
+  } catch (error) {
+    console.log(error);
+    dispatch(_getMyDataError(error));
+  }
+};
+```
+
+#### Reducer
+```js
+import {GET_MY_DATA} from './types';
+import {createReducer, setPayload} from 'store/utils';
+
+const INITIAL_STATE = {
+  myData: [],
+};
+
+//Esto es posible que cambie
+const ACTION_HANDLERS = {
+  [GET_MY_DATA.SET]: setPayload,
+};
+
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+```
+
+#### Types
+```js
+import {requestActions} from 'utils';
+
+export const GET_MY_DATA = requestActions('@route/GET_MY_DATA');
+
+```
+
+### Styles
+Desarrollar: Material UI Overrides y makeStyles
