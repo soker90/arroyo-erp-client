@@ -1,5 +1,21 @@
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=soker90/arroyo-erp-client)](https://dependabot.com)
 
+### TODO
+
+- DOCS: Readme and more Storybook
+- TESTING: Definiendo estrategia..., probaré esta vez el combo Storybook + Crypess para el testing de componentes aislados
+- TESTING: Preparar un entorno para tests e2e con cypress.
+- TESTING: React testing library para custom hooks :heart_eyes:
+- No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
+- Acoplar el estado de productos a las rutas que lo usan, y valorar hacer lo mismo con provider (ha crecido y puede carecer de sentido como está)
+- ¡ISSUES!
+
+Futuros epics:
+ - Facturación de clientes (facuturas, generación de pdf, mail, cobros...)
+ - Generación de los excell necesarios
+ - Dashboard funcional y gráfica muuchas gráficas
+ - ¿Temas de autónomos?
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
