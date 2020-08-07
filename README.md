@@ -178,6 +178,10 @@ const _getMyDataRequest = () => ({
  */
 const _getMyDataSuccess = () => ({
   type: GET_MY_DATA.SUCCESS,
+  payload: {
+    level: 'success',
+    message: 'El middleware de notificaciones mostrará este mensaje' // Mas información en la documentación de Storybook
+  }
 });
 
 /**
