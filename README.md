@@ -157,8 +157,7 @@ return (
 
 
 ### Modules
-This file is responsible to handle actions from redux and to have the state of the route
-Este archivo es responsable de manejar las acciones de redux y de tener el estado de la ruta, pueden crearse modules fuera de una ruta en caso de ser necesario.
+Este archivo es responsable de manejar las acciones de redux y de gestionar el estado de la ruta, pueden crearse modules fuera de una ruta en caso de ser necesario.
 
 #### Action
 
