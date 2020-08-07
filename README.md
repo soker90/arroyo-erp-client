@@ -64,7 +64,7 @@ Se sirve en <http://localhost:3000>
 
 # Ejemplos
 
-## How to create a new view
+## Cómo crear una nueva ruta
 
   - Crear una nueva carpeta en `src/pages` con la siguiente estructura
 ```
