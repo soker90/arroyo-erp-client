@@ -5,7 +5,6 @@ import 'moment/locale/es';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import * as serviceWorker from 'serviceWorker';
 import { SettingsProvider } from 'context/SettingsContext';
 import { configureStore } from 'store';
 import { restoreSettings } from 'utils/settings';
@@ -23,4 +22,5 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-serviceWorker.unregister();
+// TODO: Activar mas adelante y configurar notificaciones de actualizaciones
+// serviceWorker.unregister();

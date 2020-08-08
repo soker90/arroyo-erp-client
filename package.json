@@ -36,7 +36,6 @@
     "@material-ui/pickers": "^3.2.10",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
-    "history": "4.10.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.27.0",
     "nprogress": "^0.2.0",

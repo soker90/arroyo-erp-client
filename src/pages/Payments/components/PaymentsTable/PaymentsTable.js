@@ -1,15 +1,18 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import EuroIcon from '@material-ui/icons/Euro';
+import CallSplitIcon from '@material-ui/icons/CallSplit';
 
 import { TableMaterial } from 'components';
 import { addSelectedToState, format, removeSelectedFromState } from 'utils';
 import { useStyles } from './PaymentsTable.styles';
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal';
+import DividePaymentModal from '../../modals/DividePaymentModal';
 
 const PaymentsTable = ({ payments, selected, setSelected }) => {
   const classes = useStyles();
   const [payment, setPayment] = useState(null);
+  const [dividePayment, setDividePayment] = useState(null);
 
   /**
    * Toggle checkbox
@@ -24,6 +27,15 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
 
   const _handlePaymentButton = row => {
     setPayment(row);
+  };
+
+  /**
+   * Show Modal for divide payment
+   * @param {String} _id
+   * @private
+   */
+  const _handleDivideButton = ({ _id }) => {
+    setDividePayment(_id);
   };
 
   return (
@@ -59,11 +71,18 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
             tooltip: 'Pagar',
             onClick: _handlePaymentButton,
           },
+          {
+            icon: CallSplitIcon,
+            tooltip: 'Dividir pago',
+            onClick: _handleDivideButton,
+            disabled: ({ payments: paymentMerged }) => !paymentMerged?.length,
+          },
         ]}
         multiSelect={row => selected.includes(row._id)}
         onSelected={_handleChangeCheckbox}
       />
       <ConfirmPaymentModal payment={payment} setShow={setPayment} />
+      <DividePaymentModal paymentId={dividePayment} setShow={setDividePayment} />
     </>
   );
 };

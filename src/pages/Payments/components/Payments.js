@@ -18,6 +18,10 @@ const Payments = ({ payments, getPayments }) => {
     getPayments();
   }, [getPayments]);
 
+  useEffect(() => {
+    setSelected([]);
+  }, [payments]);
+
   return (
     <Page className={classes.root} title='Pagos'>
       <Container maxWidth={false} className={classes.container}>
