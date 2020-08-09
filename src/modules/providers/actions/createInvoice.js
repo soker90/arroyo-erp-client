@@ -54,7 +54,7 @@ export const createInvoice = deliveryOrders => async dispatch => {
   try {
     const { data } = await axios.post('invoices', {
       deliveryOrders,
-      concept: 'Compras'
+      concept: CONCEPT.COMPRAS
     });
 
     dispatch(_createInvoiceSuccess());
