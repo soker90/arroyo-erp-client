@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { CREATE_INVOICE } from '../types';
 import { navigateTo } from '../../../utils';
+import { CONCEPT } from 'constants/invoices';
 
 /**
  * Request action for createInvoice
@@ -18,8 +19,8 @@ const _createInvoiceSuccess = () => ({
   type: CREATE_INVOICE.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Factura de compras creada'
-  }
+    message: 'Factura de compras creada',
+  },
 });
 
 /**
@@ -30,8 +31,8 @@ const _createInvoiceSuccess = () => ({
 const _createInvoiceSet = invoice => ({
   type: CREATE_INVOICE.SET,
   payload: {
-    invoice
-  }
+    invoice,
+  },
 });
 /**
  * Error action for createInvoice
@@ -41,7 +42,7 @@ const _createInvoiceSet = invoice => ({
  */
 const _createInvoiceError = error => ({
   type: CREATE_INVOICE.FAILURE,
-  error
+  error,
 });
 
 /**
@@ -54,7 +55,7 @@ export const createInvoice = deliveryOrders => async dispatch => {
   try {
     const { data } = await axios.post('invoices', {
       deliveryOrders,
-      concept: CONCEPT.COMPRAS
+      concept: CONCEPT.COMPRAS,
     });
 
     dispatch(_createInvoiceSuccess());
