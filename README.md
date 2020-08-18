@@ -12,7 +12,7 @@ Es un proyecto desarrollado en `React`. (v.16.13.1) y gestiona el **state** de l
 ## TODO
 
 - DOCS: Readme and more Storybook
-- TESTING: Definiendo estrategia..., probaré esta vez el combo Storybook + Crypess para el testing de componentes aislados
+- TESTING: Definiendo estrategia..., probaré las carácteristicas experimentales de Crypess para el testing de componentes aislados
 - TESTING: Preparar un entorno para tests e2e con cypress.
 - TESTING: React testing library para custom hooks :heart_eyes:
 - No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
