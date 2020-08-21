@@ -1,8 +1,8 @@
 # ARROYO CLIENT
 
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=soker90/arroyo-erp-client)](https://dependabot.com)
 [![dependencies Status](https://david-dm.org/soker90/arroyo-erp-client/status.svg)](https://david-dm.org/soker90/arroyo-erp-client)
 [![devDependencies Status](https://david-dm.org/soker90/arroyo-erp-client/dev-status.svg)](https://david-dm.org/soker90/arroyo-erp-client?type=dev)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://soker90.github.io/arroyo-erp-client/)
 
 ## Descripción
 Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas. 
