@@ -23,7 +23,7 @@ const DeliveryOrder = (
   const classes = useStyles();
   const { idDeliveryOrder } = useParams();
 
-  useEffect(() => resetDeliveryOrder(), [resetDeliveryOrder]);
+  useEffect(() => (() => resetDeliveryOrder()), [resetDeliveryOrder]);
 
   useEffect(() => {
     if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
@@ -85,11 +85,6 @@ const DeliveryOrder = (
 };
 
 DeliveryOrder.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      idDeliveryOrder: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
   getProducts: PropTypes.func.isRequired,
   getDeliveryOrder: PropTypes.func.isRequired,
   provider: PropTypes.string,
