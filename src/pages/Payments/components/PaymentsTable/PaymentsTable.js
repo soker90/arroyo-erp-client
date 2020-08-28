@@ -48,6 +48,10 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
             field: 'nOrder',
           },
           {
+            title: 'Fecha de factura',
+            render: ({ invoiceDate }) => format.date(invoiceDate),
+          },
+          {
             title: 'Fecha de cobro',
             render: ({ paymentDate }) => format.date(paymentDate),
           },

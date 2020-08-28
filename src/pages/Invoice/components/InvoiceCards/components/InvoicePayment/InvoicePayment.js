@@ -38,7 +38,7 @@ const InvoicePayment = ({
 
 InvoicePayment.propTypes = {
   paymentDate: PropTypes.number,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   numCheque: PropTypes.string,
   paid: PropTypes.bool,
   className: PropTypes.string.isRequired,

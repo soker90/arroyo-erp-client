@@ -17,7 +17,7 @@ const ItemCard = ({
       disableGutters
       divider={divider}
     >
-      <Typography variant='subtitle2'>{label}</Typography>
+      <Typography variant='subtitle2' className={classes.label}>{label}</Typography>
 
       {
         typeof value === 'boolean'
