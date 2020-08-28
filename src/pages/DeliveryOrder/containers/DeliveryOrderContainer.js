@@ -13,9 +13,7 @@ import {
  * @param products
  * @return {{products: *}}
  */
-const mapStateToProps = ({ deliveryOrders }) => ({
-  ...deliveryOrders,
-});
+const mapStateToProps = ({ deliveryOrders }) => deliveryOrders;
 
 const mapDispatchToProps = {
   getProducts,

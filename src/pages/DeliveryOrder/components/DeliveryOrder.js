@@ -6,6 +6,7 @@ import { Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import { Page } from 'components';
+import { useParams } from 'react-router';
 import DeliveryOrderProducts from './DeliveryOrderProducts';
 import DeliveryOrderData from './DeliveryOrderData';
 import DeliveryOrderTotals from './DeliveryOrderTotals';
@@ -14,16 +15,18 @@ import { useStyles } from './DeliveryOrder.styles';
 
 const DeliveryOrder = (
   {
-    match: { params: { idDeliveryOrder } }, getProducts, getDeliveryOrder, provider, nameProvider,
+    getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDateDeliveryOrder,
     showDeleteProductModal, showEditProductModal, updatePrice, resetDeliveryOrder,
   },
 ) => {
   const classes = useStyles();
+  const { idDeliveryOrder } = useParams();
+
+  useEffect(() => resetDeliveryOrder(), [resetDeliveryOrder]);
 
   useEffect(() => {
     if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
-    return () => resetDeliveryOrder();
   }, [idDeliveryOrder]);
 
   useEffect(() => {

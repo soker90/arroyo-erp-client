@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {GET_DELIVERY_ORDER} from '../types';
+import { GET_DELIVERY_ORDER } from '../types';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrderRequest = () => ({type: GET_DELIVERY_ORDER.REQUEST});
+const _getDeliveryOrderRequest = () => ({ type: GET_DELIVERY_ORDER.REQUEST });
 
 /**
  * Success action
@@ -47,7 +47,7 @@ export const getDeliveryOrder = id => async dispatch => {
   dispatch(_getDeliveryOrderRequest());
 
   try {
-    const {data} = await axios(`deliveryorders/${id}`);
+    const { data } = await axios(`deliveryorders/${id}`);
 
     dispatch(_getDeliveryOrderSuccess());
     dispatch(_getDeliveryOrderSet(data));
