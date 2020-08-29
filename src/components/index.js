@@ -6,3 +6,4 @@ export * from './Forms';
 export * from './Cards';
 export { default as LoadingScreen } from './LoadingScreen';
 export { default as BooleanIcon } from './BooleanIcon';
+export { default as TextEuro } from './TextEuro';

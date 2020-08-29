@@ -10,6 +10,7 @@ import {
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { format } from 'utils';
+import TextEuro from '../../TextEuro';
 
 const DeliveryOrderExpandHeader = ({
   children, _id, date, taxBase,
@@ -30,7 +31,7 @@ const DeliveryOrderExpandHeader = ({
             </IconButton>
           </Tooltip>
         </>
-      )}
+        )}
     />
 
     <Typography
@@ -40,7 +41,7 @@ const DeliveryOrderExpandHeader = ({
     >
       <strong>{format.date(date)}</strong>
       {' - '}
-      {format.euro(taxBase)}
+      <TextEuro num={taxBase} />
     </Typography>
   </>
 );

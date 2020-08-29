@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import { TableMaterial } from 'components';
+import { TextEuro, TableMaterial } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -21,7 +21,7 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
         },
         {
           title: 'Total',
-          render: ({ total }) => format.euro(total),
+          render: ({ total }) => <TextEuro num={total} />,
         },
       ]}
       data={data}

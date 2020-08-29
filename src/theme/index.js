@@ -91,6 +91,7 @@ const themeConfigs = [
       text: {
         primary: '#e6e5e8',
         secondary: '#adb0bb',
+        error: colors.red[600],
       },
     },
     shadows: strongShadows,
