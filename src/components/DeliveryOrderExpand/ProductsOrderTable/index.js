@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import { format } from 'utils';
-import { TableMaterial } from 'components';
+
+import { TableMaterial, TextEuro } from 'components';
 
 const useStyles = makeStyles({
   root: {
@@ -35,15 +35,15 @@ const ProductsOrderTable = ({ products }) => {
         },
         {
           title: 'Cantidad / Peso',
-          render: ({ quantity }) => format.number(quantity),
+          render: ({ quantity }) => <TextEuro num={quantity} />,
         },
         {
           title: 'Precio',
-          render: ({ price }) => format.euro(price),
+          render: ({ price }) => <TextEuro num={price} />,
         },
         {
           title: 'Base imponible',
-          render: ({ taxBase }) => format.euro(taxBase),
+          render: ({ taxBase }) => <TextEuro num={taxBase} />,
         },
       ]}
       data={products}
