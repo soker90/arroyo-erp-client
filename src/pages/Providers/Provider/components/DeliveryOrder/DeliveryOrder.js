@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 
 import NoInvoices from './components/NoInvoices';
+import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum';
 // import { useStyles } from './DeliveryOrder.styles';
 
 const InInvoices = lazy(() => import('./components/InInvoices'));
@@ -28,6 +29,7 @@ const DeliveryOrder = ({
   return (
     idProvider && (
       <>
+        {selected.length && <DeliveryOrderSelectedSum selected={selected} free={free} />}
         <NoInvoices
           deliveryOrders={free}
           selected={selected}
