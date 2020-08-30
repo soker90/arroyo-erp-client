@@ -29,7 +29,7 @@ const InvoicePayment = ({
           </Grid>
         )}
         <Grid item xs={12} md={3}>
-          <ItemCard label='Pagado' value={Boolean(paid)} />
+          <ItemCard label='Pagado' value={paid} variant='boolean' />
         </Grid>
       </Grid>
     </CardContent>
