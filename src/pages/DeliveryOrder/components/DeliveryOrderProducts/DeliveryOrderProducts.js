@@ -7,7 +7,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Link } from 'react-router-dom';
 
-import { TableMaterial } from 'components';
+import { TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/index';
 import { diffColor } from './utils';
@@ -83,11 +83,11 @@ const DeliveryOrderProducts = ({
         },
         {
           title: 'Precio',
-          render: ({ price }) => format.euro(price),
+          render: ({ price }) => <TextEuro num={price} />,
         },
         {
           title: 'Base imponible',
-          render: ({ taxBase }) => format.euro(taxBase),
+          render: ({ taxBase }) => <TextEuro num={taxBase} />,
         },
         {
           title: 'Diferencia',

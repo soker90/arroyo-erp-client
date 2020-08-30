@@ -24,12 +24,12 @@ const _confirmInvoiceSuccess = () => ({
 /**
  * Set action
  * @param {Object} data
- * @return {{payload: {provider: Object}, type: string}}
+ * @return {{payload: {data: Object}, type: string}}
  * @private
  */
 const _confirmInvoiceSet = data => ({
   type: CONFIRM_INVOICE.SET,
-  payload: { data },
+  payload: data,
 });
 
 /**

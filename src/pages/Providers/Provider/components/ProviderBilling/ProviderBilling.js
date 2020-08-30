@@ -6,7 +6,6 @@ import {
 import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
-import { format } from 'utils';
 import { useStyles } from './ProviderBilling.styles';
 
 const ProviderBilling = (
@@ -32,13 +31,15 @@ const ProviderBilling = (
             {trimesters.map((value, index) => (
               <ItemCard
                 label={`${index + 1}º trimestre`}
-                value={format.euro(value)}
+                value={value}
+                variant='euro'
                 key={uniqId()}
               />
             ))}
             <ItemCard
               label='Anual'
-              value={format.euro(annual)}
+              value={annual}
+              variant='euro'
             />
           </List>
         </CardContent>

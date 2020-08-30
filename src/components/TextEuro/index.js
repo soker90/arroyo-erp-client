@@ -1,20 +1,33 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'utils';
+import clsx from 'clsx';
 import { useStyles } from './styles';
 
-const TextEuro = ({ num }) => {
+const TextEuro = ({
+  num, Component, className, ...rest
+}) => {
   const classes = useStyles();
-
-  const getColorAmount = () => (num < 0 ? classes.red : '');
+  const getColorAmount = (num < 0 ? classes.red : '');
 
   return (
-    <span className={getColorAmount()}>{format.euro(num)}</span>
+    <Component
+      className={clsx(getColorAmount, className)}
+      {...rest}
+    >
+      {format.euro(num)}
+    </Component>
   );
 };
 
 TextEuro.propTypes = {
   num: PropTypes.number,
+  Component: PropTypes.element,
+  className: PropTypes.string,
+};
+
+TextEuro.defaultProps = {
+  Component: 'span',
 };
 
 TextEuro.displayName = 'TextEuro';

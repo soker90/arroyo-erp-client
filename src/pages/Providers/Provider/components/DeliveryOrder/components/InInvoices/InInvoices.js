@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { TextEuro, TableMaterial } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import { Link } from 'react-router-dom';
 import { useStyles } from './InInvoices.styles';
 
 const InInvoices = ({ deliveryOrders: { data, count } }) => {

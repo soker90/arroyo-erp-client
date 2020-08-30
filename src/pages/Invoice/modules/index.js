@@ -14,13 +14,18 @@ const INITIAL_STATE = {
   data: {},
   deliveryOrders: [],
   totals: {},
+  payment: null,
 };
 
 const ACTION_HANDLERS = {
   [GET_INVOICE.SET]: setPayload,
   [CREATE_INVOICE.SET]: setPayload,
   [UPDATE_DATA.SET]: setPayload,
-  [CONFIRM_INVOICE.SET]: setPayload,
+  [CONFIRM_INVOICE.SET]: (state, { payload: { data, payment } }) => ({
+    ...state,
+    data,
+    payment,
+  }),
   [RESET_INVOICE]: () => INITIAL_STATE,
 };
 

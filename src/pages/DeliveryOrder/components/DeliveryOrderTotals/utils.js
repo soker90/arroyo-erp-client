@@ -1,5 +1,3 @@
-import { format } from 'utils';
-
 /**
  * Return array with items for total card
  * @param {number} iva
@@ -19,29 +17,34 @@ export const itemsCard = ({
         ? [{
           size,
           label: 'Tasa',
-          value: format.euro(rate),
+          value: rate,
+          variant: 'euro',
         }]
         : []
     ),
     {
       size,
       label: 'Base imponible',
-      value: format.euro(taxBase),
+      value: taxBase,
+      variant: 'euro',
     },
     {
       size,
       label: 'IVA',
-      value: format.euro(iva),
+      value: iva,
+      variant: 'euro',
     },
     {
       size,
       label: 'Recargo',
-      value: format.euro(re),
+      value: re,
+      variant: 'euro',
     },
     {
       size: 12,
       label: 'Total',
-      value: format.euro(total),
+      value: total,
+      variant: 'euro',
     },
   ];
 };

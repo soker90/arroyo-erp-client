@@ -8,7 +8,6 @@ import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
 import EditInvoiceTotalsModal from 'pages/Invoice/modals/EditInvoiceTotalsModal';
-import { format } from 'utils';
 
 const InvoiceTotals = ({
   iva, re, total, taxBase, isEditable, className,
@@ -50,16 +49,16 @@ const InvoiceTotals = ({
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>
-              <ItemCard label='Base imponible' value={format.euro(taxBase)} />
+              <ItemCard label='Base imponible' value={taxBase} variant='euro' />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label='IVA' value={format.euro(iva)} />
+              <ItemCard label='IVA' value={iva} variant='euro' />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label='RE' value={format.euro(re)} />
+              <ItemCard label='RE' value={re} variant='euro' />
             </Grid>
             <Grid item xs={12} md={3}>
-              <ItemCard label='TOTAL' value={format.euro(total)} />
+              <ItemCard label='TOTAL' value={total} variant='euro' />
             </Grid>
           </Grid>
         </CardContent>

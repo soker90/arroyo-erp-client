@@ -1,25 +1,28 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import uniqId from 'uniqid';
 
-import {Grid, List} from '@material-ui/core';
-import {ItemCard} from 'components/Cards';
-import {sliceToGroups} from 'utils';
-import {useStyles} from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles';
+import { Grid, List } from '@material-ui/core';
+import { ItemCard } from 'components/Cards';
+import { sliceToGroups } from 'utils';
+import { useStyles } from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles';
 
-const ItemGroupsCard = ({groups, items}) => {
+const ItemGroupsCard = ({ groups, items }) => {
   const classes = useStyles();
   const size = 12 / groups;
 
   /**
    * Render a single data label with value
    * @param {String} label
-   * @param value
+   * @param {any} value
+   * @param {string} label
+   * @param {string} variant
    * @returns {ItemCard}
    * @private
    */
-  const _renderItem = ({label, value}) =>
-    <ItemCard key={uniqId()} label={label} value={value}/>;
+  const _renderItem = ({ label, value, variant }) => (
+    <ItemCard key={uniqId()} label={label} value={value} variant={variant} />
+  );
 
   /**
    * Render group of data label
@@ -28,12 +31,13 @@ const ItemGroupsCard = ({groups, items}) => {
    * @returns {Grid}
    * @private
    */
-  const _renderGroup = (group, idx) =>
+  const _renderGroup = (group, idx) => (
     <Grid item xs={12} md={size} key={uniqId()}>
       <List className={idx === 0 ? classes.listFirst : classes.list}>
         {group.map(_renderItem)}
       </List>
-    </Grid>;
+    </Grid>
+  );
 
   return (
     <Grid
