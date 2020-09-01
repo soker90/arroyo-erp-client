@@ -5,6 +5,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { TableMaterial } from 'components';
 import { BASE_PATH } from 'constants/common';
+import { format } from 'utils';
 import { useStyles } from './ProductsTable.styles';
 
 const ProductsTable = ({ products, getProducts, idProvider }) => {
@@ -25,6 +26,18 @@ const ProductsTable = ({ products, getProducts, idProvider }) => {
         {
           title: 'Nombre',
           field: 'name',
+        },
+        {
+          title: 'Precio',
+          render: ({ price }) => format.euro(price),
+        },
+        {
+          title: 'Coste',
+          render: ({ cost }) => format.euro(cost),
+        },
+        {
+          title: 'Venta',
+          render: ({ sale }) => format.euro(sale),
         },
       ]}
       data={products}

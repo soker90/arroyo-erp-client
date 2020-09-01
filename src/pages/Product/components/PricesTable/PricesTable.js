@@ -20,6 +20,14 @@ const PricesTable = ({ prices }) => {
           title: 'Precio',
           render: ({ price }) => format.euro(price),
         },
+        {
+          title: 'Coste',
+          render: ({ cost }) => format.euro(cost),
+        },
+        {
+          title: 'Venta',
+          render: ({ sale }) => format.euro(sale),
+        },
       ]}
       data={prices}
     />

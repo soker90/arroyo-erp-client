@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   re: 0,
   rate: 0,
   amount: 0,
+  profit: 0,
 };
 
 const NewProductModal = ({
@@ -16,7 +17,7 @@ const NewProductModal = ({
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE
+    INITIAL_STATE,
   );
 
   useEffect(() => {

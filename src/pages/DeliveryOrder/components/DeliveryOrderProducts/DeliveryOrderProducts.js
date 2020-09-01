@@ -61,8 +61,16 @@ const DeliveryOrderProducts = ({
    * @param {Number} price
    * @private
    */
-  const _updatePrice = ({ product, price }) => {
-    updatePrice(product, price, new Date(date).getTime());
+  const _updatePrice = ({
+    product, price, total, quantity,
+  }) => {
+    updatePrice({
+      product,
+      price,
+      date: new Date(date).getTime(),
+      total,
+      quantity,
+    });
   };
 
   return (

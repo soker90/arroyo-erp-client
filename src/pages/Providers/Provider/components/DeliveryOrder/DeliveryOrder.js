@@ -29,7 +29,7 @@ const DeliveryOrder = ({
   return (
     idProvider && (
       <>
-        {selected.length && <DeliveryOrderSelectedSum selected={selected} free={free} />}
+        {Boolean(selected.length) && <DeliveryOrderSelectedSum selected={selected} free={free} />}
         <NoInvoices
           deliveryOrders={free}
           selected={selected}
