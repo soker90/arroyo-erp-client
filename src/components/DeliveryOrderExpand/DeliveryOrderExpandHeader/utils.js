@@ -10,7 +10,7 @@ export const getTotals = ({
   taxBase, iva, re, total,
 }) => [
   {
-    label: 'BI',
+    label: 'B.I.',
     value: taxBase,
   },
   {
@@ -18,7 +18,7 @@ export const getTotals = ({
     value: iva,
   },
   {
-    label: 'RE',
+    label: 'R.E.',
     value: re,
   },
   {

@@ -48,7 +48,7 @@ const DeliveryOrderExpandHeader = ({
         {getTotals(props)
           .map(total => (
             <>
-              {` ${total.label} - `}
+              {` ${total.label} `}
               <TextEuro num={total.value} className={classes.total} />
             </>
           ))}
