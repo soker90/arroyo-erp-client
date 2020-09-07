@@ -24,7 +24,7 @@ const Product = ({
 
   return (
     <Page className={classes.root} title={`${product.name} | Producto`}>
-      <Container maxWidth={false} className={classes.container}>
+      <Container maxWidth={false}>
         <Header
           provider={product.provider}
           nameProvider={product.nameProvider}

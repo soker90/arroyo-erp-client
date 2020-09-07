@@ -7,12 +7,6 @@ export const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
   },
-  container: {
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 64,
-      paddingRight: 64,
-    },
-  },
   table: {
     marginTop: theme.spacing(2),
   },

@@ -24,7 +24,7 @@ const Payments = ({ payments, getPayments }) => {
 
   return (
     <Page className={classes.root} title='Pagos'>
-      <Container maxWidth={false} className={classes.container}>
+      <Container maxWidth={false}>
         <Header selected={selected} />
 
         <PaymentsTable payments={payments} selected={selected} setSelected={setSelected} />

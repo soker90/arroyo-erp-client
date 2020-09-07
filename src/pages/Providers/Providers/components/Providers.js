@@ -24,7 +24,7 @@ const Providers = ({ providers }) => {
   return (
     <>
       <Page className={classes.root} title='Proveedores'>
-        <Container maxWidth={false} className={classes.container}>
+        <Container maxWidth={false}>
           <Header
             title='Provedores'
             buttons={[

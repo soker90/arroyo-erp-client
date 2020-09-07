@@ -69,7 +69,7 @@ const Provider = ({
 
   return (
     <Page className={classes.root} title={provider.name}>
-      <Container maxWidth={false} className={classes.container}>
+      <Container maxWidth={false}>
         <Header
           currentTab={currentTab}
           expanded={expand}

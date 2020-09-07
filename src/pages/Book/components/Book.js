@@ -21,7 +21,7 @@ const Book = ({ invoices, getInvoices }) => {
 
   return (
     <Page className={classes.root} title='Libro'>
-      <Container maxWidth={false} className={classes.container}>
+      <Container maxWidth={false}>
         <Header year={Number(year)} />
 
         <InvoicesTable invoices={invoices} />

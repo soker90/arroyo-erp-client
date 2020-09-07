@@ -46,7 +46,7 @@ const DeliveryOrder = (
   return (
     <>
       <Page className={classes.root} title={`${nameProvider} | Albarán`}>
-        <Container maxWidth={false} className={classes.container}>
+        <Container maxWidth={false}>
           <Header
             nameProvider={nameProvider}
             provider={provider}

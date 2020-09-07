@@ -27,7 +27,7 @@ const Invoice = ({
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
-      <Container maxWidth={false} className={classes.container}>
+      <Container maxWidth={false}>
         <Header provider={provider} nameProvider={nameProvider} nOrder={data.nOrder} />
 
         <InvoiceCards totals={totals} data={data} payment={payment} />
