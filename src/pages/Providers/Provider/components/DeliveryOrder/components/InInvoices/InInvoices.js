@@ -23,6 +23,10 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
           title: 'Total',
           render: ({ total }) => <TextEuro num={total} />,
         },
+        {
+          title: 'Nota',
+          field: 'note',
+        },
       ]}
       data={data}
       count={count}
@@ -35,6 +39,9 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
           to: ({ _id }) => `${BASE_PATH}/albaranes/${_id}`,
         },
       ]}
+      refresh={() => {
+        console.log('No implementado');
+      }}
     />
   );
 };
@@ -43,6 +50,7 @@ InInvoices.propTypes = {
   deliveryOrders: PropTypes.shape({
     data: PropTypes.array,
     count: PropTypes.number,
+    note: PropTypes.string,
   }).isRequired,
 };
 

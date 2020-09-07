@@ -22,7 +22,7 @@ const TextEuro = ({
 
 TextEuro.propTypes = {
   num: PropTypes.number,
-  Component: PropTypes.element,
+  Component: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
 };
 

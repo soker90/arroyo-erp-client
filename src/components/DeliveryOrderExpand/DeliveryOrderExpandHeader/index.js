@@ -15,7 +15,7 @@ import { getTotals } from './utils';
 import { useStyles } from './styles';
 
 const DeliveryOrderExpandHeader = ({
-  children, _id, date, ...props
+  children, _id, date, note, ...props
 }) => {
   const classes = useStyles();
 
@@ -53,6 +53,13 @@ const DeliveryOrderExpandHeader = ({
             </>
           ))}
       </Typography>
+      <Typography
+        color='secondary'
+        variant='body1'
+        style={{ marginTop: '0.75rem' }}
+      >
+        {note}
+      </Typography>
     </>
   );
 };
@@ -65,6 +72,7 @@ DeliveryOrderExpandHeader.propTypes = {
   iva: PropTypes.number.isRequired,
   re: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
+  note: PropTypes.string,
 };
 
 DeliveryOrderExpandHeader.displayName = 'DeliveryOrderExpandHeader';

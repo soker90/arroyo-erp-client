@@ -16,8 +16,9 @@ import { useStyles } from './DeliveryOrder.styles';
 const DeliveryOrder = (
   {
     getProducts, getDeliveryOrder, provider, nameProvider,
-    products, date, totals, _id, nOrder, updateDateDeliveryOrder,
+    products, date, totals, _id, nOrder, updateDataDeliveryOrder,
     showDeleteProductModal, showEditProductModal, updatePrice, resetDeliveryOrder,
+    note,
   },
 ) => {
   const classes = useStyles();
@@ -34,12 +35,12 @@ const DeliveryOrder = (
   }, [provider]);
 
   /**
-   * Handle change date
-   * @param {Date} value
+   * Handle change data
+   * @param {Object} value
    * @private
    */
-  const _handleChangeDate = value => {
-    updateDateDeliveryOrder(idDeliveryOrder, value);
+  const _updateData = value => {
+    updateDataDeliveryOrder(idDeliveryOrder, value);
   };
 
   return (
@@ -69,8 +70,9 @@ const DeliveryOrder = (
             <Grid item xs={12} md={4}>
               <DeliveryOrderData
                 date={date}
-                setDate={_handleChangeDate}
                 readOnly={Boolean(nOrder)}
+                updateData={_updateData}
+                note={note}
               />
             </Grid>
             <Grid item xs={12} md={8}>
@@ -94,11 +96,12 @@ DeliveryOrder.propTypes = {
   totals: PropTypes.object,
   _id: PropTypes.string,
   nOrder: PropTypes.number,
-  updateDateDeliveryOrder: PropTypes.func.isRequired,
+  updateDataDeliveryOrder: PropTypes.func.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   updatePrice: PropTypes.func.isRequired,
   resetDeliveryOrder: PropTypes.func.isRequired,
+  note: PropTypes.string,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

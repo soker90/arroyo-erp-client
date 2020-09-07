@@ -6,7 +6,7 @@ import {
 import { getProducts } from 'modules/products/actions';
 import DeliveryOrder from '../components/DeliveryOrder';
 import {
-  getDeliveryOrder, updateDateDeliveryOrder, updatePrice, resetDeliveryOrder,
+  getDeliveryOrder, updateDataDeliveryOrder, updatePrice, resetDeliveryOrder,
 } from '../modules/actions';
 
 /**
@@ -18,7 +18,7 @@ const mapStateToProps = ({ deliveryOrders }) => deliveryOrders;
 const mapDispatchToProps = {
   getProducts,
   getDeliveryOrder,
-  updateDateDeliveryOrder,
+  updateDataDeliveryOrder,
   updatePrice,
   resetDeliveryOrder,
   showDeleteProductModal: index => showModal({

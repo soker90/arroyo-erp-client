@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { UPDATE_DATE_DELIVERY_ORDER } from '../types';
+import { UPDATE_DATA_DELIVERY_ORDER } from '../types';
 
 /**
  * Request action for updateDateDeliveryOrder
  * @returns {{type: string}}
  * @private
  */
-const _updateDateDeliveryOrderRequest = () => ({
-  type: UPDATE_DATE_DELIVERY_ORDER.REQUEST,
+const _updateDataDeliveryOrderRequest = () => ({
+  type: UPDATE_DATA_DELIVERY_ORDER.REQUEST,
 });
 
 /**
@@ -15,11 +15,11 @@ const _updateDateDeliveryOrderRequest = () => ({
  * @returns {{notification: {level: string, message: string}, type: string}}
  * @private
  */
-const _updateDateDeliveryOrderSuccess = () => ({
-  type: UPDATE_DATE_DELIVERY_ORDER.SUCCESS,
+const _updateDataDeliveryOrderSuccess = () => ({
+  type: UPDATE_DATA_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Fecha actualizada',
+    message: 'Datos del albarán actualizados',
   },
 });
 
@@ -30,10 +30,9 @@ const _updateDateDeliveryOrderSuccess = () => ({
  * @private
  */
 const _updateDateDeliveryOrderSet = ({ data }) => ({
-  type: UPDATE_DATE_DELIVERY_ORDER.SET,
+  type: UPDATE_DATA_DELIVERY_ORDER.SET,
   payload: data,
 });
-
 
 /**
  * Error action for updateDateDeliveryOrder
@@ -41,30 +40,32 @@ const _updateDateDeliveryOrderSet = ({ data }) => ({
  * @returns {{type: string, error: _createDeliveryOrderError.props}}
  * @private
  */
-const _updateDateDeliveryOrderError = error => ({
-  type: UPDATE_DATE_DELIVERY_ORDER.FAILURE,
+const _updateDataDeliveryOrderError = error => ({
+  type: UPDATE_DATA_DELIVERY_ORDER.FAILURE,
   error,
 });
 
 /**
  * Actualiza la fecha del albaran
  * @param {Object} id
- * @param {any} date
+ * @param {Date} date
+ * @param {string} note
  * @return {function(...[*]=)}
  */
-export const updateDateDeliveryOrder = (id, date) => async dispatch => {
-  dispatch(_updateDateDeliveryOrderRequest());
+export const updateDataDeliveryOrder = (id, { date, note }) => async dispatch => {
+  dispatch(_updateDataDeliveryOrderRequest());
   const data = {
-    date: new Date(date).getTime(),
+    ...(date && { date: new Date(date).getTime() }),
+    ...(note && { note }),
   };
 
   try {
     const response = await axios.patch(`deliveryorders/${id}`, data);
 
-    dispatch(_updateDateDeliveryOrderSuccess());
+    dispatch(_updateDataDeliveryOrderSuccess());
     dispatch(_updateDateDeliveryOrderSet(response));
   } catch (error) {
     console.error(error);
-    dispatch(_updateDateDeliveryOrderError(error));
+    dispatch(_updateDataDeliveryOrderError(error));
   }
 };
