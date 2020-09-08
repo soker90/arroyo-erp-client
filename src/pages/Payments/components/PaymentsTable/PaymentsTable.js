@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import EuroIcon from '@material-ui/icons/Euro';
 import CallSplitIcon from '@material-ui/icons/CallSplit';
 
-import { TableMaterial } from 'components';
+import { TableMaterial, TextEuro } from 'components';
 import { addSelectedToState, format, removeSelectedFromState } from 'utils';
-import { useStyles } from './PaymentsTable.styles';
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal';
 import DividePaymentModal from '../../modals/DividePaymentModal';
+import { useStyles } from './PaymentsTable.styles';
 
 const PaymentsTable = ({ payments, selected, setSelected }) => {
   const classes = useStyles();
@@ -69,7 +69,7 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
           },
           {
             title: 'Importe',
-            render: ({ amount }) => format.euro(amount),
+            render: ({ amount }) => <TextEuro num={amount} />,
           },
         ]}
         data={payments}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { TableMaterial } from 'components';
+import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 import { useStyles } from './InvoicesTable.styles';
@@ -41,7 +41,7 @@ const InvoicesTable = ({ invoices }) => {
         },
         {
           title: 'Importe',
-          render: ({ total }) => format.euro(total),
+          render: ({ total }) => <TextEuro num={total} />,
         },
       ]}
       data={invoices}
