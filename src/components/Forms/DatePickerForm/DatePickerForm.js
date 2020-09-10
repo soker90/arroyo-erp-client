@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
+
 import { useStyles } from './DatePickerForm.styles';
 
 const DatePickerForm = (
@@ -9,7 +10,6 @@ const DatePickerForm = (
     size,
     variant,
     format,
-    children,
     autoOk,
     ...rest
   },
@@ -19,6 +19,7 @@ const DatePickerForm = (
   return (
     <Grid item md={size} xs={12}>
       <DatePicker
+        disableToolbar
         className={classes.picker}
         onChange={() => {
         }}
@@ -76,6 +77,7 @@ DatePickerForm.propTypes = {
    * Añade un botón para borrar la fecha
    */
   clearable: PropTypes.bool,
+  variant: PropTypes.string,
 };
 
 DatePickerForm.defaultProps = {

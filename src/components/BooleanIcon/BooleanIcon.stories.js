@@ -5,7 +5,7 @@ import {boolean} from '@storybook/addon-knobs';
 import ThemeWrapper from 'story/ThemeWrapper';
 
 export default {
-  title: 'Formularios|Boolean Icon',
+  title: 'Formularios/Boolean Icon',
   parameters: {
     component: BooleanIcon,
     componentSubtitle: 'Muestra un aspa roja o un check verde',
@@ -19,8 +19,6 @@ const Icon = () => {
   </ThemeWrapper>;
 }
 
-Icon.story = {
-  name: 'Boolean Icon',
-};
+Icon.storyName = 'Boolean Icon';
 
 export {Icon};

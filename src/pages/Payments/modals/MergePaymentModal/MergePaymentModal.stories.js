@@ -2,18 +2,20 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 
-import { story as DeleteConfirmationModal } from './DeleteConfirmationModal';
+import { story as MergePaymentModal } from './MergePaymentModal';
 
 export default {
   title: 'Rutas/Albarán/Modales/Eliminar prducto',
   parameters: {
-    component: DeleteConfirmationModal,
+    component: MergePaymentModal,
     componentSubtitle: 'Modal de confimación para eliminar un producto del albarán',
   },
 };
 
-const DeleteModal = () => (
-  <DeleteConfirmationModal
+const MergeModal = () => (
+  <MergePaymentModal
+    selected={[]}
+    mergePayments={action('mergePayments')}
     // eslint-disable-next-line
     show={true}
     close={action('Cerrar modal')}
@@ -22,6 +24,6 @@ const DeleteModal = () => (
   />
 );
 
-DeleteModal.storyName = 'Eliminar producto';
+MergeModal.storyName = 'Eliminar producto';
 
-export { DeleteModal };
+export { MergeModal };

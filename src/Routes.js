@@ -76,6 +76,11 @@ const routesConfig = [
         component: lazy(() => import('pages/Payments')),
       },
       {
+        exact: true,
+        path: '/app/notas',
+        component: lazy(() => import('pages/Notes')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],
