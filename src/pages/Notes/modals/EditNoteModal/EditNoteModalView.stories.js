@@ -16,7 +16,7 @@ const NOTE = {
 };
 
 export default {
-  title: 'Rutas/Notas/Editar',
+  title: 'Rutas/Notas/Modales/Editar',
   parameters: {
     component: EditNoteModalView,
     componentSubtitle: 'Modal para editar notas',

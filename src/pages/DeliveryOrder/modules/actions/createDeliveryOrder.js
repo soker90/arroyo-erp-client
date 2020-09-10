@@ -18,7 +18,7 @@ const _createDeliveryOrderRequest = () => ({
  */
 const _createDeliveryOrderSuccess = () => ({
   type: CREATE_DELIVERY_ORDER.SUCCESS,
-  notification: {
+  payload: {
     level: 'success',
     message: 'Albarán creado',
   },

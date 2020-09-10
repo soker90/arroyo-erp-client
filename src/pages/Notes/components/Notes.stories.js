@@ -4,46 +4,64 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import RoutesWrapper from 'story/RoutesWrapper';
-import { story as Book } from './Notes';
+import { ReduxProvider } from 'story';
+import DatePickerProvider from 'contexts/DatePickerProvider';
+import { story as Notes } from './Notes';
+
+const NOTES = [
+  {
+    _id: 'unIDDD',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  },
+  {
+    _id: 'unIDDD1',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  }, {
+    _id: 'unIDDD2',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  },
+];
 
 export default {
-  title: 'Rutas/Libro',
+  title: 'Rutas/Notas',
   parameters: {
-    component: Book,
+    component: Notes,
     componentSubtitle: 'Vista',
   },
   decorators: [storyFn => (
-    <RoutesWrapper>
-      {storyFn()}
-    </RoutesWrapper>
+    <DatePickerProvider>
+      <ReduxProvider>
+        <RoutesWrapper>
+          {storyFn()}
+        </RoutesWrapper>
+      </ReduxProvider>
+    </DatePickerProvider>
   ),
   ],
 };
 
-/**
- * code, productName, quantity, price, amount, diff
- */
-
-const BookStory = () => (
-  <Book
-    invoices={
-      [
-        {
-          _id: '5f149fb967012016a09e15fb',
-          total: 7.62,
-          nameProvider: 'Primero',
-          dateRegister: 1595187129870,
-          concept: 'Compras',
-          dateInvoice: 1595101920000,
-          nInvoice: '22',
-          nOrder: 5,
-        },
-      ]
-    }
-    getInvoices={action('getInvoices')}
+const NotesStory = () => (
+  <Notes
+    notes={NOTES}
+    getNotes={action('getNotes')}
   />
 );
 
-BookStory.storyName = 'Vista';
+NotesStory.storyName = 'Vista';
 
-export { BookStory };
+export { NotesStory };

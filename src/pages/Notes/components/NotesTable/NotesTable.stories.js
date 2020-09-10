@@ -1,9 +1,9 @@
 import React from 'react';
 
 import RoutesWrapper from 'story/RoutesWrapper';
+import { ReduxProvider } from 'story';
+import DatePickerProvider from 'contexts/DatePickerProvider';
 import { story as NotesTable } from './NotesTable';
-import { ReduxProvider } from '../../../../story';
-import DatePickerProvider from '../../../../contexts/DatePickerProvider';
 
 export default {
   title: 'Rutas/Notas/Tabla de notas',
@@ -22,17 +22,50 @@ export default {
   ),
   ],
 };
+const NOTES = [
+  {
+    _id: 'unIDDD',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  },
+  {
+    _id: 'unIDDD1',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  }, {
+    _id: 'unIDDD2',
+    date: Date.now(),
+    concept: 'Este es el concepto',
+    quantity: '22€',
+    price: '33€',
+    amount: '88€',
+    clarification: 'Una observación',
+  },
 
-/**
- * code, productName, quantity, price, amount, diff
- */
+];
 
 const NotesTableStory = () => (
   <NotesTable
-    notes={[]}
+    notes={NOTES}
   />
 );
 
 NotesTableStory.storyName = 'Vista';
 
-export { NotesTableStory };
+const NotesTableNoNotesStory = () => (
+  <NotesTable
+    notes={[]}
+  />
+);
+
+NotesTableNoNotesStory.storyName = 'Sin notas';
+
+export { NotesTableStory, NotesTableNoNotesStory };

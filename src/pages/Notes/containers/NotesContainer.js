@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getNotes } from '../modules/actions';
-import Payments from '../components/Notes';
+import Notes from '../components/Notes';
 
 /**
  * @param products
@@ -10,10 +10,10 @@ import Payments from '../components/Notes';
 const mapStateToProps = ({ notes }) => notes;
 
 const mapDispatchToProps = {
-  getPayments: getNotes,
+  getNotes,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Payments);
+)(Notes);

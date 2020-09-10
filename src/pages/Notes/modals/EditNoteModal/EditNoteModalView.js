@@ -40,7 +40,7 @@ const EditNoteModal = ({
 EditNoteModal.propTypes = {
   close: PropTypes.func.isRequired,
   editNote: PropTypes.func.isRequired,
-  note: PropTypes.object.isRequired,
+  note: PropTypes.object,
 };
 
 EditNoteModal.displayName = 'EditNoteModal';

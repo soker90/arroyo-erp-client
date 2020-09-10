@@ -1,6 +1,7 @@
 import { PieChart as PieChartIcon, Users as UsersIcon } from 'react-feather';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import EuroIcon from '@material-ui/icons/Euro';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 
 export const navConfig = [
   {
@@ -29,6 +30,15 @@ export const navConfig = [
         title: 'Pagos',
         icon: EuroIcon,
         href: '/app/pagos',
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        title: 'Notas',
+        icon: PostAddIcon,
+        href: '/app/notas',
       },
     ],
   },

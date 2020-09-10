@@ -6,7 +6,7 @@ import DatePickerProvider from 'contexts/DatePickerProvider';
 import { story as NewNoteModal } from './NewNoteModalView';
 
 export default {
-  title: 'Rutas/Notas/Nueva',
+  title: 'Rutas/Notas/Modales/Nueva',
   parameters: {
     component: NewNoteModal,
     componentSubtitle: 'Modal para crear notas',

@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
+import { format } from 'utils';
 import NoteModal, { INITIAL_STATE } from '../NoteModal';
 
 const NewNoteModal = ({
@@ -20,7 +21,11 @@ const NewNoteModal = ({
    * @private
    */
   const _handleSubmit = data => {
-    createNote(data, close);
+    const model = {
+      ...data,
+      date: format.dateToSend(data.date),
+    };
+    createNote(model, close);
   };
 
   return (

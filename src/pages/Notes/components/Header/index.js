@@ -11,12 +11,14 @@ const HeaderNotes = () => {
    * Cierra el modal
    * @private
    */
-  const _closeModal = () => setShowModal(false);
+  const _closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
       <Header
-        title='Pagos'
+        title='Notas'
         buttons={[
           {
             Icon: AddIcon,

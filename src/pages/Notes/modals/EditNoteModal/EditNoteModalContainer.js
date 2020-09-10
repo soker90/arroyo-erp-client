@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { editNote } from '../../modules/actions';
-import EditProductModalView from './EditNoteModalView';
+import EditNoteModalView from './EditNoteModalView';
 
 const mapDispatchToProps = {
   editNote,
@@ -10,4 +10,4 @@ const mapDispatchToProps = {
 export default connect(
   null,
   mapDispatchToProps
-)(EditProductModalView);
+)(EditNoteModalView);

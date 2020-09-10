@@ -48,7 +48,7 @@ DatePickerForm.propTypes = {
   /**
    * Fecha
    */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number, PropTypes.object]),
   /**
    * Función par el botón de aceptar
    */

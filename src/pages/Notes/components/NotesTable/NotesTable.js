@@ -1,16 +1,18 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
 import EditNoteModal from '../../modals/EditNoteModal';
+import DeleteNoteModal from '../../modals/DeleteNoteModal';
 import { useStyles } from './NotesTable.styles';
 
 const NotesTable = ({ notes }) => {
   const classes = useStyles();
   const [noteEdit, setNoteEdit] = useState(null);
-  // const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [noteDelete, setNoteDelete] = useState(null);
 
   /**
    * Show Modal for edit modal
@@ -21,8 +23,26 @@ const NotesTable = ({ notes }) => {
     setNoteEdit(note);
   };
 
-  const _handleClose = () => {
+  /**
+   * Cierra el modal de editar nota
+   */
+  const _handleEditClose = () => {
     setNoteEdit(null);
+  };
+
+  /**
+   * Muestra el modal de eliminar nota
+   * @param {String} _id
+   */
+  const _handleDeleteButton = ({ _id }) => {
+    setNoteDelete(_id);
+  };
+
+  /**
+   * Cierra el modal de eliminar nota
+   */
+  const _handleDeleteClose = () => {
+    setNoteDelete(null);
   };
 
   return (
@@ -55,9 +75,13 @@ const NotesTable = ({ notes }) => {
             field: 'clarification',
           },
         ]}
-        EuroIcon
         data={notes}
         actions={[
+          {
+            icon: DeleteIcon,
+            tooltip: 'Borrar',
+            onClick: _handleDeleteButton,
+          },
           {
             icon: EditIcon,
             tooltip: 'Editar',
@@ -65,8 +89,8 @@ const NotesTable = ({ notes }) => {
           },
         ]}
       />
-      <EditNoteModal note={noteEdit} close={_handleClose} />
-      {/* <ConfirmPaymentModal payment={payment} setShow={setPayment}/> */}
+      <EditNoteModal note={noteEdit} close={_handleEditClose} />
+      <DeleteNoteModal id={noteDelete} close={_handleDeleteClose} />
     </>
   );
 };
