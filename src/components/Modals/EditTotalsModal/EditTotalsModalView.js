@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm } from 'components';
 
-const EditInvoiceTotalsModalView = ({
-  show, setShow, total, iva, re, rate, taxBase, updateDataInvoice, id,
+const EditTotalsModalView = ({
+  show, setShow, total, iva, re, rate, taxBase, update, id,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -14,7 +14,7 @@ const EditInvoiceTotalsModalView = ({
       re,
       ...(rate && { rate }),
       taxBase,
-    }
+    },
   );
 
   const [errors, setErrors] = useReducer(
@@ -25,7 +25,7 @@ const EditInvoiceTotalsModalView = ({
       re: false,
       rate: false,
       taxBase: false,
-    }
+    },
   );
 
   /**
@@ -45,7 +45,7 @@ const EditInvoiceTotalsModalView = ({
   };
 
   const _handleSubmit = () => {
-    updateDataInvoice(id, {
+    update(id, {
       totals: state,
     }, _close);
   };
@@ -75,7 +75,7 @@ const EditInvoiceTotalsModalView = ({
       InputLabelProps={{
         shrink: true,
       }}
-      type="number"
+      type='number'
       size={4}
       onKeyPress={_handleKeyPress}
       error={errors[name]}
@@ -86,7 +86,7 @@ const EditInvoiceTotalsModalView = ({
     <ModalGrid
       show={show}
       setShow={setShow}
-      title="Editar datos de la factuar"
+      title='Editar totales'
       action={_handleSubmit}
     >
       {_renderInput('taxBase', 'Base imponible')}
@@ -98,7 +98,7 @@ const EditInvoiceTotalsModalView = ({
   );
 };
 
-EditInvoiceTotalsModalView.propTypes = {
+EditTotalsModalView.propTypes = {
   show: PropTypes.bool.isRequired,
   setShow: PropTypes.func.isRequired,
   total: PropTypes.number,
@@ -107,9 +107,9 @@ EditInvoiceTotalsModalView.propTypes = {
   rate: PropTypes.number,
   taxBase: PropTypes.number,
   id: PropTypes.string.isRequired,
-  updateDataInvoice: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
-EditInvoiceTotalsModalView.displayName = 'EditInvoiceDataModalView';
-export const story = EditInvoiceTotalsModalView;
-export default memo(EditInvoiceTotalsModalView);
+EditTotalsModalView.displayName = 'EditInvoiceDataModalView';
+export const story = EditTotalsModalView;
+export default memo(EditTotalsModalView);
