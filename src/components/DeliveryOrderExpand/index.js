@@ -5,14 +5,13 @@ import {
   AccordionDetails,
   AccordionSummary,
 } from '@material-ui/core';
-import uniqueId from 'uniqid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import ProductsOrderTable from './ProductsOrderTable';
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader';
 
 const DeliveryOrderExpand = ({ products, ...props }) => (
-  <Accordion TransitionProps={{ unmountOnExit: true }} key={uniqueId()}>
+  <Accordion TransitionProps={{ unmountOnExit: true }}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
       aria-label='Expand'

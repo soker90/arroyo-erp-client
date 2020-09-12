@@ -33,7 +33,7 @@ const BookStory = () => (
           total: 7.62,
           nameProvider: 'Primero',
           dateRegister: 1595187129870,
-          concept: 'Compras',
+          concept: 'C. mercaderias',
           dateInvoice: 1595101920000,
           nInvoice: '22',
           nOrder: 5,

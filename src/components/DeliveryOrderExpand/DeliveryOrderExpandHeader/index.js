@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import {
@@ -47,10 +47,10 @@ const DeliveryOrderExpandHeader = ({
         <strong className={classes.total}>{format.date(date)}</strong>
         {getTotals(props)
           .map(total => (
-            <>
+            <Fragment key={total.label}>
               {` ${total.label} `}
               <TextEuro num={total.value} className={classes.total} />
-            </>
+            </Fragment>
           ))}
       </Typography>
       <Typography

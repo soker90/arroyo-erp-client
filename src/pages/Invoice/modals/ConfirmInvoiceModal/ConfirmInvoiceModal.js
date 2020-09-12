@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, SelectForm } from 'components/Forms';
 import { TYPE_PAYMENT } from 'constants/invoices';
-import { format } from '../../../../utils';
+import { format } from 'utils';
 
 const ConfirmInvoiceModal = ({
   confirmInvoice, id, setShow, ...rest
@@ -83,8 +83,7 @@ const ConfirmInvoiceModal = ({
           <option key={idx} value={item}>
             {item}
           </option>
-        ),
-        )}
+        ))}
       </SelectForm>
     </ModalGrid>
   );

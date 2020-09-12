@@ -1,11 +1,14 @@
 import React, { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import { ModalGrid, InputForm, DatePickerForm } from 'components';
+import {
+  ModalGrid, InputForm, DatePickerForm, SelectForm,
+} from 'components';
 import format from 'utils/format';
+import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
 
 const EditInvoiceDataModalView = ({
-  show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id,
+  show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id, concept, total,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -13,6 +16,7 @@ const EditInvoiceDataModalView = ({
       nInvoice,
       dateInvoice,
       dateRegister,
+      concept,
     },
   );
 
@@ -22,6 +26,7 @@ const EditInvoiceDataModalView = ({
         nInvoice,
         dateInvoice,
         dateRegister,
+        concept,
       });
     }
     // eslint-disable-next-line
@@ -42,13 +47,14 @@ const EditInvoiceDataModalView = ({
   };
 
   const _handleSubmit = () => {
-    updateDataInvoice(id, {
-      data: {
-        nInvoice: state.nInvoice,
-        dateInvoice: format.dateToSend(state.dateInvoice),
-        dateRegister: format.dateToSend(state.dateRegister),
-      },
-    }, _close);
+    const data = {
+      nInvoice: state.nInvoice,
+      dateInvoice: format.dateToSend(state.dateInvoice),
+      dateRegister: format.dateToSend(state.dateRegister),
+      concept: state.concept,
+    };
+
+    updateDataInvoice(id, { data }, _close);
   };
 
   /**
@@ -110,6 +116,31 @@ const EditInvoiceDataModalView = ({
     />
   );
 
+  /**
+   * Render select product
+   * @return {SelectForm}
+   * @private
+   */
+  const _renderSelectProduct = () => (
+    <SelectForm
+      label='Concepto'
+      value={state.concept}
+      name='concept'
+      onChange={_handleChange}
+      size={6}
+      InputLabelProps={{
+        shrink: true,
+      }}
+      onKeyPress={_handleKeyPress}
+    >
+      {INVOICE_NEGATIVE_CONCEPTS.map((item, idx) => (
+        <option key={idx} value={item}>
+          {item}
+        </option>
+      ))}
+    </SelectForm>
+  );
+
   return (
     <ModalGrid
       show={show}
@@ -120,6 +151,7 @@ const EditInvoiceDataModalView = ({
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {_renderInput('nInvoice', 'Nº Factura')}
+      {total < 0 && _renderSelectProduct()}
     </ModalGrid>
   );
 };
@@ -132,6 +164,8 @@ EditInvoiceDataModalView.propTypes = {
   dateRegister: PropTypes.number,
   id: PropTypes.string.isRequired,
   updateDataInvoice: PropTypes.func.isRequired,
+  concept: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView';

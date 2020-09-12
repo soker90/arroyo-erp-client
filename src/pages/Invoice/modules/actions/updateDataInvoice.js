@@ -57,6 +57,7 @@ const _updateDataInvoiceError = error => ({
 export const updateDataInvoice = (id, newData, callback) => async dispatch => {
   dispatch(_updateDataInvoiceRequest());
 
+  console.log(newData);
   try {
     const { data } = await axios.patch(`invoices/${id}`, newData);
 

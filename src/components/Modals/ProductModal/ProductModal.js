@@ -27,7 +27,7 @@ const ProductModal = ({
   const _handleSubmit = () => {
     try {
       const model = {
-        code: state.code,
+        code: state.code.toLowerCase(),
         name: state.name,
         iva: Number(state.iva) / 100,
         re: Number(state.re) / 100,
