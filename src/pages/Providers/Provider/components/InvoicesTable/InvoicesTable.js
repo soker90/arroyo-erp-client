@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 
-import { TableMaterial } from 'components';
+import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 import { useStyles } from './InvoicesTable.styles';
@@ -41,7 +41,7 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
         },
         {
           title: 'Importe',
-          field: 'total',
+          render: ({ total }) => <TextEuro num={total} />,
         },
         {
           title: 'Pago',

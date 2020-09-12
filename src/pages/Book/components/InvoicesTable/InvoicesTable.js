@@ -36,7 +36,7 @@ const InvoicesTable = ({ invoices }) => {
           field: 'nameProvider',
         },
         {
-          title: 'Tipo',
+          title: 'Concepto',
           field: 'concept',
         },
         {

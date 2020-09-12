@@ -43,6 +43,10 @@ const Providers = ({ providers }) => {
                   title: 'Nombre',
                   field: 'name',
                 },
+                {
+                  title: 'Notas',
+                  field: 'notes',
+                },
               ]}
               data={providers}
               title={`Proveedores (${providers.length})`}
