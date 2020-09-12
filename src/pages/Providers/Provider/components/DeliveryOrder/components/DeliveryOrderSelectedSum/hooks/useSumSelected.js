@@ -7,6 +7,13 @@ const LITERALS = {
   total: 'Total',
 };
 
+const INITIAL_SUMS = {
+  taxBase: 0,
+  iva: 0,
+  re: 0,
+  total: 0,
+};
+
 const useSumSelected = ({ free, selected }) => {
   const sums = useMemo(() => free.reduce((accumulator, currentValue) => (
     selected.includes(currentValue._id)
@@ -22,7 +29,7 @@ const useSumSelected = ({ free, selected }) => {
         re: accumulator.re,
         total: accumulator.total,
       }
-  )), [free, selected]);
+  ), INITIAL_SUMS), [free, selected]);
 
   return [
     {

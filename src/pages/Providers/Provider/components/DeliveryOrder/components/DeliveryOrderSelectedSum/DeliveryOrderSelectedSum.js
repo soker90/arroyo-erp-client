@@ -29,6 +29,7 @@ const DeliveryOrderSelectedSum = ({
       >
         {sumSelected.map(sum => (
           <DeliveryOrderSelectedSumItem
+            key={sum.label}
             value={sum.value}
             label={sum.label}
           />
@@ -42,5 +43,7 @@ DeliveryOrderSelectedSum.propTypes = {
   free: PropTypes.array.isRequired,
   selected: PropTypes.array.isRequired,
 };
+
+DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum';
 
 export default memo(DeliveryOrderSelectedSum);

@@ -47,7 +47,7 @@ const DeliveryOrderSelectedSum = ({
 
 DeliveryOrderSelectedSum.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum';
