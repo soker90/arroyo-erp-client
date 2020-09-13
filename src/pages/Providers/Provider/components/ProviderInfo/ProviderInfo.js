@@ -70,6 +70,7 @@ ProviderInfo.propTypes = {
   email: PropTypes.string,
   businessName: PropTypes.string,
   cif: PropTypes.string,
+  note: PropTypes.string,
 };
 
 ProviderInfo.displayName = 'ProviderInfo';

@@ -68,6 +68,7 @@ const ProviderModal = ({
       {_renderInput('province', 'Provincia')}
       {_renderInput('phone', 'Teléfono')}
       {_renderInput('email', 'Correo electrónico')}
+      {_renderInput('note', 'Nota')}
     </ModalGrid>
   );
 };

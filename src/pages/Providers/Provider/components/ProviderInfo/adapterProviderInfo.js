@@ -1,5 +1,5 @@
 export const adapterProviderInfo = ({
-  name, address, city, postalCode, province, phone, email, businessName, cif,
+  name, address, city, postalCode, province, phone, email, businessName, cif, note,
 }) => [
   {
     label: 'Nombre',
@@ -36,5 +36,9 @@ export const adapterProviderInfo = ({
   {
     label: 'Correo electrónico',
     value: email,
+  },
+  {
+    label: 'Nota',
+    value: note,
   },
 ];

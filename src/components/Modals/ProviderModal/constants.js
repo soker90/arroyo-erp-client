@@ -8,4 +8,5 @@ export const INITIAL_STATE = {
   email: '',
   businessName: '',
   cif: '',
+  note: '',
 };
