@@ -78,6 +78,7 @@ const Provider = ({
           deliveryOrdersSelected={deliveryOrdersSelected}
           idProvider={idProvider}
           resetSelected={_resetSelectedOrders}
+          note={provider?.note}
           {...props}
         />
         <ProviderExpandedInfo

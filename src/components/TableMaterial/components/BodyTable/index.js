@@ -21,7 +21,7 @@ const BodyTable = ({
           key={uniqId()}
           selected={isSelected}
         >
-          {multiSelect && (
+          {Boolean(multiSelect) && (
             <TableCell padding='checkbox'>
               <Checkbox
                 checked={isSelected}

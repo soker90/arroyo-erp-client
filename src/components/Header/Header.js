@@ -135,6 +135,7 @@ Header.propTypes = {
     Icon: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
+    component: PropTypes.object,
   })), PropTypes.bool]),
   buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,

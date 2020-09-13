@@ -67,7 +67,7 @@ const TableMaterial = ({
           <NoData elements={data.length} />
         </Box>
       </PerfectScrollbar>
-      {!!count
+      {Boolean(count)
       && (
         <TablePagination
           component='div'

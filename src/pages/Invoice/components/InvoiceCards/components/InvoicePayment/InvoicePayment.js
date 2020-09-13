@@ -8,7 +8,7 @@ import { ItemCard } from 'components';
 import { format } from 'utils';
 
 const InvoicePayment = ({
-  paymentDate, type, numCheque, paid, className,
+  paymentDate, type, numCheque, paid, className, invoicesOrder,
 }) => (
   <Card className={className}>
     <CardHeader
@@ -28,7 +28,12 @@ const InvoicePayment = ({
             <ItemCard label='Número de talón' value={numCheque} />
           </Grid>
         )}
-        <Grid item xs={12} md={3}>
+        {invoicesOrder && (
+          <Grid item xs={12} md={2}>
+            <ItemCard label='Pago conjunto' value={invoicesOrder} />
+          </Grid>
+        )}
+        <Grid item xs={12} md={1}>
           <ItemCard label='Pagado' value={paid} variant='boolean' />
         </Grid>
       </Grid>
@@ -42,6 +47,7 @@ InvoicePayment.propTypes = {
   numCheque: PropTypes.string,
   paid: PropTypes.bool,
   className: PropTypes.string.isRequired,
+  invoicesOrder: PropTypes.string,
 };
 
 InvoicePayment.displayName = 'InvoiceTotals';
