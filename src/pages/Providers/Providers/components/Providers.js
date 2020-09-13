@@ -44,8 +44,8 @@ const Providers = ({ providers }) => {
                   field: 'name',
                 },
                 {
-                  title: 'Notas',
-                  field: 'notes',
+                  title: 'Nota',
+                  field: 'note',
                 },
               ]}
               data={providers}

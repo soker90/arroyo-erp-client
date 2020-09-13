@@ -5,11 +5,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Label, Header } from 'components';
 import { getButtons } from './utils';
+import { useStyles } from './styles';
 
 const HeaderProvider = ({
   title, onExpand, expanded, createDeliveryOrder, idProvider, deliveryOrdersSelected,
   createInvoice, showEditProductModal, currentTab, resetSelected, note,
 }) => {
+  const classes = useStyles();
   /**
    * Navega a la página de nuevo albarán
    * @private
@@ -40,8 +42,8 @@ const HeaderProvider = ({
    */
   const _renderNote = () => (
     <Label
-      // className={classes.label}
-      color='primary'
+      className={classes.label}
+      color='warning'
     >
       {note}
     </Label>
