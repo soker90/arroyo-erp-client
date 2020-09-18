@@ -29,7 +29,7 @@ const NewProviderModal = ({
     <ProviderModal
       show={show}
       close={close}
-      title='Crear proveedor'
+      title='Crear proveedor de gasto'
       action={_handleSubmit}
       state={state}
       setState={setState}

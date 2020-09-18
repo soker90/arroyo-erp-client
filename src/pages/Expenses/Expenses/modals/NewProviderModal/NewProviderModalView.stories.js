@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { story as NewProviderModal } from './NewProviderModalView';
 
 export default {
-  title: 'Rutas/Proveedores/Modifcar',
+  title: 'Rutas/Gastos/Modales/Nuevo',
   parameters: {
     component: NewProviderModal,
     componentSubtitle: 'Modal para crear o editar un preveedor',
@@ -16,7 +16,7 @@ const ProviderNew = () => (
     show
     close={action('Cerrar modal')}
     createProvider={action('Crea el proveedor')}
-    idProvider="888883h339"
+    idProvider='888883h339'
     provider={false}
   />
 );
@@ -28,7 +28,7 @@ const ProviderEdit = () => (
     show
     close={action('Cerrar modal')}
     editProvider={action('Edita el proveedor')}
-    idProvider="888883h339"
+    idProvider='888883h339'
     provider={{
       name: 'Mi proveedor',
       address: 'C/ Falsa, 9',

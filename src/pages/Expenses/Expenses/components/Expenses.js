@@ -1,4 +1,6 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, {
+  memo, useCallback, useEffect, useState,
+} from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
@@ -10,9 +12,13 @@ import { Header, Page, TableMaterial } from 'components';
 import { useStyles } from './Expenses.styles';
 import NewProviderModal from '../modals/NewProviderModal';
 
-const Expenses = ({ providers }) => {
+const Expenses = ({ providers, getProviders }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    getProviders();
+  }, [getProviders]);
 
   /**
    * Oculta el modal de crear proveedor
@@ -69,6 +75,7 @@ const Expenses = ({ providers }) => {
 
 Expenses.propTypes = {
   providers: PropTypes.array.isRequired,
+  getProviders: PropTypes.func.isRequired,
 };
 
 Expenses.displayName = 'Expenses';

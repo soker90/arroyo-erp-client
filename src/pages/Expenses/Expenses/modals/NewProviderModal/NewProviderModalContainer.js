@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { createProvider } from 'modules/providers/actions';
+import { createProvider } from 'pages/Expenses/Expenses/modules/actions';
 import NewProviderModalView from './NewProviderModalView';
 
 const mapDispatchToProps = {

@@ -23,6 +23,11 @@ export const navConfig = [
         href: '/app/proveedores',
       },
       {
+        title: 'Gastos',
+        icon: AccountBalanceIcon,
+        href: '/app/gastos',
+      },
+      {
         title: 'Libro',
         icon: MenuBookIcon,
         href: `/app/libro/${new Date().getFullYear()}`,
@@ -31,11 +36,6 @@ export const navConfig = [
         title: 'Pagos',
         icon: EuroIcon,
         href: '/app/pagos',
-      },
-      {
-        title: 'Gastos',
-        icon: AccountBalanceIcon,
-        href: '/app/gastos',
       },
     ],
   },

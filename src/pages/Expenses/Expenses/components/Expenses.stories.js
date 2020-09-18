@@ -2,13 +2,13 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import RoutesWrapper from 'story/RoutesWrapper';
-import { story as Providers } from './Expenses';
+import { story as Expenses } from './Expenses';
 
 export default {
-  title: 'Rutas/Proveedores',
+  title: 'Rutas/Gastos',
   parameters: {
-    component: Providers,
-    componentSubtitle: 'Vista de proveedores',
+    component: Expenses,
+    componentSubtitle: 'Vista',
   },
   decorators: [storyFn => <RoutesWrapper>{storyFn()}</RoutesWrapper>],
 };
@@ -18,13 +18,14 @@ const providers = [
   { _id: '4567s3389okjs', name: 'Proveedor 2' },
 ];
 
-const ProvidersDefault = () => (
-  <Providers
+const ExpensesDefault = () => (
+  <Expenses
     providers={providers}
+    getProviders={action('getProviders')}
     showCreateModal={action('Muestra la modal de crear proveedor')}
   />
 );
 
-ProvidersDefault.storyName = 'Vista';
+ExpensesDefault.storyName = 'Vista';
 
-export { ProvidersDefault };
+export { ExpensesDefault };

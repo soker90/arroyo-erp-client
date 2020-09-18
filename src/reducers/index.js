@@ -4,6 +4,7 @@ import products from 'modules/products';
 
 import book from 'pages/Book/modules';
 import deliveryOrders from 'pages/DeliveryOrder/modules';
+import expenses from 'pages/Expenses/Expenses/modules';
 import invoice from 'pages/Invoice/modules';
 import notes from 'pages/Notes/modules';
 import product from 'pages/Product/modules';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   account,
   book,
   deliveryOrders,
+  expenses,
   invoice,
   notes,
   product,
