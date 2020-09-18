@@ -9,8 +9,8 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { BASE_PATH } from 'constants/index';
 import { Header, Page, TableMaterial } from 'components';
-import { useStyles } from './Expenses.styles';
 import NewProviderModal from '../modals/NewProviderModal';
+import { useStyles } from './Expenses.styles';
 
 const Expenses = ({ providers, getProviders }) => {
   const classes = useStyles();

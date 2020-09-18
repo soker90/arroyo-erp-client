@@ -8,3 +8,4 @@ export * from './Modals';
 export { default as Page } from './Page';
 export { default as TableMaterial } from './TableMaterial';
 export { default as TextEuro } from './TextEuro';
+export { default as ProviderExpandedInfo } from './ProviderExpandedInfo';

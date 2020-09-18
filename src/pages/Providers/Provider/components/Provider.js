@@ -8,11 +8,10 @@ import {
 import PropTypes from 'prop-types';
 import { useLocation, useParams } from 'react-router';
 
-import { Page } from 'components';
+import { Page, ProviderExpandedInfo } from 'components';
 import { HASH_TABS, TABS } from '../constants';
 import Header from './Header';
 import ProviderTabs from './ProviderTabs';
-import ProviderExpandedInfo from './ProviderExpandedInfo';
 import { useStyles } from './Provider.styles';
 
 const Provider = ({

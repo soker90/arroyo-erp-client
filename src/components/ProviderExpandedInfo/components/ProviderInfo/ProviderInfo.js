@@ -14,7 +14,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { ItemGroupsCard } from 'components';
 import { useStyles } from './ProviderInfo.styles';
 import { adapterProviderInfo } from './adapterProviderInfo';
-import EditProviderModal from '../../../../../components/ProviderExpandedInfo/modals/EditProviderModal';
+import EditProviderModal from '../../modals/EditProviderModal';
 
 const ProviderInfo = props => {
   const classes = useStyles();
