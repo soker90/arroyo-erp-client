@@ -61,7 +61,7 @@ const Expenses = ({ providers, getProviders }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: ({ _id }) => `${BASE_PATH}/gastos/${_id}`,
+                  to: ({ _id }) => `${BASE_PATH}/proveedores/${_id}`,
                 },
               ]}
             />

@@ -86,6 +86,16 @@ const routesConfig = [
         component: lazy(() => import('pages/Expenses/Expenses')),
       },
       {
+        exact: true,
+        path: '/app/proveedores/gastos/:idProvider',
+        component: lazy(() => import('pages/Providers/ProviderExpense')),
+      },
+      {
+        exact: true,
+        path: '/app/proveedores/general/:idProvider',
+        component: lazy(() => import('pages/Providers/ProviderGeneral')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],

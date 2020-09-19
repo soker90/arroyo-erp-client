@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 
-import { getProvider } from 'modules/providers/actions';
-import Providers from '../components/Provider';
+import { createProduct } from 'modules/providers/actions';
+import NewProductModalView from './NewProductModalView';
 
 const mapStateToProps = ({ providers: { provider } }) => ({
-  provider,
+  idProvider: provider._id,
 });
 
 const mapDispatchToProps = {
-  getProvider,
+  createProduct,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Providers);
+)(NewProductModalView);
