@@ -1,1 +1,1 @@
-export {default} from 'pages/Providers/Provider/modals/NewProductModal/NewProductModalContainer'
+export { default } from './NewProductModalContainer';

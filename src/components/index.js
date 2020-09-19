@@ -6,6 +6,7 @@ export { default as Label } from './Label';
 export { default as LoadingScreen } from './LoadingScreen';
 export * from './Modals';
 export { default as Page } from './Page';
+export { default as ProviderExpandedInfo } from './ProviderExpandedInfo';
+export { default as ProviderInvoices } from './ProviderInvoices';
 export { default as TableMaterial } from './TableMaterial';
 export { default as TextEuro } from './TextEuro';
-export { default as ProviderExpandedInfo } from './ProviderExpandedInfo';

@@ -58,7 +58,7 @@ const Provider = ({
   const _components = {
     [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrder')),
     [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
-    [TABS.INVOICES]: lazy(() => import('./InvoicesTable')),
+    [TABS.INVOICES]: lazy(() => import('components/ProviderInvoices')),
   };
 
   /**

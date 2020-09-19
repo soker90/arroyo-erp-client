@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 
-import { Page, ProviderExpandedInfo } from 'components';
+import { Page, ProviderExpandedInfo, ProviderInvoices } from 'components';
 import Header from './Header';
 
 import { useStyles } from './Provider.styles';
@@ -50,7 +50,9 @@ const ProviderExpense = ({
           provider={provider}
         />
 
-        <Box py={3} pb={6} />
+        <Box py={3} pb={6}>
+          <ProviderInvoices />
+        </Box>
 
       </Container>
     </Page>

@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
-import { useStyles } from './InvoicesTable.styles';
+import { useStyles } from './ProviderInvoices.styles';
 
-const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
+const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -61,12 +61,12 @@ const InvoicesTable = ({ invoices, getInvoicesByProvider, idProvider }) => {
   );
 };
 
-InvoicesTable.propTypes = {
+ProviderInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
   getInvoicesByProvider: PropTypes.func.isRequired,
 };
 
-InvoicesTable.displayName = 'InvoicesTable';
+ProviderInvoices.displayName = 'ProviderInvoices';
 
-export default memo(InvoicesTable);
+export default memo(ProviderInvoices);

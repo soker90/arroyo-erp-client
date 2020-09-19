@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getInvoicesByProvider } from 'modules/providers/actions';
-import InvoicesTable from './InvoicesTable';
+import InvoicesTable from './ProviderInvoices';
 
 const mapStateToProps = ({ providers: { provider, invoices } }) => ({
   invoices,
