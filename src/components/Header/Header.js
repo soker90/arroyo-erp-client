@@ -102,18 +102,18 @@ const Header = ({
         {
           buttonsSecondary
           && (
-          <Box mt={2} style={{ marginLeft: '-1rem' }}>
-            {buttonsSecondary.map(_renderButton)}
-          </Box>
+            <Box mt={2}>
+              {buttonsSecondary.map(_renderButton)}
+            </Box>
           )
         }
       </Grid>
       {
         buttons
         && (
-        <Grid item>
-          {buttons.map(_renderButton)}
-        </Grid>
+          <Grid item>
+            {buttons.map(_renderButton)}
+          </Grid>
         )
       }
     </Grid>
