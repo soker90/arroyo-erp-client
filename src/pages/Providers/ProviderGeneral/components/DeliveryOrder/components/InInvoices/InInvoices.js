@@ -30,7 +30,7 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
       ]}
       data={data}
       count={count}
-      title='En factura'
+      title='Albaranes en factura'
       actions={[
         {
           icon: VisibilityIcon,

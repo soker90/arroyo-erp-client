@@ -3,9 +3,10 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from '@material-ui/core';
 import NoInvoices from './components/NoInvoices';
 import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum';
-// import { useStyles } from './DeliveryOrder.styles';
+import { useStyles } from './DeliveryOrder.styles';
 
 const InInvoices = lazy(() => import('./components/InInvoices'));
 
@@ -17,14 +18,16 @@ const DeliveryOrder = ({
   selected,
   setSelected,
 }) => {
-  // const classes = useStyles();
-  const [showInInvoices, setShowInInvoices] = useState(true);
+  const classes = useStyles();
+  const [showInInvoices, setShowInInvoices] = useState(false);
 
   useEffect(() => {
     if (idProvider) getDeliveryOrders(idProvider);
-
-    setShowInInvoices(true); // remove
   }, [getDeliveryOrders, idProvider]);
+
+  const _handleShowClick = () => {
+    setShowInInvoices(state => !state);
+  };
 
   return (
     idProvider && (
@@ -35,6 +38,18 @@ const DeliveryOrder = ({
           selected={selected}
           setSelected={setSelected}
         />
+
+        <Button
+          color='primary'
+          onClick={_handleShowClick}
+          variant='outlined'
+          className={classes.button}
+        >
+          {showInInvoices ? 'Ocultar' : 'Mostrar'}
+          {' '}
+          en factura
+        </Button>
+
         {showInInvoices && (
           <InInvoices deliveryOrders={inInvoices} />
         )}
