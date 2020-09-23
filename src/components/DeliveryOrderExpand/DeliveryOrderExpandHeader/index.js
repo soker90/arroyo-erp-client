@@ -67,11 +67,11 @@ const DeliveryOrderExpandHeader = ({
 DeliveryOrderExpandHeader.propTypes = {
   _id: PropTypes.string.isRequired,
   date: PropTypes.number,
-  taxBase: PropTypes.number.isRequired,
+  taxBase: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  iva: PropTypes.number.isRequired,
-  re: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
+  iva: PropTypes.number,
+  re: PropTypes.number,
+  total: PropTypes.number,
   note: PropTypes.string,
 };
 

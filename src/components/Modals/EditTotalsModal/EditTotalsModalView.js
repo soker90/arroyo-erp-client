@@ -92,7 +92,7 @@ const EditTotalsModalView = ({
       {_renderInput('taxBase', 'Base imponible')}
       {_renderInput('iva', 'IVA')}
       {_renderInput('re', 'Recargo')}
-      {rate && _renderInput('rate', 'Tasa')}
+      {Boolean(rate) && _renderInput('rate', 'Tasa')}
       {_renderInput('total', 'Total')}
     </ModalGrid>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import axios from 'axios';
 import { UPDATE_DATA_DELIVERY_ORDER } from '../types';
 
@@ -50,13 +51,15 @@ const _updateDataDeliveryOrderError = error => ({
  * @param {Object} id
  * @param {Date} date
  * @param {string} note
+ * @param {string} totals
  * @return {function(...[*]=)}
  */
-export const updateDataDeliveryOrder = (id, { date, note }) => async dispatch => {
+export const updateDataDeliveryOrder = (id, { date, note, totals }, callback) => async dispatch => {
   dispatch(_updateDataDeliveryOrderRequest());
   const data = {
     ...(date && { date: new Date(date).getTime() }),
     ...(note && { note }),
+    ...(totals && { totals }),
   };
 
   try {
@@ -64,6 +67,7 @@ export const updateDataDeliveryOrder = (id, { date, note }) => async dispatch =>
 
     dispatch(_updateDataDeliveryOrderSuccess());
     dispatch(_updateDateDeliveryOrderSet(response));
+    callback?.();
   } catch (error) {
     console.error(error);
     dispatch(_updateDataDeliveryOrderError(error));

@@ -1,41 +1,75 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardContent, CardHeader, Divider, Grid,
+  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
 } from '@material-ui/core';
 import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
+import EditIcon from '@material-ui/icons/Edit';
 import { itemsCard } from './utils';
+import EditDeliveryOrderTotalsModal from '../../modals/EditDeliveryOrderTotalsModal';
 
 const DeliveryOrderTotals = ({
-  totals,
-}) => (
-  <Card>
-    <CardHeader title='Totales' />
-    <Divider />
-    <CardContent>
-      <Grid container spacing={3}>
+  totals, isEditable,
+}) => {
+  const [showModal, setShowModal] = useState(false);
 
-        {itemsCard(totals)
-          .map(({ size, ...itemProps }) => (
-            <Grid item xs={12} md={size} key={uniqId()}>
-              <ItemCard {...itemProps} />
-            </Grid>
-          ))}
+  /**
+   * Show the modal
+   * @private
+   */
+  const _handleEditClick = () => {
+    setShowModal(true);
+  };
 
-      </Grid>
-    </CardContent>
-  </Card>
-);
+  /**
+   * Return the buttons of the card
+   * @returns {Array || false}
+   * @private
+   */
+  const _getActions = () => (isEditable ? [
+    <Tooltip title='Editar' key={uniqId()}>
+      <IconButton
+        size='small'
+        onClick={_handleEditClick}
+      >
+        <EditIcon />
+      </IconButton>
+    </Tooltip>,
+  ] : false);
+
+  return (
+    <>
+      <Card>
+        <CardHeader title='Totales' action={_getActions()} />
+        <Divider />
+        <CardContent>
+          <Grid container spacing={3}>
+
+            {itemsCard(totals)
+              .map(({ size, ...itemProps }) => (
+                <Grid item xs={12} md={size} key={uniqId()}>
+                  <ItemCard {...itemProps} />
+                </Grid>
+              ))}
+
+          </Grid>
+        </CardContent>
+      </Card>
+      {showModal && <EditDeliveryOrderTotalsModal show={showModal} setShow={setShowModal} />}
+    </>
+  );
+};
 
 DeliveryOrderTotals.propTypes = {
   totals: PropTypes.shape({
-    iva: PropTypes.number.isRequired,
-    re: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    taxBase: PropTypes.number.isRequired,
+    iva: PropTypes.number,
+    re: PropTypes.number,
+    total: PropTypes.number,
+    taxBase: PropTypes.number,
   }),
+  isEditable: PropTypes.bool.isRequired,
 };
 
 DeliveryOrderTotals.displayName = 'DeliveryOrderTotals';

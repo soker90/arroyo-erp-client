@@ -76,7 +76,7 @@ const DeliveryOrder = (
               />
             </Grid>
             <Grid item xs={12} md={8}>
-              <DeliveryOrderTotals totals={totals} />
+              <DeliveryOrderTotals totals={totals} isEditable={!nOrder} />
             </Grid>
           </Grid>
 

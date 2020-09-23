@@ -127,7 +127,7 @@ Header.propTypes = {
     title: PropTypes.string.isRequired,
   })),
   title: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   buttons: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
     variant: PropTypes.string,
