@@ -58,7 +58,7 @@ export const updateDataDeliveryOrder = (id, { date, note, totals }, callback) =>
   dispatch(_updateDataDeliveryOrderRequest());
   const data = {
     ...(date && { date: new Date(date).getTime() }),
-    ...(note && { note }),
+    ...(note !== undefined && { note }),
     ...(totals && { totals }),
   };
 
