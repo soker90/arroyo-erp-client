@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
 
 const EditProductModal = ({
-  show, close, products, updateProductOfDeliveryOrder, product, index,
+  show, close, products, updateProductOfDeliveryOrder, product, index, haveCanal,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -38,8 +38,13 @@ const EditProductModal = ({
       setState={setState}
       show={show}
       title='Editar producto'
+      haveCanal={haveCanal}
       actions={[
-        { onClick: close, value: 'Cerrar', 'data-cy': 'modal-close-button' },
+        {
+          onClick: close,
+          value: 'Cerrar',
+          'data-cy': 'modal-close-button',
+        },
         {
           onClick: _handleUpdate,
           value: 'Actualizar',
@@ -59,6 +64,7 @@ EditProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   product: PropTypes.object,
   index: PropTypes.number,
+  haveCanal: PropTypes.bool,
 };
 
 EditProductModal.defaultProps = {

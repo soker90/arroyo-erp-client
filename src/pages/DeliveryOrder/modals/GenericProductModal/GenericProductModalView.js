@@ -5,7 +5,7 @@ import { InputForm, ModalGrid, SelectForm } from 'components';
 import { Typography, Box } from '@material-ui/core';
 
 const GenericProductModal = ({
-  show, close, products, state, setState, ...rest
+  show, close, products, state, setState, haveCanal, ...rest
 }) => {
   const inputCode = useRef(null);
   if (!products?.length) {
@@ -130,8 +130,7 @@ const GenericProductModal = ({
         <option key={idx} value={item._id}>
           {item.name}
         </option>
-      ),
-      )}
+      ))}
     </SelectForm>
   );
 
@@ -149,6 +148,7 @@ const GenericProductModal = ({
       {_renderSelectProduct()}
       {_renderInput('quantity', 'Peso / Cantidad', { onBlur: _handleLostFocus })}
       {_renderInput('price', 'Precio', { type: 'number' })}
+      {haveCanal && _renderInput('canal', 'Nº Canal')}
     </ModalGrid>
   );
 };
@@ -160,6 +160,7 @@ GenericProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
+  haveCanal: PropTypes.bool,
 };
 
 GenericProductModal.displayName = 'GenericProductModal';

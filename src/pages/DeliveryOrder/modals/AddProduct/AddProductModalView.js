@@ -6,11 +6,11 @@ import { INITIAL_STATE } from './constants';
 import { hasInitialData } from './utils';
 
 const AddProductModal = ({
-  show, close, products, addProductToDeliveryOrder, createDeliveryOrder, idProvider,
+  show, close, products, addProductToDeliveryOrder, createDeliveryOrder, idProvider, haveCanal,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE
+    INITIAL_STATE,
   );
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const AddProductModal = ({
         product: state.product,
         quantity: Number(state.quantity),
         price: Number(state.price),
+        ...(state.canal && { canal: state.canal }),
       };
 
       addProductToDeliveryOrder(model, callback);
@@ -64,6 +65,7 @@ const AddProductModal = ({
       setState={setState}
       show={show}
       title='Añadir producto'
+      haveCanal={haveCanal}
       actions={[
         {
           onClick: close,
@@ -96,6 +98,7 @@ AddProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
+  haveCanal: PropTypes.bool,
 };
 
 AddProductModal.displayName = 'AddProductModal';

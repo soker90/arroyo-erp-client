@@ -148,9 +148,9 @@ const EditInvoiceDataModalView = ({
       title='Editar datos de la factuar'
       action={_handleSubmit}
     >
+      {_renderInput('nInvoice', 'Nº Factura')}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
-      {_renderInput('nInvoice', 'Nº Factura')}
       {total < 0 && _renderSelectProduct()}
     </ModalGrid>
   );

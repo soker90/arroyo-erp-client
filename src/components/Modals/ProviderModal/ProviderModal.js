@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import { InputForm, ModalGrid } from 'components';
+import { InputForm, ModalGrid, SelectForm } from 'components';
+import { TYPE_PROVIDER_LIST } from '../../../constants';
 
 const ProviderModal = ({
   show, close, state, setState, action, ...rest
@@ -69,6 +70,26 @@ const ProviderModal = ({
       {_renderInput('phone', 'Teléfono')}
       {_renderInput('email', 'Correo electrónico')}
       {_renderInput('note', 'Nota')}
+
+      {state.type && (
+        <SelectForm
+          label='Tipo'
+          value={state.type}
+          name='type'
+          onChange={_handleChange}
+          size={6}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onKeyPress={_handleKeyPress}
+        >
+          {TYPE_PROVIDER_LIST.map((item, idx) => (
+            <option key={idx} value={item}>
+              {item}
+            </option>
+          ))}
+        </SelectForm>
+      )}
     </ModalGrid>
   );
 };

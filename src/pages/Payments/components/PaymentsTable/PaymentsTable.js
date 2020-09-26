@@ -56,10 +56,6 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
             field: 'nInvoice',
           },
           {
-            title: 'Fecha de cobro',
-            render: ({ paymentDate }) => format.date(paymentDate),
-          },
-          {
             title: 'Proveedor',
             field: 'provider',
           },
@@ -70,6 +66,10 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
           {
             title: 'Importe',
             render: ({ amount }) => <TextEuro num={amount} />,
+          },
+          {
+            title: 'Fecha de cobro',
+            render: ({ paymentDate }) => format.date(paymentDate),
           },
         ]}
         data={payments}

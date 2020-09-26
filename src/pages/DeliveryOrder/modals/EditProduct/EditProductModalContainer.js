@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { updateProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
 import EditProductModalView from './EditProductModalView';
 
-const mapStateToProps = ({ products: { products } }) => ({
+const mapStateToProps = ({ products: { products }, deliveryOrders: { haveCanal } }) => ({
   products,
+  haveCanal,
 });
 
 const mapDispatchToProps = {
