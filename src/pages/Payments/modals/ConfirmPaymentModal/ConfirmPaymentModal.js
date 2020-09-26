@@ -15,7 +15,8 @@ const ConfirmPaymentModal = ({
   useEffect(() => {
     if (payment) {
       setType(payment.type);
-      setPaymentDate(payment.paymentDate);
+      setPaymentDate(payment.paymentDate || null);
+      setNumCheque(null);
     }
   }, [payment]);
 
@@ -116,8 +117,7 @@ const ConfirmPaymentModal = ({
           <option key={idx} value={item}>
             {item}
           </option>
-        ),
-        )}
+        ))}
       </SelectForm>
       {_renderNumberCheque()}
     </ModalGrid>

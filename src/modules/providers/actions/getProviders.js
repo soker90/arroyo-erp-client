@@ -43,7 +43,7 @@ export const getProviders = () => async dispatch => {
   dispatch(_getProvidersRequest());
 
   try {
-    const {data} = await axios(`providers`);
+    const {data} = await axios(`providers?type=standard`);
 
     dispatch(_getProvidersSuccess());
     dispatch(_getProvidersSet(data));

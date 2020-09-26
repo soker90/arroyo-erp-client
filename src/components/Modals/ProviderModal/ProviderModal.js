@@ -5,7 +5,7 @@ import { InputForm, ModalGrid, SelectForm } from 'components';
 import { TYPE_PROVIDER_LIST } from '../../../constants';
 
 const ProviderModal = ({
-  show, close, state, setState, action, ...rest
+  show, close, state, setState, action, hasType, ...rest
 }) => {
   /**
    * Handle event onChange input
@@ -71,7 +71,7 @@ const ProviderModal = ({
       {_renderInput('email', 'Correo electrónico')}
       {_renderInput('note', 'Nota')}
 
-      {state.type && (
+      {hasType && (
         <SelectForm
           label='Tipo'
           value={state.type}
@@ -100,6 +100,11 @@ ProviderModal.propTypes = {
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
+  hasType: PropTypes.bool,
+};
+
+ProviderModal.defaultProps = {
+  hasType: false,
 };
 
 ProviderModal.displayName = 'ProviderModal';

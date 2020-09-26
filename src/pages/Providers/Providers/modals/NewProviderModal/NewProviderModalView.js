@@ -39,6 +39,7 @@ const NewProviderModal = ({
       action={_handleSubmit}
       state={state}
       setState={setState}
+      hasType
     />
   );
 };

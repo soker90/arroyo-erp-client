@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {EDIT_PROVIDER} from '../types';
-import {getProvider} from './getProvider';
+import { EDIT_PROVIDER } from '../types';
+import { getProvider } from './getProvider';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _editProviderRequest = () => ({type: EDIT_PROVIDER.REQUEST});
+const _editProviderRequest = () => ({ type: EDIT_PROVIDER.REQUEST });
 
 /**
  * Success action
@@ -42,6 +42,7 @@ const _editProviderError = error => ({
  */
 export const editProvider = (id, data, callback) => async dispatch => {
   dispatch(_editProviderRequest());
+  delete data.type;
 
   try {
     await axios.put(`providers/${id}`, data);
