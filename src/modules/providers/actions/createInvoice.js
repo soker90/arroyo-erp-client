@@ -4,14 +4,14 @@ import { navigateTo } from '../../../utils';
 import { CONCEPT } from 'constants/invoices';
 
 /**
- * Request action for createInvoice
+ * Request action for createInvoiceExpense
  * @returns {{type: string}}
  * @private
  */
 const _createInvoiceRequest = () => ({ type: CREATE_INVOICE.REQUEST });
 
 /**
- * Success action for createInvoice
+ * Success action for createInvoiceExpense
  * @returns {{type: string}}
  * @private
  */
@@ -35,7 +35,7 @@ const _createInvoiceSet = invoice => ({
   },
 });
 /**
- * Error action for createInvoice
+ * Error action for createInvoiceExpense
  * @param error
  * @returns {{type: string, error: _getProvidersError.props}}
  * @private
