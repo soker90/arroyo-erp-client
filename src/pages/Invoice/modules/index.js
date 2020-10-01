@@ -1,5 +1,5 @@
 import { createReducer, setPayload } from 'store/utils';
-import { CREATE_INVOICE } from 'modules/providers/types';
+import { CREATE_INVOICE, CREATE_INVOICE_EXPENSE } from 'modules/providers/types';
 import {
   CONFIRM_INVOICE,
   GET_INVOICE,
@@ -20,6 +20,7 @@ const INITIAL_STATE = {
 const ACTION_HANDLERS = {
   [GET_INVOICE.SET]: setPayload,
   [CREATE_INVOICE.SET]: setPayload,
+  [CREATE_INVOICE_EXPENSE.SET]: setPayload,
   [UPDATE_DATA.SET]: setPayload,
   [CONFIRM_INVOICE.SET]: (state, { payload: { data, payment } }) => ({
     ...state,
