@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   dateRegister: null,
   taxBase: '',
   concept: null,
+  iva: '',
 };
 
 const NewInvoiceModal = ({
@@ -37,14 +38,18 @@ const NewInvoiceModal = ({
       dateInvoice,
       dateRegister,
       taxBase,
+      iva,
+      concept,
     } = state;
 
     createInvoiceExpense({
       nInvoice,
       dateInvoice: format.dateToSend(dateInvoice),
       dateRegister: format.dateToSend(dateRegister),
-      taxBase,
+      taxBase: format.number(taxBase),
+      iva: format.number(iva),
       provider: idProvider,
+      concept,
     }, close);
   };
 
@@ -158,6 +163,7 @@ const NewInvoiceModal = ({
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {_renderInput('taxBase', 'B.I.', { type: 'number' })}
+      {_renderInput('iva', 'IVA', { type: 'number' })}
       {_renderSelectConcept()}
     </ModalGrid>
   );

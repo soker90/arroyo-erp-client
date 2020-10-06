@@ -49,11 +49,10 @@ const _createInvoiceExpenseError = error => ({
  * @param {Object} sendData
  */
 export const createInvoiceExpense = (sendData, callback) => async dispatch => {
-  console.log(sendData);
   dispatch(_createInvoiceExpenseRequest());
 
   try {
-    const { data } = await axios.post('invoices', sendData);
+    const { data } = await axios.post('invoices/expense', sendData);
 
     dispatch(_createInvoiceExpenseSuccess());
     dispatch(_createInvoiceExpenseSet(data));
