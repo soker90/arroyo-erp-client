@@ -1,7 +1,13 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip,
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import uniqId from 'uniqid';
@@ -54,9 +60,11 @@ const InvoiceTotals = ({
             <Grid item xs={12} md={3}>
               <ItemCard label='IVA' value={iva} variant='euro' />
             </Grid>
-            <Grid item xs={12} md={3}>
-              <ItemCard label='RE' value={re} variant='euro' />
-            </Grid>
+            {re && (
+              <Grid item xs={12} md={3}>
+                <ItemCard label='RE' value={re} variant='euro' />
+              </Grid>
+            )}
             <Grid item xs={12} md={3}>
               <ItemCard label='TOTAL' value={total} variant='euro' />
             </Grid>
@@ -70,7 +78,7 @@ const InvoiceTotals = ({
 
 InvoiceTotals.propTypes = {
   iva: PropTypes.number.isRequired,
-  re: PropTypes.number.isRequired,
+  re: PropTypes.number,
   total: PropTypes.number.isRequired,
   taxBase: PropTypes.number.isRequired,
   isEditable: PropTypes.bool.isRequired,

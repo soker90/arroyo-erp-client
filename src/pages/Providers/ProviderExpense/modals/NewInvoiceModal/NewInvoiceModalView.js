@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
-import { format } from 'utils';
+import { format, stringToNumber } from 'utils';
 import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
 
 const INITIAL_STATE = {
@@ -46,8 +46,8 @@ const NewInvoiceModal = ({
       nInvoice,
       dateInvoice: format.dateToSend(dateInvoice),
       dateRegister: format.dateToSend(dateRegister),
-      taxBase: format.number(taxBase),
-      iva: format.number(iva),
+      taxBase: Number(taxBase),
+      iva: Number(iva / 100),
       provider: idProvider,
       concept,
     }, close);

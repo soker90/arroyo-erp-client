@@ -133,9 +133,10 @@ Header.propTypes = {
     variant: PropTypes.string,
     disableSvg: PropTypes.bool,
     Icon: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     label: PropTypes.string.isRequired,
     component: PropTypes.object,
+    to: PropTypes.string,
   })), PropTypes.bool]),
   buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
