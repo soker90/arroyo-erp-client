@@ -5,7 +5,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Label, Header } from 'components';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import AddIcon from '@material-ui/icons/Add';
 import { useStyles } from './styles';
 import NewInvoiceModal from '../../modals/NewInvoiceModal';
 

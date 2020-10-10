@@ -15,8 +15,8 @@ const Provider = ({
   const history = useHistory();
 
   const routesByType = useMemo(() => ({
-    [TYPE_PROVIDER.GENERAL]: 'general',
-    [TYPE_PROVIDER.EXPENSES]: 'gastos',
+    [TYPE_PROVIDER.GENERAL]: '/app/proveedores/general',
+    [TYPE_PROVIDER.EXPENSES]: '/app/gastos',
     undefined: 'general',
   }), []);
 
@@ -26,7 +26,7 @@ const Provider = ({
   }, [idProvider]);
 
   useEffect(() => {
-    const composeRoute = `/app/proveedores/${routesByType[provider.type]}/${idProvider}`;
+    const composeRoute = `${routesByType[provider.type]}/${idProvider}`;
     if (provider._id === idProvider) history.replace(composeRoute);
   }, [provider]);
 

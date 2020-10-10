@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
-import { format, stringToNumber } from 'utils';
+import { format } from 'utils';
 import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
 
 const INITIAL_STATE = {

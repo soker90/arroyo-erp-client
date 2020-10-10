@@ -87,7 +87,7 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/proveedores/gastos/:idProvider',
+        path: '/app/gastos/:idProvider',
         component: lazy(() => import('pages/Providers/ProviderExpense')),
       },
       {

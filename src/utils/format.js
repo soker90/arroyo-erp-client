@@ -4,6 +4,14 @@ const date = cell => cell && moment(cell)
   .format('DD/MM/YYYY');
 
 /**
+ * Número de la semana del año
+ * @param {number} cell
+ * @return {string}
+ */
+const weekOfYear = cell => cell && moment(cell)
+  .format('w');
+
+/**
  * Devuelve el nombre del día de la semana
  * @param {Date} cell
  * @returns {*|string}
@@ -67,4 +75,5 @@ export default {
   dateToSend,
   percent,
   dayOfWeek,
+  weekOfYear,
 };

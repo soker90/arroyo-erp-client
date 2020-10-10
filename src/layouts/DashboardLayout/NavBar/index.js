@@ -126,7 +126,7 @@ function NavBar({ openMobile, onMobileClose }) {
             justifyContent='center'
           >
             <RouterLink to='/'>
-              <Logo />
+              <Logo/>
             </RouterLink>
           </Box>
         </Hidden>
@@ -164,7 +164,7 @@ function NavBar({ openMobile, onMobileClose }) {
             </Typography>
           </Box>
         </Box>
-        <Divider />
+        <Divider/>
         <Box p={2}>
           {navConfig.map((config, idx) => (
             <List
@@ -185,7 +185,7 @@ function NavBar({ openMobile, onMobileClose }) {
             </List>
           ))}
         </Box>
-        <Divider />
+        <Divider/>
         <Box p={2}>
           <Box
             p={2}
@@ -199,6 +199,14 @@ function NavBar({ openMobile, onMobileClose }) {
               {format.dayOfWeek(new Date())}
               {', '}
               {format.date(new Date())}
+            </Typography>
+            <Typography
+              variant='h6'
+              color='textPrimary'
+            >
+              Semana
+              {' '}
+              {format.weekOfYear(new Date())}
             </Typography>
           </Box>
         </Box>
