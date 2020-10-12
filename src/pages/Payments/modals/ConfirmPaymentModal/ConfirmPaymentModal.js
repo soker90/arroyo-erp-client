@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, InputForm, SelectForm } from 'components/Forms';
 import { TYPE_PAYMENT } from 'constants/invoices';
-import { format } from '../../../../utils';
+import { format } from 'utils';
 
 const ConfirmPaymentModal = ({
   confirmPayment, payment, setShow, ...rest

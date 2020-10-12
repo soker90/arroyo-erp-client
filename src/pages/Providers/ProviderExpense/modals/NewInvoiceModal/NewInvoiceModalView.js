@@ -1,11 +1,11 @@
-import React, { memo, useEffect, useReducer } from 'react';
+import React, {memo, useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
-import { format } from 'utils';
-import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
+import {format} from 'utils';
+import {INVOICE_NEGATIVE_CONCEPTS, TYPE_PAYMENT} from 'constants/invoices';
 
 const INITIAL_STATE = {
   nInvoice: '',
@@ -14,13 +14,15 @@ const INITIAL_STATE = {
   taxBase: '',
   concept: null,
   iva: '',
+  type: null,
+  paymentDate: null
 };
 
 const NewInvoiceModal = ({
-  show, close, createInvoiceExpense, idProvider,
-}) => {
+                           show, close, createInvoiceExpense, idProvider,
+                         }) => {
   const [state, setState] = useReducer(
-    (oldState, newState) => ({ ...oldState, ...newState }),
+    (oldState, newState) => ({...oldState, ...newState}),
     INITIAL_STATE,
   );
 
@@ -40,6 +42,8 @@ const NewInvoiceModal = ({
       taxBase,
       iva,
       concept,
+      paymentDate,
+      type
     } = state;
 
     createInvoiceExpense({
@@ -50,6 +54,8 @@ const NewInvoiceModal = ({
       iva: Number(iva / 100),
       provider: idProvider,
       concept,
+      ...(paymentDate && {paymentDate: format.dateToSend(paymentDate)}),
+      type
     }, close);
   };
 
@@ -58,7 +64,7 @@ const NewInvoiceModal = ({
    * @param {string} key
    * @private
    */
-  const _handleKeyPress = ({ key }) => {
+  const _handleKeyPress = ({key}) => {
     if (key === 'Enter') _handleSubmit();
   };
 
@@ -68,8 +74,8 @@ const NewInvoiceModal = ({
    * @param {String} value
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
+  const _handleChange = ({target: {name, value}}) => {
+    setState({[name]: value});
   };
 
   /**
@@ -79,7 +85,7 @@ const NewInvoiceModal = ({
    * @private
    */
   const _handleChangePicker = (date, name) => {
-    setState({ [name]: date });
+    setState({[name]: date});
   };
 
   /**
@@ -106,11 +112,11 @@ const NewInvoiceModal = ({
    * @return {SelectForm}
    * @private
    */
-  const _renderSelectConcept = () => (
+  const _renderSelect = (id, label, items) => (
     <SelectForm
-      label='Concepto'
-      value={state.concept}
-      name='concept'
+      label={label}
+      value={state[id]}
+      name={id}
       onChange={_handleChange}
       size={6}
       InputLabelProps={{
@@ -118,7 +124,7 @@ const NewInvoiceModal = ({
       }}
       onKeyPress={_handleKeyPress}
     >
-      {INVOICE_NEGATIVE_CONCEPTS.map((item, idx) => (
+      {items.map((item, idx) => (
         <option key={idx} value={item}>
           {item}
         </option>
@@ -159,12 +165,14 @@ const NewInvoiceModal = ({
       action={_handleSubmit}
       title='Crear factura'
     >
-      {_renderInput('nInvoice', 'Nº Factura', { autoFocus: true })}
+      {_renderInput('nInvoice', 'Nº Factura', {autoFocus: true})}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
-      {_renderInput('taxBase', 'B.I.', { type: 'number' })}
-      {_renderInput('iva', 'IVA', { type: 'number' })}
-      {_renderSelectConcept()}
+      {_renderInput('taxBase', 'B.I.', {type: 'number'})}
+      {_renderInput('iva', 'IVA', {type: 'number'})}
+      {_renderSelect('concept', 'Concepto', INVOICE_NEGATIVE_CONCEPTS)}
+      {_renderDatePicker('Fecha de cobro', 'paymentDate')}
+      {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
     </ModalGrid>
   );
 };
