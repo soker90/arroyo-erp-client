@@ -2,6 +2,7 @@ export const CONCEPT = {
   COMPRAS: 'C. mercaderías',
   DEV: 'Dev. mercaderías',
   ABONO: 'Abono',
+  ALQUILER: 'Alquiler'
 };
 
 export const TYPE_PAYMENT = [

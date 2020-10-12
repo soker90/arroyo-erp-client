@@ -11,7 +11,7 @@ import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 
 const InvoiceData = ({
-  dateRegister, dateInvoice, nInvoice, nOrder, className,
+  dateRegister, dateInvoice, nInvoice, nOrder, className, isEditable,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -24,7 +24,7 @@ const InvoiceData = ({
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (!nOrder ? [
+  const _getActions = () => (isEditable ? [
     <Tooltip title='Editar' key={uniqId()}>
       <IconButton
         size='small'
@@ -71,6 +71,7 @@ InvoiceData.propTypes = {
   nInvoice: PropTypes.string,
   nOrder: PropTypes.number,
   className: PropTypes.string.isRequired,
+  isEditable: PropTypes.bool.isRequired,
 };
 
 InvoiceData.displayName = 'InvoiceData';
