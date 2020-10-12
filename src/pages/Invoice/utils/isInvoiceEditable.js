@@ -6,9 +6,10 @@ const conceptEditables = [
 
 /**
  * Devuelve si la factura se puede editar
- * @param {Object} invoiceData
+ * @param {number} nOrder
+ * @param {string} concept
  * @return {boolean}
  */
-export const isInvoiceEditable = invoiceData => (
-  !invoiceData.nOrder || conceptEditables.includes(invoiceData.concept)
+export const isInvoiceEditable = ({ nOrder, concept }) => (
+  !nOrder || conceptEditables.includes(concept)
 );
