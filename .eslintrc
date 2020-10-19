@@ -54,6 +54,8 @@
     "no-underscore-dangle": "off",
     "no-console": [2, { "allow": ["warn", "error"] }],
     "import/named": "off",
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
