@@ -44,6 +44,8 @@
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/forbid-prop-types": "off",
     "jsx-a11y/click-events-have-key-events": "off",
@@ -54,8 +56,6 @@
     "no-underscore-dangle": "off",
     "no-console": [2, { "allow": ["warn", "error"] }],
     "import/named": "off",
-    "jsx-quotes": ["error", "prefer-single"],
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }
