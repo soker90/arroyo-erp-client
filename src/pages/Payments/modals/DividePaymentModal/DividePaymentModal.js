@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { ConfirmModal } from 'components/Modals';

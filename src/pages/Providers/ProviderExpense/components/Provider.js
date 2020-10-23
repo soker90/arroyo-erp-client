@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-  memo, useEffect, useState,
-} from 'react';
+import { memo, useEffect, useState } from 'react';
 import {
   Box, Container,
 } from '@material-ui/core';

@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
@@ -126,8 +126,8 @@ const GenericProductModal = ({
       onKeyPress={_handleKeyPress}
     >
       <option value=''>--------</option>
-      {products?.map((item, idx) => (
-        <option key={idx} value={item._id}>
+      {products?.map(item => (
+        <option key={item._id} value={item._id}>
           {item.name}
         </option>
       ))}

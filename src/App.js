@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Router } from 'react-router-dom';
 import MomentUtils from '@date-io/moment';
 import { createStyles, makeStyles, ThemeProvider } from '@material-ui/core';

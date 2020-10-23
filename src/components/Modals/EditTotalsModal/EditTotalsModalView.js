@@ -1,4 +1,4 @@
-import React, { memo, useReducer } from 'react';
+import { memo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm } from 'components';

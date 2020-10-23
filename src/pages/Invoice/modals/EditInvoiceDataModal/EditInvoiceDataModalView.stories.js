@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { date, text } from '@storybook/addon-knobs';
 

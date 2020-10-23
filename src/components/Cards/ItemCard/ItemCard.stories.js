@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { boolean, text } from '@storybook/addon-knobs';
 import { Card, CardContent } from '@material-ui/core';
 import { story as ItemCard } from './ItemCard';

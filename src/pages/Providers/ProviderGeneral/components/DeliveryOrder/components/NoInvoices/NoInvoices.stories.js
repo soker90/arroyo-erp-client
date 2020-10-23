@@ -1,5 +1,3 @@
-import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 import RoutesWrapper from 'story/RoutesWrapper';
 import { story as NoInvoices } from './NoInvoices';

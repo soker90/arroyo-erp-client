@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withKnobs } from '@storybook/addon-knobs';
 import RoutesWrapper from 'story/RoutesWrapper';
 import DashboardView from './DashboardView';

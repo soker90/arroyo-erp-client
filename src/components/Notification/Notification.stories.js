@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { story as MySnackbarContentWrapper } from './components/MySnackbarContentWrapper';
 
 export default {

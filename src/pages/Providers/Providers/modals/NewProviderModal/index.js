@@ -1,1 +1,1 @@
-export {default} from './NewProviderModalContainer'
+export { default } from './NewProviderModalContainer';

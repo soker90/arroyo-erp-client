@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -21,6 +21,7 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
         },
         {
           title: 'Total',
+          // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />,
         },
         {
@@ -40,7 +41,7 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
         },
       ]}
       refresh={() => {
-        console.log('No implementado');
+        // TODO No implementado
       }}
     />
   );

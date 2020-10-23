@@ -1,5 +1,3 @@
-import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 
 import { story as MergePaymentModal } from './MergePaymentModal';

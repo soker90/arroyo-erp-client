@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 
@@ -6,8 +6,8 @@ const HeadTable = ({ columns, actions, multiSelect }) => (
   <TableHead styles={{ fontSize: 20 }}>
     <TableRow>
       {multiSelect && <TableCell />}
-      {columns.map(({ title }, idCol) => (
-        <TableCell key={idCol}>
+      {columns.map(({ title }) => (
+        <TableCell key={title}>
           {title}
         </TableCell>
       ))}

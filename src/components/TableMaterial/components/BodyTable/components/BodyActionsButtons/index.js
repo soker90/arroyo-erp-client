@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton, TableCell, Tooltip } from '@material-ui/core';
 import uniqId from 'uniqid';

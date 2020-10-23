@@ -1,5 +1,3 @@
-import React from 'react';
-
 import RoutesWrapper from 'story/RoutesWrapper';
 import { ReduxProvider } from 'story';
 import DatePickerProvider from 'contexts/DatePickerProvider';

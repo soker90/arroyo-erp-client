@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-  memo, useEffect, useMemo,
-} from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router';
 

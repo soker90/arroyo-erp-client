@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { login, logout } from 'actions/auth';
 import LoginView from '../components';
-import {login, logout} from 'actions/auth';
 
-const mapStateToProps = ({auth}) => ({
+const mapStateToProps = ({ auth }) => ({
   loginError: auth?.loginError,
 });
 

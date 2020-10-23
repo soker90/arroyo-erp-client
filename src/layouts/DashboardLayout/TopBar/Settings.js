@@ -1,4 +1,4 @@
-import React, {memo, useRef, useState} from 'react';
+import { memo, useRef, useState } from 'react';
 import {
   Badge,
   Box,
@@ -11,9 +11,9 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import {Settings as SettingsIcon} from 'react-feather';
+import { Settings as SettingsIcon } from 'react-feather';
 import useSettings from 'hooks/useSettings';
-import {THEMES, THEMES_NAME} from 'constants/common';
+import { THEMES, THEMES_NAME } from 'constants/common';
 
 const useStyles = makeStyles(theme => ({
   badge: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 const Settings = () => {
   const classes = useStyles();
   const ref = useRef(null);
-  const {settings, saveSettings} = useSettings();
+  const { settings, saveSettings } = useSettings();
   const [isOpen, setOpen] = useState(false);
   const [values, setValues] = useState({
     direction: settings.direction,
@@ -62,19 +62,19 @@ const Settings = () => {
 
   return (
     <>
-      <Tooltip title="Settings">
+      <Tooltip title='Settings'>
         <Badge
-          color="secondary"
-          variant="dot"
-          classes={{badge: classes.badge}}
+          color='secondary'
+          variant='dot'
+          classes={{ badge: classes.badge }}
         >
           <IconButton
-            color="inherit"
+            color='inherit'
             onClick={handleOpen}
             ref={ref}
           >
-            <SvgIcon fontSize="small">
-              <SettingsIcon/>
+            <SvgIcon fontSize='small'>
+              <SettingsIcon />
             </SvgIcon>
           </IconButton>
         </Badge>
@@ -84,27 +84,27 @@ const Settings = () => {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        classes={{paper: classes.popover}}
+        classes={{ paper: classes.popover }}
         anchorEl={ref.current}
         onClose={handleClose}
         open={isOpen}
       >
         <Typography
-          variant="h4"
-          color="textPrimary"
+          variant='h4'
+          color='textPrimary'
         >
           Configuración
         </Typography>
         <Box mt={2}>
           <TextField
             fullWidth
-            label="Tema"
-            name="theme"
+            label='Tema'
+            name='theme'
             onChange={event => handleChange('theme', event.target.value)}
             select
-            SelectProps={{native: true}}
+            SelectProps={{ native: true }}
             value={values.theme}
-            variant="outlined"
+            variant='outlined'
           >
             {Object.keys(THEMES)
               .map(theme => (
@@ -116,8 +116,8 @@ const Settings = () => {
         </Box>
         <Box mt={2}>
           <Button
-            variant="contained"
-            color="secondary"
+            variant='contained'
+            color='secondary'
             fullWidth
             onClick={handleSave}
           >

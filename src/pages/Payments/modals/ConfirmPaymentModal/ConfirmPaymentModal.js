@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, InputForm, SelectForm } from 'components/Forms';
@@ -113,8 +113,8 @@ const ConfirmPaymentModal = ({
         }}
         onKeyPress={_handleKeyPress}
       >
-        {TYPE_PAYMENT?.map((item, idx) => (
-          <option key={idx} value={item}>
+        {TYPE_PAYMENT?.map(item => (
+          <option key={item} value={item}>
             {item}
           </option>
         ))}

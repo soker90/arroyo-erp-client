@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Tab, Tabs } from '@material-ui/core';
 import { useHistory } from 'react-router';
@@ -24,10 +24,10 @@ const ProviderTabs = ({ currentTab }) => {
     <Card className={classes.tabs}>
       <Tabs
         onChange={_handleTabsChange}
-        scrollButtons="auto"
-        textColor="secondary"
+        scrollButtons='auto'
+        textColor='secondary'
         value={currentTab}
-        variant="scrollable"
+        variant='scrollable'
       >
         {Object.values(TABS)
           .map(tab => (

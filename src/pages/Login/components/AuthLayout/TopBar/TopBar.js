@@ -1,20 +1,20 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import {AppBar, Toolbar} from '@material-ui/core';
+import { AppBar, Toolbar } from '@material-ui/core';
 
-import {useStyles} from './TopBar.styles';
+import { useStyles } from './TopBar.styles';
 
-const TopBar = ({className}) => {
+const TopBar = ({ className }) => {
   const classes = useStyles();
   return (
     <AppBar
       className={clsx(classes.root, className)}
-      color="primary"
+      color='primary'
     >
       <Toolbar>
         <img
-          alt="Logo"
+          alt='Logo'
           src='/static/logo.png'
           height='45rem'
           width='100rem'

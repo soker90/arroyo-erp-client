@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { useState, memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -7,7 +7,7 @@ import { useStyles } from './Notification.styles';
 
 const Notification = ({ notification }) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (notification.message) setOpen(true);

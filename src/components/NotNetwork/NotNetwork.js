@@ -1,9 +1,9 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import {
   Typography,
   Button,
 } from '@material-ui/core';
-import {useStyles} from './NotNetwork.styles';
+import { useStyles } from './NotNetwork.styles';
 
 const NotNetwork = () => {
   const classes = useStyles();
@@ -13,54 +13,54 @@ const NotNetwork = () => {
       className={classes.root}
     >
       <Typography
-        align="center"
+        align='center'
         variant='h1'
       >
         Sin conexión
       </Typography>
       <Typography
-        align="center"
-        variant="subtitle2"
+        align='center'
+        variant='subtitle2'
         className={classes.subtitle}
       >
         ¡Oh, no! No podemos conectar con el Backend.
       </Typography>
       <Typography
-        align="center"
-        variant="subtitle2"
+        align='center'
+        variant='subtitle2'
       >
         1. Comprueba tu conexion a Internet.
       </Typography>
       <Typography
-        align="center"
-        variant="subtitle2"
+        align='center'
+        variant='subtitle2'
       >
         2. Comprueba la conexion a la VPN.
       </Typography>
       <Typography
-        align="center"
-        variant="subtitle2"
+        align='center'
+        variant='subtitle2'
       >
         3. Pulsa Ctrl + shift + R para refrescar.
       </Typography>
       <Typography
-        align="center"
-        variant="subtitle2"
+        align='center'
+        variant='subtitle2'
       >
         4. Pregunta a Backend.
       </Typography>
       <div className={classes.imageContainer}>
         <img
-          alt="image_error"
+          alt='image_error'
           className={classes.image}
-          src="/static/images/error.svg"
+          src='/static/images/error.svg'
         />
       </div>
       <div className={classes.buttonContainer}>
         <Button
-          color="primary"
+          color='primary'
           onClick={() => window.location.reload()}
-          variant="outlined"
+          variant='outlined'
         >
           Refrescar
         </Button>

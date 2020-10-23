@@ -1,1 +1,1 @@
-export {default} from './NotNetwork';
+export { default } from './NotNetwork';

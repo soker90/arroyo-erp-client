@@ -1,5 +1,5 @@
-import {LOGIN, LOGOUT, SILENT_LOGIN} from 'actions/types';
-import {createReducer, setPayload} from 'store/utils';
+import { LOGIN, LOGOUT, SILENT_LOGIN } from 'actions/types';
+import { createReducer, setPayload } from 'store/utils';
 
 const INITIAL_STATE = {
   user: null,
@@ -14,4 +14,3 @@ const ACTION_HANDLERS = {
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
-

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { story as TopBar } from './TopBar';
 
 export default {

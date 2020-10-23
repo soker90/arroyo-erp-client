@@ -1,15 +1,12 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
-import {useDispatch} from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import SplashScreen from 'components/SplashScreen';
-import {setUserData, logout} from 'actions/auth';
+import { setUserData, logout } from 'actions/auth';
 import authService from 'services/authService';
-import {initialize} from 'actions/initializeAction';
+import { initialize } from 'actions/initializeAction';
 
-function Auth({children}) {
+function Auth({ children }) {
   const dispatch = useDispatch();
   const [isLoading, setLoading] = useState(true);
 
@@ -24,7 +21,7 @@ function Auth({children}) {
       if (authService.isAuthenticated()) {
         const user = await authService.loginInWithToken();
         await dispatch(setUserData(user));
-        dispatch(initialize())
+        dispatch(initialize());
       }
 
       setLoading(false);
@@ -33,9 +30,7 @@ function Auth({children}) {
     initAuth();
   }, [dispatch]);
 
-  if (isLoading) {
-    return <SplashScreen />;
-  }
+  if (isLoading) return <SplashScreen />;
 
   return children;
 }

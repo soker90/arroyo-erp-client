@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -41,6 +41,7 @@ const InvoicesTable = ({ invoices }) => {
         },
         {
           title: 'Importe',
+          // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />,
         },
       ]}

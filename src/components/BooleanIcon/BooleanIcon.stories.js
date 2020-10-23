@@ -1,4 +1,3 @@
-import React from 'react';
 import {story as BooleanIcon} from './BooleanIcon';
 
 import {boolean} from '@storybook/addon-knobs';

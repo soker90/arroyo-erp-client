@@ -34,7 +34,6 @@ const _deleteProductOfDeliveryOrderSet = ({ data }) => ({
   payload: data,
 });
 
-
 /**
  * Error action for createDeliveryOrder
  * @param error

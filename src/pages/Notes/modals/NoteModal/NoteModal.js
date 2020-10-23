@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { DatePickerForm, InputForm, ModalGrid } from 'components';
@@ -58,6 +58,7 @@ const NoteModal = ({
    * @returns {InputForm}
    * @private
    */
+  // eslint-disable-next-line react/prop-types
   const _renderInput = ({ name, label }) => (
     <InputForm
       key={name}

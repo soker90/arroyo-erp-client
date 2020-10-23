@@ -1,1 +1,1 @@
-export { default } from './InvoiceTotals';
+export { default } from './ProductData';

@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+/* eslint-disable react/prop-types */
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';

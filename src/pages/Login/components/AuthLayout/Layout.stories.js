@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { story as Auth } from './Auth';
 
 export default {

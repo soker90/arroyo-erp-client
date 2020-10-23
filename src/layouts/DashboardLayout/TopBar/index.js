@@ -1,5 +1,4 @@
-import React from 'react';
-import {Link as RouterLink} from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -11,9 +10,9 @@ import {
   makeStyles,
   SvgIcon,
 } from '@material-ui/core';
-import {Menu as MenuIcon} from 'react-feather';
+import { Menu as MenuIcon } from 'react-feather';
 import Logo from 'components/Logo';
-import {THEMES} from 'constants/common';
+import { THEMES } from 'constants/common';
 import Account from './Account';
 import Search from './Search';
 import Settings from './Settings';
@@ -21,13 +20,13 @@ import Settings from './Settings';
 const useStyles = makeStyles(theme => ({
   root: {
     zIndex: theme.zIndex.drawer + 100,
-    ...theme.name === THEMES.LIGHT ? {
+    ...(theme.name === THEMES.LIGHT ? {
       boxShadow: 'none',
       backgroundColor: theme.palette.primary.main,
-    } : {},
-    ...theme.name === THEMES.ONE_DARK ? {
+    } : {}),
+    ...(theme.name === THEMES.ONE_DARK ? {
       backgroundColor: theme.palette.background.default,
-    } : {},
+    } : {}),
   },
   toolbar: {
     minHeight: 64,
@@ -50,16 +49,16 @@ function TopBar({
         <Hidden lgUp>
           <IconButton
             className={classes.menuButton}
-            color="inherit"
+            color='inherit'
             onClick={onMobileNavOpen}
           >
-            <SvgIcon fontSize="small">
+            <SvgIcon fontSize='small'>
               <MenuIcon />
             </SvgIcon>
           </IconButton>
         </Hidden>
         <Hidden mdDown>
-          <RouterLink to="/">
+          <RouterLink to='/'>
             <Logo />
           </RouterLink>
         </Hidden>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
+import {
   lazy, memo, useCallback, useEffect, useState,
 } from 'react';
 import {

@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import {
   ClickAwayListener,
   Hidden,
@@ -24,6 +24,7 @@ const Search = () => {
   const searchRef = useRef(null);
   const [openSearchPopover, setOpenSearchPopover] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  // eslint-disable-next-line no-shadow
   const providers = useSelector(({ providers }) => providers.providers);
 
   /**
@@ -35,6 +36,7 @@ const Search = () => {
   const _handleSearchChange = ({ target: { value } }) => {
     setSearchValue(value);
 
+    // eslint-disable-next-line no-unused-expressions,mdx/no-unused-expressions
     value
       ? !openSearchPopover && setOpenSearchPopover(true)
       : setOpenSearchPopover(false);

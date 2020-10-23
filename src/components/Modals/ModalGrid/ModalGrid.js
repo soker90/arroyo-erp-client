@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -51,6 +51,7 @@ const ModalGrid = ({
    * @returns {Button}
    * @private
    */
+  // eslint-disable-next-line react/prop-types
   const _renderButton = ({ value, ...rest }, index) => (
     <Button key={index} {...rest}>
       {value}

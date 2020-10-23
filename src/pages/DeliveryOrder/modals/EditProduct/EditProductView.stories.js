@@ -1,5 +1,4 @@
 /* eslint-disable */
-import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { story as EditProductModalView } from './EditProductModalView';
