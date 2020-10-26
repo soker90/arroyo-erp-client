@@ -1,2 +1,1 @@
-export {default} from './containers/ModalRoot';
-
+export { default } from './containers/ModalRoot';

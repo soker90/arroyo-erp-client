@@ -2,7 +2,6 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'nprogress/nprogress.css';
 import 'moment/locale/es';
 
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { SettingsProvider } from 'context/SettingsContext';

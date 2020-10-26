@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { matchPath, useLocation } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -126,7 +126,7 @@ function NavBar({ openMobile, onMobileClose }) {
             justifyContent='center'
           >
             <RouterLink to='/'>
-              <Logo/>
+              <Logo />
             </RouterLink>
           </Box>
         </Hidden>
@@ -164,11 +164,11 @@ function NavBar({ openMobile, onMobileClose }) {
             </Typography>
           </Box>
         </Box>
-        <Divider/>
+        <Divider />
         <Box p={2}>
-          {navConfig.map((config, idx) => (
+          {navConfig.map(config => (
             <List
-              key={idx}
+              key={config.subheader}
               subheader={(
                 <ListSubheader
                   disableGutters
@@ -185,7 +185,7 @@ function NavBar({ openMobile, onMobileClose }) {
             </List>
           ))}
         </Box>
-        <Divider/>
+        <Divider />
         <Box p={2}>
           <Box
             p={2}

@@ -1,18 +1,18 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Grid, LinearProgress} from '@material-ui/core';
+import { Grid, LinearProgress } from '@material-ui/core';
 import AuthLayout from './AuthLayout';
 import LoginForm from './LoginForm';
-import {useStyles} from './Login.styles';
+import { useStyles } from './Login.styles';
 
-const LoginView = ({login, loginError, isLoading}) => {
+const LoginView = ({ login, loginError, isLoading }) => {
   const classes = useStyles();
 
   /**
    * Render loading bar
    * @returns {boolean || LinearProgress}
    */
-  const renderLoadingBar = () => isLoading && <LinearProgress/>;
+  const renderLoadingBar = () => isLoading && <LinearProgress />;
 
   return (
     <AuthLayout>
@@ -26,9 +26,7 @@ const LoginView = ({login, loginError, isLoading}) => {
             item
             lg={5}
           >
-            <div className={classes.quote}>
-
-            </div>
+            <div className={classes.quote} />
           </Grid>
           <Grid
             className={classes.content}
@@ -38,7 +36,7 @@ const LoginView = ({login, loginError, isLoading}) => {
           >
             <div className={classes.content}>
               <div className={classes.contentBody}>
-                <LoginForm login={login} loginError={loginError} isLoading={isLoading}/>
+                <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
               </div>
               {renderLoadingBar()}
             </div>
@@ -52,6 +50,7 @@ const LoginView = ({login, loginError, isLoading}) => {
 LoginView.propTypes = {
   login: PropTypes.func.isRequired,
   loginError: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 LoginView.displayName = 'LoginView';

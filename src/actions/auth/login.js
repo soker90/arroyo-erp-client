@@ -1,6 +1,6 @@
-import authService from 'services/authService'
-import {LOGIN} from 'actions/types'
-import {initialize} from 'actions/initializeAction';
+import authService from 'services/authService';
+import { LOGIN } from 'actions/types';
+import { initialize } from 'actions/initializeAction';
 
 /**
  * Request action
@@ -9,7 +9,7 @@ import {initialize} from 'actions/initializeAction';
  */
 const _loginRequest = () => ({
   type: LOGIN.REQUEST,
-})
+});
 
 /**
  * Success action
@@ -18,7 +18,7 @@ const _loginRequest = () => ({
  */
 const _loginSuccess = () => ({
   type: LOGIN.SUCCESS,
-})
+});
 
 /**
  * Failure action
@@ -32,7 +32,7 @@ const _loginError = error => ({
   payload: {
     loginError: error?.response?.data?.message,
   },
-})
+});
 
 /**
  * Set action
@@ -45,27 +45,28 @@ const _loginSet = user => ({
   payload: {
     user,
   },
-})
+});
 
 /**
  * LayoutLogin in the system
  * @param {string} username
  * @param {string} password
- * @returns {function(...[*]=)}
+ * @returns {function(*): Promise<void>}
  */
-export const login = (username, password) => {
-  return async dispatch => {
-    try {
-      dispatch(_loginRequest());
+export const login = (username, password) => async dispatch => {
+  try {
+    dispatch(_loginRequest());
 
-      const user = await authService.loginWithUsernameAndPassword(username, password);
+    const user = await authService.loginWithUsernameAndPassword(
+      username,
+      password
+    );
 
-      dispatch(_loginSuccess())
-      dispatch(_loginSet(user))
-      dispatch(initialize())
-    } catch (error) {
-      console.error(error)
-      dispatch(_loginError(error));
-    }
-  };
-}
+    dispatch(_loginSuccess());
+    dispatch(_loginSet(user));
+    dispatch(initialize());
+  } catch (error) {
+    console.error(error);
+    dispatch(_loginError(error));
+  }
+};

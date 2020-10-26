@@ -1,4 +1,3 @@
-import React from 'react';
 import { story as InvoiceTotals } from './InvoiceTotals';
 
 export default {

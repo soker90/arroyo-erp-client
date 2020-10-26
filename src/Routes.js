@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { Fragment, lazy, Suspense } from 'react';
+import { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import DashboardLayout from 'layouts/DashboardLayout';

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { LinearProgress } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -12,7 +12,6 @@ const ModalRoot = ({
   const SpecificModal = MODAL_COMPONENTS[modalType];
 
   if (!modalType || !SpecificModal) return null;
-
 
   return (
     <Suspense fallback={<LinearProgress />}>

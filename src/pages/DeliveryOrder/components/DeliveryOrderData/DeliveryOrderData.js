@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider,
@@ -17,7 +17,7 @@ const DeliveryOrderData = ({
   };
 
   const _handleKeyDownNote = ({ key, target: { value } }) => {
-    key === 'Enter' && updateData({ note: value });
+    if (key === 'Enter') updateData({ note: value });
   };
 
   return (

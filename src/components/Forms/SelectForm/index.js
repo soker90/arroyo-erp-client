@@ -1,1 +1,1 @@
-export {default} from './SelectForm';
+export { default } from './SelectForm';

@@ -1,19 +1,16 @@
 /* eslint-disable import/prefer-default-export */
-import {applyMiddleware, createStore, compose} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {createLogger} from 'redux-logger';
+import { applyMiddleware, createStore, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createLogger } from 'redux-logger';
 
 import rootReducer from 'reducers';
+import { ENABLE_REDUX_LOGGER } from 'config';
 import middlewares from './middlewares';
-import {ENABLE_REDUX_LOGGER} from 'config';
 
 const loggerMiddleware = createLogger();
 
 export function configureStore(preloadedState = {}) {
-
-  if (ENABLE_REDUX_LOGGER) {
-    middlewares.push(loggerMiddleware);
-  }
+  if (ENABLE_REDUX_LOGGER) middlewares.push(loggerMiddleware);
 
   const middlewareEnhancer = composeWithDevTools(
     applyMiddleware(...middlewares)

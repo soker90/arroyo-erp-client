@@ -1,8 +1,10 @@
-import React, {useRef, useState} from 'react';
-import {Link as RouterLink} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography} from '@material-ui/core';
-import {logout} from 'actions/auth';
+import { useRef, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography,
+} from '@material-ui/core';
+import { logout } from 'actions/auth';
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -38,21 +40,21 @@ function Account() {
   return (
     <>
       <Box
-        display="flex"
-        alignItems="center"
+        display='flex'
+        alignItems='center'
         component={ButtonBase}
         onClick={handleOpen}
         ref={ref}
       >
         <Avatar
-          alt="User"
+          alt='User'
           className={classes.avatar}
           src={null}
         />
         <Hidden smDown>
           <Typography
-            variant="h6"
-            color="inherit"
+            variant='h6'
+            color='inherit'
           >
             {account.user}
           </Typography>
@@ -65,20 +67,20 @@ function Account() {
           horizontal: 'center',
         }}
         keepMounted
-        PaperProps={{className: classes.popover}}
+        PaperProps={{ className: classes.popover }}
         getContentAnchorEl={null}
         anchorEl={ref.current}
         open={isOpen}
       >
         <MenuItem
           component={RouterLink}
-          to="/app/social/profile"
+          to='/app/social/profile'
         >
           Perfil
         </MenuItem>
         <MenuItem
           component={RouterLink}
-          to="/app/account"
+          to='/app/account'
         >
           Cuenta
         </MenuItem>

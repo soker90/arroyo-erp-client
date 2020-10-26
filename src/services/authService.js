@@ -1,18 +1,16 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import {ARROYO_TOKEN} from 'config';
+import { ARROYO_TOKEN } from 'config';
 
 class AuthService {
-  setAxiosInterceptors = ({onLogout}) => {
+  setAxiosInterceptors = ({ onLogout }) => {
     axios.interceptors.response.use(
       response => response,
       error => {
         if (error.response && error.response.status === 401) {
           this.setSession(null);
 
-          if (onLogout) {
-            onLogout();
-          }
+          if (onLogout) onLogout();
         }
 
         return Promise.reject(error);
@@ -23,26 +21,19 @@ class AuthService {
   handleAuthentication() {
     const accessToken = this.getAccessToken();
 
-    if (!accessToken) {
-      return;
-    }
+    if (!accessToken) return;
 
-    if (this.isValidToken(accessToken)) {
-      this.setSession(accessToken);
-    } else {
-      this.setSession(null);
-    }
+    if (this.isValidToken(accessToken)) this.setSession(accessToken);
+    else this.setSession(null);
   }
 
   loginWithUsernameAndPassword = (username, password) => new Promise((resolve, reject) => {
-    axios.post('/account/login', {username, password})
-      .then(({data}) => {
+    axios.post('/account/login', { username, password })
+      .then(({ data }) => {
         if (data.token) {
           this.setSession(data.token);
           resolve(jwtDecode(data.token).user);
-        } else {
-          reject(data.error);
-        }
+        } else reject(data.error);
       })
       .catch(error => {
         reject(error);
@@ -51,13 +42,11 @@ class AuthService {
 
   loginInWithToken = () => new Promise((resolve, reject) => {
     axios.get('/account/me')
-      .then(({headers}) => {
+      .then(({ headers }) => {
         if (headers.token) {
           this.setSession(headers.token);
           resolve(jwtDecode(headers.token).user);
-        } else {
-          reject();
-        }
+        } else reject();
       })
       .catch(error => {
         reject(error);
@@ -81,9 +70,7 @@ class AuthService {
   getAccessToken = () => localStorage.getItem(ARROYO_TOKEN);
 
   isValidToken = accessToken => {
-    if (!accessToken) {
-      return false;
-    }
+    if (!accessToken) return false;
 
     const decoded = jwtDecode(accessToken);
     const currentTime = Date.now() / 1000;

@@ -1,5 +1,6 @@
-import React from 'react';
 import { Router } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import history from '../store/history';
 
 /**
@@ -14,6 +15,10 @@ const RoutesWrapper = ({ children }) => (
     {children}
   </Router>
 );
+
+RoutesWrapper.propTypes = {
+  children: PropTypes.any,
+};
 
 RoutesWrapper.displayName = 'RoutesWrapper';
 

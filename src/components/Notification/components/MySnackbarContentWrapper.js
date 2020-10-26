@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -8,10 +8,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import WarningIcon from '@material-ui/icons/Warning';
 import IconButton from '@material-ui/core/IconButton';
-import {useStyles} from './MySnackbarContentWrapper.styles';
+import { useStyles } from './MySnackbarContentWrapper.styles';
 
-
-const MySnackbarContentWrapper = ({className, message, onClose, variant, ...other}) => {
+const MySnackbarContentWrapper = ({
+  className, message, onClose, variant, ...other
+}) => {
   const classes = useStyles();
 
   const variantIcon = {
@@ -26,16 +27,16 @@ const MySnackbarContentWrapper = ({className, message, onClose, variant, ...othe
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
-      aria-describedby="client-snackbar"
-      message={
-        <span id="client-snackbar" className={classes.message} data-cy='notification'>
-          <Icon className={clsx(classes.icon, classes.iconVariant)}/>
+      aria-describedby='client-snackbar'
+      message={(
+        <span id='client-snackbar' className={classes.message} data-cy='notification'>
+          <Icon className={clsx(classes.icon, classes.iconVariant)} />
           {message}
         </span>
-      }
+      )}
       action={[
-        <IconButton key="close" aria-label="close" color="inherit" onClick={onClose} data-cy='notification-btn-close'>
-          <CloseIcon className={classes.icon}/>
+        <IconButton key='close' aria-label='close' color='inherit' onClick={onClose} data-cy='notification-btn-close'>
+          <CloseIcon className={classes.icon} />
         </IconButton>,
       ]}
       {...other}

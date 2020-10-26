@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable */
 import { ThemeProvider } from '@material-ui/core';
 import { createTheme } from 'theme';
 import { select } from '@storybook/addon-knobs';

@@ -34,7 +34,6 @@ const _updateProductOfDeliveryOrderSet = ({ data }) => ({
   payload: data,
 });
 
-
 /**
  * Error action for createDeliveryOrder
  * @param error

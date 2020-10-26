@@ -1,10 +1,11 @@
-import React, {useState, memo} from 'react';
+import { useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import {Box, Button, TextField, Typography} from '@material-ui/core';
-import {useStyles} from './LoginForm.styles';
+import {
+  Box, Button, TextField, Typography,
+} from '@material-ui/core';
+import { useStyles } from './LoginForm.styles';
 
-
-const LoginForm = memo(({login, loginError, isLoading}) => {
+const LoginForm = memo(({ login, loginError, isLoading }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +16,7 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
    * @param {string} value
    * @param {function} set
    */
-  const handleChange = ({target: {value}}, set) => {
+  const handleChange = ({ target: { value } }, set) => {
     set(value);
   };
 
@@ -32,10 +33,16 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
    * Render error if exist
    * @returns {boolean || Box}
    */
-  const renderError = () => {
-    return loginError && <Box bgcolor="error.main" color="secondary.contrastText" p={2}
-                              className={classes.error}>{loginError}</Box>
-  };
+  const renderError = () => loginError && (
+  <Box
+    bgcolor='error.main'
+    color='secondary.contrastText'
+    p={2}
+    className={classes.error}
+  >
+    {loginError}
+  </Box>
+  );
 
   /**
    *
@@ -45,7 +52,9 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
    * @param type
    * @returns {*}
    */
-  const renderInput = ({label, set, value, type}) =>
+  const renderInput = ({
+    label, set, value, type,
+  }) => (
     <TextField
       className={classes.textField}
       fullWidth
@@ -53,8 +62,9 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
       type={type}
       onChange={ev => handleChange(ev, set)}
       value={value}
-      variant="outlined"
-    />;
+      variant='outlined'
+    />
+  );
 
   /**
    * Press Enter key event
@@ -62,52 +72,53 @@ const LoginForm = memo(({login, loginError, isLoading}) => {
    * @private
    */
   const _handleKeyPress = ev => {
-    if (ev.key === 'Enter') {
-      handleSubmit(ev);
-    }
+    if (ev.key === 'Enter') handleSubmit(ev);
   };
 
-
-  return <form
-    className={classes.form}
-    onKeyPress={_handleKeyPress}
-  >
-    <Typography
-      className={classes.title}
-      variant="h2"
+  return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <form
+      className={classes.form}
+      onKeyPress={_handleKeyPress}
     >
-      Inicio de Sesión
-    </Typography>
-    {renderInput({
-      label: 'Usuario',
-      set: setUsername,
-      value: username,
-      type: 'text',
-    })}
-    {renderInput({
-      label: 'Contraseña',
-      set: setPassword,
-      value: password,
-      type: 'password',
-    })}
-    {renderError()}
-    <Button
-      className={classes.signInButton}
-      color="primary"
-      disabled={!username || !password || isLoading}
-      fullWidth
-      size="large"
-      variant="contained"
-      onClick={handleSubmit}
-    >
-      Entrar
-    </Button>
-  </form>
+      <Typography
+        className={classes.title}
+        variant='h2'
+      >
+        Inicio de Sesión
+      </Typography>
+      {renderInput({
+        label: 'Usuario',
+        set: setUsername,
+        value: username,
+        type: 'text',
+      })}
+      {renderInput({
+        label: 'Contraseña',
+        set: setPassword,
+        value: password,
+        type: 'password',
+      })}
+      {renderError()}
+      <Button
+        className={classes.signInButton}
+        color='primary'
+        disabled={!username || !password || isLoading}
+        fullWidth
+        size='large'
+        variant='contained'
+        onClick={handleSubmit}
+      >
+        Entrar
+      </Button>
+    </form>
+  );
 });
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
   loginError: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 LoginForm.displayName = 'LoginForm';

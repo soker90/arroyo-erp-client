@@ -1,11 +1,7 @@
 function track(...args) {
-  if (process.env.NODE_ENV !== 'production') {
-    return;
-  }
+  if (process.env.NODE_ENV !== 'production') return;
 
-  if (!window.gtag) {
-    return;
-  }
+  if (!window.gtag) return;
 
   window.gtag(...args);
 }
@@ -20,5 +16,5 @@ function event(type, props) {
 
 export default {
   pageview,
-  event
+  event,
 };

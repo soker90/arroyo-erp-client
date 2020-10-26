@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import { useEffect } from 'react';
 import NProgress from 'nprogress';
-import {Box, LinearProgress} from '@material-ui/core';
+import { Box, LinearProgress } from '@material-ui/core';
 
-import {useStyles} from './LoadingScreen.style';
+import { useStyles } from './LoadingScreen.style';
 
 function LoadingScreen() {
   const classes = useStyles();
@@ -18,7 +18,7 @@ function LoadingScreen() {
   return (
     <div className={classes.root}>
       <Box width={400}>
-        <LinearProgress/>
+        <LinearProgress />
       </Box>
     </div>
   );

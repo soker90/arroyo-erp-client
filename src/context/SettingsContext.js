@@ -1,7 +1,4 @@
-import React, {
-  createContext,
-  useState,
-} from 'react';
+import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { THEMES } from 'constants/common';
 import { storeSettings } from 'utils/settings';

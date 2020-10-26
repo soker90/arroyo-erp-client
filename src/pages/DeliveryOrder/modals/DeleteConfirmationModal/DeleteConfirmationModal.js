@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components/Modals';
 
@@ -17,8 +17,8 @@ const DeleteConfirmationModal = ({
   return (
     <ConfirmModal
       {...rest}
-      title="Eliminar producto del albarán"
-      description="¿Seguro que quieres quitar el producto del albarán?"
+      title='Eliminar producto del albarán'
+      description='¿Seguro que quieres quitar el producto del albarán?'
       action={_handleSend}
       actions={[
         { onClick: rest.close, value: 'Cerrar', 'data-cy': 'modal-close-button' },

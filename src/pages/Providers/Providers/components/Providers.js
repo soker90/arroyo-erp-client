@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';

@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
@@ -6,11 +6,8 @@ import { Link } from 'react-router-dom';
 import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
-import { useStyles } from './ProviderInvoices.styles';
 
 const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
-  const classes = useStyles();
-
   useEffect(() => {
     if (idProvider) getInvoicesByProvider(idProvider);
   }, [getInvoicesByProvider, idProvider]);
@@ -25,7 +22,6 @@ const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
 
   return idProvider && (
     <TableMaterial
-      className={classes.table}
       columns={[
         {
           title: 'Nº de Orden',
@@ -41,6 +37,7 @@ const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
         },
         {
           title: 'Importe',
+          // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />,
         },
         {

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useReducer } from 'react';
+import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import ProductModal, { INITIAL_STATE } from 'components/Modals/ProductModal';
 

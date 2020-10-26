@@ -1,13 +1,13 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Grid, Checkbox, FormControlLabel} from '@material-ui/core';
+import { Grid, Checkbox, FormControlLabel } from '@material-ui/core';
 
 /**
  * NOTA: Si cuando cargue el input el label y el value se superponen
  * es porque el label es undefined o null, si se al mandar la prop
  * value se manda como value={mivalor || ' '} se soluciona
  */
-const CheckBoxForm = ({size = 6, label, ...rest}) =>
+const CheckBoxForm = ({ size = 6, label, ...rest }) => (
   <Grid
     item
     md={size}
@@ -15,11 +15,12 @@ const CheckBoxForm = ({size = 6, label, ...rest}) =>
   >
     <FormControlLabel
       control={
-        <Checkbox {...rest}/>
+        <Checkbox {...rest} />
       }
       label={label}
     />
-  </Grid>;
+  </Grid>
+);
 
 CheckBoxForm.propTypes = {
   size: PropTypes.number,

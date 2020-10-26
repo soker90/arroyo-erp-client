@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useMemo } from 'react';
+import { forwardRef, memo, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 

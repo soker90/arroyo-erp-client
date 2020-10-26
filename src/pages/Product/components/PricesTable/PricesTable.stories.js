@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { story as PricesTable } from './PricesTable';
 
 export default {

@@ -1,13 +1,13 @@
-import React, {memo} from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
-import {Grid, TextField} from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir
  * nativo o material. Y documentar opcion y menuItem para usarlo
  * como children del componente.
  */
-const SelectForm = ({size, children, ...rest}) =>
+const SelectForm = ({ size, children, ...rest }) => (
   <Grid
     item
     md={size}
@@ -23,7 +23,8 @@ const SelectForm = ({size, children, ...rest}) =>
     >
       {children}
     </TextField>
-  </Grid>;
+  </Grid>
+);
 
 SelectForm.propTypes = {
   size: PropTypes.number,

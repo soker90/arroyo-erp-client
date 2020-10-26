@@ -1,4 +1,3 @@
-import React from 'react';
 import { action } from '@storybook/addon-actions';
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';

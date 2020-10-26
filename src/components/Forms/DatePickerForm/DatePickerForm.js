@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
@@ -48,6 +48,7 @@ DatePickerForm.propTypes = {
   /**
    * Fecha
    */
+  // eslint-disable-next-line max-len
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number, PropTypes.object]),
   /**
    * Función par el botón de aceptar

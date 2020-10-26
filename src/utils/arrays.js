@@ -6,14 +6,13 @@
  */
 export const sliceToGroups = (list, groups) => {
   const restList = list.slice(0);
-  let newArray = [];
+  const newArray = [];
 
   while (restList.length > 0) {
     newArray.push(
       restList.splice(0,
-        Math.round(list.length / groups),
-      ),
+        Math.round(list.length / groups),),
     );
   }
   return newArray;
-}
+};

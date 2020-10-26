@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useReducer } from 'react';
+import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -124,8 +124,8 @@ const NewInvoiceModal = ({
       }}
       onKeyPress={_handleKeyPress}
     >
-      {items.map((item, idx) => (
-        <option key={idx} value={item}>
+      {items.map(item => (
+        <option key={item} value={item}>
           {item}
         </option>
       ))}

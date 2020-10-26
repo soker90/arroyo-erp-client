@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 
 import { Header } from 'components';

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useReducer } from 'react';
+import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -133,8 +133,8 @@ const EditInvoiceDataModalView = ({
       }}
       onKeyPress={_handleKeyPress}
     >
-      {INVOICE_NEGATIVE_CONCEPTS.map((item, idx) => (
-        <option key={idx} value={item}>
+      {INVOICE_NEGATIVE_CONCEPTS.map(item => (
+        <option key={item} value={item}>
           {item}
         </option>
       ))}

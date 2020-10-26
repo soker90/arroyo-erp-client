@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import EuroIcon from '@material-ui/icons/Euro';
 import CallSplitIcon from '@material-ui/icons/CallSplit';
@@ -65,6 +65,7 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
           },
           {
             title: 'Importe',
+            // eslint-disable-next-line react/prop-types
             render: ({ amount }) => <TextEuro num={amount} />,
           },
           {

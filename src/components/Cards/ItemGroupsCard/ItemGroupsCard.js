@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import uniqId from 'uniqid';
 
@@ -23,6 +23,12 @@ const ItemGroupsCard = ({ groups, items }) => {
   const _renderItem = ({ label, value, variant }) => (
     <ItemCard key={uniqId()} label={label} value={value} variant={variant} />
   );
+
+  _renderItem.propTypes = {
+    label: PropTypes.string.isRequired,
+    value: PropTypes.any,
+    variant: PropTypes.string,
+  };
 
   /**
    * Render group of data label

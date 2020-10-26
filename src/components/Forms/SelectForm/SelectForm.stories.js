@@ -1,4 +1,3 @@
-import React from 'react';
 import { number, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 

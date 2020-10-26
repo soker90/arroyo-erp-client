@@ -16,4 +16,4 @@ export const HASH_TABS = {
   '#Albaranes': TABS.DELIVERY_ORDERS,
   '#Productos': TABS.PRODUCTS,
   '#Facturas': TABS.INVOICES,
-}
+};

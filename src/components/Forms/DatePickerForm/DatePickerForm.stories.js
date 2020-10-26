@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   boolean, date, number, text,
 } from '@storybook/addon-knobs';

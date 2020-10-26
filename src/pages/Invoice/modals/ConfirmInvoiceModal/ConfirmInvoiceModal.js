@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, SelectForm } from 'components/Forms';
@@ -79,8 +79,8 @@ const ConfirmInvoiceModal = ({
           shrink: true,
         }}
       >
-        {TYPE_PAYMENT?.map((item, idx) => (
-          <option key={idx} value={item}>
+        {TYPE_PAYMENT?.map(item => (
+          <option key={item} value={item}>
             {item}
           </option>
         ))}

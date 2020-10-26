@@ -1,5 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import { memo, useCallback, useState } from 'react';
 import {
   Card,
   CardContent,
@@ -61,16 +60,6 @@ const ProviderInfo = props => {
       <EditProviderModal show={showModal} provider={props} close={_closeModal} />
     </>
   );
-};
-
-ProviderInfo.propTypes = {
-  name: PropTypes.string,
-  address: PropTypes.string,
-  phone: PropTypes.string,
-  email: PropTypes.string,
-  businessName: PropTypes.string,
-  cif: PropTypes.string,
-  note: PropTypes.string,
 };
 
 ProviderInfo.displayName = 'ProviderInfo';
