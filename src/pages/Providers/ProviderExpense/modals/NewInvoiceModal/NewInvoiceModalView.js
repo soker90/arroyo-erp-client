@@ -5,7 +5,7 @@ import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
 import { format } from 'utils';
-import { EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
+import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
 
 const INITIAL_STATE = {
   nInvoice: '',
@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   iva: '',
   type: TYPE_PAYMENT[0],
   paymentDate: null,
+  bookColumn: COLUMNS_INVOICES.COMPRAS,
 };
 
 const NewInvoiceModal = ({
@@ -44,6 +45,7 @@ const NewInvoiceModal = ({
       concept,
       paymentDate,
       type,
+      bookColumn,
     } = state;
 
     createInvoiceExpense({
@@ -56,6 +58,7 @@ const NewInvoiceModal = ({
       concept,
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
       type,
+      bookColumn,
     }, close);
   };
 
@@ -150,6 +153,28 @@ const NewInvoiceModal = ({
   );
 
   /**
+   const _renderAutocomplete = () => (
+   <Autocomplete
+   freeSolo
+   id='concept'
+   disableClearable
+   options={EXPENSE_CONCEPTS}
+   value={state.concept}
+   renderInput={params => (
+        <TextField
+          {...params}
+          label='Search input'
+          margin='normal'
+          variant='outlined'
+          InputProps={{ ...params.InputProps, type: 'search' }}
+          onChange={_handleChange}
+        />
+      )}
+   />
+   );
+   * */
+
+  /**
    * Fecha de factura
    * N factura
    * Fecha de registro
@@ -173,6 +198,7 @@ const NewInvoiceModal = ({
       {_renderSelect('concept', 'Concepto', EXPENSE_CONCEPTS)}
       {_renderDatePicker('Fecha de cobro', 'paymentDate')}
       {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
+      {_renderSelect('bookColumn', 'Columna', Object.keys(COLUMNS_INVOICES))}
     </ModalGrid>
   );
 };

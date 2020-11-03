@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { createInvoiceExpense } from 'modules/providers/actions';
-import NewProductModalView from './NewInvoiceModalView';
+import NewInvoiceModalView from './NewInvoiceModalView';
 
 const mapStateToProps = ({ providers: { provider } }) => ({
   idProvider: provider._id,
@@ -14,4 +14,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NewProductModalView);
+)(NewInvoiceModalView);

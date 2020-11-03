@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { COLUMNS_INVOICES, CONCEPT } from 'constants/invoices';
 import { CREATE_INVOICE } from '../types';
 import { navigateTo } from '../../../utils';
-import { CONCEPT } from 'constants/invoices';
 
 /**
  * Request action for createInvoiceExpense
@@ -56,6 +56,7 @@ export const createInvoice = deliveryOrders => async dispatch => {
     const { data } = await axios.post('invoices', {
       deliveryOrders,
       concept: CONCEPT.COMPRAS,
+      bookColumn: COLUMNS_INVOICES.COMPRAS,
     });
 
     dispatch(_createInvoiceSuccess());
