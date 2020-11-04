@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { COLUMNS_INVOICES, CONCEPT } from 'constants/invoices';
 import { CREATE_INVOICE } from '../types';
-import { navigateTo } from '../../../utils';
+import { navigateTo } from 'utils';
 
 /**
  * Request action for createInvoiceExpense
