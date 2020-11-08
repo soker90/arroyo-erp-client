@@ -6,14 +6,14 @@ import {
 } from 'components';
 import { format } from 'utils';
 import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
+import AutocompleteForm from 'components/Forms/AutocompleteForm';
 
 const INITIAL_STATE = {
   nInvoice: '',
   dateInvoice: null,
   dateRegister: null,
-  taxBase: '',
+  total: '',
   concept: EXPENSE_CONCEPTS[0],
-  iva: '',
   type: TYPE_PAYMENT[0],
   paymentDate: null,
   bookColumn: COLUMNS_INVOICES.COMPRAS,
@@ -24,7 +24,7 @@ const NewInvoiceModal = ({
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -40,8 +40,8 @@ const NewInvoiceModal = ({
       nInvoice,
       dateInvoice,
       dateRegister,
-      taxBase,
-      iva,
+      total,
+      re,
       concept,
       paymentDate,
       type,
@@ -52,8 +52,8 @@ const NewInvoiceModal = ({
       nInvoice,
       dateInvoice: format.dateToSend(dateInvoice),
       dateRegister: format.dateToSend(dateRegister),
-      taxBase: Number(taxBase),
-      iva: Number(iva / 100),
+      total: Number(total),
+      re: Number(re),
       provider: idProvider,
       concept,
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
@@ -152,27 +152,20 @@ const NewInvoiceModal = ({
     />
   );
 
-  /**
-   const _renderAutocomplete = () => (
-   <Autocomplete
-   freeSolo
-   id='concept'
-   disableClearable
-   options={EXPENSE_CONCEPTS}
-   value={state.concept}
-   renderInput={params => (
-        <TextField
-          {...params}
-          label='Search input'
-          margin='normal'
-          variant='outlined'
-          InputProps={{ ...params.InputProps, type: 'search' }}
-          onChange={_handleChange}
-        />
-      )}
-   />
-   );
-   * */
+  const _renderAutocomplete = () => (
+    <AutocompleteForm
+      disableClearable
+      options={EXPENSE_CONCEPTS}
+      value={state.concept}
+      name='concept'
+      label='Concepto'
+      margin='normal'
+      InputProps={{
+        type: 'search',
+      }}
+      onChange={_handleChange}
+    />
+  );
 
   /**
    * Fecha de factura
@@ -193,12 +186,13 @@ const NewInvoiceModal = ({
       {_renderInput('nInvoice', 'Nº Factura', { autoFocus: true })}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
-      {_renderInput('taxBase', 'B.I.', { type: 'number' })}
-      {_renderInput('iva', 'IVA', { type: 'number' })}
-      {_renderSelect('concept', 'Concepto', EXPENSE_CONCEPTS)}
+      {_renderInput('total', 'Total', { type: 'number' })}
+      {state.bookColumn === COLUMNS_INVOICES.ALQUILER && _renderInput('re', 'Recargo', { type: 'number' })}
+      {_renderAutocomplete('concept', 'Concepto', EXPENSE_CONCEPTS)}
       {_renderDatePicker('Fecha de cobro', 'paymentDate')}
       {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
       {_renderSelect('bookColumn', 'Columna', Object.keys(COLUMNS_INVOICES))}
+
     </ModalGrid>
   );
 };
