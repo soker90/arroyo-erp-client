@@ -11,7 +11,7 @@ import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
 
 const InvoiceData = ({
-  dateRegister, dateInvoice, nInvoice, nOrder, className, isEditable,
+  dateRegister, dateInvoice, nInvoice, nOrder, className, isEditable, concept,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -57,6 +57,9 @@ const InvoiceData = ({
             <Grid item xs={12} md={3}>
               <ItemCard label='Fecha de factura' value={format.date(dateInvoice)} />
             </Grid>
+            <Grid item xs={12} md={3}>
+              <ItemCard label='Concepto' value={concept} />
+            </Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -72,6 +75,7 @@ InvoiceData.propTypes = {
   nOrder: PropTypes.number,
   className: PropTypes.string.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  concept: PropTypes.string,
 };
 
 InvoiceData.displayName = 'InvoiceData';
