@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 
-import { TableMaterial, TextEuro } from 'components';
+import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 
@@ -11,6 +11,8 @@ const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
   useEffect(() => {
     if (idProvider) getInvoicesByProvider(idProvider);
   }, [getInvoicesByProvider, idProvider]);
+
+  if (!idProvider) return <LoadingScreen />;
 
   /**
    * Render payment type

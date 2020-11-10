@@ -54,12 +54,16 @@ const InvoiceTotals = ({
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
+            {taxBase && (
             <Grid item xs={12} md={3}>
               <ItemCard label='Base imponible' value={taxBase} variant='euro' />
             </Grid>
+            )}
+            {iva && (
             <Grid item xs={12} md={3}>
               <ItemCard label='IVA' value={iva} variant='euro' />
             </Grid>
+            )}
             {re && (
               <Grid item xs={12} md={3}>
                 <ItemCard label='RE' value={re} variant='euro' />
@@ -77,10 +81,10 @@ const InvoiceTotals = ({
 };
 
 InvoiceTotals.propTypes = {
-  iva: PropTypes.number.isRequired,
+  iva: PropTypes.number,
   re: PropTypes.number,
   total: PropTypes.number.isRequired,
-  taxBase: PropTypes.number.isRequired,
+  taxBase: PropTypes.number,
   isEditable: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
 };

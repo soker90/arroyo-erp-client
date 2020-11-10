@@ -92,6 +92,16 @@ const NewInvoiceModal = ({
   };
 
   /**
+   * Handle change picker
+   * @param {String} date
+   * @param {String} name
+   * @private
+   */
+  const _handleChangeAutocomplete = value => {
+    setState({ concept: value });
+  };
+
+  /**
    * Render a input element
    * @param {string} name
    * @param {String} label
@@ -160,10 +170,7 @@ const NewInvoiceModal = ({
       name='concept'
       label='Concepto'
       margin='normal'
-      InputProps={{
-        type: 'search',
-      }}
-      onChange={_handleChange}
+      onChange={_handleChangeAutocomplete}
     />
   );
 
@@ -187,11 +194,11 @@ const NewInvoiceModal = ({
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {_renderInput('total', 'Total', { type: 'number' })}
-      {state.bookColumn === COLUMNS_INVOICES.ALQUILER && _renderInput('re', 'Recargo', { type: 'number' })}
-      {_renderAutocomplete('concept', 'Concepto', EXPENSE_CONCEPTS)}
       {_renderDatePicker('Fecha de cobro', 'paymentDate')}
       {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
+      {_renderAutocomplete()}
       {_renderSelect('bookColumn', 'Columna', Object.keys(COLUMNS_INVOICES))}
+      {state.bookColumn === COLUMNS_INVOICES.ALQUILER && _renderInput('re', 'Recargo', { type: 'number' })}
 
     </ModalGrid>
   );
