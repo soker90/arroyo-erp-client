@@ -33,7 +33,7 @@ const InvoicesTable = ({ invoices }) => {
         },
         {
           title: 'Proveedor',
-          field: 'nameProvider',
+          field: 'businessName',
         },
         {
           title: 'Concepto',
