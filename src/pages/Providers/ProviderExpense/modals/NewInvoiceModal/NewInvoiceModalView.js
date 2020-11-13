@@ -194,12 +194,11 @@ const NewInvoiceModal = ({
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {_renderInput('total', 'Total', { type: 'number' })}
-      {_renderDatePicker('Fecha de cobro', 'paymentDate')}
-      {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
       {_renderAutocomplete()}
       {_renderSelect('bookColumn', 'Columna', Object.keys(COLUMNS_INVOICES))}
       {state.bookColumn === COLUMNS_INVOICES.ALQUILER && _renderInput('re', 'Recargo', { type: 'number' })}
-
+      {_renderDatePicker('Fecha de cobro', 'paymentDate')}
+      {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
     </ModalGrid>
   );
 };
