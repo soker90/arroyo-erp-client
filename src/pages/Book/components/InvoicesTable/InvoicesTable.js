@@ -32,12 +32,12 @@ const InvoicesTable = ({ invoices }) => {
           field: 'nInvoice',
         },
         {
-          title: 'Proveedor',
-          field: 'nameProvider',
-        },
-        {
           title: 'Concepto',
           field: 'concept',
+        },
+        {
+          title: 'Proveedor',
+          field: 'businessName',
         },
         {
           title: 'Importe',

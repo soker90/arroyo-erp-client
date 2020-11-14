@@ -5,17 +5,18 @@ import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
 import { format } from 'utils';
-import { EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
+import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
+import AutocompleteForm from 'components/Forms/AutocompleteForm';
 
 const INITIAL_STATE = {
   nInvoice: '',
   dateInvoice: null,
   dateRegister: null,
-  taxBase: '',
+  total: '',
   concept: EXPENSE_CONCEPTS[0],
-  iva: '',
   type: TYPE_PAYMENT[0],
   paymentDate: null,
+  bookColumn: COLUMNS_INVOICES.COMPRAS,
 };
 
 const NewInvoiceModal = ({
@@ -23,7 +24,7 @@ const NewInvoiceModal = ({
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -39,23 +40,25 @@ const NewInvoiceModal = ({
       nInvoice,
       dateInvoice,
       dateRegister,
-      taxBase,
-      iva,
+      total,
+      re,
       concept,
       paymentDate,
       type,
+      bookColumn,
     } = state;
 
     createInvoiceExpense({
       nInvoice,
       dateInvoice: format.dateToSend(dateInvoice),
       dateRegister: format.dateToSend(dateRegister),
-      taxBase: Number(taxBase),
-      iva: Number(iva / 100),
+      total: Number(total),
+      re: Number(re),
       provider: idProvider,
       concept,
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
       type,
+      bookColumn,
     }, close);
   };
 
@@ -86,6 +89,16 @@ const NewInvoiceModal = ({
    */
   const _handleChangePicker = (date, name) => {
     setState({ [name]: date });
+  };
+
+  /**
+   * Handle change picker
+   * @param {String} date
+   * @param {String} name
+   * @private
+   */
+  const _handleChangeAutocomplete = value => {
+    setState({ concept: value });
   };
 
   /**
@@ -149,6 +162,18 @@ const NewInvoiceModal = ({
     />
   );
 
+  const _renderAutocomplete = () => (
+    <AutocompleteForm
+      disableClearable
+      options={EXPENSE_CONCEPTS}
+      value={state.concept}
+      name='concept'
+      label='Concepto'
+      margin='normal'
+      onChange={_handleChangeAutocomplete}
+    />
+  );
+
   /**
    * Fecha de factura
    * N factura
@@ -168,9 +193,10 @@ const NewInvoiceModal = ({
       {_renderInput('nInvoice', 'Nº Factura', { autoFocus: true })}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
-      {_renderInput('taxBase', 'B.I.', { type: 'number' })}
-      {_renderInput('iva', 'IVA', { type: 'number' })}
-      {_renderSelect('concept', 'Concepto', EXPENSE_CONCEPTS)}
+      {_renderInput('total', 'Total', { type: 'number' })}
+      {_renderAutocomplete()}
+      {_renderSelect('bookColumn', 'Columna', Object.keys(COLUMNS_INVOICES))}
+      {state.bookColumn === COLUMNS_INVOICES.ALQUILER && _renderInput('re', 'Recargo', { type: 'number' })}
       {_renderDatePicker('Fecha de cobro', 'paymentDate')}
       {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
     </ModalGrid>

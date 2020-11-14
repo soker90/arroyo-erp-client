@@ -3,7 +3,6 @@ export const CONCEPT = {
   DEV: 'Dev. mercaderías',
   ABONO: 'Abono',
   ALQUILER: 'Alquiler',
-  CC: 'C/C',
   LUZ: 'Luz',
   AGUA: 'Agua',
   GASOIL: 'Gasoil',
@@ -23,7 +22,7 @@ export const CONCEPT = {
 };
 
 export const TYPE_PAYMENT = [
-  '?', 'Efectivo', 'Talón', 'Giro', 'Transferencia', 'Tarjeta',
+  '?', 'Efectivo', 'Talón', 'Giro', 'Transferencia', 'Tarjeta', 'C/C',
 ];
 
 export const INVOICE_NEGATIVE_CONCEPTS = [
@@ -53,3 +52,16 @@ export const EXPENSE_CONCEPTS = [
   CONCEPT.S_LOCAL,
   CONCEPT.S_TIENDA,
 ];
+
+export const COLUMNS_INVOICES = {
+  COMPRAS: 'COMPRAS',
+  AUTONOMOS: 'AUTONOMOS',
+  SALARIO: 'AUTONOMOS',
+  ALQUILER: 'ALQUILER',
+  SUMINISTROS: 'SUMINISTROS',
+  COMISIONES: 'COMISIONES',
+  TRIBUTOS: 'TRIBUTOS',
+  REPARACION: 'REPARACION',
+  SEGUROS: 'SEGUROS',
+  OTROS: 'OTROS',
+};

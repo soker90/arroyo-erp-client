@@ -18,6 +18,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
+import uniqId from 'uniqid';
 
 import Logo from 'components/Logo';
 import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';
@@ -168,7 +169,7 @@ function NavBar({ openMobile, onMobileClose }) {
         <Box p={2}>
           {navConfig.map(config => (
             <List
-              key={config.subheader}
+              key={uniqId()}
               subheader={(
                 <ListSubheader
                   disableGutters

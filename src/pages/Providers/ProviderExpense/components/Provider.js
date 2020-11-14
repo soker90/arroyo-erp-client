@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable */
+
 import { memo, useEffect, useState } from 'react';
 import {
   Box, Container,
@@ -6,7 +8,9 @@ import {
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 
-import { Page, ProviderExpandedInfo, ProviderInvoices } from 'components';
+import {
+  LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices,
+} from 'components';
 import Header from './Header';
 
 import { useStyles } from './Provider.styles';
@@ -30,6 +34,11 @@ const ProviderExpense = ({
   const _toggleExpand = () => {
     setExpand(!expand);
   };
+
+  if (!idProvider) return <LoadingScreen />;
+
+  // eslint-disable-next-line no-console
+  console.log(JSON.stringify(provider));
 
   return (
     <Page className={classes.root} title={provider.name}>
