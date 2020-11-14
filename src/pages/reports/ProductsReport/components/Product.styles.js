@@ -7,10 +7,7 @@ export const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
   },
-  table: {
-    marginTop: theme.spacing(2),
-  },
-  orders: {
+  container: {
     marginTop: theme.spacing(2),
   },
 }));

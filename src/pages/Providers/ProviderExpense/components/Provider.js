@@ -37,9 +37,6 @@ const ProviderExpense = ({
 
   if (!idProvider) return <LoadingScreen />;
 
-  // eslint-disable-next-line no-console
-  console.log(JSON.stringify(provider));
-
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false}>
