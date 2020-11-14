@@ -1,4 +1,4 @@
-import { PieChart as PieChartIcon, Users as UsersIcon } from 'react-feather';
+import { PieChart as PieChartIcon, Users as UsersIcon, ShoppingCart } from 'react-feather';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import EuroIcon from '@material-ui/icons/Euro';
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -6,11 +6,17 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 export const navConfig = [
   {
+    subheader: 'Informes',
     items: [
       {
         title: 'Inicio',
         icon: PieChartIcon,
         href: '/app/informes/inicio',
+      },
+      {
+        title: 'Productos',
+        icon: ShoppingCart,
+        href: '/app/informes/productos',
       },
     ],
   },

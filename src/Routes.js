@@ -42,6 +42,11 @@ const routesConfig = [
       },
       {
         exact: true,
+        path: '/app/informes/productos',
+        component: lazy(() => import('pages/reports/ProductsReport')),
+      },
+      {
+        exact: true,
         path: '/app/proveedores',
         component: lazy(() => import('pages/Providers/Providers')),
       },

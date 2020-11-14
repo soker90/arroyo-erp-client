@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 import { TableMaterial, TextEuro } from 'components';
+import { format } from 'utils';
 
 const useStyles = makeStyles({
   root: {
@@ -36,7 +37,7 @@ const ProductsOrderTable = ({ products }) => {
         },
         {
           title: 'Cantidad / Peso',
-          render: ({ quantity }) => <TextEuro num={quantity} />,
+          render: ({ quantity }) => format.number(quantity),
         },
         {
           title: 'Precio',
