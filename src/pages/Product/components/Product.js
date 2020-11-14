@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { Container } from '@material-ui/core';
 
 import { LoadingScreen, Page } from 'components';
+import PricesChart from './PricesChart';
 import Header from './Header';
 import { useStyles } from './Product.styles';
 import ProductData from './ProductData/ProductData';
@@ -32,7 +33,14 @@ const Product = ({
         />
 
         <ProductData product={product} className={classes.table} />
-        <PricesTable prices={prices} />
+
+        {Boolean(prices.length)
+          && (
+          <>
+            <PricesChart prices={prices} />
+            <PricesTable prices={prices} />
+          </>
+          )}
 
       </Container>
     </Page>

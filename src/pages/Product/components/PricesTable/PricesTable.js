@@ -8,7 +8,7 @@ import { useStyles } from './PricesTable.styles';
 const PricesTable = ({ prices }) => {
   const classes = useStyles();
 
-  return Boolean(prices.length) && (
+  return (
     <TableMaterial
       className={classes.table}
       columns={[
