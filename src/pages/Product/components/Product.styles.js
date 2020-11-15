@@ -13,4 +13,7 @@ export const useStyles = makeStyles(theme => ({
   orders: {
     marginTop: theme.spacing(2),
   },
+  chart: {
+    marginTop: theme.spacing(3),
+  },
 }));

@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { Container } from '@material-ui/core';
 
-import { LoadingScreen, Page } from 'components';
-import PricesChart from './PricesChart';
+import { LoadingScreen, Page, PricesChart } from 'components';
 import Header from './Header';
 import { useStyles } from './Product.styles';
 import ProductData from './ProductData/ProductData';
@@ -16,10 +15,16 @@ const Product = ({
 }) => {
   const { id } = useParams();
   const classes = useStyles();
+  const [reversePrices, setReversePrices] = useState([]);
 
   useEffect(() => {
     if (id) getProduct(id);
   }, [id]);
+
+  useEffect(() => {
+    const clone = prices.slice();
+    setReversePrices(clone.reverse());
+  }, [prices]);
 
   if (!product._id) return <LoadingScreen />;
 
@@ -35,12 +40,12 @@ const Product = ({
         <ProductData product={product} className={classes.table} />
 
         {Boolean(prices.length)
-          && (
+        && (
           <>
-            <PricesChart prices={prices} />
+            <PricesChart prices={reversePrices} className={classes.chart} />
             <PricesTable prices={prices} />
           </>
-          )}
+        )}
 
       </Container>
     </Page>

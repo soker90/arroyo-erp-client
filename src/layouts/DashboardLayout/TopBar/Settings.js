@@ -62,7 +62,7 @@ const Settings = () => {
 
   return (
     <>
-      <Tooltip title='Settings'>
+      <Tooltip title='Ajustes'>
         <Badge
           color='secondary'
           variant='dot'

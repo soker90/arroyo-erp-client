@@ -5,10 +5,9 @@ import { Container, Grid } from '@material-ui/core';
 import { ShoppingCart, Users } from 'react-feather';
 
 import {
-  Header, ListActions, LoadingScreen, Page,
+  Header, ListActions, LoadingScreen, Page, PricesChart,
 } from 'components';
-import PricesChart from './PricesChart';
-import { useStyles } from './Product.styles';
+import { useStyles } from './ProductsReport.styles';
 
 const ProductsReport = ({
   prices, providers, getProducts, products, getProduct, resetProduct,
@@ -50,7 +49,7 @@ const ProductsReport = ({
             {Boolean(prices?.length)
             && (
               <>
-                <PricesChart prices={prices} />
+                <PricesChart prices={prices.reverse()} />
               </>
             )}
           </Grid>

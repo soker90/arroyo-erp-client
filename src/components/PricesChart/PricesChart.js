@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
@@ -16,7 +15,7 @@ const PricesChart = ({ className, prices, ...rest }) => {
 
   return (
     <Card
-      className={clsx(classes.root, className)}
+      className={className}
       {...rest}
     >
       <CardHeader
