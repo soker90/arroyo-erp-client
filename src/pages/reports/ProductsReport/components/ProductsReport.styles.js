@@ -10,4 +10,8 @@ export const useStyles = makeStyles(theme => ({
   container: {
     marginTop: theme.spacing(2),
   },
+  chart: {
+    position: 'fixed',
+    right: '2rem',
+  },
 }));
