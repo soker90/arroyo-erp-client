@@ -25,7 +25,7 @@ export const TYPE_PAYMENT = [
   '?', 'Efectivo', 'Talón', 'c/c', 'Giro', 'Transferencia', 'Tarjeta', 'Contra rembolso',
 ];
 
-export const INVOICE_NEGATIVE_CONCEPTS = [
+export const INVOICE_COMMON_CONCEPTS = [
   CONCEPT.COMPRAS,
   CONCEPT.DEV,
   CONCEPT.ABONO,

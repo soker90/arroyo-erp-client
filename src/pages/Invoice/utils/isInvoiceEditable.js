@@ -1,4 +1,4 @@
-import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
+import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices';
 
 /**
  * Devuelve si la factura se puede editar
@@ -7,5 +7,5 @@ import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
  * @return {boolean}
  */
 export const isInvoiceEditable = ({ nOrder, concept }) => (
-  !nOrder || !INVOICE_NEGATIVE_CONCEPTS.includes(concept)
+  !nOrder || !INVOICE_COMMON_CONCEPTS.includes(concept)
 );

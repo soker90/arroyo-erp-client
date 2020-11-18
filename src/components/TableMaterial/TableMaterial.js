@@ -18,7 +18,8 @@ import { labelOfRows } from './utils';
 import { useStyles } from './TableMaterial.styles';
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect, onSelected, ...rest
+  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect,
+  onSelected, rowClass, ...rest
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
@@ -61,6 +62,7 @@ const TableMaterial = ({
               onRowClick={onRowClick}
               multiSelect={multiSelect}
               onSelected={onSelected}
+              rowClass={rowClass}
             />
           </Table>
 
@@ -100,6 +102,7 @@ TableMaterial.propTypes = {
   href: PropTypes.func,
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
+  rowClass: PropTypes.func,
 };
 
 TableMaterial.defaultProps = {

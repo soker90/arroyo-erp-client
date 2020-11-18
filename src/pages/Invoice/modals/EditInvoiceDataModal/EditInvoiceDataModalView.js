@@ -5,7 +5,7 @@ import {
   ModalGrid, InputForm, DatePickerForm, SelectForm,
 } from 'components';
 import format from 'utils/format';
-import { INVOICE_NEGATIVE_CONCEPTS } from 'constants/invoices';
+import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices';
 
 const EditInvoiceDataModalView = ({
   show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id, concept, total,
@@ -133,7 +133,7 @@ const EditInvoiceDataModalView = ({
       }}
       onKeyPress={_handleKeyPress}
     >
-      {INVOICE_NEGATIVE_CONCEPTS.map(item => (
+      {INVOICE_COMMON_CONCEPTS.map(item => (
         <option key={item} value={item}>
           {item}
         </option>

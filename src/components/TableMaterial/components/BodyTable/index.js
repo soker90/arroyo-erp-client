@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import BodyActionsButtons from './components/BodyActionsButtons';
 
 const BodyTable = ({
-  data, onRowClick, columns, href, classes, actions, multiSelect, onSelected,
+  data, onRowClick, columns, href, classes, actions, multiSelect, onSelected, rowClass,
 }) => (
   <TableBody>
     {data.map((row, index) => {
@@ -20,6 +20,7 @@ const BodyTable = ({
           hover
           key={uniqId()}
           selected={isSelected}
+          className={rowClass?.(row)}
         >
           {Boolean(multiSelect) && (
             <TableCell padding='checkbox'>
@@ -67,6 +68,7 @@ BodyTable.propTypes = {
   actions: PropTypes.array,
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
+  rowClass: PropTypes.func,
 };
 
 BodyTable.displayName = 'BodyTable';
