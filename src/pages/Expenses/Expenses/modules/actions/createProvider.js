@@ -24,7 +24,7 @@ const _createProviderSuccess = () => ({
 });
 
 /**
- * Error action for createProvider
+ * Error action for createClient
  * @param error
  * @returns {{type: string, error: _getProvidersError.props}}
  * @private

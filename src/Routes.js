@@ -101,6 +101,11 @@ const routesConfig = [
         component: lazy(() => import('pages/Providers/ProviderGeneral')),
       },
       {
+        exact: true,
+        path: '/app/clientes',
+        component: lazy(() => import('pages/Clients')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],

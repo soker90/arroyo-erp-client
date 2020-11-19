@@ -1,4 +1,4 @@
-import { PieChart as PieChartIcon, Users as UsersIcon, ShoppingCart } from 'react-feather';
+import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import EuroIcon from '@material-ui/icons/Euro';
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -27,6 +27,18 @@ export const navConfig = [
         title: 'Provedores',
         icon: UsersIcon,
         href: '/app/proveedores',
+      },
+      {
+        title: 'Clientes',
+        icon: UsersIcon,
+        href: '/app/clientes',
+        items: [
+          {
+            title: 'Listado',
+            icon: UsersIcon,
+            href: '/app/clientes',
+          },
+        ],
       },
       {
         title: 'Gastos',
