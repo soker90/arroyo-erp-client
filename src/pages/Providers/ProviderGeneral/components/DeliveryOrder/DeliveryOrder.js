@@ -2,8 +2,9 @@ import {
   lazy, memo, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-
 import { Button } from '@material-ui/core';
+
+import { LoadingScreen } from 'components';
 import NoInvoices from './components/NoInvoices';
 import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum';
 import { useStyles } from './DeliveryOrder.styles';
@@ -29,32 +30,32 @@ const DeliveryOrder = ({
     setShowInInvoices(state => !state);
   };
 
+  if (!idProvider) return <LoadingScreen />;
+
   return (
-    idProvider && (
-      <>
-        {Boolean(selected.length) && <DeliveryOrderSelectedSum selected={selected} free={free} />}
-        <NoInvoices
-          deliveryOrders={free}
-          selected={selected}
-          setSelected={setSelected}
-        />
+    <>
+      {Boolean(selected.length) && <DeliveryOrderSelectedSum selected={selected} free={free} />}
+      <NoInvoices
+        deliveryOrders={free}
+        selected={selected}
+        setSelected={setSelected}
+      />
 
-        <Button
-          color='primary'
-          onClick={_handleShowClick}
-          variant='outlined'
-          className={classes.button}
-        >
-          {showInInvoices ? 'Ocultar' : 'Mostrar'}
-          {' '}
-          en factura
-        </Button>
+      <Button
+        color='primary'
+        onClick={_handleShowClick}
+        variant='outlined'
+        className={classes.button}
+      >
+        {showInInvoices ? 'Ocultar' : 'Mostrar'}
+        {' '}
+        en factura
+      </Button>
 
-        {showInInvoices && (
-          <InInvoices deliveryOrders={inInvoices} />
-        )}
-      </>
-    )
+      {showInInvoices && (
+        <InInvoices deliveryOrders={inInvoices} />
+      )}
+    </>
   );
 };
 
