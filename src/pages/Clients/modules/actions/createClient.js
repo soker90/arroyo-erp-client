@@ -40,7 +40,6 @@ const _createClientError = error => ({
  */
 export const createClient = (client, callback) => async dispatch => {
   dispatch(_createClientRequest());
-
   try {
     await axios.post('clients', client);
 

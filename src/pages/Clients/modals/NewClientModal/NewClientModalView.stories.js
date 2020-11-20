@@ -1,44 +1,23 @@
 import { action } from '@storybook/addon-actions';
 
-import { story as NewProviderModal } from './NewClientModalView';
+import { story as NewClientModalView } from './NewClientModalView';
 
 export default {
-  title: 'Rutas/Proveedores/Modifcar',
+  title: 'Rutas/Clientes/Crear',
   parameters: {
-    component: NewProviderModal,
-    componentSubtitle: 'Modal para crear o editar un preveedor',
+    component: NewClientModalView,
+    componentSubtitle: 'Modal para crear un cliente',
   },
 };
 
-const ProviderNew = () => (
-  <NewProviderModal
+const ClientNew = () => (
+  <NewClientModalView
     show
     close={action('Cerrar modal')}
-    createProvider={action('Crea el proveedor')}
-    idProvider="888883h339"
-    provider={false}
+    createProvider={action('Crea el cliente')}
   />
 );
 
-ProviderNew.storyName = 'Crear';
+ClientNew.storyName = 'Crear';
 
-const ProviderEdit = () => (
-  <NewProviderModal
-    show
-    close={action('Cerrar modal')}
-    editProvider={action('Edita el proveedor')}
-    idProvider="888883h339"
-    provider={{
-      name: 'Mi proveedor',
-      address: 'C/ Falsa, 9',
-      phone: '66677766677',
-      email: 'email@email.com',
-      businessName: 'Email SL',
-      cif: 'B5555552',
-    }}
-  />
-);
-
-ProviderEdit.storyName = 'Editar';
-
-export { ProviderNew, ProviderEdit };
+export { ClientNew };
