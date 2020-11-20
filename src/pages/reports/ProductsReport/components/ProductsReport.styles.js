@@ -11,7 +11,7 @@ export const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
   },
   chart: {
-    position: 'fixed',
-    right: '2rem',
+    position: 'sticky',
+    top: '1.5rem',
   },
 }));
