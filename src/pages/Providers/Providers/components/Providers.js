@@ -15,6 +15,12 @@ const Providers = ({ providers }) => {
   const [showModal, setShowModal] = useState(false);
 
   /**
+   * Navega al proveedor seleccionado
+   * @param {String} _id
+   * @private
+   */
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/proveedores/${_id}`;
+  /**
    * Oculta el modal de crear proveedor
    * @type {function(): void}
    * @private
@@ -58,6 +64,7 @@ const Providers = ({ providers }) => {
                   to: ({ _id }) => `${BASE_PATH}/proveedores/${_id}`,
                 },
               ]}
+              href={_hrefRow}
             />
           </Box>
         </Container>

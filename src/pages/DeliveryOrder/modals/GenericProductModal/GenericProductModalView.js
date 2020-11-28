@@ -1,8 +1,9 @@
 import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Typography, Box } from '@material-ui/core';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
-import { Typography, Box } from '@material-ui/core';
+import { replaceCommasByDots } from 'utils';
 
 const GenericProductModal = ({
   show, close, products, state, setState, haveCanal, ...rest
@@ -77,8 +78,9 @@ const GenericProductModal = ({
   const _handleLostFocus = () => {
     let evalNum;
     try {
+      evalNum = replaceCommasByDots(state.quantity);
       // eslint-disable-next-line no-eval
-      evalNum = eval(state.quantity);
+      evalNum = eval(evalNum);
     } catch (e) {
       console.error('La cantidad no es numérica');
     }
