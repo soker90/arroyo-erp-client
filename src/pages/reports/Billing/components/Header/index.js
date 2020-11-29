@@ -10,7 +10,7 @@ import { downloadFile } from 'utils';
 
 const HeaderBook = ({ year }) => {
   const _handleClickDownload = () => {
-    downloadFile(`invoices/export/${year}`, `Facturación ${year}.ods`);
+    downloadFile(`billings/export?year=${year}`, `Facturación ${year}.ods`);
   };
 
   return (
