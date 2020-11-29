@@ -65,6 +65,6 @@ InvoicesTable.propTypes = {
   invoices: PropTypes.array.isRequired,
 };
 
-InvoicesTable.displayName = 'InvoicesTable';
+InvoicesTable.displayName = 'BillingTable';
 
 export default memo(InvoicesTable);

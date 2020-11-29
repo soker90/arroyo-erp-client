@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import providers from 'modules/providers';
 import products from 'modules/products';
 
+import billing from 'pages/reports/Billing/modules';
 import book from 'pages/Book/modules';
 import client from 'pages/Client/modules';
 import clients from 'pages/Clients/modules';
@@ -18,6 +19,7 @@ import account from './account';
 
 const rootReducer = combineReducers({
   account,
+  billing,
   book,
   client,
   clients,

@@ -3,6 +3,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import EuroIcon from '@material-ui/icons/Euro';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 export const navConfig = [
   {
@@ -17,6 +18,11 @@ export const navConfig = [
         title: 'Productos',
         icon: ShoppingCart,
         href: '/app/informes/productos',
+      },
+      {
+        title: 'Facturación',
+        icon: DescriptionIcon,
+        href: `/app/informes/facturacion/${new Date().getFullYear()}`,
       },
     ],
   },
