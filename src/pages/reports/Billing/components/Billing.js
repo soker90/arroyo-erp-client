@@ -9,7 +9,6 @@ import BillingTable from './BillingTable';
 import Header from './Header';
 import { useStyles } from './Billing.styles';
 
-// eslint-disable-next-line no-unused-vars
 const Billing = ({ billing, getBilling }) => {
   const classes = useStyles();
   const { year } = useParams();

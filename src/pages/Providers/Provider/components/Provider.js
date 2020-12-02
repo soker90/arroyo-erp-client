@@ -24,7 +24,7 @@ const Provider = ({
   }, [idProvider]);
 
   useEffect(() => {
-    const composeRoute = `${routesByType[provider.type]}/${idProvider}`;
+    const composeRoute = `${routesByType[provider.type]}/${idProvider}${history.location.hash || ''}`;
     if (provider._id === idProvider) history.replace(composeRoute);
   }, [provider]);
 
