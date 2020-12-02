@@ -23,10 +23,10 @@ const Notification = ({ notification }) => {
     <Snackbar
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'right',
+        horizontal: 'center',
       }}
       open={open}
-      autoHideDuration={2000 || notification.autoDismiss}
+      autoHideDuration={5000 || notification.autoDismiss}
       onClose={handleClose}
       className={classes.root}
     >
