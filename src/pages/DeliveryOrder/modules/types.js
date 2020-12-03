@@ -7,5 +7,6 @@ export const UPDATE_DATA_DELIVERY_ORDER = requestActions('UPDATE_DATA_DELIVERY_O
 export const DELETE_PRODUCT_TO_DELIVERY_ORDER = requestActions('@deliveryOrder/remove_product');
 export const UPDATE_PRODUCT_OF_DELIVERY_ORDER = requestActions('@deliveryOrder/update_product');
 export const UPDATE_PRICE_PRODUCT = requestActions('@deliveryOrder/update_price');
+export const DELETE_DELIVERY_ORDER = requestActions('@deliveryOrder/DELETE_DELIVERY_ORDER');
 
 export const RESET_DELIVERY_ORDER = 'RESET_DELIVERY_ORDER';
