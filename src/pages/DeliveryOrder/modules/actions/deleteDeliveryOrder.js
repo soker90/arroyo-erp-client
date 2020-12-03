@@ -36,9 +36,10 @@ const _deleteDeliveryOrderError = error => ({
 
 /**
  * Elimina el albarán
+ * @param {function} callback
  * @returns {function(...[*]=)}
  */
-export const deleteDeliveryOrder = () => async (dispatch, getState) => {
+export const deleteDeliveryOrder = callback => async (dispatch, getState) => {
   dispatch(_deleteDeliveryOrderRequest());
   const id = getState().deliveryOrders._id;
 
@@ -46,6 +47,7 @@ export const deleteDeliveryOrder = () => async (dispatch, getState) => {
     await axios.delete(`deliveryorders/${id}`);
 
     dispatch(_deleteDeliveryOrderSuccess());
+    callback();
   } catch (error) {
     console.error(error);
     dispatch(_deleteDeliveryOrderError(error));
