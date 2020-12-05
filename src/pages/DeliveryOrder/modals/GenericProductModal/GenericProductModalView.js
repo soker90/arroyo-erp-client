@@ -147,10 +147,10 @@ const GenericProductModal = ({
         autoFocus: true,
         inputRef: inputCode,
       })}
-      {_renderSelectProduct()}
       {_renderInput('quantity', 'Peso / Cantidad', { onBlur: _handleLostFocus })}
       {_renderInput('price', 'Precio', { type: 'number' })}
       {haveCanal && _renderInput('canal', 'Nº Canal')}
+      {_renderSelectProduct()}
     </ModalGrid>
   );
 };
