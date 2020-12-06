@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { deleteDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
 import DeleteDeliveryOrderModal from './DeleteDeliveryOrderModal';
 
-const mapStateToProps = ({ providers: { provider } }) => ({ providerId: provider._id });
+const mapStateToProps = ({ deliveryOrders: { provider } }) => ({ providerId: provider });
 const mapDispatchToProps = {
   deleteDeliveryOrder,
 };

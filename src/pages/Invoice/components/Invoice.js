@@ -12,7 +12,15 @@ import { useStyles } from './Invoice.styles';
 import InvoiceCards from './InvoiceCards';
 
 const Invoice = ({
-  getInvoice, id, nameProvider, provider, deliveryOrders, totals, data, payment, resetInvoiceState,
+  getInvoice,
+  id,
+  nameProvider,
+  provider,
+  deliveryOrders,
+  totals,
+  data,
+  payment,
+  resetInvoiceState,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -28,7 +36,11 @@ const Invoice = ({
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
       <Container maxWidth={false}>
-        <Header provider={provider} nameProvider={nameProvider} nOrder={data.nOrder} />
+        <Header
+          provider={provider}
+          nameProvider={nameProvider}
+          nOrder={data.nOrder}
+        />
 
         <InvoiceCards totals={totals} data={data} payment={payment} />
 

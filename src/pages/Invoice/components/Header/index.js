@@ -3,12 +3,15 @@ import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
 import PropTypes from 'prop-types';
 
 import { Header } from 'components';
+import { Trash2 } from 'react-feather';
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal';
+import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal';
 
 const HeaderInvoice = ({
   provider, nameProvider, nOrder,
 }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   return (
     <>
       <Header
@@ -22,16 +25,24 @@ const HeaderInvoice = ({
         }]}
         title='Factura'
         description=''
-        buttons={!nOrder && [{
+        buttons={[{
+          variant: 'outlined',
+          color: 'default',
+          onClick: () => setShowDeleteModal(true),
+          Icon: Trash2,
+          label: 'Eliminar',
+        }, {
           variant: 'contained',
           color: 'primary',
           onClick: () => setShowConfirmModal(true),
           Icon: CheckCircleOutlinedIcon,
           disableSvg: true,
           label: 'Confirmar',
+          disabled: Boolean(nOrder),
         }]}
       />
       <ConfirmInvoiceModal show={showConfirmModal} setShow={setShowConfirmModal} />
+      <DeleteInvoiceModal show={showDeleteModal} setShow={setShowDeleteModal} />
     </>
   );
 };

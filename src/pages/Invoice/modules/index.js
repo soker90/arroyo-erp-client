@@ -4,7 +4,7 @@ import {
   CONFIRM_INVOICE,
   GET_INVOICE,
   UPDATE_DATA,
-  RESET_INVOICE,
+  RESET_INVOICE, DELETE_INVOICE,
 } from './types';
 
 const INITIAL_STATE = {
@@ -27,6 +27,7 @@ const ACTION_HANDLERS = {
     data,
     payment,
   }),
+  [DELETE_INVOICE.SUCCESS]: () => INITIAL_STATE,
   [RESET_INVOICE]: () => INITIAL_STATE,
 };
 
