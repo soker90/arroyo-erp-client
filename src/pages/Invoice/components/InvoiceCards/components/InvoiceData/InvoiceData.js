@@ -26,6 +26,7 @@ const InvoiceData = ({
   className,
   isEditable,
   concept,
+  id,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const classes = useStyles();
@@ -59,9 +60,9 @@ const InvoiceData = ({
               <Typography variant='h5'>
                 Datos de la factura
                 {nOrder && (
-                <Label color='success' className={classes.label}>
-                  CONFIRMADA
-                </Label>
+                  <Label color='success' className={classes.label}>
+                    CONFIRMADA
+                  </Label>
                 )}
               </Typography>
 
@@ -87,6 +88,9 @@ const InvoiceData = ({
             <Grid item xs={12} md={3}>
               <ItemCard label='Concepto' value={concept} />
             </Grid>
+            <Grid item xs={12} md={3}>
+              <ItemCard label='ID' value={id} />
+            </Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -103,6 +107,7 @@ InvoiceData.propTypes = {
   className: PropTypes.string.isRequired,
   isEditable: PropTypes.bool.isRequired,
   concept: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 InvoiceData.displayName = 'InvoiceData';

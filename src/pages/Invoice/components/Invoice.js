@@ -42,7 +42,7 @@ const Invoice = ({
           nOrder={data.nOrder}
         />
 
-        <InvoiceCards totals={totals} data={data} payment={payment} />
+        <InvoiceCards totals={totals} data={data} payment={payment} id={id}/>
 
         <div className={classes.orders}>
           {deliveryOrders?.map(props => (
