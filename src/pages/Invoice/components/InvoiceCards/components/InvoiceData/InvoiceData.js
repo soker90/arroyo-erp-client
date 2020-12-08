@@ -1,19 +1,34 @@
 import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
 } from '@material-ui/core';
 import uniqId from 'uniqid';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { ItemCard } from 'components';
+import { ItemCard, Label } from 'components';
 import { format } from 'utils';
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
+import { useStyles } from './InvoiceData.styles';
 
 const InvoiceData = ({
-  dateRegister, dateInvoice, nInvoice, nOrder, className, isEditable, concept,
+  dateRegister,
+  dateInvoice,
+  nInvoice,
+  nOrder,
+  className,
+  isEditable,
+  concept,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const classes = useStyles();
 
   const _handleEditClick = () => {
     setShowModal(true);
@@ -39,7 +54,19 @@ const InvoiceData = ({
     <>
       <Card className={className}>
         <CardHeader
-          title='Datos de la factura'
+          title={(
+            <>
+              <Typography variant='h5'>
+                Datos de la factura
+                {nOrder && (
+                <Label color='success' className={classes.label}>
+                  CONFIRMADA
+                </Label>
+                )}
+              </Typography>
+
+            </>
+          )}
           action={_getActions()}
         />
         <Divider />
