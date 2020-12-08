@@ -8,7 +8,9 @@ import InvoiceTotals from './components/InvoiceTotals';
 import InvoicePayment from './components/InvoicePayment';
 import { useStyles } from './InvoiceCards.styles';
 
-const InvoiceCards = ({ data, totals, payment, id }) => {
+const InvoiceCards = ({
+  data, totals, payment, id,
+}) => {
   const classes = useStyles();
 
   const isEditable = useMemo(() => isInvoiceEditable(data), [data.nOrder, data.concept]);
