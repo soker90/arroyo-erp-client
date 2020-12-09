@@ -4,6 +4,7 @@ import EuroIcon from '@material-ui/icons/Euro';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
 export const navConfig = [
   {
@@ -61,14 +62,20 @@ export const navConfig = [
         icon: EuroIcon,
         href: '/app/pagos',
       },
-    ],
-  },
-  {
-    items: [
       {
         title: 'Notas',
         icon: PostAddIcon,
         href: '/app/notas',
+      },
+    ],
+  },
+  {
+    subheader: 'Operaciones',
+    items: [
+      {
+        title: 'Intercambio',
+        icon: SwapHorizIcon,
+        href: '/app/intercambio',
       },
     ],
   },

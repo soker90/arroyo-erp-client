@@ -116,6 +116,11 @@ const routesConfig = [
         component: lazy(() => import('pages/Client')),
       },
       {
+        exact: true,
+        path: '/app/intercambio',
+        component: lazy(() => import('pages/SwapInvoices')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],
