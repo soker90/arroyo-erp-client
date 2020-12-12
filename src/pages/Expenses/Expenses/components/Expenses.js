@@ -27,6 +27,13 @@ const Expenses = ({ providers, getProviders }) => {
    */
   const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
 
+  /**
+   * Navega al proveedor seleccionado
+   * @param {String} _id
+   * @private
+   */
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/proveedores/${_id}`;
+
   return (
     <>
       <Page className={classes.root} title='Gastos'>
@@ -56,12 +63,13 @@ const Expenses = ({ providers, getProviders }) => {
               ]}
               data={providers}
               title={`Proveedores de gastos (${providers.length})`}
+              href={_hrefRow}
               actions={[
                 {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: ({ _id }) => `${BASE_PATH}/proveedores/${_id}`,
+                  to: _hrefRow,
                 },
               ]}
             />
