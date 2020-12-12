@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import RefreshIcon from '@material-ui/icons/Refresh';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
 
 const DeliveryOrderProducts = ({
-  products, showDeleteProductModal, showEditProductModal, updatePrice, date, isEditable,
+  products, showDeleteProductModal, showEditProductModal, isEditable,
 }) => {
   const classes = useStyles();
 
@@ -55,25 +54,6 @@ const DeliveryOrderProducts = ({
     showEditProductModal(row, index);
   };
 
-  /**
-   * Añade el precio como precio de referencia para próximos
-   * albaranes
-   * @param {String} product
-   * @param {Number} price
-   * @private
-   */
-  const _updatePrice = ({
-    product, price, total, quantity,
-  }) => {
-    updatePrice({
-      product,
-      price,
-      date: new Date(date).getTime(),
-      total,
-      quantity,
-    });
-  };
-
   return (
     <TableMaterial
       className={classes.root}
@@ -111,11 +91,6 @@ const DeliveryOrderProducts = ({
           component: Link,
           to: ({ _id }) => `${BASE_PATH}/productos/${_id}`,
         },
-        {
-          icon: RefreshIcon,
-          tooltip: 'Actualizar precio',
-          onClick: _updatePrice,
-        },
         ...(isEditable ? [
           {
             icon: EditIcon,
@@ -137,9 +112,7 @@ DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
-  date: PropTypes.any,
   isEditable: PropTypes.bool.isRequired,
-  updatePrice: PropTypes.func.isRequired,
 };
 
 DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';

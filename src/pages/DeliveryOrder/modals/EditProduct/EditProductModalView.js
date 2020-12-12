@@ -39,6 +39,7 @@ const EditProductModal = ({
       show={show}
       title='Editar producto'
       haveCanal={haveCanal}
+      productReadOnly
       actions={[
         {
           onClick: close,

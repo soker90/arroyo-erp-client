@@ -7,12 +7,18 @@ import { TableMaterial } from 'components';
 import { BASE_PATH } from 'constants/common';
 import { format } from 'utils';
 
-const ProductsTable = ({ products, getProducts, idProvider }) => {
+const ProductsTable = ({
+  products,
+  getProducts,
+  idProvider,
+}) => {
   useEffect(() => {
     if (idProvider) getProducts(idProvider);
   }, [getProducts, idProvider]);
 
-  return idProvider && (
+  if (!idProvider) return null;
+
+  return (
     <TableMaterial
       columns={[
         {

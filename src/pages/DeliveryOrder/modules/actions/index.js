@@ -5,5 +5,4 @@ export * from './deleteProductOfDeliveryOrder';
 export * from './getDeliveryOrder';
 export * from './updateDataDeliveryOrder';
 export * from './updateProductOfDeliveryOrder';
-export * from './updatePrice';
 export * from './resetDeliveryOrder';

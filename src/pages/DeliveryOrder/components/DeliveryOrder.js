@@ -15,7 +15,7 @@ const DeliveryOrder = (
   {
     getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDataDeliveryOrder,
-    showDeleteProductModal, showEditProductModal, updatePrice, resetDeliveryOrder,
+    showDeleteProductModal, showEditProductModal, resetDeliveryOrder,
     note,
   },
 ) => {
@@ -57,8 +57,6 @@ const DeliveryOrder = (
                 products={products}
                 showDeleteProductModal={showDeleteProductModal}
                 showEditProductModal={showEditProductModal}
-                updatePrice={updatePrice}
-                date={date}
                 isEditable={!nOrder}
               />
             )
@@ -97,7 +95,6 @@ DeliveryOrder.propTypes = {
   updateDataDeliveryOrder: PropTypes.func.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
-  updatePrice: PropTypes.func.isRequired,
   resetDeliveryOrder: PropTypes.func.isRequired,
   note: PropTypes.string,
 };

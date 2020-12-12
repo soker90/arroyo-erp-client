@@ -6,7 +6,14 @@ import { InputForm, ModalGrid, SelectForm } from 'components';
 import { replaceCommasByDots } from 'utils';
 
 const GenericProductModal = ({
-  show, close, products, state, setState, haveCanal, ...rest
+  show,
+  close,
+  products,
+  state,
+  setState,
+  haveCanal,
+  productReadOnly,
+  ...rest
 }) => {
   const inputCode = useRef(null);
   if (!products?.length) {
@@ -44,7 +51,12 @@ const GenericProductModal = ({
    * @param {String} value
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
+  const _handleChange = ({
+    target: {
+      name,
+      value,
+    },
+  }) => {
     setState({ [name]: value });
   };
 
@@ -120,7 +132,7 @@ const GenericProductModal = ({
       value={state.product}
       name='provider'
       onChange={_handleSelect}
-      disabled={!products?.length}
+      disabled={productReadOnly || !products?.length}
       size={6}
       InputLabelProps={{
         shrink: true,
@@ -146,6 +158,7 @@ const GenericProductModal = ({
         onChange: _handleChangeCode,
         autoFocus: true,
         inputRef: inputCode,
+        disabled: productReadOnly,
       })}
       {_renderInput('quantity', 'Peso / Cantidad', { onBlur: _handleLostFocus })}
       {_renderInput('price', 'Precio', { type: 'number' })}
@@ -163,6 +176,7 @@ GenericProductModal.propTypes = {
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
   haveCanal: PropTypes.bool,
+  productReadOnly: PropTypes.bool,
 };
 
 GenericProductModal.displayName = 'GenericProductModal';
