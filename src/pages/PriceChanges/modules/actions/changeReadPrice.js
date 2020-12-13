@@ -17,10 +17,14 @@ const _changeReadPriceSuccess = () => ({
   type: CHANGE_READ_PRICE.SUCCESS,
 });
 
-const _changeReadPriceSet = priceChanges => ({
+const _changeReadPriceSet = ({
+  priceChanges,
+  count,
+}) => ({
   type: CHANGE_READ_PRICE.SET,
   payload: {
     priceChanges,
+    count,
   },
 });
 

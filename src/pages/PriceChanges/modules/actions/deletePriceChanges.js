@@ -17,10 +17,14 @@ const _deletePriceChangesSuccess = () => ({
   type: DELETE_PRICE_CHANGES.SUCCESS,
 });
 
-const _deletePriceChangesSet = priceChanges => ({
+const _deletePriceChangesSet = ({
+  priceChanges,
+  count,
+}) => ({
   type: DELETE_PRICE_CHANGES.SET,
   payload: {
     priceChanges,
+    count,
   },
 });
 
