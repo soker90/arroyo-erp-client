@@ -6,11 +6,18 @@ import { INITIAL_STATE } from './constants';
 import { hasInitialData } from './utils';
 
 const AddProductModal = ({
-  show, close, products, addProductToDeliveryOrder, createDeliveryOrder, idProvider, haveCanal,
+  show,
+  close,
+  products,
+  addProductToDeliveryOrder,
+  createDeliveryOrder,
+  idProvider,
+  haveCanal,
+  pricesChangesUnreadCount,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -41,7 +48,10 @@ const AddProductModal = ({
    * @private
    */
   const _handleSave = () => {
-    _saveProduct(close);
+    _saveProduct(() => {
+      close();
+      pricesChangesUnreadCount();
+    });
   };
 
   /**
@@ -99,6 +109,7 @@ AddProductModal.propTypes = {
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
   haveCanal: PropTypes.bool,
+  pricesChangesUnreadCount: PropTypes.func.isRequired,
 };
 
 AddProductModal.displayName = 'AddProductModal';

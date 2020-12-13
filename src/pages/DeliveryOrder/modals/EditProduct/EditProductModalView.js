@@ -1,20 +1,34 @@
-import { memo, useEffect, useReducer } from 'react';
+import {
+  memo, useCallback, useEffect, useReducer,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
 
 const EditProductModal = ({
-  show, close, products, updateProductOfDeliveryOrder, product, index, haveCanal,
+  show,
+  close,
+  products,
+  updateProductOfDeliveryOrder,
+  product,
+  index,
+  haveCanal,
+  pricesChangesUnreadCount,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    product,
+    product
   );
 
   useEffect(() => {
     setState(product);
     // eslint-disable-next-line
   }, [show]);
+
+  const callbackClose = useCallback(() => {
+    close();
+    pricesChangesUnreadCount();
+  }, [close, pricesChangesUnreadCount]);
 
   const _handleUpdate = () => {
     try {
@@ -24,7 +38,7 @@ const EditProductModal = ({
         price: Number(state.price),
       };
 
-      updateProductOfDeliveryOrder(index, model, close);
+      updateProductOfDeliveryOrder(index, model, callbackClose);
     } catch (e) {
       console.error(e);
     }
@@ -66,6 +80,7 @@ EditProductModal.propTypes = {
   product: PropTypes.object,
   index: PropTypes.number,
   haveCanal: PropTypes.bool,
+  pricesChangesUnreadCount: PropTypes.func.isRequired,
 };
 
 EditProductModal.defaultProps = {

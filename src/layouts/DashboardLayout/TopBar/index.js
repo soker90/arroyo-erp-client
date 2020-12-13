@@ -11,9 +11,11 @@ import {
   SvgIcon,
 } from '@material-ui/core';
 import { Menu as MenuIcon } from 'react-feather';
+
 import Logo from 'components/Logo';
 import { THEMES } from 'constants/common';
 import Account from './Account';
+import PricesNotification from './PricesNotification';
 import Search from './Search';
 import Settings from './Settings';
 
@@ -67,6 +69,7 @@ function TopBar({
           flexGrow={1}
         />
         <Search />
+        <PricesNotification />
         <Settings />
         <Box ml={2}>
           <Account />

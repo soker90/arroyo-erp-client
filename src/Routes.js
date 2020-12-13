@@ -121,6 +121,11 @@ const routesConfig = [
         component: lazy(() => import('pages/SwapInvoices')),
       },
       {
+        exact: true,
+        path: '/app/precios',
+        component: lazy(() => import('pages/PriceChanges')),
+      },
+      {
         component: () => <NotFound />,
       },
     ],
