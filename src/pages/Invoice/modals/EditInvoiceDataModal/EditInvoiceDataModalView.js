@@ -2,13 +2,21 @@ import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  ModalGrid, InputForm, DatePickerForm, SelectForm,
+  DatePickerForm, InputForm, ModalGrid, SelectForm,
 } from 'components';
 import format from 'utils/format';
 import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices';
 
 const EditInvoiceDataModalView = ({
-  show, setShow, nInvoice, dateInvoice, dateRegister, updateDataInvoice, id, concept, total,
+  show,
+  setShow,
+  nInvoice,
+  dateInvoice,
+  dateRegister,
+  updateDataInvoice,
+  id,
+  concept,
+  total,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -38,8 +46,14 @@ const EditInvoiceDataModalView = ({
    * @param {String} value
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
+  const _handleChange = ({
+    target: {
+      name,
+      value,
+    },
+  }) => {
+    if (name === 'nInvoice') setState({ [name]: value.toUpperCase() });
+    else setState({ [name]: value });
   };
 
   const _close = () => {
@@ -121,7 +135,7 @@ const EditInvoiceDataModalView = ({
    * @return {SelectForm}
    * @private
    */
-  const _renderSelectProduct = () => (
+  const _renderSelectConcept = () => (
     <SelectForm
       label='Concepto'
       value={state.concept}
@@ -151,7 +165,7 @@ const EditInvoiceDataModalView = ({
       {_renderInput('nInvoice', 'Nº Factura')}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
-      {total < 0 && _renderSelectProduct()}
+      {total < 0 && _renderSelectConcept()}
     </ModalGrid>
   );
 };

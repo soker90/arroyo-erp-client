@@ -21,6 +21,7 @@ const AutocompleteForm = ({
       clearOnBlur
       selectOnFocus
       handleHomeEndKeys
+      autoSelect
       onChange={(event, newValue) => {
         if (typeof newValue === 'string') onChange(newValue);
         else if (newValue && newValue.inputValue) onChange(newValue.inputValue);
