@@ -16,7 +16,7 @@ const DeliveryOrder = (
     getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDataDeliveryOrder,
     showDeleteProductModal, showEditProductModal, resetDeliveryOrder,
-    note,
+    note, hasCanal,
   },
 ) => {
   const classes = useStyles();
@@ -58,6 +58,7 @@ const DeliveryOrder = (
                 showDeleteProductModal={showDeleteProductModal}
                 showEditProductModal={showEditProductModal}
                 isEditable={!nOrder}
+                hasCanal={hasCanal}
               />
             )
           }
@@ -97,6 +98,7 @@ DeliveryOrder.propTypes = {
   showEditProductModal: PropTypes.func.isRequired,
   resetDeliveryOrder: PropTypes.func.isRequired,
   note: PropTypes.string,
+  hasCanal: PropTypes.bool,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

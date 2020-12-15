@@ -11,7 +11,7 @@ const GenericProductModal = ({
   products,
   state,
   setState,
-  haveCanal,
+  hasCanal,
   productReadOnly,
   ...rest
 }) => {
@@ -162,7 +162,7 @@ const GenericProductModal = ({
       })}
       {_renderInput('quantity', 'Peso / Cantidad', { onBlur: _handleLostFocus })}
       {_renderInput('price', 'Precio', { type: 'number' })}
-      {haveCanal && _renderInput('canal', 'Nº Canal')}
+      {hasCanal && _renderInput('canal', 'Nº Canal')}
       {_renderSelectProduct()}
     </ModalGrid>
   );
@@ -175,7 +175,7 @@ GenericProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  haveCanal: PropTypes.bool,
+  hasCanal: PropTypes.bool,
   productReadOnly: PropTypes.bool,
 };
 

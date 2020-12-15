@@ -12,7 +12,7 @@ const EditProductModal = ({
   updateProductOfDeliveryOrder,
   product,
   index,
-  haveCanal,
+  hasCanal,
   pricesChangesUnreadCount,
 }) => {
   const [state, setState] = useReducer(
@@ -52,7 +52,7 @@ const EditProductModal = ({
       setState={setState}
       show={show}
       title='Editar producto'
-      haveCanal={haveCanal}
+      hasCanal={hasCanal}
       productReadOnly
       actions={[
         {
@@ -79,7 +79,7 @@ EditProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   product: PropTypes.object,
   index: PropTypes.number,
-  haveCanal: PropTypes.bool,
+  hasCanal: PropTypes.bool,
   pricesChangesUnreadCount: PropTypes.func.isRequired,
 };
 

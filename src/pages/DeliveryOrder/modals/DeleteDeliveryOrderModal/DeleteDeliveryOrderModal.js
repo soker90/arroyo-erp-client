@@ -48,9 +48,9 @@ DeleteDeliveryOrderModal.propTypes = {
   close: PropTypes.func,
   show: PropTypes.bool,
   deleteDeliveryOrder: PropTypes.func.isRequired,
-  providerId: PropTypes.string.isRequired,
+  providerId: PropTypes.string,
 };
 
-DeleteDeliveryOrderModal.displayName = 'DeleteConfirmationModal';
+DeleteDeliveryOrderModal.displayName = 'DeleteDeliveryOrderModal';
 export const story = DeleteDeliveryOrderModal;
 export default memo(DeleteDeliveryOrderModal);

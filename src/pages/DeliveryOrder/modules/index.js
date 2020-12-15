@@ -24,7 +24,7 @@ const INITIAL_STATE = {
     total: 0,
     taxBase: 0,
   },
-  haveCanal: false,
+  hasCanal: false,
 };
 
 const ACTION_HANDLERS = {

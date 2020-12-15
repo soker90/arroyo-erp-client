@@ -14,7 +14,11 @@ import { diffColor } from './utils';
 import { useStyles } from './DeliveryOrderProducts.styles';
 
 const DeliveryOrderProducts = ({
-  products, showDeleteProductModal, showEditProductModal, isEditable,
+  products,
+  showDeleteProductModal,
+  showEditProductModal,
+  isEditable,
+  hasCanal,
 }) => {
   const classes = useStyles();
 
@@ -62,6 +66,10 @@ const DeliveryOrderProducts = ({
           title: 'Código',
           field: 'code',
         },
+        ...(hasCanal ? [{
+          title: 'Nº Canal',
+          field: 'canal',
+        }] : []),
         {
           title: 'Producto',
           field: 'name',
@@ -113,6 +121,7 @@ DeliveryOrderProducts.propTypes = {
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  hasCanal: PropTypes.bool,
 };
 
 DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';

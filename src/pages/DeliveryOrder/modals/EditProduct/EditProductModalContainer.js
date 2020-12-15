@@ -6,10 +6,10 @@ import EditProductModalView from './EditProductModalView';
 
 const mapStateToProps = ({
   products: { products },
-  deliveryOrders: { haveCanal },
+  deliveryOrders: { hasCanal },
 }) => ({
   products,
-  haveCanal,
+  hasCanal,
 });
 
 const mapDispatchToProps = {

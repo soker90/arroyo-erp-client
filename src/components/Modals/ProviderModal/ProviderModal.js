@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
+import { FormControlLabel, Switch } from '@material-ui/core';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
 import { TYPE_PROVIDER_LIST } from '../../../constants';
@@ -11,10 +12,12 @@ const ProviderModal = ({
    * Handle event onChange input
    * @param {String} name
    * @param {String} value
+   * @param {Boolean} checked
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
+  const _handleChange = ({ target: { name, value, checked } }) => {
+    if (checked) setState({ [name]: checked });
+    else setState({ [name]: value });
   };
 
   /**
@@ -90,6 +93,20 @@ const ProviderModal = ({
             </option>
           ))}
         </SelectForm>
+      )}
+      {/* Todo terminar */}
+      {false && (
+      <FormControlLabel
+        control={(
+          <Switch
+            checked={state.canal}
+            onChange={_handleChange}
+            name='canal'
+            color='primary'
+          />
+        )}
+        label='Tiene canal'
+      />
       )}
     </ModalGrid>
   );

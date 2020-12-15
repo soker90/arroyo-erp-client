@@ -12,7 +12,7 @@ const AddProductModal = ({
   addProductToDeliveryOrder,
   createDeliveryOrder,
   idProvider,
-  haveCanal,
+  hasCanal,
   pricesChangesUnreadCount,
 }) => {
   const [state, setState] = useReducer(
@@ -75,7 +75,7 @@ const AddProductModal = ({
       setState={setState}
       show={show}
       title='Añadir producto'
-      haveCanal={haveCanal}
+      hasCanal={hasCanal}
       actions={[
         {
           onClick: close,
@@ -108,7 +108,7 @@ AddProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
-  haveCanal: PropTypes.bool,
+  hasCanal: PropTypes.bool,
   pricesChangesUnreadCount: PropTypes.func.isRequired,
 };
 
