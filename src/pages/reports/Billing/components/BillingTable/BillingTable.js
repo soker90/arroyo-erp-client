@@ -16,6 +16,10 @@ const BillingTable = ({ billing }) => {
           field: 'name',
         },
         {
+          title: 'Razón social',
+          field: 'businessName',
+        },
+        {
           title: 'Trimestre 1',
           render: ({ trimester1 }) => <TextEuro num={trimester1} />,
         },
