@@ -1,6 +1,5 @@
 import { memo, useRef, useState } from 'react';
 import {
-  Badge,
   Box,
   Button,
   IconButton,
@@ -16,13 +15,6 @@ import useSettings from 'hooks/useSettings';
 import { THEMES, THEMES_NAME } from 'constants/common';
 
 const useStyles = makeStyles(theme => ({
-  badge: {
-    height: 10,
-    width: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    marginRight: 5,
-  },
   popover: {
     width: 320,
     padding: theme.spacing(2),
@@ -63,21 +55,15 @@ const Settings = () => {
   return (
     <>
       <Tooltip title='Ajustes'>
-        <Badge
-          color='secondary'
-          variant='dot'
-          classes={{ badge: classes.badge }}
+        <IconButton
+          color='inherit'
+          onClick={handleOpen}
+          ref={ref}
         >
-          <IconButton
-            color='inherit'
-            onClick={handleOpen}
-            ref={ref}
-          >
-            <SvgIcon fontSize='small'>
-              <SettingsIcon />
-            </SvgIcon>
-          </IconButton>
-        </Badge>
+          <SvgIcon fontSize='small'>
+            <SettingsIcon />
+          </SvgIcon>
+        </IconButton>
       </Tooltip>
       <Popover
         anchorOrigin={{
