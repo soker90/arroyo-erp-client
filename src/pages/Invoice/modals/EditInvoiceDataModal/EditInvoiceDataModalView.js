@@ -2,7 +2,7 @@ import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  DatePickerForm, InputForm, ModalGrid, SelectForm,
+  DatePickerForm, InputForm, ModalGrid, SelectForm, SwitchForm,
 } from 'components';
 import format from 'utils/format';
 import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices';
@@ -17,6 +17,7 @@ const EditInvoiceDataModalView = ({
   id,
   concept,
   total,
+  mailSend,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -25,6 +26,7 @@ const EditInvoiceDataModalView = ({
       dateInvoice,
       dateRegister,
       concept,
+      mailSend,
     },
   );
 
@@ -50,10 +52,11 @@ const EditInvoiceDataModalView = ({
     target: {
       name,
       value,
+      checked,
     },
   }) => {
     if (name === 'nInvoice') setState({ [name]: value.toUpperCase() });
-    else setState({ [name]: value });
+    else setState({ [name]: checked ?? value });
   };
 
   const _close = () => {
@@ -66,6 +69,7 @@ const EditInvoiceDataModalView = ({
       dateInvoice: format.dateToSend(state.dateInvoice),
       dateRegister: format.dateToSend(state.dateRegister),
       concept: state.concept,
+      mailSend: state.mailSend,
     };
 
     updateDataInvoice(id, { data }, _close);
@@ -155,6 +159,20 @@ const EditInvoiceDataModalView = ({
     </SelectForm>
   );
 
+  /**
+   * Render mail send
+   * @private
+   */
+  const _renderMailSend = () => (
+    <SwitchForm
+      checked={state.mailSend}
+      onChange={_handleChange}
+      name='mailSend'
+      color='primary'
+      label='En correo electrónico'
+    />
+  );
+
   return (
     <ModalGrid
       show={show}
@@ -166,6 +184,7 @@ const EditInvoiceDataModalView = ({
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {total < 0 && _renderSelectConcept()}
+      {_renderMailSend()}
     </ModalGrid>
   );
 };
@@ -180,6 +199,7 @@ EditInvoiceDataModalView.propTypes = {
   updateDataInvoice: PropTypes.func.isRequired,
   concept: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
+  mailSend: PropTypes.bool,
 };
 
 EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView';

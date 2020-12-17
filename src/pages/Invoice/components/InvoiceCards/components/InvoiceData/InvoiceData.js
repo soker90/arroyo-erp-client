@@ -27,6 +27,7 @@ const InvoiceData = ({
   isEditable,
   concept,
   id,
+  mailSend,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const classes = useStyles();
@@ -89,6 +90,9 @@ const InvoiceData = ({
               <ItemCard label='Concepto' value={concept} />
             </Grid>
             <Grid item xs={12} md={3}>
+              <ItemCard label='En correo eletrónico' value={format.yesOrNot(mailSend)} />
+            </Grid>
+            <Grid item xs={12} md={3}>
               <ItemCard label='ID' value={id} />
             </Grid>
           </Grid>
@@ -108,6 +112,7 @@ InvoiceData.propTypes = {
   isEditable: PropTypes.bool.isRequired,
   concept: PropTypes.string,
   id: PropTypes.string.isRequired,
+  mailSend: PropTypes.bool,
 };
 
 InvoiceData.displayName = 'InvoiceData';

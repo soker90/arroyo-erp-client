@@ -68,6 +68,13 @@ const percent = cell => {
   return num.format(cell);
 };
 
+/**
+ * Return Si or No
+ * @param {boolean} condition
+ * @return {string}
+ */
+const yesOrNot = condition => (condition ? 'Sí' : 'No');
+
 export default {
   date,
   euro,
@@ -76,4 +83,5 @@ export default {
   percent,
   dayOfWeek,
   weekOfYear,
+  yesOrNot,
 };
