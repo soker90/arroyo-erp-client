@@ -34,7 +34,7 @@ const AddProductModal = ({
         product: state.product,
         quantity: Number(state.quantity),
         price: Number(state.price),
-        ...(state.canal && { canal: state.canal }),
+        ...(hasCanal && { canal: state.canal }),
       };
 
       addProductToDeliveryOrder(model, callback);
@@ -50,6 +50,7 @@ const AddProductModal = ({
   const _handleSave = () => {
     _saveProduct(() => {
       close();
+      setState(INITIAL_STATE);
       pricesChangesUnreadCount();
     });
   };

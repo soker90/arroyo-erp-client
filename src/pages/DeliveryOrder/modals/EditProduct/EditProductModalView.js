@@ -36,6 +36,7 @@ const EditProductModal = ({
         product: state.product,
         quantity: Number(state.quantity),
         price: Number(state.price),
+        ...(hasCanal && { canal: state.canal }),
       };
 
       updateProductOfDeliveryOrder(index, model, callbackClose);
