@@ -32,7 +32,7 @@ const ProductModal = ({
         iva: Number(state.iva) / 100,
         re: Number(state.re) / 100,
         profit: Number(state.profit) / 100,
-        ...(state.rate && { rate: Number(state.rate) }),
+        rate: Number(state.rate),
       };
       action(model, close);
     } catch (e) {

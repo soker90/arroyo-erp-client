@@ -1,15 +1,25 @@
 import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import ProductModal, { INITIAL_STATE } from 'components/Modals/ProductModal';
+import { format } from 'utils';
 
 const EditProductModal = ({
-  show, close, editProduct, product: {
-    code, name, re, iva, rate, _id, profit,
+  show,
+  close,
+  editProduct,
+  product: {
+    code,
+    name,
+    re,
+    iva,
+    rate,
+    _id,
+    profit,
   },
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
+    INITIAL_STATE
   );
 
   useEffect(() => {
@@ -20,7 +30,7 @@ const EditProductModal = ({
         ...(name && { name }),
         ...(re && { re: re * 100 }),
         ...(iva && { iva: iva * 100 }),
-        ...(profit && { profit: profit * 100 }),
+        ...(profit && { profit: format.number(profit * 100) }),
         ...(rate && { rate }),
       });
     }

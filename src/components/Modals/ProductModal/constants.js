@@ -3,6 +3,6 @@ export const INITIAL_STATE = {
   name: '',
   iva: 0,
   re: 0,
-  rate: 0,
+  rate: undefined,
   amount: 0,
 };
