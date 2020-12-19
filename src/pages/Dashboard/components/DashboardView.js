@@ -1,4 +1,6 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import {
+  memo, useCallback, useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { Container, Grid } from '@material-ui/core';
 
@@ -33,19 +35,22 @@ const DashboardView = ({
         <Container
           maxWidth={false}
         >
-          <Header title='Panel de inicio'/>
+          <Header title='Panel de inicio' />
 
           <Grid
             container
             spacing={3}
           >
-            <PricesChangesBox priceChanges={priceChanges}/>
-            <Reminders reminders={reminders} createReminder={createReminder}
-                       setDeleteId={setDeleteId}/>
+            <PricesChangesBox priceChanges={priceChanges} />
+            <Reminders
+              reminders={reminders}
+              createReminder={createReminder}
+              setDeleteId={setDeleteId}
+            />
           </Grid>
         </Container>
       </Page>
-      <DeleteConfirmationModal id={deleteId} close={_closeModal}/>
+      <DeleteConfirmationModal id={deleteId} close={_closeModal} />
     </>
   );
 };
