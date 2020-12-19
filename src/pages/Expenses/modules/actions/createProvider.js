@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getProviders } from './getProviders';
 import { CREATE_PROVIDER } from '../types';
-import { TYPE_PROVIDER } from '../../../../../constants';
+import { TYPE_PROVIDER } from '../../../../constants';
 
 /**
  * Request action for createProviders

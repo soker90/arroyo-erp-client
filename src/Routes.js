@@ -98,7 +98,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/gastos',
-        component: lazy(() => import('pages/Expenses/Expenses')),
+        component: lazy(() => import('pages/Expenses')),
       },
       {
         exact: true,

@@ -7,7 +7,7 @@ import book from 'pages/Book/modules';
 import client from 'pages/Client/modules';
 import clients from 'pages/Clients/modules';
 import deliveryOrders from 'pages/DeliveryOrder/modules';
-import expenses from 'pages/Expenses/Expenses/modules';
+import expenses from 'pages/Expenses/modules';
 import invoice from 'pages/Invoice/modules';
 import notes from 'pages/Notes/modules';
 import priceChanges from 'pages/PriceChanges/modules';
