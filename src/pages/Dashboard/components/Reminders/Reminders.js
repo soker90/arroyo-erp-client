@@ -1,74 +1,52 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import moment from 'moment';
 import {
-  ListItem,
-  ListItemText,
-  IconButton,
-  Tooltip,
-  makeStyles
+  Box, Card, CardHeader, Divider, Grid, List,
 } from '@material-ui/core';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import StackAvatars from 'src/components/StackAvatars';
+import PropTypes from 'prop-types';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  viewButton: {
-    marginLeft: theme.spacing(2)
-  }
-}));
+import AddReminder from './AddReminder';
+import Reminder from './Reminder';
 
-function Reminders({ task, className, ...rest }) {
-  const classes = useStyles();
-
-  let deadline = 'N/A';
-  let critical = false;
-
-  if (task.deadline) {
-    const now = moment();
-    const deadlineMoment = moment(task.deadline);
-
-    if (deadlineMoment.isAfter(now) && deadlineMoment.diff(now, 'day') < 3) {
-      deadline = `${deadlineMoment.diff(now, 'day')} days remaining`;
-      critical = true;
-    }
-  }
-
+function Reminders({
+  reminders,
+  createReminder,
+  setDeleteId,
+}) {
   return (
-    <ListItem
-      className={clsx(
-        classes.root,
-        { [classes.critical]: critical },
-        className
-      )}
-      {...rest}
+    <Grid
+      item
+      lg={12}
+      sm={12}
+      xs={12}
     >
-      <ListItemText
-        className={classes.listItemText}
-        primary={task.title}
-        primaryTypographyProps={{ variant: 'h6', noWrap: true }}
-        secondary={deadline}
-      />
-      <StackAvatars
-        avatars={task.members}
-        limit={3}
-      />
-      <Tooltip title="View task">
-        <IconButton
-          className={classes.viewButton}
-          edge="end"
-        >
-          <OpenInNewIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
-    </ListItem>
+      <Card>
+        <CardHeader
+          title='Recordatorios'
+        />
+        <Divider />
+        <PerfectScrollbar>
+          <Box minWidth={400}>
+            <List>
+              {reminders.map(reminder => (
+                <Reminder
+                  key={reminder._id}
+                  reminder={reminder}
+                  setDeleteId={setDeleteId}
+                />
+              ))}
+            </List>
+            <AddReminder createReminder={createReminder} />
+          </Box>
+        </PerfectScrollbar>
+      </Card>
+    </Grid>
   );
 }
 
 Reminders.propTypes = {
-  className: PropTypes.string,
-  task: PropTypes.object.isRequired
+  reminders: PropTypes.array.isRequired,
+  createReminder: PropTypes.func.isRequired,
+  setDeleteId: PropTypes.func.isRequired,
 };
 
 export default Reminders;

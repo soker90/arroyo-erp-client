@@ -12,9 +12,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  label: {
-    marginLeft: theme.spacing(1),
-  },
   avatar: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
@@ -73,6 +70,7 @@ function PricesChangesBox({
 
 PricesChangesBox.propTypes = {
   className: PropTypes.string,
+  priceChanges: PropTypes.number,
 };
 
 export default PricesChangesBox;

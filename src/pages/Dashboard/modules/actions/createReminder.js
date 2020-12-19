@@ -39,15 +39,15 @@ const _createReminderError = error => ({
 
 /**
  * Crea un recordatorio
- * @param {Object} data
+ * @param {String} message
  * @param {function} callback
  * @returns {function(...[*]=)}
  */
-export const createReminder = (data, callback) => async dispatch => {
+export const createReminder = (message, callback) => async dispatch => {
   dispatch(_createReminderRequest());
 
   try {
-    const response = await axios.post('dashboard/createReminder', data);
+    const response = await axios.post('dashboard/createReminder', { message });
 
     dispatch(_createReminderSuccess());
     dispatch(_createReminderSet(response));

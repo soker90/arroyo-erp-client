@@ -23,9 +23,7 @@ const _deleteReminderSuccess = () => ({
 
 const _deleteReminderSet = ({ data }) => ({
   type: DELETE_REMINDER.SET,
-  payload: {
-    notes: data,
-  },
+  payload: data,
 });
 
 /**
@@ -42,10 +40,9 @@ const _deleteReminderError = error => ({
 /**
  * Elimina un recordatorio
  * @param {String} id
- * @param {function} callback
  * @returns {function(...[*]=)}
  */
-export const deleteReminder = (id, callback) => async dispatch => {
+export const deleteReminder = id => async dispatch => {
   dispatch(_deleteReminderRequest());
 
   try {
@@ -53,7 +50,6 @@ export const deleteReminder = (id, callback) => async dispatch => {
 
     dispatch(_deleteReminderSuccess());
     dispatch(_deleteReminderSet(response));
-    callback();
   } catch (error) {
     dispatch(_deleteReminderError(error));
   }
