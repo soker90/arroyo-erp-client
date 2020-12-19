@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Card,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  makeStyles,
-  Typography,
-  ListSubheader,
   ListItemSecondaryAction,
+  ListItemText,
+  ListSubheader,
+  makeStyles,
   Tooltip,
-  IconButton,
+  Typography,
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import { InputForm } from '../Forms';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -24,12 +25,21 @@ const useStyles = makeStyles(theme => ({
   listItem: {
     cursor: 'pointer',
   },
+  input: {
+    padding: theme.spacing(2),
+  },
 }));
 
 function ListActions({
-  className, data, icon, title, onClick, ...rest
+  className,
+  data,
+  icon,
+  title,
+  onClick,
+  ...rest
 }) {
   const classes = useStyles();
+  const [filter, setFilter] = useState('');
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
@@ -40,6 +50,17 @@ function ListActions({
     setSelected(item._id);
     onClick(item);
   };
+
+  const _handleChangeFilter = ({ target: { value } }) => {
+    setFilter(value);
+  };
+
+  const _filterList = useMemo(() => (
+    filter
+      ? data.filter(({ name }) => name.toLowerCase()
+        .includes(filter.toLowerCase()))
+      : data
+  ), [filter, data]);
 
   return (
     <Card
@@ -53,7 +74,14 @@ function ListActions({
           </ListSubheader>
         )}
       >
-        {data.map((item, i) => (
+        <InputForm
+          value={filter}
+          onChange={_handleChangeFilter}
+          size={12}
+          placeholder='Filtrar...'
+          className={classes.input}
+        />
+        {_filterList.map((item, i) => (
           <ListItem
             divider={i < data.length - 1}
             key={item._id}
@@ -76,8 +104,8 @@ function ListActions({
             <ListItemSecondaryAction>
               <Tooltip title=' View'>
                 <IconButton
-                  edge=' end'
-                  size=' small'
+                  edge='end'
+                  size='small'
                   onClick={() => _handleClick(item)}
                 >
                   <NavigateNextIcon />
