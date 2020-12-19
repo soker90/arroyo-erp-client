@@ -35,7 +35,7 @@ const DashboardView = ({
         <Container
           maxWidth={false}
         >
-          <Header title='Panel de inicio' />
+          <Header title='Panel' description='Inicio' />
 
           <Grid
             container
