@@ -69,7 +69,7 @@ const PriceChanges = ({
               },
               {
                 title: 'Diferencia',
-                render: ({ diff }) => <TextEuro num={diff} />,
+                render: ({ diff }) => (diff !== undefined ? <TextEuro num={diff} /> : 'Sin datos'),
               },
             ]}
             data={priceChanges}
