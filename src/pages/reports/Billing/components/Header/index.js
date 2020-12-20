@@ -9,9 +9,10 @@ import { NavLink } from 'react-router-dom';
 import { downloadFile } from 'utils';
 
 const HeaderBook = ({ year }) => {
-  const _handleClickDownload = () => {
-    downloadFile(`billings/export?year=${year}`, `Facturación ${year}.ods`);
-  };
+  const _handleClickDownload = short => () => downloadFile(
+    `billings/export?year=${year}${short ? '&short=true' : ''}`,
+    `Facturación ${year}.ods`,
+  );
 
   return (
     <Header
@@ -19,7 +20,14 @@ const HeaderBook = ({ year }) => {
       description={`Facturación ${year}`}
       buttons={[
         {
-          onClick: _handleClickDownload,
+          onClick: _handleClickDownload(true),
+          Icon: GetAppIcon,
+          label: '347',
+          variant: 'contained',
+          color: 'default',
+        },
+        {
+          onClick: _handleClickDownload(),
           Icon: GetAppIcon,
           label: 'Descargar',
           variant: 'contained',
