@@ -61,7 +61,7 @@ export const createInvoice = deliveryOrders => async dispatch => {
 
     dispatch(_createInvoiceSuccess());
     dispatch(_createInvoiceSet(data));
-    navigateTo(`facturas/${data._id}`);
+    navigateTo(`facturas/${data.id}`);
   } catch (error) {
     dispatch(_createInvoiceError(error));
   }
