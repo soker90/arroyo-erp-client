@@ -8,8 +8,12 @@ import { Page } from 'components';
 import Header from './Header';
 import { useStyles } from './Book.styles';
 import InvoicesTable from './InvoicesTable';
+import SearchForm from './SearchForm/SearchForm';
 
-const Book = ({ invoices, getInvoices }) => {
+const Book = ({
+  invoices,
+  getInvoices,
+}) => {
   const classes = useStyles();
   const { year } = useParams();
 
@@ -21,6 +25,7 @@ const Book = ({ invoices, getInvoices }) => {
     <Page className={classes.root} title='Libro'>
       <Container maxWidth={false}>
         <Header year={Number(year)} />
+        <SearchForm />
 
         <InvoicesTable invoices={invoices} />
       </Container>
