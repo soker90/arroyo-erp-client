@@ -25,6 +25,7 @@ const INITIAL_STATE = {
     taxBase: 0,
   },
   hasCanal: false,
+  invoice: null,
 };
 
 const ACTION_HANDLERS = {

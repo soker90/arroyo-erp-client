@@ -3,18 +3,24 @@ import PropTypes from 'prop-types';
 import { Header } from 'components';
 
 const HeaderProduct = ({
-  provider, nameProvider, product,
+  provider,
+  nameProvider,
+  product,
 }) => (
   <>
     <Header
-      routes={[{
-        link: `/app/proveedores/${provider}`,
-        title: `${nameProvider}`,
-      },
-      {
-        link: `/app/proveedores/${provider}#Productos`,
-        title: 'Productos',
-      }]}
+      routes={[
+        {
+          link: '/app/proveedores',
+          title: 'Proveedores',
+        }, {
+          link: `/app/proveedores/${provider}`,
+          title: `${nameProvider}`,
+        },
+        {
+          link: `/app/proveedores/${provider}#Productos`,
+          title: 'Productos',
+        }]}
       title={product}
     />
   </>

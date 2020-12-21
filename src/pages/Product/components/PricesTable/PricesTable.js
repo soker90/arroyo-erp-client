@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Link } from 'react-router-dom';
 import { useStyles } from './PricesTable.styles';
+import { BASE_PATH } from '../../../../constants';
 
 const PricesTable = ({ prices }) => {
   const classes = useStyles();
@@ -27,6 +30,14 @@ const PricesTable = ({ prices }) => {
         {
           title: 'Venta',
           render: ({ sale }) => format.euro(sale),
+        },
+      ]}
+      actions={[
+        {
+          icon: VisibilityIcon,
+          tooltip: 'Ver albarán',
+          component: Link,
+          to: ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`,
         },
       ]}
       data={prices}

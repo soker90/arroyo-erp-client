@@ -16,7 +16,7 @@ const DeliveryOrder = (
     getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDataDeliveryOrder,
     showDeleteProductModal, showEditProductModal, resetDeliveryOrder,
-    note, hasCanal,
+    note, hasCanal, invoice,
   },
 ) => {
   const classes = useStyles();
@@ -49,6 +49,7 @@ const DeliveryOrder = (
             nameProvider={nameProvider}
             provider={provider}
             readOnly={Boolean(nOrder)}
+            invoice={invoice}
           />
 
           {
@@ -99,6 +100,7 @@ DeliveryOrder.propTypes = {
   resetDeliveryOrder: PropTypes.func.isRequired,
   note: PropTypes.string,
   hasCanal: PropTypes.bool,
+  invoice: PropTypes.string,
 };
 
 DeliveryOrder.displayName = 'DeliveryOrder';

@@ -1,7 +1,9 @@
 import { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
+import DescriptionIcon from '@material-ui/icons/Description';
 import { Trash2 } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 import { Header } from 'components';
 import AddProductModal from '../../modals/AddProduct';
@@ -11,6 +13,7 @@ const HeaderDeliveryOrder = ({
   provider,
   nameProvider,
   readOnly,
+  invoice,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -21,14 +24,18 @@ const HeaderDeliveryOrder = ({
   return (
     <>
       <Header
-        routes={[{
-          link: `/app/proveedores/${provider}`,
-          title: `${nameProvider}`,
-        },
-        {
-          link: `/app/proveedores/${provider}#Albaranes`,
-          title: 'Albaranes',
-        }]}
+        routes={[
+          {
+            link: '/app/proveedores',
+            title: 'Proveedores',
+          }, {
+            link: `/app/proveedores/${provider}`,
+            title: `${nameProvider}`,
+          },
+          {
+            link: `/app/proveedores/${provider}#Albaranes`,
+            title: 'Albaranes',
+          }]}
         title='Albarán'
         description=''
         buttons={[{
@@ -38,6 +45,15 @@ const HeaderDeliveryOrder = ({
           Icon: Trash2,
           label: 'Eliminar',
           disabled: readOnly,
+        }, {
+          variant: 'contained',
+          color: 'primary',
+          Icon: DescriptionIcon,
+          disableSvg: true,
+          label: 'Factura',
+          disabled: !invoice,
+          component: Link,
+          to: `/app/facturas/${invoice}`,
         }, {
           variant: 'contained',
           onClick: _openAddModal,
@@ -57,6 +73,7 @@ HeaderDeliveryOrder.propTypes = {
   provider: PropTypes.string,
   nameProvider: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
+  invoice: PropTypes.string,
 };
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder';
