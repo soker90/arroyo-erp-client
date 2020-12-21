@@ -23,7 +23,13 @@ const dayOfWeek = cell => cell && moment()
  * @param {Date} cell
  * @returns {*|number}
  */
-const dateToSend = cell => cell && new Date(cell).getTime();
+const dateToSend = cell => {
+  if (!cell) return null;
+
+  const cellDate = new Date(cell);
+  return new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate())
+    .getTime();
+};
 
 /**
  * Return number format with 2 decilms and euro symbol

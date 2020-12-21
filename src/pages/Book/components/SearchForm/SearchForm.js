@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable react/prop-types */
 import { useReducer, memo } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -6,29 +6,25 @@ import {
   CardContent,
   Grid,
   Divider,
-  CardHeader
+  CardHeader,
 } from '@material-ui/core';
 import {
   DatePickerForm,
-  InputForm, ModalGrid
+  InputForm,
 } from 'components';
+import { format } from 'utils';
 import { useStyles } from './SearchForm.styles';
 import { fields, INITIAL_STATE } from '../../constans';
 
-const SearchForm = memo(() => {
+const SearchForm = ({
+  getInvoices,
+  year,
+}) => {
   const classes = useStyles();
   const [state, setState] = useReducer(
     (oldstate, newState) => ({ ...oldstate, ...newState }),
     INITIAL_STATE
   );
-
-  /**
-   * Reset all inputs
-   * @private
-   */
-  const _resetState = () => {
-    setState(INITIAL_STATE);
-  };
 
   /**
    * Handle event onChange input
@@ -39,19 +35,10 @@ const SearchForm = memo(() => {
   const _handleChange = ({
     target: {
       name,
-      value
-    }
+      value,
+    },
   }) => {
     setState({ [name]: value });
-  };
-
-  /**
-   * Handle change picker
-   * @param {String} date
-   * @private
-   */
-  const _handleChangePicker = date => {
-    setState({ invoiceDate: date });
   };
 
   /**
@@ -59,7 +46,10 @@ const SearchForm = memo(() => {
    * @private
    */
   const _handleSubmit = () => {
-
+    getInvoices(year, {
+      ...state,
+      dateInvoice: format.dateToSend(state.dateInvoice),
+    });
   };
 
   /**
@@ -69,6 +59,16 @@ const SearchForm = memo(() => {
    */
   const _handleKeyPress = ({ key }) => {
     if (key === 'Enter') _handleSubmit();
+  };
+
+  /**
+   * Handle change picker
+   * @param {String} date
+   * @private
+   */
+  const _handleChangePicker = date => {
+    setState({ dateInvoice: date });
+    _handleSubmit();
   };
 
   /**
@@ -82,7 +82,7 @@ const SearchForm = memo(() => {
   const _renderInput = ({
     id,
     label,
-    options = {}
+    options = {},
   }) => (
     <InputForm
       key={id}
@@ -99,7 +99,7 @@ const SearchForm = memo(() => {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title='Busqueda'
+        title='Búsqueda'
       />
       <Divider />
       <CardContent>
@@ -108,7 +108,7 @@ const SearchForm = memo(() => {
             clearable
             size={4}
             label='Fecha factura'
-            value={state.invoiceDate}
+            value={state.dateInvoice}
             onAccept={_handleChangePicker}
           />
           {fields.map(_renderInput)}
@@ -116,9 +116,12 @@ const SearchForm = memo(() => {
       </CardContent>
     </Card>
   );
-});
+};
 
-SearchForm.propTypes = {};
+SearchForm.propTypes = {
+  getInvoices: PropTypes.func.isRequired,
+  year: PropTypes.string.isRequired,
+};
 
 SearchForm.displayName = 'SearchForm';
 

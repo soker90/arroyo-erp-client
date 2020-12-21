@@ -8,7 +8,7 @@ import { Page } from 'components';
 import Header from './Header';
 import { useStyles } from './Book.styles';
 import InvoicesTable from './InvoicesTable';
-import SearchForm from './SearchForm/SearchForm';
+import SearchForm from './SearchForm';
 
 const Book = ({
   invoices,
@@ -25,7 +25,7 @@ const Book = ({
     <Page className={classes.root} title='Libro'>
       <Container maxWidth={false}>
         <Header year={Number(year)} />
-        <SearchForm />
+        <SearchForm getInvoices={getInvoices} year={year} />
 
         <InvoicesTable invoices={invoices} />
       </Container>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { objectToParams } from 'utils';
 import { GET_INVOICES } from '../types';
 
 /**
@@ -27,7 +28,7 @@ const _getInvoicesSet = invoices => ({
 /**
  * Error action
  * @param error
- * @returns {{type: string, error: _getProvidersError.props}}
+ * @returns {{type: string, error: _getInvoicesError.props}}
  * @private
  */
 const _getInvoicesError = error => ({
@@ -38,13 +39,13 @@ const _getInvoicesError = error => ({
 /**
  * Trae las facturas
  * @param {String} year
+ * @param {Object} params
  * @returns {function(...[*]=)}
  */
-export const getInvoices = year => async dispatch => {
+export const getInvoices = (year, params) => async dispatch => {
   dispatch(_getInvoicesRequest());
-
   try {
-    const { data } = await axios(`invoices?year=${year}`);
+    const { data } = await axios(`invoices?year=${year}${objectToParams(params, false)}`);
 
     dispatch(_getInvoicesSuccess());
     dispatch(_getInvoicesSet(data));
