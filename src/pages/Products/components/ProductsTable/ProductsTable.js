@@ -38,7 +38,7 @@ const ProductsTable = ({ products }) => {
         actions={[
           {
             icon: EditIcon,
-            tooltip: 'Ver',
+            tooltip: 'Editar',
             onClick: product => setSelectedProduct(product),
           },
         ]}
