@@ -8,6 +8,7 @@ import { useParams } from 'react-router';
 
 import { LoadingScreen, Page } from 'components';
 import Header from './Header';
+import ClientExpandedInfo from './ClientExpandedInfo';
 
 import { useStyles } from './Client.styles';
 
@@ -29,7 +30,7 @@ const Client = ({
   const _toggleExpand = () => {
     setExpand(!expand);
   };
-  
+
   if (!id) return <LoadingScreen/>;
 
   return (
@@ -40,6 +41,10 @@ const Client = ({
           onExpand={_toggleExpand}
           title={client?.name}
           {...props}
+        />
+        <ClientExpandedInfo
+          expanded={expand}
+          client={client}
         />
 
         <Box py={3} pb={6}>
