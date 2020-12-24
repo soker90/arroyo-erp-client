@@ -43,7 +43,12 @@ export const navConfig = [
           {
             title: 'Listado',
             icon: UsersIcon,
-            href: '/app/clientes',
+            href: '/app/clientes/listado',
+          },
+          {
+            title: 'Productos',
+            icon: ShoppingCart,
+            href: '/app/clientes/productos',
           },
         ],
       },

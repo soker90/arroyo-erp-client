@@ -107,16 +107,6 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/clientes',
-        component: lazy(() => import('pages/Clients')),
-      },
-      {
-        exact: true,
-        path: '/app/clientes/:id',
-        component: lazy(() => import('pages/Client')),
-      },
-      {
-        exact: true,
         path: '/app/intercambio',
         component: lazy(() => import('pages/SwapInvoices')),
       },
@@ -124,6 +114,31 @@ const routesConfig = [
         exact: true,
         path: '/app/precios',
         component: lazy(() => import('pages/PriceChanges')),
+      },
+      {
+        path: '/app/clientes',
+        routes: [
+          {
+            exact: true,
+            path: '/app/clientes',
+            component: () => <Redirect to='/app/clientes/listado' />,
+          },
+          {
+            exact: true,
+            path: '/app/clientes/listado',
+            component: lazy(() => import('pages/Clients')),
+          },
+          {
+            exact: true,
+            path: '/app/clientes/productos',
+            component: lazy(() => import('pages/Products')),
+          },
+          {
+            exact: true,
+            path: '/app/clientes/:id',
+            component: lazy(() => import('pages/Client')),
+          },
+        ],
       },
       {
         component: () => <NotFound />,
