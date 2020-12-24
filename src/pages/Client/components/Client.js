@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable */
-
 import { memo, useEffect, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -9,11 +7,13 @@ import { useParams } from 'react-router';
 import { LoadingScreen, Page } from 'components';
 import Header from './Header';
 import ClientExpandedInfo from './ClientExpandedInfo';
-
+import ClientInvoices from './ClientInvoices';
 import { useStyles } from './Client.styles';
 
 const Client = ({
-  client, getClient, ...props
+  client,
+  getClient,
+  ...props
 }) => {
   const classes = useStyles();
   const { id } = useParams();
@@ -31,7 +31,7 @@ const Client = ({
     setExpand(!expand);
   };
 
-  if (!id) return <LoadingScreen/>;
+  if (!id) return <LoadingScreen />;
 
   return (
     <Page className={classes.root} title={client.name}>
@@ -42,13 +42,19 @@ const Client = ({
           title={client?.name}
           {...props}
         />
+
         <ClientExpandedInfo
           expanded={expand}
           client={client}
         />
 
         <Box py={3} pb={6}>
-
+          <ClientInvoices
+            getInvoicesByClient={() => {
+            }}
+            idClient={id}
+            invoices={[]}
+          />
         </Box>
 
       </Container>
