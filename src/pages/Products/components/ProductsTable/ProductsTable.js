@@ -1,16 +1,20 @@
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import EditIcon from '@material-ui/icons/Edit';
+import { Box } from '@material-ui/core';
 
 import { TableMaterial } from 'components';
-import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
-import { Box } from '@material-ui/core';
 import { useStyles } from './ProductsTable.styles';
+import EditProductModal from '../../modals/EditProductModal';
 
 const ProductsTable = ({ products }) => {
   const classes = useStyles();
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const _close = useCallback(() => {
+    setSelectedProduct(null);
+  }, [setSelectedProduct]);
 
   return (
     <Box mt={3}>
@@ -33,13 +37,13 @@ const ProductsTable = ({ products }) => {
         data={products}
         actions={[
           {
-            icon: VisibilityIcon,
+            icon: EditIcon,
             tooltip: 'Ver',
-            component: Link,
-            to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
+            onClick: product => setSelectedProduct(product),
           },
         ]}
       />
+      <EditProductModal product={selectedProduct} show={Boolean(selectedProduct)} close={_close} />
     </Box>
   );
 };
