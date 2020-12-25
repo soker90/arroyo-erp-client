@@ -71,4 +71,5 @@ ItemGroupsCard.defaultProps = {
 
 ItemGroupsCard.displayName = 'ItemGroupsCard';
 
+export const story = ItemGroupsCard;
 export default memo(ItemGroupsCard);

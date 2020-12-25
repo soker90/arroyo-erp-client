@@ -1,7 +1,6 @@
-import {story as BooleanIcon} from './BooleanIcon';
-
-import {boolean} from '@storybook/addon-knobs';
-import ThemeWrapper from 'story/ThemeWrapper';
+/* eslint-disable import/no-extraneous-dependencies */
+import { boolean } from '@storybook/addon-knobs';
+import { story as BooleanIcon } from './BooleanIcon';
 
 export default {
   title: 'Formularios/Boolean Icon',
@@ -12,12 +11,16 @@ export default {
   component: BooleanIcon,
 };
 
-const Icon = () => {
-  return <ThemeWrapper>
-    <BooleanIcon value={boolean('Activado', true)}/>
-  </ThemeWrapper>;
-}
+const Icon = () => (
+  <BooleanIcon value={boolean('Activado', true)} />
+);
 
 Icon.storyName = 'Boolean Icon';
 
-export {Icon};
+const IconFalse = () => (
+  <BooleanIcon value={false} />
+);
+
+IconFalse.storyName = 'Falso';
+
+export { Icon, IconFalse };

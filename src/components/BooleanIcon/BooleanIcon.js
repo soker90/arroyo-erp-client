@@ -7,14 +7,27 @@ import { useStyles } from './BooleanIcon.styles';
 
 const BooleanIcon = (
   {
-    className, value,
-  }
+    className,
+    value,
+  },
 ) => {
   const classes = useStyles();
 
   return value
-    ? <CheckIcon className={clsx(classes.iconActive, className)} fontSize='small' />
-    : <CloseIcon className={clsx(classes.iconInactive, className)} fontSize='small' />;
+    ? (
+      <CheckIcon
+        data-testid='checkIcon'
+        className={clsx(classes.iconActive, className)}
+        fontSize='small'
+      />
+    )
+    : (
+      <CloseIcon
+        data-testid='closeIcon'
+        className={clsx(classes.iconInactive, className)}
+        fontSize='small'
+      />
+    );
 };
 
 BooleanIcon.propTypes = {
