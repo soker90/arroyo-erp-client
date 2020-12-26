@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Checkbox,
 } from '@material-ui/core';
-import uniqId from 'uniqid';
 
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
 
@@ -43,7 +42,7 @@ const NoInvoices = ({
   };
 
   return deliveryOrders.map(props => (
-    <DeliveryOrderExpand {...props} key={uniqId()}>
+    <DeliveryOrderExpand {...props} key={props._id}>
       <Checkbox
         onChange={(ev, value) => _handleChangeCheckbox(props._id, value)}
         checked={selected.includes(props._id)}
@@ -54,6 +53,8 @@ const NoInvoices = ({
 
 NoInvoices.propTypes = {
   deliveryOrders: PropTypes.array.isRequired,
+  selected: PropTypes.array.isRequired,
+  setSelected: PropTypes.func.isRequired,
 };
 
 NoInvoices.displayName = 'NoInvoices';

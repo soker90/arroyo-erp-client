@@ -93,6 +93,7 @@ const GenericProductModal = ({
       evalNum = replaceCommasByDots(state.quantity);
       // eslint-disable-next-line no-eval
       evalNum = eval(evalNum);
+      evalNum = evalNum.toFixed(2);
     } catch (e) {
       console.error('La cantidad no es numérica');
     }
