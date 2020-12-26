@@ -12,7 +12,8 @@ Es un proyecto desarrollado en `React`. (v.16.13.1) y gestiona el **state** de l
 ## TODO
 
 - DOCS: Readme and more Storybook
-- TESTING: Definiendo estrategia..., probaré las carácteristicas experimentales de Crypess para el testing de componentes aislados
+- TESTING - In Progress: Storybook + react testing library para test unitarios
+- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual  
 - TESTING: Preparar un entorno para tests e2e con cypress.
 - TESTING: React testing library para custom hooks :heart_eyes:
 - No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
@@ -48,19 +49,11 @@ Se declaran en los archivos `.env` del proyecto y en las properties, y van prece
 
 `npm install`
 
-### Ejecución en local con DB Local
+### Ejecución
 
 *NOTA: *Necesita tener backend levantado en local*
 
 `npm start`
-
-Se sirve en <http://localhost:3000>
-
-### Ejecución en local contra PRE
-
-Para levantar el servidor conectando con la base de datos de PRE ejecutar:
-
-`npm run start:pre` - Sin configurar
 
 Se sirve en <http://localhost:3000>
 
@@ -70,12 +63,13 @@ Se sirve en <http://localhost:3000>
 
   - Crear una nueva carpeta en `src/pages` con la siguiente estructura
 ```
-└───routes
+└───pages
 │   │
 │   └───Route
 │        └───components
 │             └───Route.js
 │             └───Route.stories.js
+|             └───Route.test.js
 │             └───Route.styles.js
 │        └───containers
 │             └───RouteContainer.js

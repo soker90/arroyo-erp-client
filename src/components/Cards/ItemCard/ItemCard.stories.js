@@ -21,7 +21,7 @@ const CardDefault = () => (
     value={text('Texto', 'Mi texto')}
     label={text('Etiqueta', 'Etiqueta')}
     divider={boolean('Separador', true)}
-    variant={select('Tipo', ['default', 'boolean', 'euro'], 0)}
+    variant={select('Tipo', ['default', 'boolean', 'euro'], 'default')}
   />
 );
 
