@@ -5,15 +5,15 @@
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://soker90.github.io/arroyo-erp-client/)
 
 ## Descripción
-Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas. 
+Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas.
 
-Es un proyecto desarrollado en `React`. (v.16.13.1) y gestiona el **state** de la aplicación mediante `redux` (v.4.0.5). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.5.2.0) se haga cargo de la gestión de las **URLS**.
+Es un proyecto desarrollado en `React`. (v.17.0.1) y gestiona el **state** de la aplicación mediante `redux` (v.4.0.5). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.5.2.0) se haga cargo de la gestión de las **URLS**.
 
 ## TODO
 
 - DOCS: Readme and more Storybook
 - TESTING - In Progress: Storybook + react testing library para test unitarios
-- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual  
+- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual
 - TESTING: Preparar un entorno para tests e2e con cypress.
 - TESTING: React testing library para custom hooks :heart_eyes:
 - No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
@@ -25,7 +25,7 @@ Futuros epics:
  - Generación de los excell necesarios
  - Dashboard funcional y gráfica muuchas gráficas
  - ¿Temas de autónomos?
- 
+
 ## Changelog
 - Sin changelog hasta la versión 1.0
 
@@ -93,10 +93,10 @@ Se sirve en <http://localhost:3000>
 Componente funcional standar de React, con memo:
 ```js
 
-import React, { memo } from 'react'
+import { memo } from 'react'
 import PropTypes from 'prop-types';
 
-const ComponentName = () => 
+const ComponentName = () =>
       <div>
         Hello World!!
       </div>;

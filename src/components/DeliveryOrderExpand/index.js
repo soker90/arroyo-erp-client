@@ -27,6 +27,13 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
 
 DeliveryOrderExpand.propTypes = {
   products: PropTypes.array.isRequired,
+  date: PropTypes.number.isRequired,
+  note: PropTypes.string,
+  taxBase: PropTypes.number.isRequired,
+  iva: PropTypes.number.isRequired,
+  re: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  _id: PropTypes.string.isRequired,
 };
 
 DeliveryOrderExpand.displayName = 'DeliveryOrderExpand';
