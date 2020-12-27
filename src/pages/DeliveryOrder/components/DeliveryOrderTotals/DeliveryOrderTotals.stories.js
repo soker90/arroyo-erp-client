@@ -14,9 +14,13 @@ export default {
 
 const DeliveryOrderTotalsStory = () => (
   <DeliveryOrderTotals
-    iva={19.3}
-    re={2.6}
-    total={63.25}
+    totals={{
+      iva: 19.3,
+      re: 2.6,
+      total: 63.25,
+      taxBase: 55.77,
+    }}
+    isEditable
   />
 );
 

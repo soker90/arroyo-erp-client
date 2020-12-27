@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
+import { ReduxProvider } from 'story';
 import RoutesWrapper from 'story/RoutesWrapper';
 import { story as DeliveryOrder } from './DeliveryOrder';
 
@@ -12,11 +13,13 @@ export default {
     componentSubtitle: 'Vista de albarán',
   },
   decorators: [storyFn => (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </MuiPickersUtilsProvider>
+    <ReduxProvider>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <RoutesWrapper>
+          {storyFn()}
+        </RoutesWrapper>
+      </MuiPickersUtilsProvider>
+    </ReduxProvider>
   ),
   ],
 };
@@ -28,8 +31,8 @@ export default {
 const DeliveryOrderStory = () => (
   <DeliveryOrder
     match={{ params: { idDeliveryOrder: 'ggggg7777' } }}
-    provider="ssssbbb33"
-    nameProvider="La abuela"
+    provider='ssssbbb33'
+    nameProvider='La abuela'
     date={Date.now()}
     products={[
       {
@@ -68,7 +71,9 @@ const DeliveryOrderStory = () => (
     updateDateDeliveryOrder={action('updateDateDeliveryOrder')}
     updatePrice={action('updatePrice')}
     showEditProductModal={action('showEditProductModal')}
-    _id="3456789okhd"
+    _id='3456789okhd'
+    resetDeliveryOrder={action('resetDeliveryOrder')}
+    updateDataDeliveryOrder={action('updateDataDeliveryOrder')}
   />
 );
 

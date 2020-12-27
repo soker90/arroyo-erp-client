@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 
 import RoutesWrapper from 'story/RoutesWrapper';
+import { ReduxProvider } from 'story';
 import { story as Expenses } from './Expenses';
 
 export default {
@@ -9,12 +10,19 @@ export default {
     component: Expenses,
     componentSubtitle: 'Vista',
   },
-  decorators: [storyFn => <RoutesWrapper>{storyFn()}</RoutesWrapper>],
+  decorators: [storyFn =>
+    <ReduxProvider><RoutesWrapper>{storyFn()}</RoutesWrapper></ReduxProvider>],
 };
 
 const providers = [
-  { _id: '456789okjs', name: 'Proveedor 1' },
-  { _id: '4567s3389okjs', name: 'Proveedor 2' },
+  {
+    _id: '456789okjs',
+    name: 'Proveedor 1',
+  },
+  {
+    _id: '4567s3389okjs',
+    name: 'Proveedor 2',
+  },
 ];
 
 const ExpensesDefault = () => (
