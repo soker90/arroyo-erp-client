@@ -1,11 +1,17 @@
+import { ReduxProvider } from 'story';
 import { story as InvoiceTotals } from './InvoiceTotals';
 
 export default {
   title: 'Rutas/Factura/Totales',
   parameters: {
     component: InvoiceTotals,
-    componentSubtitle: 'Totales',
+    componentSubtitle: 'Totales'
   },
+  decorators: [storyFn => (
+    <ReduxProvider>
+      {storyFn()}
+    </ReduxProvider>
+  )]
 };
 
 const InvoiceTotalsStory = () => (

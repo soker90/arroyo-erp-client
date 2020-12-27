@@ -1,17 +1,20 @@
 import { action } from '@storybook/addon-actions';
 import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
+import RoutesWrapper from '../../../../story/RoutesWrapper';
 
 export default {
   title: 'Rutas/Albarán/Productos',
   parameters: {
     component: DeliveryOrderProducts,
     componentSubtitle: 'Tabla de productos'
-  }
+  },
+  decorators: [storyFn => (
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
+  )
+  ]
 };
-
-/**
- * code, productName, quantity, price, amount, diff
- */
 
 const DeliveryOrderProductsStory = () => (
   <DeliveryOrderProducts

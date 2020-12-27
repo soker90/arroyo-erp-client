@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 
+import { ReduxProvider } from 'story';
 import RoutesWrapper from 'story/RoutesWrapper';
 import { story as Providers } from './Providers';
 
@@ -7,14 +8,21 @@ export default {
   title: 'Rutas/Proveedores',
   parameters: {
     component: Providers,
-    componentSubtitle: 'Vista de proveedores',
+    componentSubtitle: 'Vista de proveedores'
   },
-  decorators: [storyFn => <RoutesWrapper>{storyFn()}</RoutesWrapper>],
+  decorators: [storyFn =>
+    <ReduxProvider><RoutesWrapper>{storyFn()}</RoutesWrapper></ReduxProvider>]
 };
 
 const providers = [
-  { _id: '456789okjs', name: 'Proveedor 1' },
-  { _id: '4567s3389okjs', name: 'Proveedor 2' },
+  {
+    _id: '456789okjs',
+    name: 'Proveedor 1'
+  },
+  {
+    _id: '4567s3389okjs',
+    name: 'Proveedor 2'
+  }
 ];
 
 const ProvidersDefault = () => (
