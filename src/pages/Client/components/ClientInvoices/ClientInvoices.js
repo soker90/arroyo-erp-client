@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
@@ -7,10 +7,10 @@ import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 
-const ClientInvoices = ({ invoices, getInvoicesByClient, idClient }) => {
-  useEffect(() => {
+const ClientInvoices = ({ invoices, idClient }) => {
+  /* useEffect(() => {
     if (idClient) getInvoicesByClient(idClient);
-  }, [getInvoicesByClient, idClient]);
+  }, [getInvoicesByClient, idClient]); */
 
   if (!idClient) return <LoadingScreen />;
 
@@ -63,7 +63,7 @@ const ClientInvoices = ({ invoices, getInvoicesByClient, idClient }) => {
 ClientInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idClient: PropTypes.string,
-  getInvoicesByClient: PropTypes.func.isRequired,
+  // getInvoicesByClient: PropTypes.func.isRequired,
 };
 
 ClientInvoices.displayName = 'ProviderInvoices';

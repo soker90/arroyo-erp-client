@@ -1,5 +1,6 @@
 import { withKnobs } from '@storybook/addon-knobs';
 import RoutesWrapper from 'story/RoutesWrapper';
+import { action } from '@storybook/addon-actions';
 import DashboardView from './DashboardView';
 
 export default {
@@ -13,7 +14,12 @@ export default {
 
 const Dashboard = () => (
   <RoutesWrapper>
-    <DashboardView />
+    <DashboardView
+      priceChanges={[]}
+      getDashboard={action('getDashboard')}
+      reminders={[]}
+      createReminder={action('createReminder')}
+    />
   </RoutesWrapper>
 );
 

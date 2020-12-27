@@ -8,10 +8,9 @@ import {
 import PropTypes from 'prop-types';
 import { useLocation, useParams } from 'react-router';
 
-import { Page, ProviderExpandedInfo } from 'components';
+import { HashTabs, Page, ProviderExpandedInfo } from 'components';
 import { HASH_TABS, TABS } from '../constants';
 import Header from './Header';
-import ProviderTabs from './ProviderTabs';
 import { useStyles } from './Provider.styles';
 
 const Provider = ({
@@ -86,7 +85,7 @@ const Provider = ({
           provider={provider}
         />
 
-        <ProviderTabs currentTab={currentTab} />
+        <HashTabs currentTab={currentTab} tabs={Object.values(TABS)} />
 
         <Box py={3} pb={6}>
           <TabComponent

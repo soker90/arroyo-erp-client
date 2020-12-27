@@ -1,3 +1,5 @@
+import { action } from '@storybook/addon-actions';
+import { boolean } from '@storybook/addon-knobs';
 import { story as DeliveryOrderData } from './DeliveryOrderData';
 
 export default {
@@ -40,6 +42,8 @@ const DeliveryOrderProductsStory = () => (
         diff: 0,
       },
     ]}
+    readOnly={boolean('Solo lectura', false)}
+    updateData={action('updateData')}
   />
 );
 

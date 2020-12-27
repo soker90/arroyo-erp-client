@@ -1,6 +1,7 @@
 export { default as BooleanIcon } from './BooleanIcon';
 export * from './Cards';
 export * from './Forms';
+export { default as HashTabs } from './HashTabs';
 export { default as Header } from './Header';
 export { default as Label } from './Label';
 export { default as ListActions } from './ListActions';
