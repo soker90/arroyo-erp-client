@@ -1,20 +1,27 @@
 import { action } from '@storybook/addon-actions';
 
+import MomentUtils from '@date-io/moment';
+import { ReduxProvider } from 'story';
 import RoutesWrapper from 'story/RoutesWrapper';
 import { story as Book } from './Book';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 export default {
   title: 'Rutas/Libro',
   parameters: {
     component: Book,
-    componentSubtitle: 'Vista',
+    componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
-    <RoutesWrapper>
-      {storyFn()}
-    </RoutesWrapper>
-  ),
-  ],
+    <ReduxProvider>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <RoutesWrapper>
+          {storyFn()}
+        </RoutesWrapper>
+      </MuiPickersUtilsProvider>
+    </ReduxProvider>
+  )
+  ]
 };
 
 /**
@@ -33,8 +40,8 @@ const BookStory = () => (
           concept: 'C. mercaderias',
           dateInvoice: 1595101920000,
           nInvoice: '22',
-          nOrder: 5,
-        },
+          nOrder: 5
+        }
       ]
     }
     getInvoices={action('getInvoices')}
