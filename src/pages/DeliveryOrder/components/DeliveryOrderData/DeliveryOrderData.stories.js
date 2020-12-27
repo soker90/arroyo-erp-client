@@ -47,6 +47,8 @@ const DeliveryOrderProductsStory = () => (
       ]}
       readOnly={boolean('Solo lectura', false)}
       updateData={action('updateData')}
+      date={Date.now()}
+      note='Esto es una nota'
     />
   </MuiPickersUtilsProvider>
 );

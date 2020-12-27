@@ -14,6 +14,8 @@ const InvoiceTotalsStory = () => (
     re={2.6}
     total={63.25}
     taxBase={33.2}
+    isEditable={true}
+    className='clase'
   />
 );
 

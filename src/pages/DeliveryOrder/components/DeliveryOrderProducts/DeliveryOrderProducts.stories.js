@@ -5,8 +5,8 @@ export default {
   title: 'Rutas/Albarán/Productos',
   parameters: {
     component: DeliveryOrderProducts,
-    componentSubtitle: 'Tabla de productos',
-  },
+    componentSubtitle: 'Tabla de productos'
+  }
 };
 
 /**
@@ -22,7 +22,7 @@ const DeliveryOrderProductsStory = () => (
         quantity: 6.6,
         price: 1.3,
         taxBase: 15,
-        diff: -1.2,
+        diff: -1.2
       },
       {
         code: '1111',
@@ -30,7 +30,7 @@ const DeliveryOrderProductsStory = () => (
         quantity: 2,
         price: 3.3,
         taxBase: 1,
-        diff: 6.35,
+        diff: 6.35
       },
       {
         code: '6846',
@@ -38,12 +38,14 @@ const DeliveryOrderProductsStory = () => (
         quantity: 2,
         price: 0.5,
         taxBase: 1,
-        diff: 0,
-      },
+        diff: 0
+      }
     ]}
     updatePrice={action('updatePrice')}
     showEditProductModal={action('showEditProductModal')}
     showDeleteProductModal={action('showDeleteProductModal')}
+    isEditable={true}
+    hasCanal={false}
   />
 );
 
