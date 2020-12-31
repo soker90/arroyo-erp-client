@@ -32,6 +32,6 @@ Products.propTypes = {
   getProducts: PropTypes.func.isRequired,
 };
 
-Products.displayName = 'Book';
+Products.displayName = 'Products';
 export const story = Products;
 export default memo(Products);
