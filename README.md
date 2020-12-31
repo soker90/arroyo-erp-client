@@ -1,7 +1,10 @@
 # ARROYO CLIENT
 
+![](https://github.com/soker90/arroyo-erp-client/workflows/Node.js%20CI/badge.svg)
 [![dependencies Status](https://david-dm.org/soker90/arroyo-erp-client/status.svg)](https://david-dm.org/soker90/arroyo-erp-client)
 [![devDependencies Status](https://david-dm.org/soker90/arroyo-erp-client/dev-status.svg)](https://david-dm.org/soker90/arroyo-erp-client?type=dev)
+[![codecov](https://codecov.io/gh/soker90/arroyo-erp-client/branch/master/graph/badge.svg?token=YAYNYU2EI2)](https://codecov.io/gh/soker90/arroyo-erp-client)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soker90_arroyo-erp-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soker90_arroyo-erp-client)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://soker90.github.io/arroyo-erp-client/)
 
 ## Descripción
