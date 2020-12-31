@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 
-import { getClient } from '../modules/actions';
+import { getClient, getClientInvoices } from '../modules/actions';
 import Client from '../components/Client';
 
-const mapStateToProps = ({ client: { client } }) => ({
-  client,
-});
+const mapStateToProps = ({ client }) => client;
 
 const mapDispatchToProps = {
   getClient,
+  getClientInvoices,
 };
 
 export default connect(

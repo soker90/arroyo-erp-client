@@ -7,31 +7,22 @@ import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 
-const ClientInvoices = ({ invoices, idClient }) => {
+const ClientInvoices = ({
+  invoices, idClient, count, getClientInvoices,
+}) => {
   /* useEffect(() => {
     if (idClient) getInvoicesByClient(idClient);
   }, [getInvoicesByClient, idClient]); */
 
   if (!idClient) return <LoadingScreen />;
 
-  /**
-   * Render payment type
-   * @param {object} payment
-   * @returns {string|null}
-   * @private
-   */
-  const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null);
-
   return idClient && (
     <TableMaterial
       columns={[
         {
-          title: 'Nº de Orden',
-          field: 'nOrder',
-        },
-        {
-          title: 'Fecha de factura',
-          render: ({ dateInvoice }) => format.date(dateInvoice),
+          title: 'Fecha',
+          field: 'date',
+          render: ({ date }) => format.date(date),
         },
         {
           title: 'Nº de factura',
@@ -41,10 +32,6 @@ const ClientInvoices = ({ invoices, idClient }) => {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />,
-        },
-        {
-          title: 'Pago',
-          render: _renderPaymentType,
         },
       ]}
       data={invoices}
@@ -56,6 +43,10 @@ const ClientInvoices = ({ invoices, idClient }) => {
           to: ({ _id }) => `${BASE_PATH}/clientes/facturas/${_id}`,
         },
       ]}
+      count={count}
+      refresh={({ offset, limit }) => {
+        getClientInvoices(idClient, offset, limit);
+      }}
     />
   );
 };
@@ -63,7 +54,8 @@ const ClientInvoices = ({ invoices, idClient }) => {
 ClientInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idClient: PropTypes.string,
-  // getInvoicesByClient: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
+  getClientInvoices: PropTypes.func.isRequired,
 };
 
 ClientInvoices.displayName = 'ProviderInvoices';

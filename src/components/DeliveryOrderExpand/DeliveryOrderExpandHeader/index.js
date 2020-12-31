@@ -24,7 +24,7 @@ const DeliveryOrderExpandHeader = ({
       <FormControlLabel
         onClick={event => event.stopPropagation()}
         onFocus={event => event.stopPropagation()}
-        data-testid="delivery-order-expand-header"
+        data-testid='delivery-order-expand-header'
         control={(
           <>
             {children}

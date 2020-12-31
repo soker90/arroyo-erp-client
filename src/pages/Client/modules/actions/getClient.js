@@ -25,7 +25,7 @@ const _getClientSuccess = () => ({
  */
 const _getClientSet = client => ({
   type: GET_CLIENT.SET,
-  payload: { client },
+  payload: client,
 });
 
 /**

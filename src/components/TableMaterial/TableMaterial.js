@@ -37,7 +37,7 @@ const TableMaterial = ({
     setLimit(event.target.value);
     refresh({
       offset: page,
-      limit,
+      limit: event.target.value,
     });
   };
 
@@ -78,7 +78,7 @@ const TableMaterial = ({
           onChangeRowsPerPage={handleLimitChange}
           page={page}
           rowsPerPage={limit}
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 20, 30]}
           labelRowsPerPage='filas'
           backIconButtonText='Anterior'
           labelDisplayedRows={labelOfRows}
