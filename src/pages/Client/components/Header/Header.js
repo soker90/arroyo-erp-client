@@ -5,7 +5,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 
 import { Header } from 'components';
-import { useStyles } from './styles';
 
 const HeaderProvider = ({
   title,
@@ -14,9 +13,6 @@ const HeaderProvider = ({
   clientId,
   createClientInvoice,
 }) => {
-  // eslint-disable-next-line no-unused-vars
-  const classes = useStyles();
-
   const _handleClickNewInvoice = () => {
     createClientInvoice(clientId);
   };
