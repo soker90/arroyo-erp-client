@@ -16,6 +16,7 @@ const Client = ({
   invoices,
   count,
   getClientInvoices,
+  createClientInvoice,
 }) => {
   const classes = useStyles();
   const { id } = useParams();
@@ -42,6 +43,8 @@ const Client = ({
           expanded={expand}
           onExpand={_toggleExpand}
           title={client?.name}
+          clientId={id}
+          createClientInvoice={createClientInvoice}
         />
 
         <ClientExpandedInfo
@@ -69,6 +72,7 @@ Client.propTypes = {
   invoices: PropTypes.array.isRequired,
   count: PropTypes.number.isRequired,
   getClientInvoices: PropTypes.func.isRequired,
+  createClientInvoice: PropTypes.func.isRequired,
 };
 
 Client.displayName = 'Client';
