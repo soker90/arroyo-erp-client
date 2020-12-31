@@ -19,8 +19,8 @@ const EditInvoiceData = () => (
     show
     setShow={action('setShow')}
     nInvoice={text('Nº Factura', '12/2020', 'Componente')}
-    dateInvoice={date('Fecha de factura', new Date('31/12/2020'), 'Componente')}
-    dateRegister={date('Fecha de registro', new Date('31/12/2020'), 'Componente')}
+    dateInvoice={date('Fecha de factura', new Date(1609428038070), 'Componente')}
+    dateRegister={date('Fecha de registro', new Date(1609428038070), 'Componente')}
     updateDataInvoice={action('updateDataInvoice')}
   />
 );

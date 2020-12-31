@@ -28,7 +28,7 @@ const _renderTable = () => (
         field: 'column3',
       },
     ]}
-    data={[{ column: 'Valor 1', date: new Date('31/12/2020'), column3: 'Otro valor' }]}
+    data={[{ column: 'Valor 1', date: new Date(1609428038070), column3: 'Otro valor' }]}
     title="Mi tabla"
     refresh={action('Actualiza la tabla')}
     onRowClick={action('Se ha pulsado en una fila')}
