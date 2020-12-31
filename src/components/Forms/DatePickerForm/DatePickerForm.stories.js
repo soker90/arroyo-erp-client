@@ -22,7 +22,7 @@ const Generic = () => (
     size={number('Tamaño', 3)}
     clearable={boolean('Con botón de limpiar', false)}
     label={text('Label', 'Etiqueta')}
-    value={date('Fecha', new Date())}
+    value={date('Fecha', new Date('31/12/2020'))}
     onChange={action('Fecha cambiada')}
   />
 );
@@ -34,7 +34,7 @@ const DatePickerClear = () => (
     size={number('Tamaño', 3)}
     clearable
     label={text('Label', 'Etiqueta')}
-    value={date('Fecha', new Date())}
+    value={date('Fecha', new Date('31/12/2020'))}
     onChange={action('Fecha cambiada')}
   />
 );
