@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
-import { updateDataInvoice } from 'pages/Invoice/modules/actions';
+import { updateDataClientInvoice } from 'pages/ClientInvoice/modules/actions';
 import { EditTotalsModal } from 'components';
 
-const mapStateToProps = ({ invoice: { totals, id } }) => ({
+const mapStateToProps = ({ clientInvoice: { totals, _id } }) => ({
   ...totals,
-  id,
+  id: _id,
 });
 
 const mapDispatchToProps = {
-  update: updateDataInvoice,
+  update: updateDataClientInvoice,
 };
 
 export default connect(

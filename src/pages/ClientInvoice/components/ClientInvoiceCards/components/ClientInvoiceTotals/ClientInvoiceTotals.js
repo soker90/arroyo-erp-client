@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -14,13 +14,12 @@ import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
 import { itemsCard } from './utils';
-// import EditDeliveryOrderTotalsModal from '../../../../modals/EditDeliveryOrderTotalsModal';
+import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal';
 
-const DeliveryOrderTotals = ({
+const ClientInvoiceTotals = ({
   totals,
   isEditable,
 }) => {
-  // eslint-disable-next-line no-unused-vars
   const [showModal, setShowModal] = useState(false);
 
   /**
@@ -56,11 +55,8 @@ const DeliveryOrderTotals = ({
           <Grid container spacing={3}>
 
             {itemsCard(totals)
-              .map(({
-                size,
-                ...itemProps
-              }) => (
-                <Grid item xs={12} md={size} key={uniqId()}>
+              .map(itemProps => (
+                <Grid item xs={12} md={4} key={uniqId()}>
                   <ItemCard {...itemProps} />
                 </Grid>
               ))}
@@ -68,21 +64,20 @@ const DeliveryOrderTotals = ({
           </Grid>
         </CardContent>
       </Card>
-      {/* showModal && <EditDeliveryOrderTotalsModal show={showModal} setShow={setShowModal} /> */}
+      <EditClientInvoiceTotalsModal show={showModal} setShow={setShowModal} />
     </>
   );
 };
 
-DeliveryOrderTotals.propTypes = {
+ClientInvoiceTotals.propTypes = {
   totals: PropTypes.shape({
     iva: PropTypes.number,
-    re: PropTypes.number,
     total: PropTypes.number,
     taxBase: PropTypes.number,
   }),
   isEditable: PropTypes.bool.isRequired,
 };
 
-DeliveryOrderTotals.displayName = 'DeliveryOrderTotals';
-export const story = DeliveryOrderTotals;
-export default memo(DeliveryOrderTotals);
+ClientInvoiceTotals.displayName = 'DeliveryOrderTotals';
+export const story = ClientInvoiceTotals;
+export default memo(ClientInvoiceTotals);

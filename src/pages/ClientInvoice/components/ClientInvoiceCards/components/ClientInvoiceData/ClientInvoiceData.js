@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 
 import { DatePickerForm, ItemCard } from 'components';
+import { format } from 'utils';
 import { useStyles } from './ClientInvoiceData.styles';
 
 const ClientInvoiceData = ({
@@ -12,12 +13,13 @@ const ClientInvoiceData = ({
   readOnly,
   updateData,
   nInvoice,
+  id,
 }) => {
   // eslint-disable-next-line no-unused-vars
   const classes = useStyles();
 
   const _handleChangeDate = value => {
-    updateData({ date: value });
+    updateData(id, { date: format.dateToSend(value) });
   };
 
   return (
@@ -47,6 +49,7 @@ ClientInvoiceData.propTypes = {
   nInvoice: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   updateData: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 ClientInvoiceData.displayName = 'ClientInvoiceData';

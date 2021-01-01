@@ -15,6 +15,9 @@ const ClientInvoice = ({
   nameClient,
   client,
   resetClientInvoiceState,
+  date,
+  totals,
+  updateDataClientInvoice,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -35,7 +38,12 @@ const ClientInvoice = ({
           nameClient={nameClient}
         />
 
-        <ClientInvoiceCards totals={{}} date={new Date().getTime()} id={idInvoice} />
+        <ClientInvoiceCards
+          totals={totals}
+          date={date}
+          id={idInvoice}
+          updateDataClientInvoice={updateDataClientInvoice}
+        />
 
       </Container>
     </Page>
@@ -48,6 +56,9 @@ ClientInvoice.propTypes = {
   nameClient: PropTypes.string,
   client: PropTypes.string,
   resetClientInvoiceState: PropTypes.func.isRequired,
+  date: PropTypes.number,
+  totals: PropTypes.object.isRequired,
+  updateDataClientInvoice: PropTypes.func.isRequired,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';

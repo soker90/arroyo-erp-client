@@ -1,5 +1,5 @@
 export * from './getClientInvoice';
 export * from './confirmInvoice';
-export * from './updateDataInvoice';
+export * from './updateDataClientInvoice';
 export * from './resetInvoiceState';
 export * from './deleteInvoice';
