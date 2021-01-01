@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from 'store/history';
 import { CREATE_CLIENT_INVOICES } from '../types';
 
 /**
@@ -36,10 +37,10 @@ export const createClientInvoice = id => async dispatch => {
   dispatch(_createClientInvoiceRequest());
 
   try {
-    await axios.post('client/invoices', { client: id });
+    const { data } = await axios.post('client/invoices', { client: id });
 
     dispatch(_createClientInvoiceSuccess());
-    // NavigateTo
+    history.push(`/app/clientes/factura/${data.id}`);
   } catch (error) {
     dispatch(_createClientInvoiceError(error));
   }

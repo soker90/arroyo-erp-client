@@ -10,10 +10,6 @@ import { format } from 'utils';
 const ClientInvoices = ({
   invoices, idClient, count, getClientInvoices,
 }) => {
-  /* useEffect(() => {
-    if (idClient) getInvoicesByClient(idClient);
-  }, [getInvoicesByClient, idClient]); */
-
   if (!idClient) return <LoadingScreen />;
 
   return idClient && (
@@ -40,7 +36,7 @@ const ClientInvoices = ({
           icon: EditIcon,
           tooltip: 'Editar',
           component: Link,
-          to: ({ _id }) => `${BASE_PATH}/clientes/facturas/${_id}`,
+          to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`,
         },
       ]}
       count={count}
