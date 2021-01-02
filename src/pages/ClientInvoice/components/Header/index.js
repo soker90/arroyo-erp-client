@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Header } from 'components';
 import { Trash2 } from 'react-feather';
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal';
-import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal';
+import DeleteInvoiceModal from '../../modals/DeleteClientInvoiceModal';
 
 const HeaderClientInvoice = ({
   client, nameClient, nInvoice,

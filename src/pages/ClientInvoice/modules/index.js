@@ -4,7 +4,7 @@ import {
   GET_CLIENT_INVOICE,
   UPDATE_DATA,
   RESET_CLIENT_INVOICE,
-  DELETE_INVOICE,
+  DELETE_CLIENT_INVOICE,
 } from './types';
 
 const INITIAL_STATE = {
@@ -28,14 +28,14 @@ const setDataTotals = (state, { payload: { date, totals } }) => ({
 
 const ACTION_HANDLERS = {
   [GET_CLIENT_INVOICE.SET]: setPayload,
-  [RESET_CLIENT_INVOICE]: () => INITIAL_STATE,
   [UPDATE_DATA.SET]: setDataTotals,
+  [RESET_CLIENT_INVOICE]: () => INITIAL_STATE,
+  [DELETE_CLIENT_INVOICE.SUCCESS]: () => INITIAL_STATE,
   [CONFIRM_INVOICE.SET]: (state, { payload: { data, payment } }) => ({
     ...state,
     data,
     payment,
   }),
-  [DELETE_INVOICE.SUCCESS]: () => INITIAL_STATE,
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

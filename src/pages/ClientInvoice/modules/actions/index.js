@@ -2,4 +2,4 @@ export * from './getClientInvoice';
 export * from './confirmInvoice';
 export * from './updateDataClientInvoice';
 export * from './resetInvoiceState';
-export * from './deleteInvoice';
+export * from './deleteClientInvoice';

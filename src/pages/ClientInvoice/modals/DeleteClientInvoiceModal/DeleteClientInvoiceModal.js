@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components';
 import { useHistory } from 'react-router';
 
-const DeleteInvoiceModal = ({
-  deleteInvoice,
+const DeleteClientInvoiceModal = ({
+  deleteClientInvoice,
   id,
   setShow,
-  providerId,
+  client,
   ...rest
 }) => {
   const history = useHistory();
@@ -16,14 +16,10 @@ const DeleteInvoiceModal = ({
     setShow(false);
   };
 
-  /**
-   * Send email to the client for change password
-   * @private
-   */
   const _handleSend = () => {
-    deleteInvoice(
+    deleteClientInvoice(
       id,
-      () => history.push(`/app/proveedores/${providerId}#Facturas`)
+      () => history.push(`/app/clientes/${client}`)
     );
     _close();
   };
@@ -52,13 +48,13 @@ const DeleteInvoiceModal = ({
   );
 };
 
-DeleteInvoiceModal.propTypes = {
+DeleteClientInvoiceModal.propTypes = {
   setShow: PropTypes.func,
   id: PropTypes.string.isRequired,
-  deleteInvoice: PropTypes.func.isRequired,
-  providerId: PropTypes.string,
+  deleteClientInvoice: PropTypes.func.isRequired,
+  client: PropTypes.string,
 };
 
-DeleteInvoiceModal.displayName = 'DeleteInvoiceModal';
-export const story = DeleteInvoiceModal;
-export default memo(DeleteInvoiceModal);
+DeleteClientInvoiceModal.displayName = 'DeleteInvoiceModal';
+export const story = DeleteClientInvoiceModal;
+export default memo(DeleteClientInvoiceModal);
