@@ -8,6 +8,7 @@ import { LoadingScreen, Page } from 'components';
 import Header from './Header';
 import { useStyles } from './ClientInvoice.styles';
 import ClientInvoiceCards from './ClientInvoiceCards';
+import DeliveryOrderInvoice from './DeliveryOrderInvoice';
 
 const ClientInvoice = ({
   getClientInvoice,
@@ -19,6 +20,8 @@ const ClientInvoice = ({
   totals,
   updateDataClientInvoice,
   createDeliveryOrder,
+  deliveryOrders,
+  nInvoice,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -28,6 +31,11 @@ const ClientInvoice = ({
   }, [idInvoice]);
 
   useEffect(() => () => resetClientInvoiceState(), []);
+
+  // eslint-disable-next-line no-unused-vars
+  const _showProductModal = (deliveryOrder, product) => {
+    // TODO
+  };
 
   if (!_id) return <LoadingScreen />;
 
@@ -48,6 +56,15 @@ const ClientInvoice = ({
           updateDataClientInvoice={updateDataClientInvoice}
         />
 
+        {deliveryOrders.map(deliveryOrder => (
+          <DeliveryOrderInvoice
+            key={deliveryOrder._id}
+            deliveryOrder={deliveryOrder}
+            isEditable={!nInvoice}
+            showEditProductModal={_showProductModal}
+          />
+        ))}
+
       </Container>
     </Page>
   );
@@ -63,6 +80,8 @@ ClientInvoice.propTypes = {
   totals: PropTypes.object.isRequired,
   updateDataClientInvoice: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
+  deliveryOrders: PropTypes.array.isRequired,
+  nInvoice: PropTypes.string,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';
