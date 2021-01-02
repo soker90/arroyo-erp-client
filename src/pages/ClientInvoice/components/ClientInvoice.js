@@ -18,6 +18,7 @@ const ClientInvoice = ({
   date,
   totals,
   updateDataClientInvoice,
+  createDeliveryOrder,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -36,6 +37,8 @@ const ClientInvoice = ({
         <Header
           client={client}
           nameClient={nameClient}
+          createDeliveryOrder={createDeliveryOrder}
+          id={idInvoice}
         />
 
         <ClientInvoiceCards
@@ -59,6 +62,7 @@ ClientInvoice.propTypes = {
   date: PropTypes.number,
   totals: PropTypes.object.isRequired,
   updateDataClientInvoice: PropTypes.func.isRequired,
+  createDeliveryOrder: PropTypes.func.isRequired,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';

@@ -38,7 +38,7 @@ const ClientInvoiceCards = ({
 
 ClientInvoiceCards.propTypes = {
   totals: PropTypes.object.isRequired,
-  date: PropTypes.number.isRequired,
+  date: PropTypes.number,
   nInvoice: PropTypes.string,
   id: PropTypes.string.isRequired,
   updateDataClientInvoice: PropTypes.func.isRequired,

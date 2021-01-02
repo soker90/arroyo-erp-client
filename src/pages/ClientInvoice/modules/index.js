@@ -4,7 +4,7 @@ import {
   GET_CLIENT_INVOICE,
   UPDATE_DATA,
   RESET_CLIENT_INVOICE,
-  DELETE_CLIENT_INVOICE,
+  DELETE_CLIENT_INVOICE, ADD_DELIVERY_ORDER,
 } from './types';
 
 const INITIAL_STATE = {
@@ -20,10 +20,27 @@ const INITIAL_STATE = {
   },
 };
 
-const setDataTotals = (state, { payload: { date, totals } }) => ({
+const setDataTotals = (state, {
+  payload: {
+    date,
+    totals,
+  },
+}) => ({
   ...state,
   ...(date && { date }),
   ...(totals && { totals }),
+});
+
+const addDeliveryOrder = state => ({
+  ...state,
+  deliveryOrders: [
+    ...state.deliveryOrders,
+    {
+      total: 0,
+      date: null,
+      products: [],
+    },
+  ],
 });
 
 const ACTION_HANDLERS = {
@@ -31,7 +48,13 @@ const ACTION_HANDLERS = {
   [UPDATE_DATA.SET]: setDataTotals,
   [RESET_CLIENT_INVOICE]: () => INITIAL_STATE,
   [DELETE_CLIENT_INVOICE.SUCCESS]: () => INITIAL_STATE,
-  [CONFIRM_INVOICE.SET]: (state, { payload: { data, payment } }) => ({
+  [ADD_DELIVERY_ORDER.SUCCESS]: addDeliveryOrder,
+  [CONFIRM_INVOICE.SET]: (state, {
+    payload: {
+      data,
+      payment,
+    },
+  }) => ({
     ...state,
     data,
     payment,
