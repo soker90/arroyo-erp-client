@@ -22,6 +22,8 @@ const ClientInvoice = ({
   createDeliveryOrder,
   deliveryOrders,
   nInvoice,
+  updateDOClientInvoice,
+  deleteDOClientInvoice,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -62,6 +64,9 @@ const ClientInvoice = ({
             deliveryOrder={deliveryOrder}
             isEditable={!nInvoice}
             showEditProductModal={_showProductModal}
+            updateDOClientInvoice={updateDOClientInvoice}
+            deleteDOClientInvoice={deleteDOClientInvoice}
+            id={_id}
           />
         ))}
 
@@ -82,6 +87,8 @@ ClientInvoice.propTypes = {
   createDeliveryOrder: PropTypes.func.isRequired,
   deliveryOrders: PropTypes.array.isRequired,
   nInvoice: PropTypes.string,
+  updateDOClientInvoice: PropTypes.func.isRequired,
+  deleteDOClientInvoice: PropTypes.func.isRequired,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';

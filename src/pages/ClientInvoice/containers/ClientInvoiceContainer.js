@@ -5,6 +5,8 @@ import {
   getClientInvoice,
   resetClientInvoiceState,
   updateDataClientInvoice,
+  updateDOClientInvoice,
+  deleteDOClientInvoice,
 } from '../modules/actions';
 
 const mapStateToProps = ({ clientInvoice }) => clientInvoice;
@@ -14,6 +16,8 @@ const mapDispatchToProps = {
   resetClientInvoiceState,
   updateDataClientInvoice,
   createDeliveryOrder,
+  updateDOClientInvoice,
+  deleteDOClientInvoice,
 };
 
 export default connect(

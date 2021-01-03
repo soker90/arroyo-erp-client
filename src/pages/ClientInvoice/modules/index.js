@@ -1,10 +1,12 @@
 import { createReducer, setPayload } from 'store/utils';
 import {
+  ADD_DELIVERY_ORDER,
   CONFIRM_INVOICE,
+  DELETE_CLIENT_INVOICE,
   GET_CLIENT_INVOICE,
-  UPDATE_DATA,
   RESET_CLIENT_INVOICE,
-  DELETE_CLIENT_INVOICE, ADD_DELIVERY_ORDER,
+  UPDATE_DATA,
+  DELETE_DELIVERY_ORDER,
 } from './types';
 
 const INITIAL_STATE = {
@@ -31,16 +33,9 @@ const setDataTotals = (state, {
   ...(totals && { totals }),
 });
 
-const addDeliveryOrder = state => ({
+const removeDeliveryOrder = (state, { payload: { id } }) => ({
   ...state,
-  deliveryOrders: [
-    ...state.deliveryOrders,
-    {
-      total: 0,
-      date: null,
-      products: [],
-    },
-  ],
+  deliveryOrders: state.deliveryOrders.filter(deliveryOrder => deliveryOrder._id !== id),
 });
 
 const ACTION_HANDLERS = {
@@ -48,7 +43,8 @@ const ACTION_HANDLERS = {
   [UPDATE_DATA.SET]: setDataTotals,
   [RESET_CLIENT_INVOICE]: () => INITIAL_STATE,
   [DELETE_CLIENT_INVOICE.SUCCESS]: () => INITIAL_STATE,
-  [ADD_DELIVERY_ORDER.SUCCESS]: addDeliveryOrder,
+  [ADD_DELIVERY_ORDER.SET]: setPayload,
+  [DELETE_DELIVERY_ORDER.SET]: removeDeliveryOrder,
   [CONFIRM_INVOICE.SET]: (state, {
     payload: {
       data,

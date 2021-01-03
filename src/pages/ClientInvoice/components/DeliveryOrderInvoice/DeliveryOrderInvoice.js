@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import uniqId from 'uniqid';
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useState } from 'react';
 
 import { DatePickerForm, TextEuro } from 'components';
 import { useStyles } from './DeliveryOrderInvoice.styles';
@@ -14,11 +16,33 @@ import ClientInvoiceProducts from '../ClientInvoiceProducts';
 const DeliveryOrderInvoice = ({
   deliveryOrder,
   isEditable,
+  updateDOClientInvoice,
+  deleteDOClientInvoice,
+  id,
 }) => {
   const classes = useStyles();
+  const [date, setDate] = useState(deliveryOrder.date);
 
   const _handleAddClick = () => {
 
+  };
+  /**
+   *
+   * Handle change picker
+   * @param {Date} date
+   * @private
+   */
+  const _handleChangePicker = newDate => {
+    setDate(newDate);
+    updateDOClientInvoice({
+      id,
+      deliveryOrderId: deliveryOrder._id,
+      date: newDate,
+    });
+  };
+
+  const _handleDeleteClick = () => {
+    deleteDOClientInvoice(id, deliveryOrder._id);
   };
 
   /**
@@ -33,6 +57,14 @@ const DeliveryOrderInvoice = ({
         onClick={_handleAddClick}
       >
         <AddIcon />
+      </IconButton>
+    </Tooltip>,
+    <Tooltip title='Eliminar albarán' key={uniqId()}>
+      <IconButton
+        size='small'
+        onClick={_handleDeleteClick}
+      >
+        <DeleteIcon />
       </IconButton>
     </Tooltip>,
   ] : false);
@@ -50,7 +82,13 @@ const DeliveryOrderInvoice = ({
       />
       <Divider />
       <CardContent>
-        <DatePickerForm value={deliveryOrder.date} size={3} label='Fecha' readOnly={!isEditable} />
+        <DatePickerForm
+          value={date}
+          size={3}
+          label='Fecha'
+          readOnly={!isEditable}
+          onChange={_handleChangePicker}
+        />
         <PerfectScrollbar>
           <ClientInvoiceProducts products={deliveryOrder.product} isEditable={isEditable} />
         </PerfectScrollbar>
@@ -62,7 +100,9 @@ const DeliveryOrderInvoice = ({
 DeliveryOrderInvoice.propTypes = {
   deliveryOrder: PropTypes.object.isRequired,
   isEditable: PropTypes.bool.isRequired,
-  // id: PropTypes.string.isRequired,
+  updateDOClientInvoice: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  deleteDOClientInvoice: PropTypes.func.isRequired,
 };
 
 DeliveryOrderInvoice.displayName = 'ClientInvoiceCards';

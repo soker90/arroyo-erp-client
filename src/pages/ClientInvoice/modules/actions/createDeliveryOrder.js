@@ -22,6 +22,16 @@ const _createDeliveryOrderSuccess = () => ({
 });
 
 /**
+ * Set action
+ * @param {Object} data
+ * @return {{payload: {data: Object}, type: string}}
+ * @private
+ */
+const _createDeliveryOrderSet = data => ({
+  type: ADD_DELIVERY_ORDER.SET,
+  payload: data,
+});
+/**
  * Error action
  * @param error
  * @returns {{type: string, error: _createDeliveryOrderError.props}}
@@ -41,9 +51,10 @@ export const createDeliveryOrder = id => async dispatch => {
   dispatch(_createDeliveryOrderRequest());
 
   try {
-    await axios.post(`client/invoices/${id}/deliveryOrder`);
+    const { data } = await axios.post(`client/invoices/${id}/deliveryOrder`);
 
     dispatch(_createDeliveryOrderSuccess());
+    dispatch(_createDeliveryOrderSet(data));
   } catch (error) {
     dispatch(_createDeliveryOrderError(error));
   }
