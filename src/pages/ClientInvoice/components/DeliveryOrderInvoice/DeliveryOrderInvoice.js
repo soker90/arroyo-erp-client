@@ -90,7 +90,7 @@ const DeliveryOrderInvoice = ({
           onChange={_handleChangePicker}
         />
         <PerfectScrollbar>
-          <ClientInvoiceProducts products={deliveryOrder.product} isEditable={isEditable} />
+          <ClientInvoiceProducts products={deliveryOrder.products} isEditable={isEditable} />
         </PerfectScrollbar>
       </CardContent>
     </Card>
