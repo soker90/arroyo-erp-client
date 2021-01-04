@@ -33,7 +33,7 @@ const DeliveryOrderStory = () => (
     match={{ params: { idDeliveryOrder: 'ggggg7777' } }}
     provider='ssssbbb33'
     nameProvider='La abuela'
-    date={Date.now()}
+    date={1609802700330}
     products={[
       {
         code: '2345',
