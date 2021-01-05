@@ -6,7 +6,7 @@ import { story as EditNoteModalView } from './EditNoteModalView';
 
 const NOTE = {
   _id: 'ddddddddddd',
-  date: Date.now(),
+  date: 1609802700330,
   concept: 'Un concepto',
   quantity: '12.33',
   price: '22.3',

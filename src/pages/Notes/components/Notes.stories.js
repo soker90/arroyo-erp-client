@@ -8,7 +8,7 @@ import { story as Notes } from './Notes';
 const NOTES = [
   {
     _id: 'unIDDD',
-    date: Date.now(),
+    date: 1609802700330,
     concept: 'Este es el concepto',
     quantity: '22€',
     price: '33€',
@@ -17,7 +17,7 @@ const NOTES = [
   },
   {
     _id: 'unIDDD1',
-    date: Date.now(),
+    date: 1609802700330,
     concept: 'Este es el concepto',
     quantity: '22€',
     price: '33€',
@@ -25,7 +25,7 @@ const NOTES = [
     clarification: 'Una observación',
   }, {
     _id: 'unIDDD2',
-    date: Date.now(),
+    date: 1609802700330,
     concept: 'Este es el concepto',
     quantity: '22€',
     price: '33€',

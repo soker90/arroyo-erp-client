@@ -29,8 +29,8 @@ export default {
 
 const InvoiceDataStory = () => (
   <InvoiceData
-    dateRegister={Date.now()}
-    dateInvoice={Date.now()}
+    dateRegister={1609802700330}
+    dateInvoice={1609802700330}
     nInvoice='2020/12'
     nOrder="12"
     className='clase'
