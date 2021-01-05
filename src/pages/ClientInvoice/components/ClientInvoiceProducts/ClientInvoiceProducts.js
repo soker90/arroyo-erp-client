@@ -14,8 +14,8 @@ import { useStyles } from './ClientInvoiceProducts.styles';
 const ClientInvoiceProducts = ({
   products,
   showDeleteProductModal,
-  showEditProductModal,
   isEditable,
+  onUpdate,
 }) => {
   const classes = useStyles();
 
@@ -31,11 +31,10 @@ const ClientInvoiceProducts = ({
   /**
    * Muesta el modal para editar el producto añadido
    * @param {Object} row
-   * @param {Number} index
    * @private
    */
-  const _showEditProductModal = (row, index) => {
-    showEditProductModal(row, index);
+  const _showEditProductModal = row => {
+    onUpdate(row);
   };
 
   return (
@@ -88,8 +87,8 @@ const ClientInvoiceProducts = ({
 ClientInvoiceProducts.propTypes = {
   products: PropTypes.array.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 ClientInvoiceProducts.displayName = 'ClientInvoiceProducts';

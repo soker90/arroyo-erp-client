@@ -1,12 +1,15 @@
 import { createReducer, setPayload } from 'store/utils';
 import {
   ADD_DELIVERY_ORDER,
+  ADD_PRODUCT,
   CONFIRM_INVOICE,
   DELETE_CLIENT_INVOICE,
+  DELETE_DELIVERY_ORDER,
+  DELETE_PRODUCT,
   GET_CLIENT_INVOICE,
   RESET_CLIENT_INVOICE,
   UPDATE_DATA,
-  DELETE_DELIVERY_ORDER,
+  UPDATE_PRODUCT,
 } from './types';
 
 const INITIAL_STATE = {
@@ -45,6 +48,9 @@ const ACTION_HANDLERS = {
   [DELETE_CLIENT_INVOICE.SUCCESS]: () => INITIAL_STATE,
   [ADD_DELIVERY_ORDER.SET]: setPayload,
   [DELETE_DELIVERY_ORDER.SET]: removeDeliveryOrder,
+  [ADD_PRODUCT.SET]: setPayload,
+  [UPDATE_PRODUCT.SET]: setPayload,
+  [DELETE_PRODUCT.SET]: setPayload,
   [CONFIRM_INVOICE.SET]: (state, {
     payload: {
       data,

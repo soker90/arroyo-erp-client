@@ -7,11 +7,12 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import uniqId from 'uniqid';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { DatePickerForm, TextEuro } from 'components';
 import { useStyles } from './DeliveryOrderInvoice.styles';
 import ClientInvoiceProducts from '../ClientInvoiceProducts';
+import ProductOrderModal from '../../modals/ProductOrderModal';
 
 const DeliveryOrderInvoice = ({
   deliveryOrder,
@@ -22,10 +23,15 @@ const DeliveryOrderInvoice = ({
 }) => {
   const classes = useStyles();
   const [date, setDate] = useState(deliveryOrder.date);
+  const [showProduct, setShowProduct] = useState(false);
 
-  const _handleAddClick = () => {
+  const _closeModal = useCallback(() => {
+    setShowProduct(false);
+  }, [setShowProduct]);
 
-  };
+  const _handleAddClick = useCallback(() => {
+    setShowProduct(true);
+  }, [setShowProduct]);
   /**
    *
    * Handle change picker
@@ -43,6 +49,10 @@ const DeliveryOrderInvoice = ({
 
   const _handleDeleteClick = () => {
     deleteDOClientInvoice(id, deliveryOrder._id);
+  };
+
+  const _handleUpdateClick = productData => {
+    setShowProduct(productData);
   };
 
   /**
@@ -70,30 +80,44 @@ const DeliveryOrderInvoice = ({
   ] : false);
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        title={(
-          <>
-            Albarán
-            <TextEuro num={deliveryOrder.total} className={classes.total} />
-          </>
-        )}
-        action={_getActions()}
-      />
-      <Divider />
-      <CardContent>
-        <DatePickerForm
-          value={date}
-          size={3}
-          label='Fecha'
-          readOnly={!isEditable}
-          onChange={_handleChangePicker}
+    <>
+      <Card className={classes.root}>
+        <CardHeader
+          title={(
+            <>
+              Albarán
+              <TextEuro num={deliveryOrder.total} className={classes.total} />
+            </>
+          )}
+          action={_getActions()}
         />
-        <PerfectScrollbar>
-          <ClientInvoiceProducts products={deliveryOrder.products} isEditable={isEditable} />
-        </PerfectScrollbar>
-      </CardContent>
-    </Card>
+        <Divider />
+        <CardContent>
+          <DatePickerForm
+            value={date}
+            size={3}
+            label='Fecha'
+            readOnly={!isEditable}
+            onChange={_handleChangePicker}
+          />
+          <PerfectScrollbar>
+            <ClientInvoiceProducts
+              invoice={id}
+              deliveryOrder={deliveryOrder._id}
+              products={deliveryOrder.products}
+              isEditable={isEditable}
+              onUpdate={_handleUpdateClick}
+            />
+          </PerfectScrollbar>
+        </CardContent>
+      </Card>
+      <ProductOrderModal
+        invoice={id}
+        deliveryOrder={deliveryOrder._id}
+        show={showProduct}
+        close={_closeModal}
+      />
+    </>
   );
 };
 
