@@ -39,6 +39,11 @@ const removeDeliveryOrder = (state, { payload: { id } }) => ({
   deliveryOrders: state.deliveryOrders.filter(deliveryOrder => deliveryOrder._id !== id),
 });
 
+const setNInvoice = (state, { payload: { nInvoice } }) => ({
+  ...state,
+  nInvoice,
+});
+
 const ACTION_HANDLERS = {
   [GET_CLIENT_INVOICE.SET]: setPayload,
   [UPDATE_DATA.SET]: setDataTotals,
@@ -49,16 +54,7 @@ const ACTION_HANDLERS = {
   [ADD_PRODUCT.SET]: setPayload,
   [UPDATE_PRODUCT.SET]: setPayload,
   [DELETE_PRODUCT.SET]: setPayload,
-  [CONFIRM_INVOICE.SET]: (state, {
-    payload: {
-      data,
-      payment,
-    },
-  }) => ({
-    ...state,
-    data,
-    payment,
-  }),
+  [CONFIRM_INVOICE.SET]: setNInvoice,
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

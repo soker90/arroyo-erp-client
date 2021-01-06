@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 
-import ConfirmInvoiceModal from './ConfirmInvoiceModal';
-import { confirmInvoice } from '../../modules/actions';
+import DeleteInvoiceModal from './DeleteInvoiceModal';
+import { deleteClientInvoice } from '../../modules/actions';
 
 const mapStateToProps = ({ clientInvoice: { _id } }) => ({
   id: _id,
 });
 
 const mapDispatchToProps = {
-  confirmInvoice,
+  deleteClientInvoice,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(ConfirmInvoiceModal);
+  mapDispatchToProps,
+)(DeleteInvoiceModal);

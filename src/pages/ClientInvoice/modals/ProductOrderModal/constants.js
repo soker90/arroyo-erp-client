@@ -7,11 +7,6 @@ export const INITIAL_STATE = {
 
 export const fields = [
   {
-    id: 'name',
-    label: 'Nombre',
-    autoFocus: true,
-  },
-  {
     id: 'weight',
     label: 'Peso / Cantidad',
     type: 'number',

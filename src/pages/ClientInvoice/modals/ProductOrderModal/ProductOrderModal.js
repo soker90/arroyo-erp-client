@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
-import { memo, useEffect, useReducer } from 'react';
+import {
+  memo, useEffect, useMemo, useReducer,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { InputForm, ModalGrid } from 'components';
+import { AutocompleteForm, InputForm, ModalGrid } from 'components';
 import { addNotification } from 'reducers/notifications';
 import { fields, INITIAL_STATE } from './constants';
 
@@ -15,6 +17,7 @@ const ProductOrderModal = ({
   invoice,
   deliveryOrder,
   updateProduct,
+  products,
   ...rest
 }) => {
   const dispatch = useDispatch();
@@ -22,10 +25,15 @@ const ProductOrderModal = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE,
   );
+  const productsList = useMemo(() => products.map(p => p.name), [products]);
 
   useEffect(() => {
     if (typeof show !== 'boolean') setState(show);
   }, [show]);
+
+  useEffect(() => () => {
+    setState(INITIAL_STATE);
+  }, []);
 
   /**
    * Handle event onChange input
@@ -80,6 +88,24 @@ const ProductOrderModal = ({
     if (key === 'Enter') _handleSubmit();
   };
 
+  const _handleChangeAutocomplete = value => {
+    setState({ name: value });
+    const selectedProduct = products.find(p => p.name === value);
+    if (selectedProduct) setState({ price: selectedProduct?.price });
+  };
+
+  const _renderAutocomplete = () => (
+    <AutocompleteForm
+      disableClearable
+      options={productsList}
+      value={state.name}
+      label='Nombre'
+      margin='normal'
+      onChange={_handleChangeAutocomplete}
+      autoFocus
+    />
+  );
+
   /**
    * Render a input element
    * @param {string} id
@@ -112,6 +138,7 @@ const ProductOrderModal = ({
       title={typeof show === 'boolean' ? 'Añadir producto' : `Editar ${show.name}`}
       {...rest}
     >
+      {_renderAutocomplete()}
       {fields.map(_renderInput)}
     </ModalGrid>
   );
@@ -124,6 +151,7 @@ ProductOrderModal.propTypes = {
   invoice: PropTypes.string.isRequired,
   deliveryOrder: PropTypes.string.isRequired,
   product: PropTypes.object,
+  products: PropTypes.array.isRequired,
 };
 
 ProductOrderModal.displayName = 'ProductOrderModal';

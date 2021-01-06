@@ -47,11 +47,11 @@ const _confirmInvoiceError = error => ({
  * Confirma la factura
  * @returns {function(...[*]=)}
  */
-export const confirmInvoice = (id, dataParams) => async dispatch => {
+export const confirmInvoice = id => async dispatch => {
   dispatch(_confirmInvoiceRequest());
 
   try {
-    const { data } = await axios.patch(`invoices/${id}/confirm`, dataParams);
+    const { data } = await axios.patch(`client/invoices/${id}/confirm`);
 
     dispatch(_confirmInvoiceSuccess());
     dispatch(_confirmInvoiceSet(data));

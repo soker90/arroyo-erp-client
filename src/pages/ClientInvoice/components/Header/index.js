@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Header } from 'components';
 import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather';
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal';
-import DeleteInvoiceModal from '../../modals/DeleteProductModal';
+import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal';
 
 const HeaderClientInvoice = ({
   client, nameClient, nInvoice, createDeliveryOrder, id,

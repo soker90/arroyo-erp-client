@@ -26,6 +26,7 @@ const ClientInvoice = ({
   nInvoice,
   updateDOClientInvoice,
   deleteDOClientInvoice,
+  getProducts,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -33,6 +34,10 @@ const ClientInvoice = ({
   useEffect(() => {
     if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice);
   }, [idInvoice]);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   useEffect(() => () => resetClientInvoiceState(), []);
 
@@ -46,6 +51,7 @@ const ClientInvoice = ({
           nameClient={nameClient}
           createDeliveryOrder={createDeliveryOrder}
           id={idInvoice}
+          nInvoice={nInvoice}
         />
 
         <ClientInvoiceCards
@@ -55,6 +61,7 @@ const ClientInvoice = ({
           date={date}
           id={idInvoice}
           updateDataClientInvoice={updateDataClientInvoice}
+          nInvoice={nInvoice}
         />
 
         {deliveryOrders.map(deliveryOrder => (
@@ -89,6 +96,7 @@ ClientInvoice.propTypes = {
   total: PropTypes.number.isRequired,
   taxBase: PropTypes.number.isRequired,
   iva: PropTypes.number.isRequired,
+  getProducts: PropTypes.func.isRequired,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';
