@@ -9,7 +9,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
  * como children del componente.
  */
 const AutocompleteForm = ({
-  size, label, onChange, ...rest
+  size,
+  label,
+  onChange,
+  autoFocus,
+  ...rest
 }) => (
   <Grid
     item
@@ -31,6 +35,7 @@ const AutocompleteForm = ({
       renderInput={params => (
         <TextField
           {...params}
+          autoFocus={autoFocus}
           label={label}
           InputProps={params.InputProps}
         />
@@ -52,6 +57,7 @@ AutocompleteForm.propTypes = {
   clearOnBlur: PropTypes.bool,
   selectOnFocus: PropTypes.bool,
   handleHomeEndKeys: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 };
 
 AutocompleteForm.defaultProps = {
@@ -60,6 +66,7 @@ AutocompleteForm.defaultProps = {
   clearOnBlur: true,
   selectOnFocus: true,
   handleHomeEndKeys: true,
+  autoFocus: false,
 };
 
 AutocompleteForm.displayName = 'AutocompleteForm';

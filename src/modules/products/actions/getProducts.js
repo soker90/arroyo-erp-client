@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {GET_PRODUCTS} from '../types';
+import { GET_PRODUCTS } from '../types';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getProductsRequest = () => ({type: GET_PRODUCTS.REQUEST});
+const _getProductsRequest = () => ({ type: GET_PRODUCTS.REQUEST });
 
 /**
  * Success action
@@ -44,7 +44,7 @@ export const getProducts = id => async dispatch => {
   dispatch(_getProductsRequest());
 
   try {
-    const {data} = await axios(`products?provider=${id}`);
+    const { data } = await axios(`products?provider=${id}`);
 
     dispatch(_getProductsSuccess());
     dispatch(_getProductsSet(data));
