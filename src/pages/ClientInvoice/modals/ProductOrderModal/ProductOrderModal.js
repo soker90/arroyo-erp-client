@@ -55,20 +55,12 @@ const ProductOrderModal = ({
         unit: state.unit,
       };
 
-      if (typeof show === 'boolean') {
-        updateProduct({
-          model,
-          invoice,
-          deliveryOrder,
-          product: show._id,
-        }, close);
-      } else {
-        createProduct({
-          model,
-          invoice,
-          deliveryOrder,
-        }, close);
-      }
+      (typeof show === 'boolean' ? createProduct : updateProduct)({
+        model,
+        invoice,
+        deliveryOrder,
+        product: show?._id,
+      }, close);
     } catch (e) {
       console.error(e);
       dispatch(addNotification({
@@ -114,7 +106,7 @@ const ProductOrderModal = ({
 
   return (
     <ModalGrid
-      show={show}
+      show={Boolean(show)}
       close={close}
       action={_handleSubmit}
       title={typeof show === 'boolean' ? 'Añadir producto' : `Editar ${show.name}`}
@@ -126,7 +118,7 @@ const ProductOrderModal = ({
 };
 
 ProductOrderModal.propTypes = {
-  show: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
+  show: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
   close: PropTypes.func.isRequired,
   createProduct: PropTypes.func.isRequired,
   invoice: PropTypes.string.isRequired,
@@ -134,6 +126,6 @@ ProductOrderModal.propTypes = {
   product: PropTypes.object,
 };
 
-ProductOrderModal.displayName = 'ProductClientModal';
+ProductOrderModal.displayName = 'ProductOrderModal';
 export const story = ProductOrderModal;
 export default memo(ProductOrderModal);

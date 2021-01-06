@@ -18,11 +18,9 @@ const INITIAL_STATE = {
   nameClient: '',
   deliveryOrders: [],
   date: null,
-  totals: {
-    total: 0,
-    iva: 0,
-    taxBase: 0,
-  },
+  total: 0,
+  iva: 0,
+  taxBase: 0,
 };
 
 const setDataTotals = (state, {

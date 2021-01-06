@@ -17,7 +17,9 @@ const ClientInvoice = ({
   client,
   resetClientInvoiceState,
   date,
-  totals,
+  total,
+  taxBase,
+  iva,
   updateDataClientInvoice,
   createDeliveryOrder,
   deliveryOrders,
@@ -34,11 +36,6 @@ const ClientInvoice = ({
 
   useEffect(() => () => resetClientInvoiceState(), []);
 
-  // eslint-disable-next-line no-unused-vars
-  const _showProductModal = (deliveryOrder, product) => {
-    // TODO
-  };
-
   if (!_id) return <LoadingScreen />;
 
   return (
@@ -52,7 +49,9 @@ const ClientInvoice = ({
         />
 
         <ClientInvoiceCards
-          totals={totals}
+          total={total}
+          taxBase={taxBase}
+          iva={iva}
           date={date}
           id={idInvoice}
           updateDataClientInvoice={updateDataClientInvoice}
@@ -63,7 +62,6 @@ const ClientInvoice = ({
             key={deliveryOrder._id}
             deliveryOrder={deliveryOrder}
             isEditable={!nInvoice}
-            showEditProductModal={_showProductModal}
             updateDOClientInvoice={updateDOClientInvoice}
             deleteDOClientInvoice={deleteDOClientInvoice}
             id={_id}
@@ -82,13 +80,15 @@ ClientInvoice.propTypes = {
   client: PropTypes.string,
   resetClientInvoiceState: PropTypes.func.isRequired,
   date: PropTypes.number,
-  totals: PropTypes.object.isRequired,
   updateDataClientInvoice: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   deliveryOrders: PropTypes.array.isRequired,
   nInvoice: PropTypes.string,
   updateDOClientInvoice: PropTypes.func.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  taxBase: PropTypes.number.isRequired,
+  iva: PropTypes.number.isRequired,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';

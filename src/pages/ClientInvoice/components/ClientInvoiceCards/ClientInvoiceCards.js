@@ -8,7 +8,9 @@ import ClientInvoiceTotals from './components/ClientInvoiceTotals';
 
 const ClientInvoiceCards = ({
   date,
-  totals,
+  total,
+  taxBase,
+  iva,
   id,
   nInvoice,
   updateDataClientInvoice,
@@ -28,7 +30,9 @@ const ClientInvoiceCards = ({
       </Grid>
       <Grid item xs={12} md={7}>
         <ClientInvoiceTotals
-          totals={totals}
+          total={total}
+          taxBase={taxBase}
+          iva={iva}
           isEditable={!nInvoice}
         />
       </Grid>
@@ -37,7 +41,9 @@ const ClientInvoiceCards = ({
 };
 
 ClientInvoiceCards.propTypes = {
-  totals: PropTypes.object.isRequired,
+  total: PropTypes.number.isRequired,
+  taxBase: PropTypes.number.isRequired,
+  iva: PropTypes.number.isRequired,
   date: PropTypes.number,
   nInvoice: PropTypes.string,
   id: PropTypes.string.isRequired,

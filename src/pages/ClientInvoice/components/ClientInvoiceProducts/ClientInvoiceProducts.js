@@ -13,19 +13,19 @@ import { useStyles } from './ClientInvoiceProducts.styles';
 
 const ClientInvoiceProducts = ({
   products,
-  showDeleteProductModal,
   isEditable,
   onUpdate,
+  onDelete,
 }) => {
   const classes = useStyles();
 
   /**
    * Muesta el modal de confirmación para borrar el elemento
-   * @param {Number} index
+   * @param {Object} row
    * @private
    */
-  const _showDeleteProductModal = (row, index) => {
-    showDeleteProductModal(index);
+  const _showDeleteProductModal = row => {
+    onDelete(row._id);
   };
 
   /**
@@ -47,7 +47,10 @@ const ClientInvoiceProducts = ({
         },
         {
           title: 'Cantidad / Peso',
-          render: ({ weight, unit }) => `${format.number(weight)} ${unit}`,
+          render: ({
+            weight,
+            unit,
+          }) => `${format.number(weight)} ${unit}`,
         },
         {
           title: 'Precio',
@@ -86,9 +89,9 @@ const ClientInvoiceProducts = ({
 
 ClientInvoiceProducts.propTypes = {
   products: PropTypes.array.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 ClientInvoiceProducts.displayName = 'ClientInvoiceProducts';

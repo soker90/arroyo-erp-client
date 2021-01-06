@@ -13,6 +13,7 @@ import { DatePickerForm, TextEuro } from 'components';
 import { useStyles } from './DeliveryOrderInvoice.styles';
 import ClientInvoiceProducts from '../ClientInvoiceProducts';
 import ProductOrderModal from '../../modals/ProductOrderModal';
+import DeleteProductModal from '../../modals/DeleteProductModal';
 
 const DeliveryOrderInvoice = ({
   deliveryOrder,
@@ -24,6 +25,7 @@ const DeliveryOrderInvoice = ({
   const classes = useStyles();
   const [date, setDate] = useState(deliveryOrder.date);
   const [showProduct, setShowProduct] = useState(false);
+  const [deleteId, setDeleteId] = useState(false);
 
   const _closeModal = useCallback(() => {
     setShowProduct(false);
@@ -32,6 +34,10 @@ const DeliveryOrderInvoice = ({
   const _handleAddClick = useCallback(() => {
     setShowProduct(true);
   }, [setShowProduct]);
+
+  const _closeDelete = useCallback(() => {
+    setDeleteId(false);
+  }, [setDeleteId]);
   /**
    *
    * Handle change picker
@@ -53,6 +59,10 @@ const DeliveryOrderInvoice = ({
 
   const _handleUpdateClick = productData => {
     setShowProduct(productData);
+  };
+
+  const _handleDeleteProductClick = productId => {
+    setDeleteId(productId);
   };
 
   /**
@@ -107,6 +117,7 @@ const DeliveryOrderInvoice = ({
               products={deliveryOrder.products}
               isEditable={isEditable}
               onUpdate={_handleUpdateClick}
+              onDelete={_handleDeleteProductClick}
             />
           </PerfectScrollbar>
         </CardContent>
@@ -116,6 +127,12 @@ const DeliveryOrderInvoice = ({
         deliveryOrder={deliveryOrder._id}
         show={showProduct}
         close={_closeModal}
+      />
+      <DeleteProductModal
+        invoice={id}
+        deliveryOrder={deliveryOrder._id}
+        deleteId={deleteId}
+        close={_closeDelete}
       />
     </>
   );

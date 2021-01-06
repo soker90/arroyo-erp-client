@@ -16,10 +16,7 @@ import { ItemCard } from 'components';
 import { itemsCard } from './utils';
 import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal';
 
-const ClientInvoiceTotals = ({
-  totals,
-  isEditable,
-}) => {
+const ClientInvoiceTotals = props => {
   const [showModal, setShowModal] = useState(false);
 
   /**
@@ -35,7 +32,7 @@ const ClientInvoiceTotals = ({
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (isEditable ? [
+  const _getActions = () => (props.isEditable ? [
     <Tooltip title='Editar' key={uniqId()}>
       <IconButton
         size='small'
@@ -53,8 +50,7 @@ const ClientInvoiceTotals = ({
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
-
-            {itemsCard(totals)
+            {itemsCard(props)
               .map(itemProps => (
                 <Grid item xs={12} md={4} key={uniqId()}>
                   <ItemCard {...itemProps} />
@@ -70,11 +66,9 @@ const ClientInvoiceTotals = ({
 };
 
 ClientInvoiceTotals.propTypes = {
-  totals: PropTypes.shape({
-    iva: PropTypes.number,
-    total: PropTypes.number,
-    taxBase: PropTypes.number,
-  }),
+  total: PropTypes.number.isRequired,
+  taxBase: PropTypes.number.isRequired,
+  iva: PropTypes.number.isRequired,
   isEditable: PropTypes.bool.isRequired,
 };
 
