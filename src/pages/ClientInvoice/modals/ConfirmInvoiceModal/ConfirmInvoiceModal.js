@@ -14,6 +14,7 @@ const ConfirmInvoiceModal = ({
 
   const _handleSend = () => {
     confirmInvoice(id, _close);
+    _close();
   };
 
   return (

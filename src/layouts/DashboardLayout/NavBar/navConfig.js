@@ -46,6 +46,11 @@ export const navConfig = [
             href: '/app/clientes/listado',
           },
           {
+            title: 'Libro',
+            icon: MenuBookIcon,
+            href: `/app/clientes/libro/${new Date().getFullYear()}`,
+          },
+          {
             title: 'Productos',
             icon: ShoppingCart,
             href: '/app/clientes/productos',
