@@ -24,10 +24,6 @@ export default {
   ],
 };
 
-/**
- * code, productName, quantity, price, amount, diff
- */
-
 const BookStory = () => (
   <ClientBook
     invoices={

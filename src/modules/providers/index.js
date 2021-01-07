@@ -18,6 +18,7 @@ const INITIAL_STATE = {
   billing: {
     trimesters: [],
   },
+  invoicesCount: 0,
 };
 
 const ACTION_HANDLERS = {

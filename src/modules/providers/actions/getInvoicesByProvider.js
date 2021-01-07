@@ -1,12 +1,13 @@
 import axios from 'axios';
-import {GET_INVOICES_BY_PROVIDER} from '../types';
+import { GET_INVOICES_BY_PROVIDER } from '../types';
+import { objectToParams } from '../../../utils';
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getInvoicesByProviderRequest = () => ({type: GET_INVOICES_BY_PROVIDER.REQUEST});
+const _getInvoicesByProviderRequest = () => ({ type: GET_INVOICES_BY_PROVIDER.REQUEST });
 
 /**
  * Success action
@@ -19,14 +20,16 @@ const _getInvoicesByProviderSuccess = () => ({
 
 /**
  * Set action
- * @param {Object} invoices
+ * @param {array} invoices
+ * @param {number} count
  * @return {{payload: {invoices: Object}, type: string}}
  * @private
  */
-const _getInvoicesByProviderSet = invoices => ({
+const _getInvoicesByProviderSet = ({ invoices, count }) => ({
   type: GET_INVOICES_BY_PROVIDER.SET,
   payload: {
     invoices,
+    invoicesCount: count,
   },
 });
 
@@ -42,14 +45,15 @@ const _getInvoicesByProviderError = error => ({
 });
 
 /**
- * Trae los proveedores
+ * Trae las facturas de los proveedores
+ * @param {Object} filters
  * @returns {function(...[*]=)}
  */
-export const getInvoicesByProvider = id => async dispatch => {
+export const getInvoicesByProvider = filters => async dispatch => {
   dispatch(_getInvoicesByProviderRequest());
 
   try {
-    const {data} = await axios(`invoices/short?provider=${id}`);
+    const { data } = await axios(`invoices/short${objectToParams(filters)}`);
 
     dispatch(_getInvoicesByProviderSuccess());
     dispatch(_getInvoicesByProviderSet(data));

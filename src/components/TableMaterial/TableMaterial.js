@@ -28,7 +28,7 @@ const TableMaterial = ({
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
     refresh({
-      offset: newPage,
+      offset: newPage * limit,
       limit,
     });
   };

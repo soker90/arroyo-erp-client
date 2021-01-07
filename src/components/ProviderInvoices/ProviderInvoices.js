@@ -7,13 +7,28 @@ import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
 
-const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
+const ProviderInvoices = ({
+  invoices,
+  getInvoicesByProvider,
+  idProvider,
+  invoicesCount,
+}) => {
   useEffect(() => {
-    if (idProvider) getInvoicesByProvider(idProvider);
+    if (idProvider) getInvoicesByProvider({ provider: idProvider });
   }, [getInvoicesByProvider, idProvider]);
 
   if (!idProvider) return <LoadingScreen />;
 
+  const _refresh = ({
+    offset,
+    limit,
+  }) => {
+    getInvoicesByProvider({
+      provider: idProvider,
+      offset,
+      limit,
+    });
+  };
   /**
    * Render payment type
    * @param {object} payment
@@ -56,6 +71,8 @@ const ProviderInvoices = ({ invoices, getInvoicesByProvider, idProvider }) => {
           to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
         },
       ]}
+      count={invoicesCount}
+      refresh={_refresh}
     />
   );
 };
@@ -64,6 +81,7 @@ ProviderInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
   getInvoicesByProvider: PropTypes.func.isRequired,
+  invoicesCount: PropTypes.number.isRequired,
 };
 
 ProviderInvoices.displayName = 'ProviderInvoices';
