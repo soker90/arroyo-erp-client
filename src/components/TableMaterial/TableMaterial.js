@@ -36,7 +36,7 @@ const TableMaterial = ({
   const handleLimitChange = event => {
     setLimit(event.target.value);
     refresh({
-      offset: page,
+      offset: page * event.target.value,
       limit: event.target.value,
     });
   };
