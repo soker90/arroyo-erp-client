@@ -32,6 +32,7 @@ export const INVOICE_COMMON_CONCEPTS = [
 ];
 
 export const EXPENSE_CONCEPTS = [
+  ' ',
   CONCEPT.ABONO,
   CONCEPT.AGUA,
   CONCEPT.ALQUILER,
@@ -53,6 +54,7 @@ export const EXPENSE_CONCEPTS = [
 ];
 
 export const COLUMNS_INVOICES = {
+  '--- SELECCIONAR ---': ' ',
   COMPRAS: 'COMPRAS',
   AUTONOMOS: 'AUTONOMOS',
   SALARIO: 'AUTONOMOS',

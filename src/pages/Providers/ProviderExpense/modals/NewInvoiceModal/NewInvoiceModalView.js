@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   concept: EXPENSE_CONCEPTS[0],
   type: TYPE_PAYMENT[0],
   paymentDate: null,
-  bookColumn: COLUMNS_INVOICES.COMPRAS,
+  bookColumn: '',
 };
 
 const NewInvoiceModal = ({

@@ -20,7 +20,7 @@ const BodyTable = ({
           hover
           key={uniqId()}
           selected={isSelected}
-          className={rowClass?.(row)}
+          className={rowClass?.(row) || ''}
         >
           {Boolean(multiSelect) && (
             <TableCell padding='checkbox'>
