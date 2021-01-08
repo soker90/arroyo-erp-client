@@ -80,7 +80,7 @@ const DeliveryOrderProducts = ({
         },
         {
           title: 'Precio',
-          render: ({ price }) => <TextEuro num={price} />,
+          render: ({ price }) => <TextEuro num={price} decimals={3} />,
         },
         {
           title: 'Base imponible',

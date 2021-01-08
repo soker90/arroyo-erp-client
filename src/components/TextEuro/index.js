@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { useStyles } from './styles';
 
 const TextEuro = ({
-  num, Component, className, ...rest
+  num, Component, className, decimals, ...rest
 }) => {
   const classes = useStyles();
   const getColorAmount = (num < 0 ? classes.red : '');
@@ -15,7 +15,7 @@ const TextEuro = ({
       className={clsx(getColorAmount, className)}
       {...rest}
     >
-      {format.euro(num)}
+      {format.euro(num, { maximumFractionDigits: decimals })}
     </Component>
   );
 };
@@ -24,10 +24,12 @@ TextEuro.propTypes = {
   num: PropTypes.number,
   Component: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
+  decimals: PropTypes.number,
 };
 
 TextEuro.defaultProps = {
   Component: 'span',
+  decimals: 2,
 };
 
 TextEuro.displayName = 'TextEuro';
