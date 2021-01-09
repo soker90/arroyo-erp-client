@@ -10,6 +10,7 @@ import clientInvoice from 'pages/ClientInvoice/modules';
 import clients from 'pages/Clients/modules';
 import dashboard from 'pages/Dashboard/modules';
 import deliveryOrders from 'pages/DeliveryOrder/modules';
+import doCount from 'pages/reports/DeliveryOrders/modules';
 import expenses from 'pages/Expenses/modules';
 import invoice from 'pages/Invoice/modules';
 import notes from 'pages/Notes/modules';
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   clients,
   dashboard,
   deliveryOrders,
+  doCount,
   expenses,
   invoice,
   notes,

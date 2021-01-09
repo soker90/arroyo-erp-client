@@ -5,6 +5,9 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+
+const year = new Date().getFullYear();
 
 export const navConfig = [
   {
@@ -23,7 +26,12 @@ export const navConfig = [
       {
         title: 'Facturación',
         icon: DescriptionIcon,
-        href: `/app/informes/facturacion/${new Date().getFullYear()}`,
+        href: `/app/informes/facturacion/${year}`,
+      },
+      {
+        title: 'Albaranes',
+        icon: ReceiptIcon,
+        href: `/app/informes/albaranes/${year}`,
       },
     ],
   },
@@ -48,7 +56,7 @@ export const navConfig = [
           {
             title: 'Libro',
             icon: MenuBookIcon,
-            href: `/app/clientes/libro/${new Date().getFullYear()}`,
+            href: `/app/clientes/libro/${year}`,
           },
           {
             title: 'Productos',
@@ -65,7 +73,7 @@ export const navConfig = [
       {
         title: 'Libro',
         icon: MenuBookIcon,
-        href: `/app/libro/${new Date().getFullYear()}`,
+        href: `/app/libro/${year}`,
       },
       {
         title: 'Pagos',

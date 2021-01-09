@@ -31,24 +31,34 @@ const routesConfig = [
         component: () => <Redirect to='/app/informes/inicio' />,
       },
       {
-        exact: true,
-        path: '/app/informes/inicio',
-        component: lazy(() => import('pages/Dashboard')),
-      },
-      {
-        exact: true,
         path: '/app/informes',
-        component: () => <Redirect to='/app/informes/inicio' />,
-      },
-      {
-        exact: true,
-        path: '/app/informes/productos',
-        component: lazy(() => import('pages/reports/ProductsReport')),
-      },
-      {
-        exact: true,
-        path: '/app/informes/facturacion/:year',
-        component: lazy(() => import('pages/reports/Billing')),
+        routes: [
+          {
+            exact: true,
+            path: '/app/informes/inicio',
+            component: lazy(() => import('pages/Dashboard')),
+          },
+          {
+            exact: true,
+            path: '/app/informes',
+            component: () => <Redirect to='/app/informes/inicio' />,
+          },
+          {
+            exact: true,
+            path: '/app/informes/productos',
+            component: lazy(() => import('pages/reports/ProductsReport')),
+          },
+          {
+            exact: true,
+            path: '/app/informes/facturacion/:year',
+            component: lazy(() => import('pages/reports/Billing')),
+          },
+          {
+            exact: true,
+            path: '/app/informes/albaranes/:year',
+            component: lazy(() => import('pages/reports/DeliveryOrders')),
+          },
+        ],
       },
       {
         exact: true,
