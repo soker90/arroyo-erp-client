@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
 import PropTypes from 'prop-types';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather';
 
 import { Header } from 'components';
-import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather';
+import { downloadFile } from 'utils';
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal';
 import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal';
 
@@ -12,6 +14,11 @@ const HeaderClientInvoice = ({
 }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const _handleClickDownload = () => () => downloadFile(
+    `client/invoices/export/${id}`,
+    `Factura ${nInvoice} - ${nameClient}.ods`,
+  );
 
   const _handleClickNewOrder = () => {
     createDeliveryOrder(id);
@@ -31,6 +38,12 @@ const HeaderClientInvoice = ({
         title='Factura'
         description=''
         buttons={[{
+          onClick: _handleClickDownload(),
+          color: 'primary',
+          Icon: GetAppIcon,
+          label: 'Descargar',
+          variant: 'contained',
+        }, {
           variant: 'outlined',
           color: 'default',
           onClick: () => setShowDeleteModal(true),

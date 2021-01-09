@@ -28,12 +28,9 @@ const ProductOrderModal = ({
   const productsList = useMemo(() => products.map(p => p.name), [products]);
 
   useEffect(() => {
-    if (typeof show !== 'boolean') setState(show);
+    if (!show) setState(INITIAL_STATE);
+    else if (typeof show !== 'boolean') setState(show);
   }, [show]);
-
-  useEffect(() => () => {
-    setState(INITIAL_STATE);
-  }, []);
 
   /**
    * Handle event onChange input
