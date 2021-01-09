@@ -20,6 +20,8 @@ const Clients = ({ clients, getClients }) => {
     getClients();
   }, [getClients]);
 
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`;
+
   /**
    * Oculta el modal de crear proveedor
    * @type {function(): void}
@@ -57,9 +59,10 @@ const Clients = ({ clients, getClients }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: ({ _id }) => `${BASE_PATH}/clientes/${_id}`,
+                  to: _hrefRow,
                 },
               ]}
+              href={_hrefRow}
             />
           </Box>
         </Container>

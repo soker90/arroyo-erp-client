@@ -16,7 +16,7 @@ const DeliveryOrdersTable = ({ doCount }) => {
       columns={[
         {
           title: 'Proveedor',
-          field: 'nameProvider',
+          field: 'name',
         },
         {
           title: 'Trimestre 1',

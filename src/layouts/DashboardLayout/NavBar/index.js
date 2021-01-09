@@ -3,16 +3,13 @@
 import { useEffect } from 'react';
 import { matchPath, useLocation } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Box,
   Divider,
   Drawer,
   Hidden,
-  Link,
   List,
   ListSubheader,
   makeStyles,
@@ -105,7 +102,6 @@ const useStyles = makeStyles(() => ({
 function NavBar({ openMobile, onMobileClose }) {
   const classes = useStyles();
   const location = useLocation();
-  const { user } = useSelector(state => state.account);
 
   useEffect(() => {
     if (openMobile && onMobileClose) onMobileClose();
@@ -133,35 +129,25 @@ function NavBar({ openMobile, onMobileClose }) {
         </Hidden>
         <Box p={2}>
           <Box
-            display='flex'
-            justifyContent='center'
+            p={2}
+            borderRadius='borderRadius'
+            bgcolor='background.dark'
           >
-            <RouterLink to='/app/account'>
-              <Avatar
-                alt='User'
-                className={classes.avatar}
-                src={null}
-              />
-            </RouterLink>
-          </Box>
-          <Box
-            mt={2}
-            textAlign='center'
-          >
-            <Link
-              component={RouterLink}
-              to='/app/account'
-              variant='h5'
-              color='textPrimary'
-              underline='none'
-            >
-              {user}
-            </Link>
             <Typography
-              variant='body2'
-              color='textSecondary'
+              variant='h6'
+              color='textPrimary'
             >
-              {user.bio}
+              {format.dayOfWeek(new Date())}
+              {', '}
+              {format.date(new Date())}
+            </Typography>
+            <Typography
+              variant='h6'
+              color='textPrimary'
+            >
+              Semana
+              {' '}
+              {format.weekOfYear(new Date())}
             </Typography>
           </Box>
         </Box>
@@ -185,31 +171,6 @@ function NavBar({ openMobile, onMobileClose }) {
               })}
             </List>
           ))}
-        </Box>
-        <Divider />
-        <Box p={2}>
-          <Box
-            p={2}
-            borderRadius='borderRadius'
-            bgcolor='background.dark'
-          >
-            <Typography
-              variant='h6'
-              color='textPrimary'
-            >
-              {format.dayOfWeek(new Date())}
-              {', '}
-              {format.date(new Date())}
-            </Typography>
-            <Typography
-              variant='h6'
-              color='textPrimary'
-            >
-              Semana
-              {' '}
-              {format.weekOfYear(new Date())}
-            </Typography>
-          </Box>
         </Box>
       </PerfectScrollbar>
     </Box>
