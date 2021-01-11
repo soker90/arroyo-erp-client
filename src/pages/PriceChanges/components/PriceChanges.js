@@ -11,20 +11,21 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { BASE_PATH } from 'constants/index';
-import {
-  Header, Page, TableMaterial, TextEuro,
-} from 'components';
-import { format } from 'utils';
+import { Page, TableMaterial, TextEuro } from 'components';
+import { addSelectedToState, format, removeSelectedFromState } from 'utils';
 import DeletePriceChangeModal from '../modals/DeletePriceChangeModal';
 import { useStyles } from './PriceChanges.styles';
+import Header from './Header';
 
 const PriceChanges = ({
   priceChanges,
   getPriceChanges,
   changeReadPrice,
+  sendTelegramPrices,
 }) => {
   const classes = useStyles();
   const [deleteId, setDeleteId] = useState(undefined);
+  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     getPriceChanges();
@@ -43,6 +44,17 @@ const PriceChanges = ({
     setDeleteId(_id);
   };
 
+  /**
+   * Toggle checkbox
+   * @param {String} id
+   * @param {Object} event
+   * @private
+   */
+  const _handleChangeCheckbox = (event, { _id }) => {
+    const func = selected.includes(_id) ? removeSelectedFromState : addSelectedToState;
+    func(_id, selected, setSelected);
+  };
+
   const _close = useCallback(() => {
     setDeleteId(undefined);
   }, [setDeleteId]);
@@ -51,7 +63,7 @@ const PriceChanges = ({
     <>
       <Page className={classes.root} title='Cambio de precios'>
         <Container maxWidth={false}>
-          <Header title='Cambio de precios' />
+          <Header selected={selected} sendTelegramPrices={sendTelegramPrices} />
           <TableMaterial
             className={classes.table}
             columns={[
@@ -99,6 +111,8 @@ const PriceChanges = ({
               },
             ]}
             rowClass={_rowStyle}
+            multiSelect={row => selected.includes(row._id)}
+            onSelected={_handleChangeCheckbox}
           />
         </Container>
       </Page>
@@ -110,6 +124,7 @@ const PriceChanges = ({
 PriceChanges.propTypes = {
   priceChanges: PropTypes.array.isRequired,
   getPriceChanges: PropTypes.func.isRequired,
+  sendTelegramPrices: PropTypes.func.isRequired,
 };
 
 PriceChanges.displayName = 'PriceChanges';
