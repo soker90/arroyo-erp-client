@@ -63,7 +63,11 @@ const PriceChanges = ({
     <>
       <Page className={classes.root} title='Cambio de precios'>
         <Container maxWidth={false}>
-          <Header selected={selected} sendTelegramPrices={sendTelegramPrices} />
+          <Header
+            selected={selected}
+            sendTelegramPrices={sendTelegramPrices}
+            setSelected={setSelected}
+          />
           <TableMaterial
             className={classes.table}
             columns={[

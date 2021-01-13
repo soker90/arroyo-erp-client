@@ -2,7 +2,9 @@ import { createReducer, setPayload } from 'store/utils';
 import {
   GET_PRICE_CHANGES,
   CHANGE_READ_PRICE,
-  DELETE_PRICE_CHANGES, PRICE_CHANGES_UNREAD_COUNT,
+  DELETE_PRICE_CHANGES,
+  PRICE_CHANGES_UNREAD_COUNT,
+  DELETE_MANY_PRICE_CHANGES,
 } from './types';
 
 const INITIAL_STATE = {
@@ -15,6 +17,7 @@ const ACTION_HANDLERS = {
   [CHANGE_READ_PRICE.SET]: setPayload,
   [DELETE_PRICE_CHANGES.SET]: setPayload,
   [PRICE_CHANGES_UNREAD_COUNT.SET]: setPayload,
+  [DELETE_MANY_PRICE_CHANGES.SET]: setPayload,
 };
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS);

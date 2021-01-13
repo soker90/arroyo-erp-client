@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import DeletePriceChangeModal from './DeletePriceChangeModal';
-import { deletePriceChanges } from '../../modules/actions';
+import { deletePriceChanges, deleteManyChangesPrice } from '../../modules/actions';
 
 const mapDispatchToProps = {
   deletePriceChanges,
+  deleteManyChangesPrice,
 };
 
 export default connect(

@@ -15,6 +15,10 @@ const _sendTelegramPricesRequest = () => ({ type: SEND_PRICES_TELEGRAM.REQUEST }
  */
 const _sendTelegramPricesSuccess = () => ({
   type: SEND_PRICES_TELEGRAM.SUCCESS,
+  payload: {
+    level: 'success',
+    message: 'Precios enviados',
+  },
 });
 
 /**
