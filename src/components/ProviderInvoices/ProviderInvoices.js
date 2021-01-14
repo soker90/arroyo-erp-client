@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
@@ -37,6 +39,14 @@ const ProviderInvoices = ({
    */
   const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null);
 
+  /**
+   * Render mail icon
+   * @param {boolean | undefined} mailSend
+   * @return {JSX.Element|boolean}
+   * @private
+   */
+  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false);
+
   return idProvider && (
     <TableMaterial
       columns={[
@@ -60,6 +70,10 @@ const ProviderInvoices = ({
         {
           title: 'Pago',
           render: _renderPaymentType,
+        },
+        {
+          title: 'Por correo',
+          render: _renderEmail,
         },
       ]}
       data={invoices}
