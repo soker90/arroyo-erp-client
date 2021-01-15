@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -31,6 +31,10 @@ const InvoiceData = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const classes = useStyles();
+
+  useEffect(() => {
+    if (id && !nInvoice) setShowModal(true);
+  }, [id]);
 
   const _handleEditClick = () => {
     setShowModal(true);
