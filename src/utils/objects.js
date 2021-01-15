@@ -9,9 +9,9 @@ export const objectToParams = (objectData, querySymbol = true) => {
   let params = '';
   Object.entries(objectData)
     .forEach((item, index) => {
-      if (item?.[1] !== undefined) {
+      if (item?.[1] !== undefined && item?.[1] !== '') {
         params += (index !== 0) ? '&' : '';
-        params += (index === 0 && querySymbol) ? '?' : '&';
+        if (index === 0) params += querySymbol ? '?' : '&';
         params += `${item[0]}=${encodeURIComponent(item[1])}`;
       }
     }, '');
