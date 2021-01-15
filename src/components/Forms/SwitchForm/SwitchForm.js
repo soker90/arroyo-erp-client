@@ -4,7 +4,6 @@ import { FormControlLabel, Grid, Switch } from '@material-ui/core';
 
 const SwitchForm = ({
   size,
-  children,
   label,
   ...rest
 }) => (
@@ -32,7 +31,6 @@ SwitchForm.propTypes = {
   onChange: PropTypes.func,
   color: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
 SwitchForm.defaultProps = {

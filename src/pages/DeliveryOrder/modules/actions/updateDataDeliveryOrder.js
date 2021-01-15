@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import axios from 'axios';
+import { format } from 'utils';
 import { UPDATE_DATA_DELIVERY_ORDER } from '../types';
 
 /**
@@ -38,7 +39,7 @@ const _updateDateDeliveryOrderSet = ({ data }) => ({
 /**
  * Error action for updateDateDeliveryOrder
  * @param error
- * @returns {{type: string, error: _createDeliveryOrderError.props}}
+ * @returns {{type: string, error: _updateDataDeliveryOrderError.props}}
  * @private
  */
 const _updateDataDeliveryOrderError = error => ({
@@ -57,7 +58,7 @@ const _updateDataDeliveryOrderError = error => ({
 export const updateDataDeliveryOrder = (id, { date, note, totals }, callback) => async dispatch => {
   dispatch(_updateDataDeliveryOrderRequest());
   const data = {
-    ...(date && { date: new Date(date).getTime() }),
+    ...(date && { date: format.dateToSend(date) }),
     ...(note !== undefined && { note }),
     ...(totals && { totals }),
   };

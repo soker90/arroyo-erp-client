@@ -45,10 +45,16 @@ const SearchForm = ({
    * Handle event save button
    * @private
    */
-  const _handleSubmit = () => {
+  const _handleSubmit = date => {
+    const {
+      total, dateInvoice, numCheque, nInvoice,
+    } = state;
     getInvoices(year, {
-      ...state,
-      dateInvoice: format.dateToSend(state.dateInvoice),
+      ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
+      ...(date && { dateInvoice: format.dateToSend(date) }),
+      ...(total && { total }),
+      ...(numCheque && { numCheque }),
+      ...(nInvoice && { nInvoice }),
     });
   };
 
@@ -68,7 +74,7 @@ const SearchForm = ({
    */
   const _handleChangePicker = date => {
     setState({ dateInvoice: date });
-    _handleSubmit();
+    _handleSubmit(date);
   };
 
   /**
