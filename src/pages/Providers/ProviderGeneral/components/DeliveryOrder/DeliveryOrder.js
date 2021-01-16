@@ -23,7 +23,7 @@ const DeliveryOrder = ({
   const [showInInvoices, setShowInInvoices] = useState(false);
 
   useEffect(() => {
-    if (idProvider) getDeliveryOrders(idProvider);
+    if (idProvider) getDeliveryOrders({ provider: idProvider });
   }, [getDeliveryOrders, idProvider]);
 
   const _handleShowClick = () => {
@@ -53,7 +53,11 @@ const DeliveryOrder = ({
       </Button>
 
       {showInInvoices && (
-        <InInvoices deliveryOrders={inInvoices} />
+        <InInvoices
+          deliveryOrders={inInvoices}
+          idProvider={idProvider}
+          getDeliveryOrders={getDeliveryOrders}
+        />
       )}
     </>
   );

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { objectToParams } from 'utils';
+
 import { GET_DELIVERY_ORDERS } from '../types';
 
 /**
@@ -43,15 +45,15 @@ const _getDeliveryOrdersError = error => ({
 });
 
 /**
- * Trae los productos
- * @param {String} id
+ * Trae los albaranes
+ * @param {Object} filter
  * @returns {function(...[*]=)}
  */
-export const getDeliveryOrders = id => async dispatch => {
+export const getDeliveryOrders = filter => async dispatch => {
   dispatch(_getDeliveryOrdersRequest());
 
   try {
-    const { data } = await axios(`deliveryorders?provider=${id}`);
+    const { data } = await axios(`deliveryorders${objectToParams(filter)}`);
 
     dispatch(_getDeliveryOrdersSuccess());
     dispatch(_getDeliveryOrdersSet(data));

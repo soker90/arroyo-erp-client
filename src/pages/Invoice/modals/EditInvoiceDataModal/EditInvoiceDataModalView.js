@@ -177,7 +177,7 @@ const EditInvoiceDataModalView = ({
     <ModalGrid
       show={show}
       setShow={setShow}
-      title='Editar datos de la factuar'
+      title='Editar datos de la factura'
       action={_handleSubmit}
     >
       {_renderInput('nInvoice', 'Nº Factura')}

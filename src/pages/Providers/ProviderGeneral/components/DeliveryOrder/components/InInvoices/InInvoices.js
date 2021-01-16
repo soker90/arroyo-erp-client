@@ -3,13 +3,30 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { TextEuro, TableMaterial } from 'components';
+import { TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
 import { useStyles } from './InInvoices.styles';
 
-const InInvoices = ({ deliveryOrders: { data, count } }) => {
+const InInvoices = ({
+  deliveryOrders: {
+    data,
+    count,
+  },
+  idProvider,
+  getDeliveryOrders,
+}) => {
   const classes = useStyles();
+  const _refresh = ({
+    offset,
+    limit,
+  }) => {
+    getDeliveryOrders({
+      provider: idProvider,
+      offset,
+      limit,
+    });
+  };
 
   return (
     <TableMaterial
@@ -40,9 +57,7 @@ const InInvoices = ({ deliveryOrders: { data, count } }) => {
           to: ({ _id }) => `${BASE_PATH}/albaranes/${_id}`,
         },
       ]}
-      refresh={() => {
-        // TODO No implementado
-      }}
+      refresh={_refresh}
     />
   );
 };
@@ -53,6 +68,8 @@ InInvoices.propTypes = {
     count: PropTypes.number,
     note: PropTypes.string,
   }).isRequired,
+  getDeliveryOrders: PropTypes.func.isRequired,
+  idProvider: PropTypes.string.isRequired,
 };
 
 InInvoices.displayName = 'InInvoices';
