@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import {
   DatePickerForm,
-  InputForm,
+  InputForm, SwitchForm,
 } from 'components';
 import { format } from 'utils';
 import { useStyles } from './SearchForm.styles';
@@ -27,27 +27,12 @@ const SearchForm = ({
   );
 
   /**
-   * Handle event onChange input
-   * @param {String} name
-   * @param {String} value
-   * @private
-   */
-  const _handleChange = ({
-    target: {
-      name,
-      value,
-    },
-  }) => {
-    setState({ [name]: value });
-  };
-
-  /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = date => {
     const {
-      total, dateInvoice, numCheque, nInvoice,
+      total, dateInvoice, numCheque, nInvoice, nameProvider, expenses,
     } = state;
     getInvoices(year, {
       ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
@@ -55,7 +40,26 @@ const SearchForm = ({
       ...(total && { total }),
       ...(numCheque && { numCheque }),
       ...(nInvoice && { nInvoice }),
+      ...(nameProvider && { nameProvider }),
+      ...(expenses && { expenses }),
     });
+  };
+
+  /**
+   * Handle event onChange input
+   * @param {String} name
+   * @param {String} value
+   * @param {Boolean} checked
+   * @private
+   */
+  const _handleChange = ({
+    target: {
+      name,
+      value,
+      checked,
+    },
+  }) => {
+    setState({ [name]: checked ?? value });
   };
 
   /**
@@ -97,7 +101,7 @@ const SearchForm = ({
       name={id}
       label={label}
       onKeyPress={_handleKeyPress}
-      size={3}
+      size={2}
       {...options}
     />
   );
@@ -118,6 +122,14 @@ const SearchForm = ({
             onAccept={_handleChangePicker}
           />
           {fields.map(_renderInput)}
+          <SwitchForm
+            checked={state.expenses}
+            onChange={_handleChange}
+            name='expenses'
+            color='primary'
+            label='Gastos'
+            size={1}
+          />
         </Grid>
       </CardContent>
     </Card>

@@ -3,6 +3,8 @@ export const INITIAL_STATE = {
   numCheque: '',
   dateInvoice: null,
   nInvoice: '',
+  nameProvider: '',
+  expenses: false,
 };
 
 export const fields = [
@@ -18,5 +20,9 @@ export const fields = [
   {
     id: 'numCheque',
     label: 'Pagaré',
+  },
+  {
+    id: 'nameProvider',
+    label: 'Proveedor',
   },
 ];
