@@ -59,7 +59,8 @@ const SearchForm = ({
       checked,
     },
   }) => {
-    setState({ [name]: checked ?? value });
+    const newValue = name === 'expenses' ? checked : value;
+    setState({ [name]: newValue });
   };
 
   /**
@@ -116,7 +117,7 @@ const SearchForm = ({
         <Grid spacing={3} container>
           <DatePickerForm
             clearable
-            size={3}
+            size={2}
             label='Fecha factura'
             value={state.dateInvoice}
             onAccept={_handleChangePicker}
@@ -128,7 +129,7 @@ const SearchForm = ({
             name='expenses'
             color='primary'
             label='Gastos'
-            size={1}
+            size={2}
           />
         </Grid>
       </CardContent>
