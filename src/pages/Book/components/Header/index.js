@@ -3,19 +3,38 @@ import PropTypes from 'prop-types';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import { NavLink } from 'react-router-dom';
 
 import { Header } from 'components';
-import { NavLink } from 'react-router-dom';
-import { downloadFile } from 'utils';
+import { downloadFile, format, objectToParams } from 'utils';
 
-const HeaderBook = ({ year }) => {
+const HeaderBook = ({ year, filter }) => {
+  const _getFilter = month => {
+    const {
+      dateInvoice, total, numCheque, nInvoice, nameProvider, expenses,
+    } = filter;
+
+    const filterParams = {
+      ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
+      ...(total && { total }),
+      ...(numCheque && { numCheque }),
+      ...(nInvoice && { nInvoice }),
+      ...(nameProvider && { nameProvider }),
+      ...(expenses && { expenses }),
+      year,
+      ...(month && { month }),
+    };
+
+    return objectToParams(filterParams);
+  };
+
   const _handleClickDownload = () => {
-    downloadFile(`invoices/export/${year}`, `Libro ${year}.ods`);
+    downloadFile(`invoices/export${_getFilter()}`, `Libro ${year}.ods`);
   };
 
   const _handleClickDownloadTrimester = month => () => {
     const nTrimester = (month + 2) / 3;
-    downloadFile(`invoices/export/${year}/${month}`, `Libro ${year} Trimestre ${nTrimester}.ods`);
+    downloadFile(`invoices/export${_getFilter(month)}`, `Libro ${year} Trimestre ${nTrimester}.ods`);
   };
 
   return (
@@ -78,6 +97,7 @@ const HeaderBook = ({ year }) => {
 
 HeaderBook.propTypes = {
   year: PropTypes.number.isRequired,
+  filter: PropTypes.object.isRequired,
 };
 
 HeaderBook.displayName = 'HeaderBook';

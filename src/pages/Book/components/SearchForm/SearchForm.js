@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useReducer, memo } from 'react';
+import { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -8,35 +8,30 @@ import {
   Divider,
   CardHeader,
 } from '@material-ui/core';
+
 import {
   DatePickerForm,
   InputForm, SwitchForm,
 } from 'components';
 import { format } from 'utils';
+
 import { useStyles } from './SearchForm.styles';
-import { fields, INITIAL_STATE } from '../../constans';
+import { fields } from '../../constans';
 
 const SearchForm = ({
   getInvoices,
   year,
+  state,
+  setState,
 }) => {
   const classes = useStyles();
-  const [state, setState] = useReducer(
-    (oldstate, newState) => ({ ...oldstate, ...newState }),
-    INITIAL_STATE
-  );
 
-  /**
-   * Handle event save button
-   * @private
-   */
-  const _handleSubmit = date => {
+  const _getData = () => {
     const {
       total, dateInvoice, numCheque, nInvoice, nameProvider, expenses,
     } = state;
     getInvoices(year, {
       ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
-      ...(date && { dateInvoice: format.dateToSend(date) }),
       ...(total && { total }),
       ...(numCheque && { numCheque }),
       ...(nInvoice && { nInvoice }),
@@ -44,6 +39,10 @@ const SearchForm = ({
       ...(expenses && { expenses }),
     });
   };
+
+  useEffect(() => {
+    _getData();
+  }, [state.expenses, state.dateInvoice]);
 
   /**
    * Handle event onChange input
@@ -69,7 +68,7 @@ const SearchForm = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
+    if (key === 'Enter') _getData();
   };
 
   /**
@@ -79,7 +78,6 @@ const SearchForm = ({
    */
   const _handleChangePicker = date => {
     setState({ dateInvoice: date });
-    _handleSubmit(date);
   };
 
   /**
@@ -140,6 +138,8 @@ const SearchForm = ({
 SearchForm.propTypes = {
   getInvoices: PropTypes.func.isRequired,
   year: PropTypes.string.isRequired,
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired,
 };
 
 SearchForm.displayName = 'SearchForm';

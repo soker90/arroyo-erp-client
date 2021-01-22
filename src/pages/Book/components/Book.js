@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { memo, useReducer } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
@@ -9,23 +9,25 @@ import Header from './Header';
 import { useStyles } from './Book.styles';
 import InvoicesTable from './InvoicesTable';
 import SearchForm from './SearchForm';
+import { INITIAL_STATE } from '../constans';
 
 const Book = ({
   invoices,
   getInvoices,
 }) => {
+  const [state, setState] = useReducer(
+    (oldstate, newState) => ({ ...oldstate, ...newState }),
+    INITIAL_STATE
+  );
+
   const classes = useStyles();
   const { year } = useParams();
-
-  useEffect(() => {
-    getInvoices(year);
-  }, [year]);
 
   return (
     <Page className={classes.root} title='Libro'>
       <Container maxWidth={false}>
-        <Header year={Number(year)} />
-        <SearchForm getInvoices={getInvoices} year={year} />
+        <Header year={Number(year)} filter={state} />
+        <SearchForm getInvoices={getInvoices} year={year} state={state} setState={setState} />
 
         <InvoicesTable invoices={invoices} />
       </Container>
