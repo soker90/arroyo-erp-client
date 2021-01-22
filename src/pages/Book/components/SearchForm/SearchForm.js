@@ -13,7 +13,6 @@ import {
   DatePickerForm,
   InputForm, SwitchForm,
 } from 'components';
-import { format } from 'utils';
 
 import { useStyles } from './SearchForm.styles';
 import { fields } from '../../constans';
@@ -26,22 +25,8 @@ const SearchForm = ({
 }) => {
   const classes = useStyles();
 
-  const _getData = () => {
-    const {
-      total, dateInvoice, numCheque, nInvoice, nameProvider, expenses,
-    } = state;
-    getInvoices(year, {
-      ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
-      ...(total && { total }),
-      ...(numCheque && { numCheque }),
-      ...(nInvoice && { nInvoice }),
-      ...(nameProvider && { nameProvider }),
-      ...(expenses && { expenses }),
-    });
-  };
-
   useEffect(() => {
-    _getData();
+    getInvoices();
   }, [state.expenses, state.dateInvoice, year]);
 
   /**
@@ -68,7 +53,7 @@ const SearchForm = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _getData();
+    if (key === 'Enter') getInvoices();
   };
 
   /**

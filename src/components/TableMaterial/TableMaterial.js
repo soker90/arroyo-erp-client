@@ -19,11 +19,11 @@ import { useStyles } from './TableMaterial.styles';
 
 const TableMaterial = ({
   className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect,
-  onSelected, rowClass, ...rest
+  onSelected, rowClass, rowsPerPageOptions, ...rest
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(rowsPerPageOptions?.[0] || 10);
 
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
@@ -78,7 +78,7 @@ const TableMaterial = ({
           onChangeRowsPerPage={handleLimitChange}
           page={page}
           rowsPerPage={limit}
-          rowsPerPageOptions={[10, 20, 30]}
+          rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
           labelRowsPerPage='filas'
           backIconButtonText='Anterior'
           labelDisplayedRows={labelOfRows}
@@ -103,6 +103,7 @@ TableMaterial.propTypes = {
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
   rowClass: PropTypes.func,
+  rowsPerPageOptions: PropTypes.array,
 };
 
 TableMaterial.defaultProps = {

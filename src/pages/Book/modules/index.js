@@ -3,6 +3,7 @@ import { GET_INVOICES } from './types';
 
 const INITIAL_STATE = {
   invoices: [],
+  count: undefined,
 };
 
 const ACTION_HANDLERS = {

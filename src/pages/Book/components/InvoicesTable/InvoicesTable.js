@@ -8,7 +8,7 @@ import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index';
 import { format } from 'utils';
 import { useStyles } from './InvoicesTable.styles';
 
-const InvoicesTable = ({ invoices }) => {
+const InvoicesTable = ({ invoices, count, getInvoices }) => {
   const classes = useStyles();
 
   const _rowStyle = ({ concept }) => (INVOICE_COMMON_CONCEPTS.includes(concept) ? '' : classes.rowRed);
@@ -57,12 +57,17 @@ const InvoicesTable = ({ invoices }) => {
         },
       ]}
       rowClass={_rowStyle}
+      count={count}
+      refresh={getInvoices}
+      rowsPerPageOptions={[100, 250, 500]}
     />
   );
 };
 
 InvoicesTable.propTypes = {
   invoices: PropTypes.array.isRequired,
+  count: PropTypes.number,
+  getInvoices: PropTypes.func.isRequired,
 };
 
 InvoicesTable.displayName = 'BillingTable';

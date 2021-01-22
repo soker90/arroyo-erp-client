@@ -18,10 +18,11 @@ const _getInvoicesSuccess = () => ({
   type: GET_INVOICES.SUCCESS,
 });
 
-const _getInvoicesSet = invoices => ({
+const _getInvoicesSet = ({ invoices, count }) => ({
   type: GET_INVOICES.SET,
   payload: {
     invoices,
+    count,
   },
 });
 
