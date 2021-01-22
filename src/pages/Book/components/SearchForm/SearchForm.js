@@ -42,7 +42,7 @@ const SearchForm = ({
 
   useEffect(() => {
     _getData();
-  }, [state.expenses, state.dateInvoice]);
+  }, [state.expenses, state.dateInvoice, year]);
 
   /**
    * Handle event onChange input
