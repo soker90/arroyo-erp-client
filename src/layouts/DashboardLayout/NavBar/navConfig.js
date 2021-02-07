@@ -44,6 +44,21 @@ export const navConfig = [
         href: '/app/proveedores',
       },
       {
+        title: 'Gastos',
+        icon: AccountBalanceIcon,
+        href: '/app/gastos',
+      },
+      {
+        title: 'Libro',
+        icon: MenuBookIcon,
+        href: `/app/libro/${year}`,
+      },
+      {
+        title: 'Pagos',
+        icon: EuroIcon,
+        href: '/app/pagos',
+      },
+      {
         title: 'Clientes',
         icon: UsersIcon,
         href: '/app/clientes',
@@ -64,21 +79,6 @@ export const navConfig = [
             href: '/app/clientes/productos',
           },
         ],
-      },
-      {
-        title: 'Gastos',
-        icon: AccountBalanceIcon,
-        href: '/app/gastos',
-      },
-      {
-        title: 'Libro',
-        icon: MenuBookIcon,
-        href: `/app/libro/${year}`,
-      },
-      {
-        title: 'Pagos',
-        icon: EuroIcon,
-        href: '/app/pagos',
       },
       {
         title: 'Notas',
