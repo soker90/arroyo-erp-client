@@ -1,2 +1,17 @@
-[1.0.0] - 27/01/2021
+# [1.0.1] - 07/02/2021
+ - Cambiado el orden de los elementos del menú de navegación
+
+ ## Librerias
+     - Actualizado react-scripts de la version 4.0.1 a la 4.0.2
+     - Actualizado @babel/core de la version 7.12.10 a la 7.12.13
+     - Actualizado @storybook/addon-actions de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/addon-docs de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/addon-knobs de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/addon-links de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/addos de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/node-logger de la version 6.1.15 a la 6.1.17
+     - Actualizado @storybook/react de la version 6.1.15 a la 6.1.17
+     - Actualizado @testing-library/react de la version 11.2.3 a la 11.2.5
+
+# [1.0.0] - 27/01/2021
  - Primera versión estable
