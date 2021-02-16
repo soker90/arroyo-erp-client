@@ -12,25 +12,24 @@ Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión adminis
 
 Es un proyecto desarrollado en `React`. (v.17.0.1) y gestiona el **state** de la aplicación mediante `redux` (v.4.0.5). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.5.2.0) se haga cargo de la gestión de las **URLS**.
 
+# Forman parte de este proyecto
+- [API](https://github.com/soker90/arroyo-erp-api) 
+- [Models](https://github.com/soker90/arroyo-erp-models)
+- [Project](https://github.com/soker90/arroyo-erp-project)
 ## TODO
 
 - DOCS: Readme and more Storybook
-- TESTING - In Progress: Storybook + react testing library para test unitarios
-- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual
+- TESTING - In Progress: Storybook + react testing library para test unitarios - in progress
+- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual - ok
 - TESTING: Preparar un entorno para tests e2e con cypress.
-- TESTING: React testing library para custom hooks :heart_eyes:
 - No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
 - Acoplar el estado de productos a las rutas que lo usan, y valorar hacer lo mismo con provider (ha crecido y puede carecer de sentido como está)
+- Poner a dieta a Redux
 - ¡ISSUES!
 
-Futuros epics:
- - Facturación de clientes (facuturas, generación de pdf, mail, cobros...)
- - Generación de los excell necesarios
- - Dashboard funcional y gráfica muuchas gráficas
- - ¿Temas de autónomos?
 
 ## Changelog
-- Sin changelog hasta la versión 1.0
+- [Ver](https://github.com/soker90/arroyo-erp-client/blob/master/CHANGELOG)
 
 ## Testing
 
