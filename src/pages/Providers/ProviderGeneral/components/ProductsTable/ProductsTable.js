@@ -41,6 +41,10 @@ const ProductsTable = ({
           title: 'Venta',
           render: ({ sale }) => format.euro(sale),
         },
+        {
+          title: 'IVA',
+          render: ({ iva }) => format.percent(iva),
+        },
       ]}
       data={products}
       actions={[
