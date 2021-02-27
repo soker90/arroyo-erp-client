@@ -1,8 +1,8 @@
-# [1.0.2]
- - Añadida columna de iva a los productos del proveedor
-
- # Librerias
-  
+# [1.1.0] - 27/02/2021
+  - Añadida columna de iva a los productos del proveedor
+  - Mejorado el rendimiento de la busqueda en el libro
+  - Añadida búsqueda de albaranes por canal
+  - Update libraries
 
 # [1.0.1] - 07/02/2021
   - Cambiado el orden de los elementos del menú de navegación
