@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 
-import { getInvoices } from '../modules/actions';
 import Book from '../components/Book';
 
 /**
@@ -9,11 +8,6 @@ import Book from '../components/Book';
  */
 const mapStateToProps = ({ book }) => book;
 
-const mapDispatchToProps = {
-  getInvoices,
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(Book);

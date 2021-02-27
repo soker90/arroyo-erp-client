@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -18,16 +18,10 @@ import { useStyles } from './SearchForm.styles';
 import { fields } from '../../constans';
 
 const SearchForm = ({
-  getInvoices,
-  year,
-  state,
-  setState,
+  filters,
+  setFilters,
 }) => {
   const classes = useStyles();
-
-  useEffect(() => {
-    getInvoices();
-  }, [state.expenses, state.dateInvoice, year]);
 
   /**
    * Handle event onChange input
@@ -44,16 +38,7 @@ const SearchForm = ({
     },
   }) => {
     const newValue = name === 'expenses' ? checked : value;
-    setState({ [name]: newValue });
-  };
-
-  /**
-   * Handle press enter key
-   * @param {string} key
-   * @private
-   */
-  const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') getInvoices();
+    setFilters({ [name]: newValue });
   };
 
   /**
@@ -62,7 +47,7 @@ const SearchForm = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setState({ dateInvoice: date });
+    setFilters({ dateInvoice: date });
   };
 
   /**
@@ -80,11 +65,10 @@ const SearchForm = ({
   }) => (
     <InputForm
       key={id}
-      value={state[id] || ''}
+      value={filters[id] || ''}
       onChange={_handleChange}
       name={id}
       label={label}
-      onKeyPress={_handleKeyPress}
       size={2}
       {...options}
     />
@@ -102,12 +86,12 @@ const SearchForm = ({
             clearable
             size={2}
             label='Fecha factura'
-            value={state.dateInvoice}
+            value={filters.dateInvoice}
             onAccept={_handleChangePicker}
           />
           {fields.map(_renderInput)}
           <SwitchForm
-            checked={state.expenses}
+            checked={filters.expenses}
             onChange={_handleChange}
             name='expenses'
             color='primary'
@@ -121,10 +105,8 @@ const SearchForm = ({
 };
 
 SearchForm.propTypes = {
-  getInvoices: PropTypes.func.isRequired,
-  year: PropTypes.string.isRequired,
-  state: PropTypes.object.isRequired,
-  setState: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
+  setFilters: PropTypes.func.isRequired,
 };
 
 SearchForm.displayName = 'SearchForm';

@@ -1,14 +1,14 @@
-import { memo } from 'react';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import { memo } from 'react';
 
 import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index';
 import { format } from 'utils';
 import { useStyles } from './InvoicesTable.styles';
 
-const InvoicesTable = ({ invoices, count, getInvoices }) => {
+const InvoicesTable = ({ invoices, count, setFilters }) => {
   const classes = useStyles();
 
   const _rowStyle = ({ concept }) => (INVOICE_COMMON_CONCEPTS.includes(concept) ? '' : classes.rowRed);
@@ -58,7 +58,7 @@ const InvoicesTable = ({ invoices, count, getInvoices }) => {
       ]}
       rowClass={_rowStyle}
       count={count}
-      refresh={getInvoices}
+      refresh={setFilters}
       rowsPerPageOptions={[100, 250, 500]}
     />
   );
@@ -67,9 +67,9 @@ const InvoicesTable = ({ invoices, count, getInvoices }) => {
 InvoicesTable.propTypes = {
   invoices: PropTypes.array.isRequired,
   count: PropTypes.number,
-  getInvoices: PropTypes.func.isRequired,
+  setFilters: PropTypes.func.isRequired,
 };
 
-InvoicesTable.displayName = 'BillingTable';
+InvoicesTable.displayName = 'InvoicesTable';
 
 export default memo(InvoicesTable);
