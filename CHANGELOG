@@ -1,3 +1,8 @@
+# [1.1.1] - 16/03/2021
+  - Cambiado el orden de precio y unidades en el modal de añadir producto a la factura de cliente
+  - Cambiado "Kg" por "kg" en unidades por defecto de la factura de cliente
+  - Actualización de librerias
+
 # [1.1.0] - 27/02/2021
   - Añadida columna de iva a los productos del proveedor
   - Mejorado el rendimiento de la busqueda en el libro
