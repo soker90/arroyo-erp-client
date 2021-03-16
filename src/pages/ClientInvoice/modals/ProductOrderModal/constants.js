@@ -2,7 +2,7 @@ export const INITIAL_STATE = {
   name: '',
   weight: 0,
   price: 0,
-  unit: 'Kg',
+  unit: 'kg',
 };
 
 export const fields = [
@@ -12,12 +12,12 @@ export const fields = [
     type: 'number',
   },
   {
-    id: 'unit',
-    label: 'Unidades',
-  },
-  {
     id: 'price',
     label: 'Precio',
     type: 'number',
+  },
+  {
+    id: 'unit',
+    label: 'Unidades',
   },
 ];
