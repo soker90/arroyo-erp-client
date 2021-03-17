@@ -45,7 +45,7 @@ const InvoiceData = ({
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (isEditable ? [
+  const _getActions = () => [
     <Tooltip title='Editar' key={uniqId()}>
       <IconButton
         size='small'
@@ -54,7 +54,7 @@ const InvoiceData = ({
         <EditIcon />
       </IconButton>
     </Tooltip>,
-  ] : false);
+  ];
 
   return (
     <>
