@@ -17,7 +17,7 @@ const InvoiceCards = ({
 
   return (
     <>
-      <InvoiceData {...data} className={classes.data} isEditable={isEditable} id={id} />
+      <InvoiceData {...data} className={classes.data} id={id} />
       <InvoiceTotals {...totals} isEditable={isEditable} className={classes.totals} />
       {payment && <InvoicePayment {...payment} className={classes.data} />}
     </>
