@@ -1,6 +1,9 @@
+# [1.1.3] - 18/03/2021
+  - Al editar los totales de una factura se suma el total
+
 # [1.1.2] - 17/03/2021
   - Ahora se puede editar los datos de las facturas confirmadas
-  
+
 # [1.1.1] - 16/03/2021
   - Cambiado el orden de precio y unidades en el modal de añadir producto a la factura de cliente
   - Cambiado "Kg" por "kg" en unidades por defecto de la factura de cliente
