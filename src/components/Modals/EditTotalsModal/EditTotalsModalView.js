@@ -1,10 +1,18 @@
-import { memo, useReducer } from 'react';
+import { memo, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm } from 'components';
 
 const EditTotalsModalView = ({
-  show, setShow, total, iva, re, rate, taxBase, update, id,
+  show,
+  setShow,
+  total,
+  iva,
+  re,
+  rate,
+  taxBase,
+  update,
+  id,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -14,7 +22,7 @@ const EditTotalsModalView = ({
       ...(re !== undefined && { re }),
       ...(rate !== undefined && { rate }),
       taxBase,
-    },
+    }
   );
 
   const [errors, setErrors] = useReducer(
@@ -25,8 +33,17 @@ const EditTotalsModalView = ({
       re: false,
       rate: false,
       taxBase: false,
-    },
+    }
   );
+
+  useEffect(() => {
+    let sum = 0;
+    if (total) {
+      sum = state.iva + state.re + state.taxBase;
+      sum += state.rate || 0;
+      setState({ total: sum });
+    }
+  }, [state.iva, state.re, state.rate, state.taxBase]);
 
   /**
    * Handle event onChange input
@@ -34,7 +51,12 @@ const EditTotalsModalView = ({
    * @param {String} value
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
+  const _handleChange = ({
+    target: {
+      name,
+      value,
+    },
+  }) => {
     const number = parseFloat(value);
     setState({ [name]: number });
     setErrors({ [name]: (typeof number !== 'number') });
