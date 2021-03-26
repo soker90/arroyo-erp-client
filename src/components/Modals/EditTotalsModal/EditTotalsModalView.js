@@ -40,10 +40,9 @@ const EditTotalsModalView = ({
     let sum = 0;
     if (total) {
       sum = state.iva + state.re + state.taxBase;
-      sum += state.rate || 0;
       setState({ total: sum });
     }
-  }, [state.iva, state.re, state.rate, state.taxBase]);
+  }, [state.iva, state.re, state.taxBase]);
 
   /**
    * Handle event onChange input
