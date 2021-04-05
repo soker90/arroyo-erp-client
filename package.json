@@ -70,7 +70,7 @@
     "@storybook/react": "^6.1.21",
     "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/react": "^11.2.6",
     "@testing-library/react-hooks": "^5.1.0",
     "chromatic": "^5.7.0",
     "eslint-config-airbnb": "^18.2.1",
