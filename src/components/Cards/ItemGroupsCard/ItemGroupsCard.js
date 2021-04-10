@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import uniqId from 'uniqid';

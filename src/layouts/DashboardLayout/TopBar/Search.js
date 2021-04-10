@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { memo, useRef, useState } from 'react';
 import {
   ClickAwayListener,
@@ -74,20 +75,21 @@ const Search = () => {
 
   /**
    * Renderiza un elemento de la busqueda
-   * @param {{_id: String, name: String}} search
+   * @param {String} _id,
+   * @param {String} name
    * @return {ListItem}
    * @private
    */
-  const _renderSearchedItem = search => (
+  const _renderSearchedItem = ({ _id, name }) => (
     <ListItem
       button
-      key={search._id}
-      onClick={() => _handleSelectProvider(search._id)}
+      key={_id}
+      onClick={() => _handleSelectProvider(_id)}
     >
       <ListItemIcon>
         <SearchIcon />
       </ListItemIcon>
-      <ListItemText primary={search.name} />
+      <ListItemText primary={name} />
     </ListItem>
   );
 
