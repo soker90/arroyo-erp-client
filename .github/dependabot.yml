@@ -15,3 +15,5 @@ updates:
     ignore:
       - dependency-name: "@date-io/moment"
         versions: ["2.x"]
+      - dependency-name: "chart.js"
+        versions: ["3.x"]
