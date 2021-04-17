@@ -51,6 +51,10 @@ const Clients = ({ clients, getClients }) => {
                   title: 'Nombre',
                   field: 'name',
                 },
+                {
+                  title: 'Facturas',
+                  field: 'invoices',
+                },
               ]}
               data={clients}
               title={`Clientes (${clients.length})`}

@@ -17,12 +17,10 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "ie 11",
       "not dead",
       "not op_mini all"
     ],
     "development": [
-      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
@@ -74,11 +72,11 @@
     "@testing-library/react-hooks": "^5.1.1",
     "chromatic": "^5.7.1",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-mdx": "^1.12.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1"
