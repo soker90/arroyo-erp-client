@@ -49,9 +49,11 @@ const ProductOrderModal = ({
 
   /**
    * Handle event save button
+   * @param {Function} callback
+   * @param {Event} event
    * @private
    */
-  const _handleSubmit = () => {
+  const _handleSubmit = (event, callback) => {
     try {
       const model = {
         name: state.name,
@@ -65,7 +67,7 @@ const ProductOrderModal = ({
         invoice,
         deliveryOrder,
         product: show?._id,
-      }, close);
+      }, (callback || close));
     } catch (e) {
       console.error(e);
       dispatch(addNotification({
@@ -82,7 +84,8 @@ const ProductOrderModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
+    const callback = show === true && (() => setState(INITIAL_STATE));
+    if (key === 'Enter') _handleSubmit(null, callback);
   };
 
   const _handleChangeAutocomplete = value => {

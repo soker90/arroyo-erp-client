@@ -1,5 +1,6 @@
-#
+# [1.2.0] - 18/04/2021
   - Añadida columna con el número de facturas en el listado de clientes
+  - Al pulsar intro en el modal de añadir producto al albarán de cliente, se vacía el modal para añadir otro producto
 
 # [1.1.3] - 18/03/2021
   - Al editar los totales de una factura se suma el total
