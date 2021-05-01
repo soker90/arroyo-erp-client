@@ -1,3 +1,6 @@
+#
+  - Añadido número de facturas trimestrales a la facturación
+
 # [1.2.0] - 18/04/2021
   - Añadida columna con el número de facturas en el listado de clientes
   - Al pulsar intro en el modal de añadir producto al albarán de cliente, se vacía el modal para añadir otro producto
