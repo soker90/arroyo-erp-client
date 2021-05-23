@@ -13,6 +13,7 @@ const AutocompleteForm = ({
   label,
   onChange,
   autoFocus,
+  inputRef,
   ...rest
 }) => (
   <Grid
@@ -37,7 +38,10 @@ const AutocompleteForm = ({
           {...params}
           autoFocus={autoFocus}
           label={label}
-          InputProps={params.InputProps}
+          InputProps={{
+            ...params.InputProps,
+            ...(inputRef && { inputRef }),
+          }}
         />
       )}
     />
@@ -58,6 +62,7 @@ AutocompleteForm.propTypes = {
   selectOnFocus: PropTypes.bool,
   handleHomeEndKeys: PropTypes.bool,
   autoFocus: PropTypes.bool,
+  inputRef: PropTypes.any,
 };
 
 AutocompleteForm.defaultProps = {

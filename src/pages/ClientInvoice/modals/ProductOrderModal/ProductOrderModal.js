@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
-  memo, useEffect, useMemo, useReducer,
+  memo, useEffect, useMemo, useReducer, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -26,6 +26,7 @@ const ProductOrderModal = ({
     INITIAL_STATE,
   );
   const productsList = useMemo(() => products.map(p => p.name), [products]);
+  const nameRef = useRef(null);
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE);
@@ -84,7 +85,11 @@ const ProductOrderModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    const callback = show === true && (() => setState(INITIAL_STATE));
+    const callback = show === true && (() => {
+      setState(INITIAL_STATE);
+      nameRef.current.focus();
+    });
+
     if (key === 'Enter') _handleSubmit(null, callback);
   };
 
@@ -103,6 +108,7 @@ const ProductOrderModal = ({
       margin='normal'
       onChange={_handleChangeAutocomplete}
       autoFocus
+      inputRef={nameRef}
     />
   );
 
