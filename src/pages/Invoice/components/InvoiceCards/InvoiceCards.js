@@ -9,7 +9,10 @@ import InvoicePayment from './components/InvoicePayment';
 import { useStyles } from './InvoiceCards.styles';
 
 const InvoiceCards = ({
-  data, totals, payment, id,
+  data,
+  totals,
+  payment,
+  id,
 }) => {
   const classes = useStyles();
 
@@ -19,7 +22,7 @@ const InvoiceCards = ({
     <>
       <InvoiceData {...data} className={classes.data} id={id} />
       <InvoiceTotals {...totals} isEditable={isEditable} className={classes.totals} />
-      {payment && <InvoicePayment {...payment} className={classes.data} />}
+      {payment && <InvoicePayment payment={payment} className={classes.data} id={id} />}
     </>
   );
 };

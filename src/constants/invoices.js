@@ -21,8 +21,10 @@ export const CONCEPT = {
   S_TIENDA: 'Seguro tienda',
 };
 
+export const TALON_PAYMENT = 'Talón';
+
 export const TYPE_PAYMENT = [
-  '?', 'Efectivo', 'Talón', 'Giro', 'c/c', 'Abono', 'Transferencia', 'Tarjeta', 'Contra rembolso',
+  '?', 'Efectivo', TALON_PAYMENT, 'Giro', 'c/c', 'Abono', 'Transferencia', 'Tarjeta', 'Contra rembolso',
 ];
 
 export const INVOICE_COMMON_CONCEPTS = [

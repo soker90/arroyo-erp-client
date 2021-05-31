@@ -25,14 +25,20 @@ const _updateDataInvoiceSuccess = () => ({
  * Set action
  * @param {Object} data
  * @param {Object} totals
+ * @param {Object} payment
  * @return {{payload: Object, type: string}}
  * @private
  */
-const _updateDataInvoiceSet = ({ data, totals }) => ({
+const _updateDataInvoiceSet = ({
+  data,
+  totals,
+  payment,
+}) => ({
   type: UPDATE_DATA.SET,
   payload: {
     ...(data && { data }),
     ...(totals && { totals }),
+    ...(payment && { payment }),
   },
 });
 
