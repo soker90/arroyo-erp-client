@@ -21,6 +21,7 @@ const DeliveryOrderInvoice = ({
   updateDOClientInvoice,
   deleteDOClientInvoice,
   id,
+  refHeader,
 }) => {
   const classes = useStyles();
   const [date, setDate] = useState(deliveryOrder.date);
@@ -100,6 +101,7 @@ const DeliveryOrderInvoice = ({
             </>
           )}
           action={_getActions()}
+          ref={refHeader}
         />
         <Divider />
         <CardContent>
@@ -144,6 +146,7 @@ DeliveryOrderInvoice.propTypes = {
   updateDOClientInvoice: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,
+  refHeader: PropTypes.any,
 };
 
 DeliveryOrderInvoice.displayName = 'ClientInvoiceCards';

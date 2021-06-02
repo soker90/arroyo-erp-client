@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { Container } from '@material-ui/core';
@@ -30,6 +30,8 @@ const ClientInvoice = ({
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
+  const lastDORef = useRef(null);
+  const isDOCreated = useRef(false);
 
   useEffect(() => {
     if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice);
@@ -41,7 +43,21 @@ const ClientInvoice = ({
 
   useEffect(() => () => resetClientInvoiceState(), []);
 
+  useEffect(() => {
+    if (isDOCreated?.current) {
+      lastDORef?.current?.scrollIntoView?.();
+      isDOCreated.current = false;
+    }
+  }, [deliveryOrders?.length]);
+
   if (!_id) return <LoadingScreen />;
+
+  const _isLastDO = index => deliveryOrders?.length - 1 === index;
+
+  const createDOAndRedirect = id => {
+    isDOCreated.current = true;
+    createDeliveryOrder(id);
+  };
 
   return (
     <Page className={classes.root} title={`${nameClient} | Factura`}>
@@ -49,7 +65,7 @@ const ClientInvoice = ({
         <Header
           client={client}
           nameClient={nameClient}
-          createDeliveryOrder={createDeliveryOrder}
+          createDeliveryOrder={createDOAndRedirect}
           id={idInvoice}
           nInvoice={nInvoice}
         />
@@ -64,7 +80,7 @@ const ClientInvoice = ({
           nInvoice={nInvoice}
         />
 
-        {deliveryOrders.map(deliveryOrder => (
+        {deliveryOrders.map((deliveryOrder, index) => (
           <DeliveryOrderInvoice
             key={deliveryOrder._id}
             deliveryOrder={deliveryOrder}
@@ -72,6 +88,7 @@ const ClientInvoice = ({
             updateDOClientInvoice={updateDOClientInvoice}
             deleteDOClientInvoice={deleteDOClientInvoice}
             id={_id}
+            refHeader={_isLastDO(index) ? lastDORef : null}
           />
         ))}
 
