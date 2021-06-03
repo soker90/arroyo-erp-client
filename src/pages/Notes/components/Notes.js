@@ -4,21 +4,23 @@ import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import { Page } from 'components';
+import { useParams } from 'react-router';
 import Header from './Header';
 import NotesTable from './NotesTable';
 import { useStyles } from './Notes.styles';
 
 const Notes = ({ notes, getNotes }) => {
+  const { year } = useParams();
   const classes = useStyles();
 
   useEffect(() => {
-    getNotes();
-  }, [getNotes]);
+    getNotes(year);
+  }, [getNotes, year]);
 
   return (
     <Page className={classes.root} title='Notas'>
       <Container maxWidth={false}>
-        <Header />
+        <Header year={year} />
 
         <NotesTable notes={notes} />
       </Container>

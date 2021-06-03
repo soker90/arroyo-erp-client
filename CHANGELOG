@@ -2,6 +2,7 @@
   - Añadido modal para editar la información del pago de la factura
   - Al añadir un albarán a una factura de cliente, se hace scroll al nuevo albarán
   - Corregido undefined en las gráficas de productos
+  - Ahora las notas se crean dentro de un año
 
 # [1.2.2] - 23/05/2021
   - Focus al añadir un producto al albarán de clientes

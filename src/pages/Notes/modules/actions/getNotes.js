@@ -37,13 +37,14 @@ const _getNotesError = error => ({
 
 /**
  * Pide los pagos pendientes de cobro
+ * @param {string} year
  * @returns {function(...[*]=)}
  */
-export const getNotes = () => async dispatch => {
+export const getNotes = year => async dispatch => {
   dispatch(_getNotesRequest());
 
   try {
-    const { data } = await axios('notes');
+    const { data } = await axios(`notes?year=${year}`);
 
     dispatch(_getNotesSuccess());
     dispatch(_getNotesSet(data));

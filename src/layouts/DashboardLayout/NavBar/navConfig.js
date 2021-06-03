@@ -83,7 +83,7 @@ export const navConfig = [
       {
         title: 'Notas',
         icon: PostAddIcon,
-        href: '/app/notas',
+        href: `/app/notas/${year}`,
       },
     ],
   },

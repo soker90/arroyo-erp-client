@@ -5,7 +5,10 @@ import { format } from 'utils';
 import NoteModal, { INITIAL_STATE } from '../NoteModal';
 
 const NewNoteModal = ({
-  show, close, createNote,
+  show,
+  close,
+  createNote,
+  year,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -24,6 +27,7 @@ const NewNoteModal = ({
     const model = {
       ...data,
       date: format.dateToSend(data.date),
+      year,
     };
     createNote(model, close);
   };
@@ -44,6 +48,7 @@ NewNoteModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createNote: PropTypes.func.isRequired,
+  year: PropTypes.string.isRequired,
 };
 
 NewNoteModal.displayName = 'NewNoteModal';

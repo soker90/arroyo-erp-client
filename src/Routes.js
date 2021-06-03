@@ -8,6 +8,8 @@ import AuthGuard from 'components/AuthGuard';
 import GuestGuard from 'components/GuestGuard';
 import NotFound from 'components/NotFound';
 
+const year = new Date().getFullYear();
+
 const routesConfig = [
   {
     exact: true,
@@ -55,8 +57,18 @@ const routesConfig = [
           },
           {
             exact: true,
+            path: '/app/informes/facturacion',
+            component: () => <Redirect to={`/app/informes/facturacion/${year}`} />,
+          },
+          {
+            exact: true,
             path: '/app/informes/albaranes/:year',
             component: lazy(() => import('pages/reports/DeliveryOrders')),
+          },
+          {
+            exact: true,
+            path: '/app/informes/albaranes',
+            component: () => <Redirect to={`/app/informes/albaranes/${year}`} />,
           },
         ],
       },
@@ -97,8 +109,13 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/notas',
+        path: '/app/notas/:year',
         component: lazy(() => import('pages/Notes')),
+      },
+      {
+        exact: true,
+        path: '/app/notas',
+        component: () => <Redirect to={`/app/notas/${year}`} />,
       },
       {
         exact: true,
