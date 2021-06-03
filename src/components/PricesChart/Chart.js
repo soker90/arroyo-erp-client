@@ -46,8 +46,35 @@ function Chart({
     responsive: true,
     maintainAspectRatio: false,
     animation: false,
-    legend: {
-      display: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+        mode: 'index',
+        intersect: false,
+        caretSize: 10,
+        yPadding: 20,
+        xPadding: 20,
+        borderWidth: 1,
+        borderColor: theme.palette.divider,
+        backgroundColor: theme.palette.background.default,
+        titleFontColor: theme.palette.text.primary,
+        bodyFontColor: theme.palette.text.secondary,
+        footerFontColor: theme.palette.text.secondary,
+        callbacks: {
+          title: () => {
+          },
+          label: tooltipItem => {
+            let label = `Precio: ${tooltipItem.parsed.y}`;
+
+            if (tooltipItem.parsed.y > 0) label += '€';
+
+            return label;
+          },
+        },
+      },
     },
     layout: {
       padding: 0,
@@ -86,31 +113,6 @@ function Chart({
           },
         },
       ],
-    },
-    tooltips: {
-      enabled: true,
-      mode: 'index',
-      intersect: false,
-      caretSize: 10,
-      yPadding: 20,
-      xPadding: 20,
-      borderWidth: 1,
-      borderColor: theme.palette.divider,
-      backgroundColor: theme.palette.background.default,
-      titleFontColor: theme.palette.text.primary,
-      bodyFontColor: theme.palette.text.secondary,
-      footerFontColor: theme.palette.text.secondary,
-      callbacks: {
-        title: () => {
-        },
-        label: tooltipItem => {
-          let label = `Precio: ${tooltipItem.yLabel}`;
-
-          if (tooltipItem.yLabel > 0) label += '€';
-
-          return label;
-        },
-      },
     },
   };
 
