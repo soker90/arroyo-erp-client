@@ -70,6 +70,11 @@ const routesConfig = [
             path: '/app/informes/albaranes',
             component: () => <Redirect to={`/app/informes/albaranes/${year}`} />,
           },
+          {
+            exact: true,
+            path: '/app/informes/pagos/:year',
+            component: lazy(() => import('pages/reports/PaymentsReport')),
+          },
         ],
       },
       {
