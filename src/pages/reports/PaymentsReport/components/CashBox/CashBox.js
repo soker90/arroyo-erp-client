@@ -4,6 +4,8 @@ import {
 } from '@material-ui/core';
 import EuroIcon from '@material-ui/icons/Euro';
 
+import { format } from 'utils';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3),
@@ -22,14 +24,15 @@ const useStyles = makeStyles(theme => ({
 function CashBox({
   title,
   value,
+  size,
 }) {
   const classes = useStyles();
 
   return (
     <Grid
       item
-      lg={3}
-      sm={6}
+      lg={size ?? 2}
+      sm={4}
       xs={12}
     >
       <Card className={classes.root}>
@@ -51,7 +54,7 @@ function CashBox({
               variant='h3'
               color='textPrimary'
             >
-              {value}
+              {format.number(value)}
             </Typography>
           </Box>
         </Box>
@@ -66,6 +69,7 @@ function CashBox({
 CashBox.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.number,
+  size: PropTypes.number,
 };
 
 export default CashBox;

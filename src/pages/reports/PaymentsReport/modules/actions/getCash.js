@@ -17,9 +17,9 @@ const _getCashSuccess = () => ({
   type: GET_CASH.SUCCESS,
 });
 
-const _getCashSet = dashboard => ({
+const _getCashSet = cash => ({
   type: GET_CASH.SET,
-  payload: dashboard,
+  payload: { cash },
 });
 
 /**

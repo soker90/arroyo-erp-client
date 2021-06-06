@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     total: 0,
   },
   cheques: [],
+  countCheques: 0,
 };
 
 const setCash = (state, { payload: { cash } }) => ({
@@ -17,9 +18,10 @@ const setCash = (state, { payload: { cash } }) => ({
   cash,
 });
 
-const setCheques = (state, { payload: { cheques } }) => ({
+const setCheques = (state, { payload: { cheques, count } }) => ({
   ...state,
   cheques,
+  countCheques: count,
 });
 
 const ACTION_HANDLERS = {
