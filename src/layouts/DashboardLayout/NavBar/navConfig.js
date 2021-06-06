@@ -6,6 +6,7 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import ReceiptIcon from '@material-ui/icons/Receipt';
+import UpdateIcon from '@material-ui/icons/Update';
 
 const year = new Date().getFullYear();
 
@@ -32,6 +33,11 @@ export const navConfig = [
         title: 'Albaranes',
         icon: ReceiptIcon,
         href: `/app/informes/albaranes/${year}`,
+      },
+      {
+        title: 'Pagarés',
+        icon: UpdateIcon,
+        href: `/app/informes/pagares/${year}`,
       },
     ],
   },
