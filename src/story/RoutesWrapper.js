@@ -1,7 +1,25 @@
-import { Router } from 'react-router-dom';
+import { MemoryRouter, Route, Router } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import history from '../store/history';
+
+const WithRoute = ({
+  route,
+  children,
+  path,
+}) => (
+  <MemoryRouter initialEntries={[path]}>
+    <Route path={route}>
+      {children}
+    </Route>
+  </MemoryRouter>
+);
+
+WithRoute.propTypes = {
+  children: PropTypes.any,
+  route: PropTypes.string,
+  path: PropTypes.string,
+};
 
 /**
  * Wrapper for routes with storybook
@@ -10,14 +28,24 @@ import history from '../store/history';
  * @constructor
  */
 
-const RoutesWrapper = ({ children }) => (
+const RoutesWrapper = ({
+  children,
+  route,
+  path,
+}) => (
   <Router history={history}>
-    {children}
+    {route ? (
+      <WithRoute route={route} path={path}>
+        {children}
+      </WithRoute>
+    ) : children}
   </Router>
 );
 
 RoutesWrapper.propTypes = {
   children: PropTypes.any,
+  route: PropTypes.string,
+  path: PropTypes.string,
 };
 
 RoutesWrapper.displayName = 'RoutesWrapper';
