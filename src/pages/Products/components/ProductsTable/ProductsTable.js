@@ -22,10 +22,6 @@ const ProductsTable = ({ products }) => {
         className={classes.table}
         columns={[
           {
-            title: 'Código',
-            field: 'code',
-          },
-          {
             title: 'Nombre',
             field: 'name',
           },

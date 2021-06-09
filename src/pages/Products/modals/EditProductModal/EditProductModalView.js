@@ -18,7 +18,6 @@ const EditProductModal = ({
     if (show) {
       setState({
         ...INITIAL_STATE,
-        ...(product?.code && { code: product?.code }),
         ...(product?.name && { name: product?.name }),
         ...(product?.price && { price: format.number(product?.price) }),
       });

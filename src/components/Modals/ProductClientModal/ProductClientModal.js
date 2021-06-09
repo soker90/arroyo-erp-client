@@ -39,7 +39,6 @@ const ProductClientModal = ({
   const _handleSubmit = () => {
     try {
       const model = {
-        code: state.code.toLowerCase(),
         name: state.name,
         price: Number(state.price),
       };
