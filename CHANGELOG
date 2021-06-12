@@ -6,6 +6,8 @@
   - Añadido histórico de pagos con pagaré
   - Eliminado el campo codigo de la edición de productos de cliente
   - Eliminada la columna code de la lista de productos de cliente
+  - Eliminar productos de cliente
+  - Corregida la modificación de productos de cliente
 
 # [1.2.2] - 23/05/2021
   - Focus al añadir un producto al albarán de clientes
