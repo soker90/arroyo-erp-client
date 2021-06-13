@@ -9,7 +9,7 @@ import { Header } from 'components';
 const HeaderPaymentsReport = ({ year }) => (
   <Header
     title='Informes'
-    description={`Informe de pagos ${year}`}
+    description={`Informe de pagarés ${year}`}
     buttons={[{
       component: NavLink,
       to: `/app/informes/pagares/${year - 1}`,

@@ -21,11 +21,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function CashBox({
+const TotalsReportBox = ({
   title,
   value,
   size,
-}) {
+}) => {
   const classes = useStyles();
 
   return (
@@ -64,12 +64,12 @@ function CashBox({
       </Card>
     </Grid>
   );
-}
+};
 
-CashBox.propTypes = {
+TotalsReportBox.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.number,
   size: PropTypes.number,
 };
 
-export default CashBox;
+export default TotalsReportBox;

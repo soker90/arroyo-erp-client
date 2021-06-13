@@ -60,7 +60,7 @@ export const createDeliveryOrder = (provider, callback) => async dispatch => {
     dispatch(_createDeliveryOrderSet(response));
     // eslint-disable-next-line
     callback?.();
-    navigateTo(`albaranes/${response.data._id}`);
+    navigateTo(`albaranes/${response.data._id}?creado`);
   } catch (error) {
     console.error(error);
     dispatch(_createDeliveryOrderError(error));

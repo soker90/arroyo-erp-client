@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getCash, getCheques } from '../modules/actions';
+import { getTotals, getCheques } from '../modules/actions';
 import PaymentsReportView from '../components/PaymentsReportView';
 
 const mapStateToProps = ({
@@ -8,7 +8,7 @@ const mapStateToProps = ({
 }) => paymentsReport;
 
 const mapDispatchToProps = {
-  getCash,
+  getTotals,
   getCheques,
 };
 

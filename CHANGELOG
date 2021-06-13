@@ -1,4 +1,4 @@
-# [1.3.0] -
+# [1.3.0] - 13/06/2021
   - Añadido modal para editar la información del pago de la factura
   - Al añadir un albarán a una factura de cliente, se hace scroll al nuevo albarán
   - Corregido undefined en las gráficas de productos
@@ -8,6 +8,8 @@
   - Eliminada la columna code de la lista de productos de cliente
   - Eliminar productos de cliente
   - Corregida la modificación de productos de cliente
+  - Añadido totales de efectivo y de talones por trimestres
+  - Al crear un albarán nuevo se abre la edición de fecha automáticamente
 
 # [1.2.2] - 23/05/2021
   - Focus al añadir un producto al albarán de clientes

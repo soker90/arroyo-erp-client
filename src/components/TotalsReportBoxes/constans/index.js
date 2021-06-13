@@ -1,4 +1,4 @@
-export const CASH_BOXES = [
+export const TOTALS_BOXES = [
   {
     title: '1º Trimestre',
     value: '1',

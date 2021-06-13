@@ -1,2 +1,2 @@
-export * from './getCash';
+export * from './getTotals';
 export * from './getCheques';

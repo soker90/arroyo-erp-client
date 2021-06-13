@@ -3,6 +3,13 @@ import { CREATE_REMINDER, DELETE_REMINDER, GET_DASHBOARD_INFO } from './types';
 
 const INITIAL_STATE = {
   reminders: [],
+  cash: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    total: 0,
+  },
 };
 
 const setReminders = (state, { payload: { reminders } }) => ({

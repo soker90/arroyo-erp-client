@@ -13,3 +13,4 @@ export { default as ProviderInvoices } from './ProviderInvoices';
 export { default as TableMaterial } from './TableMaterial';
 export { default as TextEuro } from './TextEuro';
 export { default as PricesChart } from './PricesChart';
+export { default as TotalsReportBoxes } from './TotalsReportBoxes';

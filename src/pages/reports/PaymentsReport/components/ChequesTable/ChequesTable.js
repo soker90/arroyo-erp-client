@@ -74,7 +74,7 @@ ChequesTable.propTypes = {
   cheques: PropTypes.array.isRequired,
   count: PropTypes.number.isRequired,
   getCheques: PropTypes.func.isRequired,
-  year: PropTypes.number,
+  year: PropTypes.string,
 };
 
 ChequesTable.displayName = 'ChequesTable';
