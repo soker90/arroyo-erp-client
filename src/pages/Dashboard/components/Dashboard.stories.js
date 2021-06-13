@@ -15,7 +15,13 @@ const Dashboard = () => (
   <ReduxProvider>
     <RoutesWrapper>
       <DashboardView
-        priceChanges={[]}
+        cash={{
+          1: 23.3,
+          2: 3,
+          3: 33.2,
+          4: 11.3,
+          total: 22,
+        }}
         getDashboard={action('getDashboard')}
         reminders={[]}
         createReminder={action('createReminder')}

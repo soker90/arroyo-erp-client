@@ -134,14 +134,14 @@ const PaymentsReport = () => (
     ]}
     countCheques={11}
     getCheques={action('getCheques')}
-    cash={{
+    totals={{
       1: 3.36,
       2: 4.5,
       3: 5.6,
       4: 5.7,
       total: 19.16,
     }}
-    getCash={action(('getCash'))}
+    getTotals={action(('getTotals'))}
   />
 );
 
