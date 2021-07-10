@@ -22,7 +22,10 @@ const PaymentsReportView = ({
 
   useEffect(() => {
     getTotals(year);
-    getCheques({ year });
+    getCheques({
+      year,
+      limit: 10,
+    });
   }, [getTotals, getCheques, year]);
 
   return (
