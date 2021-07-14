@@ -37,7 +37,7 @@ const SwapInvoices = ({ swapInvoices }) => {
     set(value);
   };
   return (
-    <Page className={classes.root} title='Intercambar nº orden'>
+    <Page className={classes.root} title='Intercambiar nº orden'>
       <Container maxWidth={false}>
         <Header />
 
