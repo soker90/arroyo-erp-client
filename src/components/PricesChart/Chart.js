@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
-import { fade, makeStyles, useTheme } from '@material-ui/core';
+import { alpha, makeStyles, useTheme } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,7 +22,7 @@ function Chart({
     const ctx = canvas.getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
 
-    gradient.addColorStop(0, fade(theme.palette.secondary.main, 0.2));
+    gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.2));
     gradient.addColorStop(0.9, 'rgba(255,255,255,0)');
     gradient.addColorStop(1, 'rgba(255,255,255,0)');
 

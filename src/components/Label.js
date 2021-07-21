@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
-  fade,
+  alpha,
   makeStyles,
 } from '@material-ui/core';
 
@@ -26,23 +26,23 @@ const useStyles = makeStyles(theme => ({
   },
   primary: {
     color: theme.palette.primary.main,
-    backgroundColor: fade(theme.palette.primary.main, 0.08),
+    backgroundColor: alpha(theme.palette.primary.main, 0.08),
   },
   secondary: {
     color: theme.palette.secondary.main,
-    backgroundColor: fade(theme.palette.secondary.main, 0.08),
+    backgroundColor: alpha(theme.palette.secondary.main, 0.08),
   },
   error: {
     color: theme.palette.error.main,
-    backgroundColor: fade(theme.palette.error.main, 0.08),
+    backgroundColor: alpha(theme.palette.error.main, 0.08),
   },
   success: {
     color: theme.palette.success.main,
-    backgroundColor: fade(theme.palette.success.main, 0.08),
+    backgroundColor: alpha(theme.palette.success.main, 0.08),
   },
   warning: {
     color: theme.palette.warning.main,
-    backgroundColor: fade(theme.palette.warning.main, 0.08),
+    backgroundColor: alpha(theme.palette.warning.main, 0.08),
   },
 }));
 

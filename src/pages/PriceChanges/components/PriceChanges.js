@@ -87,6 +87,10 @@ const PriceChanges = ({
                 title: 'Diferencia',
                 render: ({ diff }) => (diff !== undefined ? <TextEuro num={diff} /> : 'Sin datos'),
               },
+              {
+                title: 'Coste',
+                render: ({ cost }) => <TextEuro num={cost} />,
+              },
             ]}
             data={priceChanges}
             title={`Cambios (${priceChanges.length})`}
