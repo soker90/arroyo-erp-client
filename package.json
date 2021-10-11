@@ -63,7 +63,7 @@
     "@storybook/addon-knobs": "^6.3.0",
     "@storybook/addon-links": "^6.3.7",
     "@storybook/addons": "^6.3.7",
-    "@storybook/node-logger": "^6.3.7",
+    "@storybook/node-logger": "^6.3.10",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.7",
     "@storybook/storybook-deployer": "^2.8.10",
