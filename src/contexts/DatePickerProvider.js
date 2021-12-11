@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import AdapterMoment from '@mui/lab/AdapterMoment';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 const DatePickerProvider = ({ children }) => (
-  <MuiPickersUtilsProvider utils={MomentUtils}>
+  <LocalizationProvider dateAdapter={AdapterMoment}>
     {children}
-  </MuiPickersUtilsProvider>
+  </LocalizationProvider>
 );
 
 DatePickerProvider.propTypes = {

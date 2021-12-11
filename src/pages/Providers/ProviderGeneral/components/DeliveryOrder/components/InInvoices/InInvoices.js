@@ -3,12 +3,12 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { InputForm, TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
 import { BASE_PATH } from 'constants/common';
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid } from '@mui/material';
 import { useDebounce } from 'hooks';
 import { useStyles } from './InInvoices.styles';
 

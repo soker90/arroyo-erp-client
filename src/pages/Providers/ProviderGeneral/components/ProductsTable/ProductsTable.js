@@ -1,7 +1,7 @@
 import { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { TableMaterial } from 'components';
 import { BASE_PATH } from 'constants/common';

@@ -3,11 +3,11 @@ import { NavLink as RouterLink } from 'react-router-dom';
 import {
   Badge,
   IconButton,
-  makeStyles,
   Tooltip,
-} from '@material-ui/core';
-import EuroIcon from '@material-ui/icons/Euro';
+} from '@mui/material';
+import EuroIcon from '@mui/icons-material/Euro';
 import { useSelector } from 'react-redux';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles({
   badge: {

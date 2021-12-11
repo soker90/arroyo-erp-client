@@ -2,13 +2,13 @@
 import {
   memo, useCallback, useEffect, useState,
 } from 'react';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'react-feather';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import DeleteIcon from '@material-ui/icons/Delete';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { BASE_PATH } from 'constants/index';
 import { Page, TableMaterial, TextEuro } from 'components';

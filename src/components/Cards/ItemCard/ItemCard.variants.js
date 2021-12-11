@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 import { BooleanIcon, TextEuro } from 'components';
 

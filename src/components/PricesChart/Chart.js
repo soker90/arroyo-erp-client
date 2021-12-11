@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
-import { alpha, makeStyles, useTheme } from '@material-ui/core';
+import { alpha, useTheme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(() => ({
   root: {

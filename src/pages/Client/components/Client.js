@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { memo, useEffect, useState } from 'react';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 

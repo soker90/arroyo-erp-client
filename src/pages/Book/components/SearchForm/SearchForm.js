@@ -7,7 +7,7 @@ import {
   Grid,
   Divider,
   CardHeader,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import {
   DatePickerForm,

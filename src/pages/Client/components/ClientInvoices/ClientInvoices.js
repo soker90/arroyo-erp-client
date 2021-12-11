@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
 import { LoadingScreen, TableMaterial, TextEuro } from 'components';

@@ -1,6 +1,6 @@
 import {
   Box, Card, CardHeader, Divider, Grid, List,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { FormControlLabel, Switch } from '@material-ui/core';
+import { FormControlLabel, Switch } from '@mui/material';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
 import { TYPE_PROVIDER_LIST } from '../../../constants';

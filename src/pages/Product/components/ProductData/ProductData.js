@@ -2,8 +2,8 @@ import { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 import uniqId from 'uniqid';
 
 import ProductItemCard from './ProductItemCard';

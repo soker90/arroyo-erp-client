@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Card,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { useSumSelected } from './hooks';
 import DeliveryOrderSelectedSumItem from './DeliveryOrderSelectedSumItem';

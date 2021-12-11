@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Tab, Tabs } from '@material-ui/core';
+import { Card, Tab, Tabs } from '@mui/material';
 import { useHistory } from 'react-router';
 
 import { useStyles } from './HashTabs.styles';

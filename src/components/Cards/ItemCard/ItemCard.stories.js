@@ -1,5 +1,5 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent } from '@mui/material';
 import { story as ItemCard } from './ItemCard';
 
 export default {

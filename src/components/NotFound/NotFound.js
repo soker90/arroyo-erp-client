@@ -7,7 +7,7 @@ import {
   Box,
   useTheme,
   useMediaQuery,
-} from '@material-ui/core';
+} from '@mui/material';
 import Page from 'components/Page';
 import { useStyles } from './NotFound.styles';
 

@@ -1,7 +1,7 @@
 import {
   boolean, number, select, text,
 } from '@storybook/addon-knobs';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { action } from '@storybook/addon-actions';
 
 import { story as CheckBoxForm } from './CheckBoxForm';

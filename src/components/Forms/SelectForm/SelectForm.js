@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, TextField } from '@material-ui/core';
+import { Grid, TextField } from '@mui/material';
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir

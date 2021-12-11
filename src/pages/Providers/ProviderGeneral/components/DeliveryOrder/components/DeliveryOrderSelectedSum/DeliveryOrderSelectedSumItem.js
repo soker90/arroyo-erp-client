@@ -4,7 +4,7 @@ import {
   Box,
   Grid,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import Label from 'components/Label';
 import { format } from 'utils';
 import { useStyles } from './styles';

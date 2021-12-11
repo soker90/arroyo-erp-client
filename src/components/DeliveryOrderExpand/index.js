@@ -4,8 +4,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import ProductsOrderTable from './ProductsOrderTable';
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader';

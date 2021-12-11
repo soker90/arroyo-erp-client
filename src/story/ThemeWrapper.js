@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material';
 import { createTheme } from 'theme';
 import { select } from '@storybook/addon-knobs';
 import { THEMES } from '../constants/common';

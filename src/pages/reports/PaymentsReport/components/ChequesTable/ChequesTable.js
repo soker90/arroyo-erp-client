@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 import { TableMaterial, TextEuro } from 'components';
 import { format, navigateTo } from 'utils';

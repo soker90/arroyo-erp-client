@@ -12,10 +12,10 @@ import {
   Hidden,
   List,
   ListSubheader,
-  makeStyles,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import uniqId from 'uniqid';
+import makeStyles from '@mui/styles/makeStyles';
 
 import Logo from 'components/Logo';
 import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';

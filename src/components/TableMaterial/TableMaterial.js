@@ -8,7 +8,7 @@ import {
   Card,
   Table,
   TablePagination,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import NoData from './components/NoData';
 import HeadTable from './components/HeadTable';

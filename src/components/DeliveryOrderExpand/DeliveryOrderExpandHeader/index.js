@@ -6,8 +6,8 @@ import {
   IconButton,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+} from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { format } from 'utils';
 import TextEuro from '../../TextEuro';

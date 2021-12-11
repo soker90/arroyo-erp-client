@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box,
-} from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+} from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import uniqId from 'uniqid';
 
 import { useStyles } from './Header.styles';

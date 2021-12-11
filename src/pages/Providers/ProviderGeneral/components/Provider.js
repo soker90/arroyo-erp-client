@@ -4,7 +4,7 @@ import {
 } from 'react';
 import {
   Box, Container,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import { useLocation, useParams } from 'react-router';
 

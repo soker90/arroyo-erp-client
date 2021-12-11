@@ -9,7 +9,7 @@ import {
   Grid,
   Divider,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { useStyles } from './ModalGrid.styles';
 

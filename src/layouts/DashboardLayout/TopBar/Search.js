@@ -10,8 +10,8 @@ import {
   ListItemText,
   Paper,
   Popper,
-} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
 
 import { navigateTo } from 'utils';

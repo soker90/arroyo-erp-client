@@ -2,7 +2,7 @@
 import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 
 import { LoadingScreen, Page, PricesChart } from 'components';
 import Header from './Header';

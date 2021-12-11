@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
-import EuroIcon from '@material-ui/icons/Euro';
-import CallSplitIcon from '@material-ui/icons/CallSplit';
+import EuroIcon from '@mui/icons-material/Euro';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
 
 import { TableMaterial, TextEuro } from 'components';
 import { addSelectedToState, format, removeSelectedFromState } from 'utils';

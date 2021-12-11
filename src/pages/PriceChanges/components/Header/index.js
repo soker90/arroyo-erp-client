@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import DeleteIcon from '@material-ui/icons/Delete';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Header } from 'components';
 import DeletePriceChangeModal from '../../modals/DeletePriceChangeModal';

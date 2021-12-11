@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PostAddIcon from '@material-ui/icons/PostAdd';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 
 import { Header } from 'components';
 

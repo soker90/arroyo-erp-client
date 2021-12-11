@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import PropTypes from 'prop-types';
 
 import { Header } from 'components';

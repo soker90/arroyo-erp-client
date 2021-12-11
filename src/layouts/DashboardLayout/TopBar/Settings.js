@@ -3,13 +3,13 @@ import {
   Box,
   Button,
   IconButton,
-  makeStyles,
   Popover,
   SvgIcon,
   TextField,
   Tooltip,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { Settings as SettingsIcon } from 'react-feather';
 import useSettings from 'hooks/useSettings';
 import { THEMES, THEMES_NAME } from 'constants/common';

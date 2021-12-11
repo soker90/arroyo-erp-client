@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { Label, Header } from 'components';
 import { getButtons } from './utils';

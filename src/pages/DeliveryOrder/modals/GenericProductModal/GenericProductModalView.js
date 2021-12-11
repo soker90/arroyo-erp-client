@@ -1,6 +1,6 @@
 import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box } from '@mui/material';
 
 import { InputForm, ModalGrid, SelectForm } from 'components';
 import { replaceCommasByDots } from 'utils';

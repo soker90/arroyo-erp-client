@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { ListItem, Typography } from '@material-ui/core';
+import { ListItem, Typography } from '@mui/material';
 
 import ItemCardVariant from './ItemCard.variants';
 import { useStyles } from './ItemCard.styles';

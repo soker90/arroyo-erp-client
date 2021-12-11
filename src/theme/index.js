@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import { colors, createTheme as createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+import { colors, createTheme as createMuiTheme, responsiveFontSizes } from '@mui/material';
 import { THEMES } from 'constants/common';
 import typography from './typography';
 import { softShadows, strongShadows } from './shadows';

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { DatePickerForm, InputForm } from 'components';
 import { useStyles } from './DeliveryOrderData.styles';

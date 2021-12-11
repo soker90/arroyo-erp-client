@@ -2,13 +2,13 @@ import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { ItemCard } from 'components';
 import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal';
 import { format } from 'utils';
 import uniqId from 'uniqid';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 
 const InvoicePayment = ({
   payment,

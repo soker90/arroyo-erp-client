@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 
-import MomentUtils from '@date-io/moment';
 import { ReduxProvider } from 'story';
 import RoutesWrapper from 'story/RoutesWrapper';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { story as ClientBook } from './ClientBook';
+import AdapterMoment from '@mui/lab/AdapterMoment';
 
 export default {
   title: 'Rutas/Libro Cliente',
@@ -14,11 +14,11 @@ export default {
   },
   decorators: [storyFn => (
     <ReduxProvider>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
+      <LocalizationProvider dateAdapter={AdapterMoment}>
         <RoutesWrapper>
           {storyFn()}
         </RoutesWrapper>
-      </MuiPickersUtilsProvider>
+      </LocalizationProvider>
     </ReduxProvider>
   ),
   ],

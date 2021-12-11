@@ -2,7 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box, TableBody, TableCell, TableRow, Checkbox,
-} from '@material-ui/core';
+} from '@mui/material';
 import uniqId from 'uniqid';
 import { Link } from 'react-router-dom';
 

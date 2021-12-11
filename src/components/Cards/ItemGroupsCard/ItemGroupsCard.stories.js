@@ -1,5 +1,5 @@
 import { number } from '@storybook/addon-knobs';
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent } from '@mui/material';
 import { story as ItemGroupsCard } from './ItemGroupsCard';
 
 export default {

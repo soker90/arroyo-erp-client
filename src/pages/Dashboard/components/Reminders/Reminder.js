@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import {
-  IconButton, ListItem, ListItemText, makeStyles, Tooltip,
-} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+  IconButton, ListItem, ListItemText, Tooltip,
+} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   viewButton: {

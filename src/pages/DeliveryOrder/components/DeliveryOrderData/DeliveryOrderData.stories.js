@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import AdapterMoment from '@mui/lab/AdapterMoment';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { story as DeliveryOrderData } from './DeliveryOrderData';
 import { ReduxProvider, RoutesWrapper } from '../../../../story';
 
@@ -9,18 +9,18 @@ export default {
   title: 'Rutas/Albarán/Datos',
   parameters: {
     component: DeliveryOrderData,
-    componentSubtitle: 'Tabla de productos',
+    componentSubtitle: 'Tabla de productos'
   },
   decorators: [storyFn => (
     <ReduxProvider>
       <RoutesWrapper>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
           {storyFn()}
-        </MuiPickersUtilsProvider>
+        </LocalizationProvider>
       </RoutesWrapper>
     </ReduxProvider>
-  ),
-  ],
+  )
+  ]
 };
 
 /**
@@ -36,7 +36,7 @@ const DeliveryOrderProductsStory = () => (
         quantity: 6.6,
         price: 1.3,
         amount: 15,
-        diff: -1.2,
+        diff: -1.2
       },
       {
         code: '1111',
@@ -44,7 +44,7 @@ const DeliveryOrderProductsStory = () => (
         quantity: 2,
         price: 3.3,
         amount: 1,
-        diff: 6.35,
+        diff: 6.35
       },
       {
         code: '6846',
@@ -52,13 +52,13 @@ const DeliveryOrderProductsStory = () => (
         quantity: 2,
         price: 0.5,
         amount: 1,
-        diff: 0,
-      },
+        diff: 0
+      }
     ]}
     readOnly={boolean('Solo lectura', false)}
     updateData={action('updateData')}
     date={1609802700330}
-    note='Esto es una nota'
+    note="Esto es una nota"
   />
 );
 

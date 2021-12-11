@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@mui/material';
 import { ShoppingCart, Users } from 'react-feather';
 
 import {

@@ -1,7 +1,7 @@
 import { Suspense, memo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { LinearProgress } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { LinearProgress } from '@mui/material';
 import TopBar from './TopBar';
 
 const useStyles = makeStyles(() => ({

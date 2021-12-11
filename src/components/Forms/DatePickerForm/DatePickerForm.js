@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
-import { DatePicker } from '@material-ui/pickers';
+import { Grid, TextField } from '@mui/material';
+import { DesktopDatePicker } from '@mui/lab';
 
 import { useStyles } from './DatePickerForm.styles';
 
@@ -12,13 +12,13 @@ const DatePickerForm = (
     format,
     autoOk,
     ...rest
-  },
+  }
 ) => {
   const classes = useStyles();
 
   return (
     <Grid item md={size} xs={12}>
-      <DatePicker
+      <DesktopDatePicker
         disableToolbar
         className={classes.picker}
         onChange={() => {
@@ -30,6 +30,7 @@ const DatePickerForm = (
         cancelLabel='Cancelar'
         clearLabel='Limpiar'
         okLabel='Aceptar'
+        renderInput={params => <TextField {...params} />}
         {...rest}
       />
     </Grid>

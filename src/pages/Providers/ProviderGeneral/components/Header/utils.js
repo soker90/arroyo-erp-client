@@ -1,5 +1,5 @@
-import AddIcon from '@material-ui/icons/Add';
-import PostAddIcon from '@material-ui/icons/PostAdd';
+import AddIcon from '@mui/icons-material/Add';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 import { TABS } from '../../constants';
 
 /**

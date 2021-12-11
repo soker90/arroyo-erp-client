@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, TableCell, Tooltip } from '@material-ui/core';
+import { IconButton, TableCell, Tooltip } from '@mui/material';
 import uniqId from 'uniqid';
 
 import { useStyles } from './styles';

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, LinearProgress } from '@material-ui/core';
+import { Grid, LinearProgress } from '@mui/material';
 import AuthLayout from './AuthLayout';
 import LoginForm from './LoginForm';
 import { useStyles } from './Login.styles';
