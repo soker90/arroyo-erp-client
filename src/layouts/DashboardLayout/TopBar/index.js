@@ -35,11 +35,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function TopBar({
+const TopBar = ({
   className,
   onMobileNavOpen,
   ...rest
-}) {
+}) => {
   const classes = useStyles();
 
   return (
@@ -77,7 +77,7 @@ function TopBar({
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 TopBar.propTypes = {
   className: PropTypes.string,

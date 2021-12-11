@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Account() {
+const Account = () => {
   const classes = useStyles();
   const ref = useRef(null);
   const dispatch = useDispatch();
@@ -90,6 +90,6 @@ function Account() {
       </Menu>
     </>
   );
-}
+};
 
 export default Account;

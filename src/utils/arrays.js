@@ -10,8 +10,10 @@ export const sliceToGroups = (list, groups) => {
 
   while (restList.length > 0) {
     newArray.push(
-      restList.splice(0,
-        Math.round(list.length / groups),),
+      restList.splice(
+        0,
+        Math.round(list.length / groups),
+      ),
     );
   }
   return newArray;

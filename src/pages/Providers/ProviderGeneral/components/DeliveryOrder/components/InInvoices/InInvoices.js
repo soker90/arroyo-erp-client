@@ -26,14 +26,12 @@ const InInvoices = ({
   const debounce = useDebounce();
 
   useEffect(() => {
-    debounce(
-      () => {
-        getDeliveryOrders({
-          provider: idProvider,
-          canal,
-        });
-      }, 500,
-    );
+    debounce(() => {
+      getDeliveryOrders({
+        provider: idProvider,
+        canal,
+      });
+    }, 500,);
   }, [canal]);
 
   const _refresh = useCallback(({

@@ -6,7 +6,7 @@ import { setUserData, logout } from 'actions/auth';
 import authService from 'services/authService';
 import { initialize } from 'actions/initializeAction';
 
-function Auth({ children }) {
+const Auth = ({ children }) => {
   const dispatch = useDispatch();
   const [isLoading, setLoading] = useState(true);
 
@@ -33,7 +33,7 @@ function Auth({ children }) {
   if (isLoading) return <SplashScreen />;
 
   return children;
-}
+};
 
 Auth.propTypes = {
   children: PropTypes.any,

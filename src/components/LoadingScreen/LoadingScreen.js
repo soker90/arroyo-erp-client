@@ -4,7 +4,7 @@ import { Box, LinearProgress } from '@material-ui/core';
 
 import { useStyles } from './LoadingScreen.style';
 
-function LoadingScreen() {
+const LoadingScreen = () => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -22,6 +22,6 @@ function LoadingScreen() {
       </Box>
     </div>
   );
-}
+};
 
 export default LoadingScreen;

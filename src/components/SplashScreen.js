@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SlashScreen() {
+const SlashScreen = () => {
   const classes = useStyles();
 
   return (
@@ -41,6 +41,6 @@ function SlashScreen() {
       <CircularProgress />
     </div>
   );
-}
+};
 
 export default SlashScreen;

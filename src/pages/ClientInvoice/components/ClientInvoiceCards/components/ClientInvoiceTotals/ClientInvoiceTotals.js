@@ -16,7 +16,7 @@ import { ItemCard } from 'components';
 import { itemsCard } from './utils';
 import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal';
 
-const ClientInvoiceTotals = props => {
+const ClientInvoiceTotals = (isEditable, ...props) => {
   const [showModal, setShowModal] = useState(false);
 
   /**
@@ -32,7 +32,7 @@ const ClientInvoiceTotals = props => {
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (props.isEditable ? [
+  const _getActions = () => (isEditable ? [
     <Tooltip title='Editar' key={uniqId()}>
       <IconButton
         size='small'

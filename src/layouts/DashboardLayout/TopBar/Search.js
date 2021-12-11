@@ -94,42 +94,40 @@ const Search = () => {
   );
 
   return (
-    <>
-      <Hidden smDown>
-        <div
-          className={classes.search}
-          ref={searchRef}
-        >
-          <SearchIcon className={classes.searchIcon} />
-          <Input
-            className={classes.searchInput}
-            disableUnderline
-            onChange={_handleSearchChange}
-            placeholder='Buscar proveedor'
-            value={searchValue}
-          />
-        </div>
-        <Popper
-          anchorEl={searchRef.current}
-          className={classes.searchPopper}
-          open={openSearchPopover}
-          transition
-        >
-          <ClickAwayListener onClickAway={_handleSearchPopverClose}>
-            <Paper
-              className={classes.searchPopperContent}
-              elevation={3}
-            >
-              <List>
-                {providers
-                  .filter(_filterPossibles)
-                  .map(_renderSearchedItem)}
-              </List>
-            </Paper>
-          </ClickAwayListener>
-        </Popper>
-      </Hidden>
-    </>
+    <Hidden smDown>
+      <div
+        className={classes.search}
+        ref={searchRef}
+      >
+        <SearchIcon className={classes.searchIcon} />
+        <Input
+          className={classes.searchInput}
+          disableUnderline
+          onChange={_handleSearchChange}
+          placeholder='Buscar proveedor'
+          value={searchValue}
+        />
+      </div>
+      <Popper
+        anchorEl={searchRef.current}
+        className={classes.searchPopper}
+        open={openSearchPopover}
+        transition
+      >
+        <ClickAwayListener onClickAway={_handleSearchPopverClose}>
+          <Paper
+            className={classes.searchPopperContent}
+            elevation={3}
+          >
+            <List>
+              {providers
+                .filter(_filterPossibles)
+                .map(_renderSearchedItem)}
+            </List>
+          </Paper>
+        </ClickAwayListener>
+      </Popper>
+    </Hidden>
   );
 };
 

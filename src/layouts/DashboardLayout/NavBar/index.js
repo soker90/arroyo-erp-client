@@ -99,7 +99,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function NavBar({ openMobile, onMobileClose }) {
+const NavBar = ({ openMobile, onMobileClose }) => {
   const classes = useStyles();
   const location = useLocation();
 
@@ -201,7 +201,7 @@ function NavBar({ openMobile, onMobileClose }) {
       </Hidden>
     </>
   );
-}
+};
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,

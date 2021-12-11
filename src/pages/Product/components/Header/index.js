@@ -7,23 +7,21 @@ const HeaderProduct = ({
   nameProvider,
   product,
 }) => (
-  <>
-    <Header
-      routes={[
-        {
-          link: '/app/proveedores',
-          title: 'Proveedores',
-        }, {
-          link: `/app/proveedores/${provider}`,
-          title: `${nameProvider}`,
-        },
-        {
-          link: `/app/proveedores/${provider}#Productos`,
-          title: 'Productos',
-        }]}
-      title={product}
-    />
-  </>
+  <Header
+    routes={[
+      {
+        link: '/app/proveedores',
+        title: 'Proveedores',
+      }, {
+        link: `/app/proveedores/${provider}`,
+        title: `${nameProvider}`,
+      },
+      {
+        link: `/app/proveedores/${provider}#Productos`,
+        title: 'Productos',
+      }]}
+    title={product}
+  />
 );
 
 HeaderProduct.propTypes = {

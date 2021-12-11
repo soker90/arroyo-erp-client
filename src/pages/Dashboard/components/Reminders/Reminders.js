@@ -7,41 +7,39 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import AddReminder from './AddReminder';
 import Reminder from './Reminder';
 
-function Reminders({
+const Reminders = ({
   reminders,
   createReminder,
   setDeleteId,
-}) {
-  return (
-    <Grid
-      item
-      lg={12}
-      sm={12}
-      xs={12}
-    >
-      <Card>
-        <CardHeader
-          title='Recordatorios'
-        />
-        <Divider />
-        <PerfectScrollbar>
-          <Box minWidth={400}>
-            <List>
-              {reminders.map(reminder => (
-                <Reminder
-                  key={reminder._id}
-                  reminder={reminder}
-                  setDeleteId={setDeleteId}
-                />
-              ))}
-            </List>
-            <AddReminder createReminder={createReminder} />
-          </Box>
-        </PerfectScrollbar>
-      </Card>
-    </Grid>
-  );
-}
+}) => (
+  <Grid
+    item
+    lg={12}
+    sm={12}
+    xs={12}
+  >
+    <Card>
+      <CardHeader
+        title='Recordatorios'
+      />
+      <Divider />
+      <PerfectScrollbar>
+        <Box minWidth={400}>
+          <List>
+            {reminders.map(reminder => (
+              <Reminder
+                key={reminder._id}
+                reminder={reminder}
+                setDeleteId={setDeleteId}
+              />
+            ))}
+          </List>
+          <AddReminder createReminder={createReminder} />
+        </Box>
+      </PerfectScrollbar>
+    </Card>
+  </Grid>
+);
 
 Reminders.propTypes = {
   reminders: PropTypes.array.isRequired,

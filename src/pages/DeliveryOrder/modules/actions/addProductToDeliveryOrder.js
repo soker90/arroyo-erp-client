@@ -49,9 +49,7 @@ const _addProductToDeliveryOrderError = error => ({
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
-export const addProductToDeliveryOrder = (
-  model, callback
-) => async (dispatch, getState) => {
+export const addProductToDeliveryOrder = (model, callback) => async (dispatch, getState) => {
   dispatch(_addProductToDeliveryOrderRequest());
   const id = getState().deliveryOrders._id;
 

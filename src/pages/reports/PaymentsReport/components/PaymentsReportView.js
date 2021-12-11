@@ -29,28 +29,26 @@ const PaymentsReportView = ({
   }, [getTotals, getCheques, year]);
 
   return (
-    <>
-      <Page
-        className={classes.root}
-        title='Informe de pagos'
+    <Page
+      className={classes.root}
+      title='Informe de pagos'
+    >
+      <Container
+        maxWidth={false}
       >
-        <Container
-          maxWidth={false}
-        >
-          <Header year={year} />
+        <Header year={year} />
 
-          <TotalsReportBoxes
-            totals={totals}
-          />
-          <ChequesTable
-            cheques={cheques}
-            getCheques={getCheques}
-            count={countCheques}
-            year={year}
-          />
-        </Container>
-      </Page>
-    </>
+        <TotalsReportBoxes
+          totals={totals}
+        />
+        <ChequesTable
+          cheques={cheques}
+          getCheques={getCheques}
+          count={countCheques}
+          year={year}
+        />
+      </Container>
+    </Page>
   );
 };
 

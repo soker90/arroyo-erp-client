@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 
-function ScrollReset() {
+const ScrollReset = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -9,6 +9,6 @@ function ScrollReset() {
   }, [location.pathname]);
 
   return null;
-}
+};
 
 export default ScrollReset;

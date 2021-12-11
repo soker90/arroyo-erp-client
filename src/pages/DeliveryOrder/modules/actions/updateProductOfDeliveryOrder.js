@@ -49,9 +49,8 @@ const _updateProductOfDeliveryOrderError = error => ({
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
-export const updateProductOfDeliveryOrder = (
-  index, model, callback
-) => async (dispatch, getState) => {
+// eslint-disable-next-line max-len
+export const updateProductOfDeliveryOrder = (index, model, callback) => async (dispatch, getState) => {
   dispatch(_updateProductOfDeliveryOrderRequest());
   const id = getState().deliveryOrders._id;
 

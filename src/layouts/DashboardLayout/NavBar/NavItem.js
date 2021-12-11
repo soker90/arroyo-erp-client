@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function NavItem({
+const NavItem = ({
   title,
   href,
   depth,
@@ -73,7 +73,7 @@ function NavItem({
   open: openProp,
   info: Info,
   ...rest
-}) {
+}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(openProp);
 
@@ -155,7 +155,7 @@ function NavItem({
       </Button>
     </ListItem>
   );
-}
+};
 
 NavItem.propTypes = {
   children: PropTypes.node,

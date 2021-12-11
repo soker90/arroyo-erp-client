@@ -29,44 +29,42 @@ const ChequesTable = ({
     });
   }, [year]);
   return (
-    <>
-      <TableMaterial
-        className={classes.table}
-        columns={[
-          {
-            title: 'Nº de Cheque',
-            render: ({ payment }) => payment.numCheque,
-          },
-          {
-            title: 'Fecha de pago',
-            render: ({ payment }) => format.date(payment.paymentDate),
-          },
-          {
-            title: 'Proveedor',
-            field: 'nameProvider',
-          },
-          {
-            title: 'Nº Orden',
-            field: 'nOrder',
-          },
-          {
-            title: 'Importe',
-            // eslint-disable-next-line react/prop-types
-            render: ({ total }) => <TextEuro num={total} />,
-          },
-        ]}
-        data={cheques}
-        refresh={_refresh}
-        count={count}
-        actions={[
-          {
-            icon: DescriptionIcon,
-            tooltip: 'Ver factura',
-            onClick: _handleInvoiceButton,
-          },
-        ]}
-      />
-    </>
+    <TableMaterial
+      className={classes.table}
+      columns={[
+        {
+          title: 'Nº de Cheque',
+          render: ({ payment }) => payment.numCheque,
+        },
+        {
+          title: 'Fecha de pago',
+          render: ({ payment }) => format.date(payment.paymentDate),
+        },
+        {
+          title: 'Proveedor',
+          field: 'nameProvider',
+        },
+        {
+          title: 'Nº Orden',
+          field: 'nOrder',
+        },
+        {
+          title: 'Importe',
+          // eslint-disable-next-line react/prop-types
+          render: ({ total }) => <TextEuro num={total} />,
+        },
+      ]}
+      data={cheques}
+      refresh={_refresh}
+      count={count}
+      actions={[
+        {
+          icon: DescriptionIcon,
+          tooltip: 'Ver factura',
+          onClick: _handleInvoiceButton,
+        },
+      ]}
+    />
   );
 };
 

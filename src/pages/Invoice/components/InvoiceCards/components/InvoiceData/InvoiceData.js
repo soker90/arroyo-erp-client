@@ -60,17 +60,14 @@ const InvoiceData = ({
       <Card className={className}>
         <CardHeader
           title={(
-            <>
-              <Typography variant='h5'>
-                Datos de la factura
-                {nOrder && (
-                  <Label color='success' className={classes.label}>
-                    CONFIRMADA
-                  </Label>
-                )}
-              </Typography>
-
-            </>
+            <Typography variant='h5'>
+              Datos de la factura
+              {nOrder && (
+              <Label color='success' className={classes.label}>
+                CONFIRMADA
+              </Label>
+              )}
+            </Typography>
           )}
           action={_getActions()}
         />

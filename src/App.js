@@ -40,7 +40,7 @@ const useStyles = makeStyles(() => createStyles({
   },
 }));
 
-function App() {
+const App = () => {
   useStyles();
 
   const { settings } = useSettings();
@@ -67,6 +67,6 @@ function App() {
       </MuiPickersUtilsProvider>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

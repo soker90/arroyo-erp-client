@@ -48,9 +48,7 @@ const ProductsReport = ({
           <Grid item xs={12} md={8}>
             {Boolean(prices?.length)
             && (
-              <>
-                <PricesChart prices={prices.reverse()} className={classes.chart} />
-              </>
+              <PricesChart prices={prices.reverse()} className={classes.chart} />
             )}
           </Grid>
         </Grid>

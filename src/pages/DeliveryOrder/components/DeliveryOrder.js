@@ -42,17 +42,16 @@ const DeliveryOrder = (
   };
 
   return (
-    <>
-      <Page className={classes.root} title={`${nameProvider} | Albarán`}>
-        <Container maxWidth={false}>
-          <Header
-            nameProvider={nameProvider}
-            provider={provider}
-            readOnly={Boolean(nOrder)}
-            invoice={invoice}
-          />
+    <Page className={classes.root} title={`${nameProvider} | Albarán`}>
+      <Container maxWidth={false}>
+        <Header
+          nameProvider={nameProvider}
+          provider={provider}
+          readOnly={Boolean(nOrder)}
+          invoice={invoice}
+        />
 
-          {
+        {
             date && (
               <DeliveryOrderProducts
                 products={products}
@@ -64,23 +63,22 @@ const DeliveryOrder = (
             )
           }
 
-          <Grid container spacing={3} className={classes.cards}>
-            <Grid item xs={12} md={4}>
-              <DeliveryOrderData
-                date={date}
-                readOnly={Boolean(nOrder)}
-                updateData={_updateData}
-                note={note}
-              />
-            </Grid>
-            <Grid item xs={12} md={8}>
-              <DeliveryOrderTotals totals={totals} isEditable={!nOrder} />
-            </Grid>
+        <Grid container spacing={3} className={classes.cards}>
+          <Grid item xs={12} md={4}>
+            <DeliveryOrderData
+              date={date}
+              readOnly={Boolean(nOrder)}
+              updateData={_updateData}
+              note={note}
+            />
           </Grid>
+          <Grid item xs={12} md={8}>
+            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} />
+          </Grid>
+        </Grid>
 
-        </Container>
-      </Page>
-    </>
+      </Container>
+    </Page>
   );
 };
 

@@ -30,14 +30,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ListActions({
+const ListActions = ({
   className,
   data,
   icon,
   title,
   onClick,
   ...rest
-}) {
+}) => {
   const classes = useStyles();
   const [filter, setFilter] = useState('');
   const [selected, setSelected] = useState(null);
@@ -117,7 +117,7 @@ function ListActions({
       </List>
     </Card>
   );
-}
+};
 
 ListActions.propTypes = {
   className: PropTypes.string,

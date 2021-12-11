@@ -46,13 +46,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Label({
+const Label = ({
   className,
   color,
   children,
   style,
   ...rest
-}) {
+}) => {
   const classes = useStyles();
 
   return (
@@ -67,7 +67,7 @@ function Label({
       {children}
     </span>
   );
-}
+};
 
 Label.propTypes = {
   children: PropTypes.node,

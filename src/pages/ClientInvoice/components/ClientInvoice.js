@@ -52,6 +52,7 @@ const ClientInvoice = ({
 
   if (!_id) return <LoadingScreen />;
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const _isLastDO = index => deliveryOrders?.length - 1 === index;
 
   const createDOAndRedirect = id => {
