@@ -130,7 +130,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
         <Box p={2}>
           <Box
             p={2}
-            borderRadius='borderRadius'
+            borderRadius={1}
             bgcolor='background.dark'
           >
             <Typography
@@ -189,7 +189,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
           {content}
         </Drawer>
       </Hidden>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <Drawer
           anchor='left'
           classes={{ paper: classes.desktopDrawer }}

@@ -74,8 +74,8 @@ const TableMaterial = ({
         <TablePagination
           component='div'
           count={count}
-          onChangePage={handlePageChange}
-          onChangeRowsPerPage={handleLimitChange}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleLimitChange}
           page={page}
           rowsPerPage={limit}
           rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}

@@ -52,7 +52,7 @@ const Account = () => {
           className={classes.avatar}
           src={null}
         />
-        <Hidden smDown>
+        <Hidden mdDown>
           <Typography
             variant='h6'
             color='inherit'

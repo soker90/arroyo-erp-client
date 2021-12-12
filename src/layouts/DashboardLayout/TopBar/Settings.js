@@ -55,11 +55,7 @@ const Settings = () => {
   return (
     <>
       <Tooltip title='Ajustes'>
-        <IconButton
-          color='inherit'
-          onClick={handleOpen}
-          ref={ref}
-        >
+        <IconButton color='inherit' onClick={handleOpen} ref={ref} size='large'>
           <SvgIcon fontSize='small'>
             <SettingsIcon />
           </SvgIcon>

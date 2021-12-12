@@ -27,11 +27,7 @@ const PricesNotification = () => {
         badgeContent={count}
         max={99}
       >
-        <IconButton
-          color='inherit'
-          component={RouterLink}
-          to='/app/precios'
-        >
+        <IconButton color='inherit' component={RouterLink} to='/app/precios' size='large'>
           <EuroIcon />
         </IconButton>
       </Badge>

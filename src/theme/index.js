@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import { colors, createTheme as createMuiTheme, responsiveFontSizes } from '@mui/material';
+import { adaptV4Theme } from '@mui/material/styles';
 import { THEMES } from 'constants/common';
 import typography from './typography';
 import { softShadows, strongShadows } from './shadows';
@@ -43,7 +44,7 @@ const themeConfigs = [
       },
     },
     palette: {
-      type: 'light',
+      mode: 'light',
       action: {
         active: colors.blueGrey[600],
       },
@@ -68,7 +69,7 @@ const themeConfigs = [
   {
     name: THEMES.ONE_DARK,
     palette: {
-      type: 'dark',
+      mode: 'dark',
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
         hover: 'rgba(255, 255, 255, 0.04)',
@@ -99,7 +100,7 @@ const themeConfigs = [
   {
     name: THEMES.UNICORN,
     palette: {
-      type: 'dark',
+      mode: 'dark',
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
         hover: 'rgba(255, 255, 255, 0.04)',
@@ -136,10 +137,10 @@ export function createTheme(settings = {}) {
     [themeConfig] = themeConfigs;
   }
 
-  let theme = createMuiTheme({
+  let theme = createMuiTheme(adaptV4Theme({
     ...baseConfig,
     ...themeConfig,
-  });
+  }));
 
   if (settings.responsiveFontSizes) theme = responsiveFontSizes(theme);
 

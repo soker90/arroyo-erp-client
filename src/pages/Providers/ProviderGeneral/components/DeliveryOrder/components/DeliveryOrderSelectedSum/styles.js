@@ -10,7 +10,7 @@ export const useStyles = makeStyles(theme => ({
         borderRight: `1px solid ${theme.palette.divider}`,
       },
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       '&:not(:last-of-type)': {
         borderBottom: `1px solid ${theme.palette.divider}`,
       },

@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
     paddingRight: 100,
     paddingBottom: 125,
     flexBasis: 700,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },

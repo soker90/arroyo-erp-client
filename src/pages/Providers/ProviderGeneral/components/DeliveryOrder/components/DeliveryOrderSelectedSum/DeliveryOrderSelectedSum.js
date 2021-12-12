@@ -25,7 +25,7 @@ const DeliveryOrderSelectedSum = ({
       <Grid
         alignItems='center'
         container
-        justify='space-between'
+        justifyContent='space-between'
       >
         {sumSelected.map(sum => (
           <DeliveryOrderSelectedSumItem

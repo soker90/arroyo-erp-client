@@ -36,58 +36,52 @@ function GenericMoreButton(props) {
     setOpenMenu(false);
   };
 
-  return (
-    <>
-      <Tooltip title='More options'>
-        <IconButton
-          {...props}
-          onClick={handleMenuOpen}
-          ref={moreRef}
-        >
-          <MoreIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Menu
-        anchorEl={moreRef.current}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        onClose={handleMenuClose}
-        open={openMenu}
-        PaperProps={{ className: classes.menu }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <MenuItem>
-          <ListItemIcon>
-            <GetAppIcon />
-          </ListItemIcon>
-          <ListItemText primary='Import' />
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <FileCopyIcon />
-          </ListItemIcon>
-          <ListItemText primary='Copy' />
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <PictureAsPdfIcon />
-          </ListItemIcon>
-          <ListItemText primary='Export' />
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <AchiveIcon />
-          </ListItemIcon>
-          <ListItemText primary='Achive' />
-        </MenuItem>
-      </Menu>
-    </>
-  );
+  return <>
+    <Tooltip title='More options'>
+      <IconButton {...props} onClick={handleMenuOpen} ref={moreRef} size="large">
+        <MoreIcon fontSize='small' />
+      </IconButton>
+    </Tooltip>
+    <Menu
+      anchorEl={moreRef.current}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      onClose={handleMenuClose}
+      open={openMenu}
+      PaperProps={{ className: classes.menu }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+    >
+      <MenuItem>
+        <ListItemIcon>
+          <GetAppIcon />
+        </ListItemIcon>
+        <ListItemText primary='Import' />
+      </MenuItem>
+      <MenuItem>
+        <ListItemIcon>
+          <FileCopyIcon />
+        </ListItemIcon>
+        <ListItemText primary='Copy' />
+      </MenuItem>
+      <MenuItem>
+        <ListItemIcon>
+          <PictureAsPdfIcon />
+        </ListItemIcon>
+        <ListItemText primary='Export' />
+      </MenuItem>
+      <MenuItem>
+        <ListItemIcon>
+          <AchiveIcon />
+        </ListItemIcon>
+        <ListItemText primary='Achive' />
+      </MenuItem>
+    </Menu>
+  </>;
 }
 
 GenericMoreButton.propTypes = {

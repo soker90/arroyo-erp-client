@@ -54,13 +54,14 @@ const TopBar = ({
             className={classes.menuButton}
             color='inherit'
             onClick={onMobileNavOpen}
+            size='large'
           >
             <SvgIcon fontSize='small'>
               <MenuIcon />
             </SvgIcon>
           </IconButton>
         </Hidden>
-        <Hidden mdDown>
+        <Hidden lgDown>
           <RouterLink to='/'>
             <Logo />
           </RouterLink>

@@ -36,6 +36,7 @@ const Reminder = ({
           className={classes.viewButton}
           edge='end'
           onClick={_handleClick}
+          size='large'
         >
           <DeleteIcon fontSize='small' />
         </IconButton>

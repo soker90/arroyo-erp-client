@@ -94,7 +94,7 @@ const Search = () => {
   );
 
   return (
-    <Hidden smDown>
+    <Hidden mdDown>
       <div
         className={classes.search}
         ref={searchRef}

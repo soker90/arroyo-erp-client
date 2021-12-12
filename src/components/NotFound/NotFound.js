@@ -14,7 +14,7 @@ import { useStyles } from './NotFound.styles';
 const NotFound = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const mobileDevice = useMediaQuery(theme.breakpoints.down('sm'));
+  const mobileDevice = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Page className={classes.root} title='Error 404: Página no encontrada'>

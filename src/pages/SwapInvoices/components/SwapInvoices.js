@@ -26,7 +26,7 @@ const SwapInvoices = ({ swapInvoices }) => {
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
-        <IconButton onClick={onClick}>
+        <IconButton onClick={onClick} size='large'>
           <SearchIcon />
         </IconButton>
       </Tooltip>

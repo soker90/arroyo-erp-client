@@ -44,6 +44,7 @@ const BodyActionsButtons = ({
               {...(onClick && { onClick: () => onClick(row, index) })}
               {...(to && { to: to(row, index) })}
               {...restButton}
+              size='large'
             >
               <Icon className={classes.actionIcon} />
             </IconButton>
