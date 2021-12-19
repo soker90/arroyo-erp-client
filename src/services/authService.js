@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { ARROYO_TOKEN } from 'config';
@@ -38,7 +39,7 @@ class AuthService {
       .catch(error => {
         reject(error);
       });
-  })
+  });
 
   loginInWithToken = () => new Promise((resolve, reject) => {
     axios.get('/account/me')
@@ -51,11 +52,11 @@ class AuthService {
       .catch(error => {
         reject(error);
       });
-  })
+  });
 
   logout = () => {
     this.setSession(null);
-  }
+  };
 
   setSession = accessToken => {
     if (accessToken) {
@@ -65,7 +66,7 @@ class AuthService {
       localStorage.removeItem(ARROYO_TOKEN);
       delete axios.defaults.headers.common.Authorization;
     }
-  }
+  };
 
   getAccessToken = () => localStorage.getItem(ARROYO_TOKEN);
 
@@ -76,9 +77,9 @@ class AuthService {
     const currentTime = Date.now() / 1000;
 
     return decoded.exp > currentTime;
-  }
+  };
 
-  isAuthenticated = () => !!this.getAccessToken()
+  isAuthenticated = () => !!this.getAccessToken();
 }
 
 const authService = new AuthService();
