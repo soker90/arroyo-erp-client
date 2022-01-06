@@ -6,16 +6,24 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import { Header } from 'components';
 import { NavLink } from 'react-router-dom';
 import { downloadFile } from 'utils';
-import { PATH_CLIENT_BILLING, PATH_PROVIDER_BILLING } from 'constants/paths';
+import {
+  API_CLIENT_BILLING_DOWNLOAD, API_PROVIDER_BILLING_DOWNLOAD,
+  PATH_CLIENT_BILLING,
+  PATH_PROVIDER_BILLING,
+} from 'constants/paths';
+import { isClient } from '../utils';
 
-const getRoute = type => (type === 'clientes' ? PATH_CLIENT_BILLING : PATH_PROVIDER_BILLING);
+const getRoute = type => (isClient(type) ? PATH_CLIENT_BILLING : PATH_PROVIDER_BILLING);
+const getDownloadLink = type => (isClient(type)
+  ? API_CLIENT_BILLING_DOWNLOAD
+  : API_PROVIDER_BILLING_DOWNLOAD);
 
 const HeaderBook = ({
   year,
   type,
 }) => {
   const _handleClickDownload = short => () => downloadFile(
-    `billings/export?year=${year}${short ? '&short=true' : ''}`,
+    `${getDownloadLink(type)}/export?year=${year}${short ? '&short=true' : ''}`,
     `Facturación ${year}.ods`,
   );
 

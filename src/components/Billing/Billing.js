@@ -22,7 +22,7 @@ const Billing = ({
   }, [year]);
 
   return (
-    <Page className={classes.root} title={`Facturación ${type} ${year}`}>
+    <Page className={classes.root} title={`Facturación ${type || ''} ${year}`}>
       <Container maxWidth={false}>
         <Header year={Number(year)} type={type} />
 
