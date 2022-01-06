@@ -182,6 +182,16 @@ const routesConfig = [
           },
           {
             exact: true,
+            path: '/app/clientes/facturacion',
+            component: () => <Redirect to={`/app/clientes/facturacion/${year}`} />,
+          },
+          {
+            exact: true,
+            path: '/app/clientes/facturacion/:year',
+            component: lazy(() => import('pages/reports/ClientBilling')),
+          },
+          {
+            exact: true,
             path: '/app/clientes/:id',
             component: lazy(() => import('pages/Client')),
           },

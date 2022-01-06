@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
@@ -9,7 +9,11 @@ import BillingTable from './BillingTable';
 import Header from './Header';
 import { useStyles } from './Billing.styles';
 
-const Billing = ({ billing, getBilling }) => {
+const Billing = ({
+  billing,
+  getBilling,
+  type,
+}) => {
   const classes = useStyles();
   const { year } = useParams();
 
@@ -18,11 +22,11 @@ const Billing = ({ billing, getBilling }) => {
   }, [year]);
 
   return (
-    <Page className={classes.root} title={`Facturación ${year}`}>
+    <Page className={classes.root} title={`Facturación ${type} ${year}`}>
       <Container maxWidth={false}>
-        <Header year={Number(year)} />
+        <Header year={Number(year)} type={type} />
 
-        <BillingTable billing={billing} />
+        <BillingTable billing={billing} type={type} />
       </Container>
     </Page>
   );
@@ -30,8 +34,9 @@ const Billing = ({ billing, getBilling }) => {
 Billing.propTypes = {
   billing: PropTypes.array.isRequired,
   getBilling: PropTypes.func.isRequired,
+  type: PropTypes.string,
 };
 
 Billing.displayName = 'Billing';
 export const story = Billing;
-export default memo(Billing);
+export default Billing;

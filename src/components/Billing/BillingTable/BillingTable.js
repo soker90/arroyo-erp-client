@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { TableMaterial, TextEuro } from 'components';
 import { useStyles } from './BillingTable.styles';
 
-const BillingTable = ({ billing }) => {
+const BillingTable = ({
+  billing,
+  type,
+}) => {
   const classes = useStyles();
 
   const renderCell = (
@@ -26,7 +28,7 @@ const BillingTable = ({ billing }) => {
       className={classes.table}
       columns={[
         {
-          title: 'Proveedor',
+          title: type === 'clientes' ? 'Cliente' : 'Proveedor',
           field: 'name',
         },
         {
@@ -80,4 +82,4 @@ BillingTable.propTypes = {
 
 BillingTable.displayName = 'BillingTable';
 
-export default memo(BillingTable);
+export default BillingTable;

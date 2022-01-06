@@ -14,3 +14,4 @@ export { default as TableMaterial } from './TableMaterial';
 export { default as TextEuro } from './TextEuro';
 export { default as PricesChart } from './PricesChart';
 export { default as TotalsReportBoxes } from './TotalsReportBoxes';
+export { default as Billing } from './Billing';
