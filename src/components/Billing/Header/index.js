@@ -24,7 +24,7 @@ const HeaderBook = ({
 }) => {
   const _handleClickDownload = short => () => downloadFile(
     `${getDownloadLink(type)}/export?year=${year}${short ? '&short=true' : ''}`,
-    `Facturación ${year}.ods`,
+    `${short ? '347 -' : 'Facturación'} ${type || ''} ${year}.ods`,
   );
 
   return (

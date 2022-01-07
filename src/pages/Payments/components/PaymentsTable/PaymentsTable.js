@@ -102,6 +102,6 @@ PaymentsTable.propTypes = {
   setSelected: PropTypes.func.isRequired,
 };
 
-PaymentsTable.displayName = 'PaymentsTable';
+PaymentsTable.displayName = 'ClientPaymentsTable';
 
 export default memo(PaymentsTable);

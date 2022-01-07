@@ -2,7 +2,8 @@
   - Añadida página de facturación para clientes
   - Exportación de hoja de calculo del 347 de clientes
   - Añadido numero de facturas pendientes al listado de clientes
-  
+  - Listado de facturas de clientes pendientes de pago
+
 # [1.3.3] - 13/08/2021
   - Actualización de librerias
 
