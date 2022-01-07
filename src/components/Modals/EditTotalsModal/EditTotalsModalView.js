@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { ModalGrid, InputForm } from 'components';
@@ -133,4 +133,4 @@ EditTotalsModalView.propTypes = {
 
 EditTotalsModalView.displayName = 'EditInvoiceDataModalView';
 export const story = EditTotalsModalView;
-export default memo(EditTotalsModalView);
+export default EditTotalsModalView;
