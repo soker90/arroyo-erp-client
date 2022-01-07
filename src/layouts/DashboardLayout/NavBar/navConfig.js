@@ -85,11 +85,6 @@ export const navConfig = [
             href: `/app/clientes/facturacion/${year}`,
           },
           {
-            title: 'Pagos',
-            icon: EuroIcon,
-            href: '/app/clientes/pagos',
-          },
-          {
             title: 'Productos',
             icon: ShoppingCart,
             href: '/app/clientes/productos',

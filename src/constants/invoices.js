@@ -28,6 +28,10 @@ export const TYPE_PAYMENT = [
   '?', CASH_PAYMENT, TALON_PAYMENT, 'Giro', 'c/c', 'Abono', 'Transferencia', 'Tarjeta', 'Contra rembolso',
 ];
 
+export const TYPE_CLIENT_PAYMENT = [
+  '?', CASH_PAYMENT, TALON_PAYMENT, 'Transferencia', 'Tarjeta',
+];
+
 export const INVOICE_COMMON_CONCEPTS = [
   CONCEPT.COMPRAS,
   CONCEPT.DEV,

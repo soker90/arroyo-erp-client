@@ -6,14 +6,14 @@ import { CONFIRM_CLIENT_PAYMENT } from '../types';
  * @returns {{type: string}}
  * @private
  */
-const _confirmPaymentRequest = () => ({ type: CONFIRM_CLIENT_PAYMENT.REQUEST });
+const _confirmClientPaymentRequest = () => ({ type: CONFIRM_CLIENT_PAYMENT.REQUEST });
 
 /**
  * Success action
  * @returns {{type: string}}
  * @private
  */
-const _confirmPaymentSuccess = () => ({
+const _confirmClientPaymentSuccess = () => ({
   type: CONFIRM_CLIENT_PAYMENT.SUCCESS,
   payload: {
     level: 'success',
@@ -26,20 +26,20 @@ const _confirmPaymentSuccess = () => ({
  * @returns {{type: string}}
  * @private
  */
-const _confirmPaymentSet = ({ data }) => ({
+const _confirmClientPaymentSet = ({ data }) => ({
   type: CONFIRM_CLIENT_PAYMENT.SET,
   payload: {
-    payments: data,
+    invoices: data,
   },
 });
 
 /**
  * Error action
  * @param error
- * @returns {{type: string, error: _confirmPaymentError.props}}
+ * @returns {{type: string, error: _confirmClientPaymentError.props}}
  * @private
  */
-const _confirmPaymentError = error => ({
+const _confirmClientPaymentError = error => ({
   type: CONFIRM_CLIENT_PAYMENT.FAILURE,
   error,
 });
@@ -50,16 +50,16 @@ const _confirmPaymentError = error => ({
  * @param {Object} data
  * @param {function} callback
  */
-export const confirmPayment = (id, data, callback) => async dispatch => {
-  dispatch(_confirmPaymentRequest());
+export const confirmClientPayment = (id, data, callback) => async dispatch => {
+  dispatch(_confirmClientPaymentRequest());
 
   try {
-    const response = await axios.patch(`payments/${id}/confirm`, data);
+    const response = await axios.patch(`client/invoices/payments/${id}`, data);
 
-    dispatch(_confirmPaymentSuccess());
-    dispatch(_confirmPaymentSet(response));
+    dispatch(_confirmClientPaymentSuccess());
+    dispatch(_confirmClientPaymentSet(response));
     callback();
   } catch (error) {
-    dispatch(_confirmPaymentError(error));
+    dispatch(_confirmClientPaymentError(error));
   }
 };

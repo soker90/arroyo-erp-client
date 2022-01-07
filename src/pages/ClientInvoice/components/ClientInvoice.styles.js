@@ -13,4 +13,7 @@ export const useStyles = makeStyles(theme => ({
   orders: {
     marginTop: theme.spacing(2),
   },
+  banner: {
+    marginBottom: theme.spacing(1),
+  },
 }));

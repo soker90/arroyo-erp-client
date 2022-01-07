@@ -9,6 +9,7 @@ import Header from './Header';
 import { useStyles } from './ClientInvoice.styles';
 import ClientInvoiceCards from './ClientInvoiceCards';
 import DeliveryOrderInvoice from './DeliveryOrderInvoice';
+import BannerPaid from '../../../components/BannerPaid';
 
 const ClientInvoice = ({
   getClientInvoice,
@@ -27,6 +28,9 @@ const ClientInvoice = ({
   updateDOClientInvoice,
   deleteDOClientInvoice,
   getProducts,
+  paid,
+  paymentType,
+  paymentDate,
 }) => {
   const { idInvoice } = useParams();
   const classes = useStyles();
@@ -70,6 +74,15 @@ const ClientInvoice = ({
           id={idInvoice}
           nInvoice={nInvoice}
         />
+
+        {!!nInvoice && (
+          <BannerPaid
+            paid={paid}
+            paymentType={paymentType}
+            paymentDate={paymentDate}
+            className={classes.banner}
+          />
+        )}
 
         <ClientInvoiceCards
           total={total}
@@ -115,6 +128,9 @@ ClientInvoice.propTypes = {
   taxBase: PropTypes.number.isRequired,
   iva: PropTypes.number.isRequired,
   getProducts: PropTypes.func.isRequired,
+  paid: PropTypes.bool,
+  paymentType: PropTypes.string,
+  paymentDate: PropTypes.number,
 };
 
 ClientInvoice.displayName = 'ClientInvoice';
