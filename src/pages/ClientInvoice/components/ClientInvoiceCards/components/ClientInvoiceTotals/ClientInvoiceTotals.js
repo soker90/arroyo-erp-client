@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -16,7 +16,10 @@ import { ItemCard } from 'components';
 import { itemsCard } from './utils';
 import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal';
 
-const ClientInvoiceTotals = (isEditable, ...props) => {
+const ClientInvoiceTotals = ({
+  isEditable,
+  ...props
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   /**
@@ -74,4 +77,4 @@ ClientInvoiceTotals.propTypes = {
 
 ClientInvoiceTotals.displayName = 'DeliveryOrderTotals';
 export const story = ClientInvoiceTotals;
-export default memo(ClientInvoiceTotals);
+export default ClientInvoiceTotals;

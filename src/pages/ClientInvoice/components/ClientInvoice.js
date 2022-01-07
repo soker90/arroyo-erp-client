@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { Container } from '@material-ui/core';
@@ -135,4 +135,4 @@ ClientInvoice.propTypes = {
 
 ClientInvoice.displayName = 'ClientInvoice';
 export const story = ClientInvoice;
-export default memo(ClientInvoice);
+export default ClientInvoice;
