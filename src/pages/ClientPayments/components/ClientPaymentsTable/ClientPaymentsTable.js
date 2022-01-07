@@ -4,9 +4,12 @@ import EuroIcon from '@material-ui/icons/Euro';
 
 import { TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Link } from 'react-router-dom';
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal';
 
 import { useStyles } from './ClientPaymentsTable.styles';
+import { BASE_PATH } from '../../../../constants';
 
 const ClientPaymentsTable = ({ payments }) => {
   const classes = useStyles();
@@ -45,6 +48,12 @@ const ClientPaymentsTable = ({ payments }) => {
             icon: EuroIcon,
             tooltip: 'Pagar',
             onClick: _handlePaymentButton,
+          },
+          {
+            icon: VisibilityIcon,
+            tooltip: 'Ver',
+            component: Link,
+            to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`,
           },
         ]}
 
