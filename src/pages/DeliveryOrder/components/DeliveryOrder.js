@@ -70,6 +70,7 @@ const DeliveryOrder = (
               readOnly={Boolean(nOrder)}
               updateData={_updateData}
               note={note}
+              idDeliveryOrder={idDeliveryOrder}
             />
           </Grid>
           <Grid item xs={12} md={8}>

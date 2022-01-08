@@ -18,10 +18,10 @@ const EditTotalsModalView = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     {
       total,
-      iva,
+      ...(iva !== undefined && { iva }),
       ...(re !== undefined && { re }),
       ...(rate !== undefined && { rate }),
-      taxBase,
+      ...(taxBase !== undefined && { taxBase }),
     }
   );
 
@@ -38,7 +38,7 @@ const EditTotalsModalView = ({
 
   useEffect(() => {
     let sum = 0;
-    if (total) {
+    if (total && state.taxBase) {
       sum = state.iva + state.re + state.taxBase;
       setState({ total: sum });
     }
@@ -110,8 +110,8 @@ const EditTotalsModalView = ({
       title='Editar totales'
       action={_handleSubmit}
     >
-      {_renderInput('taxBase', 'Base imponible')}
-      {_renderInput('iva', 'IVA')}
+      {taxBase !== undefined && _renderInput('taxBase', 'Base imponible')}
+      {iva !== undefined && _renderInput('iva', 'IVA')}
       {re !== undefined && _renderInput('re', 'Recargo')}
       {Boolean(rate) && _renderInput('rate', 'Tasa')}
       {_renderInput('total', 'Total')}
@@ -132,5 +132,4 @@ EditTotalsModalView.propTypes = {
 };
 
 EditTotalsModalView.displayName = 'EditInvoiceDataModalView';
-export const story = EditTotalsModalView;
 export default EditTotalsModalView;

@@ -13,6 +13,7 @@ const DeliveryOrderData = ({
   readOnly,
   updateData,
   note,
+  idDeliveryOrder,
 }) => {
   const classes = useStyles();
   const { search } = useLocation();
@@ -26,7 +27,7 @@ const DeliveryOrderData = ({
 
   useEffect(() => {
     if (search && !readOnly) setShowDateModal(true);
-  }, [setShowDateModal, search]);
+  }, [setShowDateModal, search, idDeliveryOrder]);
 
   const _handleKeyDownNote = ({
     key,
@@ -69,6 +70,7 @@ DeliveryOrderData.propTypes = {
   note: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   updateData: PropTypes.func.isRequired,
+  idDeliveryOrder: PropTypes.string.isRequired,
 };
 
 DeliveryOrderData.displayName = 'DeliveryOrderData';
