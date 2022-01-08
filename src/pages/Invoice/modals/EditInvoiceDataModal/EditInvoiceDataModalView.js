@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -204,4 +204,4 @@ EditInvoiceDataModalView.propTypes = {
 
 EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView';
 export const story = EditInvoiceDataModalView;
-export default memo(EditInvoiceDataModalView);
+export default EditInvoiceDataModalView;

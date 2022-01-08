@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import PropTypes from 'prop-types';
@@ -34,4 +33,4 @@ HeaderPaymentsReport.propTypes = {
 };
 
 export const story = HeaderPaymentsReport;
-export default memo(HeaderPaymentsReport);
+export default HeaderPaymentsReport;

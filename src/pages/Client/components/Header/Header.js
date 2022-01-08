@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -54,4 +53,4 @@ HeaderProvider.propTypes = {
 HeaderProvider.displayName = 'Client-Header';
 
 export const story = HeaderProvider;
-export default memo(HeaderProvider);
+export default HeaderProvider;

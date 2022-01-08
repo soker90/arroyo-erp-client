@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -67,4 +67,4 @@ ProductsTable.propTypes = {
 
 ProductsTable.displayName = 'ProductsTable';
 
-export default memo(ProductsTable);
+export default ProductsTable;

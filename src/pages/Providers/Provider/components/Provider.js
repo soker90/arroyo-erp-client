@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router';
 
@@ -39,4 +39,4 @@ Provider.propTypes = {
 Provider.displayName = 'Provider';
 
 export const story = Provider;
-export default memo(Provider);
+export default Provider;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputForm, ModalGrid } from 'components';
@@ -78,4 +77,4 @@ ClientModal.propTypes = {
 
 ClientModal.displayName = 'ClientModal';
 export const story = ClientModal;
-export default memo(ClientModal);
+export default ClientModal;

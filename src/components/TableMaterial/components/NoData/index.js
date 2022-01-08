@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@material-ui/core';
 
@@ -24,4 +23,4 @@ NoData.propTypes = {
 
 NoData.displayName = 'NoData';
 export const story = NoData;
-export default memo(NoData);
+export default NoData;

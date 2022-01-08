@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -108,4 +108,4 @@ ProductClientModal.propTypes = {
 
 ProductClientModal.displayName = 'ProductClientModal';
 export const story = ProductClientModal;
-export default memo(ProductClientModal);
+export default ProductClientModal;

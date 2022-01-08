@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'utils';
 import clsx from 'clsx';
@@ -34,4 +33,4 @@ TextEuro.defaultProps = {
 
 TextEuro.displayName = 'TextEuro';
 export const story = TextEuro;
-export default memo(TextEuro);
+export default TextEuro;

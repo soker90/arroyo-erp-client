@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Box } from '@material-ui/core';
@@ -63,4 +63,4 @@ ProductsTable.propTypes = {
 
 ProductsTable.displayName = 'BillingTable';
 
-export default memo(ProductsTable);
+export default ProductsTable;

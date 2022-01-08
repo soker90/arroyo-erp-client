@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Header } from 'components';
 import AddIcon from '@material-ui/icons/Add';
@@ -35,4 +35,4 @@ const HeaderProductsClients = () => {
 
 HeaderProductsClients.displayName = 'HeaderProductsClients';
 export const story = HeaderProductsClients;
-export default memo(HeaderProductsClients);
+export default HeaderProductsClients;

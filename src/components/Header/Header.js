@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types, no-shadow */
-import { memo } from 'react';
+
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -153,4 +153,4 @@ Header.defaultProps = {
   routes: [],
 };
 
-export default memo(Header);
+export default Header;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components/Modals';
 
@@ -47,4 +46,4 @@ MergePaymentModal.propTypes = {
 
 MergePaymentModal.displayName = 'MergePaymentModal';
 export const story = MergePaymentModal;
-export default memo(MergePaymentModal);
+export default MergePaymentModal;

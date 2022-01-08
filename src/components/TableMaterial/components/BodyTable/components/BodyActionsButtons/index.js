@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton, TableCell, Tooltip } from '@material-ui/core';
 import uniqId from 'uniqid';
@@ -61,4 +61,4 @@ BodyActionsButtons.propTypes = {
 
 BodyActionsButtons.displayName = 'BodyActionsButtons';
 export const story = BodyActionsButtons;
-export default memo(BodyActionsButtons);
+export default BodyActionsButtons;

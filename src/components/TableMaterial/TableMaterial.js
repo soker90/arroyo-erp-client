@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { memo, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -113,4 +113,4 @@ TableMaterial.defaultProps = {
 };
 
 export const story = TableMaterial;
-export default memo(TableMaterial);
+export default TableMaterial;

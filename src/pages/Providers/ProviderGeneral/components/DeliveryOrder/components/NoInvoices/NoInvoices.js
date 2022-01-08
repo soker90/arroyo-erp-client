@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Checkbox,
@@ -59,4 +58,4 @@ NoInvoices.propTypes = {
 
 NoInvoices.displayName = 'NoInvoices';
 export const story = NoInvoices;
-export default memo(NoInvoices);
+export default NoInvoices;

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
@@ -100,4 +100,4 @@ ProviderInvoices.propTypes = {
 
 ProviderInvoices.displayName = 'ProviderInvoices';
 
-export default memo(ProviderInvoices);
+export default ProviderInvoices;

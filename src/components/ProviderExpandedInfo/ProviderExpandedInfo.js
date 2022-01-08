@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Grid } from '@material-ui/core';
 
@@ -31,4 +30,4 @@ ProviderExpandedInfo.propTypes = {
 
 ProviderExpandedInfo.displayName = 'ProviderExpandedInfo';
 export const story = ProviderExpandedInfo;
-export default memo(ProviderExpandedInfo);
+export default ProviderExpandedInfo;

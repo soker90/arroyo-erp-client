@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { ConfirmModal } from 'components/Modals';
@@ -34,4 +34,4 @@ DividePaymentModal.propTypes = {
 
 DividePaymentModal.displayName = 'DividePaymentModal';
 export const story = DividePaymentModal;
-export default memo(DividePaymentModal);
+export default DividePaymentModal;

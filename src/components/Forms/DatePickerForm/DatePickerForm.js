@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
@@ -91,4 +90,4 @@ DatePickerForm.defaultProps = {
 DatePickerForm.displayName = 'DatePickerForm';
 
 export const story = DatePickerForm;
-export default memo(DatePickerForm);
+export default DatePickerForm;

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import {
   Button,
   Card,
@@ -91,4 +91,4 @@ SwapInvoices.propTypes = {
 
 SwapInvoices.displayName = 'SwapInvoices';
 export const story = SwapInvoices;
-export default memo(SwapInvoices);
+export default SwapInvoices;

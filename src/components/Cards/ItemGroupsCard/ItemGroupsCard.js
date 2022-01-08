@@ -1,5 +1,4 @@
 /* eslint-disable react/destructuring-assignment */
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import uniqId from 'uniqid';
 
@@ -73,4 +72,4 @@ ItemGroupsCard.defaultProps = {
 ItemGroupsCard.displayName = 'ItemGroupsCard';
 
 export const story = ItemGroupsCard;
-export default memo(ItemGroupsCard);
+export default ItemGroupsCard;

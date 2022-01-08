@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import {
   Badge,
@@ -40,4 +39,4 @@ const PricesNotification = () => {
 };
 
 PricesNotification.displayName = 'PricesNotification';
-export default memo(PricesNotification);
+export default PricesNotification;

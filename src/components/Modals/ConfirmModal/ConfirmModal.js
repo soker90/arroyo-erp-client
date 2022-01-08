@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Typography } from '@material-ui/core';
 import { ModalGrid } from '../index';
@@ -27,4 +26,4 @@ ConfirmModal.propTypes = {
 
 ConfirmModal.displayName = 'ConfirmModal';
 
-export default memo(ConfirmModal);
+export default ConfirmModal;

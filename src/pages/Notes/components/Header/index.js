@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -60,4 +60,4 @@ HeaderNotes.propTypes = {
 };
 
 export const story = HeaderNotes;
-export default memo(HeaderNotes);
+export default HeaderNotes;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { ConfirmModal } from 'components/Modals';
@@ -47,4 +46,4 @@ DeleteNoteModal.propTypes = {
 
 DeleteNoteModal.displayName = 'DeleteConfirmationModal';
 export const story = DeleteNoteModal;
-export default memo(DeleteNoteModal);
+export default DeleteNoteModal;

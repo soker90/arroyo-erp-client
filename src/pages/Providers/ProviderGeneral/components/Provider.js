@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
-  lazy, memo, useCallback, useEffect, useState,
+  lazy, useCallback, useEffect, useState,
 } from 'react';
 import {
   Box, Container,
@@ -111,4 +111,4 @@ Provider.propTypes = {
 Provider.displayName = 'Providers';
 
 export const story = Provider;
-export default memo(Provider);
+export default Provider;

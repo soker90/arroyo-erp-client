@@ -1,4 +1,4 @@
-import { forwardRef, memo, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
@@ -27,4 +27,4 @@ PageView.propTypes = {
 
 PageView.displayName = 'PageView';
 
-export default memo(PageView);
+export default PageView;

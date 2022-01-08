@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { DatePickerForm, InputForm, ModalGrid } from 'components';
@@ -100,4 +99,4 @@ NoteModal.propTypes = {
 };
 
 NoteModal.displayName = 'NoteModal';
-export default memo(NoteModal);
+export default NoteModal;

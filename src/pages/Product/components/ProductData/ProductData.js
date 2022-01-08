@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
@@ -65,4 +65,4 @@ ProductData.propTypes = {
 
 ProductData.displayName = 'InvoiceTotals';
 export const story = ProductData;
-export default memo(ProductData);
+export default ProductData;

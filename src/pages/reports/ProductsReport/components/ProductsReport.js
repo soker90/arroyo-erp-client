@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Grid } from '@material-ui/core';
 import { ShoppingCart, Users } from 'react-feather';
@@ -69,4 +68,4 @@ ProductsReport.propTypes = {
 
 ProductsReport.displayName = 'Product';
 export const story = ProductsReport;
-export default memo(ProductsReport);
+export default ProductsReport;

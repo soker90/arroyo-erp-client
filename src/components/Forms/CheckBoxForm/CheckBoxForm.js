@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Checkbox, FormControlLabel } from '@material-ui/core';
 
@@ -34,4 +33,4 @@ CheckBoxForm.propTypes = {
 CheckBoxForm.displayName = 'CheckBoxForm';
 
 export const story = CheckBoxForm;
-export default memo(CheckBoxForm);
+export default CheckBoxForm;

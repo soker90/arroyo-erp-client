@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
@@ -84,4 +84,4 @@ InvoicePayment.propTypes = {
 
 InvoicePayment.displayName = 'InvoiceTotals';
 export const story = InvoicePayment;
-export default memo(InvoicePayment);
+export default InvoicePayment;

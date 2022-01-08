@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
@@ -21,4 +20,4 @@ ProductItemCard.defaultProps = {
 };
 
 ProductItemCard.displayName = 'ProductItemCard';
-export default memo(ProductItemCard);
+export default ProductItemCard;

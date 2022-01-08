@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import {
@@ -166,4 +166,4 @@ EditPaymentModal.propTypes = {
 
 EditPaymentModal.displayName = 'ConfirmPaymentModal';
 export const story = EditPaymentModal;
-export default memo(EditPaymentModal);
+export default EditPaymentModal;

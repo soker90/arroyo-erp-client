@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -99,4 +98,4 @@ ModalGrid.propTypes = {
 
 ModalGrid.displayName = 'ModalGrid';
 
-export default memo(ModalGrid);
+export default ModalGrid;

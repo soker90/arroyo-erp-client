@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable */
 
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box, Container,
 } from '@material-ui/core';
@@ -72,4 +72,4 @@ ProviderExpense.propTypes = {
 ProviderExpense.displayName = 'ProviderExpense';
 
 export const story = ProviderExpense;
-export default memo(ProviderExpense);
+export default ProviderExpense;

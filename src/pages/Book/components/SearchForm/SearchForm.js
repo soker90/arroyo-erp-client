@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -111,4 +111,4 @@ SearchForm.propTypes = {
 
 SearchForm.displayName = 'SearchForm';
 
-export default memo(SearchForm);
+export default SearchForm;

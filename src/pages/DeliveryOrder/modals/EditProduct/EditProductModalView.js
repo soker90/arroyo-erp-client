@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useEffect, useReducer,
+  useCallback, useEffect, useReducer,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -90,4 +90,4 @@ EditProductModal.defaultProps = {
 
 EditProductModal.displayName = 'EditProductModal';
 export const story = EditProductModal;
-export default memo(EditProductModal);
+export default EditProductModal;

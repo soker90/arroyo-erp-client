@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
@@ -36,4 +36,4 @@ ClientBook.propTypes = {
 
 ClientBook.displayName = 'ClientBook';
 export const story = ClientBook;
-export default memo(ClientBook);
+export default ClientBook;

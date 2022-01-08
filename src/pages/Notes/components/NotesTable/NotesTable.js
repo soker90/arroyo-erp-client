@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -101,4 +101,4 @@ NotesTable.propTypes = {
 
 NotesTable.displayName = 'NotesTable';
 export const story = NotesTable;
-export default memo(NotesTable);
+export default NotesTable;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -54,4 +53,4 @@ MySnackbarContentWrapper.propTypes = {
 MySnackbarContentWrapper.displayName = 'MySnackbarContentWrapper';
 
 export const story = MySnackbarContentWrapper;
-export default memo(MySnackbarContentWrapper);
+export default MySnackbarContentWrapper;

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
@@ -103,4 +103,4 @@ DeliveryOrder.propTypes = {
 
 DeliveryOrder.displayName = 'DeliveryOrder';
 export const story = DeliveryOrder;
-export default memo(DeliveryOrder);
+export default DeliveryOrder;

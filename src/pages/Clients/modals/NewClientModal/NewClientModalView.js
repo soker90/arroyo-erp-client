@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import ClientModal, { INITIAL_STATE } from 'components/Modals/ClientModal';
@@ -46,4 +46,4 @@ NewProviderModal.propTypes = {
 NewProviderModal.displayName = 'NewProviderModal';
 
 export const story = NewProviderModal;
-export default memo(NewProviderModal);
+export default NewProviderModal;

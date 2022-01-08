@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { FormControlLabel, Grid, Switch } from '@material-ui/core';
 
@@ -41,4 +40,4 @@ SwitchForm.defaultProps = {
 SwitchForm.displayName = 'SwitchForm';
 
 export const story = SwitchForm;
-export default memo(SwitchForm);
+export default SwitchForm;

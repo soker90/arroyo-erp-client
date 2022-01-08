@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
@@ -78,4 +78,4 @@ Client.propTypes = {
 Client.displayName = 'Client';
 
 export const story = Client;
-export default memo(Client);
+export default Client;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Tab, Tabs } from '@material-ui/core';
 import { useHistory } from 'react-router';
@@ -47,4 +46,4 @@ HashTabs.propTypes = {
 
 HashTabs.displayName = 'HashTabs';
 export const story = HashTabs;
-export default memo(HashTabs);
+export default HashTabs;

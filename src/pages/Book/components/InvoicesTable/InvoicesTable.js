@@ -1,7 +1,6 @@
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { memo } from 'react';
 
 import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index';
@@ -72,4 +71,4 @@ InvoicesTable.propTypes = {
 
 InvoicesTable.displayName = 'InvoicesTable';
 
-export default memo(InvoicesTable);
+export default InvoicesTable;

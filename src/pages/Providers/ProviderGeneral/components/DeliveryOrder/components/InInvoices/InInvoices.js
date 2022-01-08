@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -114,4 +114,4 @@ InInvoices.propTypes = {
 
 InInvoices.displayName = 'InInvoices';
 
-export default memo(InInvoices);
+export default InInvoices;

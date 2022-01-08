@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import DescriptionIcon from '@material-ui/icons/Description';
 
@@ -77,4 +77,4 @@ ChequesTable.propTypes = {
 
 ChequesTable.displayName = 'ChequesTable';
 
-export default memo(ChequesTable);
+export default ChequesTable;

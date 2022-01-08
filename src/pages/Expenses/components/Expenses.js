@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useEffect, useState,
+  useCallback, useEffect, useState,
 } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -89,4 +89,4 @@ Expenses.propTypes = {
 Expenses.displayName = 'Expenses';
 
 export const story = Expenses;
-export default memo(Expenses);
+export default Expenses;

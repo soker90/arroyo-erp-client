@@ -1,4 +1,4 @@
-import { memo } from 'react';
+
 import {
   Typography,
   Button,
@@ -71,4 +71,4 @@ const NotNetwork = () => {
 
 NotNetwork.displayName = 'NotFound';
 
-export default memo(NotNetwork);
+export default NotNetwork;

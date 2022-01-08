@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -77,4 +76,4 @@ AutocompleteForm.defaultProps = {
 AutocompleteForm.displayName = 'AutocompleteForm';
 
 export const story = AutocompleteForm;
-export default memo(AutocompleteForm);
+export default AutocompleteForm;

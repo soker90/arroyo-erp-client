@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputForm } from 'components';
@@ -47,4 +47,4 @@ AddReminder.propTypes = {
 };
 
 AddReminder.displayName = 'AddReminder';
-export default memo(AddReminder);
+export default AddReminder;

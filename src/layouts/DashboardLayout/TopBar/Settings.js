@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Box,
   Button,
@@ -116,4 +116,4 @@ const Settings = () => {
 };
 
 Settings.displayName = 'Settings';
-export default memo(Settings);
+export default Settings;

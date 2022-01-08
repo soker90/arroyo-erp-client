@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components';
 import { useHistory } from 'react-router';
@@ -56,4 +56,4 @@ DeleteInvoiceModal.propTypes = {
 
 DeleteInvoiceModal.displayName = 'DeleteProductModal';
 export const story = DeleteInvoiceModal;
-export default memo(DeleteInvoiceModal);
+export default DeleteInvoiceModal;

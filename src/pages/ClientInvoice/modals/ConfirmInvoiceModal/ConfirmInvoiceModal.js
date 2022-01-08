@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components/Modals';
 
@@ -48,4 +48,4 @@ ConfirmInvoiceModal.propTypes = {
 
 ConfirmInvoiceModal.displayName = 'ConfirmInvoiceModal';
 export const story = ConfirmInvoiceModal;
-export default memo(ConfirmInvoiceModal);
+export default ConfirmInvoiceModal;

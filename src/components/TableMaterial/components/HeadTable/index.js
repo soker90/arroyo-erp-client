@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 
@@ -29,4 +28,4 @@ HeadTable.propTypes = {
 
 HeadTable.displayName = 'HeadTable';
 export const story = HeadTable;
-export default memo(HeadTable);
+export default HeadTable;

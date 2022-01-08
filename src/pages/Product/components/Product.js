@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { Container } from '@material-ui/core';
@@ -60,4 +60,4 @@ Product.propTypes = {
 
 Product.displayName = 'Product';
 export const story = Product;
-export default memo(Product);
+export default Product;

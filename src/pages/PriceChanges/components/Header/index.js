@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -57,4 +57,4 @@ HeaderPriceChanges.propTypes = {
 
 HeaderPriceChanges.displayName = 'HeaderPriceChanges';
 export const story = HeaderPriceChanges;
-export default memo(HeaderPriceChanges);
+export default HeaderPriceChanges;

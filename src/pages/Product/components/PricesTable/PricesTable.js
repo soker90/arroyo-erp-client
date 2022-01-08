@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { TableMaterial } from 'components';
@@ -51,4 +50,4 @@ PricesTable.propTypes = {
 
 PricesTable.displayName = 'PricesTable';
 export const story = PricesTable;
-export default memo(PricesTable);
+export default PricesTable;

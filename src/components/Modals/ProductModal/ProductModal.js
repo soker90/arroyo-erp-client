@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -100,4 +99,4 @@ ProductModal.propTypes = {
 
 ProductModal.displayName = 'ProductModal';
 export const story = ProductModal;
-export default memo(ProductModal);
+export default ProductModal;

@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import ProviderModal, { INITIAL_STATE } from 'components/Modals/ProviderModal';
 
@@ -49,4 +49,4 @@ EditProviderModal.propTypes = {
 
 EditProviderModal.displayName = 'EditProviderModal';
 
-export default memo(EditProviderModal);
+export default EditProviderModal;

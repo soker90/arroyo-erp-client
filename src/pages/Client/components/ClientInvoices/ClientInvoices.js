@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
@@ -56,4 +55,4 @@ ClientInvoices.propTypes = {
 
 ClientInvoices.displayName = 'ProviderInvoices';
 
-export default memo(ClientInvoices);
+export default ClientInvoices;

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import VerticalAlignCenterIcon from '@material-ui/icons/VerticalAlignCenter';
 
@@ -39,4 +39,4 @@ HeaderPayments.propTypes = {
 };
 HeaderPayments.displayName = 'HeaderPayments';
 export const story = HeaderPayments;
-export default memo(HeaderPayments);
+export default HeaderPayments;

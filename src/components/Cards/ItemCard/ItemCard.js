@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { ListItem, Typography } from '@material-ui/core';
@@ -40,4 +39,4 @@ ItemCard.defaultProps = {
 ItemCard.displayName = 'ItemCard';
 
 export const story = ItemCard;
-export default memo(ItemCard);
+export default ItemCard;

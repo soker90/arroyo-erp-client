@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import {
@@ -73,4 +73,4 @@ DeliveryOrderData.propTypes = {
 
 DeliveryOrderData.displayName = 'DeliveryOrderData';
 export const story = DeliveryOrderData;
-export default memo(DeliveryOrderData);
+export default DeliveryOrderData;

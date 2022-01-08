@@ -1,5 +1,5 @@
 import {
-  lazy, memo, useEffect, useState,
+  lazy, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
@@ -77,4 +77,4 @@ DeliveryOrder.propTypes = {
 
 DeliveryOrder.displayName = 'DeliveryOrder';
 
-export default memo(DeliveryOrder);
+export default DeliveryOrder;

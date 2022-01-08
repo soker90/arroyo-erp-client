@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { format } from 'utils';
@@ -53,4 +53,4 @@ NewNoteModal.propTypes = {
 
 NewNoteModal.displayName = 'NewNoteModal';
 export const story = NewNoteModal;
-export default memo(NewNoteModal);
+export default NewNoteModal;

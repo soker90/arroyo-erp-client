@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Box } from '@material-ui/core';
 
@@ -182,4 +182,4 @@ GenericProductModal.propTypes = {
 
 GenericProductModal.displayName = 'GenericProductModal';
 export const story = GenericProductModal;
-export default memo(GenericProductModal);
+export default GenericProductModal;

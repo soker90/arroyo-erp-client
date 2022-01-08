@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import ClientModal, { INITIAL_STATE } from 'components/Modals/ClientModal';
 
@@ -49,4 +49,4 @@ EditClientModal.propTypes = {
 
 EditClientModal.displayName = 'EditClientModal';
 
-export default memo(EditClientModal);
+export default EditClientModal;

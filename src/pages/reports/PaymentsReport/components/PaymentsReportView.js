@@ -1,5 +1,5 @@
 import {
-  memo, useEffect,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
@@ -62,4 +62,4 @@ PaymentsReportView.propTypes = {
   countCheques: PropTypes.number.isRequired,
 };
 export const story = PaymentsReportView;
-export default memo(PaymentsReportView);
+export default PaymentsReportView;

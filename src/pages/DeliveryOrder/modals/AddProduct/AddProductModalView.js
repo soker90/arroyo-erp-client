@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
@@ -115,4 +115,4 @@ AddProductModal.propTypes = {
 
 AddProductModal.displayName = 'AddProductModal';
 export const story = AddProductModal;
-export default memo(AddProductModal);
+export default AddProductModal;

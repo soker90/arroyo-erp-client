@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
@@ -53,4 +52,4 @@ DeleteDeliveryOrderModal.propTypes = {
 
 DeleteDeliveryOrderModal.displayName = 'DeleteDeliveryOrderModal';
 export const story = DeleteDeliveryOrderModal;
-export default memo(DeleteDeliveryOrderModal);
+export default DeleteDeliveryOrderModal;

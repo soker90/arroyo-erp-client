@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, List,
@@ -62,4 +61,4 @@ ProviderBilling.defaultProps = {
 
 ProviderBilling.displayName = 'ProviderBilling';
 
-export default memo(ProviderBilling);
+export default ProviderBilling;

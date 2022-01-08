@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, LinearProgress } from '@material-ui/core';
 import AuthLayout from './AuthLayout';
@@ -56,4 +55,4 @@ LoginView.propTypes = {
 LoginView.displayName = 'LoginView';
 
 export const story = LoginView;
-export default memo(LoginView);
+export default LoginView;

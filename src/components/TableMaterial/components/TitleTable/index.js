@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@material-ui/core';
 
@@ -28,4 +27,4 @@ TitleTable.propTypes = {
 
 TitleTable.displayName = 'TitleTable';
 export const story = TitleTable;
-export default memo(TitleTable);
+export default TitleTable;

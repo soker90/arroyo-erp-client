@@ -1,5 +1,5 @@
 /* eslint-disable mdx/no-unused-expressions, no-unused-expressions */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components/Modals';
 
@@ -58,4 +58,4 @@ DeletePriceChangeModal.propTypes = {
 
 DeletePriceChangeModal.displayName = 'DeletePriceChangeModal';
 export const story = DeletePriceChangeModal;
-export default memo(DeletePriceChangeModal);
+export default DeletePriceChangeModal;

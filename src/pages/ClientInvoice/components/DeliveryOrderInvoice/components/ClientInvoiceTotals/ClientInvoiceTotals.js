@@ -80,4 +80,4 @@ ClientInvoiceTotals.propTypes = {
 
 ClientInvoiceTotals.displayName = 'DeliveryOrderTotals';
 export const story = ClientInvoiceTotals;
-export default memo(ClientInvoiceTotals);
+export default ClientInvoiceTotals;

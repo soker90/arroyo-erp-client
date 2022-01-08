@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField } from '@material-ui/core';
 
@@ -44,4 +43,4 @@ SelectForm.defaultProps = {
 SelectForm.displayName = 'SelectForm';
 
 export const story = SelectForm;
-export default memo(SelectForm);
+export default SelectForm;

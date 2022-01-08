@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalGrid } from 'components/Modals';
 import { DatePickerForm, InputForm, SelectForm } from 'components/Forms';
@@ -132,4 +132,4 @@ ConfirmPaymentModal.propTypes = {
 
 ConfirmPaymentModal.displayName = 'ConfirmPaymentModal';
 export const story = ConfirmPaymentModal;
-export default memo(ConfirmPaymentModal);
+export default ConfirmPaymentModal;

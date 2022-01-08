@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Typography,
@@ -53,4 +52,4 @@ const NotFound = () => {
 
 NotFound.displayName = 'NotFound';
 
-export default memo(NotFound);
+export default NotFound;

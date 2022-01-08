@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar } from '@material-ui/core';
@@ -31,4 +30,4 @@ TopBar.propTypes = {
 TopBar.displayName = 'TopBar';
 
 export const story = TopBar;
-export default memo(TopBar);
+export default TopBar;

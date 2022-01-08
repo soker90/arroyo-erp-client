@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Users as UsersIcon } from 'react-feather';
@@ -58,4 +58,4 @@ DeliveryOrdersTable.propTypes = {
 
 DeliveryOrdersTable.displayName = 'DeliveryOrdersTable';
 
-export default memo(DeliveryOrdersTable);
+export default DeliveryOrdersTable;

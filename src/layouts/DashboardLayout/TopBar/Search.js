@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   ClickAwayListener,
   Hidden,
@@ -133,4 +133,4 @@ const Search = () => {
 
 Search.displayName = 'Search';
 
-export default memo(Search);
+export default Search;

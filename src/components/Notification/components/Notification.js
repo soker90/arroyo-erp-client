@@ -1,4 +1,4 @@
-import { useState, memo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -45,4 +45,4 @@ Notification.propTypes = {
 
 Notification.displayName = 'Notification';
 
-export default memo(Notification);
+export default Notification;

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
-  memo, useEffect, useMemo, useReducer, useRef,
+  useEffect, useMemo, useReducer, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -162,4 +162,4 @@ ProductOrderModal.propTypes = {
 
 ProductOrderModal.displayName = 'ProductOrderModal';
 export const story = ProductOrderModal;
-export default memo(ProductOrderModal);
+export default ProductOrderModal;

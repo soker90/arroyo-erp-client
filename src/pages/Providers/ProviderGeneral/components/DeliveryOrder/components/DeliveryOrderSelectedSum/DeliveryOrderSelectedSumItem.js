@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -51,4 +50,4 @@ DeliveryOrderSelectedSum.propTypes = {
 };
 
 DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum';
-export default memo(DeliveryOrderSelectedSum);
+export default DeliveryOrderSelectedSum;

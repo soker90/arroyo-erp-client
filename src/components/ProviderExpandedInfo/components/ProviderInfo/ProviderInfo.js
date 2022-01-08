@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   Card,
   CardContent,
@@ -64,4 +64,4 @@ const ProviderInfo = props => {
 
 ProviderInfo.displayName = 'ProviderInfo';
 
-export default memo(ProviderInfo);
+export default ProviderInfo;

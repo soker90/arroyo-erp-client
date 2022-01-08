@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -62,4 +62,4 @@ ProductsOrderTable.propTypes = {
 
 ProductsOrderTable.displayName = 'ProductsOrderTable';
 export const story = ProductsOrderTable;
-export default memo(ProductsOrderTable);
+export default ProductsOrderTable;

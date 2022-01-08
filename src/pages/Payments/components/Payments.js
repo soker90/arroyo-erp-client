@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
@@ -37,4 +37,4 @@ Payments.propTypes = {
 
 Payments.displayName = 'Payments';
 export const story = Payments;
-export default memo(Payments);
+export default Payments;

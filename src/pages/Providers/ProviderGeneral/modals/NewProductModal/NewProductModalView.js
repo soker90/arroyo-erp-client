@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import ProductModal from 'components/Modals/ProductModal/ProductModal';
 
@@ -56,4 +56,4 @@ NewProductModal.propTypes = {
 
 NewProductModal.displayName = 'NewProductModal';
 
-export default memo(NewProductModal);
+export default NewProductModal;

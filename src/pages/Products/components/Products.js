@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
@@ -34,4 +34,4 @@ Products.propTypes = {
 
 Products.displayName = 'Products';
 export const story = Products;
-export default memo(Products);
+export default Products;

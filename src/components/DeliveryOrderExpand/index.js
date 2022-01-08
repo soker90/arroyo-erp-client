@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Accordion,
@@ -38,4 +37,4 @@ DeliveryOrderExpand.propTypes = {
 
 DeliveryOrderExpand.displayName = 'DeliveryOrderExpand';
 export const story = DeliveryOrderExpand;
-export default memo(DeliveryOrderExpand);
+export default DeliveryOrderExpand;

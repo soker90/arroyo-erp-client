@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -66,4 +66,4 @@ ClientExpandedInfo.propTypes = {
 
 ClientExpandedInfo.displayName = 'ProviderExpandedInfo';
 export const story = ClientExpandedInfo;
-export default memo(ClientExpandedInfo);
+export default ClientExpandedInfo;

@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -116,4 +116,4 @@ InvoiceData.propTypes = {
 
 InvoiceData.displayName = 'InvoiceData';
 export const story = InvoiceData;
-export default memo(InvoiceData);
+export default InvoiceData;

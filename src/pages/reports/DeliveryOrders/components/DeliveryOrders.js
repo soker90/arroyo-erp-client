@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
@@ -34,4 +34,4 @@ DeliveryOrders.propTypes = {
 
 DeliveryOrders.displayName = 'DeliveryOrders';
 export const story = DeliveryOrders;
-export default memo(DeliveryOrders);
+export default DeliveryOrders;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -102,4 +101,4 @@ HeaderBook.propTypes = {
 
 HeaderBook.displayName = 'HeaderBook';
 export const story = HeaderBook;
-export default memo(HeaderBook);
+export default HeaderBook;

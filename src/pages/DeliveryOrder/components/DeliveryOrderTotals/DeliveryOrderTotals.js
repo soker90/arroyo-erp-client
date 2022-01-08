@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
@@ -74,4 +74,4 @@ DeliveryOrderTotals.propTypes = {
 
 DeliveryOrderTotals.displayName = 'DeliveryOrderTotals';
 export const story = DeliveryOrderTotals;
-export default memo(DeliveryOrderTotals);
+export default DeliveryOrderTotals;

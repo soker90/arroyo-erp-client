@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import EuroIcon from '@material-ui/icons/Euro';
 import CallSplitIcon from '@material-ui/icons/CallSplit';
@@ -104,4 +104,4 @@ PaymentsTable.propTypes = {
 
 PaymentsTable.displayName = 'ClientPaymentsTable';
 
-export default memo(PaymentsTable);
+export default PaymentsTable;

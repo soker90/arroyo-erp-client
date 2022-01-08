@@ -1,4 +1,4 @@
-import { memo, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -212,4 +212,4 @@ NewInvoiceModal.propTypes = {
 
 NewInvoiceModal.displayName = 'NewInvoiceModal';
 
-export default memo(NewInvoiceModal);
+export default NewInvoiceModal;

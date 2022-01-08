@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box, TableBody, TableCell, TableRow, Checkbox,
@@ -73,4 +72,4 @@ BodyTable.propTypes = {
 
 BodyTable.displayName = 'BodyTable';
 export const story = BodyTable;
-export default memo(BodyTable);
+export default BodyTable;

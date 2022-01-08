@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useEffect, useState,
+  useCallback, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Grid } from '@material-ui/core';
@@ -64,4 +64,4 @@ DashboardView.propTypes = {
 };
 
 export const story = DashboardView;
-export default memo(DashboardView);
+export default DashboardView;

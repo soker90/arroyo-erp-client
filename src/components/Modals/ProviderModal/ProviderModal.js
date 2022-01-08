@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { FormControlLabel, Switch } from '@material-ui/core';
 
@@ -127,4 +126,4 @@ ProviderModal.defaultProps = {
 
 ProviderModal.displayName = 'ProviderModal';
 export const story = ProviderModal;
-export default memo(ProviderModal);
+export default ProviderModal;

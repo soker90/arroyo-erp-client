@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CheckIcon from '@material-ui/icons/Check';
@@ -38,4 +37,4 @@ BooleanIcon.propTypes = {
 BooleanIcon.displayName = 'BooleanIcon';
 
 export const story = BooleanIcon;
-export default memo(BooleanIcon);
+export default BooleanIcon;

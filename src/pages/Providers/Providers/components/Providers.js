@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Box, Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
@@ -81,4 +81,4 @@ Providers.propTypes = {
 Providers.displayName = 'Providers';
 
 export const story = Providers;
-export default memo(Providers);
+export default Providers;

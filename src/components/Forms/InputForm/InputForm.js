@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField } from '@material-ui/core';
 
@@ -37,4 +36,4 @@ InputForm.defaultProps = {
 InputForm.displayName = 'InputForm';
 
 export const story = InputForm;
-export default memo(InputForm);
+export default InputForm;

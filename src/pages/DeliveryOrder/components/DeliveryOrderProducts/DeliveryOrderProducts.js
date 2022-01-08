@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
@@ -126,4 +126,4 @@ DeliveryOrderProducts.propTypes = {
 
 DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';
 export const story = DeliveryOrderProducts;
-export default memo(DeliveryOrderProducts);
+export default DeliveryOrderProducts;

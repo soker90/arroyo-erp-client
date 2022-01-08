@@ -1,4 +1,4 @@
-import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid,
@@ -54,4 +54,4 @@ ClientInvoiceData.propTypes = {
 
 ClientInvoiceData.displayName = 'ClientInvoiceData';
 export const story = ClientInvoiceData;
-export default memo(ClientInvoiceData);
+export default ClientInvoiceData;

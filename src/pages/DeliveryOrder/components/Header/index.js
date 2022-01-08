@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -78,4 +78,4 @@ HeaderDeliveryOrder.propTypes = {
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder';
 export const story = HeaderDeliveryOrder;
-export default memo(HeaderDeliveryOrder);
+export default HeaderDeliveryOrder;
