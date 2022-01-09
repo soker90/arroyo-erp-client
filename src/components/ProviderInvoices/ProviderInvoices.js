@@ -8,6 +8,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
+import LabelPending from '../LabelPending';
 
 const ProviderInvoices = ({
   invoices,
@@ -52,7 +53,7 @@ const ProviderInvoices = ({
       columns={[
         {
           title: 'Nº de Orden',
-          field: 'nOrder',
+          render: ({ nOrder }) => nOrder || <LabelPending />,
         },
         {
           title: 'Fecha de factura',

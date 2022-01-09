@@ -2,12 +2,18 @@ import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 
-import { LoadingScreen, TableMaterial, TextEuro } from 'components';
+import {
+  LoadingScreen, TableMaterial, TextEuro,
+} from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
+import LabelPending from 'components/LabelPending';
 
 const ClientInvoices = ({
-  invoices, idClient, count, getClientInvoices,
+  invoices,
+  idClient,
+  count,
+  getClientInvoices,
 }) => {
   if (!idClient) return <LoadingScreen />;
 
@@ -21,7 +27,7 @@ const ClientInvoices = ({
         },
         {
           title: 'Nº de factura',
-          field: 'nInvoice',
+          render: ({ nInvoice }) => nInvoice || <LabelPending />,
         },
         {
           title: 'Importe',
@@ -39,7 +45,10 @@ const ClientInvoices = ({
         },
       ]}
       count={count}
-      refresh={({ offset, limit }) => {
+      refresh={({
+        offset,
+        limit,
+      }) => {
         getClientInvoices(idClient, offset, limit);
       }}
     />
