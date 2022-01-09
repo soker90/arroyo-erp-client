@@ -1,3 +1,7 @@
+# [1.4.1] - 09/01/2022
+  - Corregidos enlaces para cambiar de año en el libro de clientes
+  - Añadida etiqueta en la lista de facturas para indicar que no está confirmada
+
 # [1.4.0] - 08/01/2022
   - Añadida página de facturación para clientes
   - Exportación de hoja de calculo del 347 de clientes
