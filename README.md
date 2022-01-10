@@ -21,9 +21,7 @@ Es un proyecto desarrollado en `React`. (v.17.0.1) y gestiona el **state** de la
 - DOCS: Readme and more Storybook
 - TESTING - In Progress: Storybook + react testing library para test unitarios - in progress
 - TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual - ok
-- TESTING: Preparar un entorno para tests e2e con cypress.
 - No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
-- Acoplar el estado de productos a las rutas que lo usan, y valorar hacer lo mismo con provider (ha crecido y puede carecer de sentido como está)
 - Poner a dieta a Redux
 - ¡ISSUES!
 
@@ -95,7 +93,6 @@ Se sirve en <http://localhost:3000>
 Componente funcional standar de React, con memo:
 ```js
 
-import { memo } from 'react'
 import PropTypes from 'prop-types';
 
 const ComponentName = () =>
@@ -107,8 +104,7 @@ ComponentName.propTypes = {
 };
 
 ComponentName.displayName = 'ComponentName';
-export const story = ComponentName;
-export default memo(ComponentName);
+export default ComponentName;
 ```
 
 ### Container
