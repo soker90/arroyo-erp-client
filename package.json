@@ -65,7 +65,7 @@
     "@storybook/addons": "^6.4.10",
     "@storybook/builder-webpack5": "^6.4.9",
     "@storybook/manager-webpack5": "^6.4.10",
-    "@storybook/node-logger": "^6.4.9",
+    "@storybook/node-logger": "^6.4.10",
     "@storybook/preset-create-react-app": "^4.0.0",
     "@storybook/react": "^6.4.10",
     "@storybook/storybook-deployer": "^2.8.10",
