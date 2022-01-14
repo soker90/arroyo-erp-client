@@ -2,7 +2,7 @@
 import {
   Typography,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useStyles } from './NotNetwork.styles';
 
 const NotNetwork = () => {

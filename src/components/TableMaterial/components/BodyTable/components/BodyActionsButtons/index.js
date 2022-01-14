@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, TableCell, Tooltip } from '@material-ui/core';
+import { IconButton, TableCell, Tooltip } from '@mui/material';
 import uniqId from 'uniqid';
 
 import { useStyles } from './styles';
@@ -44,6 +44,7 @@ const BodyActionsButtons = ({
               {...(onClick && { onClick: () => onClick(row, index) })}
               {...(to && { to: to(row, index) })}
               {...restButton}
+              size='large'
             >
               <Icon className={classes.actionIcon} />
             </IconButton>

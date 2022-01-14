@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
-import { DatePicker } from '@material-ui/pickers';
+import { Grid, TextField } from '@mui/material';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 import { useStyles } from './DatePickerForm.styles';
 
@@ -17,18 +17,15 @@ const DatePickerForm = (
 
   return (
     <Grid item md={size} xs={12}>
-      <DatePicker
-        disableToolbar
+      <DesktopDatePicker
         className={classes.picker}
         onChange={() => {
         }}
-        animateYearScrolling
-        format={format}
-        inputVariant={variant}
-        autoOk={autoOk}
-        cancelLabel='Cancelar'
-        clearLabel='Limpiar'
+        inputFormat={format}
+        leftArrowButtonText='Mes anterior'
+        rightArrowButtonText='Mes siguiente'
         okLabel='Aceptar'
+        renderInput={params => <TextField {...params} />}
         {...rest}
       />
     </Grid>

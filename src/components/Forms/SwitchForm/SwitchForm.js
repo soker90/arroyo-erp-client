@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FormControlLabel, Grid, Switch } from '@material-ui/core';
+import { FormControlLabel, Grid, Switch } from '@mui/material';
 
 const SwitchForm = ({
   size,

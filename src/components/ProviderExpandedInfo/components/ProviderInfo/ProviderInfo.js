@@ -7,8 +7,8 @@ import {
   Grid,
   IconButton,
   Tooltip,
-} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { ItemGroupsCard } from 'components';
 import { useStyles } from './ProviderInfo.styles';

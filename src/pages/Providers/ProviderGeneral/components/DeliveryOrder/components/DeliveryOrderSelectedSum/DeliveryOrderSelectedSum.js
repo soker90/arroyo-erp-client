@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {
   Card,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { useSumSelected } from './hooks';
 import DeliveryOrderSelectedSumItem from './DeliveryOrderSelectedSumItem';
@@ -24,7 +24,7 @@ const DeliveryOrderSelectedSum = ({
       <Grid
         alignItems='center'
         container
-        justify='space-between'
+        justifyContent='space-between'
       >
         {sumSelected.map(sum => (
           <DeliveryOrderSelectedSumItem

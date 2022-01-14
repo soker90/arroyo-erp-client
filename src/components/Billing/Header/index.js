@@ -1,7 +1,8 @@
+/* eslint-disable */
 import PropTypes from 'prop-types';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import GetAppIcon from '@mui/icons-material/GetApp';
 
 import { Header } from 'components';
 import { NavLink } from 'react-router-dom';
@@ -37,7 +38,6 @@ const HeaderBook = ({
           Icon: GetAppIcon,
           label: '347',
           variant: 'contained',
-          color: 'default',
         },
         {
           onClick: _handleClickDownload(),

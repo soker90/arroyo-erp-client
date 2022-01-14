@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import uniqId from 'uniqid';
 
 import { LoadingScreen, Page } from 'components';

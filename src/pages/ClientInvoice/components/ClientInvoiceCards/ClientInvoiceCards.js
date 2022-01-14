@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { useStyles } from './ClientInvoiceCards.styles';

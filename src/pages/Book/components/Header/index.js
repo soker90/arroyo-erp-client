@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import GetAppIcon from '@mui/icons-material/GetApp';
 import { NavLink } from 'react-router-dom';
 
 import { Header } from 'components';
@@ -46,28 +46,24 @@ const HeaderBook = ({ year, filter }) => {
           Icon: GetAppIcon,
           label: 'T1',
           variant: 'contained',
-          color: 'default',
         },
         {
           onClick: _handleClickDownloadTrimester(4),
           Icon: GetAppIcon,
           label: 'T2',
           variant: 'contained',
-          color: 'default',
         },
         {
           onClick: _handleClickDownloadTrimester(7),
           Icon: GetAppIcon,
           label: 'T3',
           variant: 'contained',
-          color: 'default',
         },
         {
           onClick: _handleClickDownloadTrimester(10),
           Icon: GetAppIcon,
           label: 'T4',
           variant: 'contained',
-          color: 'default',
         },
         {
           onClick: _handleClickDownload,

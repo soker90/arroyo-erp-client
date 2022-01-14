@@ -2,8 +2,9 @@ import { useRef, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography,
-} from '@material-ui/core';
+  Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { logout } from 'actions/auth';
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +52,7 @@ const Account = () => {
           className={classes.avatar}
           src={null}
         />
-        <Hidden smDown>
+        <Hidden mdDown>
           <Typography
             variant='h6'
             color='inherit'
@@ -68,7 +69,6 @@ const Account = () => {
         }}
         keepMounted
         PaperProps={{ className: classes.popover }}
-        getContentAnchorEl={null}
         anchorEl={ref.current}
         open={isOpen}
       >

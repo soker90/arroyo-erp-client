@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import {
-  Avatar, Box, Card, Grid, makeStyles, Typography,
-} from '@material-ui/core';
-import EuroIcon from '@material-ui/icons/Euro';
+  Avatar, Box, Card, Grid, Typography,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import EuroIcon from '@mui/icons-material/Euro';
 
 import { format } from 'utils';
 

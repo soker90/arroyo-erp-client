@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   Card, CardContent, CardHeader, Divider, IconButton, Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import uniqId from 'uniqid';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useCallback, useState } from 'react';
 
 import { DatePickerForm, TextEuro } from 'components';

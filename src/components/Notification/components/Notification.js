@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Snackbar from '@material-ui/core/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
 
 import MySnackbarContentWrapper from './MySnackbarContentWrapper';
 import { useStyles } from './Notification.styles';

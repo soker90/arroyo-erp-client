@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box, Card, CardContent, CardHeader, Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 import { format } from 'utils';
 import Chart from './Chart';
 import { useStyles } from './PricesChart.styles';

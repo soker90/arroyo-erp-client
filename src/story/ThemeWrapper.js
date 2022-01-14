@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider, StyledEngineProvider, adaptV4Theme } from '@mui/material';
 import { createTheme } from 'theme';
 import { select } from '@storybook/addon-knobs';
 import { THEMES } from '../constants/common';
@@ -21,9 +21,11 @@ const ThemeWrapper = ({ children }) => {
   );
 
   return (
-    <ThemeProvider theme={createTheme({ theme })}>
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={createTheme(adaptV4Theme({ theme }))}>
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

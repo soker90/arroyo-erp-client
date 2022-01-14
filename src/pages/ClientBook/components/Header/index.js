@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
 import { Header } from 'components';
 import { NavLink } from 'react-router-dom';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import GetAppIcon from '@mui/icons-material/GetApp';
 import { downloadFile } from '../../../../utils';
 
 const HeaderBook = ({ year }) => {

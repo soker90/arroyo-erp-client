@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
-import EuroIcon from '@material-ui/icons/Euro';
+import EuroIcon from '@mui/icons-material/Euro';
 import { useStyles } from './InvoicesTable.styles';
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal';
 

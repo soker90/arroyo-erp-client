@@ -9,9 +9,9 @@ import {
   IconButton,
   Tooltip,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import uniqId from 'uniqid';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { ItemCard, Label } from 'components';
 import { format } from 'utils';

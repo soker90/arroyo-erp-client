@@ -8,13 +8,13 @@ import {
   Container,
   Divider,
   Grid, IconButton, InputAdornment, Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 
 import {
   InputForm, Page,
 } from 'components';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import Header from './Header';
 import { useStyles } from './SwapInvoices.styles';
 
@@ -26,7 +26,7 @@ const SwapInvoices = ({ swapInvoices }) => {
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
-        <IconButton onClick={onClick}>
+        <IconButton onClick={onClick} size='large'>
           <SearchIcon />
         </IconButton>
       </Tooltip>

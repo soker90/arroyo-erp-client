@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import VerticalAlignCenterIcon from '@material-ui/icons/VerticalAlignCenter';
+import VerticalAlignCenterIcon from '@mui/icons-material/VerticalAlignCenter';
 
 import { Header } from 'components';
 import MergePaymentModal from '../../modals/MergePaymentModal';

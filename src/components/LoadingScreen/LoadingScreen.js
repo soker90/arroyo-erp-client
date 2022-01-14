@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
-import { Box, LinearProgress } from '@material-ui/core';
+import { Box, LinearProgress } from '@mui/material';
 
 import { useStyles } from './LoadingScreen.style';
 

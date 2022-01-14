@@ -6,8 +6,8 @@ import {
   IconButton,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+} from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { format } from 'utils';
 import TextEuro from '../../TextEuro';
@@ -29,15 +29,13 @@ const DeliveryOrderExpandHeader = ({
           <>
             {children}
             <Tooltip title='Ver'>
-              <IconButton
-                component={RouterLink}
-                to={`/app/albaranes/${_id}`}
-              >
+              <IconButton component={RouterLink} to={`/app/albaranes/${_id}`} size='large'>
                 <VisibilityIcon />
               </IconButton>
             </Tooltip>
           </>
-        )}
+      )}
+        label=''
       />
 
       <Typography

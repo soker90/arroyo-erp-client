@@ -6,15 +6,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import {
-  Box,
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  ListSubheader,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+  Box, Divider, Drawer, Hidden, List, ListSubheader, Typography,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import uniqId from 'uniqid';
 
 import Logo from 'components/Logo';
@@ -130,7 +124,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
         <Box p={2}>
           <Box
             p={2}
-            borderRadius='borderRadius'
+            borderRadius={1}
             bgcolor='background.dark'
           >
             <Typography
@@ -189,7 +183,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
           {content}
         </Drawer>
       </Hidden>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <Drawer
           anchor='left'
           classes={{ paper: classes.desktopDrawer }}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Grid, TextField } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Grid, TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir

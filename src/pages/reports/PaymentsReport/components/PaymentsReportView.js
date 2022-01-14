@@ -2,7 +2,7 @@ import {
   useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import { useParams } from 'react-router';
 
 import { Page, TotalsReportBoxes } from 'components';

@@ -1,8 +1,9 @@
+/* eslint-disable */
 import {
   lazy, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import { LoadingScreen } from 'components';
 import NoInvoices from './components/NoInvoices';
@@ -31,6 +32,7 @@ const DeliveryOrder = ({
   };
 
   if (!idProvider) return <LoadingScreen />;
+
 
   return (
     <>

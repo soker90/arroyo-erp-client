@@ -1,12 +1,12 @@
 import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import EuroIcon from '@material-ui/icons/Euro';
-import PostAddIcon from '@material-ui/icons/PostAdd';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import DescriptionIcon from '@material-ui/icons/Description';
-import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-import UpdateIcon from '@material-ui/icons/Update';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import EuroIcon from '@mui/icons-material/Euro';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import UpdateIcon from '@mui/icons-material/Update';
 
 const year = new Date().getFullYear();
 
