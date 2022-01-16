@@ -26,8 +26,6 @@ const MySnackbarContentWrapper = forwardRef(({
     info: InfoIcon,
   };
 
-  // eslint-disable-next-line no-console
-  console.log(variant);
   const Icon = variantIcon?.[variant];
 
   return (

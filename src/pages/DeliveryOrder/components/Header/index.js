@@ -40,7 +40,6 @@ const HeaderDeliveryOrder = ({
         description=''
         buttons={[{
           variant: 'outlined',
-          color: 'default',
           onClick: _openDeleteModal,
           Icon: Trash2,
           label: 'Eliminar',

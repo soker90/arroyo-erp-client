@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {
   lazy, useEffect, useState,
 } from 'react';
@@ -32,7 +31,6 @@ const DeliveryOrder = ({
   };
 
   if (!idProvider) return <LoadingScreen />;
-
 
   return (
     <>

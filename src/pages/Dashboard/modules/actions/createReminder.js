@@ -1,4 +1,3 @@
-/* eslint-disable */
 import axios from 'axios';
 import { CREATE_REMINDER } from '../types';
 
@@ -44,24 +43,6 @@ const _createReminderError = error => ({
  * @param {function} callback
  * @returns {function(...[*]=)}
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const createReminder = (message, callback) => async dispatch => {
   dispatch(_createReminderRequest());
