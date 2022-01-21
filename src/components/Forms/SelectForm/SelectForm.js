@@ -6,7 +6,9 @@ import { Grid, TextField } from '@mui/material';
  * nativo o material. Y documentar opcion y menuItem para usarlo
  * como children del componente.
  */
-const SelectForm = ({ size, children, ...rest }) => (
+const SelectForm = ({
+  size, children, variant = 'standard', ...rest
+}) => (
   <Grid
     item
     md={size}
@@ -15,6 +17,7 @@ const SelectForm = ({ size, children, ...rest }) => (
     <TextField
       fullWidth
       select
+      variant={variant}
       SelectProps={{
         native: true,
       }}

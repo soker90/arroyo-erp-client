@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Grid, TextField } from '@mui/material';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
 
+import { InputForm } from 'components';
 import { useStyles } from './DatePickerForm.styles';
 
 const DatePickerForm = (
@@ -16,19 +16,22 @@ const DatePickerForm = (
   const classes = useStyles();
 
   return (
-    <Grid item md={size} xs={12}>
-      <DesktopDatePicker
-        className={classes.picker}
-        onChange={() => {
-        }}
-        inputFormat={format}
-        leftArrowButtonText='Mes anterior'
-        rightArrowButtonText='Mes siguiente'
-        okLabel='Aceptar'
-        renderInput={params => <TextField {...params} />}
-        {...rest}
-      />
-    </Grid>
+    <MobileDatePicker
+      disableToolbar
+      className={classes.picker}
+      onChange={() => {
+      }}
+      showToolbar={false}
+      animateYearScrolling
+      format={format}
+      inputVariant={variant}
+      autoOk={autoOk}
+      cancelText='Cancelar'
+      clearText='Limpiar'
+      okText='Aceptar'
+      renderInput={params => <InputForm size={size} {...params} />}
+      {...rest}
+    />
   );
 };
 

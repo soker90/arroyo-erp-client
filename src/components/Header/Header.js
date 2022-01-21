@@ -30,6 +30,7 @@ const Header = ({
       color='inherit'
       to={link}
       component={RouterLink}
+      underline='none'
     >
       {title}
     </Link>
