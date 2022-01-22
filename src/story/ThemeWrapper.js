@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { ThemeProvider, StyledEngineProvider, adaptV4Theme } from '@mui/material';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 import { createTheme } from 'theme';
 import { select } from '@storybook/addon-knobs';
 import { THEMES } from '../constants/common';
@@ -22,7 +21,7 @@ const ThemeWrapper = ({ children }) => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={createTheme(adaptV4Theme({ theme }))}>
+      <ThemeProvider theme={createTheme({ theme })}>
         {children}
       </ThemeProvider>
     </StyledEngineProvider>
