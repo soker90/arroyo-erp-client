@@ -1,15 +1,8 @@
 import { useRef, useState } from 'react';
 import {
-  Box,
-  Button,
-  IconButton,
-  makeStyles,
-  Popover,
-  SvgIcon,
-  TextField,
-  Tooltip,
-  Typography,
-} from '@material-ui/core';
+  Box, Button, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { Settings as SettingsIcon } from 'react-feather';
 import useSettings from 'hooks/useSettings';
 import { THEMES, THEMES_NAME } from 'constants/common';
@@ -55,11 +48,7 @@ const Settings = () => {
   return (
     <>
       <Tooltip title='Ajustes'>
-        <IconButton
-          color='inherit'
-          onClick={handleOpen}
-          ref={ref}
-        >
+        <IconButton color='inherit' onClick={handleOpen} ref={ref} size='large'>
           <SvgIcon fontSize='small'>
             <SettingsIcon />
           </SvgIcon>

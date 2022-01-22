@@ -4,7 +4,7 @@ import {
 } from 'react';
 import {
   Box, Container,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import { useLocation, useParams } from 'react-router';
 
@@ -14,7 +14,10 @@ import Header from './Header';
 import { useStyles } from './Provider.styles';
 
 const Provider = ({
-  provider, billing, getProvider, ...props
+  provider,
+  billing,
+  getProvider,
+  ...props
 }) => {
   const classes = useStyles();
   const { hash } = useLocation();

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import PropTypes from 'prop-types';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import GetAppIcon from '@mui/icons-material/GetApp';
 import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather';
 
 import { Header } from 'components';
@@ -45,7 +45,6 @@ const HeaderClientInvoice = ({
           variant: 'contained',
         }, {
           variant: 'outlined',
-          color: 'default',
           onClick: () => setShowDeleteModal(true),
           Icon: Trash2,
           label: 'Eliminar',

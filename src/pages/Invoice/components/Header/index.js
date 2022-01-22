@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import PropTypes from 'prop-types';
 
 import { Header } from 'components';
@@ -27,7 +27,6 @@ const HeaderInvoice = ({
         description=''
         buttons={[{
           variant: 'outlined',
-          color: 'default',
           onClick: () => setShowDeleteModal(true),
           Icon: Trash2,
           label: 'Eliminar',

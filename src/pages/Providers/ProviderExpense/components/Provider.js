@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import {
   Box, Container,
-} from '@material-ui/core';
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 

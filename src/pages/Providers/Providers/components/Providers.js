@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container } from '@mui/material';
 import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
 import { Link } from 'react-router-dom';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { BASE_PATH } from 'constants/index';
 import { Header, Page, TableMaterial } from 'components';

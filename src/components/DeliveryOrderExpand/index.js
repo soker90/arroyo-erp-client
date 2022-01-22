@@ -3,8 +3,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import ProductsOrderTable from './ProductsOrderTable';
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader';
@@ -13,7 +13,6 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
   <Accordion TransitionProps={{ unmountOnExit: true }}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
-      aria-label='Expand'
     >
       <DeliveryOrderExpandHeader {...props} />
     </AccordionSummary>
@@ -26,7 +25,7 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
 
 DeliveryOrderExpand.propTypes = {
   products: PropTypes.array.isRequired,
-  date: PropTypes.number.isRequired,
+  date: PropTypes.number,
   note: PropTypes.string,
   taxBase: PropTypes.number.isRequired,
   iva: PropTypes.number.isRequired,

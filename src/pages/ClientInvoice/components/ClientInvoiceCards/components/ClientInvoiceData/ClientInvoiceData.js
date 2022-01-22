@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { DatePickerForm, ItemCard } from 'components';
 import { format } from 'utils';

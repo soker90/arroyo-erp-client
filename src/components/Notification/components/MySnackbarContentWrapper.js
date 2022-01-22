@@ -1,17 +1,22 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
-import InfoIcon from '@material-ui/icons/Info';
-import CloseIcon from '@material-ui/icons/Close';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import WarningIcon from '@material-ui/icons/Warning';
-import IconButton from '@material-ui/core/IconButton';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
+import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import WarningIcon from '@mui/icons-material/Warning';
+import IconButton from '@mui/material/IconButton';
+import { forwardRef } from 'react';
 import { useStyles } from './MySnackbarContentWrapper.styles';
 
-const MySnackbarContentWrapper = ({
-  className, message, onClose, variant, ...other
-}) => {
+const MySnackbarContentWrapper = forwardRef(({
+  className,
+  message,
+  onClose,
+  variant,
+  ...other
+}, ref) => {
   const classes = useStyles();
 
   const variantIcon = {
@@ -21,11 +26,12 @@ const MySnackbarContentWrapper = ({
     info: InfoIcon,
   };
 
-  const Icon = variantIcon[variant];
+  const Icon = variantIcon?.[variant];
 
   return (
     <SnackbarContent
-      className={clsx(classes[variant], className)}
+      ref={ref}
+      className={clsx(classes?.[variant], className)}
       aria-describedby='client-snackbar'
       message={(
         <span id='client-snackbar' className={classes.message} data-cy='notification'>
@@ -33,15 +39,22 @@ const MySnackbarContentWrapper = ({
           {message}
         </span>
       )}
-      action={[
-        <IconButton key='close' aria-label='close' color='inherit' onClick={onClose} data-cy='notification-btn-close'>
+      action={(
+        <IconButton
+          key='close'
+          aria-label='close'
+          color='inherit'
+          onClick={onClose}
+          data-cy='notification-btn-close'
+          size='large'
+        >
           <CloseIcon className={classes.icon} />
-        </IconButton>,
-      ]}
+        </IconButton>
+      )}
       {...other}
     />
   );
-};
+});
 
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,

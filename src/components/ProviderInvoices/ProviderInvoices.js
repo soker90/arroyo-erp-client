@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import { LoadingScreen, TableMaterial, TextEuro } from 'components';
 import { BASE_PATH } from 'constants/index';

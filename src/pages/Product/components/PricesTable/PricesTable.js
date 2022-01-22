@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { TableMaterial } from 'components';
 import { format } from 'utils';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link } from 'react-router-dom';
 import { useStyles } from './PricesTable.styles';
 import { BASE_PATH } from '../../../../constants';

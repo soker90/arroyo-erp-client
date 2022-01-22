@@ -8,7 +8,7 @@ import {
   Card,
   Table,
   TablePagination,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import NoData from './components/NoData';
 import HeadTable from './components/HeadTable';
@@ -74,8 +74,8 @@ const TableMaterial = ({
         <TablePagination
           component='div'
           count={count}
-          onChangePage={handlePageChange}
-          onChangeRowsPerPage={handleLimitChange}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleLimitChange}
           page={page}
           rowsPerPage={limit}
           rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}

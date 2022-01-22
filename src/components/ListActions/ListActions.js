@@ -10,11 +10,11 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   ListSubheader,
-  makeStyles,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { InputForm } from '../Forms';
 
 const useStyles = makeStyles(theme => ({

@@ -1,19 +1,14 @@
-import { useRef, useState, memo } from 'react';
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ListItemIcon,
-  ListItemText,
-  Tooltip,
-  IconButton,
-  Menu,
-  MenuItem,
-  makeStyles,
-} from '@material-ui/core';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import AchiveIcon from '@material-ui/icons/ArchiveOutlined';
+  ListItemIcon, ListItemText, Tooltip, IconButton, Menu, MenuItem,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import MoreIcon from '@mui/icons-material/MoreVert';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import AchiveIcon from '@mui/icons-material/ArchiveOutlined';
 
 const useStyles = makeStyles(() => ({
   menu: {
@@ -38,11 +33,7 @@ const GenericMoreButton = props => {
   return (
     <>
       <Tooltip title='More options'>
-        <IconButton
-          {...props}
-          onClick={handleMenuOpen}
-          ref={moreRef}
-        >
+        <IconButton {...props} onClick={handleMenuOpen} ref={moreRef} size='large'>
           <MoreIcon fontSize='small' />
         </IconButton>
       </Tooltip>

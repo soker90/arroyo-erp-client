@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import {
-  IconButton, ListItem, ListItemText, makeStyles, Tooltip,
-} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+  IconButton, ListItem, ListItemText, Tooltip,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const useStyles = makeStyles(theme => ({
   viewButton: {
@@ -35,6 +36,7 @@ const Reminder = ({
           className={classes.viewButton}
           edge='end'
           onClick={_handleClick}
+          size='large'
         >
           <DeleteIcon fontSize='small' />
         </IconButton>

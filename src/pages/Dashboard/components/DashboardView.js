@@ -2,7 +2,7 @@ import {
   useCallback, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@mui/material';
 
 import { Header, Page, TotalsReportBoxes } from 'components';
 import { useStyles } from './DashboardView.styles';
@@ -36,7 +36,7 @@ const DashboardView = ({
         >
           <Header title='Panel' description='Efectivo y recordatorios' />
 
-          <TotalsReportBoxes totals={cash} />
+          <TotalsReportBoxes totals={cash} className={classes.cashBoxes} />
           <Grid
             container
             spacing={3}

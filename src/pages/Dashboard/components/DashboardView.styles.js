@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -6,5 +6,9 @@ export const useStyles = makeStyles(theme => ({
     minHeight: '100%',
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
+  },
+  cashBoxes: {
+    marginTop: 0,
+    marginBottom: theme.spacing(2),
   },
 }));

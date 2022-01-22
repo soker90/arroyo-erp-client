@@ -7,7 +7,7 @@ import {
   Grid,
   Divider,
   CardHeader,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import {
   DatePickerForm,
@@ -83,7 +83,6 @@ const SearchForm = ({
       <CardContent>
         <Grid spacing={3} container>
           <DatePickerForm
-            clearable
             size={2}
             label='Fecha factura'
             value={filters.dateInvoice}

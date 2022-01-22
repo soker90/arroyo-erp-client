@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import { colors, createTheme as createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+import {
+  colors, createTheme as createMuiTheme, responsiveFontSizes,
+} from '@mui/material';
 import { THEMES } from 'constants/common';
 import typography from './typography';
 import { softShadows, strongShadows } from './shadows';
@@ -9,21 +11,30 @@ const baseConfig = {
   direction: 'ltr',
   responsiveFontSizes: true,
   typography,
-  overrides: {
+  components: {
+    MuiPaper: {
+      styleOverrides: { root: { backgroundImage: 'unset' } },
+    },
     MuiLinearProgress: {
-      root: {
-        borderRadius: 3,
-        overflow: 'hidden',
+      styleOverrides: {
+        root: {
+          borderRadius: 3,
+          overflow: 'hidden',
+        },
       },
     },
     MuiListItemIcon: {
-      root: {
-        minWidth: 32,
+      styleOverrides: {
+        root: {
+          minWidth: 32,
+        },
       },
     },
     MuiChip: {
-      root: {
-        backgroundColor: 'rgba(0,0,0,0.075)',
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(0,0,0,0.075)',
+        },
       },
     },
   },
@@ -43,7 +54,7 @@ const themeConfigs = [
       },
     },
     palette: {
-      type: 'light',
+      mode: 'light',
       action: {
         active: colors.blueGrey[600],
       },
@@ -68,7 +79,7 @@ const themeConfigs = [
   {
     name: THEMES.ONE_DARK,
     palette: {
-      type: 'dark',
+      mode: 'dark',
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
         hover: 'rgba(255, 255, 255, 0.04)',
@@ -99,7 +110,7 @@ const themeConfigs = [
   {
     name: THEMES.UNICORN,
     palette: {
-      type: 'dark',
+      mode: 'dark',
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
         hover: 'rgba(255, 255, 255, 0.04)',

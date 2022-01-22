@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import { NavLink } from 'react-router-dom';
 
 import { Header } from 'components';

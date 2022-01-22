@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import AddIcon from '@material-ui/icons/Add';
-import DescriptionIcon from '@material-ui/icons/Description';
+import AddIcon from '@mui/icons-material/Add';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { Trash2 } from 'react-feather';
 import { Link } from 'react-router-dom';
 
@@ -40,7 +40,6 @@ const HeaderDeliveryOrder = ({
         description=''
         buttons={[{
           variant: 'outlined',
-          color: 'default',
           onClick: _openDeleteModal,
           Icon: Trash2,
           label: 'Eliminar',

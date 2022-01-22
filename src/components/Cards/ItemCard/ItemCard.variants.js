@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 import { BooleanIcon, TextEuro } from 'components';
 
 const ItemCardVariant = ({ value, variant }) => {
   const COMPONENT_VARIANT = {
     default: <Typography variant='h6'>{value}</Typography>,
-    boolean: <BooleanIcon value={value} />,
+    boolean: <BooleanIcon value={!!value} />,
     euro: <TextEuro Component={Typography} num={value} variant='h6' />,
   };
 

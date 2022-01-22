@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { TableCell, TableHead, TableRow } from '@material-ui/core';
+import { TableCell, TableHead, TableRow } from '@mui/material';
 
 const HeadTable = ({ columns, actions, multiSelect }) => (
   <TableHead styles={{ fontSize: 20 }}>

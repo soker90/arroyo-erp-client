@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {
   Checkbox,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
 

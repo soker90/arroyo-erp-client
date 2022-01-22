@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import uniqId from 'uniqid';
 
-import { Grid, List } from '@material-ui/core';
+import { Grid, List } from '@mui/material';
 import { ItemCard } from 'components/Cards';
 import { sliceToGroups } from 'utils';
 import { useStyles } from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles';

@@ -2,7 +2,7 @@ import { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box, Button, TextField, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useStyles } from './LoginForm.styles';
 
 const LoginForm = memo(({ login, loginError, isLoading }) => {

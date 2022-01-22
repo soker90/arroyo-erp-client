@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 

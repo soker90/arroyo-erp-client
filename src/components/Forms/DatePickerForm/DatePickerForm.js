@@ -1,7 +1,8 @@
+/* eslint-disable */
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
-import { DatePicker } from '@material-ui/pickers';
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
 
+import { InputForm } from 'components';
 import { useStyles } from './DatePickerForm.styles';
 
 const DatePickerForm = (
@@ -16,22 +17,22 @@ const DatePickerForm = (
   const classes = useStyles();
 
   return (
-    <Grid item md={size} xs={12}>
-      <DatePicker
-        disableToolbar
-        className={classes.picker}
-        onChange={() => {
-        }}
-        animateYearScrolling
-        format={format}
-        inputVariant={variant}
-        autoOk={autoOk}
-        cancelLabel='Cancelar'
-        clearLabel='Limpiar'
-        okLabel='Aceptar'
-        {...rest}
-      />
-    </Grid>
+    <MobileDatePicker
+      disableToolbar
+      allowSameDateSelection
+      className={classes.picker}
+      onChange={() => {
+      }}
+      showToolbar={false}
+      format={format}
+      inputVariant={variant}
+      disableCloseOnSelect={!autoOk}
+      cancelText='Cancelar'
+      clearText='Limpiar'
+      okText='Aceptar'
+      renderInput={params => <InputForm size={size} {...params} />}
+      {...rest}
+    />
   );
 };
 

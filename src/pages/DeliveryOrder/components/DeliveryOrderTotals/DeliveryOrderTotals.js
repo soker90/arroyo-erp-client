@@ -2,11 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
 import uniqId from 'uniqid';
 
 import { ItemCard } from 'components';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 import { itemsCard } from './utils';
 import EditDeliveryOrderTotalsModal from '../../modals/EditDeliveryOrderTotalsModal';
 

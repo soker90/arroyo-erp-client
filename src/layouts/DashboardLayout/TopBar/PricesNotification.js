@@ -1,11 +1,7 @@
 import { NavLink as RouterLink } from 'react-router-dom';
-import {
-  Badge,
-  IconButton,
-  makeStyles,
-  Tooltip,
-} from '@material-ui/core';
-import EuroIcon from '@material-ui/icons/Euro';
+import { Badge, IconButton, Tooltip } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import EuroIcon from '@mui/icons-material/Euro';
 import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
@@ -26,11 +22,7 @@ const PricesNotification = () => {
         badgeContent={count}
         max={99}
       >
-        <IconButton
-          color='inherit'
-          component={RouterLink}
-          to='/app/precios'
-        >
+        <IconButton color='inherit' component={RouterLink} to='/app/precios' size='large'>
           <EuroIcon />
         </IconButton>
       </Badge>

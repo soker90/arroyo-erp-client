@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
-import { Card, Tab, Tabs } from '@material-ui/core';
+import { Card, Tab, Tabs } from '@mui/material';
 import { useHistory } from 'react-router';
 
 import { useStyles } from './HashTabs.styles';
 
-const HashTabs = ({ currentTab, tabs }) => {
+const HashTabs = ({
+  currentTab,
+  tabs,
+}) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -26,6 +29,7 @@ const HashTabs = ({ currentTab, tabs }) => {
         textColor='secondary'
         value={currentTab}
         variant='scrollable'
+        indicatorColor='primary'
       >
         {tabs.map(tab => (
           <Tab

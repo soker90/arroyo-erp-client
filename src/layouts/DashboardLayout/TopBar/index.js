@@ -2,14 +2,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
-  AppBar,
-  Box,
-  Hidden,
-  IconButton,
-  Toolbar,
-  makeStyles,
-  SvgIcon,
-} from '@material-ui/core';
+  AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { Menu as MenuIcon } from 'react-feather';
 
 import Logo from 'components/Logo';
@@ -53,13 +48,14 @@ const TopBar = ({
             className={classes.menuButton}
             color='inherit'
             onClick={onMobileNavOpen}
+            size='large'
           >
             <SvgIcon fontSize='small'>
               <MenuIcon />
             </SvgIcon>
           </IconButton>
         </Hidden>
-        <Hidden mdDown>
+        <Hidden lgDown>
           <RouterLink to='/'>
             <Logo />
           </RouterLink>

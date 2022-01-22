@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
-import { Grid, TextField } from '@material-ui/core';
+import { Grid, TextField } from '@mui/material';
 
 /**
  * BUG: Si cuando cargue el input el label y el value se superpone,
  * es porque el label es undefined o null, si al mandar la prop
  * value se manda como value={mivalor || ' '} se soluciona
  */
-const InputForm = ({ size, ...rest }) => (
+const InputForm = ({
+  size = 6, variant = 'standard', disabled = false, ...rest
+}) => (
   <Grid
     item
     md={size}
@@ -14,6 +16,8 @@ const InputForm = ({ size, ...rest }) => (
   >
     <TextField
       fullWidth
+      disabled={disabled}
+      variant={variant}
       {...rest}
     />
   </Grid>
@@ -26,11 +30,6 @@ InputForm.propTypes = {
   variant: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-};
-
-InputForm.defaultProps = {
-  size: 6,
-  disabled: false,
 };
 
 InputForm.displayName = 'InputForm';

@@ -43,6 +43,7 @@ const _createReminderError = error => ({
  * @param {function} callback
  * @returns {function(...[*]=)}
  */
+
 export const createReminder = (message, callback) => async dispatch => {
   dispatch(_createReminderRequest());
 
