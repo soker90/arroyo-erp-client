@@ -31,23 +31,27 @@ const CardDefault = () => (
 CardDefault.storyName = 'Item Card';
 
 const CardBoolean = () => (
-  <ItemCard
-    value={false}
-    label="Etiqueta"
-    divider
-    variant="boolean"
-  />
+  <ThemeWrapper>
+    <ItemCard
+      value={false}
+      label="Etiqueta"
+      divider
+      variant="boolean"
+    />
+  </ThemeWrapper>
 );
 
 CardBoolean.storyName = 'Boolean';
 
 const CardEuro = () => (
-  <ItemCard
-    value={12.64}
-    label="Etiqueta"
-    divider
-    variant="euro"
-  />
+  <ThemeWrapper>
+    <ItemCard
+      value={12.64}
+      label="Etiqueta"
+      divider
+      variant="euro"
+    />
+  </ThemeWrapper>
 );
 
 CardEuro.storyName = 'Euro';
