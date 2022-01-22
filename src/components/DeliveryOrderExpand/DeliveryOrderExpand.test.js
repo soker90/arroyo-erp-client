@@ -1,13 +1,15 @@
 import { fireEvent, render } from '@testing-library/react';
 
 import { DeliveryOrderExpandStory } from './DeliveryOrderExpand.stories';
-import { RoutesWrapper } from '../../story';
+import { RoutesWrapper, ThemeWrapper } from '../../story';
 
 describe('DeliveryOrderExpandHeader', () => {
   it('renders without crash', async () => {
     const { findByTestId } = render(
       <RoutesWrapper>
-        <DeliveryOrderExpandStory />
+        <ThemeWrapper>
+          <DeliveryOrderExpandStory/>
+        </ThemeWrapper>
       </RoutesWrapper>,
     );
 
@@ -23,7 +25,9 @@ describe('DeliveryOrderExpandHeader', () => {
       container,
     } = render(
       <RoutesWrapper>
-        <DeliveryOrderExpandStory />
+        <ThemeWrapper>
+          <DeliveryOrderExpandStory/>
+        </ThemeWrapper>
       </RoutesWrapper>,
     );
 
