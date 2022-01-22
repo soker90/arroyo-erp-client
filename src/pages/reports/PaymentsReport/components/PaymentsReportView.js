@@ -40,6 +40,7 @@ const PaymentsReportView = ({
 
         <TotalsReportBoxes
           totals={totals}
+          className={classes.paymentsBoxes}
         />
         <ChequesTable
           cheques={cheques}

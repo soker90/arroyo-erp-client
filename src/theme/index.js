@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import {
-  colors, createTheme as createMuiTheme, responsiveFontSizes, adaptV4Theme,
+  colors, createTheme as createMuiTheme, responsiveFontSizes,
 } from '@mui/material';
 import { THEMES } from 'constants/common';
 import typography from './typography';
@@ -11,21 +11,30 @@ const baseConfig = {
   direction: 'ltr',
   responsiveFontSizes: true,
   typography,
-  overrides: {
+  components: {
+    MuiPaper: {
+      styleOverrides: { root: { backgroundImage: 'unset' } },
+    },
     MuiLinearProgress: {
-      root: {
-        borderRadius: 3,
-        overflow: 'hidden',
+      styleOverrides: {
+        root: {
+          borderRadius: 3,
+          overflow: 'hidden',
+        },
       },
     },
     MuiListItemIcon: {
-      root: {
-        minWidth: 32,
+      styleOverrides: {
+        root: {
+          minWidth: 32,
+        },
       },
     },
     MuiChip: {
-      root: {
-        backgroundColor: 'rgba(0,0,0,0.075)',
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(0,0,0,0.075)',
+        },
       },
     },
   },
@@ -138,10 +147,10 @@ export function createTheme(settings = {}) {
     [themeConfig] = themeConfigs;
   }
 
-  let theme = createMuiTheme(adaptV4Theme({
+  let theme = createMuiTheme({
     ...baseConfig,
     ...themeConfig,
-  }));
+  });
 
   if (settings.responsiveFontSizes) theme = responsiveFontSizes(theme);
 

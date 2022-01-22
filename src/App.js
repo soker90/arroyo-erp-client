@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo } from 'react';
 import { Router } from 'react-router-dom';
-import { ThemeProvider, StyledEngineProvider, adaptV4Theme } from '@mui/material';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 import AdapterMoment from '@mui/lab/AdapterMoment'; // Change luxon
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { LoadingBar } from 'react-redux-loading-bar';
@@ -19,7 +19,7 @@ import './utils/axios';
 
 const App = () => {
   const { settings } = useSettings();
-  const theme = useMemo(() => createTheme(adaptV4Theme(settings)), [settings.theme]);
+  const theme = useMemo(() => createTheme(settings), [settings.theme]);
 
   return (
     <StyledEngineProvider injectFirst>
