@@ -6,7 +6,7 @@ import { BooleanIcon, TextEuro } from 'components';
 const ItemCardVariant = ({ value, variant }) => {
   const COMPONENT_VARIANT = {
     default: <Typography variant='h6'>{value}</Typography>,
-    boolean: <BooleanIcon value={value || false} />,
+    boolean: <BooleanIcon value={!!value} />,
     euro: <TextEuro Component={Typography} num={value} variant='h6' />,
   };
 

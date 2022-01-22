@@ -36,7 +36,7 @@ const DashboardView = ({
         >
           <Header title='Panel' description='Efectivo y recordatorios' />
 
-          <TotalsReportBoxes totals={cash} />
+          <TotalsReportBoxes totals={cash} className={classes.cashBoxes} />
           <Grid
             container
             spacing={3}

@@ -20,7 +20,7 @@ const TextEuro = ({
 };
 
 TextEuro.propTypes = {
-  num: PropTypes.number,
+  num: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   Component: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
   decimals: PropTypes.number,

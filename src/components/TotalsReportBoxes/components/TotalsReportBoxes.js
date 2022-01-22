@@ -5,10 +5,12 @@ import TotalsReportBox from './TotalsReportBox';
 
 const TotalsReportBoxes = ({
   totals,
+  className,
 }) => (
   <Grid
     container
     spacing={3}
+    className={className}
   >
     {TOTALS_BOXES?.map(box => (
       <TotalsReportBox
@@ -23,6 +25,7 @@ const TotalsReportBoxes = ({
 
 TotalsReportBoxes.propTypes = {
   totals: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };
 
 export default TotalsReportBoxes;

@@ -7,4 +7,8 @@ export const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
   },
+  cashBoxes: {
+    marginTop: 0,
+    marginBottom: theme.spacing(2),
+  },
 }));

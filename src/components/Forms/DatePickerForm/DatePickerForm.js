@@ -1,3 +1,4 @@
+/* eslint-disable */
 import PropTypes from 'prop-types';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
 
@@ -18,14 +19,14 @@ const DatePickerForm = (
   return (
     <MobileDatePicker
       disableToolbar
+      allowSameDateSelection
       className={classes.picker}
       onChange={() => {
       }}
       showToolbar={false}
-      animateYearScrolling
       format={format}
       inputVariant={variant}
-      autoOk={autoOk}
+      disableCloseOnSelect={!autoOk}
       cancelText='Cancelar'
       clearText='Limpiar'
       okText='Aceptar'

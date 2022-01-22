@@ -13,6 +13,7 @@ const AutocompleteForm = ({
   onChange,
   autoFocus,
   inputRef,
+  variant = 'standard',
   ...rest
 }) => (
   <Grid
@@ -34,6 +35,7 @@ const AutocompleteForm = ({
       {...rest}
       renderInput={params => (
         <TextField
+          variant={variant}
           {...params}
           autoFocus={autoFocus}
           label={label}

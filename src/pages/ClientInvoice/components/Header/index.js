@@ -45,7 +45,6 @@ const HeaderClientInvoice = ({
           variant: 'contained',
         }, {
           variant: 'outlined',
-          color: 'default',
           onClick: () => setShowDeleteModal(true),
           Icon: Trash2,
           label: 'Eliminar',
