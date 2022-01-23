@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import { alpha, useTheme } from '@mui/material';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles(() => ({
   root: {

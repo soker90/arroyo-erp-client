@@ -1,8 +1,8 @@
 /* eslint-disable */
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { colors } from '@mui/material';
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles()(theme => ({
   default: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,

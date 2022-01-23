@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import {
   AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Menu as MenuIcon } from 'react-feather';
 
 import Logo from 'components/Logo';
@@ -14,7 +14,7 @@ import PricesNotification from './PricesNotification';
 import Search from './Search';
 import Settings from './Settings';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     zIndex: theme.zIndex.drawer + 100,
     ...(theme.name === THEMES.LIGHT ? {

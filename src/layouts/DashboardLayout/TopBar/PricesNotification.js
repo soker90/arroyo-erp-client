@@ -1,10 +1,10 @@
 import { NavLink as RouterLink } from 'react-router-dom';
 import { Badge, IconButton, Tooltip } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import EuroIcon from '@mui/icons-material/Euro';
 import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   badge: {
     marginTop: 10,
     marginRight: 5,

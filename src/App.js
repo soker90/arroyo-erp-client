@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo } from 'react';
 import { Router } from 'react-router-dom';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material';
+
+import createCache from '@emotion/cache';
+import { ThemeProvider } from '@mui/material';
 import AdapterMoment from '@mui/lab/AdapterMoment'; // Change luxon
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { LoadingBar } from 'react-redux-loading-bar';
@@ -16,13 +18,19 @@ import RootStyles from 'theme/RootStyles';
 import Routes from 'Routes';
 import history from 'store/history';
 import './utils/axios';
+import { CacheProvider } from '@emotion/react';
+
+const muiCache = createCache({
+  key: 'mui',
+  prepend: true,
+});
 
 const App = () => {
   const { settings } = useSettings();
   const theme = useMemo(() => createTheme(settings), [settings.theme]);
 
   return (
-    <StyledEngineProvider injectFirst>
+    <CacheProvider value={muiCache}>
       <ThemeProvider theme={theme}>
         <RootStyles>
           <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -44,7 +52,7 @@ const App = () => {
           </LocalizationProvider>
         </RootStyles>
       </ThemeProvider>
-    </StyledEngineProvider>
+    </CacheProvider>
   );
 };
 

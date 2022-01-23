@@ -2,12 +2,12 @@ import { useRef, useState } from 'react';
 import {
   Box, Button, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Settings as SettingsIcon } from 'react-feather';
 import useSettings from 'hooks/useSettings';
 import { THEMES, THEMES_NAME } from 'constants/common';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   popover: {
     width: 320,
     padding: theme.spacing(2),

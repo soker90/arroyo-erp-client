@@ -1,10 +1,10 @@
 import { Suspense, memo } from 'react';
 import PropTypes from 'prop-types';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { LinearProgress } from '@mui/material';
 import TopBar from './TopBar';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles()(() => ({
   content: {
     height: '100%',
   },

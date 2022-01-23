@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Label } from 'components';
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles()(theme => ({
   label: {
     marginLeft: theme.spacing(1),
   },

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   ListItemIcon, ListItemText, Tooltip, IconButton, Menu, MenuItem,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import FileCopyIcon from '@mui/icons-material/FileCopy';

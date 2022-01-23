@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { colors } from '@mui/material';
 
-export const useStyles = makeStyles(({
+export const useStyles = makeStyles()(({
   iconActive: {
     color: colors.green[600],
   },

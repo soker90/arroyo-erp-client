@@ -3,11 +3,11 @@ import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Button, Collapse, ListItem } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   item: {
     display: 'block',
     paddingTop: 0,

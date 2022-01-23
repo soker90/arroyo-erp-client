@@ -1,8 +1,8 @@
 import { Box, CircularProgress } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Logo from 'components/Logo';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     alignItems: 'center',
     backgroundColor: theme.palette.background.default,

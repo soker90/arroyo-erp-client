@@ -13,11 +13,11 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { InputForm } from '../Forms';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {},
   fontWeightMedium: {
     fontWeight: theme.typography.fontWeightMedium,

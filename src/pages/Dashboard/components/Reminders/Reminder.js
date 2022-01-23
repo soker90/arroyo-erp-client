@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import {
   IconButton, ListItem, ListItemText, Tooltip,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   viewButton: {
     marginLeft: theme.spacing(2),
   },

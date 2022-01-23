@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import {
   Box, Divider, Drawer, Hidden, List, ListSubheader, Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import uniqId from 'uniqid';
 
 import Logo from 'components/Logo';

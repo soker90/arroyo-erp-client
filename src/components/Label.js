@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { alpha } from '@mui/material';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     fontFamily: theme.typography.fontFamily,
     alignItems: 'center',

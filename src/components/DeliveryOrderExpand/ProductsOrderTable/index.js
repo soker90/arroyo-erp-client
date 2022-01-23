@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
 import PropTypes from 'prop-types';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Typography } from '@mui/material';
 
 import { TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   root: {
     width: '100%',
   },

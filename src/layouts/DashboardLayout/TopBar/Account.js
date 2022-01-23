@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { logout } from 'actions/auth';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   avatar: {
     height: 32,
     width: 32,

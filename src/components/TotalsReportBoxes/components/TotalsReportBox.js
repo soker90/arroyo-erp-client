@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import {
   Avatar, Box, Card, Grid, Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import EuroIcon from '@mui/icons-material/Euro';
 
 import { format } from 'utils';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(3),
     display: 'flex',
