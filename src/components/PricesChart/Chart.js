@@ -2,8 +2,29 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import { alpha, useTheme } from '@mui/material';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
 import makeStyles from '@mui/styles/makeStyles';
+import { useEffect, useRef, useState } from 'react';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -20,9 +41,15 @@ const Chart = ({
   const classes = useStyles();
   const theme = useTheme();
 
-  const data = canvas => {
-    const ctx = canvas.getContext('2d');
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+  const chartRef = useRef(null);
+  const [chartData, setChartData] = useState({
+    datasets: [],
+    labels: [],
+  });
+
+  const data = chart => {
+    // const ctx = canvas.getContext('2d');
+    const gradient = chart.ctx.createLinearGradient(0, 0, 0, 400);
 
     gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.2));
     gradient.addColorStop(0.9, 'rgba(255,255,255,0)');
@@ -43,6 +70,12 @@ const Chart = ({
       labels,
     };
   };
+
+  useEffect(() => {
+    const chart = chartRef.current;
+
+    if (chart) setChartData(data(chart));
+  }, [dataProp]);
 
   const options = {
     responsive: true,
@@ -82,7 +115,7 @@ const Chart = ({
       padding: 0,
     },
     scales: {
-      xAxes: [
+      x:
         {
           gridLines: {
             display: false,
@@ -93,8 +126,7 @@ const Chart = ({
             fontColor: theme.palette.text.secondary,
           },
         },
-      ],
-      yAxes: [
+      y:
         {
           gridLines: {
             borderDash: [2],
@@ -114,7 +146,6 @@ const Chart = ({
             callback: value => (value > 0 ? `${value}€` : value),
           },
         },
-      ],
     },
   };
 
@@ -124,7 +155,8 @@ const Chart = ({
       {...rest}
     >
       <Line
-        data={data}
+        ref={chartRef}
+        data={chartData}
         options={options}
       />
     </div>
