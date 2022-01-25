@@ -12,8 +12,3 @@ updates:
     open-pull-requests-limit: 15
     assignees:
       - "soker90"
-    ignore:
-      - dependency-name: "@date-io/moment"
-        versions: ["2.x"]
-      - dependency-name: "chart.js"
-        versions: ["3.x"]
