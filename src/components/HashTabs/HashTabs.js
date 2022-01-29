@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Card, Tab, Tabs } from '@mui/material';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import { useStyles } from './HashTabs.styles';
 
@@ -9,7 +9,7 @@ const HashTabs = ({
   tabs,
 }) => {
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   /**
    * Event onChange tabs
@@ -18,7 +18,7 @@ const HashTabs = ({
    * @private
    */
   const _handleTabsChange = (event, value) => {
-    history.push(`#${value}`);
+    navigate(`#${value}`);
   };
 
   return (

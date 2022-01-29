@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { ConfirmModal } from 'components/Modals';
@@ -8,14 +8,14 @@ const DeleteDeliveryOrderModal = ({
   providerId,
   ...rest
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   /**
    * Send email to the client for change password
    * @private
    */
   const _handleSend = () => {
     deleteDeliveryOrder(
-      () => history.push(`/app/proveedores/${providerId}`),
+      () => navigate(`/app/proveedores/${providerId}`),
     );
     rest.close();
   };

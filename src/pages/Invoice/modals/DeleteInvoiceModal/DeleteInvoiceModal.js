@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const DeleteInvoiceModal = ({
   deleteInvoice,
@@ -9,7 +9,7 @@ const DeleteInvoiceModal = ({
   providerId,
   ...rest
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const _close = () => {
     setShow(false);
@@ -22,7 +22,7 @@ const DeleteInvoiceModal = ({
   const _handleSend = () => {
     deleteInvoice(
       id,
-      () => history.push(`/app/proveedores/${providerId}#Facturas`)
+      () => navigate(`/app/proveedores/${providerId}#Facturas`)
     );
     _close();
   };

@@ -1,48 +1,55 @@
 import PropTypes from 'prop-types';
 import { Grid, LinearProgress } from '@mui/material';
+import GuestGuard from 'components/GuestGuard';
 import AuthLayout from './AuthLayout';
 import LoginForm from './LoginForm';
 import { useStyles } from './Login.styles';
 
-const LoginView = ({ login, loginError, isLoading }) => {
+const LoginView = ({
+  login,
+  loginError,
+  isLoading,
+}) => {
   const classes = useStyles();
 
   /**
    * Render loading bar
-   * @returns {boolean || LinearProgress}
+   * @returns {JSX.Element}
    */
   const renderLoadingBar = () => isLoading && <LinearProgress />;
 
   return (
-    <AuthLayout>
-      <div className={classes.root}>
-        <Grid
-          className={classes.grid}
-          container
-        >
+    <GuestGuard>
+      <AuthLayout>
+        <div className={classes.root}>
           <Grid
-            className={classes.quoteContainer}
-            item
-            lg={5}
+            className={classes.grid}
+            container
           >
-            <div className={classes.quote} />
-          </Grid>
-          <Grid
-            className={classes.content}
-            item
-            lg={7}
-            xs={12}
-          >
-            <div className={classes.content}>
-              <div className={classes.contentBody}>
-                <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
+            <Grid
+              className={classes.quoteContainer}
+              item
+              lg={5}
+            >
+              <div className={classes.quote} />
+            </Grid>
+            <Grid
+              className={classes.content}
+              item
+              lg={7}
+              xs={12}
+            >
+              <div className={classes.content}>
+                <div className={classes.contentBody}>
+                  <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
+                </div>
+                {renderLoadingBar()}
               </div>
-              {renderLoadingBar()}
-            </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    </AuthLayout>
+        </div>
+      </AuthLayout>
+    </GuestGuard>
   );
 };
 
