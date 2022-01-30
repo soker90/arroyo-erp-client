@@ -16,7 +16,10 @@ import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';
 import { format } from 'utils';
 import NavItem from './NavItem';
 
-function renderNavItems({ items, ...rest }) {
+function renderNavItems({
+  items,
+  ...rest
+}) {
   return (
     <List disablePadding>
       {items.reduce(
@@ -40,10 +43,10 @@ function reduceChildRoutes({
   const key = item.title + depth;
 
   if (item.items) {
-    const open = matchPath(pathname, {
+    const open = matchPath({
       path: item.href,
-      exact: false,
-    });
+      end: false,
+    }, pathname);
 
     acc.push(
       <NavItem
@@ -93,7 +96,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const NavBar = ({ openMobile, onMobileClose }) => {
+const NavBar = ({
+  openMobile,
+  onMobileClose,
+}) => {
   const classes = useStyles();
   const location = useLocation();
 

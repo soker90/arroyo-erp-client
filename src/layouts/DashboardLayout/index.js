@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 
 import AuthGuard from 'components/AuthGuard';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 import { useStyles } from './DashBoardLayout.styles';
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -22,17 +22,13 @@ const DashboardLayout = ({ children }) => {
         <div className={classes.wrapper}>
           <div className={classes.contentContainer}>
             <div className={classes.content}>
-              {children}
+              <Outlet />
             </div>
           </div>
         </div>
       </div>
     </AuthGuard>
   );
-};
-
-DashboardLayout.propTypes = {
-  children: PropTypes.any,
 };
 
 export default DashboardLayout;

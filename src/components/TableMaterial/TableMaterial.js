@@ -80,9 +80,7 @@ const TableMaterial = ({
           rowsPerPage={limit}
           rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
           labelRowsPerPage='filas'
-          backIconButtonText='Anterior'
           labelDisplayedRows={labelOfRows}
-          nextIconButtonText='Siguiente'
         />
       )}
     </Wrapper>

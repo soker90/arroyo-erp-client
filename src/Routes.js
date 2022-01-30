@@ -36,7 +36,7 @@ const year = new Date().getFullYear();
 const routesConfig = [
   {
     path: '/',
-    element: () => <Navigate to='/login' replace />,
+    element: <Navigate to='/login' replace />,
   },
   {
     path: 'login',
@@ -144,6 +144,10 @@ const routesConfig = [
       },
       {
         path: 'clientes',
+        element: <Navigate to='/app/clientes/listado' replace />,
+      },
+      {
+        path: 'clientes/listado',
         element: <Clients />,
       },
       {
