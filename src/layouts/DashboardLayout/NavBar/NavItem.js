@@ -49,12 +49,14 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto',
   },
   active: {
-    color: theme.palette.secondary.main,
-    '& $title': {
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    '& $icon': {
+    '& button': {
       color: theme.palette.secondary.main,
+      '& $title': {
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+      '& $icon': {
+        color: theme.palette.secondary.main,
+      },
     },
   },
 }));
@@ -131,24 +133,23 @@ const NavItem = ({
       key={title}
       {...rest}
     >
-      <Button
-        activeClassName={classes.active}
-        className={clsx(classes.buttonLeaf, `depth-${depth}`)}
-        component={RouterLink}
-        style={style}
-        to={href}
-      >
-        {Icon && (
-          <Icon
-            className={classes.icon}
-            size='20'
-          />
-        )}
-        <span className={classes.title}>
-          {title}
-        </span>
-        {Info && <Info className={classes.info} />}
-      </Button>
+      <RouterLink to={href} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+        <Button
+          className={clsx(classes.buttonLeaf, `depth-${depth}`)}
+          style={style}
+        >
+          {Icon && (
+            <Icon
+              className={classes.icon}
+              size='20'
+            />
+          )}
+          <span className={classes.title}>
+            {title}
+          </span>
+          {Info && <Info className={classes.info} />}
+        </Button>
+      </RouterLink>
     </ListItem>
   );
 };

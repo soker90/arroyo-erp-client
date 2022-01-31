@@ -1,16 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 
 import { TYPE_PROVIDER } from 'constants/providers';
 import { LoadingScreen } from 'components';
 
 const Provider = ({
-  provider, getProvider,
+  provider,
+  getProvider,
 }) => {
   const { idProvider } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const routesByType = useMemo(() => ({
     [TYPE_PROVIDER.GENERAL]: '/app/proveedores/general',
@@ -24,8 +26,8 @@ const Provider = ({
   }, [idProvider]);
 
   useEffect(() => {
-    const composeRoute = `${routesByType[provider.type]}/${idProvider}${history.location.hash || ''}`;
-    if (provider._id === idProvider) history.replace(composeRoute);
+    const composeRoute = `${routesByType[provider.type]}/${idProvider}${location.hash || ''}`;
+    if (provider._id === idProvider) navigate(composeRoute, { replace: true });
   }, [provider]);
 
   return <LoadingScreen />;

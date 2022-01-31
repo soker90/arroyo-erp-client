@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const DeleteInvoiceModal = ({
   deleteClientInvoice,
@@ -10,14 +10,14 @@ const DeleteInvoiceModal = ({
   client,
   ...rest
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const _close = useCallback(() => {
     setShow(false);
   }, [setShow]);
 
   const _handleSend = () => {
     deleteClientInvoice(id, () => {
-      history.replace(`/app/clientes/${client}`);
+      navigate(`/app/clientes/${client}`, { replace: true });
     });
     _close();
   };

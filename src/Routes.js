@@ -1,240 +1,190 @@
 /* eslint-disable react/no-array-index-key */
-import { Fragment, lazy, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { lazy } from 'react';
+import { Navigate, useRoutes } from 'react-router-dom';
 
 import DashboardLayout from 'layouts/DashboardLayout';
-import LoadingScreen from 'components/LoadingScreen';
-import AuthGuard from 'components/AuthGuard';
-import GuestGuard from 'components/GuestGuard';
 import NotFound from 'components/NotFound';
+
+const Billing = lazy(() => import('pages/reports/Billing'));
+const Book = lazy(() => import('pages/Book'));
+const Client = lazy(() => import('pages/Client'));
+const ClientBilling = lazy(() => import('pages/reports/ClientBilling'));
+const ClientBook = lazy(() => import('pages/ClientBook'));
+const ClientInvoice = lazy(() => import('pages/ClientInvoice'));
+const ClientProducts = lazy(() => import('pages/Products'));
+const Clients = lazy(() => import('pages/Clients'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
+const DeliveryOrder = lazy(() => import('pages/DeliveryOrder'));
+const DeliveryOrdersReport = lazy(() => import('pages/reports/DeliveryOrders'));
+const Expenses = lazy(() => import('pages/Expenses'));
+const Invoice = lazy(() => import('pages/Invoice'));
+const Login = lazy(() => import('pages/Login'));
+const Notes = lazy(() => import('pages/Notes'));
+const Payments = lazy(() => import('pages/Payments'));
+const PaymentsReport = lazy(() => import('pages/reports/PaymentsReport'));
+const PriceChanges = lazy(() => import('pages/PriceChanges'));
+const Product = lazy(() => import('pages/Product'));
+const ProductsReport = lazy(() => import('pages/reports/ProductsReport'));
+const Providers = lazy(() => import('pages/Providers/Providers'));
+const Provider = lazy(() => import('pages/Providers/Provider'));
+const ProviderExpense = lazy(() => import('pages/Providers/ProviderExpense'));
+const ProviderGeneral = lazy(() => import('pages/Providers/ProviderGeneral'));
+const SwapInvoices = lazy(() => import('pages/SwapInvoices'));
 
 const year = new Date().getFullYear();
 
 const routesConfig = [
   {
-    exact: true,
     path: '/',
-    component: () => <Redirect to='/login' />,
+    element: <Navigate to='/login' replace />,
   },
   {
-    exact: true,
-    guard: GuestGuard,
-    path: '/login',
-    component: lazy(() => import('pages/Login')),
+    path: 'login',
+    element: <Login />,
   },
   {
-    path: '/app',
-    guard: AuthGuard,
-    layout: DashboardLayout,
-    routes: [
+    path: 'app',
+    element: <DashboardLayout />,
+    children: [
       {
-        exact: true,
-        path: '/app',
-        component: () => <Redirect to='/app/informes/inicio' />,
+        index: true,
+        element: <Navigate to='/app/informes/inicio' replace />,
       },
       {
-        path: '/app/informes',
-        routes: [
-          {
-            exact: true,
-            path: '/app/informes/inicio',
-            component: lazy(() => import('pages/Dashboard')),
-          },
-          {
-            exact: true,
-            path: '/app/informes',
-            component: () => <Redirect to='/app/informes/inicio' />,
-          },
-          {
-            exact: true,
-            path: '/app/informes/productos',
-            component: lazy(() => import('pages/reports/ProductsReport')),
-          },
-          {
-            exact: true,
-            path: '/app/informes/facturacion/:year',
-            component: lazy(() => import('pages/reports/Billing')),
-          },
-          {
-            exact: true,
-            path: '/app/informes/facturacion',
-            component: () => <Redirect to={`/app/informes/facturacion/${year}`} />,
-          },
-          {
-            exact: true,
-            path: '/app/informes/albaranes/:year',
-            component: lazy(() => import('pages/reports/DeliveryOrders')),
-          },
-          {
-            exact: true,
-            path: '/app/informes/albaranes',
-            component: () => <Redirect to={`/app/informes/albaranes/${year}`} />,
-          },
-          {
-            exact: true,
-            path: '/app/informes/pagares/:year',
-            component: lazy(() => import('pages/reports/PaymentsReport')),
-          },
-          {
-            exact: true,
-            path: '/app/informes/pagares',
-            component: () => <Redirect to={`/app/informes/pagares/${year}`} />,
-          },
-        ],
+        path: 'informes',
+        element: <Navigate to='/app/informes/inicio' replace />,
       },
       {
-        exact: true,
-        path: '/app/proveedores',
-        component: lazy(() => import('pages/Providers/Providers')),
+        path: 'informes/inicio',
+        element: <Dashboard />,
       },
       {
-        exact: true,
-        path: '/app/proveedores/:idProvider',
-        component: lazy(() => import('pages/Providers/Provider')),
+        path: 'informes/productos',
+        element: <ProductsReport />,
       },
       {
-        exact: true,
-        path: '/app/albaranes/:idDeliveryOrder',
-        component: lazy(() => import('pages/DeliveryOrder')),
+        path: 'informes/facturacion/:year',
+        element: <Billing />,
       },
       {
-        exact: true,
-        path: '/app/facturas/:idInvoice',
-        component: lazy(() => import('pages/Invoice')),
+        path: 'informes/facturacion',
+        element: <Navigate to={`/app/informes/facturacion/${year}`} replace />,
       },
       {
-        exact: true,
-        path: '/app/productos/:id',
-        component: lazy(() => import('pages/Product')),
+        path: 'informes/albaranes/:year',
+        element: <DeliveryOrdersReport />,
       },
       {
-        exact: true,
-        path: '/app/libro/:year',
-        component: lazy(() => import('pages/Book')),
+        path: 'informes/albaranes',
+        element: <Navigate to={`/app/informes/albaranes/${year}`} replace />,
       },
       {
-        exact: true,
-        path: '/app/pagos',
-        component: lazy(() => import('pages/Payments')),
+        path: 'informes/pagares/:year',
+        element: <PaymentsReport />,
       },
       {
-        exact: true,
-        path: '/app/notas/:year',
-        component: lazy(() => import('pages/Notes')),
+        path: 'informes/pagares',
+        element: <Navigate to={`/app/informes/pagares/${year}`} replace />,
       },
       {
-        exact: true,
-        path: '/app/notas',
-        component: () => <Redirect to={`/app/notas/${year}`} />,
+        path: 'proveedores',
+        element: <Providers />,
       },
       {
-        exact: true,
-        path: '/app/gastos/:idProvider',
-        component: lazy(() => import('pages/Providers/ProviderExpense')),
+        path: 'proveedores/:idProvider',
+        element: <Provider />,
       },
       {
-        exact: true,
-        path: '/app/gastos',
-        component: lazy(() => import('pages/Expenses')),
+        path: 'albaranes/:idDeliveryOrder',
+        element: <DeliveryOrder />,
       },
       {
-        exact: true,
-        path: '/app/proveedores/general/:idProvider',
-        component: lazy(() => import('pages/Providers/ProviderGeneral')),
+        path: 'facturas/:idInvoice',
+        element: <Invoice />,
       },
       {
-        exact: true,
-        path: '/app/intercambio',
-        component: lazy(() => import('pages/SwapInvoices')),
+        path: 'productos/:id',
+        element: <Product />,
       },
       {
-        exact: true,
-        path: '/app/precios',
-        component: lazy(() => import('pages/PriceChanges')),
+        path: 'libro/:year',
+        element: <Book />,
       },
       {
-        path: '/app/clientes',
-        routes: [
-          {
-            exact: true,
-            path: '/app/clientes',
-            component: () => <Redirect to='/app/clientes/listado' />,
-          },
-          {
-            exact: true,
-            path: '/app/clientes/listado',
-            component: lazy(() => import('pages/Clients')),
-          },
-          {
-            exact: true,
-            path: '/app/clientes/productos',
-            component: lazy(() => import('pages/Products')),
-          },
-          {
-            exact: true,
-            path: '/app/clientes/factura/:idInvoice',
-            component: lazy(() => import('pages/ClientInvoice')),
-          },
-          {
-            exact: true,
-            path: '/app/clientes/libro/:year',
-            component: lazy(() => import('pages/ClientBook')),
-          },
-          {
-            exact: true,
-            path: '/app/clientes/facturacion',
-            component: () => <Redirect to={`/app/clientes/facturacion/${year}`} />,
-          },
-          {
-            exact: true,
-            path: '/app/clientes/facturacion/:year',
-            component: lazy(() => import('pages/reports/ClientBilling')),
-          },
-          {
-            exact: true,
-            path: '/app/clientes/:id',
-            component: lazy(() => import('pages/Client')),
-          },
-        ],
+        path: 'pagos',
+        element: <Payments />,
       },
       {
-        component: () => <NotFound />,
+        path: 'notas/:year',
+        element: <Notes />,
+      },
+      {
+        path: 'notas',
+        element: <Navigate to={`/app/notas/${year}`} replace />,
+      },
+      {
+        path: 'gastos/:idProvider',
+        element: <ProviderExpense />,
+      },
+      {
+        path: 'gastos',
+        element: <Expenses />,
+      },
+      {
+        path: 'proveedores/general/:idProvider',
+        element: <ProviderGeneral />,
+      },
+      {
+        path: 'intercambio',
+        element: <SwapInvoices />,
+      },
+      {
+        path: 'precios',
+        element: <PriceChanges />,
+      },
+      {
+        path: 'clientes',
+        element: <Navigate to='/app/clientes/listado' replace />,
+      },
+      {
+        path: 'clientes/listado',
+        element: <Clients />,
+      },
+      {
+        path: 'clientes/productos',
+        element: <ClientProducts />,
+      },
+      {
+        path: 'clientes/factura/:idInvoice',
+        element: <ClientInvoice />,
+      },
+      {
+        path: 'clientes/libro/:year',
+        element: <ClientBook />,
+      },
+      {
+        path: 'clientes/facturacion',
+        element: <Navigate to={`/app/clientes/facturacion/${year}`} replace />,
+      },
+      {
+        path: 'clientes/facturacion/:year',
+        element: <ClientBilling />,
+      },
+      {
+        path: 'clientes/:id',
+        element: <Client />,
       },
     ],
   },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
 ];
 
-const renderRoutes = routes => (routes ? (
-  <Suspense fallback={<LoadingScreen />}>
-    <Switch>
-      {routes.map((route, i) => {
-        const Guard = route.guard || Fragment;
-        const Layout = route.layout || Fragment;
-        const Component = route.component;
-
-        return (
-          <Route
-            key={i}
-            path={route.path}
-            exact={route.exact}
-            render={props => (
-              <Guard>
-                <Layout>
-                  {route.routes
-                    ? renderRoutes(route.routes)
-                    : <Component {...props} />}
-                </Layout>
-              </Guard>
-            )}
-          />
-        );
-      })}
-    </Switch>
-  </Suspense>
-) : null);
-
-function Routes() {
-  return renderRoutes(routesConfig);
-}
+const Routes = () => {
+  const routes = useRoutes(routesConfig);
+  return routes;
+};
 
 export default Routes;
