@@ -17,7 +17,7 @@ const Provider = ({
   const routesByType = useMemo(() => ({
     [TYPE_PROVIDER.GENERAL]: '/app/proveedores/general',
     [TYPE_PROVIDER.EXPENSES]: '/app/gastos',
-    undefined: 'general',
+    undefined: '/app/proveedores/general',
   }), []);
 
   useEffect(() => {
