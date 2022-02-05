@@ -2,6 +2,8 @@
   - Actualización a Material UI 5
   - Actualización a React Router 6
   - Eliminada la dependencia date-io
+  - Añadidos nuevos conceptos para facturas de gasto
+  - Intercambiado el orden de Administación e Informes en la barra lateral
 
 # [1.4.1] - 09/01/2022
   - Corregidos enlaces para cambiar de año en el libro de clientes
