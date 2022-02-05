@@ -1,7 +1,9 @@
 import { MemoryRouter, Route, Router } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import history from '../store/history';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 const WithRoute = ({
   route,
@@ -33,7 +35,7 @@ const RoutesWrapper = ({
   route,
   path,
 }) => (
-  <Router history={history}>
+  <Router navigator={history} location={history.location}>
     {route ? (
       <WithRoute route={route} path={path}>
         {children}
