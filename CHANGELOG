@@ -1,4 +1,7 @@
-# [2.0.0] -
+# [2.0.1] - 05/02/2022
+  - Corregidos enlaces de la pantalla de proveedores y gastos
+
+# [2.0.0] - 05/02/2022
   - Actualización a Material UI 5
   - Actualización a React Router 6
   - Eliminada la dependencia date-io

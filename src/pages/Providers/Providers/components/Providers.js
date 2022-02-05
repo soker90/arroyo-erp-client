@@ -61,7 +61,7 @@ const Providers = ({ providers }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: ({ _id }) => `${BASE_PATH}/proveedores/${_id}`,
+                  to: ({ _id }) => `${BASE_PATH}/proveedores/general/${_id}`,
                 },
               ]}
               href={_hrefRow}
