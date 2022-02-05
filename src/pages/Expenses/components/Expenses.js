@@ -32,7 +32,7 @@ const Expenses = ({ providers, getProviders }) => {
    * @param {String} _id
    * @private
    */
-  const _hrefRow = ({ _id }) => `${BASE_PATH}/proveedores/gastos/${_id}`;
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/gastos/${_id}`;
 
   return (
     <>
