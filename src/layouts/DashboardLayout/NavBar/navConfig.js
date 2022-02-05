@@ -12,36 +12,6 @@ const year = new Date().getFullYear();
 
 export const navConfig = [
   {
-    subheader: 'Informes',
-    items: [
-      {
-        title: 'Inicio',
-        icon: PieChartIcon,
-        href: '/app/informes/inicio',
-      },
-      {
-        title: 'Productos',
-        icon: ShoppingCart,
-        href: '/app/informes/productos',
-      },
-      {
-        title: 'Facturación',
-        icon: DescriptionIcon,
-        href: `/app/informes/facturacion/${year}`,
-      },
-      {
-        title: 'Albaranes',
-        icon: ReceiptIcon,
-        href: `/app/informes/albaranes/${year}`,
-      },
-      {
-        title: 'Pagarés',
-        icon: UpdateIcon,
-        href: `/app/informes/pagares/${year}`,
-      },
-    ],
-  },
-  {
     subheader: 'Administración',
     items: [
       {
@@ -95,6 +65,36 @@ export const navConfig = [
         title: 'Notas',
         icon: PostAddIcon,
         href: `/app/notas/${year}`,
+      },
+    ],
+  },
+  {
+    subheader: 'Informes',
+    items: [
+      {
+        title: 'Inicio',
+        icon: PieChartIcon,
+        href: '/app/informes/inicio',
+      },
+      {
+        title: 'Productos',
+        icon: ShoppingCart,
+        href: '/app/informes/productos',
+      },
+      {
+        title: 'Facturación',
+        icon: DescriptionIcon,
+        href: `/app/informes/facturacion/${year}`,
+      },
+      {
+        title: 'Albaranes',
+        icon: ReceiptIcon,
+        href: `/app/informes/albaranes/${year}`,
+      },
+      {
+        title: 'Pagarés',
+        icon: UpdateIcon,
+        href: `/app/informes/pagares/${year}`,
       },
     ],
   },
