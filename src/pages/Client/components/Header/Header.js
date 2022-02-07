@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import { useNavigate } from 'react-router';
 
 import { Header } from 'components';
 
@@ -12,8 +13,11 @@ const HeaderProvider = ({
   clientId,
   createClientInvoice,
 }) => {
+  const navigate = useNavigate();
   const _handleClickNewInvoice = () => {
-    createClientInvoice(clientId);
+    createClientInvoice(clientId, id => {
+      navigate(`/app/clientes/factura/${id}`);
+    });
   };
 
   return (

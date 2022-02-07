@@ -1,5 +1,4 @@
 import axios from 'axios';
-import history from 'store/history';
 import { CREATE_CLIENT_INVOICES } from '../types';
 
 /**
@@ -32,15 +31,16 @@ const _createClientInvoiceError = error => ({
 /**
  * Crear factura de cliente
  * @param {String} id
+ * @param {function} callback
  */
-export const createClientInvoice = id => async dispatch => {
+export const createClientInvoice = (id, callback) => async dispatch => {
   dispatch(_createClientInvoiceRequest());
 
   try {
     const { data } = await axios.post('client/invoices', { client: id });
 
     dispatch(_createClientInvoiceSuccess());
-    history.push(`/app/clientes/factura/${data.id}`);
+    callback(data.id);
   } catch (error) {
     dispatch(_createClientInvoiceError(error));
   }
