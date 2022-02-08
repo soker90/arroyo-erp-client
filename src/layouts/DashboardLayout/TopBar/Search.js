@@ -117,7 +117,6 @@ const Search = () => {
         anchorEl={searchRef.current}
         className={classes.searchPopper}
         open={openSearchPopover}
-        transition
       >
         <ClickAwayListener onClickAway={_handleSearchPopverClose}>
           <Paper

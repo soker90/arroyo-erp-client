@@ -23,7 +23,7 @@ export const useStyles = makeStyles(theme => ({
     },
   },
   searchPopper: {
-    zIndex: theme.zIndex.appBar + 100,
+    zIndex: theme.zIndex.appBar + 200,
   },
   searchPopperContent: {
     marginTop: theme.spacing(1),
