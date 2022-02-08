@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 import { navigateTo } from 'utils';
 import { useStyles } from './Search.styles';
@@ -27,6 +28,7 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState('');
   // eslint-disable-next-line no-shadow
   const providers = useSelector(({ providers }) => providers.providers);
+  const navigate = useNavigate();
 
   /**
    * Establece el texto buscado en el estado
@@ -59,7 +61,7 @@ const Search = () => {
    */
   const _handleSelectProvider = idProvider => {
     _handleSearchPopverClose();
-    navigateTo(`proveedores/${idProvider}`);
+    navigateTo(`proveedores/${idProvider}`, navigate);
   };
 
   /**
@@ -80,7 +82,10 @@ const Search = () => {
    * @return {ListItem}
    * @private
    */
-  const _renderSearchedItem = ({ _id, name }) => (
+  const _renderSearchedItem = ({
+    _id,
+    name,
+  }) => (
     <ListItem
       button
       key={_id}

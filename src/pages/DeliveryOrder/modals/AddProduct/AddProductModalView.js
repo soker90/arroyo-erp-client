@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
 import { INITIAL_STATE } from './constants';
@@ -19,6 +20,7 @@ const AddProductModal = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE);
@@ -62,7 +64,11 @@ const AddProductModal = ({
   const _handleSaveAndNew = () => {
     // eslint-disable-next-line
     hasInitialData(state)
-      ? createDeliveryOrder(idProvider, close)
+      ? createDeliveryOrder({
+        provider: idProvider,
+        callback: close,
+        navigate,
+      })
       : _saveProduct(() => {
         setState(INITIAL_STATE);
       });

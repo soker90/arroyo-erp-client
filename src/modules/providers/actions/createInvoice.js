@@ -49,7 +49,7 @@ const _createInvoiceError = error => ({
  * Crea un nuevo producto
  * @param {Object} deliveryOrders
  */
-export const createInvoice = deliveryOrders => async dispatch => {
+export const createInvoice = (deliveryOrders, navigate) => async dispatch => {
   dispatch(_createInvoiceRequest());
 
   try {
@@ -61,7 +61,7 @@ export const createInvoice = deliveryOrders => async dispatch => {
 
     dispatch(_createInvoiceSuccess());
     dispatch(_createInvoiceSet(data));
-    navigateTo(`facturas/${data.id}`);
+    navigateTo(`facturas/${data.id}`, navigate);
   } catch (error) {
     dispatch(_createInvoiceError(error));
   }

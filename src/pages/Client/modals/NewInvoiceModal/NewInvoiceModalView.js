@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm,
@@ -20,12 +21,16 @@ const INITIAL_STATE = {
 };
 
 const NewInvoiceModal = ({
-  show, close, createInvoiceExpense, idProvider,
+  show,
+  close,
+  createInvoiceExpense,
+  idProvider,
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE);
@@ -59,7 +64,7 @@ const NewInvoiceModal = ({
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
       type,
       bookColumn,
-    }, close);
+    }, navigate);
   };
 
   /**
@@ -77,7 +82,12 @@ const NewInvoiceModal = ({
    * @param {String} value
    * @private
    */
-  const _handleChange = ({ target: { name, value } }) => {
+  const _handleChange = ({
+    target: {
+      name,
+      value,
+    },
+  }) => {
     setState({ [name]: value });
   };
 

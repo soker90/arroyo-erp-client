@@ -2,27 +2,41 @@ import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useNavigate } from 'react-router';
 
 import { Label, Header } from 'components';
 import { getButtons } from './utils';
 import { useStyles } from './styles';
 
 const HeaderProvider = ({
-  title, onExpand, expanded, createDeliveryOrder, idProvider, deliveryOrdersSelected,
-  createInvoice, showEditProductModal, currentTab, resetSelected, note,
+  title,
+  onExpand,
+  expanded,
+  createDeliveryOrder,
+  idProvider,
+  deliveryOrdersSelected,
+  createInvoice,
+  showEditProductModal,
+  currentTab,
+  resetSelected,
+  note,
 }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   /**
    * Navega a la página de nuevo albarán
    * @private
    */
   const _handleClickNewDeliveryOrder = () => {
-    createDeliveryOrder(idProvider);
+    createDeliveryOrder({
+      provider: idProvider,
+      navigate,
+    });
     resetSelected();
   };
 
   const _handleClickNewInvoice = () => {
-    createInvoice(deliveryOrdersSelected);
+    createInvoice(deliveryOrdersSelected, navigate);
   };
 
   const _buttons = useMemo(() => (

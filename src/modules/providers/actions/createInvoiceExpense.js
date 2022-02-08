@@ -48,7 +48,7 @@ const _createInvoiceExpenseError = error => ({
  * Crea un nuevo producto
  * @param {Object} sendData
  */
-export const createInvoiceExpense = (sendData, callback) => async dispatch => {
+export const createInvoiceExpense = (sendData, navigate) => async dispatch => {
   dispatch(_createInvoiceExpenseRequest());
 
   try {
@@ -57,7 +57,7 @@ export const createInvoiceExpense = (sendData, callback) => async dispatch => {
     dispatch(_createInvoiceExpenseSuccess());
     dispatch(_createInvoiceExpenseSet(data));
 
-    navigateTo(`facturas/${data._id}`);
+    navigateTo(`facturas/${data._id}`, navigate);
   } catch (error) {
     dispatch(_createInvoiceExpenseError(error));
   }

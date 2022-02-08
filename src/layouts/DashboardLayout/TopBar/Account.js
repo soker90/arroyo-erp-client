@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { logout } from 'actions/auth';
+import { useNavigate } from 'react-router';
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -24,6 +25,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const account = useSelector(state => state.account);
   const [isOpen, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(true);
@@ -35,7 +37,7 @@ const Account = () => {
 
   const handleLogout = () => {
     handleClose();
-    dispatch(logout());
+    dispatch(logout(navigate));
   };
 
   return (

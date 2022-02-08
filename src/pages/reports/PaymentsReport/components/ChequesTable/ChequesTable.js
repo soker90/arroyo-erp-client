@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { useNavigate } from 'react-router';
 
 import { TableMaterial, TextEuro } from 'components';
 import { format, navigateTo } from 'utils';
@@ -13,9 +14,10 @@ const ChequesTable = ({
   year,
 }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   const _handleInvoiceButton = ({ _id }) => {
-    navigateTo(`facturas/${_id}`);
+    navigateTo(`facturas/${_id}`, navigate);
   };
 
   const _refresh = useCallback(({

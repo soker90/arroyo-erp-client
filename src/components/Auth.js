@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import PropTypes from 'prop-types';
 import SplashScreen from 'components/SplashScreen';
 import { setUserData, logout } from 'actions/auth';
@@ -9,11 +10,12 @@ import { initialize } from 'actions/initializeAction';
 const Auth = ({ children }) => {
   const dispatch = useDispatch();
   const [isLoading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const initAuth = async () => {
       authService.setAxiosInterceptors({
-        onLogout: () => dispatch(logout()),
+        onLogout: () => dispatch(logout(navigate)),
       });
 
       authService.handleAuthentication();
