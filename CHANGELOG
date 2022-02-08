@@ -1,5 +1,7 @@
-# [2.0.3] -
+# [2.0.3] - 08/02/2022
   - Corregida redirección al crear una factura de cliente
+  - Corregida caja de búsqueda de proveedores
+  - Corregidos enlaces que usaban history
 
 # [2.0.2] - 05/02/2022
   - Corregidos enlaces de la pantalla de gastos
