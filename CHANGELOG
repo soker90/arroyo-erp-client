@@ -1,3 +1,6 @@
+# [2.0.4] - 09/02/2022
+  - Corregida redirección al crear una factura de gasto
+
 # [2.0.3] - 08/02/2022
   - Corregida redirección al crear una factura de cliente
   - Corregida caja de búsqueda de proveedores
