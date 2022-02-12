@@ -1,24 +1,24 @@
 import {
-  useCallback, useEffect, useState,
+  useCallback, useState,
 } from 'react';
 import { Box, Container } from '@mui/material';
-import PropTypes from 'prop-types';
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import useSWR from 'swr';
 
 import { BASE_PATH } from 'constants/index';
 import { Header, Page, TableMaterial } from 'components';
+import axios from 'axios';
 import { useStyles } from './Clients.styles';
 import NewProviderModal from '../modals/NewClientModal';
 
-const Clients = ({ clients, getClients }) => {
+const Clients = () => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    getClients();
-  }, [getClients]);
+  const { data } = useSWR('clients', url => axios(url)
+    .then(response => response.data));
 
   const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`;
 
@@ -60,8 +60,8 @@ const Clients = ({ clients, getClients }) => {
                   field: 'pending',
                 },
               ]}
-              data={clients}
-              title={`Clientes (${clients.length})`}
+              data={data}
+              title={`Clientes (${data?.length})`}
               actions={[
                 {
                   icon: VisibilityIcon,
@@ -78,11 +78,6 @@ const Clients = ({ clients, getClients }) => {
       <NewProviderModal show={showModal} close={_closeModal} />
     </>
   );
-};
-
-Clients.propTypes = {
-  clients: PropTypes.array.isRequired,
-  getClients: PropTypes.func.isRequired,
 };
 
 Clients.displayName = 'Clients';
