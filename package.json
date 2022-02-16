@@ -34,7 +34,7 @@
     "@mui/material": "^5.4.1",
     "@mui/styles": "^5.4.1",
     "axios": "^0.26.0",
-    "chart.js": "^3.5.0",
+    "chart.js": "^3.7.1",
     "clsx": "^1.1.1",
     "history": "^5.2.0",
     "jwt-decode": "^3.1.2",
