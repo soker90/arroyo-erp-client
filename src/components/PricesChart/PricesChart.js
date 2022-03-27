@@ -7,10 +7,14 @@ import { format } from 'utils';
 import Chart from './Chart';
 import { useStyles } from './PricesChart.styles';
 
-const PricesChart = ({ className, prices, ...rest }) => {
+const PricesChart = ({
+  className,
+  prices,
+  ...rest
+}) => {
   const classes = useStyles();
 
-  const data = prices.map(({ price }) => price);
+  const data = prices.map(({ price }) => Math.round(price * 100) / 100);
   const labels = prices.map(({ date }) => format.date(date));
 
   return (
