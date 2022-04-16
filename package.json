@@ -3,7 +3,7 @@
   "author": "Eduardo Parra Mazuecos",
   "email": "eduparra90@gmail.com",
   "licence": "MIT",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": true,
   "scripts": {
     "lint": "eslint ./src",
@@ -27,7 +27,7 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.1",
     "@mui/lab": "^5.0.0-alpha.77",
@@ -51,7 +51,7 @@
     "react-redux-loading-bar": "^5.0.2",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",

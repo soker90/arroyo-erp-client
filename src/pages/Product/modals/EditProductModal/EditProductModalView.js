@@ -15,6 +15,7 @@ const EditProductModal = ({
     rate,
     _id,
     profit,
+    provider,
   },
 }) => {
   const [state, setState] = useReducer(
@@ -32,6 +33,7 @@ const EditProductModal = ({
         ...(iva && { iva: iva * 100 }),
         ...(profit && { profit: format.number(profit * 100) }),
         ...(rate && { rate }),
+        ...(provider && { provider }),
       });
     }
     // eslint-disable-next-line

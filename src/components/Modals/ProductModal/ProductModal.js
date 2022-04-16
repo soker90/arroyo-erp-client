@@ -32,6 +32,7 @@ const ProductModal = ({
         re: Number(state.re) / 100,
         profit: Number(state.profit) / 100,
         rate: Number(state.rate),
+        ...(state.provider && { provider: state.provider }),
       };
       action(model, close);
     } catch (e) {
