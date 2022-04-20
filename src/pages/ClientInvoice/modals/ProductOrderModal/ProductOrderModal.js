@@ -61,6 +61,7 @@ const ProductOrderModal = ({
         price: Number(state.price),
         weight: Number(state.weight),
         unit: state.unit,
+        productId: state.productId,
       };
 
       (typeof show === 'boolean' ? createProduct : updateProduct)({
@@ -96,7 +97,12 @@ const ProductOrderModal = ({
   const _handleChangeAutocomplete = value => {
     setState({ name: value });
     const selectedProduct = products.find(p => p.name === value);
-    if (selectedProduct) setState({ price: selectedProduct?.price });
+    if (selectedProduct) {
+      setState({
+        price: selectedProduct?.price,
+        productId: selectedProduct?._id,
+      });
+    }
   };
 
   const _renderAutocomplete = () => (

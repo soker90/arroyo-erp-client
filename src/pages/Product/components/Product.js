@@ -11,7 +11,9 @@ import ProductData from './ProductData/ProductData';
 import PricesTable from './PricesTable';
 
 const Product = ({
-  product, prices, getProduct,
+  product,
+  prices,
+  getProduct,
 }) => {
   const { id } = useParams();
   const classes = useStyles();
@@ -37,15 +39,15 @@ const Product = ({
           product={product.name}
         />
 
-        <ProductData product={product} className={classes.table} />
+        <ProductData product={product} className={classes.table} provider={product.provider} />
 
         {Boolean(prices.length)
-        && (
-          <>
-            <PricesChart prices={reversePrices} className={classes.chart} />
-            <PricesTable prices={prices} />
-          </>
-        )}
+          && (
+            <>
+              <PricesChart prices={reversePrices} className={classes.chart} />
+              <PricesTable prices={prices} provider={product.provider} />
+            </>
+          )}
 
       </Container>
     </Page>
