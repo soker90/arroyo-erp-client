@@ -16,15 +16,6 @@ Es un proyecto desarrollado en `React`. (v.17.0.2) y gestiona el **state** de la
 - [API](https://github.com/soker90/arroyo-erp-api) 
 - [Models](https://github.com/soker90/arroyo-erp-models)
 - [Project](https://github.com/soker90/arroyo-erp-project)
-## TODO
-
-- DOCS: Readme and more Storybook
-- TESTING - In Progress: Storybook + react testing library para test unitarios - in progress
-- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual - ok
-- No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
-- Poner a dieta a Redux
-- ¡ISSUES!
-
 
 ## Changelog
 - [Ver](https://github.com/soker90/arroyo-erp-client/blob/master/CHANGELOG)
