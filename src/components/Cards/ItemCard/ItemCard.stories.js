@@ -1,4 +1,3 @@
-import { boolean, select, text } from '@storybook/addon-knobs';
 import { Card, CardContent } from '@mui/material';
 import { story as ItemCard } from './ItemCard';
 import { ThemeWrapper } from '../../../story';
@@ -20,10 +19,10 @@ export default {
 const CardDefault = () => (
   <ThemeWrapper>
     <ItemCard
-      value={text('Texto', 'Mi texto')}
-      label={text('Etiqueta', 'Etiqueta')}
-      divider={boolean('Separador', true)}
-      variant={select('Tipo', ['default', 'boolean', 'euro'], 'default')}
+      value={'Mi texto'}
+      label={'Etiqueta'}
+      divider={true}
+      variant={'default'}
     />
   </ThemeWrapper>
 );
