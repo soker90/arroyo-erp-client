@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { boolean } from '@storybook/addon-knobs';
 import { story as BooleanIcon } from './BooleanIcon';
 
 export default {
@@ -12,7 +11,7 @@ export default {
 };
 
 const Icon = () => (
-  <BooleanIcon value={boolean('Activado', true)} />
+  <BooleanIcon value />
 );
 
 Icon.storyName = 'Boolean Icon';

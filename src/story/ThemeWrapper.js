@@ -1,6 +1,5 @@
 import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 import { createTheme } from 'theme';
-import { select } from '@storybook/addon-knobs';
 import { THEMES } from '../constants/common';
 
 /**
@@ -12,12 +11,7 @@ import { THEMES } from '../constants/common';
  */
 
 const ThemeWrapper = ({ children }) => {
-  const theme = select(
-    'Tema',
-    Object.keys(THEMES),
-    THEMES.LIGHT,
-    'General',
-  );
+  const theme = THEMES.LIGHT;
 
   return (
     <StyledEngineProvider injectFirst>
