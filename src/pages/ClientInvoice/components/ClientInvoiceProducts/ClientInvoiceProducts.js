@@ -6,7 +6,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { TableMaterial, TextEuro } from 'components';
 import { format } from 'utils';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Link } from 'react-router-dom';
 import { useStyles } from './ClientInvoiceProducts.styles';
+import { BASE_PATH } from '../../../../constants';
+
+const viewIcon = {
+  icon: VisibilityIcon,
+  tooltip: 'Ver',
+  component: Link,
+  to: ({ productId }) => `${BASE_PATH}/productos/${productId}`,
+};
 
 const ClientInvoiceProducts = ({
   products,
@@ -60,6 +70,7 @@ const ClientInvoiceProducts = ({
       ]}
       data={products}
       actions={isEditable ? [
+        viewIcon,
         {
           icon: EditIcon,
           tooltip: 'Editar',
@@ -70,7 +81,7 @@ const ClientInvoiceProducts = ({
           tooltip: 'Eliminar',
           onClick: _showDeleteProductModal,
         },
-      ] : undefined}
+      ] : [viewIcon]}
       withCard={false}
     />
   );

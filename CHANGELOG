@@ -1,3 +1,9 @@
+# [2.1.0]
+  - Añadida página con el histórico de precios de productos de cliente.
+
+# [2.0.6] - 16/04/2022
+  - Corregido error que no permite modificar los datos de un producto de proveedor
+
 # [2.0.5] - 27/03/2022
   - Eliminado tercer decimal de la grafica de producto
 
