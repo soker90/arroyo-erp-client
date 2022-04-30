@@ -9,10 +9,7 @@
     "lint": "eslint ./src",
     "start": "react-scripts start .env.development",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
