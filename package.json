@@ -30,10 +30,10 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
-    "@mui/lab": "^5.0.0-alpha.77",
-    "@mui/material": "^5.6.2",
+    "@mui/lab": "^5.0.0-alpha.79",
+    "@mui/material": "^5.6.3",
     "@mui/styles": "^5.6.2",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "chart.js": "^3.7.1",
     "clsx": "^1.1.1",
     "history": "^5.3.0",
@@ -41,9 +41,9 @@
     "moment": "^2.29.3",
     "nprogress": "^0.2.0",
     "prop-types": "^15.8.1",
-    "react": "^18.0.0",
+    "react": "^18.1.0",
     "react-chartjs-2": "^4.1.0",
-    "react-dom": "^18.0.0",
+    "react-dom": "^18.1.0",
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
     "react-perfect-scrollbar": "^1.5.8",
@@ -59,7 +59,7 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
+    "@babel/core": "^7.17.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/react-hooks": "^8.0.0",
@@ -70,7 +70,7 @@
     "eslint-plugin-mdx": "^1.17.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2"
   },
   "eslintConfig": {
