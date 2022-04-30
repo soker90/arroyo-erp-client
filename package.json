@@ -41,7 +41,7 @@
     "moment": "^2.29.3",
     "nprogress": "^0.2.0",
     "prop-types": "^15.8.1",
-    "react": "^18.0.0",
+    "react": "^18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^18.1.0",
     "react-feather": "^2.0.9",
