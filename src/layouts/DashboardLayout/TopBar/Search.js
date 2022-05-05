@@ -39,7 +39,7 @@ const Search = () => {
   const _handleSearchChange = ({ target: { value } }) => {
     setSearchValue(value);
 
-    // eslint-disable-next-line no-unused-expressions,mdx/no-unused-expressions
+    // eslint-disable-next-line no-unused-expressions
     value
       ? !openSearchPopover && setOpenSearchPopover(true)
       : setOpenSearchPopover(false);
