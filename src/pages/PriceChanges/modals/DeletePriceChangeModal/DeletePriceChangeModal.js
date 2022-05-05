@@ -1,4 +1,4 @@
-/* eslint-disable mdx/no-unused-expressions, no-unused-expressions */
+/* eslint-disable no-unused-expressions */
 
 import PropTypes from 'prop-types';
 import { ConfirmModal } from 'components/Modals';

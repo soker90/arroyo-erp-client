@@ -9,10 +9,7 @@
     "lint": "eslint ./src",
     "start": "react-scripts start .env.development",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
@@ -67,7 +64,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-mdx": "^1.17.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
