@@ -1,7 +1,4 @@
-import { createReducer, setPayload } from 'store/utils';
-import {
-  SWAP_INVOICES,
-} from './types';
+import { createReducer } from 'store/utils';
 
 const INITIAL_STATE = {};
 

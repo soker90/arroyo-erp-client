@@ -4,3 +4,4 @@ src/modules/**
 src/**/*.stories.js
 src/story/**
 src/**/*.test.js
+src/setupTests.js
