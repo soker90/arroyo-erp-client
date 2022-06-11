@@ -143,6 +143,7 @@ const Chart = ({
             beginAtZero: true,
             min: 0,
             maxTicksLimit: 7,
+            precision: 2,
             callback: value => (value > 0 ? `${value}€` : value),
           },
         },
