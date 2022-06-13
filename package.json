@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
