@@ -29,7 +29,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.4",
-    "@mui/styles": "^5.8.0",
+    "@mui/styles": "^5.8.4",
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "clsx": "^1.1.1",
