@@ -69,6 +69,5 @@ HeaderBook.propTypes = {
   type: PropTypes.string,
 };
 
-HeaderBook.displayName = 'HeaderBilling';
 export const story = HeaderBook;
 export default HeaderBook;

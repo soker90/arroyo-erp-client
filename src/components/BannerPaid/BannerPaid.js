@@ -22,7 +22,5 @@ BannerPaid.propTypes = {
   paymentType: PropTypes.string,
 };
 
-BannerPaid.displayName = 'BannerPaid';
-
 export const story = BannerPaid;
 export default BannerPaid;

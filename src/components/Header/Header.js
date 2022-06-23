@@ -139,6 +139,7 @@ Header.propTypes = {
     label: PropTypes.string.isRequired,
     component: PropTypes.object,
     to: PropTypes.string,
+    disabled: PropTypes.bool,
   })), PropTypes.bool]),
   buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,

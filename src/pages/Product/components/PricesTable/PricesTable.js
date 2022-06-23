@@ -59,6 +59,5 @@ PricesTable.propTypes = {
   provider: PropTypes.string,
 };
 
-PricesTable.displayName = 'PricesTable';
 export const story = PricesTable;
 export default PricesTable;

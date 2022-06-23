@@ -66,6 +66,4 @@ EditProductModal.propTypes = {
   product: PropTypes.object.isRequired,
 };
 
-EditProductModal.displayName = 'EditProductModal';
-
 export default EditProductModal;

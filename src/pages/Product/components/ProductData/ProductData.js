@@ -66,6 +66,5 @@ ProductData.propTypes = {
   provider: PropTypes.string,
 };
 
-ProductData.displayName = 'InvoiceTotals';
 export const story = ProductData;
 export default ProductData;

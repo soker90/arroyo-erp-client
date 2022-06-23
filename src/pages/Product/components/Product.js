@@ -14,13 +14,18 @@ const Product = ({
   product,
   prices,
   getProduct,
+  getLastDeliveryOrder,
+  lastDeliveryOrder,
 }) => {
   const { id } = useParams();
   const classes = useStyles();
   const [reversePrices, setReversePrices] = useState([]);
 
   useEffect(() => {
-    if (id) getProduct(id);
+    if (id) {
+      getProduct(id);
+      getLastDeliveryOrder(id);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -37,6 +42,7 @@ const Product = ({
           provider={product.provider}
           nameProvider={product.nameProvider}
           product={product.name}
+          lastDeliveryOrder={lastDeliveryOrder}
         />
 
         <ProductData product={product} className={classes.table} provider={product.provider} />
@@ -58,8 +64,9 @@ Product.propTypes = {
   getProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
   prices: PropTypes.array.isRequired,
+  getLastDeliveryOrder: PropTypes.func.isRequired,
+  lastDeliveryOrder: PropTypes.string,
 };
 
-Product.displayName = 'Product';
 export const story = Product;
 export default Product;

@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 
 import { Header } from 'components';
 
@@ -14,6 +16,7 @@ const HeaderProduct = ({
   provider,
   nameProvider,
   product,
+  lastDeliveryOrder,
 }) => {
   const headerProvider = [
     {
@@ -32,6 +35,14 @@ const HeaderProduct = ({
     <Header
       routes={provider ? headerProvider : headerClient}
       title={product}
+      buttons={[{
+        label: 'Último albarán',
+        component: NavLink,
+        to: `/app/albaranes/${lastDeliveryOrder}`,
+        Icon: ReceiptIcon,
+        variant: 'outlined',
+        disabled: !lastDeliveryOrder,
+      }]}
     />
   );
 };
@@ -40,8 +51,7 @@ HeaderProduct.propTypes = {
   nameProvider: PropTypes.string,
   provider: PropTypes.string,
   product: PropTypes.string.isRequired,
+  lastDeliveryOrder: PropTypes.string,
 };
-
-HeaderProduct.displayName = 'HeaderProduct';
 
 export default HeaderProduct;

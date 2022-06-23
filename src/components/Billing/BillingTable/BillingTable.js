@@ -80,6 +80,4 @@ BillingTable.propTypes = {
   billing: PropTypes.array.isRequired,
 };
 
-BillingTable.displayName = 'BillingTable';
-
 export default BillingTable;
