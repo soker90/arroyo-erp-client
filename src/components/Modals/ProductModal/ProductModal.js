@@ -30,7 +30,7 @@ const ProductModal = ({
         name: state.name,
         iva: Number(state.iva) / 100,
         re: Number(state.re) / 100,
-        profit: Number(state.profit) / 100,
+        sale: Number(state.sale),
         rate: Number(state.rate),
         ...(state.provider && { provider: state.provider }),
       };
@@ -84,7 +84,7 @@ const ProductModal = ({
       {_renderInput('name', 'Nombre')}
       {_renderInput('iva', 'IVA (%)', { type: 'number' })}
       {_renderInput('re', 'RE (%)', { type: 'number' })}
-      {_renderInput('profit', 'Beneficio (%)', { type: 'number' })}
+      {_renderInput('sale', 'PVP', { type: 'number' })}
       {_renderInput('rate', 'Tasa', { type: 'number' })}
     </ModalGrid>
   );

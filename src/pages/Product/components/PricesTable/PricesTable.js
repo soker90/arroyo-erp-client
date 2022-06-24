@@ -21,10 +21,6 @@ const PricesTable = ({
   const columnsProvider = [{
     title: 'Coste',
     render: ({ cost }) => format.euro(cost),
-  },
-  {
-    title: 'Venta',
-    render: ({ sale }) => format.euro(sale),
   }];
 
   return (

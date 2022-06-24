@@ -14,7 +14,7 @@ const EditProductModal = ({
     iva,
     rate,
     _id,
-    profit,
+    sale,
     provider,
   },
 }) => {
@@ -31,7 +31,7 @@ const EditProductModal = ({
         ...(name && { name }),
         ...(re && { re: re * 100 }),
         ...(iva && { iva: iva * 100 }),
-        ...(profit && { profit: format.number(profit * 100) }),
+        ...(sale && { sale: format.number(sale) }),
         ...(rate && { rate }),
         ...(provider && { provider }),
       });

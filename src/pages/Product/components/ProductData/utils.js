@@ -13,7 +13,7 @@ const generateProviderLabels = ({
   iva,
   re,
   rate,
-  profit,
+  sale,
 }) => [{
   title: 'Código',
   value: code,
@@ -24,8 +24,8 @@ const generateProviderLabels = ({
   title: 'Recargo',
   value: format.percent(re),
 }, {
-  title: 'Beneficio',
-  value: format.percent(profit),
+  title: 'PVP',
+  value: format.euro(sale),
 }, ...(rate ? [{
   title: 'Tasa',
   value: format.euro(rate, { maximumFractionDigits: 3 }),
