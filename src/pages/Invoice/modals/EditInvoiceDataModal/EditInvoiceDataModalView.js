@@ -130,7 +130,7 @@ const EditInvoiceDataModalView = ({
       size={4}
       label={label}
       value={state[name]}
-      onAccept={date => _handleChangePicker(date, name)}
+      onChange={date => _handleChangePicker(date, name)}
     />
   );
 

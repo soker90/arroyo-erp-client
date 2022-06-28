@@ -1,3 +1,6 @@
+# [2.3.1] - 28/06/2022
+  - Corregido editar fechas en factura
+
 # [2.3.0] - 24/06/2022
   - Eliminado precio de venta del historico de precios
   - Eliminado campo de beneficios de la página de producto
