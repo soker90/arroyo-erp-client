@@ -114,7 +114,7 @@ const EditPaymentModal = ({
         size={4}
         label='Fecha de cobro'
         value={paymentDate}
-        onAccept={_handleChangePicker}
+        onChange={_handleChangePicker}
       />
 
       <SelectForm

@@ -81,7 +81,7 @@ const NoteModal = ({
         size={6}
         label='Fecha'
         value={state.date}
-        onAccept={_handleChangePicker}
+        onChange={_handleChangePicker}
         autoFocus
       />
       {INPUTS.map(_renderInput)}
