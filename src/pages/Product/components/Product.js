@@ -15,7 +15,8 @@ const Product = ({
   prices,
   getProduct,
   getLastDeliveryOrder,
-  lastDeliveryOrder,
+  nextToLast,
+  last,
 }) => {
   const { id } = useParams();
   const classes = useStyles();
@@ -42,7 +43,8 @@ const Product = ({
           provider={product.provider}
           nameProvider={product.nameProvider}
           product={product.name}
-          lastDeliveryOrder={lastDeliveryOrder}
+          lastDeliveryOrder={last}
+          nextToLastDeliveryOrder={nextToLast}
         />
 
         <ProductData product={product} className={classes.table} provider={product.provider} />
@@ -65,7 +67,8 @@ Product.propTypes = {
   product: PropTypes.object.isRequired,
   prices: PropTypes.array.isRequired,
   getLastDeliveryOrder: PropTypes.func.isRequired,
-  lastDeliveryOrder: PropTypes.string,
+  last: PropTypes.string,
+  nextToLast: PropTypes.string,
 };
 
 export const story = Product;

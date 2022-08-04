@@ -17,6 +17,7 @@ const HeaderProduct = ({
   nameProvider,
   product,
   lastDeliveryOrder,
+  nextToLastDeliveryOrder,
 }) => {
   const headerProvider = [
     {
@@ -36,6 +37,13 @@ const HeaderProduct = ({
       routes={provider ? headerProvider : headerClient}
       title={product}
       buttons={[{
+        label: 'Penúltimo albarán',
+        component: NavLink,
+        to: `/app/albaranes/${nextToLastDeliveryOrder}`,
+        Icon: ReceiptIcon,
+        variant: 'outlined',
+        disabled: !nextToLastDeliveryOrder,
+      }, {
         label: 'Último albarán',
         component: NavLink,
         to: `/app/albaranes/${lastDeliveryOrder}`,
@@ -52,6 +60,7 @@ HeaderProduct.propTypes = {
   provider: PropTypes.string,
   product: PropTypes.string.isRequired,
   lastDeliveryOrder: PropTypes.string,
+  nextToLastDeliveryOrder: PropTypes.string,
 };
 
 export default HeaderProduct;

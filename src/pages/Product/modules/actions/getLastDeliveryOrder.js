@@ -25,7 +25,7 @@ const _getProductLastDeliveryOrderSuccess = () => ({
  */
 const _getLastDeliveryOrderSet = data => ({
   type: GET_LAST_DELIVERY_ORDER.SET,
-  payload: { lastDeliveryOrder: data.deliveryOrder },
+  payload: { last: data.last, nextToLast: data.nextToLast },
 });
 
 /**

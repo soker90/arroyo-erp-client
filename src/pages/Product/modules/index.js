@@ -6,7 +6,8 @@ import {
 const INITIAL_STATE = {
   product: {},
   prices: [],
-  lastDeliveryOrder: null,
+  nextToLast: undefined,
+  last: undefined,
 };
 
 const ACTION_HANDLERS = {
