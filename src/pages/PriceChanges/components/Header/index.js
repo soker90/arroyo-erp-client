@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import TelegramIcon from '@mui/icons-material/Telegram';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Header } from 'components';
@@ -8,7 +7,6 @@ import DeletePriceChangeModal from '../../modals/DeletePriceChangeModal';
 
 const HeaderPriceChanges = ({
   selected,
-  sendTelegramPrices,
   setSelected,
 }) => {
   const [showDelete, setShowDelete] = useState(false);
@@ -26,16 +24,6 @@ const HeaderPriceChanges = ({
         buttons={[{
           variant: 'contained',
           onClick: () => {
-            sendTelegramPrices(selected);
-          },
-          Icon: TelegramIcon,
-          disableSvg: true,
-          color: 'primary',
-          label: 'Envíar',
-          disabled: !selected.length,
-        }, {
-          variant: 'contained',
-          onClick: () => {
             setShowDelete(true);
           },
           Icon: DeleteIcon,
@@ -51,7 +39,6 @@ const HeaderPriceChanges = ({
 
 HeaderPriceChanges.propTypes = {
   selected: PropTypes.array.isRequired,
-  sendTelegramPrices: PropTypes.func.isRequired,
   setSelected: PropTypes.func.isRequired,
 };
 
