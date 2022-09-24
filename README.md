@@ -1,30 +1,19 @@
 # ARROYO CLIENT
 
 ![](https://github.com/soker90/arroyo-erp-client/workflows/Node.js%20CI/badge.svg)
-[![dependencies Status](https://david-dm.org/soker90/arroyo-erp-client/status.svg)](https://david-dm.org/soker90/arroyo-erp-client)
-[![devDependencies Status](https://david-dm.org/soker90/arroyo-erp-client/dev-status.svg)](https://david-dm.org/soker90/arroyo-erp-client?type=dev)
 [![codecov](https://codecov.io/gh/soker90/arroyo-erp-client/branch/master/graph/badge.svg?token=YAYNYU2EI2)](https://codecov.io/gh/soker90/arroyo-erp-client)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soker90_arroyo-erp-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soker90_arroyo-erp-client)
-[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://soker90.github.io/arroyo-erp-client/)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/soker90/arroyo-erp-client)](https://hub.docker.com/r/soker90/arroyo-erp-client)
 
 ## Descripción
 Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas.
 
-Es un proyecto desarrollado en `React`. (v.17.0.2) y gestiona el **state** de la aplicación mediante `redux` (v.4.1.2). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.6.2.1) se haga cargo de la gestión de las **URLS**.
+Es un proyecto desarrollado en `React`. (v.18.1.0) y gestiona el **state** de la aplicación mediante `redux` (v.4.2.0). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.6.3.0) se haga cargo de la gestión de las **URLS**.
 
 # Forman parte de este proyecto
 - [API](https://github.com/soker90/arroyo-erp-api) 
 - [Models](https://github.com/soker90/arroyo-erp-models)
 - [Project](https://github.com/soker90/arroyo-erp-project)
-## TODO
-
-- DOCS: Readme and more Storybook
-- TESTING - In Progress: Storybook + react testing library para test unitarios - in progress
-- TESTING - In Progress: Storybook + Chromatic para pruebas de regresión visual - ok
-- No tiene sentido el Modal Root, habría que refactoizar los primeros modales para eliminarlo.
-- Poner a dieta a Redux
-- ¡ISSUES!
-
 
 ## Changelog
 - [Ver](https://github.com/soker90/arroyo-erp-client/blob/master/CHANGELOG)

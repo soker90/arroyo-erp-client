@@ -5,7 +5,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { TableMaterial } from 'components';
 import { BASE_PATH } from 'constants/common';
-import { format } from 'utils';
+import { calcProfit, format } from 'utils';
 
 const ProductsTable = ({
   products,
@@ -40,6 +40,17 @@ const ProductsTable = ({
         {
           title: 'Venta',
           render: ({ sale }) => format.euro(sale),
+        },
+        {
+          title: '%',
+          render: props => {
+            // eslint-disable-next-line react/prop-types
+            if (!props.sale) return ' -- ';
+            return format.percent(
+              calcProfit(props),
+              { maximumFractionDigits: 2 }
+            );
+          },
         },
         {
           title: 'IVA',

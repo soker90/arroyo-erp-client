@@ -34,7 +34,5 @@ BooleanIcon.propTypes = {
   value: PropTypes.bool.isRequired,
 };
 
-BooleanIcon.displayName = 'BooleanIcon';
-
 export const story = BooleanIcon;
 export default BooleanIcon;

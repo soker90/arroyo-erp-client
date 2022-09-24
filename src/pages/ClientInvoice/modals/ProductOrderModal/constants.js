@@ -3,6 +3,7 @@ export const INITIAL_STATE = {
   weight: 0,
   price: 0,
   unit: 'kg',
+  productId: undefined,
 };
 
 export const fields = [

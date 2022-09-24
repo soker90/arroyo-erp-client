@@ -2,7 +2,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'nprogress/nprogress.css';
 import 'moment/locale/es';
 
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { SWRConfig } from 'swr';
 
@@ -15,13 +15,15 @@ import App from 'App';
 const store = configureStore();
 const settings = restoreSettings();
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
   <SWRConfig value={{ provider: localStorageProvider }}>
-    <Provider store={store}>
-      <SettingsProvider settings={settings}>
-        <App />
-      </SettingsProvider>
-    </Provider>
+  <Provider store={store}>
+    <SettingsProvider settings={settings}>
+      <App />
+    </SettingsProvider>
+  </Provider>
   </SWRConfig>,
   document.getElementById('root'),
 );

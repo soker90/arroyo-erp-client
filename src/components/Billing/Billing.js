@@ -37,6 +37,5 @@ Billing.propTypes = {
   type: PropTypes.string,
 };
 
-Billing.displayName = 'Billing';
 export const story = Billing;
 export default Billing;

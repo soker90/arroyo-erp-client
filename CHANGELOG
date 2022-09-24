@@ -1,3 +1,38 @@
+# [2.5.1] - 20/08/2022
+  - Cambiada imagen de la pantalla de iniciar sesión
+  
+# [2.5.0] - 12/08/2022
+  - Añadido porcentaje de beneficio a la tabla de productos del proveedor y a la pantalla de producto
+
+# [2.4.0] - 04/08/2022
+  - Añadido botón para ir al penúltimo albarán en la página de producto
+
+# [2.3.2] - 29/06/2022
+  - Corregido fallo al editar fechas en diversas pantallas
+
+# [2.3.1] - 28/06/2022
+  - Corregido editar fechas en factura
+
+# [2.3.0] - 24/06/2022
+  - Eliminado precio de venta del historico de precios
+  - Eliminado campo de beneficios de la página de producto
+  - Añadido PVP a la página de producto
+
+# [2.2.0] - 24/06/2022
+  - Añadido botón para ir al último albarán en el que se añadió el producto
+
+# [2.1.1] - 11/06/2022
+  - Limitado el número de decimales en las gráficas de productos
+
+# [2.1.0] - 21/04/2022
+  - Añadida página con el histórico de precios de productos de cliente.
+
+# [2.0.6] - 16/04/2022
+  - Corregido error que no permite modificar los datos de un producto de proveedor
+
+# [2.0.5] - 27/03/2022
+  - Eliminado tercer decimal de la grafica de producto
+
 # [2.0.4] - 09/02/2022
   - Corregida redirección al crear una factura de gasto
 

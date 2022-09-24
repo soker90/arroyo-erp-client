@@ -168,7 +168,7 @@ const NewInvoiceModal = ({
       size={6}
       label={label}
       value={state[name]}
-      onAccept={date => _handleChangePicker(date, name)}
+      onChange={date => _handleChangePicker(date, name)}
     />
   );
 

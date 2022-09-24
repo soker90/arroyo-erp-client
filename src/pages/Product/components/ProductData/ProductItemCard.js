@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 
 import { ItemCard } from 'components/Cards';
 
-const ProductItemCard = ({ title, value, size }) => (
+const ProductItemCard = ({ title, value, size = 3 }) => (
   <Grid item xs={12} md={size}>
     <ItemCard label={title} value={value} />
   </Grid>
@@ -15,9 +15,4 @@ ProductItemCard.propTypes = {
   size: PropTypes.number,
 };
 
-ProductItemCard.defaultProps = {
-  size: 3,
-};
-
-ProductItemCard.displayName = 'ProductItemCard';
 export default ProductItemCard;

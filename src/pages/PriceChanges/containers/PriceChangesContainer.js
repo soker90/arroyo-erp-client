@@ -5,7 +5,6 @@ import {
   changeReadPrice,
   deleteManyChangesPrice,
   getPriceChanges,
-  sendTelegramPrices,
 } from '../modules/actions';
 
 const mapStateToProps = ({ priceChanges: { priceChanges } }) => ({
@@ -15,7 +14,6 @@ const mapStateToProps = ({ priceChanges: { priceChanges } }) => ({
 const mapDispatchToProps = {
   getPriceChanges,
   changeReadPrice,
-  sendTelegramPrices,
   deleteManyChangesPrice,
 };
 

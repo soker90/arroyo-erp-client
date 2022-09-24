@@ -1,6 +1,6 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 import { InputForm } from 'components';
 import { useStyles } from './DatePickerForm.styles';
@@ -21,12 +21,10 @@ const DatePickerForm = (
       disableToolbar
       allowSameDateSelection
       className={classes.picker}
-      onChange={() => {
-      }}
       showToolbar={false}
       format={format}
       inputVariant={variant}
-      disableCloseOnSelect={!autoOk}
+      closeOnSelect={autoOk}
       cancelText='Cancelar'
       clearText='Limpiar'
       okText='Aceptar'
@@ -51,13 +49,9 @@ DatePickerForm.propTypes = {
   // eslint-disable-next-line max-len
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date), PropTypes.number, PropTypes.object]),
   /**
-   * Función par el botón de aceptar
-   */
-  onAccept: PropTypes.func,
-  /**
    * Función ejecutada al seleccionar una fecha
    */
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   /**
    * Deshabilita las fechas posteriores a la fecha
    */
@@ -79,6 +73,7 @@ DatePickerForm.propTypes = {
    */
   clearable: PropTypes.bool,
   variant: PropTypes.string,
+  closeOnSelect: PropTypes.bool,
 };
 
 DatePickerForm.defaultProps = {

@@ -67,7 +67,7 @@ const ConfirmInvoiceModal = ({
         size={4}
         label='Fecha de pago'
         value={paymentDate}
-        onAccept={_handleChangePicker}
+        onChange={_handleChangePicker}
       />
 
       <SelectForm

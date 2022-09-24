@@ -3,9 +3,9 @@ import { useMemo, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeProvider, StyledEngineProvider } from '@mui/material';
-import AdapterMoment from '@mui/lab/AdapterMoment'; // Change luxon
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'; // Change luxon
 import { LoadingBar } from 'react-redux-loading-bar';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 import { ModalRoot } from 'components';
 import Auth from 'components/Auth';

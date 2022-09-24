@@ -7,7 +7,7 @@ const ItemCardVariant = ({ value, variant }) => {
   const COMPONENT_VARIANT = {
     default: <Typography variant='h6'>{value}</Typography>,
     boolean: <BooleanIcon value={!!value} />,
-    euro: <TextEuro Component={Typography} num={value} variant='h6' />,
+    euro: <TextEuro Component={Typography} num={value || ''} variant='h6' />,
   };
 
   return COMPONENT_VARIANT[variant] || COMPONENT_VARIANT.default;

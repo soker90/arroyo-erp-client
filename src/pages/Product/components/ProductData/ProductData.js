@@ -11,7 +11,9 @@ import { generateLabels } from './utils';
 import EditProductModal from '../../modals/EditProductModal';
 
 const ProductData = ({
-  product, className,
+  product,
+  className,
+  provider,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -34,7 +36,7 @@ const ProductData = ({
       <Card className={className}>
         <CardHeader
           title='Totales'
-          action={[
+          action={provider && [
             <Tooltip title='Editar' key={uniqId()}>
               <IconButton
                 size='small'
@@ -48,7 +50,7 @@ const ProductData = ({
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
-            {generateLabels(product)
+            {generateLabels(product, provider)
               .map(item => <ProductItemCard {...item} key={uniqId()} />)}
           </Grid>
         </CardContent>
@@ -61,8 +63,8 @@ const ProductData = ({
 ProductData.propTypes = {
   product: PropTypes.object.isRequired,
   className: PropTypes.string,
+  provider: PropTypes.string,
 };
 
-ProductData.displayName = 'InvoiceTotals';
 export const story = ProductData;
 export default ProductData;

@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 import { TableMaterial } from 'components';
+import { BASE_PATH } from 'constants/index';
 import { format } from 'utils';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditProductModal from '../../modals/EditProductModal';
 import DeleteProductModal from '../../modals/DeleteProductModal';
 import { useStyles } from './ProductsTable.styles';
@@ -39,6 +42,12 @@ const ProductsTable = ({ products }) => {
         ]}
         data={products}
         actions={[
+          {
+            icon: VisibilityIcon,
+            tooltip: 'Ver',
+            component: Link,
+            to: ({ _id }) => `${BASE_PATH}/productos/${_id}`,
+          },
           {
             icon: EditIcon,
             tooltip: 'Editar',

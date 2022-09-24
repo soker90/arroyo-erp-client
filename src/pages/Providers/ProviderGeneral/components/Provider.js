@@ -13,6 +13,10 @@ import { HASH_TABS, TABS } from '../constants';
 import Header from './Header';
 import { useStyles } from './Provider.styles';
 
+const DeliveryOrders = lazy(() => import('./DeliveryOrder'));
+const Products = lazy(() => import('./ProductsTable'));
+const Invoices = lazy(() => import('components/ProviderInvoices'));
+
 const Provider = ({
   provider,
   billing,
@@ -53,21 +57,6 @@ const Provider = ({
     setDeliveryOrdersSelected([]);
   }, [setDeliveryOrdersSelected]);
 
-  /**
-   * imports de los componentes de cada pestaña
-   * @private
-   */
-  const _components = {
-    [TABS.DELIVERY_ORDERS]: lazy(() => import('./DeliveryOrder')),
-    [TABS.PRODUCTS]: lazy(() => import('./ProductsTable')),
-    [TABS.INVOICES]: lazy(() => import('components/ProviderInvoices')),
-  };
-
-  /**
-   * Componente de la pestaña actual
-   */
-  const TabComponent = _components[currentTab];
-
   return (
     <Page className={classes.root} title={provider.name}>
       <Container maxWidth={false}>
@@ -91,10 +80,14 @@ const Provider = ({
         <HashTabs currentTab={currentTab} tabs={Object.values(TABS)} />
 
         <Box py={3} pb={6}>
-          <TabComponent
-            selected={deliveryOrdersSelected}
-            setSelected={setDeliveryOrdersSelected}
-          />
+          {currentTab === TABS.DELIVERY_ORDERS && (
+            <DeliveryOrders
+              selected={deliveryOrdersSelected}
+              setSelected={setDeliveryOrdersSelected}
+            />
+          )}
+          {currentTab === TABS.INVOICES && <Invoices />}
+          {currentTab === TABS.PRODUCTS && <Products />}
         </Box>
 
       </Container>

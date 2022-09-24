@@ -47,6 +47,4 @@ EditProviderModal.propTypes = {
   provider: PropTypes.object.isRequired,
 };
 
-EditProviderModal.displayName = 'EditProviderModal';
-
 export default EditProviderModal;

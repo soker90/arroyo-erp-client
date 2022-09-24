@@ -14,7 +14,8 @@ const EditProductModal = ({
     iva,
     rate,
     _id,
-    profit,
+    sale,
+    provider,
   },
 }) => {
   const [state, setState] = useReducer(
@@ -30,8 +31,9 @@ const EditProductModal = ({
         ...(name && { name }),
         ...(re && { re: re * 100 }),
         ...(iva && { iva: iva * 100 }),
-        ...(profit && { profit: format.number(profit * 100) }),
+        ...(sale && { sale: format.number(sale) }),
         ...(rate && { rate }),
+        ...(provider && { provider }),
       });
     }
     // eslint-disable-next-line
@@ -63,7 +65,5 @@ EditProductModal.propTypes = {
   editProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
 };
-
-EditProductModal.displayName = 'EditProductModal';
 
 export default EditProductModal;

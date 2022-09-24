@@ -11,14 +11,22 @@ import ProductData from './ProductData/ProductData';
 import PricesTable from './PricesTable';
 
 const Product = ({
-  product, prices, getProduct,
+  product,
+  prices,
+  getProduct,
+  getLastDeliveryOrder,
+  nextToLast,
+  last,
 }) => {
   const { id } = useParams();
   const classes = useStyles();
   const [reversePrices, setReversePrices] = useState([]);
 
   useEffect(() => {
-    if (id) getProduct(id);
+    if (id) {
+      getProduct(id);
+      getLastDeliveryOrder(id);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -35,17 +43,19 @@ const Product = ({
           provider={product.provider}
           nameProvider={product.nameProvider}
           product={product.name}
+          lastDeliveryOrder={last}
+          nextToLastDeliveryOrder={nextToLast}
         />
 
-        <ProductData product={product} className={classes.table} />
+        <ProductData product={product} className={classes.table} provider={product.provider} />
 
         {Boolean(prices.length)
-        && (
-          <>
-            <PricesChart prices={reversePrices} className={classes.chart} />
-            <PricesTable prices={prices} />
-          </>
-        )}
+          && (
+            <>
+              <PricesChart prices={reversePrices} className={classes.chart} />
+              <PricesTable prices={prices} provider={product.provider} />
+            </>
+          )}
 
       </Container>
     </Page>
@@ -56,8 +66,10 @@ Product.propTypes = {
   getProduct: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
   prices: PropTypes.array.isRequired,
+  getLastDeliveryOrder: PropTypes.func.isRequired,
+  last: PropTypes.string,
+  nextToLast: PropTypes.string,
 };
 
-Product.displayName = 'Product';
 export const story = Product;
 export default Product;

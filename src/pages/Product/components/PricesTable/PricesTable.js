@@ -7,8 +7,21 @@ import { Link } from 'react-router-dom';
 import { useStyles } from './PricesTable.styles';
 import { BASE_PATH } from '../../../../constants';
 
-const PricesTable = ({ prices }) => {
+const PricesTable = ({
+  prices,
+  provider,
+}) => {
   const classes = useStyles();
+
+  const providerUrl = ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`;
+  const clientUrl = ({ invoice }) => `${BASE_PATH}/clientes/factura/${invoice}`;
+
+  const composeDoUrl = params => (provider ? providerUrl : clientUrl)(params);
+
+  const columnsProvider = [{
+    title: 'Coste',
+    render: ({ cost }) => format.euro(cost),
+  }];
 
   return (
     <TableMaterial
@@ -22,21 +35,14 @@ const PricesTable = ({ prices }) => {
           title: 'Precio',
           render: ({ price }) => format.euro(price),
         },
-        {
-          title: 'Coste',
-          render: ({ cost }) => format.euro(cost),
-        },
-        {
-          title: 'Venta',
-          render: ({ sale }) => format.euro(sale),
-        },
+        ...(provider ? columnsProvider : []),
       ]}
       actions={[
         {
           icon: VisibilityIcon,
           tooltip: 'Ver albarán',
           component: Link,
-          to: ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`,
+          to: composeDoUrl,
         },
       ]}
       data={prices}
@@ -46,8 +52,8 @@ const PricesTable = ({ prices }) => {
 
 PricesTable.propTypes = {
   prices: PropTypes.array.isRequired,
+  provider: PropTypes.string,
 };
 
-PricesTable.displayName = 'PricesTable';
 export const story = PricesTable;
 export default PricesTable;

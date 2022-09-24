@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { number, text } from '@storybook/addon-knobs';
 import { RoutesWrapper } from 'story';
 import { story as DeliveryOrderExpand } from './index';
 
@@ -22,17 +21,17 @@ const products = [
     taxBase: 41.3,
   },
   {
-    name: text('Nombre producto', 'Nombre', 'Componente'),
-    quantity: number('Cantidad', 12.33, {}, 'Componente'),
-    price: number('Precio', 6.1, {}, 'Componente'),
-    taxBase: number('Base Imponible', 33.33, {}, 'Componente'),
+    name: 'Nombre',
+    quantity: 12.33,
+    price: 6.1,
+    taxBase: 33.33,
   },
 ];
 const DeliveryOrderExpandStory = () => (
   <DeliveryOrderExpand
     products={products}
     date={1609005471740}
-    note={text('Nota', 'Esto es una nota', 'Componente')}
+    note={'Esto es una nota'}
     taxBase={100}
     iva={10}
     re={2}

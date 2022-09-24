@@ -66,10 +66,11 @@ const number = cell => {
  * @param cell
  * @return {string}
  */
-const percent = cell => {
+const percent = (cell, options = {}) => {
   const num = new Intl.NumberFormat('es-ES', {
     style: 'percent',
     maximumFractionDigits: 3,
+    ...options,
   });
   return num.format(cell);
 };

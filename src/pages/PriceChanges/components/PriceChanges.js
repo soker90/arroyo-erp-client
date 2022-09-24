@@ -21,7 +21,6 @@ const PriceChanges = ({
   priceChanges,
   getPriceChanges,
   changeReadPrice,
-  sendTelegramPrices,
 }) => {
   const classes = useStyles();
   const [deleteId, setDeleteId] = useState(undefined);
@@ -65,7 +64,6 @@ const PriceChanges = ({
         <Container maxWidth={false}>
           <Header
             selected={selected}
-            sendTelegramPrices={sendTelegramPrices}
             setSelected={setSelected}
           />
           <TableMaterial
@@ -132,7 +130,6 @@ const PriceChanges = ({
 PriceChanges.propTypes = {
   priceChanges: PropTypes.array.isRequired,
   getPriceChanges: PropTypes.func.isRequired,
-  sendTelegramPrices: PropTypes.func.isRequired,
 };
 
 PriceChanges.displayName = 'PriceChanges';
