@@ -5,7 +5,7 @@ import { downloadFile } from 'utils';
 import { TABS } from '../../constants';
 
 const _handleClickDownloadProducts = (idProvider, nameProvider) => () => {
-  downloadFile(`products/export-provider${idProvider}`, `Productos de ${nameProvider}.ods`);
+  downloadFile(`products/export-provider/${idProvider}`, `Productos de ${nameProvider}.ods`);
 };
 
 /**
@@ -25,7 +25,7 @@ export const getButtons = ({
   }, {
     onClick: _handleClickDownloadProducts(idProvider, nameProvider),
     Icon: GetAppIcon,
-    label: 'T1',
+    label: 'Descargar',
     variant: 'contained',
   }],
   [TABS.DELIVERY_ORDERS]: [{
