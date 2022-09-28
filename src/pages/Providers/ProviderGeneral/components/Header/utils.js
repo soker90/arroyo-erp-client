@@ -1,6 +1,12 @@
 import AddIcon from '@mui/icons-material/Add';
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import { downloadFile } from 'utils';
 import { TABS } from '../../constants';
+
+const _handleClickDownloadProducts = (idProvider, nameProvider) => () => {
+  downloadFile(`products/export-provider${idProvider}`, `Productos de ${nameProvider}.ods`);
+};
 
 /**
  * Buttons for header
@@ -8,7 +14,7 @@ import { TABS } from '../../constants';
  */
 export const getButtons = ({
   showEditProductModal, _handleClickNewInvoice, deliveryOrdersSelected,
-  _handleClickNewDeliveryOrder, currentTab,
+  _handleClickNewDeliveryOrder, currentTab, idProvider, nameProvider,
 }) => ({
   [TABS.PRODUCTS]: [{
     variant: 'contained',
@@ -16,6 +22,11 @@ export const getButtons = ({
     Icon: AddIcon,
     disableSvg: true,
     label: 'Nuevo producto',
+  }, {
+    onClick: _handleClickDownloadProducts(idProvider, nameProvider),
+    Icon: GetAppIcon,
+    label: 'T1',
+    variant: 'contained',
   }],
   [TABS.DELIVERY_ORDERS]: [{
     variant: 'contained',

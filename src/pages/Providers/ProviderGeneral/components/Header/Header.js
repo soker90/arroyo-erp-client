@@ -20,6 +20,7 @@ const HeaderProvider = ({
   currentTab,
   resetSelected,
   note,
+  nameProvider,
 }) => {
   const classes = useStyles();
   const navigate = useNavigate();
@@ -46,6 +47,8 @@ const HeaderProvider = ({
       _handleClickNewDeliveryOrder,
       _handleClickNewInvoice,
       showEditProductModal,
+      nameProvider,
+      idProvider,
       // eslint-disable-next-line
     })), [currentTab, deliveryOrdersSelected.length]);
 
@@ -100,6 +103,7 @@ HeaderProvider.propTypes = {
   currentTab: PropTypes.string.isRequired,
   resetSelected: PropTypes.func.isRequired,
   note: PropTypes.string,
+  nameProvider: PropTypes.string,
 };
 
 HeaderProvider.displayName = 'Provider-Header';
