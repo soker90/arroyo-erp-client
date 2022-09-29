@@ -17,16 +17,16 @@ export const getButtons = ({
   _handleClickNewDeliveryOrder, currentTab, idProvider, nameProvider,
 }) => ({
   [TABS.PRODUCTS]: [{
+    onClick: _handleClickDownloadProducts(idProvider, nameProvider),
+    Icon: GetAppIcon,
+    label: 'Descargar',
+    variant: 'contained',
+  }, {
     variant: 'contained',
     onClick: showEditProductModal,
     Icon: AddIcon,
     disableSvg: true,
     label: 'Nuevo producto',
-  }, {
-    onClick: _handleClickDownloadProducts(idProvider, nameProvider),
-    Icon: GetAppIcon,
-    label: 'Descargar',
-    variant: 'contained',
   }],
   [TABS.DELIVERY_ORDERS]: [{
     variant: 'contained',
