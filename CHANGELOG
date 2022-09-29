@@ -1,3 +1,7 @@
+# [2.6.1] - 29/09/2022
+  - Cambar de orden el botón de descargar productos
+  - Corregido nombre de proveedor al descargar productos
+
 # [2.6.0] - 28/09/2022
   - Nuevo botón para descargar el listado de productos de un proveedor con su precio y beneficio
 
