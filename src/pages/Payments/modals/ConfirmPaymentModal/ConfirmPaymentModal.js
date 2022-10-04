@@ -78,7 +78,7 @@ const ConfirmPaymentModal = ({
       ? (
         <InputForm
           label='Número de talón'
-          value={numCheque}
+          value={numCheque ?? ''}
           onChange={_handleCheque}
           onKeyPress={_handleKeyPress}
           size={4}
@@ -91,7 +91,7 @@ const ConfirmPaymentModal = ({
     <ModalGrid
       {...rest}
       show={Boolean(payment)}
-      title='Confirmación de factura'
+      title='Confirmación de pago'
       action={_handleSend}
       close={_close}
     >
@@ -130,6 +130,4 @@ ConfirmPaymentModal.propTypes = {
   confirmPayment: PropTypes.func.isRequired,
 };
 
-ConfirmPaymentModal.displayName = 'ConfirmPaymentModal';
-export const story = ConfirmPaymentModal;
 export default ConfirmPaymentModal;
