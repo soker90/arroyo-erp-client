@@ -3,7 +3,7 @@ export const CONCEPT = {
   DEV: 'Dev. mercaderías',
   ABONO: 'Abono',
   ALQUILER: 'Alquiler',
-  BASURA: 'Basura semesetre',
+  BASURA: 'Basura semestre',
   DESINF: 'Desinsectación-Desratización',
   LUZ: 'Luz',
   AGUA: 'Agua',

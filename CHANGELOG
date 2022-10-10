@@ -1,3 +1,6 @@
+# [2.6.3] - 10/10/2022
+  - Corregida errata de "Basuras semestre"
+
 # [2.6.2] - 05/10/2022
   - Corregido que al confirmar un pago, si se ha introducido previamente un talón en otra confirmación, aparece, en vez de verse vacío.
 
