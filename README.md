@@ -28,11 +28,10 @@ Para realizar la ejecución de tests:
 
 ### Config - Variables de entorno
 
-Se declaran en los archivos `.env` del proyecto y en las properties, y van precedidas por el flag `REACT_APP_`:
+Se declaran en los archivos `.env` del proyecto y en las properties, y van precedidas por el flag `VITE_`:
 
-- REACT_APP_ROUTER_BASE_PATH
-- REACT_APP_VERSION
-- REACT_APP_API_HOST
+- VITE_ROUTER_BASE_PATH
+- VITE_API_HOST
 
 ### Instalar dependencias
 

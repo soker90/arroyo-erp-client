@@ -7,9 +7,10 @@
   "private": true,
   "scripts": {
     "lint": "eslint ./src",
-    "start": "react-scripts start .env.development",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "jest test",
     "publish": "docker build . -t soker90/arroyo-erp-client:latest -f ./Dockerfile && docker push soker90/arroyo-erp-client:latest"
   },
   "browserslist": {
@@ -49,7 +50,6 @@
     "react-redux-loading-bar": "^5.0.4",
     "react-router": "^6.4.2",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
@@ -60,6 +60,7 @@
     "@babel/core": "^7.19.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^2.1.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -67,7 +68,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "vite": "^3.1.8"
   },
   "eslintConfig": {
     "overrides": [

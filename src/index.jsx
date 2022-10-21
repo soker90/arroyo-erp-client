@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { SettingsProvider } from 'context/SettingsContext';
 import { configureStore } from 'store';
 import { restoreSettings } from 'utils/settings';
-import App from 'App';
+import App from './App';
 
 const store = configureStore();
 const settings = restoreSettings();
@@ -21,6 +21,3 @@ root.render(
     </SettingsProvider>
   </Provider>
 );
-
-// TODO: Activar mas adelante y configurar notificaciones de actualizaciones
-// serviceWorker.unregister();
