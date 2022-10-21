@@ -1,5 +1,5 @@
 # [] - xx/10/2022
-  - Migración de CRA a vite
+  - Migración de CRA a vite y vitest
 
 # [2.6.3] - 10/10/2022
   - Corregida errata de "Basuras semestre"
