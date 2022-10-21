@@ -17,7 +17,7 @@ const Icon = () => (
 Icon.storyName = 'Boolean Icon';
 
 const IconFalse = () => (
-  <BooleanIcon value={false} />
+  <BooleanIcon value={false}/>
 );
 
 IconFalse.storyName = 'Falso';

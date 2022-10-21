@@ -1,7 +1,36 @@
+// @vitest-environment happy-dom
 import { fireEvent, render } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 
-import { DeliveryOrderExpandStory } from './DeliveryOrderExpand.stories';
 import { RoutesWrapper, ThemeWrapper } from '../../story';
+import { story as DeliveryOrderExpand } from './index';
+
+const products = [
+  {
+    name: 'Producto',
+    quantity: 12,
+    price: 13.68,
+    taxBase: 41.3,
+  },
+  {
+    name: 'Nombre',
+    quantity: 12.33,
+    price: 6.1,
+    taxBase: 33.33,
+  },
+];
+const DeliveryOrderExpandStory = () => (
+  <DeliveryOrderExpand
+    products={products}
+    date={1609005471740}
+    note={'Esto es una nota'}
+    taxBase={100}
+    iva={10}
+    re={2}
+    total={112}
+    _id="idString"
+  />
+);
 
 describe('DeliveryOrderExpandHeader', () => {
   it('renders without crash', async () => {
@@ -16,7 +45,7 @@ describe('DeliveryOrderExpandHeader', () => {
     const expandHeader = await findByTestId('delivery-order-expand-header');
 
     expect(expandHeader)
-      .toBeInTheDocument();
+      .toBeDefined();
   });
 
   it('click and expand', () => {
@@ -40,6 +69,6 @@ describe('DeliveryOrderExpandHeader', () => {
     );
 
     expect(getByText(/Base imponible/i))
-      .toBeInTheDocument();
+      .toBeDefined();
   });
 });
