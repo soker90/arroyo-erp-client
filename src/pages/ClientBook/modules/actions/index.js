@@ -1,2 +1,2 @@
-export * from './getClientInvoices';
-export * from './confirmClientPayment';
+export * from './getClientInvoices'
+export * from './confirmClientPayment'

@@ -1,3 +1,3 @@
 export {
-  default as useDebounce,
-} from './useDebounce';
+  default as useDebounce
+} from './useDebounce'

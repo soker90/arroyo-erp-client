@@ -1,4 +1,4 @@
 // Add string type action
-const notifications = [];
+const notifications = []
 
-export default notifications;
+export default notifications

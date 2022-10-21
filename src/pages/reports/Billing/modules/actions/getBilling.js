@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_BILLING } from '../types';
+import axios from 'axios'
+import { GET_BILLING } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getInvoicesRequest = () => ({ type: GET_BILLING.REQUEST });
+const _getInvoicesRequest = () => ({ type: GET_BILLING.REQUEST })
 
 /**
  * Success action
@@ -14,15 +14,15 @@ const _getInvoicesRequest = () => ({ type: GET_BILLING.REQUEST });
  * @private
  */
 const _getInvoicesSuccess = () => ({
-  type: GET_BILLING.SUCCESS,
-});
+  type: GET_BILLING.SUCCESS
+})
 
 const _getInvoicesSet = billing => ({
   type: GET_BILLING.SET,
   payload: {
-    billing,
-  },
-});
+    billing
+  }
+})
 
 /**
  * Error action
@@ -32,8 +32,8 @@ const _getInvoicesSet = billing => ({
  */
 const _getInvoicesError = error => ({
   type: GET_BILLING.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae la facturacion
@@ -41,14 +41,14 @@ const _getInvoicesError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getBilling = year => async dispatch => {
-  dispatch(_getInvoicesRequest());
+  dispatch(_getInvoicesRequest())
 
   try {
-    const { data } = await axios(`billings?year=${year}`);
+    const { data } = await axios(`billings?year=${year}`)
 
-    dispatch(_getInvoicesSuccess());
-    dispatch(_getInvoicesSet(data));
+    dispatch(_getInvoicesSuccess())
+    dispatch(_getInvoicesSet(data))
   } catch (error) {
-    dispatch(_getInvoicesError(error));
+    dispatch(_getInvoicesError(error))
   }
-};
+}

@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
-import { login, logout } from 'actions/auth';
-import LoginView from '../components';
+import { connect } from 'react-redux'
+import { login, logout } from 'actions/auth'
+import LoginView from '../components'
 
 const mapStateToProps = ({ auth }) => ({
-  loginError: auth?.loginError,
-});
+  loginError: auth?.loginError
+})
 
 const mapDispatchToProps = {
   login,
-  logout,
-};
+  logout
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(LoginView);
+  mapDispatchToProps
+)(LoginView)

@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   form: {
@@ -8,20 +8,20 @@ export const useStyles = makeStyles(theme => ({
     flexBasis: 700,
     [theme.breakpoints.down('md')]: {
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
+      paddingRight: theme.spacing(2)
+    }
   },
   title: {
     color: theme.palette.text.primary,
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   textField: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   signInButton: {
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(2, 0)
   },
   error: {
-    marginTop: theme.spacing(1),
-  },
-}));
+    marginTop: theme.spacing(1)
+  }
+}))

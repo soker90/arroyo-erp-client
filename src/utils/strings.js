@@ -1,1 +1,1 @@
-export const replaceCommasByDots = str => str.replace(/,/g, '.');
+export const replaceCommasByDots = str => str.replace(/,/g, '.')

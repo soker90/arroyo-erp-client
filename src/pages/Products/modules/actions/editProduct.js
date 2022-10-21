@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { EDIT_PRODUCT } from '../types';
-import { getProducts } from './getProducts';
+import axios from 'axios'
+import { EDIT_PRODUCT } from '../types'
+import { getProducts } from './getProducts'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _editProductRequest = () => ({ type: EDIT_PRODUCT.REQUEST });
+const _editProductRequest = () => ({ type: EDIT_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -18,9 +18,9 @@ const _editProductSuccess = product => ({
   type: EDIT_PRODUCT.SUCCESS,
   payload: {
     level: 'success',
-    message: `${product} actualizado`,
-  },
-});
+    message: `${product} actualizado`
+  }
+})
 
 /**
  * Error action
@@ -30,8 +30,8 @@ const _editProductSuccess = product => ({
  */
 const _editProductError = error => ({
   type: EDIT_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Confirma la factura
@@ -41,15 +41,15 @@ const _editProductError = error => ({
  * @returns {function(...[*]=)}
  */
 export const editProduct = (id, newData, callback) => async dispatch => {
-  dispatch(_editProductRequest());
+  dispatch(_editProductRequest())
 
   try {
-    await axios.put(`products/${id}`, newData);
+    await axios.put(`products/${id}`, newData)
 
-    dispatch(_editProductSuccess(newData.name));
-    dispatch(getProducts());
-    callback();
+    dispatch(_editProductSuccess(newData.name))
+    dispatch(getProducts())
+    callback()
   } catch (error) {
-    dispatch(_editProductError(error));
+    dispatch(_editProductError(error))
   }
-};
+}

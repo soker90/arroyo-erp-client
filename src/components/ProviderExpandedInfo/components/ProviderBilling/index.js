@@ -1,1 +1,1 @@
-export { default } from './ProviderBilling';
+export { default } from './ProviderBilling'

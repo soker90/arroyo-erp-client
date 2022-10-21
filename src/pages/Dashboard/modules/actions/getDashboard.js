@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_DASHBOARD_INFO } from '../types';
+import axios from 'axios'
+import { GET_DASHBOARD_INFO } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDashboardRequest = () => ({ type: GET_DASHBOARD_INFO.REQUEST });
+const _getDashboardRequest = () => ({ type: GET_DASHBOARD_INFO.REQUEST })
 
 /**
  * Success action
@@ -14,13 +14,13 @@ const _getDashboardRequest = () => ({ type: GET_DASHBOARD_INFO.REQUEST });
  * @private
  */
 const _getDashboardSuccess = () => ({
-  type: GET_DASHBOARD_INFO.SUCCESS,
-});
+  type: GET_DASHBOARD_INFO.SUCCESS
+})
 
 const _getDashboardSet = dashboard => ({
   type: GET_DASHBOARD_INFO.SET,
-  payload: dashboard,
-});
+  payload: dashboard
+})
 
 /**
  * Error action
@@ -30,22 +30,22 @@ const _getDashboardSet = dashboard => ({
  */
 const _getDashboardError = error => ({
   type: GET_DASHBOARD_INFO.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Pide los pagos pendientes de cobro
  * @returns {function(...[*]=)}
  */
 export const getDashboard = () => async dispatch => {
-  dispatch(_getDashboardRequest());
+  dispatch(_getDashboardRequest())
 
   try {
-    const { data } = await axios('dashboard');
+    const { data } = await axios('dashboard')
 
-    dispatch(_getDashboardSuccess());
-    dispatch(_getDashboardSet(data));
+    dispatch(_getDashboardSuccess())
+    dispatch(_getDashboardSet(data))
   } catch (error) {
-    dispatch(_getDashboardError(error));
+    dispatch(_getDashboardError(error))
   }
-};
+}

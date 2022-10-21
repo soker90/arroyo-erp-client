@@ -1,16 +1,16 @@
-import { connect } from 'react-redux';
-import ClientInvoice from '../components/ClientInvoice';
+import { connect } from 'react-redux'
+import ClientInvoice from '../components/ClientInvoice'
 import {
   createDeliveryOrder,
   deleteDOClientInvoice,
   getClientInvoice,
   resetClientInvoiceState,
   updateDataClientInvoice,
-  updateDOClientInvoice,
-} from '../modules/actions';
-import { getProducts } from '../../Products/modules/actions';
+  updateDOClientInvoice
+} from '../modules/actions'
+import { getProducts } from '../../Products/modules/actions'
 
-const mapStateToProps = ({ clientInvoice }) => clientInvoice;
+const mapStateToProps = ({ clientInvoice }) => clientInvoice
 
 const mapDispatchToProps = {
   getClientInvoice,
@@ -19,10 +19,10 @@ const mapDispatchToProps = {
   createDeliveryOrder,
   updateDOClientInvoice,
   deleteDOClientInvoice,
-  getProducts,
-};
+  getProducts
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(ClientInvoice);
+  mapDispatchToProps
+)(ClientInvoice)

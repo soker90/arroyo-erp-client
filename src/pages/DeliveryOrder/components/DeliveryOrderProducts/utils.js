@@ -6,4 +6,4 @@
  * @return {string}
  * @private
  */
-export const diffColor = diff => !!diff && (diff > 0 ? 'darkgreen' : 'red');
+export const diffColor = diff => !!diff && (diff > 0 ? 'darkgreen' : 'red')

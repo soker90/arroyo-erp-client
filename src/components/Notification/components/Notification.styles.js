@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(6),
-  },
-}));
+    marginTop: theme.spacing(6)
+  }
+}))

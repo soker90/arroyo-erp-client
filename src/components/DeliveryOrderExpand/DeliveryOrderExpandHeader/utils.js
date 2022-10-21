@@ -7,22 +7,22 @@
  * @returns {[{label: string, value: number}]}
  */
 export const getTotals = ({
-  taxBase, iva, re, total,
+  taxBase, iva, re, total
 }) => [
   {
     label: 'B.I.',
-    value: taxBase,
+    value: taxBase
   },
   {
     label: 'IVA',
-    value: iva,
+    value: iva
   },
   {
     label: 'R.E.',
-    value: re,
+    value: re
   },
   {
     label: 'Total',
-    value: total,
-  },
-];
+    value: total
+  }
+]

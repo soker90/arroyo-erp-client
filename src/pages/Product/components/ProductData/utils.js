@@ -1,34 +1,38 @@
-import format from 'utils/format';
-import { calcProfit } from 'utils';
+import format from 'utils/format'
+import { calcProfit } from 'utils'
 
 const profitValue = ({
   cost,
-  sale,
+  sale
 }) => format.percent(
   calcProfit({
     sale,
-    cost,
+    cost
   }),
   { maximumFractionDigits: 2 }
-);
+)
 
-const optionalRate = rate => (rate ? [{
-  title: 'Tasa',
-  value: format.euro(rate, { maximumFractionDigits: 3 }),
-},
-] : []);
+const optionalRate = rate => (rate
+  ? [{
+      title: 'Tasa',
+      value: format.euro(rate, { maximumFractionDigits: 3 })
+    }
+    ]
+  : [])
 
 const optionalProfit = ({
   cost,
-  sale,
-}) => (sale ? [{
-  title: 'Beneficio',
-  value: profitValue({
-    cost,
-    sale,
-  }),
-},
-] : []);
+  sale
+}) => (sale
+  ? [{
+      title: 'Beneficio',
+      value: profitValue({
+        cost,
+        sale
+      })
+    }
+    ]
+  : [])
 
 /**
  * @param {string} code
@@ -44,25 +48,25 @@ const generateProviderLabels = ({
   re,
   rate,
   sale,
-  cost,
+  cost
 }) => [{
   title: 'Código',
-  value: code,
+  value: code
 }, {
   title: 'IVA',
-  value: format.percent(iva),
+  value: format.percent(iva)
 }, {
   title: 'Recargo',
-  value: format.percent(re),
+  value: format.percent(re)
 }, {
   title: 'PVP',
-  value: format.euro(sale),
+  value: format.euro(sale)
 }, ...optionalRate(rate),
 ...optionalProfit({
   cost,
-  sale,
-}),
-];
+  sale
+})
+]
 /**
  * Asigna los titulos a los valores dados para generar
 
@@ -77,7 +81,7 @@ export const generateLabels = ({
 }, provider) => [
   {
     title: 'Nombre',
-    value: name,
+    value: name
   },
-  ...(provider ? generateProviderLabels(params) : []),
-];
+  ...(provider ? generateProviderLabels(params) : [])
+]

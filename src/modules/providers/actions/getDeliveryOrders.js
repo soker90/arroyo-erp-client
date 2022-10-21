@@ -1,14 +1,14 @@
-import axios from 'axios';
-import { objectToParams } from 'utils';
+import axios from 'axios'
+import { objectToParams } from 'utils'
 
-import { GET_DELIVERY_ORDERS } from '../types';
+import { GET_DELIVERY_ORDERS } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrdersRequest = () => ({ type: GET_DELIVERY_ORDERS.REQUEST });
+const _getDeliveryOrdersRequest = () => ({ type: GET_DELIVERY_ORDERS.REQUEST })
 
 /**
  * Success action
@@ -16,8 +16,8 @@ const _getDeliveryOrdersRequest = () => ({ type: GET_DELIVERY_ORDERS.REQUEST });
  * @private
  */
 const _getDeliveryOrdersSuccess = () => ({
-  type: GET_DELIVERY_ORDERS.SUCCESS,
-});
+  type: GET_DELIVERY_ORDERS.SUCCESS
+})
 
 /**
  * Set delivery orders
@@ -29,9 +29,9 @@ const _getDeliveryOrdersSet = ({ free, inInvoices }) => ({
   type: GET_DELIVERY_ORDERS.SET,
   payload: {
     deliveryOrdersFree: free,
-    deliveryOrdersInInvoices: inInvoices,
-  },
-});
+    deliveryOrdersInInvoices: inInvoices
+  }
+})
 
 /**
  * Error action
@@ -41,8 +41,8 @@ const _getDeliveryOrdersSet = ({ free, inInvoices }) => ({
  */
 const _getDeliveryOrdersError = error => ({
   type: GET_DELIVERY_ORDERS.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae los albaranes
@@ -50,14 +50,14 @@ const _getDeliveryOrdersError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getDeliveryOrders = filter => async dispatch => {
-  dispatch(_getDeliveryOrdersRequest());
+  dispatch(_getDeliveryOrdersRequest())
 
   try {
-    const { data } = await axios(`deliveryorders${objectToParams(filter)}`);
+    const { data } = await axios(`deliveryorders${objectToParams(filter)}`)
 
-    dispatch(_getDeliveryOrdersSuccess());
-    dispatch(_getDeliveryOrdersSet(data));
+    dispatch(_getDeliveryOrdersSuccess())
+    dispatch(_getDeliveryOrdersSet(data))
   } catch (error) {
-    dispatch(_getDeliveryOrdersError(error));
+    dispatch(_getDeliveryOrdersError(error))
   }
-};
+}

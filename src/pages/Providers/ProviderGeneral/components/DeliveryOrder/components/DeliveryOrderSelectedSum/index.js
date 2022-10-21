@@ -1,1 +1,1 @@
-export { default } from './DeliveryOrderSelectedSum';
+export { default } from './DeliveryOrderSelectedSum'

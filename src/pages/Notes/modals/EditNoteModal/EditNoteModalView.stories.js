@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import DatePickerProvider from 'contexts/DatePickerProvider';
-import { story as EditNoteModalView } from './EditNoteModalView';
+import DatePickerProvider from 'contexts/DatePickerProvider'
+import { story as EditNoteModalView } from './EditNoteModalView'
 
 const NOTE = {
   _id: 'ddddddddddd',
@@ -11,17 +11,17 @@ const NOTE = {
   quantity: '12.33',
   price: '22.3',
   amount: '1.2',
-  clarification: 'Observaciones',
-};
+  clarification: 'Observaciones'
+}
 
 export default {
   title: 'Rutas/Notas/Modales/Editar',
   parameters: {
     component: EditNoteModalView,
-    componentSubtitle: 'Modal para editar notas',
+    componentSubtitle: 'Modal para editar notas'
   },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>],
-};
+  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+}
 
 const NoteEdit = () => (
   <EditNoteModalView
@@ -30,8 +30,8 @@ const NoteEdit = () => (
     editNote={action('editNote')}
     note={NOTE}
   />
-);
+)
 
-NoteEdit.storyName = 'Edit';
+NoteEdit.storyName = 'Edit'
 
-export { NoteEdit };
+export { NoteEdit }

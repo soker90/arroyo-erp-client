@@ -1,3 +1,3 @@
-import { RESET_DELIVERY_ORDER } from '../types';
+import { RESET_DELIVERY_ORDER } from '../types'
 
-export const resetDeliveryOrder = () => ({ type: RESET_DELIVERY_ORDER });
+export const resetDeliveryOrder = () => ({ type: RESET_DELIVERY_ORDER })

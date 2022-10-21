@@ -1,3 +1,19 @@
+# [] - xx/10/2022
+  - Migración de CRA a vite y vitest
+
+# [2.6.3] - 10/10/2022
+  - Corregida errata de "Basuras semestre"
+
+# [2.6.2] - 05/10/2022
+  - Corregido que al confirmar un pago, si se ha introducido previamente un talón en otra confirmación, aparece, en vez de verse vacío.
+
+# [2.6.1] - 29/09/2022
+  - Cambar de orden el botón de descargar productos
+  - Corregido nombre de proveedor al descargar productos
+
+# [2.6.0] - 28/09/2022
+  - Nuevo botón para descargar el listado de productos de un proveedor con su precio y beneficio
+
 # [2.5.1] - 20/08/2022
   - Cambiada imagen de la pantalla de iniciar sesión
   

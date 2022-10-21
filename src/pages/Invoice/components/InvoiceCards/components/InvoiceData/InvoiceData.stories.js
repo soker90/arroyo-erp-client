@@ -1,9 +1,7 @@
-import { action } from '@storybook/addon-actions';
-
-import DatePickerProvider from 'contexts/DatePickerProvider';
-import RoutesWrapper from 'story/RoutesWrapper';
-import { story as InvoiceData } from './InvoiceData';
-import { ReduxProvider } from 'story';
+import DatePickerProvider from 'contexts/DatePickerProvider'
+import RoutesWrapper from 'story/RoutesWrapper'
+import { story as InvoiceData } from './InvoiceData'
+import { ReduxProvider } from 'story'
 
 export default {
   title: 'Rutas/Factura/Datos',
@@ -21,7 +19,7 @@ export default {
     </ReduxProvider>
   )
   ]
-};
+}
 
 /**
  * code, productName, quantity, price, amount, diff
@@ -32,15 +30,15 @@ const InvoiceDataStory = () => (
     dateRegister={1609802700330}
     dateInvoice={1609802700330}
     nInvoice='2020/12'
-    nOrder="12"
+    nOrder='12'
     className='clase'
-    isEditable={true}
+    isEditable
     concept='Concepto de la factura'
     id='2222'
     mailSend={false}
   />
-);
+)
 
-InvoiceDataStory.storyName = 'Datos';
+InvoiceDataStory.storyName = 'Datos'
 
-export { InvoiceDataStory };
+export { InvoiceDataStory }

@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import Expenses from '../components/Expenses';
-import { getProviders } from '../modules/actions';
+import Expenses from '../components/Expenses'
+import { getProviders } from '../modules/actions'
 
 const mapStateToProps = ({ expenses: { providers } }) => ({
-  providers,
-});
+  providers
+})
 
 const mapDispatchToProps = {
-  getProviders,
-};
+  getProviders
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Expenses);
+  mapDispatchToProps
+)(Expenses)

@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { createProvider } from 'modules/providers/actions';
-import NewProviderModalView from './NewProviderModalView';
+import { createProvider } from 'modules/providers/actions'
+import NewProviderModalView from './NewProviderModalView'
 
 const mapDispatchToProps = {
-  createProvider,
-};
+  createProvider
+}
 
 export default connect(
   null,
   mapDispatchToProps
-)(NewProviderModalView);
+)(NewProviderModalView)

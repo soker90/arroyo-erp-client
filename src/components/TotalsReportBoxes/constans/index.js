@@ -1,23 +1,23 @@
 export const TOTALS_BOXES = [
   {
     title: '1º Trimestre',
-    value: '1',
+    value: '1'
   },
   {
     title: '2º Trimestre',
-    value: '2',
+    value: '2'
   },
   {
     title: '3º Trimestre',
-    value: '3',
+    value: '3'
   },
   {
     title: '4º Trimestre',
-    value: '4',
+    value: '4'
   },
   {
     title: 'Anual',
     value: 'total',
-    size: 4,
-  },
-];
+    size: 4
+  }
+]

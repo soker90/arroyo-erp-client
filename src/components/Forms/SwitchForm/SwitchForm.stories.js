@@ -1,14 +1,14 @@
-import { number, select, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { number, select, text } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import { story as SelectForm } from './SwitchForm';
+import { story as SelectForm } from './SwitchForm'
 
 export default {
   title: 'Formularios/Select',
   parameters: {
-    component: SelectForm,
-  },
-};
+    component: SelectForm
+  }
+}
 
 const Select = () => (
   <SelectForm
@@ -20,8 +20,8 @@ const Select = () => (
     <option value={0}>Opción 1</option>
     <option value={1}>Opción 2</option>
   </SelectForm>
-);
+)
 
-Select.storyName = 'Select';
+Select.storyName = 'Select'
 
-export { Select };
+export { Select }

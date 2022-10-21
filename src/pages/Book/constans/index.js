@@ -4,25 +4,25 @@ export const INITIAL_STATE = {
   dateInvoice: null,
   nInvoice: '',
   nameProvider: '',
-  expenses: false,
-};
+  expenses: false
+}
 
 export const fields = [
   {
     id: 'nInvoice',
-    label: 'Nº Factura',
+    label: 'Nº Factura'
   },
   {
     id: 'total',
     label: 'Cantidad',
-    options: { type: 'number' },
+    options: { type: 'number' }
   },
   {
     id: 'numCheque',
-    label: 'Pagaré',
+    label: 'Pagaré'
   },
   {
     id: 'nameProvider',
-    label: 'Proveedor',
-  },
-];
+    label: 'Proveedor'
+  }
+]

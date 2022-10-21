@@ -1,48 +1,48 @@
 export const adapterProviderInfo = ({
-  name, address, city, postalCode, province, phone, email, businessName, cif, note, hasCanal,
+  name, address, city, postalCode, province, phone, email, businessName, cif, note, hasCanal
 }) => [
   {
     label: 'Nombre',
-    value: name,
+    value: name
   },
   {
     label: 'Razón social',
-    value: businessName,
+    value: businessName
   },
   {
     label: 'CIF/NIF',
-    value: cif,
+    value: cif
   },
   {
     label: 'Dirección',
-    value: address,
+    value: address
   },
   {
     label: 'Localidad',
-    value: city,
+    value: city
   },
   {
     label: 'Código postal',
-    value: postalCode,
+    value: postalCode
   },
   {
     label: 'Provincia',
-    value: province,
+    value: province
   },
   {
     label: 'Teléfono',
-    value: phone,
+    value: phone
   },
   {
     label: 'Correo electrónico',
-    value: email,
+    value: email
   },
   {
     label: 'Nota',
-    value: note,
+    value: note
   },
   {
     label: 'Tiene canal',
-    value: hasCanal ? 'Sí' : 'No',
-  },
-];
+    value: hasCanal ? 'Sí' : 'No'
+  }
+]

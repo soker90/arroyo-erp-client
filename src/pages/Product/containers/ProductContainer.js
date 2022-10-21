@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
-import Product from '../components/Product';
-import { getLastDeliveryOrder, getProduct } from '../modules/actions';
+import { connect } from 'react-redux'
+import Product from '../components/Product'
+import { getLastDeliveryOrder, getProduct } from '../modules/actions'
 
 const mapStateToProps = ({ product }) => ({
-  ...product,
-});
+  ...product
+})
 
 const mapDispatchToProps = {
   getProduct,
-  getLastDeliveryOrder,
-};
+  getLastDeliveryOrder
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Product);
+  mapDispatchToProps
+)(Product)

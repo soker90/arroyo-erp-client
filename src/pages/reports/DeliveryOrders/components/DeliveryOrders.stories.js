@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import RoutesWrapper from 'story/RoutesWrapper';
-import { ReduxProvider } from 'story';
-import { story as DeliveryOrders } from './DeliveryOrders';
+import RoutesWrapper from 'story/RoutesWrapper'
+import { ReduxProvider } from 'story'
+import { story as DeliveryOrders } from './DeliveryOrders'
 
 export default {
   title: 'Rutas/Informes/Albaranes',
   parameters: {
     component: DeliveryOrders,
-    componentSubtitle: 'Vista',
+    componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
     <ReduxProvider>
@@ -16,9 +16,9 @@ export default {
         {storyFn()}
       </RoutesWrapper>
     </ReduxProvider>
-  ),
-  ],
-};
+  )
+  ]
+}
 
 const DeliveryOrdersStory = () => (
   <DeliveryOrders
@@ -29,12 +29,12 @@ const DeliveryOrdersStory = () => (
       2: 2,
       3: 2,
       4: 1,
-      total: 6,
+      total: 6
     }]}
     getDeliveryOrderCount={action('getDeliveryOrderCount')}
   />
-);
+)
 
-DeliveryOrdersStory.storyName = 'Vista';
+DeliveryOrdersStory.storyName = 'Vista'
 
-export { DeliveryOrdersStory };
+export { DeliveryOrdersStory }

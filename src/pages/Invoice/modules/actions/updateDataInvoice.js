@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { UPDATE_DATA } from '../types';
+import axios from 'axios'
+import { UPDATE_DATA } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _updateDataInvoiceRequest = () => ({ type: UPDATE_DATA.REQUEST });
+const _updateDataInvoiceRequest = () => ({ type: UPDATE_DATA.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _updateDataInvoiceSuccess = () => ({
   type: UPDATE_DATA.SUCCESS,
   payload: {
     level: 'success',
-    message: 'La factura se ha actualizado correctamente',
-  },
-});
+    message: 'La factura se ha actualizado correctamente'
+  }
+})
 
 /**
  * Set action
@@ -32,15 +32,15 @@ const _updateDataInvoiceSuccess = () => ({
 const _updateDataInvoiceSet = ({
   data,
   totals,
-  payment,
+  payment
 }) => ({
   type: UPDATE_DATA.SET,
   payload: {
     ...(data && { data }),
     ...(totals && { totals }),
-    ...(payment && { payment }),
-  },
-});
+    ...(payment && { payment })
+  }
+})
 
 /**
  * Error action
@@ -50,8 +50,8 @@ const _updateDataInvoiceSet = ({
  */
 const _updateDataInvoiceError = error => ({
   type: UPDATE_DATA.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Confirma la factura
@@ -61,15 +61,15 @@ const _updateDataInvoiceError = error => ({
  * @returns {function(...[*]=)}
  */
 export const updateDataInvoice = (id, newData, callback) => async dispatch => {
-  dispatch(_updateDataInvoiceRequest());
+  dispatch(_updateDataInvoiceRequest())
 
   try {
-    const { data } = await axios.patch(`invoices/${id}`, newData);
+    const { data } = await axios.patch(`invoices/${id}`, newData)
 
-    dispatch(_updateDataInvoiceSuccess());
-    dispatch(_updateDataInvoiceSet(data));
-    callback();
+    dispatch(_updateDataInvoiceSuccess())
+    dispatch(_updateDataInvoiceSet(data))
+    callback()
   } catch (error) {
-    dispatch(_updateDataInvoiceError(error));
+    dispatch(_updateDataInvoiceError(error))
   }
-};
+}

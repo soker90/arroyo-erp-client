@@ -1,1 +1,1 @@
-export * from './isInvoiceEditable';
+export * from './isInvoiceEditable'

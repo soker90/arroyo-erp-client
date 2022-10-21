@@ -1,6 +1,6 @@
-import { action } from '@storybook/addon-actions';
-import { story as DeliveryOrderProducts } from './DeliveryOrderProducts';
-import RoutesWrapper from '../../../../story/RoutesWrapper';
+import { action } from '@storybook/addon-actions'
+import { story as DeliveryOrderProducts } from './DeliveryOrderProducts'
+import RoutesWrapper from '../../../../story/RoutesWrapper'
 
 export default {
   title: 'Rutas/Albarán/Productos',
@@ -14,7 +14,7 @@ export default {
     </RoutesWrapper>
   )
   ]
-};
+}
 
 const DeliveryOrderProductsStory = () => (
   <DeliveryOrderProducts
@@ -47,11 +47,11 @@ const DeliveryOrderProductsStory = () => (
     updatePrice={action('updatePrice')}
     showEditProductModal={action('showEditProductModal')}
     showDeleteProductModal={action('showDeleteProductModal')}
-    isEditable={true}
+    isEditable
     hasCanal={false}
   />
-);
+)
 
-DeliveryOrderProductsStory.storyName = 'Productos';
+DeliveryOrderProductsStory.storyName = 'Productos'
 
-export { DeliveryOrderProductsStory };
+export { DeliveryOrderProductsStory }

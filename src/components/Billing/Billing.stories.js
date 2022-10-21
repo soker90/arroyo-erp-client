@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import RoutesWrapper from 'story/RoutesWrapper';
-import { ReduxProvider } from 'story';
-import { story as Billing } from './Billing';
+import RoutesWrapper from 'story/RoutesWrapper'
+import { ReduxProvider } from 'story'
+import { story as Billing } from './Billing'
 
 export default {
   title: 'Rutas/Facturación',
   parameters: {
     component: Billing,
-    componentSubtitle: 'Vista',
+    componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
     <ReduxProvider>
@@ -16,9 +16,9 @@ export default {
         {storyFn()}
       </RoutesWrapper>
     </ReduxProvider>
-  ),
-  ],
-};
+  )
+  ]
+}
 
 /**
  * code, productName, quantity, price, amount, diff
@@ -37,12 +37,12 @@ const BookStory = () => (
       invoices1: 4,
       invoices2: 7,
       invoices3: 1,
-      invoices4: 2,
+      invoices4: 2
     }]}
     getBilling={action('getBilling')}
   />
-);
+)
 
-BookStory.storyName = 'Vista';
+BookStory.storyName = 'Vista'
 
-export { BookStory };
+export { BookStory }

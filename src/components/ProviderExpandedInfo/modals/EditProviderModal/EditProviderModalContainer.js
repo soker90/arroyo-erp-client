@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { editProvider } from 'modules/providers/actions';
-import EditProviderModalView from './EditProviderModalView';
+import { editProvider } from 'modules/providers/actions'
+import EditProviderModalView from './EditProviderModalView'
 
 const mapDispatchToProps = {
-  editProvider,
-};
+  editProvider
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(EditProviderModalView);
+  mapDispatchToProps
+)(EditProviderModalView)

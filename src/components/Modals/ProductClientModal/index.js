@@ -1,2 +1,2 @@
-export { default } from './ProductClientModal';
-export * from './constants';
+export { default } from './ProductClientModal'
+export * from './constants'

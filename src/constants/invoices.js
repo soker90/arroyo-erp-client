@@ -3,7 +3,7 @@ export const CONCEPT = {
   DEV: 'Dev. mercaderías',
   ABONO: 'Abono',
   ALQUILER: 'Alquiler',
-  BASURA: 'Basura semesetre',
+  BASURA: 'Basura semestre',
   DESINF: 'Desinsectación-Desratización',
   LUZ: 'Luz',
   AGUA: 'Agua',
@@ -23,25 +23,25 @@ export const CONCEPT = {
   S_ACCIDENTES: 'Seguro de accidentes',
   S_FURGONET: 'Seguro de furgoneta',
   S_LOCAL: 'Seguro local',
-  S_TIENDA: 'Seguro tienda',
-};
+  S_TIENDA: 'Seguro tienda'
+}
 
-export const TALON_PAYMENT = 'Talón';
-export const CASH_PAYMENT = 'Efectivo';
+export const TALON_PAYMENT = 'Talón'
+export const CASH_PAYMENT = 'Efectivo'
 
 export const TYPE_PAYMENT = [
-  '?', CASH_PAYMENT, TALON_PAYMENT, 'Giro', 'c/c', 'Abono', 'Transferencia', 'Tarjeta', 'Contra rembolso',
-];
+  '?', CASH_PAYMENT, TALON_PAYMENT, 'Giro', 'c/c', 'Abono', 'Transferencia', 'Tarjeta', 'Contra rembolso'
+]
 
 export const TYPE_CLIENT_PAYMENT = [
-  '?', CASH_PAYMENT, TALON_PAYMENT, 'Transferencia', 'Tarjeta',
-];
+  '?', CASH_PAYMENT, TALON_PAYMENT, 'Transferencia', 'Tarjeta'
+]
 
 export const INVOICE_COMMON_CONCEPTS = [
   CONCEPT.COMPRAS,
   CONCEPT.DEV,
-  CONCEPT.ABONO,
-];
+  CONCEPT.ABONO
+]
 
 export const EXPENSE_CONCEPTS = [
   ' ',
@@ -67,8 +67,8 @@ export const EXPENSE_CONCEPTS = [
   CONCEPT.S_ACCIDENTES,
   CONCEPT.S_FURGONET,
   CONCEPT.S_LOCAL,
-  CONCEPT.S_TIENDA,
-];
+  CONCEPT.S_TIENDA
+]
 
 export const COLUMNS_INVOICES = {
   '--- SELECCIONAR ---': ' ',
@@ -81,5 +81,5 @@ export const COLUMNS_INVOICES = {
   TRIBUTOS: 'TRIBUTOS',
   REPARACION: 'REPARACION',
   SEGUROS: 'SEGUROS',
-  OTROS: 'OTROS',
-};
+  OTROS: 'OTROS'
+}

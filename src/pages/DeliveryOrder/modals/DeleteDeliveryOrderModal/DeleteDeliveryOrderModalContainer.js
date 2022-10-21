@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { deleteDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import DeleteDeliveryOrderModal from './DeleteDeliveryOrderModal';
+import { deleteDeliveryOrder } from 'pages/DeliveryOrder/modules/actions'
+import DeleteDeliveryOrderModal from './DeleteDeliveryOrderModal'
 
-const mapStateToProps = ({ deliveryOrders: { provider } }) => ({ providerId: provider });
+const mapStateToProps = ({ deliveryOrders: { provider } }) => ({ providerId: provider })
 const mapDispatchToProps = {
-  deleteDeliveryOrder,
-};
+  deleteDeliveryOrder
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(DeleteDeliveryOrderModal);
+  mapDispatchToProps
+)(DeleteDeliveryOrderModal)

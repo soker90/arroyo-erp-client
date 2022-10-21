@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { GET_INVOICES_BY_PROVIDER } from '../types';
-import { objectToParams } from '../../../utils';
+import axios from 'axios'
+import { GET_INVOICES_BY_PROVIDER } from '../types'
+import { objectToParams } from '../../../utils'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getInvoicesByProviderRequest = () => ({ type: GET_INVOICES_BY_PROVIDER.REQUEST });
+const _getInvoicesByProviderRequest = () => ({ type: GET_INVOICES_BY_PROVIDER.REQUEST })
 
 /**
  * Success action
@@ -15,8 +15,8 @@ const _getInvoicesByProviderRequest = () => ({ type: GET_INVOICES_BY_PROVIDER.RE
  * @private
  */
 const _getInvoicesByProviderSuccess = () => ({
-  type: GET_INVOICES_BY_PROVIDER.SUCCESS,
-});
+  type: GET_INVOICES_BY_PROVIDER.SUCCESS
+})
 
 /**
  * Set action
@@ -29,9 +29,9 @@ const _getInvoicesByProviderSet = ({ invoices, count }) => ({
   type: GET_INVOICES_BY_PROVIDER.SET,
   payload: {
     invoices,
-    invoicesCount: count,
-  },
-});
+    invoicesCount: count
+  }
+})
 
 /**
  * Error action for getInitData
@@ -41,8 +41,8 @@ const _getInvoicesByProviderSet = ({ invoices, count }) => ({
  */
 const _getInvoicesByProviderError = error => ({
   type: GET_INVOICES_BY_PROVIDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae las facturas de los proveedores
@@ -50,15 +50,15 @@ const _getInvoicesByProviderError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getInvoicesByProvider = filters => async dispatch => {
-  dispatch(_getInvoicesByProviderRequest());
+  dispatch(_getInvoicesByProviderRequest())
 
   try {
-    const { data } = await axios(`invoices/short${objectToParams(filters)}`);
+    const { data } = await axios(`invoices/short${objectToParams(filters)}`)
 
-    dispatch(_getInvoicesByProviderSuccess());
-    dispatch(_getInvoicesByProviderSet(data));
+    dispatch(_getInvoicesByProviderSuccess())
+    dispatch(_getInvoicesByProviderSet(data))
   } catch (error) {
-    console.error(error);
-    dispatch(_getInvoicesByProviderError(error));
+    console.error(error)
+    dispatch(_getInvoicesByProviderError(error))
   }
-};
+}

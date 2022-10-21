@@ -1,19 +1,20 @@
 import {
-  boolean, date, number, text,
-} from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import 'moment/locale/es';
+  boolean, date, number, text
+} from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
+import 'moment/locale/es'
 
-import { story as DatePickerForm } from './DatePickerForm';
+import { story as DatePickerForm } from './DatePickerForm'
+import { DatePickerProvider } from '../../../story'
 
 export default {
   title: 'Formularios/DatePicker',
   parameters: {
     component: DatePickerForm,
-    componentSubtitle: 'Selector de fecha',
+    componentSubtitle: 'Selector de fecha'
   },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>],
-};
+  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+}
 
 const Generic = () => (
   <DatePickerForm
@@ -23,9 +24,9 @@ const Generic = () => (
     value={date('Fecha', new Date(1609428038070))}
     onChange={action('Fecha cambiada')}
   />
-);
+)
 
-Generic.storyName = 'DatePicker';
+Generic.storyName = 'DatePicker'
 
 const DatePickerClear = () => (
   <DatePickerForm
@@ -35,8 +36,8 @@ const DatePickerClear = () => (
     value={date('Fecha', new Date(1609428038070))}
     onChange={action('Fecha cambiada')}
   />
-);
+)
 
-DatePickerClear.storyName = 'Con botón de limpiar';
+DatePickerClear.storyName = 'Con botón de limpiar'
 
-export { Generic, DatePickerClear };
+export { Generic, DatePickerClear }

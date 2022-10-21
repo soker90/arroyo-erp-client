@@ -1,1 +1,1 @@
-export * from './getDeliveryOrderCount';
+export * from './getDeliveryOrderCount'

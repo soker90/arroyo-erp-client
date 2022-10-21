@@ -1,1 +1,1 @@
-export { default } from './containers/DeliveryOrdersContainer';
+export { default } from './containers/DeliveryOrdersContainer'

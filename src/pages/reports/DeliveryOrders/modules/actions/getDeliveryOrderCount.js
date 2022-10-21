@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_DO_COUNT } from '../types';
+import axios from 'axios'
+import { GET_DO_COUNT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrderCountRequest = () => ({ type: GET_DO_COUNT.REQUEST });
+const _getDeliveryOrderCountRequest = () => ({ type: GET_DO_COUNT.REQUEST })
 
 /**
  * Success action
@@ -14,15 +14,15 @@ const _getDeliveryOrderCountRequest = () => ({ type: GET_DO_COUNT.REQUEST });
  * @private
  */
 const _getDeliveryOrderCountSuccess = () => ({
-  type: GET_DO_COUNT.SUCCESS,
-});
+  type: GET_DO_COUNT.SUCCESS
+})
 
 const _getDeliveryOrderCountSet = doCount => ({
   type: GET_DO_COUNT.SET,
   payload: {
-    doCount,
-  },
-});
+    doCount
+  }
+})
 
 /**
  * Error action
@@ -32,8 +32,8 @@ const _getDeliveryOrderCountSet = doCount => ({
  */
 const _getDeliveryOrderCountError = error => ({
   type: GET_DO_COUNT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae la cuenta de albaranes sin factura
@@ -41,14 +41,14 @@ const _getDeliveryOrderCountError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getDeliveryOrderCount = year => async dispatch => {
-  dispatch(_getDeliveryOrderCountRequest());
+  dispatch(_getDeliveryOrderCountRequest())
 
   try {
-    const { data } = await axios(`deliveryorders/countfree/${year}`);
+    const { data } = await axios(`deliveryorders/countfree/${year}`)
 
-    dispatch(_getDeliveryOrderCountSuccess());
-    dispatch(_getDeliveryOrderCountSet(data));
+    dispatch(_getDeliveryOrderCountSuccess())
+    dispatch(_getDeliveryOrderCountSet(data))
   } catch (error) {
-    dispatch(_getDeliveryOrderCountError(error));
+    dispatch(_getDeliveryOrderCountError(error))
   }
-};
+}

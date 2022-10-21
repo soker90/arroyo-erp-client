@@ -1,2 +1,2 @@
-export * from './create-reducer';
-export * from './setPayload';
+export * from './create-reducer'
+export * from './setPayload'

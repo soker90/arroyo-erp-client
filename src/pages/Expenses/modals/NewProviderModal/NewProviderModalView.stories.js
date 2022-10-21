@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { story as NewProviderModal } from './NewProviderModalView';
+import { story as NewProviderModal } from './NewProviderModalView'
 
 export default {
   title: 'Rutas/Gastos/Modales/Nuevo',
   parameters: {
     component: NewProviderModal,
-    componentSubtitle: 'Modal para crear o editar un preveedor',
-  },
-};
+    componentSubtitle: 'Modal para crear o editar un preveedor'
+  }
+}
 
 const ProviderNew = () => (
   <NewProviderModal
@@ -18,9 +18,9 @@ const ProviderNew = () => (
     idProvider='888883h339'
     provider={false}
   />
-);
+)
 
-ProviderNew.storyName = 'Crear';
+ProviderNew.storyName = 'Crear'
 
 const ProviderEdit = () => (
   <NewProviderModal
@@ -34,11 +34,11 @@ const ProviderEdit = () => (
       phone: '66677766677',
       email: 'email@email.com',
       businessName: 'Email SL',
-      cif: 'B5555552',
+      cif: 'B5555552'
     }}
   />
-);
+)
 
-ProviderEdit.storyName = 'Editar';
+ProviderEdit.storyName = 'Editar'
 
-export { ProviderNew, ProviderEdit };
+export { ProviderNew, ProviderEdit }

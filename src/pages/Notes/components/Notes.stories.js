@@ -1,9 +1,9 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import RoutesWrapper from 'story/RoutesWrapper';
-import { ReduxProvider } from 'story';
-import DatePickerProvider from 'contexts/DatePickerProvider';
-import { story as Notes } from './Notes';
+import RoutesWrapper from 'story/RoutesWrapper'
+import { ReduxProvider } from 'story'
+import DatePickerProvider from 'contexts/DatePickerProvider'
+import { story as Notes } from './Notes'
 
 const NOTES = [
   {
@@ -13,7 +13,7 @@ const NOTES = [
     quantity: '22€',
     price: '33€',
     amount: '88€',
-    clarification: 'Una observación',
+    clarification: 'Una observación'
   },
   {
     _id: 'unIDDD1',
@@ -22,7 +22,7 @@ const NOTES = [
     quantity: '22€',
     price: '33€',
     amount: '88€',
-    clarification: 'Una observación',
+    clarification: 'Una observación'
   }, {
     _id: 'unIDDD2',
     date: 1609802700330,
@@ -30,15 +30,15 @@ const NOTES = [
     quantity: '22€',
     price: '33€',
     amount: '88€',
-    clarification: 'Una observación',
-  },
-];
+    clarification: 'Una observación'
+  }
+]
 
 export default {
   title: 'Rutas/Notas',
   parameters: {
     component: Notes,
-    componentSubtitle: 'Vista',
+    componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
     <DatePickerProvider>
@@ -48,17 +48,17 @@ export default {
         </RoutesWrapper>
       </ReduxProvider>
     </DatePickerProvider>
-  ),
-  ],
-};
+  )
+  ]
+}
 
 const NotesStory = () => (
   <Notes
     notes={NOTES}
     getNotes={action('getNotes')}
   />
-);
+)
 
-NotesStory.storyName = 'Vista';
+NotesStory.storyName = 'Vista'
 
-export { NotesStory };
+export { NotesStory }

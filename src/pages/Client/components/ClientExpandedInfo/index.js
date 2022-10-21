@@ -1,1 +1,1 @@
-export { default } from './ClientExpandedInfo';
+export { default } from './ClientExpandedInfo'

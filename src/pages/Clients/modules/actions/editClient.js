@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { EDIT_CLIENT } from '../types';
-import { getClient } from './getClient';
+import axios from 'axios'
+import { EDIT_CLIENT } from '../types'
+import { getClient } from './getClient'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _editProviderRequest = () => ({ type: EDIT_CLIENT.REQUEST });
+const _editProviderRequest = () => ({ type: EDIT_CLIENT.REQUEST })
 
 /**
  * Success action
@@ -19,9 +19,9 @@ const _editProviderSuccess = name => ({
   type: EDIT_CLIENT.SUCCESS,
   payload: {
     level: 'success',
-    message: `${name} ha sido actualizado`,
-  },
-});
+    message: `${name} ha sido actualizado`
+  }
+})
 
 /**
  * Error action
@@ -31,8 +31,8 @@ const _editProviderSuccess = name => ({
  */
 const _editProviderError = error => ({
   type: EDIT_CLIENT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Editar cliente
@@ -41,16 +41,16 @@ const _editProviderError = error => ({
  * @param {function} callback
  */
 export const editClient = (id, data, callback) => async dispatch => {
-  dispatch(_editProviderRequest());
+  dispatch(_editProviderRequest())
 
   try {
-    await axios.put(`clients/${id}`, data);
+    await axios.put(`clients/${id}`, data)
 
-    dispatch(_editProviderSuccess(data.name));
+    dispatch(_editProviderSuccess(data.name))
     // eslint-disable-next-line no-unused-expressions
-    callback?.();
-    dispatch(getClient(id));
+    callback?.()
+    dispatch(getClient(id))
   } catch (error) {
-    dispatch(_editProviderError(error));
+    dispatch(_editProviderError(error))
   }
-};
+}

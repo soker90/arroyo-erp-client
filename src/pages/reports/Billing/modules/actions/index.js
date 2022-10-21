@@ -1,1 +1,1 @@
-export * from './getBilling';
+export * from './getBilling'

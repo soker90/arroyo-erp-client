@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_NOTE } from '../types';
+import axios from 'axios'
+import { DELETE_NOTE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteNoteRequest = () => ({ type: DELETE_NOTE.REQUEST });
+const _deleteNoteRequest = () => ({ type: DELETE_NOTE.REQUEST })
 
 /**
  * Success action
@@ -17,16 +17,16 @@ const _deleteNoteSuccess = () => ({
   type: DELETE_NOTE.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Nota borrada',
-  },
-});
+    message: 'Nota borrada'
+  }
+})
 
 const _deleteNoteSet = ({ data }) => ({
   type: DELETE_NOTE.SET,
   payload: {
-    notes: data,
-  },
-});
+    notes: data
+  }
+})
 
 /**
  * Error action
@@ -36,8 +36,8 @@ const _deleteNoteSet = ({ data }) => ({
  */
 const _deleteNoteError = error => ({
   type: DELETE_NOTE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea una nota
@@ -46,15 +46,15 @@ const _deleteNoteError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteNote = (id, callback) => async dispatch => {
-  dispatch(_deleteNoteRequest());
+  dispatch(_deleteNoteRequest())
 
   try {
-    const response = await axios.delete(`notes/${id}`);
+    const response = await axios.delete(`notes/${id}`)
 
-    dispatch(_deleteNoteSuccess());
-    dispatch(_deleteNoteSet(response));
-    callback();
+    dispatch(_deleteNoteSuccess())
+    dispatch(_deleteNoteSet(response))
+    callback()
   } catch (error) {
-    dispatch(_deleteNoteError(error));
+    dispatch(_deleteNoteError(error))
   }
-};
+}
