@@ -14,9 +14,12 @@ import ScrollReset from 'components/ScrollReset';
 import useSettings from 'hooks/useSettings';
 import { createTheme } from 'theme';
 import RootStyles from 'theme/RootStyles';
-import Routes from 'Routes';
+import Routes from './Routes';
 import './utils/axios';
 import LoadingScreen from 'components/LoadingScreen';
+import { APP_VERSION } from './config';
+
+console.log(APP_VERSION)
 
 const App = () => {
   const { settings } = useSettings();

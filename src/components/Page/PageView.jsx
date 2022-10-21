@@ -1,13 +1,20 @@
 import { forwardRef, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import { APP_VERSION } from 'config';
 
-const { REACT_APP_VERSION, REACT_APP_ENV_NAME } = process.env;
+const {
+  VITE_ENV_NAME,
+} = import.meta.env;
 
-const PageView = forwardRef(({ title, children, ...rest }, ref) => {
+const PageView = forwardRef(({
+  title,
+  children,
+  ...rest
+}, ref) => {
   const composeTile = useMemo(() => {
-    const env = REACT_APP_ENV_NAME ? `[${REACT_APP_ENV_NAME}] ` : '';
-    return `${env}${title} - Arroyo v${REACT_APP_VERSION}`;
+    const env = VITE_ENV_NAME ? `[${VITE_ENV_NAME}] ` : '';
+    return `${env}${title} - Arroyo v${APP_VERSION}`;
   }, [title]);
 
   return (
