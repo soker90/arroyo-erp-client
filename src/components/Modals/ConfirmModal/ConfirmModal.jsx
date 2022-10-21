@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { Grid, Typography } from '@mui/material';
-import { ModalGrid } from '../index';
+import PropTypes from 'prop-types'
+import { Grid, Typography } from '@mui/material'
+import { ModalGrid } from '../index'
 
 const ConfirmModal = ({ description, ...props }) => (
   <ModalGrid {...props}>
@@ -14,16 +14,16 @@ const ConfirmModal = ({ description, ...props }) => (
       </Typography>
     </Grid>
   </ModalGrid>
-);
+)
 
 ConfirmModal.propTypes = {
   close: PropTypes.func,
   show: PropTypes.bool,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  action: PropTypes.func.isRequired,
-};
+  action: PropTypes.func.isRequired
+}
 
-ConfirmModal.displayName = 'ConfirmModal';
+ConfirmModal.displayName = 'ConfirmModal'
 
-export default ConfirmModal;
+export default ConfirmModal

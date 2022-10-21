@@ -1,6 +1,6 @@
-import { ThemeProvider, StyledEngineProvider } from '@mui/material';
-import { createTheme } from 'theme';
-import { THEMES } from '../constants/common';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material'
+import { createTheme } from 'theme'
+import { THEMES } from '../constants/common'
 
 /**
  * Theme wrapper for storybook
@@ -11,7 +11,7 @@ import { THEMES } from '../constants/common';
  */
 
 const ThemeWrapper = ({ children }) => {
-  const theme = THEMES.LIGHT;
+  const theme = THEMES.LIGHT
 
   return (
     <StyledEngineProvider injectFirst>
@@ -19,9 +19,9 @@ const ThemeWrapper = ({ children }) => {
         {children}
       </ThemeProvider>
     </StyledEngineProvider>
-  );
-};
+  )
+}
 
-ThemeWrapper.displayName = 'ThemeWrapper';
+ThemeWrapper.displayName = 'ThemeWrapper'
 
-export default ThemeWrapper;
+export default ThemeWrapper

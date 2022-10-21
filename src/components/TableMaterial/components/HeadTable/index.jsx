@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { TableCell, TableHead, TableRow } from '@mui/material';
+import PropTypes from 'prop-types'
+import { TableCell, TableHead, TableRow } from '@mui/material'
 
 const HeadTable = ({ columns, actions, multiSelect }) => (
   <TableHead styles={{ fontSize: 20 }}>
@@ -10,22 +10,22 @@ const HeadTable = ({ columns, actions, multiSelect }) => (
           {title}
         </TableCell>
       ))}
-      {actions
-      && (
+      {actions &&
+      (
         <TableCell align='right'>
           Acciones
         </TableCell>
       )}
     </TableRow>
   </TableHead>
-);
+)
 
 HeadTable.propTypes = {
   columns: PropTypes.array.isRequired,
   actions: PropTypes.array,
-  multiSelect: PropTypes.func,
-};
+  multiSelect: PropTypes.func
+}
 
-HeadTable.displayName = 'HeadTable';
-export const story = HeadTable;
-export default HeadTable;
+HeadTable.displayName = 'HeadTable'
+export const story = HeadTable
+export default HeadTable

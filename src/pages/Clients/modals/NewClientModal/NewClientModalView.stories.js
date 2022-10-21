@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { story as NewClientModalView } from './NewClientModalView';
+import { story as NewClientModalView } from './NewClientModalView'
 
 export default {
   title: 'Rutas/Clientes/Crear',
   parameters: {
     component: NewClientModalView,
-    componentSubtitle: 'Modal para crear un cliente',
-  },
-};
+    componentSubtitle: 'Modal para crear un cliente'
+  }
+}
 
 const ClientNew = () => (
   <NewClientModalView
@@ -16,8 +16,8 @@ const ClientNew = () => (
     close={action('Cerrar modal')}
     createProvider={action('Crea el cliente')}
   />
-);
+)
 
-ClientNew.storyName = 'Crear';
+ClientNew.storyName = 'Crear'
 
-export { ClientNew };
+export { ClientNew }

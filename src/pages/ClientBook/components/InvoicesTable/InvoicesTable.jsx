@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { TableMaterial, TextEuro } from 'components';
-import { BASE_PATH } from 'constants/index';
-import { format } from 'utils';
-import EuroIcon from '@mui/icons-material/Euro';
-import { useStyles } from './InvoicesTable.styles';
-import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal';
+import { TableMaterial, TextEuro } from 'components'
+import { BASE_PATH } from 'constants/index'
+import { format } from 'utils'
+import EuroIcon from '@mui/icons-material/Euro'
+import { useStyles } from './InvoicesTable.styles'
+import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal'
 
 const InvoicesTable = ({ invoices }) => {
-  const classes = useStyles();
-  const [invoice, setInvoice] = useState(null);
+  const classes = useStyles()
+  const [invoice, setInvoice] = useState(null)
 
   const _handlePaymentButton = row => {
-    setInvoice(row);
-  };
+    setInvoice(row)
+  }
 
   return (
     <>
@@ -25,29 +25,29 @@ const InvoicesTable = ({ invoices }) => {
         columns={[
           {
             title: 'Nº de Factura',
-            field: 'nInvoice',
+            field: 'nInvoice'
           },
           {
             title: 'Fecha',
-            render: ({ date }) => format.date(date),
+            render: ({ date }) => format.date(date)
           },
           {
             title: 'Cliente',
-            field: 'nameClient',
+            field: 'nameClient'
           },
           {
             title: 'Importe',
             // eslint-disable-next-line react/prop-types
-            render: ({ total }) => <TextEuro num={total} />,
+            render: ({ total }) => <TextEuro num={total} />
           },
           {
             title: 'Tipo de pago',
-            field: 'paymentType',
+            field: 'paymentType'
           },
           {
             title: 'Fecha de pago',
-            render: ({ paymentDate }) => format.date(paymentDate),
-          },
+            render: ({ paymentDate }) => format.date(paymentDate)
+          }
         ]}
         data={invoices}
         actions={[
@@ -55,25 +55,25 @@ const InvoicesTable = ({ invoices }) => {
             icon: EuroIcon,
             tooltip: 'Pagar',
             onClick: _handlePaymentButton,
-            disabled: ({ paid }) => paid,
+            disabled: ({ paid }) => paid
           },
           {
             icon: VisibilityIcon,
             tooltip: 'Ver',
             component: Link,
-            to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`,
-          },
+            to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`
+          }
         ]}
       />
       <ConfirmPaymentModal invoice={invoice} setShow={setInvoice} />
     </>
-  );
-};
+  )
+}
 
 InvoicesTable.propTypes = {
-  invoices: PropTypes.array.isRequired,
-};
+  invoices: PropTypes.array.isRequired
+}
 
-InvoicesTable.displayName = 'BillingTable';
+InvoicesTable.displayName = 'BillingTable'
 
-export default InvoicesTable;
+export default InvoicesTable

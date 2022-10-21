@@ -3,22 +3,22 @@ export const INITIAL_STATE = {
   weight: 0,
   price: 0,
   unit: 'kg',
-  productId: undefined,
-};
+  productId: undefined
+}
 
 export const fields = [
   {
     id: 'weight',
     label: 'Peso / Cantidad',
-    type: 'number',
+    type: 'number'
   },
   {
     id: 'price',
     label: 'Precio',
-    type: 'number',
+    type: 'number'
   },
   {
     id: 'unit',
-    label: 'Unidades',
-  },
-];
+    label: 'Unidades'
+  }
+]

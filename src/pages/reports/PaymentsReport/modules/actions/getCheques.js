@@ -1,14 +1,14 @@
-import axios from 'axios';
+import axios from 'axios'
 
-import { objectToParams } from 'utils';
-import { GET_CHEQUES } from '../types';
+import { objectToParams } from 'utils'
+import { GET_CHEQUES } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getChequesRequest = () => ({ type: GET_CHEQUES.REQUEST });
+const _getChequesRequest = () => ({ type: GET_CHEQUES.REQUEST })
 
 /**
  * Success action
@@ -16,13 +16,13 @@ const _getChequesRequest = () => ({ type: GET_CHEQUES.REQUEST });
  * @private
  */
 const _getChequesSuccess = () => ({
-  type: GET_CHEQUES.SUCCESS,
-});
+  type: GET_CHEQUES.SUCCESS
+})
 
 const _getChequesSet = cheques => ({
   type: GET_CHEQUES.SET,
-  payload: cheques,
-});
+  payload: cheques
+})
 
 /**
  * Error action
@@ -32,22 +32,22 @@ const _getChequesSet = cheques => ({
  */
 const _getChequesError = error => ({
   type: GET_CHEQUES.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Pide el historico de cheques
  * @returns {function(...[*]=)}
  */
 export const getCheques = filters => async dispatch => {
-  dispatch(_getChequesRequest());
+  dispatch(_getChequesRequest())
 
   try {
-    const { data } = await axios(`invoices/cheques${objectToParams(filters)}`);
+    const { data } = await axios(`invoices/cheques${objectToParams(filters)}`)
 
-    dispatch(_getChequesSuccess());
-    dispatch(_getChequesSet(data));
+    dispatch(_getChequesSuccess())
+    dispatch(_getChequesSet(data))
   } catch (error) {
-    dispatch(_getChequesError(error));
+    dispatch(_getChequesError(error))
   }
-};
+}

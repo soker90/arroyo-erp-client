@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from './constants';
+import { INITIAL_STATE } from './constants'
 
 /**
  * Devuelve si tiene los datos iniciales del state
@@ -8,7 +8,7 @@ import { INITIAL_STATE } from './constants';
  * @returns {boolean}
  */
 export const hasInitialData = ({ product, quantity, price }) => (
-  product === INITIAL_STATE.product
-  && quantity === INITIAL_STATE.quantity
-  && price === INITIAL_STATE.price
-);
+  product === INITIAL_STATE.product &&
+  quantity === INITIAL_STATE.quantity &&
+  price === INITIAL_STATE.price
+)

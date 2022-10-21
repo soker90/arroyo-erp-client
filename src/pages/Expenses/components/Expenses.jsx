@@ -1,38 +1,38 @@
 import {
-  useCallback, useEffect, useState,
-} from 'react';
-import { Box, Container } from '@mui/material';
-import PropTypes from 'prop-types';
-import { PlusCircle as PlusCircleIcon } from 'react-feather';
-import { Link } from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+  useCallback, useEffect, useState
+} from 'react'
+import { Box, Container } from '@mui/material'
+import PropTypes from 'prop-types'
+import { PlusCircle as PlusCircleIcon } from 'react-feather'
+import { Link } from 'react-router-dom'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { BASE_PATH } from 'constants/index';
-import { Header, Page, TableMaterial } from 'components';
-import NewProviderModal from '../modals/NewProviderModal';
-import { useStyles } from './Expenses.styles';
+import { BASE_PATH } from 'constants/index'
+import { Header, Page, TableMaterial } from 'components'
+import NewProviderModal from '../modals/NewProviderModal'
+import { useStyles } from './Expenses.styles'
 
 const Expenses = ({ providers, getProviders }) => {
-  const classes = useStyles();
-  const [showModal, setShowModal] = useState(false);
+  const classes = useStyles()
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
-    getProviders();
-  }, [getProviders]);
+    getProviders()
+  }, [getProviders])
 
   /**
    * Oculta el modal de crear proveedor
    * @type {function(): void}
    * @private
    */
-  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
   /**
    * Navega al proveedor seleccionado
    * @param {String} _id
    * @private
    */
-  const _hrefRow = ({ _id }) => `${BASE_PATH}/gastos/${_id}`;
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/gastos/${_id}`
 
   return (
     <>
@@ -44,8 +44,8 @@ const Expenses = ({ providers, getProviders }) => {
               {
                 onClick: () => setShowModal(true),
                 Icon: PlusCircleIcon,
-                label: 'Nuevo',
-              },
+                label: 'Nuevo'
+              }
             ]}
           />
           <Box mt={3}>
@@ -54,12 +54,12 @@ const Expenses = ({ providers, getProviders }) => {
               columns={[
                 {
                   title: 'Nombre',
-                  field: 'name',
+                  field: 'name'
                 },
                 {
                   title: 'Nota',
-                  field: 'note',
-                },
+                  field: 'note'
+                }
               ]}
               data={providers}
               title={`Proveedores de gastos (${providers.length})`}
@@ -69,8 +69,8 @@ const Expenses = ({ providers, getProviders }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: _hrefRow,
-                },
+                  to: _hrefRow
+                }
               ]}
             />
           </Box>
@@ -78,15 +78,15 @@ const Expenses = ({ providers, getProviders }) => {
       </Page>
       <NewProviderModal show={showModal} close={_closeModal} />
     </>
-  );
-};
+  )
+}
 
 Expenses.propTypes = {
   providers: PropTypes.array.isRequired,
-  getProviders: PropTypes.func.isRequired,
-};
+  getProviders: PropTypes.func.isRequired
+}
 
-Expenses.displayName = 'Expenses';
+Expenses.displayName = 'Expenses'
 
-export const story = Expenses;
-export default Expenses;
+export const story = Expenses
+export default Expenses

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import {
   Card,
   CardContent,
@@ -8,15 +8,15 @@ import {
   Grid,
   IconButton,
   Tooltip,
-  Typography,
-} from '@mui/material';
-import uniqId from 'uniqid';
-import EditIcon from '@mui/icons-material/Edit';
+  Typography
+} from '@mui/material'
+import uniqId from 'uniqid'
+import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemCard, Label } from 'components';
-import { format } from 'utils';
-import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal';
-import { useStyles } from './InvoiceData.styles';
+import { ItemCard, Label } from 'components'
+import { format } from 'utils'
+import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal'
+import { useStyles } from './InvoiceData.styles'
 
 const InvoiceData = ({
   dateRegister,
@@ -26,18 +26,18 @@ const InvoiceData = ({
   className,
   concept,
   id,
-  mailSend,
+  mailSend
 }) => {
-  const [showModal, setShowModal] = useState(false);
-  const classes = useStyles();
+  const [showModal, setShowModal] = useState(false)
+  const classes = useStyles()
 
   useEffect(() => {
-    if (id && !nInvoice) setShowModal(true);
-  }, [id]);
+    if (id && !nInvoice) setShowModal(true)
+  }, [id])
 
   const _handleEditClick = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   /**
    * Return the buttons of the card
@@ -52,8 +52,8 @@ const InvoiceData = ({
       >
         <EditIcon />
       </IconButton>
-    </Tooltip>,
-  ];
+    </Tooltip>
+  ]
 
   return (
     <>
@@ -63,9 +63,9 @@ const InvoiceData = ({
             <Typography variant='h5'>
               Datos de la factura
               {nOrder && (
-              <Label color='success' className={classes.label}>
-                CONFIRMADA
-              </Label>
+                <Label color='success' className={classes.label}>
+                  CONFIRMADA
+                </Label>
               )}
             </Typography>
           )}
@@ -100,8 +100,8 @@ const InvoiceData = ({
       </Card>
       <EditInvoiceDataModal show={showModal} setShow={setShowModal} />
     </>
-  );
-};
+  )
+}
 
 InvoiceData.propTypes = {
   dateRegister: PropTypes.number,
@@ -111,9 +111,9 @@ InvoiceData.propTypes = {
   className: PropTypes.string.isRequired,
   concept: PropTypes.string,
   id: PropTypes.string.isRequired,
-  mailSend: PropTypes.bool,
-};
+  mailSend: PropTypes.bool
+}
 
-InvoiceData.displayName = 'InvoiceData';
-export const story = InvoiceData;
-export default InvoiceData;
+InvoiceData.displayName = 'InvoiceData'
+export const story = InvoiceData
+export default InvoiceData

@@ -4,28 +4,28 @@ export const INITIAL_STATE = {
   quantity: '',
   price: '',
   amount: '',
-  clarification: '',
-};
+  clarification: ''
+}
 
 export const INPUTS = [
   {
     name: 'concept',
-    label: 'Concepto',
+    label: 'Concepto'
   },
   {
     name: 'quantity',
-    label: 'Cantidad',
+    label: 'Cantidad'
   },
   {
     name: 'price',
-    label: 'Precio',
+    label: 'Precio'
   },
   {
     name: 'amount',
-    label: 'Importe',
+    label: 'Importe'
   },
   {
     name: 'clarification',
-    label: 'Observaciones',
-  },
-];
+    label: 'Observaciones'
+  }
+]

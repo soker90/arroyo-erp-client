@@ -1,1 +1,1 @@
-export { default } from './NewInvoiceModal';
+export { default } from './NewInvoiceModal'

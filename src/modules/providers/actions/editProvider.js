@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { EDIT_PROVIDER } from '../types';
-import { getProvider } from './getProvider';
+import axios from 'axios'
+import { EDIT_PROVIDER } from '../types'
+import { getProvider } from './getProvider'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _editProviderRequest = () => ({ type: EDIT_PROVIDER.REQUEST });
+const _editProviderRequest = () => ({ type: EDIT_PROVIDER.REQUEST })
 
 /**
  * Success action
@@ -19,9 +19,9 @@ const _editProviderSuccess = name => ({
   type: EDIT_PROVIDER.SUCCESS,
   payload: {
     level: 'success',
-    message: `${name} ha sido actualizado`,
-  },
-});
+    message: `${name} ha sido actualizado`
+  }
+})
 
 /**
  * Error action
@@ -31,8 +31,8 @@ const _editProviderSuccess = name => ({
  */
 const _editProviderError = error => ({
   type: EDIT_PROVIDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Editar proveedor
@@ -41,17 +41,17 @@ const _editProviderError = error => ({
  * @param {function} callback
  */
 export const editProvider = (id, data, callback) => async dispatch => {
-  dispatch(_editProviderRequest());
-  delete data.type;
+  dispatch(_editProviderRequest())
+  delete data.type
 
   try {
-    await axios.put(`providers/${id}`, data);
+    await axios.put(`providers/${id}`, data)
 
-    dispatch(_editProviderSuccess(data.name));
+    dispatch(_editProviderSuccess(data.name))
     // eslint-disable-next-line no-unused-expressions
-    callback?.();
-    dispatch(getProvider(id));
+    callback?.()
+    dispatch(getProvider(id))
   } catch (error) {
-    dispatch(_editProviderError(error));
+    dispatch(_editProviderError(error))
   }
-};
+}

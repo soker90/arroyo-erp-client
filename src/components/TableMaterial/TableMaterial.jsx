@@ -1,47 +1,47 @@
 /* eslint-disable max-len */
-import { useMemo, useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useMemo, useState } from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
   Box,
   Card,
   Table,
-  TablePagination,
-} from '@mui/material';
+  TablePagination
+} from '@mui/material'
 
-import NoData from './components/NoData';
-import HeadTable from './components/HeadTable';
-import BodyTable from './components/BodyTable';
-import TitleTable from './components/TitleTable';
-import { labelOfRows } from './utils';
-import { useStyles } from './TableMaterial.styles';
+import NoData from './components/NoData'
+import HeadTable from './components/HeadTable'
+import BodyTable from './components/BodyTable'
+import TitleTable from './components/TitleTable'
+import { labelOfRows } from './utils'
+import { useStyles } from './TableMaterial.styles'
 
 const TableMaterial = ({
   className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect,
   onSelected, rowClass, rowsPerPageOptions, ...rest
 }) => {
-  const classes = useStyles();
-  const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(rowsPerPageOptions?.[0] || 10);
+  const classes = useStyles()
+  const [page, setPage] = useState(0)
+  const [limit, setLimit] = useState(rowsPerPageOptions?.[0] || 10)
 
   const handlePageChange = (event, newPage) => {
-    setPage(newPage);
+    setPage(newPage)
     refresh({
       offset: newPage * limit,
-      limit,
-    });
-  };
+      limit
+    })
+  }
 
   const handleLimitChange = event => {
-    setLimit(event.target.value);
+    setLimit(event.target.value)
     refresh({
       offset: page * event.target.value,
-      limit: event.target.value,
-    });
-  };
+      limit: event.target.value
+    })
+  }
 
-  const Wrapper = useMemo(() => (withCard ? Card : 'div'), [withCard]);
+  const Wrapper = useMemo(() => (withCard ? Card : 'div'), [withCard])
 
   return (
     <Wrapper
@@ -69,8 +69,8 @@ const TableMaterial = ({
           <NoData elements={data.length} />
         </Box>
       </PerfectScrollbar>
-      {Boolean(count)
-      && (
+      {Boolean(count) &&
+      (
         <TablePagination
           component='div'
           count={count}
@@ -84,8 +84,8 @@ const TableMaterial = ({
         />
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
 TableMaterial.propTypes = {
   className: PropTypes.string,
@@ -101,14 +101,14 @@ TableMaterial.propTypes = {
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
   rowClass: PropTypes.func,
-  rowsPerPageOptions: PropTypes.array,
-};
+  rowsPerPageOptions: PropTypes.array
+}
 
 TableMaterial.defaultProps = {
   data: [],
   count: 0,
-  withCard: true,
-};
+  withCard: true
+}
 
-export const story = TableMaterial;
-export default TableMaterial;
+export const story = TableMaterial
+export default TableMaterial

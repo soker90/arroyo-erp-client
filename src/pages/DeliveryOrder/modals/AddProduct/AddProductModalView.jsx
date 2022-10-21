@@ -1,10 +1,10 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router'
 
-import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
-import { INITIAL_STATE } from './constants';
-import { hasInitialData } from './utils';
+import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
+import { INITIAL_STATE } from './constants'
+import { hasInitialData } from './utils'
 
 const AddProductModal = ({
   show,
@@ -14,17 +14,17 @@ const AddProductModal = ({
   createDeliveryOrder,
   idProvider,
   hasCanal,
-  pricesChangesUnreadCount,
+  pricesChangesUnreadCount
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
-  );
-  const navigate = useNavigate();
+  )
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-  }, [show]);
+    if (!show) setState(INITIAL_STATE)
+  }, [show])
 
   /**
    * Handle event save button
@@ -36,14 +36,14 @@ const AddProductModal = ({
         product: state.product,
         quantity: Number(state.quantity),
         price: Number(state.price),
-        ...(hasCanal && { canal: state.canal }),
-      };
+        ...(hasCanal && { canal: state.canal })
+      }
 
-      addProductToDeliveryOrder(model, callback);
+      addProductToDeliveryOrder(model, callback)
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
-  };
+  }
 
   /**
    * Save product
@@ -51,11 +51,11 @@ const AddProductModal = ({
    */
   const _handleSave = () => {
     _saveProduct(() => {
-      close();
-      setState(INITIAL_STATE);
-      pricesChangesUnreadCount();
-    });
-  };
+      close()
+      setState(INITIAL_STATE)
+      pricesChangesUnreadCount()
+    })
+  }
 
   /**
    * Save product and create new product or create new delivery order
@@ -67,12 +67,12 @@ const AddProductModal = ({
       ? createDeliveryOrder({
         provider: idProvider,
         callback: close,
-        navigate,
+        navigate
       })
       : _saveProduct(() => {
-        setState(INITIAL_STATE);
-      });
-  };
+        setState(INITIAL_STATE)
+      })
+  }
 
   return (
     <GenericProductModal
@@ -87,26 +87,26 @@ const AddProductModal = ({
         {
           onClick: close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button',
+          'data-cy': 'modal-close-button'
         },
         {
           onClick: _handleSave,
           value: 'Guardar',
           variant: 'outlined',
           color: 'secondary',
-          'data-cy': 'modal-save-button',
+          'data-cy': 'modal-save-button'
         },
         {
           onClick: _handleSaveAndNew,
           value: 'Guardar y nuevo',
           variant: 'contained',
           color: 'primary',
-          'data-cy': 'modal-new-button',
-        },
+          'data-cy': 'modal-new-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 AddProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -116,9 +116,9 @@ AddProductModal.propTypes = {
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
   hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired,
-};
+  pricesChangesUnreadCount: PropTypes.func.isRequired
+}
 
-AddProductModal.displayName = 'AddProductModal';
-export const story = AddProductModal;
-export default AddProductModal;
+AddProductModal.displayName = 'AddProductModal'
+export const story = AddProductModal
+export default AddProductModal

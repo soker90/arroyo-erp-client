@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { Grid } from '@mui/material';
-import { TOTALS_BOXES } from '../constans';
-import TotalsReportBox from './TotalsReportBox';
+import PropTypes from 'prop-types'
+import { Grid } from '@mui/material'
+import { TOTALS_BOXES } from '../constans'
+import TotalsReportBox from './TotalsReportBox'
 
 const TotalsReportBoxes = ({
   totals,
-  className,
+  className
 }) => (
   <Grid
     container
@@ -21,11 +21,11 @@ const TotalsReportBoxes = ({
       />
     ))}
   </Grid>
-);
+)
 
 TotalsReportBoxes.propTypes = {
   totals: PropTypes.object.isRequired,
-  className: PropTypes.string,
-};
+  className: PropTypes.string
+}
 
-export default TotalsReportBoxes;
+export default TotalsReportBoxes

@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import {
-  useEffect, useMemo, useReducer, useRef,
-} from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+  useEffect, useMemo, useReducer, useRef
+} from 'react'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { AutocompleteForm, InputForm, ModalGrid } from 'components';
-import { addNotification } from 'reducers/notifications';
-import { fields, INITIAL_STATE } from './constants';
+import { AutocompleteForm, InputForm, ModalGrid } from 'components'
+import { addNotification } from 'reducers/notifications'
+import { fields, INITIAL_STATE } from './constants'
 
 const ProductOrderModal = ({
   show,
@@ -20,18 +20,18 @@ const ProductOrderModal = ({
   products,
   ...rest
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
-  const productsList = useMemo(() => products.map(p => p.name), [products]);
-  const nameRef = useRef(null);
+    INITIAL_STATE
+  )
+  const productsList = useMemo(() => products.map(p => p.name), [products])
+  const nameRef = useRef(null)
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-    else if (typeof show !== 'boolean') setState(show);
-  }, [show]);
+    if (!show) setState(INITIAL_STATE)
+    else if (typeof show !== 'boolean') setState(show)
+  }, [show])
 
   /**
    * Handle event onChange input
@@ -42,11 +42,11 @@ const ProductOrderModal = ({
   const _handleChange = ({
     target: {
       name,
-      value,
-    },
+      value
+    }
   }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle event save button
@@ -61,24 +61,24 @@ const ProductOrderModal = ({
         price: Number(state.price),
         weight: Number(state.weight),
         unit: state.unit,
-        productId: state.productId,
+        productId: state.productId
       };
 
       (typeof show === 'boolean' ? createProduct : updateProduct)({
         model,
         invoice,
         deliveryOrder,
-        product: show?._id,
-      }, (callback || close));
+        product: show?._id
+      }, (callback || close))
     } catch (e) {
-      console.error(e);
+      console.error(e)
       dispatch(addNotification({
         level: 'error',
         message: 'El precio o las unidades no son correctas',
-        dismissible: true,
-      }));
+        dismissible: true
+      }))
     }
-  };
+  }
 
   /**
    * Handle press enter key
@@ -87,23 +87,23 @@ const ProductOrderModal = ({
    */
   const _handleKeyPress = ({ key }) => {
     const callback = show === true && (() => {
-      setState(INITIAL_STATE);
-      nameRef.current.focus();
-    });
+      setState(INITIAL_STATE)
+      nameRef.current.focus()
+    })
 
-    if (key === 'Enter') _handleSubmit(null, callback);
-  };
+    if (key === 'Enter') _handleSubmit(null, callback)
+  }
 
   const _handleChangeAutocomplete = value => {
-    setState({ name: value });
-    const selectedProduct = products.find(p => p.name === value);
+    setState({ name: value })
+    const selectedProduct = products.find(p => p.name === value)
     if (selectedProduct) {
       setState({
         price: selectedProduct?.price,
-        productId: selectedProduct?._id,
-      });
+        productId: selectedProduct?._id
+      })
     }
-  };
+  }
 
   const _renderAutocomplete = () => (
     <AutocompleteForm
@@ -116,7 +116,7 @@ const ProductOrderModal = ({
       autoFocus
       inputRef={nameRef}
     />
-  );
+  )
 
   /**
    * Render a input element
@@ -140,7 +140,7 @@ const ProductOrderModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -153,8 +153,8 @@ const ProductOrderModal = ({
       {_renderAutocomplete()}
       {fields.map(_renderInput)}
     </ModalGrid>
-  );
-};
+  )
+}
 
 ProductOrderModal.propTypes = {
   show: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
@@ -163,9 +163,9 @@ ProductOrderModal.propTypes = {
   invoice: PropTypes.string.isRequired,
   deliveryOrder: PropTypes.string.isRequired,
   product: PropTypes.object,
-  products: PropTypes.array.isRequired,
-};
+  products: PropTypes.array.isRequired
+}
 
-ProductOrderModal.displayName = 'ProductOrderModal';
-export const story = ProductOrderModal;
-export default ProductOrderModal;
+ProductOrderModal.displayName = 'ProductOrderModal'
+export const story = ProductOrderModal
+export default ProductOrderModal

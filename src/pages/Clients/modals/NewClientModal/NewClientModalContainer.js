@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { createClient } from '../../modules/actions';
-import NewClientModalView from './NewClientModalView';
+import { createClient } from '../../modules/actions'
+import NewClientModalView from './NewClientModalView'
 
 const mapDispatchToProps = {
-  createClient,
-};
+  createClient
+}
 
 export default connect(
   null,
   mapDispatchToProps
-)(NewClientModalView);
+)(NewClientModalView)

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Grid, TextField } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Grid, TextField } from '@mui/material'
 
 /**
  * BUG: Si cuando cargue el input el label y el value se superpone,
@@ -21,7 +21,7 @@ const InputForm = ({
       {...rest}
     />
   </Grid>
-);
+)
 
 InputForm.propTypes = {
   size: PropTypes.number,
@@ -29,10 +29,10 @@ InputForm.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   variant: PropTypes.string,
   onChange: PropTypes.func,
-  disabled: PropTypes.bool,
-};
+  disabled: PropTypes.bool
+}
 
-InputForm.displayName = 'InputForm';
+InputForm.displayName = 'InputForm'
 
-export const story = InputForm;
-export default InputForm;
+export const story = InputForm
+export default InputForm

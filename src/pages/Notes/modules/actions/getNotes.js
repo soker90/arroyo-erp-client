@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_NOTES } from '../types';
+import axios from 'axios'
+import { GET_NOTES } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getNotesRequest = () => ({ type: GET_NOTES.REQUEST });
+const _getNotesRequest = () => ({ type: GET_NOTES.REQUEST })
 
 /**
  * Success action
@@ -14,15 +14,15 @@ const _getNotesRequest = () => ({ type: GET_NOTES.REQUEST });
  * @private
  */
 const _getNotesSuccess = () => ({
-  type: GET_NOTES.SUCCESS,
-});
+  type: GET_NOTES.SUCCESS
+})
 
 const _getNotesSet = notes => ({
   type: GET_NOTES.SET,
   payload: {
-    notes,
-  },
-});
+    notes
+  }
+})
 
 /**
  * Error action
@@ -32,8 +32,8 @@ const _getNotesSet = notes => ({
  */
 const _getNotesError = error => ({
   type: GET_NOTES.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Pide los pagos pendientes de cobro
@@ -41,14 +41,14 @@ const _getNotesError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getNotes = year => async dispatch => {
-  dispatch(_getNotesRequest());
+  dispatch(_getNotesRequest())
 
   try {
-    const { data } = await axios(`notes?year=${year}`);
+    const { data } = await axios(`notes?year=${year}`)
 
-    dispatch(_getNotesSuccess());
-    dispatch(_getNotesSet(data));
+    dispatch(_getNotesSuccess())
+    dispatch(_getNotesSet(data))
   } catch (error) {
-    dispatch(_getNotesError(error));
+    dispatch(_getNotesError(error))
   }
-};
+}

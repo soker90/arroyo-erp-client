@@ -1,23 +1,23 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
+import { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { Link as RouterLink } from 'react-router-dom'
 import {
   FormControlLabel,
   IconButton,
   Tooltip,
-  Typography,
-} from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+  Typography
+} from '@mui/material'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { format } from 'utils';
-import TextEuro from '../../TextEuro';
-import { getTotals } from './utils';
-import { useStyles } from './styles';
+import { format } from 'utils'
+import TextEuro from '../../TextEuro'
+import { getTotals } from './utils'
+import { useStyles } from './styles'
 
 const DeliveryOrderExpandHeader = ({
   children, _id, date, note, ...props
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <>
@@ -60,8 +60,8 @@ const DeliveryOrderExpandHeader = ({
         {note}
       </Typography>
     </>
-  );
-};
+  )
+}
 
 DeliveryOrderExpandHeader.propTypes = {
   _id: PropTypes.string.isRequired,
@@ -71,9 +71,9 @@ DeliveryOrderExpandHeader.propTypes = {
   iva: PropTypes.number,
   re: PropTypes.number,
   total: PropTypes.number,
-  note: PropTypes.string,
-};
+  note: PropTypes.string
+}
 
-DeliveryOrderExpandHeader.displayName = 'DeliveryOrderExpandHeader';
-export const story = DeliveryOrderExpandHeader;
-export default DeliveryOrderExpandHeader;
+DeliveryOrderExpandHeader.displayName = 'DeliveryOrderExpandHeader'
+export const story = DeliveryOrderExpandHeader
+export default DeliveryOrderExpandHeader

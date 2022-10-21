@@ -1,1 +1,1 @@
-export { default } from './NewClientModalContainer';
+export { default } from './NewClientModalContainer'

@@ -1,32 +1,32 @@
 import {
-  useEffect,
-} from 'react';
-import PropTypes from 'prop-types';
-import { Container } from '@mui/material';
-import { useParams } from 'react-router';
+  useEffect
+} from 'react'
+import PropTypes from 'prop-types'
+import { Container } from '@mui/material'
+import { useParams } from 'react-router'
 
-import { Page, TotalsReportBoxes } from 'components';
-import Header from './Header';
-import ChequesTable from './ChequesTable';
-import { useStyles } from './PaymentsReportView.styles';
+import { Page, TotalsReportBoxes } from 'components'
+import Header from './Header'
+import ChequesTable from './ChequesTable'
+import { useStyles } from './PaymentsReportView.styles'
 
 const PaymentsReportView = ({
   getTotals,
   getCheques,
   cheques,
   totals,
-  countCheques,
+  countCheques
 }) => {
-  const classes = useStyles();
-  const { year } = useParams();
+  const classes = useStyles()
+  const { year } = useParams()
 
   useEffect(() => {
-    getTotals(year);
+    getTotals(year)
     getCheques({
       year,
-      limit: 10,
-    });
-  }, [getTotals, getCheques, year]);
+      limit: 10
+    })
+  }, [getTotals, getCheques, year])
 
   return (
     <Page
@@ -50,17 +50,17 @@ const PaymentsReportView = ({
         />
       </Container>
     </Page>
-  );
-};
+  )
+}
 
-PaymentsReportView.displayName = 'PaymentsReportView';
+PaymentsReportView.displayName = 'PaymentsReportView'
 
 PaymentsReportView.propTypes = {
   totals: PropTypes.object.isRequired,
   getTotals: PropTypes.func.isRequired,
   cheques: PropTypes.array.isRequired,
   getCheques: PropTypes.func.isRequired,
-  countCheques: PropTypes.number.isRequired,
-};
-export const story = PaymentsReportView;
-export default PaymentsReportView;
+  countCheques: PropTypes.number.isRequired
+}
+export const story = PaymentsReportView
+export default PaymentsReportView

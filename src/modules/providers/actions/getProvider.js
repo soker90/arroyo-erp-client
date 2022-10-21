@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_PROVIDER } from '../types';
+import axios from 'axios'
+import { GET_PROVIDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getProviderRequest = () => ({ type: GET_PROVIDER.REQUEST });
+const _getProviderRequest = () => ({ type: GET_PROVIDER.REQUEST })
 
 /**
  * Success action
@@ -14,8 +14,8 @@ const _getProviderRequest = () => ({ type: GET_PROVIDER.REQUEST });
  * @private
  */
 const _getProviderSuccess = () => ({
-  type: GET_PROVIDER.SUCCESS,
-});
+  type: GET_PROVIDER.SUCCESS
+})
 
 /**
  * Set action
@@ -25,8 +25,8 @@ const _getProviderSuccess = () => ({
  */
 const _getProviderSet = data => ({
   type: GET_PROVIDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for getInitData
@@ -36,22 +36,22 @@ const _getProviderSet = data => ({
  */
 const _getProviderError = error => ({
   type: GET_PROVIDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae los proveedores
  * @returns {function(...[*]=)}
  */
 export const getProvider = id => async dispatch => {
-  dispatch(_getProviderRequest());
+  dispatch(_getProviderRequest())
 
   try {
-    const { data } = await axios(`providers/${id}`);
+    const { data } = await axios(`providers/${id}`)
 
-    dispatch(_getProviderSuccess());
-    dispatch(_getProviderSet(data));
+    dispatch(_getProviderSuccess())
+    dispatch(_getProviderSet(data))
   } catch (error) {
-    dispatch(_getProviderError(error));
+    dispatch(_getProviderError(error))
   }
-};
+}

@@ -1,5 +1,5 @@
-import { RESET_INVOICE } from '../types';
+import { RESET_INVOICE } from '../types'
 
 export const resetInvoiceState = () => ({
-  type: RESET_INVOICE,
-});
+  type: RESET_INVOICE
+})

@@ -1,19 +1,19 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback } from 'react'
+import PropTypes from 'prop-types'
 
-import { ConfirmModal } from 'components/Modals';
+import { ConfirmModal } from 'components/Modals'
 
 const DividePaymentModal = ({
-  dividePayment, paymentId, setShow,
+  dividePayment, paymentId, setShow
 }) => {
   const _close = useCallback(() => {
-    setShow(null);
-  }, [setShow]);
+    setShow(null)
+  }, [setShow])
 
   const _handleSend = () => {
-    dividePayment(paymentId);
-    _close();
-  };
+    dividePayment(paymentId)
+    _close()
+  }
 
   return (
     <ConfirmModal
@@ -23,15 +23,15 @@ const DividePaymentModal = ({
       close={_close}
       show={Boolean(paymentId)}
     />
-  );
-};
+  )
+}
 
 DividePaymentModal.propTypes = {
   dividePayment: PropTypes.func.isRequired,
   paymentId: PropTypes.string,
-  setShow: PropTypes.func.isRequired,
-};
+  setShow: PropTypes.func.isRequired
+}
 
-DividePaymentModal.displayName = 'DividePaymentModal';
-export const story = DividePaymentModal;
-export default DividePaymentModal;
+DividePaymentModal.displayName = 'DividePaymentModal'
+export const story = DividePaymentModal
+export default DividePaymentModal

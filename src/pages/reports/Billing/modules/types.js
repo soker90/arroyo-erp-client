@@ -1,3 +1,3 @@
-import { requestActions } from 'utils';
+import { requestActions } from 'utils'
 
-export const GET_BILLING = requestActions('@billing/GET_BILLING');
+export const GET_BILLING = requestActions('@billing/GET_BILLING')

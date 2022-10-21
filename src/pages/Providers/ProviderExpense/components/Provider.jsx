@@ -1,41 +1,37 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable */
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import {
-  Box, Container,
-} from '@mui/material';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
+  Box, Container
+} from '@mui/material'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
 
 import {
-  LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices,
-} from 'components';
-import Header from './Header';
+  LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices
+} from 'components'
+import Header from './Header'
 
-import { useStyles } from './Provider.styles';
+import { useStyles } from './Provider.styles'
 
 const ProviderExpense = ({
   provider, billing, getProvider, ...props
 }) => {
-  const classes = useStyles();
-  const { idProvider } = useParams();
-  const [expand, setExpand] = useState(false);
+  const classes = useStyles()
+  const { idProvider } = useParams()
+  const [expand, setExpand] = useState(false)
 
   useEffect(() => {
-    if (idProvider) getProvider(idProvider);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idProvider]);
+    if (idProvider) getProvider(idProvider)
+  }, [idProvider])
 
   /**
    * Expande o contrae la información
    * @private
    */
   const _toggleExpand = () => {
-    setExpand(!expand);
-  };
+    setExpand(!expand)
+  }
 
-  if (!idProvider) return <LoadingScreen />;
+  if (!idProvider) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={provider.name}>
@@ -60,16 +56,14 @@ const ProviderExpense = ({
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 ProviderExpense.propTypes = {
   provider: PropTypes.object.isRequired,
   billing: PropTypes.object,
-  getProvider: PropTypes.func.isRequired,
-};
+  getProvider: PropTypes.func.isRequired
+}
 
-ProviderExpense.displayName = 'ProviderExpense';
-
-export const story = ProviderExpense;
-export default ProviderExpense;
+export const story = ProviderExpense
+export default ProviderExpense

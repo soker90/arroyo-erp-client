@@ -1,1 +1,1 @@
-export { default } from './HashTabs';
+export { default } from './HashTabs'

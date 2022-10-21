@@ -1,12 +1,12 @@
-import { Header } from 'components';
+import { Header } from 'components'
 
 const HeaderSwap = () => (
   <Header
     title='Intercambiar'
     description='Intercambia Nº de Orden'
   />
-);
+)
 
-HeaderSwap.displayName = 'HeaderSwap';
+HeaderSwap.displayName = 'HeaderSwap'
 
-export default HeaderSwap;
+export default HeaderSwap

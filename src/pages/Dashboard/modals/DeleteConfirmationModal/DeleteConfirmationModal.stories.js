@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { story as DeleteConfirmationModal } from './DeleteConfirmationModal';
+import { story as DeleteConfirmationModal } from './DeleteConfirmationModal'
 
 export default {
   title: 'Rutas/Albarán/Modales/Eliminar prducto',
   parameters: {
     component: DeleteConfirmationModal,
-    componentSubtitle: 'Modal de confimación para eliminar un producto del albarán',
-  },
-};
+    componentSubtitle: 'Modal de confimación para eliminar un producto del albarán'
+  }
+}
 
 const DeleteModal = () => (
   <DeleteConfirmationModal
@@ -18,8 +18,8 @@ const DeleteModal = () => (
     deleteProductOfDeliveryOrder={action('deleteProductOfDeliveryOrder')}
     index={0}
   />
-);
+)
 
-DeleteModal.storyName = 'Eliminar producto';
+DeleteModal.storyName = 'Eliminar producto'
 
-export { DeleteModal };
+export { DeleteModal }

@@ -1,15 +1,15 @@
 /* eslint-disable react/destructuring-assignment */
-import PropTypes from 'prop-types';
-import uniqId from 'uniqid';
+import PropTypes from 'prop-types'
+import uniqId from 'uniqid'
 
-import { Grid, List } from '@mui/material';
-import { ItemCard } from 'components/Cards';
-import { sliceToGroups } from 'utils';
-import { useStyles } from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles';
+import { Grid, List } from '@mui/material'
+import { ItemCard } from 'components/Cards'
+import { sliceToGroups } from 'utils'
+import { useStyles } from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles'
 
 const ItemGroupsCard = ({ groups, items }) => {
-  const classes = useStyles();
-  const size = 12 / groups;
+  const classes = useStyles()
+  const size = 12 / groups
 
   /**
    * Render a single data label with value
@@ -22,13 +22,13 @@ const ItemGroupsCard = ({ groups, items }) => {
    */
   const _renderItem = ({ label, value, variant }) => (
     <ItemCard key={uniqId()} label={label} value={value} variant={variant} />
-  );
+  )
 
   _renderItem.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.any,
-    variant: PropTypes.string,
-  };
+    variant: PropTypes.string
+  }
 
   /**
    * Render group of data label
@@ -43,7 +43,7 @@ const ItemGroupsCard = ({ groups, items }) => {
         {group.map(_renderItem)}
       </List>
     </Grid>
-  );
+  )
 
   return (
     <Grid
@@ -54,22 +54,22 @@ const ItemGroupsCard = ({ groups, items }) => {
       {sliceToGroups(items, groups)
         .map(_renderGroup)}
     </Grid>
-  );
-};
+  )
+}
 
 ItemGroupsCard.propTypes = {
   groups: PropTypes.number,
   items: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
-    value: PropTypes.any,
-  })).isRequired,
-};
+    value: PropTypes.any
+  })).isRequired
+}
 
 ItemGroupsCard.defaultProps = {
-  groups: 2,
-};
+  groups: 2
+}
 
-ItemGroupsCard.displayName = 'ItemGroupsCard';
+ItemGroupsCard.displayName = 'ItemGroupsCard'
 
-export const story = ItemGroupsCard;
-export default ItemGroupsCard;
+export const story = ItemGroupsCard
+export default ItemGroupsCard

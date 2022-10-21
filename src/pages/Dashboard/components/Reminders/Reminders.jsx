@@ -1,16 +1,16 @@
 import {
-  Box, Card, CardHeader, Divider, Grid, List,
-} from '@mui/material';
-import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+  Box, Card, CardHeader, Divider, Grid, List
+} from '@mui/material'
+import PropTypes from 'prop-types'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
-import AddReminder from './AddReminder';
-import Reminder from './Reminder';
+import AddReminder from './AddReminder'
+import Reminder from './Reminder'
 
 const Reminders = ({
   reminders,
   createReminder,
-  setDeleteId,
+  setDeleteId
 }) => (
   <Grid
     item
@@ -39,12 +39,12 @@ const Reminders = ({
       </PerfectScrollbar>
     </Card>
   </Grid>
-);
+)
 
 Reminders.propTypes = {
   reminders: PropTypes.array.isRequired,
   createReminder: PropTypes.func.isRequired,
-  setDeleteId: PropTypes.func.isRequired,
-};
+  setDeleteId: PropTypes.func.isRequired
+}
 
-export default Reminders;
+export default Reminders

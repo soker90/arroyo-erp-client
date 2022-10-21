@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { UPDATE_PRODUCT } from '../types';
+import axios from 'axios'
+import { UPDATE_PRODUCT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _updateProductRequest = () => ({ type: UPDATE_PRODUCT.REQUEST });
+const _updateProductRequest = () => ({ type: UPDATE_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _updateProductSuccess = () => ({
   type: UPDATE_PRODUCT.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto actualizado',
-  },
-});
+    message: 'Producto actualizado'
+  }
+})
 
 /**
  * Set action
@@ -29,8 +29,8 @@ const _updateProductSuccess = () => ({
  */
 const _updateProductSet = data => ({
   type: UPDATE_PRODUCT.SET,
-  payload: data,
-});
+  payload: data
+})
 /**
  * Error action
  * @param error
@@ -39,8 +39,8 @@ const _updateProductSet = data => ({
  */
 const _updateProductError = error => ({
   type: UPDATE_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Actualiza un producto del albarán
@@ -55,20 +55,20 @@ export const updateProduct = ({
   invoice,
   deliveryOrder,
   model,
-  product,
+  product
 }, callback) => async dispatch => {
-  dispatch(_updateProductRequest());
+  dispatch(_updateProductRequest())
 
   try {
     const { data } = await axios.patch(
       `client/invoices/${invoice}/deliveryOrder/${deliveryOrder}/product/${product}`,
-      model,
-    );
+      model
+    )
 
-    dispatch(_updateProductSuccess());
-    dispatch(_updateProductSet(data));
-    callback();
+    dispatch(_updateProductSuccess())
+    dispatch(_updateProductSet(data))
+    callback()
   } catch (error) {
-    dispatch(_updateProductError(error));
+    dispatch(_updateProductError(error))
   }
-};
+}

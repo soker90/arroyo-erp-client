@@ -1,10 +1,10 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   total: {
-    marginLeft: theme.spacing(2),
-  },
-}));
+    marginLeft: theme.spacing(2)
+  }
+}))

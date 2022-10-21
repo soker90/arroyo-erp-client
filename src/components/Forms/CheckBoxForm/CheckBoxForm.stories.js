@@ -1,17 +1,17 @@
 import {
-  boolean, number, select, text,
-} from '@storybook/addon-knobs';
-import { Grid } from '@mui/material';
-import { action } from '@storybook/addon-actions';
+  boolean, number, select, text
+} from '@storybook/addon-knobs'
+import { Grid } from '@mui/material'
+import { action } from '@storybook/addon-actions'
 
-import { story as CheckBoxForm } from './CheckBoxForm';
+import { story as CheckBoxForm } from './CheckBoxForm'
 
 export default {
   title: 'Formularios/Check',
   parameters: {
-    component: CheckBoxForm,
-  },
-};
+    component: CheckBoxForm
+  }
+}
 
 const CheckBox = () => (
   <Grid container spacing={3}>
@@ -24,8 +24,8 @@ const CheckBox = () => (
       color={select('Color', ['primary', 'secondary', 'default'], 'primary')}
     />
   </Grid>
-);
+)
 
-CheckBox.storyName = 'CheckBox';
+CheckBox.storyName = 'CheckBox'
 
-export { CheckBox };
+export { CheckBox }

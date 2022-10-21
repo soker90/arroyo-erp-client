@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { createNote } from 'pages/Notes/modules/actions';
-import NewNoteModalView from './NewNoteModalView';
+import { createNote } from 'pages/Notes/modules/actions'
+import NewNoteModalView from './NewNoteModalView'
 
 const mapDispatchToProps = {
-  createNote,
-};
+  createNote
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(NewNoteModalView);
+  mapDispatchToProps
+)(NewNoteModalView)

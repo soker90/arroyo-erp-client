@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
-    width: '100%',
+    width: '100%'
   },
   wrapper: {
     display: 'flex',
@@ -14,17 +14,17 @@ export const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     paddingTop: 64,
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: 236,
-    },
+      paddingLeft: 236
+    }
   },
   contentContainer: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   content: {
     flex: '1 1 auto',
     height: '100%',
-    overflow: 'auto',
-  },
-}));
+    overflow: 'auto'
+  }
+}))

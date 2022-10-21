@@ -1,1 +1,1 @@
-export { default } from './PricesChart';
+export { default } from './PricesChart'

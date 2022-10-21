@@ -1,14 +1,14 @@
-import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import EuroIcon from '@mui/icons-material/Euro';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import UpdateIcon from '@mui/icons-material/Update';
+import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
+import EuroIcon from '@mui/icons-material/Euro'
+import PostAddIcon from '@mui/icons-material/PostAdd'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
+import DescriptionIcon from '@mui/icons-material/Description'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
+import ReceiptIcon from '@mui/icons-material/Receipt'
+import UpdateIcon from '@mui/icons-material/Update'
 
-const year = new Date().getFullYear();
+const year = new Date().getFullYear()
 
 export const navConfig = [
   {
@@ -17,22 +17,22 @@ export const navConfig = [
       {
         title: 'Provedores',
         icon: UsersIcon,
-        href: '/app/proveedores',
+        href: '/app/proveedores'
       },
       {
         title: 'Gastos',
         icon: AccountBalanceIcon,
-        href: '/app/gastos',
+        href: '/app/gastos'
       },
       {
         title: 'Libro',
         icon: MenuBookIcon,
-        href: `/app/libro/${year}`,
+        href: `/app/libro/${year}`
       },
       {
         title: 'Pagos',
         icon: EuroIcon,
-        href: '/app/pagos',
+        href: '/app/pagos'
       },
       {
         title: 'Clientes',
@@ -42,31 +42,31 @@ export const navConfig = [
           {
             title: 'Listado',
             icon: UsersIcon,
-            href: '/app/clientes/listado',
+            href: '/app/clientes/listado'
           },
           {
             title: 'Libro',
             icon: MenuBookIcon,
-            href: `/app/clientes/libro/${year}`,
+            href: `/app/clientes/libro/${year}`
           },
           {
             title: 'Facturación',
             icon: DescriptionIcon,
-            href: `/app/clientes/facturacion/${year}`,
+            href: `/app/clientes/facturacion/${year}`
           },
           {
             title: 'Productos',
             icon: ShoppingCart,
-            href: '/app/clientes/productos',
-          },
-        ],
+            href: '/app/clientes/productos'
+          }
+        ]
       },
       {
         title: 'Notas',
         icon: PostAddIcon,
-        href: `/app/notas/${year}`,
-      },
-    ],
+        href: `/app/notas/${year}`
+      }
+    ]
   },
   {
     subheader: 'Informes',
@@ -74,29 +74,29 @@ export const navConfig = [
       {
         title: 'Inicio',
         icon: PieChartIcon,
-        href: '/app/informes/inicio',
+        href: '/app/informes/inicio'
       },
       {
         title: 'Productos',
         icon: ShoppingCart,
-        href: '/app/informes/productos',
+        href: '/app/informes/productos'
       },
       {
         title: 'Facturación',
         icon: DescriptionIcon,
-        href: `/app/informes/facturacion/${year}`,
+        href: `/app/informes/facturacion/${year}`
       },
       {
         title: 'Albaranes',
         icon: ReceiptIcon,
-        href: `/app/informes/albaranes/${year}`,
+        href: `/app/informes/albaranes/${year}`
       },
       {
         title: 'Pagarés',
         icon: UpdateIcon,
-        href: `/app/informes/pagares/${year}`,
-      },
-    ],
+        href: `/app/informes/pagares/${year}`
+      }
+    ]
   },
   {
     subheader: 'Operaciones',
@@ -104,8 +104,8 @@ export const navConfig = [
       {
         title: 'Intercambio',
         icon: SwapHorizIcon,
-        href: '/app/intercambio',
-      },
-    ],
-  },
-];
+        href: '/app/intercambio'
+      }
+    ]
+  }
+]

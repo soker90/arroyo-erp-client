@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CONFIRM_PAYMENT } from '../types';
+import axios from 'axios'
+import { CONFIRM_PAYMENT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _confirmPaymentRequest = () => ({ type: CONFIRM_PAYMENT.REQUEST });
+const _confirmPaymentRequest = () => ({ type: CONFIRM_PAYMENT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _confirmPaymentSuccess = () => ({
   type: CONFIRM_PAYMENT.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Pago aplicado',
-  },
-});
+    message: 'Pago aplicado'
+  }
+})
 
 /**
  * Set action
@@ -29,9 +29,9 @@ const _confirmPaymentSuccess = () => ({
 const _confirmPaymentSet = ({ data }) => ({
   type: CONFIRM_PAYMENT.SET,
   payload: {
-    payments: data,
-  },
-});
+    payments: data
+  }
+})
 
 /**
  * Error action
@@ -41,8 +41,8 @@ const _confirmPaymentSet = ({ data }) => ({
  */
 const _confirmPaymentError = error => ({
   type: CONFIRM_PAYMENT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Confirma la aplicación del pago
@@ -51,15 +51,15 @@ const _confirmPaymentError = error => ({
  * @param {function} callback
  */
 export const confirmPayment = (id, data, callback) => async dispatch => {
-  dispatch(_confirmPaymentRequest());
+  dispatch(_confirmPaymentRequest())
 
   try {
-    const response = await axios.patch(`payments/${id}/confirm`, data);
+    const response = await axios.patch(`payments/${id}/confirm`, data)
 
-    dispatch(_confirmPaymentSuccess());
-    dispatch(_confirmPaymentSet(response));
-    callback();
+    dispatch(_confirmPaymentSuccess())
+    dispatch(_confirmPaymentSet(response))
+    callback()
   } catch (error) {
-    dispatch(_confirmPaymentError(error));
+    dispatch(_confirmPaymentError(error))
   }
-};
+}

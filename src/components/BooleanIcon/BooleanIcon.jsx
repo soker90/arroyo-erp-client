@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
-import { useStyles } from './BooleanIcon.styles';
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import CheckIcon from '@mui/icons-material/Check'
+import CloseIcon from '@mui/icons-material/Close'
+import { useStyles } from './BooleanIcon.styles'
 
 const BooleanIcon = (
   {
     className,
-    value,
-  },
+    value
+  }
 ) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return value
     ? (
@@ -19,20 +19,20 @@ const BooleanIcon = (
         className={clsx(classes.iconActive, className)}
         fontSize='small'
       />
-    )
+      )
     : (
       <CloseIcon
         data-testid='closeIcon'
         className={clsx(classes.iconInactive, className)}
         fontSize='small'
       />
-    );
-};
+      )
+}
 
 BooleanIcon.propTypes = {
   className: PropTypes.string,
-  value: PropTypes.bool.isRequired,
-};
+  value: PropTypes.bool.isRequired
+}
 
-export const story = BooleanIcon;
-export default BooleanIcon;
+export const story = BooleanIcon
+export default BooleanIcon

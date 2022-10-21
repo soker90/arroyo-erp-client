@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { TALON_PAYMENT } from 'constants/invoices';
-import { GET_TOTALS } from '../types';
+import axios from 'axios'
+import { TALON_PAYMENT } from 'constants/invoices'
+import { GET_TOTALS } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getTotalsRequest = () => ({ type: GET_TOTALS.REQUEST });
+const _getTotalsRequest = () => ({ type: GET_TOTALS.REQUEST })
 
 /**
  * Success action
@@ -15,13 +15,13 @@ const _getTotalsRequest = () => ({ type: GET_TOTALS.REQUEST });
  * @private
  */
 const _getTotalsSuccess = () => ({
-  type: GET_TOTALS.SUCCESS,
-});
+  type: GET_TOTALS.SUCCESS
+})
 
 const _getTotalsSet = totals => ({
   type: GET_TOTALS.SET,
-  payload: { totals },
-});
+  payload: { totals }
+})
 
 /**
  * Error action
@@ -31,8 +31,8 @@ const _getTotalsSet = totals => ({
  */
 const _getTotalsError = error => ({
   type: GET_TOTALS.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Pide los pagos pendientes de cobro
@@ -40,14 +40,14 @@ const _getTotalsError = error => ({
  * @returns {function(...[*]=)}
  */
 export const getTotals = year => async dispatch => {
-  dispatch(_getTotalsRequest());
+  dispatch(_getTotalsRequest())
 
   try {
-    const { data } = await axios(`invoices/totals?year=${year}&type=${TALON_PAYMENT}`);
+    const { data } = await axios(`invoices/totals?year=${year}&type=${TALON_PAYMENT}`)
 
-    dispatch(_getTotalsSuccess());
-    dispatch(_getTotalsSet(data));
+    dispatch(_getTotalsSuccess())
+    dispatch(_getTotalsSet(data))
   } catch (error) {
-    dispatch(_getTotalsError(error));
+    dispatch(_getTotalsError(error))
   }
-};
+}

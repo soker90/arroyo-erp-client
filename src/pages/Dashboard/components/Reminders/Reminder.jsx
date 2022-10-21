@@ -1,25 +1,25 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
-  IconButton, ListItem, ListItemText, Tooltip,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import DeleteIcon from '@mui/icons-material/Delete';
+  IconButton, ListItem, ListItemText, Tooltip
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const useStyles = makeStyles(theme => ({
   viewButton: {
-    marginLeft: theme.spacing(2),
-  },
-}));
+    marginLeft: theme.spacing(2)
+  }
+}))
 
 const Reminder = ({
   reminder,
-  setDeleteId,
+  setDeleteId
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const _handleClick = () => {
-    setDeleteId(reminder._id);
-  };
+    setDeleteId(reminder._id)
+  }
 
   return (
     <ListItem divider>
@@ -28,7 +28,7 @@ const Reminder = ({
         primary={reminder.message}
         primaryTypographyProps={{
           variant: 'h6',
-          noWrap: true,
+          noWrap: true
         }}
       />
       <Tooltip title='Eliminar'>
@@ -42,17 +42,17 @@ const Reminder = ({
         </IconButton>
       </Tooltip>
     </ListItem>
-  );
-};
+  )
+}
 
 Reminder.propTypes = {
   reminder: PropTypes.shape({
     message: PropTypes.string,
-    _id: PropTypes.string,
+    _id: PropTypes.string
   }).isRequired,
-  setDeleteId: PropTypes.func.isRequired,
-};
+  setDeleteId: PropTypes.func.isRequired
+}
 
-Reminder.displayName = 'Reminder';
+Reminder.displayName = 'Reminder'
 
-export default Reminder;
+export default Reminder

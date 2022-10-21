@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles({
   chart: {
-    height: '100%',
-  },
-});
+    height: '100%'
+  }
+})

@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { DatePickerProvider, ReduxProvider } from 'story';
-import RoutesWrapper from 'story/RoutesWrapper';
-import { story as Book } from './Book';
+import { DatePickerProvider, ReduxProvider } from 'story'
+import RoutesWrapper from 'story/RoutesWrapper'
+import { story as Book } from './Book'
 
 export default {
   title: 'Rutas/Libro',
   parameters: {
     component: Book,
-    componentSubtitle: 'Vista',
+    componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
     <ReduxProvider>
@@ -18,9 +18,9 @@ export default {
         </RoutesWrapper>
       </DatePickerProvider>
     </ReduxProvider>
-  ),
-  ],
-};
+  )
+  ]
+}
 
 /**
  * code, productName, quantity, price, amount, diff
@@ -38,15 +38,15 @@ const BookStory = () => (
           concept: 'C. mercaderias',
           dateInvoice: 1595101920000,
           nInvoice: '22',
-          nOrder: 5,
-        },
+          nOrder: 5
+        }
       ]
     }
     getInvoices={action('getInvoices')}
     match={{ params: { id: 'ggggg7777' } }}
   />
-);
+)
 
-BookStory.storyName = 'Vista';
+BookStory.storyName = 'Vista'
 
-export { BookStory };
+export { BookStory }

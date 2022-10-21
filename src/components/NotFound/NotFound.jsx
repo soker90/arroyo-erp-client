@@ -1,19 +1,19 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom'
 import {
   Typography,
   Button,
   Container,
   Box,
   useTheme,
-  useMediaQuery,
-} from '@mui/material';
-import Page from 'components/Page';
-import { useStyles } from './NotFound.styles';
+  useMediaQuery
+} from '@mui/material'
+import Page from 'components/Page'
+import { useStyles } from './NotFound.styles'
 
 const NotFound = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const mobileDevice = useMediaQuery(theme.breakpoints.down('lg'));
+  const classes = useStyles()
+  const theme = useTheme()
+  const mobileDevice = useMediaQuery(theme.breakpoints.down('lg'))
 
   return (
     <Page className={classes.root} title='Error 404: Página no encontrada'>
@@ -47,9 +47,9 @@ const NotFound = () => {
         </Box>
       </Container>
     </Page>
-  );
-};
+  )
+}
 
-NotFound.displayName = 'NotFound';
+NotFound.displayName = 'NotFound'
 
-export default NotFound;
+export default NotFound

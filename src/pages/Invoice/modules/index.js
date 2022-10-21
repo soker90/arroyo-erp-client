@@ -1,11 +1,11 @@
-import { createReducer, setPayload } from 'store/utils';
-import { CREATE_INVOICE, CREATE_INVOICE_EXPENSE } from 'modules/providers/types';
+import { createReducer, setPayload } from 'store/utils'
+import { CREATE_INVOICE, CREATE_INVOICE_EXPENSE } from 'modules/providers/types'
 import {
   CONFIRM_INVOICE,
   GET_INVOICE,
   UPDATE_DATA,
-  RESET_INVOICE, DELETE_INVOICE,
-} from './types';
+  RESET_INVOICE, DELETE_INVOICE
+} from './types'
 
 const INITIAL_STATE = {
   id: '',
@@ -14,8 +14,8 @@ const INITIAL_STATE = {
   data: {},
   deliveryOrders: [],
   totals: {},
-  payment: null,
-};
+  payment: null
+}
 
 const ACTION_HANDLERS = {
   [GET_INVOICE.SET]: setPayload,
@@ -25,10 +25,10 @@ const ACTION_HANDLERS = {
   [CONFIRM_INVOICE.SET]: (state, { payload: { data, payment } }) => ({
     ...state,
     data,
-    payment,
+    payment
   }),
   [DELETE_INVOICE.SUCCESS]: () => INITIAL_STATE,
-  [RESET_INVOICE]: () => INITIAL_STATE,
-};
+  [RESET_INVOICE]: () => INITIAL_STATE
+}
 
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS)

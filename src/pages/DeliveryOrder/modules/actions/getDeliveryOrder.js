@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { GET_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getDeliveryOrderRequest = () => ({ type: GET_DELIVERY_ORDER.REQUEST });
+const _getDeliveryOrderRequest = () => ({ type: GET_DELIVERY_ORDER.REQUEST })
 
 /**
  * Success action
@@ -14,8 +14,8 @@ const _getDeliveryOrderRequest = () => ({ type: GET_DELIVERY_ORDER.REQUEST });
  * @private
  */
 const _getDeliveryOrderSuccess = () => ({
-  type: GET_DELIVERY_ORDER.SUCCESS,
-});
+  type: GET_DELIVERY_ORDER.SUCCESS
+})
 
 /**
  * Set action
@@ -25,8 +25,8 @@ const _getDeliveryOrderSuccess = () => ({
  */
 const _getDeliveryOrderSet = data => ({
   type: GET_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for getInitData
@@ -36,22 +36,22 @@ const _getDeliveryOrderSet = data => ({
  */
 const _getDeliveryOrderError = error => ({
   type: GET_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae los proveedores
  * @returns {function(...[*]=)}
  */
 export const getDeliveryOrder = id => async dispatch => {
-  dispatch(_getDeliveryOrderRequest());
+  dispatch(_getDeliveryOrderRequest())
 
   try {
-    const { data } = await axios(`deliveryorders/${id}`);
+    const { data } = await axios(`deliveryorders/${id}`)
 
-    dispatch(_getDeliveryOrderSuccess());
-    dispatch(_getDeliveryOrderSet(data));
+    dispatch(_getDeliveryOrderSuccess())
+    dispatch(_getDeliveryOrderSet(data))
   } catch (error) {
-    dispatch(_getDeliveryOrderError(error));
+    dispatch(_getDeliveryOrderError(error))
   }
-};
+}

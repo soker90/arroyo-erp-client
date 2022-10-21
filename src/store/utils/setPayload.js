@@ -3,4 +3,4 @@
  * @param state
  * @param payload
  */
-export const setPayload = (state, { payload }) => ({ ...state, ...payload });
+export const setPayload = (state, { payload }) => ({ ...state, ...payload })

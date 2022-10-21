@@ -7,8 +7,8 @@ export const INITIAL_STATE = {
   phone: '',
   email: '',
   businessName: '',
-  cif: '',
-};
+  cif: ''
+}
 
 export const fields = [
   { id: 'name', label: 'Nombre', options: { autoFocus: true } },
@@ -19,5 +19,5 @@ export const fields = [
   { id: 'postalCode', label: 'Código Postal' },
   { id: 'province', label: 'Provincia' },
   { id: 'phone', label: 'Teléfono' },
-  { id: 'email', label: 'Correo electrónico' },
-];
+  { id: 'email', label: 'Correo electrónico' }
+]

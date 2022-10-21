@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Box, Typography } from '@mui/material'
 
 const TitleTable = ({ title }) => (
   title
@@ -17,14 +17,14 @@ const TitleTable = ({ title }) => (
           </Typography>
         </Box>
       </Box>
-    )
+      )
     : null
-);
+)
 
 TitleTable.propTypes = {
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}
 
-TitleTable.displayName = 'TitleTable';
-export const story = TitleTable;
-export default TitleTable;
+TitleTable.displayName = 'TitleTable'
+export const story = TitleTable
+export default TitleTable

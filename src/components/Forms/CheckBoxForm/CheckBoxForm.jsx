@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Grid, Checkbox, FormControlLabel } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Grid, Checkbox, FormControlLabel } from '@mui/material'
 
 /**
  * NOTA: Si cuando cargue el input el label y el value se superponen
@@ -19,7 +19,7 @@ const CheckBoxForm = ({ size = 6, label, ...rest }) => (
       label={label}
     />
   </Grid>
-);
+)
 
 CheckBoxForm.propTypes = {
   size: PropTypes.number,
@@ -27,10 +27,10 @@ CheckBoxForm.propTypes = {
   checked: PropTypes.string,
   variant: PropTypes.string,
   onChange: PropTypes.func,
-  disabled: PropTypes.bool,
-};
+  disabled: PropTypes.bool
+}
 
-CheckBoxForm.displayName = 'CheckBoxForm';
+CheckBoxForm.displayName = 'CheckBoxForm'
 
-export const story = CheckBoxForm;
-export default CheckBoxForm;
+export const story = CheckBoxForm
+export default CheckBoxForm

@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
-import { Container } from '@mui/material';
+import { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
+import { Container } from '@mui/material'
 
-import { LoadingScreen, Page } from 'components';
-import Header from './Header';
-import { useStyles } from './ClientInvoice.styles';
-import ClientInvoiceCards from './ClientInvoiceCards';
-import DeliveryOrderInvoice from './DeliveryOrderInvoice';
-import BannerPaid from '../../../components/BannerPaid';
+import { LoadingScreen, Page } from 'components'
+import Header from './Header'
+import { useStyles } from './ClientInvoice.styles'
+import ClientInvoiceCards from './ClientInvoiceCards'
+import DeliveryOrderInvoice from './DeliveryOrderInvoice'
+import BannerPaid from '../../../components/BannerPaid'
 
 const ClientInvoice = ({
   getClientInvoice,
@@ -30,39 +29,39 @@ const ClientInvoice = ({
   getProducts,
   paid,
   paymentType,
-  paymentDate,
+  paymentDate
 }) => {
-  const { idInvoice } = useParams();
-  const classes = useStyles();
-  const lastDORef = useRef(null);
-  const isDOCreated = useRef(false);
+  const { idInvoice } = useParams()
+  const classes = useStyles()
+  const lastDORef = useRef(null)
+  const isDOCreated = useRef(false)
 
   useEffect(() => {
-    if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice);
-  }, [idInvoice]);
+    if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice)
+  }, [idInvoice])
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts()
+  }, [])
 
-  useEffect(() => () => resetClientInvoiceState(), []);
+  useEffect(() => () => resetClientInvoiceState(), [])
 
   useEffect(() => {
     if (isDOCreated?.current) {
-      lastDORef?.current?.scrollIntoView?.();
-      isDOCreated.current = false;
+      lastDORef?.current?.scrollIntoView?.()
+      isDOCreated.current = false
     }
-  }, [deliveryOrders?.length]);
+  }, [deliveryOrders?.length])
 
-  if (!_id) return <LoadingScreen />;
+  if (!_id) return <LoadingScreen />
 
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const _isLastDO = index => deliveryOrders?.length - 1 === index;
+  const _isLastDO = index => deliveryOrders?.length - 1 === index
 
   const createDOAndRedirect = id => {
-    isDOCreated.current = true;
-    createDeliveryOrder(id);
-  };
+    isDOCreated.current = true
+    createDeliveryOrder(id)
+  }
 
   return (
     <Page className={classes.root} title={`${nameClient} | Factura`}>
@@ -108,8 +107,8 @@ const ClientInvoice = ({
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 ClientInvoice.propTypes = {
   getClientInvoice: PropTypes.func.isRequired,
@@ -130,9 +129,9 @@ ClientInvoice.propTypes = {
   getProducts: PropTypes.func.isRequired,
   paid: PropTypes.bool,
   paymentType: PropTypes.string,
-  paymentDate: PropTypes.number,
-};
+  paymentDate: PropTypes.number
+}
 
-ClientInvoice.displayName = 'ClientInvoice';
-export const story = ClientInvoice;
-export default ClientInvoice;
+ClientInvoice.displayName = 'ClientInvoice'
+export const story = ClientInvoice
+export default ClientInvoice

@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { deleteProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import DeleteConfirmationModal from './DeleteConfirmationModal';
+import { deleteProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions'
+import DeleteConfirmationModal from './DeleteConfirmationModal'
 
 const mapDispatchToProps = {
-  deleteProductOfDeliveryOrder,
-};
+  deleteProductOfDeliveryOrder
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(DeleteConfirmationModal);
+  mapDispatchToProps
+)(DeleteConfirmationModal)

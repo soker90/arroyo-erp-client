@@ -1,1 +1,1 @@
-export { default } from './containers/PriceChangesContainer';
+export { default } from './containers/PriceChangesContainer'

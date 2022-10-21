@@ -1,44 +1,44 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import EditIcon from '@mui/icons-material/Edit';
-import { Link } from 'react-router-dom';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import EditIcon from '@mui/icons-material/Edit'
+import { Link } from 'react-router-dom'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
 
-import { LoadingScreen, TableMaterial, TextEuro } from 'components';
-import { BASE_PATH } from 'constants/index';
-import { format } from 'utils';
-import LabelPending from '../LabelPending';
+import { LoadingScreen, TableMaterial, TextEuro } from 'components'
+import { BASE_PATH } from 'constants/index'
+import { format } from 'utils'
+import LabelPending from '../LabelPending'
 
 const ProviderInvoices = ({
   invoices,
   getInvoicesByProvider,
   idProvider,
-  invoicesCount,
+  invoicesCount
 }) => {
   useEffect(() => {
-    if (idProvider) getInvoicesByProvider({ provider: idProvider });
-  }, [getInvoicesByProvider, idProvider]);
+    if (idProvider) getInvoicesByProvider({ provider: idProvider })
+  }, [getInvoicesByProvider, idProvider])
 
-  if (!idProvider) return <LoadingScreen />;
+  if (!idProvider) return <LoadingScreen />
 
   const _refresh = ({
     offset,
-    limit,
+    limit
   }) => {
     getInvoicesByProvider({
       provider: idProvider,
       offset,
-      limit,
-    });
-  };
+      limit
+    })
+  }
   /**
    * Render payment type
    * @param {object} payment
    * @returns {string|null}
    * @private
    */
-  const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null);
+  const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null)
 
   /**
    * Render mail icon
@@ -46,36 +46,36 @@ const ProviderInvoices = ({
    * @return {JSX.Element|boolean}
    * @private
    */
-  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false);
+  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false)
 
   return idProvider && (
     <TableMaterial
       columns={[
         {
           title: 'Nº de Orden',
-          render: ({ nOrder }) => nOrder || <LabelPending />,
+          render: ({ nOrder }) => nOrder || <LabelPending />
         },
         {
           title: 'Fecha de factura',
-          render: ({ dateInvoice }) => format.date(dateInvoice),
+          render: ({ dateInvoice }) => format.date(dateInvoice)
         },
         {
           title: 'Nº de factura',
-          field: 'nInvoice',
+          field: 'nInvoice'
         },
         {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
-          render: ({ total }) => <TextEuro num={total} />,
+          render: ({ total }) => <TextEuro num={total} />
         },
         {
           title: 'Pago',
-          render: _renderPaymentType,
+          render: _renderPaymentType
         },
         {
           title: 'Por correo',
-          render: _renderEmail,
-        },
+          render: _renderEmail
+        }
       ]}
       data={invoices}
       actions={[
@@ -83,22 +83,22 @@ const ProviderInvoices = ({
           icon: EditIcon,
           tooltip: 'Editar',
           component: Link,
-          to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
-        },
+          to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`
+        }
       ]}
       count={invoicesCount}
       refresh={_refresh}
     />
-  );
-};
+  )
+}
 
 ProviderInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
   getInvoicesByProvider: PropTypes.func.isRequired,
-  invoicesCount: PropTypes.number.isRequired,
-};
+  invoicesCount: PropTypes.number.isRequired
+}
 
-ProviderInvoices.displayName = 'ProviderInvoices';
+ProviderInvoices.displayName = 'ProviderInvoices'
 
-export default ProviderInvoices;
+export default ProviderInvoices

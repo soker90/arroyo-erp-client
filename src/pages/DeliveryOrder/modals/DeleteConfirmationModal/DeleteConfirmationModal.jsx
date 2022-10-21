@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components/Modals';
+import PropTypes from 'prop-types'
+import { ConfirmModal } from 'components/Modals'
 
 const DeleteConfirmationModal = ({
   deleteProductOfDeliveryOrder, index, ...rest
@@ -9,9 +9,9 @@ const DeleteConfirmationModal = ({
    * @private
    */
   const _handleSend = () => {
-    deleteProductOfDeliveryOrder(index);
-    rest.close();
-  };
+    deleteProductOfDeliveryOrder(index)
+    rest.close()
+  }
 
   return (
     <ConfirmModal
@@ -26,20 +26,20 @@ const DeleteConfirmationModal = ({
           color: 'secondary',
           variant: 'contained',
           value: 'Eliminar',
-          'data-cy': 'modal-close-button',
-        },
+          'data-cy': 'modal-close-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeleteConfirmationModal.propTypes = {
   close: PropTypes.func,
   show: PropTypes.bool,
   index: PropTypes.number.isRequired,
-  deleteProductOfDeliveryOrder: PropTypes.func.isRequired,
-};
+  deleteProductOfDeliveryOrder: PropTypes.func.isRequired
+}
 
-DeleteConfirmationModal.displayName = 'DeleteConfirmationModal';
-export const story = DeleteConfirmationModal;
-export default DeleteConfirmationModal;
+DeleteConfirmationModal.displayName = 'DeleteConfirmationModal'
+export const story = DeleteConfirmationModal
+export default DeleteConfirmationModal

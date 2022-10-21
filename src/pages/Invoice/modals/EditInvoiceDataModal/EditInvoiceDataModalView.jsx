@@ -1,11 +1,11 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
 
 import {
-  DatePickerForm, InputForm, ModalGrid, SelectForm, SwitchForm,
-} from 'components';
-import format from 'utils/format';
-import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices';
+  DatePickerForm, InputForm, ModalGrid, SelectForm, SwitchForm
+} from 'components'
+import format from 'utils/format'
+import { INVOICE_COMMON_CONCEPTS } from 'constants/invoices'
 
 const EditInvoiceDataModalView = ({
   show,
@@ -17,7 +17,7 @@ const EditInvoiceDataModalView = ({
   id,
   concept,
   total,
-  mailSend,
+  mailSend
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -26,9 +26,9 @@ const EditInvoiceDataModalView = ({
       dateInvoice,
       dateRegister,
       concept,
-      mailSend,
-    },
-  );
+      mailSend
+    }
+  )
 
   useEffect(() => {
     if (show) {
@@ -36,8 +36,8 @@ const EditInvoiceDataModalView = ({
         nInvoice,
         dateInvoice,
         dateRegister,
-        concept,
-      });
+        concept
+      })
     }
     // eslint-disable-next-line
   }, [show]);
@@ -52,16 +52,16 @@ const EditInvoiceDataModalView = ({
     target: {
       name,
       value,
-      checked,
-    },
+      checked
+    }
   }) => {
-    if (name === 'nInvoice') setState({ [name]: value.toUpperCase() });
-    else setState({ [name]: checked ?? value });
-  };
+    if (name === 'nInvoice') setState({ [name]: value.toUpperCase() })
+    else setState({ [name]: checked ?? value })
+  }
 
   const _close = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const _handleSubmit = () => {
     const data = {
@@ -69,11 +69,11 @@ const EditInvoiceDataModalView = ({
       dateInvoice: format.dateToSend(state.dateInvoice),
       dateRegister: format.dateToSend(state.dateRegister),
       concept: state.concept,
-      mailSend: state.mailSend,
-    };
+      mailSend: state.mailSend
+    }
 
-    updateDataInvoice(id, { data }, _close);
-  };
+    updateDataInvoice(id, { data }, _close)
+  }
 
   /**
    * Handle press enter key
@@ -81,8 +81,8 @@ const EditInvoiceDataModalView = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Handle change picker
@@ -91,8 +91,8 @@ const EditInvoiceDataModalView = ({
    * @private
    */
   const _handleChangePicker = (date, name) => {
-    setState({ [name]: date });
-  };
+    setState({ [name]: date })
+  }
 
   /**
    * Render a input element
@@ -109,13 +109,13 @@ const EditInvoiceDataModalView = ({
       name={name}
       label={label}
       InputLabelProps={{
-        shrink: true,
+        shrink: true
       }}
       size={4}
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   /**
    * Renderiza un datepicker con opciones predeterimnadas
@@ -132,7 +132,7 @@ const EditInvoiceDataModalView = ({
       value={state[name]}
       onChange={date => _handleChangePicker(date, name)}
     />
-  );
+  )
 
   /**
    * Render select product
@@ -147,7 +147,7 @@ const EditInvoiceDataModalView = ({
       onChange={_handleChange}
       size={6}
       InputLabelProps={{
-        shrink: true,
+        shrink: true
       }}
       onKeyPress={_handleKeyPress}
     >
@@ -157,7 +157,7 @@ const EditInvoiceDataModalView = ({
         </option>
       ))}
     </SelectForm>
-  );
+  )
 
   /**
    * Render mail send
@@ -171,7 +171,7 @@ const EditInvoiceDataModalView = ({
       color='primary'
       label='En correo electrónico'
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -186,8 +186,8 @@ const EditInvoiceDataModalView = ({
       {total < 0 && _renderSelectConcept()}
       {_renderMailSend()}
     </ModalGrid>
-  );
-};
+  )
+}
 
 EditInvoiceDataModalView.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -199,9 +199,9 @@ EditInvoiceDataModalView.propTypes = {
   updateDataInvoice: PropTypes.func.isRequired,
   concept: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
-  mailSend: PropTypes.bool,
-};
+  mailSend: PropTypes.bool
+}
 
-EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView';
-export const story = EditInvoiceDataModalView;
-export default EditInvoiceDataModalView;
+EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView'
+export const story = EditInvoiceDataModalView
+export default EditInvoiceDataModalView

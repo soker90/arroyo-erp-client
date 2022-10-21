@@ -1,6 +1,6 @@
-import { Box, CircularProgress } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import Logo from 'components/Logo';
+import { Box, CircularProgress } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import Logo from 'components/Logo'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,16 +15,16 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     top: 0,
     width: '100%',
-    zIndex: 2000,
+    zIndex: 2000
   },
   logo: {
     width: 200,
-    maxWidth: '100%',
-  },
-}));
+    maxWidth: '100%'
+  }
+}))
 
 const SlashScreen = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
@@ -37,7 +37,7 @@ const SlashScreen = () => {
       </Box>
       <CircularProgress />
     </div>
-  );
-};
+  )
+}
 
-export default SlashScreen;
+export default SlashScreen

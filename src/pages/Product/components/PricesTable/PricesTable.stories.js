@@ -1,5 +1,5 @@
-import RoutesWrapper from 'story/RoutesWrapper';
-import { story as PricesTable } from './PricesTable';
+import RoutesWrapper from 'story/RoutesWrapper'
+import { story as PricesTable } from './PricesTable'
 
 export default {
   title: 'Rutas/Producto/Precios',
@@ -12,7 +12,7 @@ export default {
       {storyFn()}
     </RoutesWrapper>
   )]
-};
+}
 
 const PricesStory = () => (
   <PricesTable
@@ -28,8 +28,8 @@ const PricesStory = () => (
       }]
     }
   />
-);
+)
 
-PricesStory.storyName = 'Tabla de precios';
+PricesStory.storyName = 'Tabla de precios'
 
-export { PricesStory };
+export { PricesStory }

@@ -1,19 +1,19 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getInvoicesByProvider } from 'modules/providers/actions';
-import InvoicesTable from './ProviderInvoices';
+import { getInvoicesByProvider } from 'modules/providers/actions'
+import InvoicesTable from './ProviderInvoices'
 
 const mapStateToProps = ({ providers: { provider, invoices, invoicesCount } }) => ({
   invoices,
   idProvider: provider._id,
-  invoicesCount,
-});
+  invoicesCount
+})
 
 const mapDispatchToProps = {
-  getInvoicesByProvider,
-};
+  getInvoicesByProvider
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(InvoicesTable);
+  mapDispatchToProps
+)(InvoicesTable)

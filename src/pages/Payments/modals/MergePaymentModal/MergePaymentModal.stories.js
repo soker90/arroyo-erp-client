@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { story as MergePaymentModal } from './MergePaymentModal';
+import { story as MergePaymentModal } from './MergePaymentModal'
 
 export default {
   title: 'Rutas/Albarán/Modales/Eliminar prducto',
   parameters: {
     component: MergePaymentModal,
-    componentSubtitle: 'Modal de confimación para eliminar un producto del albarán',
-  },
-};
+    componentSubtitle: 'Modal de confimación para eliminar un producto del albarán'
+  }
+}
 
 const MergeModal = () => (
   <MergePaymentModal
@@ -20,8 +20,8 @@ const MergeModal = () => (
     deleteProductOfDeliveryOrder={action('deleteProductOfDeliveryOrder')}
     index={0}
   />
-);
+)
 
-MergeModal.storyName = 'Eliminar producto';
+MergeModal.storyName = 'Eliminar producto'
 
-export { MergeModal };
+export { MergeModal }

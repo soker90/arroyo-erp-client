@@ -1,18 +1,18 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { updateDataDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import { EditTotalsModal } from 'components';
+import { updateDataDeliveryOrder } from 'pages/DeliveryOrder/modules/actions'
+import { EditTotalsModal } from 'components'
 
 const mapStateToProps = ({ deliveryOrders: { totals, _id } }) => ({
   id: _id,
-  ...totals,
-});
+  ...totals
+})
 
 const mapDispatchToProps = {
-  update: updateDataDeliveryOrder,
-};
+  update: updateDataDeliveryOrder
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(EditTotalsModal);
+  mapDispatchToProps
+)(EditTotalsModal)

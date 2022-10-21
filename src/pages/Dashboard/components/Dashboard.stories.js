@@ -1,15 +1,15 @@
-import RoutesWrapper from 'story/RoutesWrapper';
-import { action } from '@storybook/addon-actions';
-import DashboardView from './DashboardView';
-import { ReduxProvider } from '../../../story';
+import RoutesWrapper from 'story/RoutesWrapper'
+import { action } from '@storybook/addon-actions'
+import DashboardView from './DashboardView'
+import { ReduxProvider } from '../../../story'
 
 export default {
   title: 'Rutas/Inicio',
   parameters: {
     component: DashboardView,
-    componentSubtitle: 'Vista del dashboard de inicio',
-  },
-};
+    componentSubtitle: 'Vista del dashboard de inicio'
+  }
+}
 
 const Dashboard = () => (
   <ReduxProvider>
@@ -20,7 +20,7 @@ const Dashboard = () => (
           2: 3,
           3: 33.2,
           4: 11.3,
-          total: 22,
+          total: 22
         }}
         getDashboard={action('getDashboard')}
         reminders={[]}
@@ -28,8 +28,8 @@ const Dashboard = () => (
       />
     </RoutesWrapper>
   </ReduxProvider>
-);
+)
 
-Dashboard.storyName = 'Inicio';
+Dashboard.storyName = 'Inicio'
 
-export { Dashboard };
+export { Dashboard }

@@ -1,1 +1,1 @@
-export { default } from './BooleanIcon';
+export { default } from './BooleanIcon'

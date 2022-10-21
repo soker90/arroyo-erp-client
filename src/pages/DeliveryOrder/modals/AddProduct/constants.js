@@ -7,5 +7,5 @@ export const INITIAL_STATE = {
   product: '',
   quantity: 0,
   price: 0,
-  canal: undefined,
-};
+  canal: undefined
+}

@@ -1,24 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
-import { Container } from '@mui/material';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react'
+import { Container } from '@mui/material'
+import PropTypes from 'prop-types'
 
-import { Page } from 'components';
-import Header from './Header';
-import PaymentsTable from './PaymentsTable';
-import { useStyles } from './Payments.styles';
+import { Page } from 'components'
+import Header from './Header'
+import PaymentsTable from './PaymentsTable'
+import { useStyles } from './Payments.styles'
 
 const Payments = ({ payments, getPayments }) => {
-  const [selected, setSelected] = useState([]);
-  const classes = useStyles();
+  const [selected, setSelected] = useState([])
+  const classes = useStyles()
 
   useEffect(() => {
-    getPayments();
-  }, [getPayments]);
+    getPayments()
+  }, [getPayments])
 
   useEffect(() => {
-    setSelected([]);
-  }, [payments]);
+    setSelected([])
+  }, [payments])
 
   return (
     <Page className={classes.root} title='Pagos'>
@@ -28,13 +27,13 @@ const Payments = ({ payments, getPayments }) => {
         <PaymentsTable payments={payments} selected={selected} setSelected={setSelected} />
       </Container>
     </Page>
-  );
-};
+  )
+}
 Payments.propTypes = {
   payments: PropTypes.array.isRequired,
-  getPayments: PropTypes.func.isRequired,
-};
+  getPayments: PropTypes.func.isRequired
+}
 
-Payments.displayName = 'Payments';
-export const story = Payments;
-export default Payments;
+Payments.displayName = 'Payments'
+export const story = Payments
+export default Payments

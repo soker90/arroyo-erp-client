@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { ListItem, Typography } from '@mui/material';
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { ListItem, Typography } from '@mui/material'
 
-import ItemCardVariant from './ItemCard.variants';
-import { useStyles } from './ItemCard.styles';
+import ItemCardVariant from './ItemCard.variants'
+import { useStyles } from './ItemCard.styles'
 
 const ItemCard = ({
-  label, value, divider, className, variant,
+  label, value, divider, className, variant
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <ListItem
@@ -20,23 +20,23 @@ const ItemCard = ({
       <ItemCardVariant value={value} variant={variant} />
 
     </ListItem>
-  );
-};
+  )
+}
 
 ItemCard.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.any,
   divider: PropTypes.bool,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'boolean', 'euro']),
-};
+  variant: PropTypes.oneOf(['default', 'boolean', 'euro'])
+}
 
 ItemCard.defaultProps = {
   divider: true,
-  variant: 'default',
-};
+  variant: 'default'
+}
 
-ItemCard.displayName = 'ItemCard';
+ItemCard.displayName = 'ItemCard'
 
-export const story = ItemCard;
-export default ItemCard;
+export const story = ItemCard
+export default ItemCard

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CREATE_NOTE } from '../types';
+import axios from 'axios'
+import { CREATE_NOTE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _createNoteRequest = () => ({ type: CREATE_NOTE.REQUEST });
+const _createNoteRequest = () => ({ type: CREATE_NOTE.REQUEST })
 
 /**
  * Success action
@@ -17,16 +17,16 @@ const _createNoteSuccess = () => ({
   type: CREATE_NOTE.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Nota creada',
-  },
-});
+    message: 'Nota creada'
+  }
+})
 
 const _createNoteSet = ({ data }) => ({
   type: CREATE_NOTE.SET,
   payload: {
-    notes: data,
-  },
-});
+    notes: data
+  }
+})
 
 /**
  * Error action
@@ -36,8 +36,8 @@ const _createNoteSet = ({ data }) => ({
  */
 const _createNoteError = error => ({
   type: CREATE_NOTE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea una nota
@@ -46,15 +46,15 @@ const _createNoteError = error => ({
  * @returns {function(...[*]=)}
  */
 export const createNote = (data, callback) => async dispatch => {
-  dispatch(_createNoteRequest());
+  dispatch(_createNoteRequest())
 
   try {
-    const response = await axios.post('notes', data);
+    const response = await axios.post('notes', data)
 
-    dispatch(_createNoteSuccess());
-    dispatch(_createNoteSet(response));
-    callback();
+    dispatch(_createNoteSuccess())
+    dispatch(_createNoteSet(response))
+    callback()
   } catch (error) {
-    dispatch(_createNoteError(error));
+    dispatch(_createNoteError(error))
   }
-};
+}

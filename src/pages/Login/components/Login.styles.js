@@ -1,17 +1,17 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
-    height: '100%',
+    height: '100%'
   },
   grid: {
-    height: '100%',
+    height: '100%'
   },
   quoteContainer: {
     [theme.breakpoints.down('lg')]: {
-      display: 'none',
-    },
+      display: 'none'
+    }
   },
   quote: {
     height: '100%',
@@ -21,23 +21,23 @@ export const useStyles = makeStyles(theme => ({
     backgroundImage: 'url(\'/static/images/auth.png\')',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center'
   },
   name: {
     marginTop: theme.spacing(3),
-    color: '#fff',
+    color: '#fff'
   },
   content: {
     height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   contentBody: {
     flexGrow: 1,
     display: 'flex',
     alignItems: 'center',
     [theme.breakpoints.down('lg')]: {
-      justifyContent: 'center',
-    },
-  },
-}));
+      justifyContent: 'center'
+    }
+  }
+}))

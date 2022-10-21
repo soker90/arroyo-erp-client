@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { ADD_PRODUCT_TO_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { ADD_PRODUCT_TO_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action for createDeliveryOrder
@@ -7,8 +7,8 @@ import { ADD_PRODUCT_TO_DELIVERY_ORDER } from '../types';
  * @private
  */
 const _addProductToDeliveryOrderRequest = () => ({
-  type: ADD_PRODUCT_TO_DELIVERY_ORDER.REQUEST,
-});
+  type: ADD_PRODUCT_TO_DELIVERY_ORDER.REQUEST
+})
 
 /**
  * Success action for createDeliveryOrder
@@ -19,9 +19,9 @@ const _addProductToDeliveryOrderSuccess = () => ({
   type: ADD_PRODUCT_TO_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto añadido',
-  },
-});
+    message: 'Producto añadido'
+  }
+})
 
 /**
  * Set data
@@ -31,8 +31,8 @@ const _addProductToDeliveryOrderSuccess = () => ({
  */
 const _addProductToDeliveryOrderSet = ({ data }) => ({
   type: ADD_PRODUCT_TO_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for createDeliveryOrder
@@ -42,25 +42,25 @@ const _addProductToDeliveryOrderSet = ({ data }) => ({
  */
 const _addProductToDeliveryOrderError = error => ({
   type: ADD_PRODUCT_TO_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea un nuevo albarán del proveedor
  * @returns {function(...[*]=)}
  */
 export const addProductToDeliveryOrder = (model, callback) => async (dispatch, getState) => {
-  dispatch(_addProductToDeliveryOrderRequest());
-  const id = getState().deliveryOrders._id;
+  dispatch(_addProductToDeliveryOrderRequest())
+  const id = getState().deliveryOrders._id
 
   try {
-    const response = await axios.post(`deliveryorders/${id}/product`, model);
+    const response = await axios.post(`deliveryorders/${id}/product`, model)
 
-    dispatch(_addProductToDeliveryOrderSuccess());
-    dispatch(_addProductToDeliveryOrderSet(response));
-    callback();
+    dispatch(_addProductToDeliveryOrderSuccess())
+    dispatch(_addProductToDeliveryOrderSet(response))
+    callback()
   } catch (error) {
-    console.error(error);
-    dispatch(_addProductToDeliveryOrderError(error));
+    console.error(error)
+    dispatch(_addProductToDeliveryOrderError(error))
   }
-};
+}

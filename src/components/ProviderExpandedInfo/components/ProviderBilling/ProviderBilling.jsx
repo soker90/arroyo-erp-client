@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, List,
-} from '@mui/material';
-import uniqId from 'uniqid';
+  Card, CardContent, CardHeader, Divider, Grid, List
+} from '@mui/material'
+import uniqId from 'uniqid'
 
-import { ItemCard } from 'components';
-import { useStyles } from './ProviderBilling.styles';
+import { ItemCard } from 'components'
+import { useStyles } from './ProviderBilling.styles'
 
 const ProviderBilling = (
   {
-    year, trimesters, annual,
-  },
+    year, trimesters, annual
+  }
 ) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid
@@ -44,21 +44,21 @@ const ProviderBilling = (
         </CardContent>
       </Card>
     </Grid>
-  );
-};
+  )
+}
 
 ProviderBilling.propTypes = {
   trimesters: PropTypes.array,
   year: PropTypes.number,
-  annual: PropTypes.number,
-};
+  annual: PropTypes.number
+}
 
 ProviderBilling.defaultProps = {
   year: '',
   trimesters: [],
-  annual: 0,
-};
+  annual: 0
+}
 
-ProviderBilling.displayName = 'ProviderBilling';
+ProviderBilling.displayName = 'ProviderBilling'
 
-export default ProviderBilling;
+export default ProviderBilling

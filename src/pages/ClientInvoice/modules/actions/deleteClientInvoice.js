@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_CLIENT_INVOICE } from '../types';
+import axios from 'axios'
+import { DELETE_CLIENT_INVOICE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteClientInvoiceRequest = () => ({ type: DELETE_CLIENT_INVOICE.REQUEST });
+const _deleteClientInvoiceRequest = () => ({ type: DELETE_CLIENT_INVOICE.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _deleteClientInvoiceSuccess = () => ({
   type: DELETE_CLIENT_INVOICE.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Factura eliminada',
-  },
-});
+    message: 'Factura eliminada'
+  }
+})
 
 /**
  * Error action
@@ -29,8 +29,8 @@ const _deleteClientInvoiceSuccess = () => ({
  */
 const _deleteClientInvoiceError = error => ({
   type: DELETE_CLIENT_INVOICE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Elimina la factura
@@ -39,14 +39,14 @@ const _deleteClientInvoiceError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteClientInvoice = (id, callback) => async dispatch => {
-  dispatch(_deleteClientInvoiceRequest());
+  dispatch(_deleteClientInvoiceRequest())
 
   try {
-    await axios.delete(`client/invoices/${id}`);
+    await axios.delete(`client/invoices/${id}`)
 
-    dispatch(_deleteClientInvoiceSuccess());
-    callback();
+    dispatch(_deleteClientInvoiceSuccess())
+    callback()
   } catch (error) {
-    dispatch(_deleteClientInvoiceError(error));
+    dispatch(_deleteClientInvoiceError(error))
   }
-};
+}

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_MANY_PRICE_CHANGES } from '../types';
+import axios from 'axios'
+import { DELETE_MANY_PRICE_CHANGES } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteManyChangesPriceRequest = () => ({ type: DELETE_MANY_PRICE_CHANGES.REQUEST });
+const _deleteManyChangesPriceRequest = () => ({ type: DELETE_MANY_PRICE_CHANGES.REQUEST })
 
 /**
  * Success action
@@ -14,19 +14,19 @@ const _deleteManyChangesPriceRequest = () => ({ type: DELETE_MANY_PRICE_CHANGES.
  * @private
  */
 const _deleteManyChangesPriceSuccess = () => ({
-  type: DELETE_MANY_PRICE_CHANGES.SUCCESS,
-});
+  type: DELETE_MANY_PRICE_CHANGES.SUCCESS
+})
 
 const _deleteManyChangesPriceSet = ({
   priceChanges,
-  count,
+  count
 }) => ({
   type: DELETE_MANY_PRICE_CHANGES.SET,
   payload: {
     priceChanges,
-    count,
-  },
-});
+    count
+  }
+})
 
 /**
  * Error action for getInitData
@@ -36,8 +36,8 @@ const _deleteManyChangesPriceSet = ({
  */
 const _deleteManyChangesPriceError = error => ({
   type: DELETE_MANY_PRICE_CHANGES.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Envía los precios al telegram
@@ -45,14 +45,14 @@ const _deleteManyChangesPriceError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteManyChangesPrice = ids => async dispatch => {
-  dispatch(_deleteManyChangesPriceRequest());
+  dispatch(_deleteManyChangesPriceRequest())
 
   try {
-    const { data } = await axios.post('pricechanges/deletemany', { ids });
+    const { data } = await axios.post('pricechanges/deletemany', { ids })
 
-    dispatch(_deleteManyChangesPriceSuccess());
-    dispatch(_deleteManyChangesPriceSet(data));
+    dispatch(_deleteManyChangesPriceSuccess())
+    dispatch(_deleteManyChangesPriceSet(data))
   } catch (error) {
-    dispatch(_deleteManyChangesPriceError(error));
+    dispatch(_deleteManyChangesPriceError(error))
   }
-};
+}

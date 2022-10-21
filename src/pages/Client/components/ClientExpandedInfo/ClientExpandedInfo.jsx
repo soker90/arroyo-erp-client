@@ -1,31 +1,31 @@
-import { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback, useState } from 'react'
+import PropTypes from 'prop-types'
 import {
   Card,
   CardContent,
   CardHeader,
   Divider,
   IconButton,
-  Tooltip,
-} from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+  Tooltip
+} from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard } from 'components';
-import { adapterClientInfo } from '../../utils';
-import { EditClientModal } from '../../modals';
-import { useStyles } from './ClientExpandedInfo.styles';
+import { ItemGroupsCard } from 'components'
+import { adapterClientInfo } from '../../utils'
+import { EditClientModal } from '../../modals'
+import { useStyles } from './ClientExpandedInfo.styles'
 
 const ClientExpandedInfo = ({
-  expanded, client,
+  expanded, client
 }) => {
-  const classes = useStyles();
-  const [showModal, setShowModal] = useState(false);
+  const classes = useStyles()
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Close modal
    * @private
    */
-  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
   /**
    * Render edit button
@@ -38,9 +38,9 @@ const ClientExpandedInfo = ({
         <EditIcon />
       </IconButton>
     </Tooltip>
-  );
+  )
 
-  if (!expanded) return null;
+  if (!expanded) return null
 
   return (
     <>
@@ -56,14 +56,14 @@ const ClientExpandedInfo = ({
       </Card>
       <EditClientModal show={showModal} client={client} close={_closeModal} />
     </>
-  );
-};
+  )
+}
 
 ClientExpandedInfo.propTypes = {
   expanded: PropTypes.bool.isRequired,
-  client: PropTypes.object,
-};
+  client: PropTypes.object
+}
 
-ClientExpandedInfo.displayName = 'ProviderExpandedInfo';
-export const story = ClientExpandedInfo;
-export default ClientExpandedInfo;
+ClientExpandedInfo.displayName = 'ProviderExpandedInfo'
+export const story = ClientExpandedInfo
+export default ClientExpandedInfo

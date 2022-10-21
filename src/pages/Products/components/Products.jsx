@@ -1,22 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
-import { Container } from '@mui/material';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react'
+import { Container } from '@mui/material'
+import PropTypes from 'prop-types'
 
-import { Page } from 'components';
-import Header from './Header';
-import ProductsTable from './ProductsTable';
-import { useStyles } from './Products.styles';
+import { Page } from 'components'
+import Header from './Header'
+import ProductsTable from './ProductsTable'
+import { useStyles } from './Products.styles'
 
 const Products = ({
   products,
-  getProducts,
+  getProducts
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    getProducts()
+  }, [getProducts])
 
   return (
     <Page className={classes.root} title='Productos para clientes'>
@@ -25,13 +24,13 @@ const Products = ({
         <ProductsTable products={products} />
       </Container>
     </Page>
-  );
-};
+  )
+}
 Products.propTypes = {
   products: PropTypes.array.isRequired,
-  getProducts: PropTypes.func.isRequired,
-};
+  getProducts: PropTypes.func.isRequired
+}
 
-Products.displayName = 'Products';
-export const story = Products;
-export default Products;
+Products.displayName = 'Products'
+export const story = Products
+export default Products

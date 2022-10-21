@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CONFIRM_INVOICE } from '../types';
+import axios from 'axios'
+import { CONFIRM_INVOICE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _confirmInvoiceRequest = () => ({ type: CONFIRM_INVOICE.REQUEST });
+const _confirmInvoiceRequest = () => ({ type: CONFIRM_INVOICE.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _confirmInvoiceSuccess = () => ({
   type: CONFIRM_INVOICE.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Factura confirmada',
-  },
-});
+    message: 'Factura confirmada'
+  }
+})
 
 /**
  * Set action
@@ -29,8 +29,8 @@ const _confirmInvoiceSuccess = () => ({
  */
 const _confirmInvoiceSet = data => ({
   type: CONFIRM_INVOICE.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action
@@ -40,22 +40,22 @@ const _confirmInvoiceSet = data => ({
  */
 const _confirmInvoiceError = error => ({
   type: CONFIRM_INVOICE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Confirma la factura
  * @returns {function(...[*]=)}
  */
 export const confirmInvoice = id => async dispatch => {
-  dispatch(_confirmInvoiceRequest());
+  dispatch(_confirmInvoiceRequest())
 
   try {
-    const { data } = await axios.patch(`client/invoices/${id}/confirm`);
+    const { data } = await axios.patch(`client/invoices/${id}/confirm`)
 
-    dispatch(_confirmInvoiceSuccess());
-    dispatch(_confirmInvoiceSet(data));
+    dispatch(_confirmInvoiceSuccess())
+    dispatch(_confirmInvoiceSet(data))
   } catch (error) {
-    dispatch(_confirmInvoiceError(error));
+    dispatch(_confirmInvoiceError(error))
   }
-};
+}

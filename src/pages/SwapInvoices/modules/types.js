@@ -1,3 +1,3 @@
-import { requestActions } from 'utils/requestActions';
+import { requestActions } from 'utils/requestActions'
 
-export const SWAP_INVOICES = requestActions('@invoice/SWAP_INVOICES');
+export const SWAP_INVOICES = requestActions('@invoice/SWAP_INVOICES')

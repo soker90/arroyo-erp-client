@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-import { InputForm } from 'components';
-import { useStyles } from './AddReminder.styles';
+import { InputForm } from 'components'
+import { useStyles } from './AddReminder.styles'
 
 const AddReminder = ({ createReminder }) => {
-  const [newReminder, setNewReminder] = useState('');
-  const classes = useStyles();
+  const [newReminder, setNewReminder] = useState('')
+  const classes = useStyles()
 
   /**
    * Handle event onChange input
@@ -14,8 +14,8 @@ const AddReminder = ({ createReminder }) => {
    * @private
    */
   const _handleChange = ({ target: { value } }) => {
-    setNewReminder(value);
-  };
+    setNewReminder(value)
+  }
 
   /**
    * Handle press enter key
@@ -25,10 +25,10 @@ const AddReminder = ({ createReminder }) => {
   const _handleSubmit = ({ key }) => {
     if (key === 'Enter') {
       createReminder(newReminder, () => {
-        setNewReminder('');
-      });
+        setNewReminder('')
+      })
     }
-  };
+  }
 
   return (
     <InputForm
@@ -40,11 +40,11 @@ const AddReminder = ({ createReminder }) => {
       placeholder='Escribe aquí tu recordatorio'
       autoFocus
     />
-  );
-};
+  )
+}
 AddReminder.propTypes = {
-  createReminder: PropTypes.func.isRequired,
-};
+  createReminder: PropTypes.func.isRequired
+}
 
-AddReminder.displayName = 'AddReminder';
-export default AddReminder;
+AddReminder.displayName = 'AddReminder'
+export default AddReminder

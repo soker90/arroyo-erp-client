@@ -1,16 +1,16 @@
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import { TableMaterial, TextEuro } from 'components';
-import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index';
-import { format } from 'utils';
-import { useStyles } from './InvoicesTable.styles';
+import { TableMaterial, TextEuro } from 'components'
+import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index'
+import { format } from 'utils'
+import { useStyles } from './InvoicesTable.styles'
 
 const InvoicesTable = ({ invoices, count, setFilters }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const _rowStyle = ({ concept }) => (INVOICE_COMMON_CONCEPTS.includes(concept) ? '' : classes.rowRed);
+  const _rowStyle = ({ concept }) => (INVOICE_COMMON_CONCEPTS.includes(concept) ? '' : classes.rowRed)
 
   return (
     <TableMaterial
@@ -18,33 +18,33 @@ const InvoicesTable = ({ invoices, count, setFilters }) => {
       columns={[
         {
           title: 'Nº de Orden',
-          field: 'nOrder',
+          field: 'nOrder'
         },
         {
           title: 'Fecha de registro',
-          render: ({ dateRegister }) => format.date(dateRegister),
+          render: ({ dateRegister }) => format.date(dateRegister)
         },
         {
           title: 'Fecha de factura',
-          render: ({ dateInvoice }) => format.date(dateInvoice),
+          render: ({ dateInvoice }) => format.date(dateInvoice)
         },
         {
           title: 'Nº de Factura',
-          field: 'nInvoice',
+          field: 'nInvoice'
         },
         {
           title: 'Concepto',
-          field: 'concept',
+          field: 'concept'
         },
         {
           title: 'Proveedor',
-          field: 'businessName',
+          field: 'businessName'
         },
         {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
-          render: ({ total }) => <TextEuro num={total} />,
-        },
+          render: ({ total }) => <TextEuro num={total} />
+        }
       ]}
       data={invoices}
       actions={[
@@ -52,23 +52,23 @@ const InvoicesTable = ({ invoices, count, setFilters }) => {
           icon: VisibilityIcon,
           tooltip: 'Ver',
           component: Link,
-          to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`,
-        },
+          to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`
+        }
       ]}
       rowClass={_rowStyle}
       count={count}
       refresh={setFilters}
       rowsPerPageOptions={[100, 250, 500]}
     />
-  );
-};
+  )
+}
 
 InvoicesTable.propTypes = {
   invoices: PropTypes.array.isRequired,
   count: PropTypes.number,
-  setFilters: PropTypes.func.isRequired,
-};
+  setFilters: PropTypes.func.isRequired
+}
 
-InvoicesTable.displayName = 'InvoicesTable';
+InvoicesTable.displayName = 'InvoicesTable'
 
-export default InvoicesTable;
+export default InvoicesTable

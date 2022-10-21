@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {},
@@ -7,19 +7,19 @@ export const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     [theme.breakpoints.up('md')]: {
       '&:not(:last-of-type)': {
-        borderRight: `1px solid ${theme.palette.divider}`,
-      },
+        borderRight: `1px solid ${theme.palette.divider}`
+      }
     },
     [theme.breakpoints.down('md')]: {
       '&:not(:last-of-type)': {
-        borderBottom: `1px solid ${theme.palette.divider}`,
-      },
-    },
+        borderBottom: `1px solid ${theme.palette.divider}`
+      }
+    }
   },
   label: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(1)
   },
   overline: {
-    marginTop: theme.spacing(1),
-  },
-}));
+    marginTop: theme.spacing(1)
+  }
+}))

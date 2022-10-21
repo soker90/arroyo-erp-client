@@ -1,23 +1,23 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { updateProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import { pricesChangesUnreadCount } from 'pages/PriceChanges/modules/actions';
-import EditProductModalView from './EditProductModalView';
+import { updateProductOfDeliveryOrder } from 'pages/DeliveryOrder/modules/actions'
+import { pricesChangesUnreadCount } from 'pages/PriceChanges/modules/actions'
+import EditProductModalView from './EditProductModalView'
 
 const mapStateToProps = ({
   products: { products },
-  deliveryOrders: { hasCanal },
+  deliveryOrders: { hasCanal }
 }) => ({
   products,
-  hasCanal,
-});
+  hasCanal
+})
 
 const mapDispatchToProps = {
   updateProductOfDeliveryOrder,
-  pricesChangesUnreadCount,
-};
+  pricesChangesUnreadCount
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditProductModalView);
+)(EditProductModalView)

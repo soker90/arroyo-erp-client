@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   label: {
-    marginLeft: theme.spacing(1),
-  },
-}));
+    marginLeft: theme.spacing(1)
+  }
+}))

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import { useEffect, useMemo, useState } from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 import {
   Card,
   IconButton,
@@ -11,24 +11,24 @@ import {
   ListItemText,
   ListSubheader,
   Tooltip,
-  Typography,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { InputForm } from '../Forms';
+  Typography
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { InputForm } from '../Forms'
 
 const useStyles = makeStyles(theme => ({
   root: {},
   fontWeightMedium: {
-    fontWeight: theme.typography.fontWeightMedium,
+    fontWeight: theme.typography.fontWeightMedium
   },
   listItem: {
-    cursor: 'pointer',
+    cursor: 'pointer'
   },
   input: {
-    padding: theme.spacing(2),
-  },
-}));
+    padding: theme.spacing(2)
+  }
+}))
 
 const ListActions = ({
   className,
@@ -38,29 +38,29 @@ const ListActions = ({
   onClick,
   ...rest
 }) => {
-  const classes = useStyles();
-  const [filter, setFilter] = useState('');
-  const [selected, setSelected] = useState(null);
+  const classes = useStyles()
+  const [filter, setFilter] = useState('')
+  const [selected, setSelected] = useState(null)
 
   useEffect(() => {
-    setSelected(null);
-  }, [data]);
+    setSelected(null)
+  }, [data])
 
   const _handleClick = item => {
-    setSelected(item._id);
-    onClick(item);
-  };
+    setSelected(item._id)
+    onClick(item)
+  }
 
   const _handleChangeFilter = ({ target: { value } }) => {
-    setFilter(value);
-  };
+    setFilter(value)
+  }
 
   const _filterList = useMemo(() => (
     filter
       ? data.filter(({ name }) => name.toLowerCase()
         .includes(filter.toLowerCase()))
       : data
-  ), [filter, data]);
+  ), [filter, data])
 
   return (
     <Card
@@ -116,15 +116,15 @@ const ListActions = ({
         ))}
       </List>
     </Card>
-  );
-};
+  )
+}
 
 ListActions.propTypes = {
   className: PropTypes.string,
   data: PropTypes.array,
   icon: PropTypes.node,
   title: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-};
+  onClick: PropTypes.func.isRequired
+}
 
-export default ListActions;
+export default ListActions

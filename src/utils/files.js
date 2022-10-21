@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 /**
  * Download file from a url
@@ -9,15 +9,15 @@ import axios from 'axios';
 export const downloadFile = (url, name = null) => axios({
   url,
   method: 'GET',
-  responseType: 'blob', // important
+  responseType: 'blob' // important
 }).then(response => {
-  const urlCompose = window.URL.createObjectURL(new Blob([response.data]));
-  const link = document.createElement('a');
-  link.href = urlCompose;
+  const urlCompose = window.URL.createObjectURL(new window.Blob([response.data]))
+  const link = document.createElement('a')
+  link.href = urlCompose
   link.setAttribute(
     'download',
-    name || response.headers.filename,
-  );
-  document.body.appendChild(link);
-  link.click();
-});
+    name || response.headers.filename
+  )
+  document.body.appendChild(link)
+  link.click()
+})

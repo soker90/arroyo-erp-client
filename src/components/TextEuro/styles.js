@@ -1,8 +1,8 @@
-import makeStyles from '@mui/styles/makeStyles';
-import { colors } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles'
+import { colors } from '@mui/material'
 
 export const useStyles = makeStyles({
   red: {
-    color: colors.red[600],
-  },
-});
+    color: colors.red[600]
+  }
+})

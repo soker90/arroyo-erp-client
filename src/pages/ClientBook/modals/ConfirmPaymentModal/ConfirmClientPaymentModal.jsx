@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { ModalGrid } from 'components/Modals';
-import { DatePickerForm, SelectForm } from 'components/Forms';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { ModalGrid } from 'components/Modals'
+import { DatePickerForm, SelectForm } from 'components/Forms'
 // import { TYPE_PAYMENT } from 'constants/invoices';
-import { format } from 'utils';
-import { TYPE_CLIENT_PAYMENT } from '../../../../constants';
+import { format } from 'utils'
+import { TYPE_CLIENT_PAYMENT } from '../../../../constants'
 
 const ConfirmClientPaymentModal = ({
   confirmClientPayment,
@@ -12,26 +12,26 @@ const ConfirmClientPaymentModal = ({
   setShow,
   ...rest
 }) => {
-  const [paymentDate, setPaymentDate] = useState(null);
-  const [paymentType, setPaymentType] = useState('?');
+  const [paymentDate, setPaymentDate] = useState(null)
+  const [paymentType, setPaymentType] = useState('?')
 
   useEffect(() => {
     if (invoice) {
-      setPaymentType('?');
-      setPaymentDate(null);
+      setPaymentType('?')
+      setPaymentDate(null)
     }
-  }, [invoice]);
+  }, [invoice])
 
   const _close = () => {
-    setShow(null);
-  };
+    setShow(null)
+  }
 
   const _handleSend = () => {
     confirmClientPayment(invoice._id, {
       paymentDate: format.dateToSend(paymentDate),
-      paymentType,
-    }, _close);
-  };
+      paymentType
+    }, _close)
+  }
 
   /**
    * Handle change picker
@@ -39,8 +39,8 @@ const ConfirmClientPaymentModal = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setPaymentDate((date));
-  };
+    setPaymentDate((date))
+  }
 
   /**
    * Handle change select
@@ -48,8 +48,8 @@ const ConfirmClientPaymentModal = ({
    * @private
    */
   const _handleSelect = ({ target: { value } }) => {
-    setPaymentType(value);
-  };
+    setPaymentType(value)
+  }
 
   /**
    * Handle press enter key
@@ -57,8 +57,8 @@ const ConfirmClientPaymentModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSend();
-  };
+    if (key === 'Enter') _handleSend()
+  }
 
   return (
     <ModalGrid
@@ -82,7 +82,7 @@ const ConfirmClientPaymentModal = ({
         onChange={_handleSelect}
         size={4}
         InputLabelProps={{
-          shrink: true,
+          shrink: true
         }}
         onKeyPress={_handleKeyPress}
       >
@@ -93,15 +93,15 @@ const ConfirmClientPaymentModal = ({
         ))}
       </SelectForm>
     </ModalGrid>
-  );
-};
+  )
+}
 
 ConfirmClientPaymentModal.propTypes = {
   setShow: PropTypes.func,
   invoice: PropTypes.object,
-  confirmClientPayment: PropTypes.func.isRequired,
-};
+  confirmClientPayment: PropTypes.func.isRequired
+}
 
-ConfirmClientPaymentModal.displayName = 'ConfirmClientPaymentModal';
-export const story = ConfirmClientPaymentModal;
-export default ConfirmClientPaymentModal;
+ConfirmClientPaymentModal.displayName = 'ConfirmClientPaymentModal'
+export const story = ConfirmClientPaymentModal
+export default ConfirmClientPaymentModal

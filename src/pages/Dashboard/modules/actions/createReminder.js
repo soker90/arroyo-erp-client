@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CREATE_REMINDER } from '../types';
+import axios from 'axios'
+import { CREATE_REMINDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _createReminderRequest = () => ({ type: CREATE_REMINDER.REQUEST });
+const _createReminderRequest = () => ({ type: CREATE_REMINDER.REQUEST })
 
 /**
  * Success action
@@ -17,14 +17,14 @@ const _createReminderSuccess = () => ({
   type: CREATE_REMINDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Recordatorio creada',
-  },
-});
+    message: 'Recordatorio creada'
+  }
+})
 
 const _createReminderSet = ({ data }) => ({
   type: CREATE_REMINDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action
@@ -34,8 +34,8 @@ const _createReminderSet = ({ data }) => ({
  */
 const _createReminderError = error => ({
   type: CREATE_REMINDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea un recordatorio
@@ -45,15 +45,15 @@ const _createReminderError = error => ({
  */
 
 export const createReminder = (message, callback) => async dispatch => {
-  dispatch(_createReminderRequest());
+  dispatch(_createReminderRequest())
 
   try {
-    const response = await axios.post('dashboard/createReminder', { message });
+    const response = await axios.post('dashboard/createReminder', { message })
 
-    dispatch(_createReminderSuccess());
-    dispatch(_createReminderSet(response));
-    callback();
+    dispatch(_createReminderSuccess())
+    dispatch(_createReminderSet(response))
+    callback()
   } catch (error) {
-    dispatch(_createReminderError(error));
+    dispatch(_createReminderError(error))
   }
-};
+}

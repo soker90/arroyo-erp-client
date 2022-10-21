@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { FormControlLabel, Grid, Switch } from '@mui/material';
+import PropTypes from 'prop-types'
+import { FormControlLabel, Grid, Switch } from '@mui/material'
 
 const SwitchForm = ({
   size,
@@ -20,7 +20,7 @@ const SwitchForm = ({
       label={label}
     />
   </Grid>
-);
+)
 
 SwitchForm.propTypes = {
   size: PropTypes.number,
@@ -29,15 +29,15 @@ SwitchForm.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func,
   color: PropTypes.string,
-  disabled: PropTypes.bool,
-};
+  disabled: PropTypes.bool
+}
 
 SwitchForm.defaultProps = {
   size: 6,
-  color: 'primary',
-};
+  color: 'primary'
+}
 
-SwitchForm.displayName = 'SwitchForm';
+SwitchForm.displayName = 'SwitchForm'
 
-export const story = SwitchForm;
-export default SwitchForm;
+export const story = SwitchForm
+export default SwitchForm

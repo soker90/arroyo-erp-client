@@ -5,5 +5,5 @@ export const INITIAL_STATE = {
   re: 0,
   rate: undefined,
   amount: 0,
-  sale: 0,
-};
+  sale: 0
+}

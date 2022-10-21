@@ -1,1 +1,1 @@
-export { default } from 'components/Cards/ItemGroupsCard/ItemGroupsCard';
+export { default } from 'components/Cards/ItemGroupsCard/ItemGroupsCard'

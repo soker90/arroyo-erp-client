@@ -1,9 +1,9 @@
 import {
-  useCallback, useEffect, useReducer,
-} from 'react';
-import PropTypes from 'prop-types';
+  useCallback, useEffect, useReducer
+} from 'react'
+import PropTypes from 'prop-types'
 
-import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal';
+import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 
 const EditProductModal = ({
   show,
@@ -13,22 +13,22 @@ const EditProductModal = ({
   product,
   index,
   hasCanal,
-  pricesChangesUnreadCount,
+  pricesChangesUnreadCount
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     product
-  );
+  )
 
   useEffect(() => {
-    setState(product);
+    setState(product)
     // eslint-disable-next-line
   }, [show]);
 
   const callbackClose = useCallback(() => {
-    close();
-    pricesChangesUnreadCount();
-  }, [close, pricesChangesUnreadCount]);
+    close()
+    pricesChangesUnreadCount()
+  }, [close, pricesChangesUnreadCount])
 
   const _handleUpdate = () => {
     try {
@@ -36,14 +36,14 @@ const EditProductModal = ({
         product: state.product,
         quantity: Number(state.quantity),
         price: Number(state.price),
-        ...(hasCanal && { canal: state.canal }),
-      };
+        ...(hasCanal && { canal: state.canal })
+      }
 
-      updateProductOfDeliveryOrder(index, model, callbackClose);
+      updateProductOfDeliveryOrder(index, model, callbackClose)
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
-  };
+  }
 
   return (
     <GenericProductModal
@@ -59,19 +59,19 @@ const EditProductModal = ({
         {
           onClick: close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button',
+          'data-cy': 'modal-close-button'
         },
         {
           onClick: _handleUpdate,
           value: 'Actualizar',
           variant: 'outlined',
           color: 'primary',
-          'data-cy': 'modal-update-button',
-        },
+          'data-cy': 'modal-update-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 EditProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -81,13 +81,13 @@ EditProductModal.propTypes = {
   product: PropTypes.object,
   index: PropTypes.number,
   hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired,
-};
+  pricesChangesUnreadCount: PropTypes.func.isRequired
+}
 
 EditProductModal.defaultProps = {
-  product: {},
-};
+  product: {}
+}
 
-EditProductModal.displayName = 'EditProductModal';
-export const story = EditProductModal;
-export default EditProductModal;
+EditProductModal.displayName = 'EditProductModal'
+export const story = EditProductModal
+export default EditProductModal

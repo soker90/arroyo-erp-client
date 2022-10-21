@@ -1,43 +1,45 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@mui/material';
-import uniqId from 'uniqid';
+  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+} from '@mui/material'
+import uniqId from 'uniqid'
 
-import { ItemCard } from 'components';
-import EditIcon from '@mui/icons-material/Edit';
-import { itemsCard } from './utils';
-import EditDeliveryOrderTotalsModal from '../../modals/EditDeliveryOrderTotalsModal';
+import { ItemCard } from 'components'
+import EditIcon from '@mui/icons-material/Edit'
+import { itemsCard } from './utils'
+import EditDeliveryOrderTotalsModal from '../../modals/EditDeliveryOrderTotalsModal'
 
 const DeliveryOrderTotals = ({
-  totals, isEditable,
+  totals, isEditable
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Show the modal
    * @private
    */
   const _handleEditClick = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   /**
    * Return the buttons of the card
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (isEditable ? [
-    <Tooltip title='Editar' key={uniqId()}>
-      <IconButton
-        size='small'
-        onClick={_handleEditClick}
-      >
-        <EditIcon />
-      </IconButton>
-    </Tooltip>,
-  ] : false);
+  const _getActions = () => (isEditable
+    ? [
+      <Tooltip title='Editar' key={uniqId()}>
+        <IconButton
+          size='small'
+          onClick={_handleEditClick}
+        >
+          <EditIcon />
+        </IconButton>
+      </Tooltip>
+      ]
+    : false)
 
   return (
     <>
@@ -59,19 +61,19 @@ const DeliveryOrderTotals = ({
       </Card>
       {showModal && <EditDeliveryOrderTotalsModal show={showModal} setShow={setShowModal} />}
     </>
-  );
-};
+  )
+}
 
 DeliveryOrderTotals.propTypes = {
   totals: PropTypes.shape({
     iva: PropTypes.number,
     re: PropTypes.number,
     total: PropTypes.number,
-    taxBase: PropTypes.number,
+    taxBase: PropTypes.number
   }),
-  isEditable: PropTypes.bool.isRequired,
-};
+  isEditable: PropTypes.bool.isRequired
+}
 
-DeliveryOrderTotals.displayName = 'DeliveryOrderTotals';
-export const story = DeliveryOrderTotals;
-export default DeliveryOrderTotals;
+DeliveryOrderTotals.displayName = 'DeliveryOrderTotals'
+export const story = DeliveryOrderTotals
+export default DeliveryOrderTotals

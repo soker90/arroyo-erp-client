@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@mui/material';
+  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+} from '@mui/material'
 
-import { ItemCard } from 'components';
-import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal';
-import { format } from 'utils';
-import uniqId from 'uniqid';
-import EditIcon from '@mui/icons-material/Edit';
+import { ItemCard } from 'components'
+import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal'
+import { format } from 'utils'
+import uniqId from 'uniqid'
+import EditIcon from '@mui/icons-material/Edit'
 
 const InvoicePayment = ({
   payment,
   className,
-  id,
+  id
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Return the buttons of the card
@@ -30,8 +30,8 @@ const InvoicePayment = ({
       >
         <EditIcon />
       </IconButton>
-    </Tooltip>,
-  ];
+    </Tooltip>
+  ]
 
   return (
     <>
@@ -67,8 +67,8 @@ const InvoicePayment = ({
       </Card>
       <EditPaymentModal payment={payment} show={showModal} setShow={setShowModal} id={id} />
     </>
-  );
-};
+  )
+}
 
 InvoicePayment.propTypes = {
   payment: PropTypes.shape({
@@ -76,12 +76,12 @@ InvoicePayment.propTypes = {
     type: PropTypes.string,
     numCheque: PropTypes.string,
     paid: PropTypes.bool,
-    invoicesOrder: PropTypes.string,
+    invoicesOrder: PropTypes.string
   }),
   className: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};
+  id: PropTypes.string.isRequired
+}
 
-InvoicePayment.displayName = 'InvoiceTotals';
-export const story = InvoicePayment;
-export default InvoicePayment;
+InvoicePayment.displayName = 'InvoiceTotals'
+export const story = InvoicePayment
+export default InvoicePayment

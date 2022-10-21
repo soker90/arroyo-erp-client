@@ -4,8 +4,8 @@
  */
 export const TABS = {
   DELIVERY_ORDERS: 'Albaranes',
-  INVOICES: 'Facturas',
-};
+  INVOICES: 'Facturas'
+}
 
 /**
  * Mapeo de hashes para activar las pestañas
@@ -13,5 +13,5 @@ export const TABS = {
  */
 export const HASH_TABS = {
   '#Albaranes': TABS.DELIVERY_ORDERS,
-  '#Facturas': TABS.INVOICES,
-};
+  '#Facturas': TABS.INVOICES
+}

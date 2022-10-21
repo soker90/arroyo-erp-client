@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { ModalGrid } from 'components/Modals';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { ModalGrid } from 'components/Modals'
 import {
-  DatePickerForm, InputForm, SelectForm, SwitchForm,
-} from 'components/Forms';
-import { TYPE_PAYMENT } from 'constants/invoices';
-import { format } from 'utils';
+  DatePickerForm, InputForm, SelectForm, SwitchForm
+} from 'components/Forms'
+import { TYPE_PAYMENT } from 'constants/invoices'
+import { format } from 'utils'
 
 const EditPaymentModal = ({
   updateDataInvoice,
@@ -15,25 +15,25 @@ const EditPaymentModal = ({
   id,
   ...rest
 }) => {
-  const [paymentDate, setPaymentDate] = useState(null);
-  const [type, setType] = useState('?');
-  const [numCheque, setNumCheque] = useState('');
-  const [paid, setPaid] = useState(false);
-  const [invoicesOrder, setInvoicesOrder] = useState('');
+  const [paymentDate, setPaymentDate] = useState(null)
+  const [type, setType] = useState('?')
+  const [numCheque, setNumCheque] = useState('')
+  const [paid, setPaid] = useState(false)
+  const [invoicesOrder, setInvoicesOrder] = useState('')
 
   useEffect(() => {
     if (payment) {
-      setType(payment.type);
-      setPaymentDate(payment.paymentDate || null);
-      setNumCheque(payment?.numCheque || '');
-      setPaid(payment.paid);
-      setInvoicesOrder(payment.invoicesOrder || '');
+      setType(payment.type)
+      setPaymentDate(payment.paymentDate || null)
+      setNumCheque(payment?.numCheque || '')
+      setPaid(payment.paid)
+      setInvoicesOrder(payment.invoicesOrder || '')
     }
-  }, [payment, show]);
+  }, [payment, show])
 
   const _close = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const _handleSend = () => {
     updateDataInvoice(id, {
@@ -42,10 +42,10 @@ const EditPaymentModal = ({
         type,
         ...(numCheque && { numCheque }),
         paid,
-        ...(invoicesOrder && { invoicesOrder }),
-      },
-    }, _close);
-  };
+        ...(invoicesOrder && { invoicesOrder })
+      }
+    }, _close)
+  }
 
   /**
    * Handle change picker
@@ -53,24 +53,24 @@ const EditPaymentModal = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setPaymentDate(date);
-  };
+    setPaymentDate(date)
+  }
 
   const _handleChange = ({
     target: {
       name,
       value,
-      checked,
-    },
+      checked
+    }
   }) => {
     const changeValue = {
       paid: () => setPaid(checked),
       type: () => setType(value),
       numCheque: () => setNumCheque(value),
-      invoicesOrder: () => setInvoicesOrder(value),
-    };
-    changeValue[name]();
-  };
+      invoicesOrder: () => setInvoicesOrder(value)
+    }
+    changeValue[name]()
+  }
 
   /**
    * Handle press enter key
@@ -78,8 +78,8 @@ const EditPaymentModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSend();
-  };
+    if (key === 'Enter') _handleSend()
+  }
 
   /**
    * Render input of number cheque
@@ -97,9 +97,9 @@ const EditPaymentModal = ({
           onKeyPress={_handleKeyPress}
           size={4}
         />
-      )
+        )
       : null
-  );
+  )
 
   return (
     <ModalGrid
@@ -124,7 +124,7 @@ const EditPaymentModal = ({
         name='type'
         size={4}
         InputLabelProps={{
-          shrink: true,
+          shrink: true
         }}
         onKeyPress={_handleKeyPress}
       >
@@ -153,17 +153,17 @@ const EditPaymentModal = ({
         size={3}
       />
     </ModalGrid>
-  );
-};
+  )
+}
 
 EditPaymentModal.propTypes = {
   setShow: PropTypes.func,
   payment: PropTypes.object,
   updateDataInvoice: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired,
-};
+  id: PropTypes.string.isRequired
+}
 
-EditPaymentModal.displayName = 'ConfirmPaymentModal';
-export const story = EditPaymentModal;
-export default EditPaymentModal;
+EditPaymentModal.displayName = 'ConfirmPaymentModal'
+export const story = EditPaymentModal
+export default EditPaymentModal

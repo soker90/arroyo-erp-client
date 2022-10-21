@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import { Box, Grid } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Box, Grid } from '@mui/material'
 
-import ProviderInfo from './components/ProviderInfo';
-import ProviderBilling from './components/ProviderBilling';
-import { useStyles } from './ProviderExpandedInfo.styles';
+import ProviderInfo from './components/ProviderInfo'
+import ProviderBilling from './components/ProviderBilling'
+import { useStyles } from './ProviderExpandedInfo.styles'
 
 const ProviderExpandedInfo = ({
-  expanded, provider, billing,
+  expanded, provider, billing
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  if (!expanded) return null;
+  if (!expanded) return null
 
   return (
     <Box mt={3} className={classes.cards}>
@@ -19,15 +19,15 @@ const ProviderExpandedInfo = ({
         <ProviderBilling {...billing} />
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
 ProviderExpandedInfo.propTypes = {
   expanded: PropTypes.bool.isRequired,
   provider: PropTypes.object,
-  billing: PropTypes.object,
-};
+  billing: PropTypes.object
+}
 
-ProviderExpandedInfo.displayName = 'ProviderExpandedInfo';
-export const story = ProviderExpandedInfo;
-export default ProviderExpandedInfo;
+ProviderExpandedInfo.displayName = 'ProviderExpandedInfo'
+export const story = ProviderExpandedInfo
+export default ProviderExpandedInfo

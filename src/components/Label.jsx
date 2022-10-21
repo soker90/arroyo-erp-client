@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { alpha } from '@mui/material';
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { alpha } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,29 +21,29 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: 0.5,
     minWidth: 20,
     padding: theme.spacing(0.5, 1),
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
   },
   primary: {
     color: theme.palette.primary.main,
-    backgroundColor: alpha(theme.palette.primary.main, 0.08),
+    backgroundColor: alpha(theme.palette.primary.main, 0.08)
   },
   secondary: {
     color: theme.palette.secondary.main,
-    backgroundColor: alpha(theme.palette.secondary.main, 0.08),
+    backgroundColor: alpha(theme.palette.secondary.main, 0.08)
   },
   error: {
     color: theme.palette.error.main,
-    backgroundColor: alpha(theme.palette.error.main, 0.08),
+    backgroundColor: alpha(theme.palette.error.main, 0.08)
   },
   success: {
     color: theme.palette.success.main,
-    backgroundColor: alpha(theme.palette.success.main, 0.08),
+    backgroundColor: alpha(theme.palette.success.main, 0.08)
   },
   warning: {
     color: theme.palette.warning.main,
-    backgroundColor: alpha(theme.palette.warning.main, 0.08),
-  },
-}));
+    backgroundColor: alpha(theme.palette.warning.main, 0.08)
+  }
+}))
 
 const Label = ({
   className,
@@ -52,32 +52,32 @@ const Label = ({
   style,
   ...rest
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <span
       className={
         clsx(classes.root, {
-          [classes[color]]: color,
+          [classes[color]]: color
         }, className)
       }
       {...rest}
     >
       {children}
     </span>
-  );
-};
+  )
+}
 
 Label.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.object,
-  color: PropTypes.oneOf(['primary', 'secondary', 'error', 'warning', 'success']),
-};
+  color: PropTypes.oneOf(['primary', 'secondary', 'error', 'warning', 'success'])
+}
 
 Label.defaultProps = {
   className: '',
-  color: 'secondary',
-};
+  color: 'secondary'
+}
 
-export default Label;
+export default Label

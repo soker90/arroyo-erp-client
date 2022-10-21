@@ -1,1 +1,1 @@
-export { default as useSumSelected } from './useSumSelected';
+export { default as useSumSelected } from './useSumSelected'

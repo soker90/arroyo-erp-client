@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { format } from 'utils';
-import { UPDATE_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { format } from 'utils'
+import { UPDATE_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _updateDOClientInvoiceRequest = () => ({ type: UPDATE_DELIVERY_ORDER.REQUEST });
+const _updateDOClientInvoiceRequest = () => ({ type: UPDATE_DELIVERY_ORDER.REQUEST })
 
 /**
  * Success action
@@ -18,9 +18,9 @@ const _updateDOClientInvoiceSuccess = () => ({
   type: UPDATE_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Fecha del albarán actualizada',
-  },
-});
+    message: 'Fecha del albarán actualizada'
+  }
+})
 
 /**
  * Error action
@@ -30,8 +30,8 @@ const _updateDOClientInvoiceSuccess = () => ({
  */
 const _updateDOClientInvoiceError = error => ({
   type: UPDATE_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Actualiza los datos de la factura de cliente
@@ -43,18 +43,18 @@ const _updateDOClientInvoiceError = error => ({
 export const updateDOClientInvoice = ({
   id,
   deliveryOrderId,
-  date,
+  date
 }) => async dispatch => {
-  dispatch(_updateDOClientInvoiceRequest());
+  dispatch(_updateDOClientInvoiceRequest())
 
   try {
     await axios.patch(
       `client/invoices/${id}/deliveryOrder/${deliveryOrderId}`,
-      { date: format.dateToSend(date) },
-    );
+      { date: format.dateToSend(date) }
+    )
 
-    dispatch(_updateDOClientInvoiceSuccess());
+    dispatch(_updateDOClientInvoiceSuccess())
   } catch (error) {
-    dispatch(_updateDOClientInvoiceError(error));
+    dispatch(_updateDOClientInvoiceError(error))
   }
-};
+}

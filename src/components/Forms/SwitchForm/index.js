@@ -1,1 +1,1 @@
-export { default } from './SwitchForm';
+export { default } from './SwitchForm'

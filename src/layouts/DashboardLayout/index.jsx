@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
-import AuthGuard from 'components/AuthGuard';
-import NavBar from './NavBar';
-import TopBar from './TopBar';
-import { useStyles } from './DashBoardLayout.styles';
+import AuthGuard from 'components/AuthGuard'
+import NavBar from './NavBar'
+import TopBar from './TopBar'
+import { useStyles } from './DashBoardLayout.styles'
 
 const DashboardLayout = () => {
-  const classes = useStyles();
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  const classes = useStyles()
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false)
 
   return (
     <AuthGuard>
@@ -28,7 +27,7 @@ const DashboardLayout = () => {
         </div>
       </div>
     </AuthGuard>
-  );
-};
+  )
+}
 
-export default DashboardLayout;
+export default DashboardLayout

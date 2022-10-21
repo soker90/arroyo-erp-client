@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components/Modals';
+import PropTypes from 'prop-types'
+import { ConfirmModal } from 'components/Modals'
 
 const DeleteConfirmationModal = ({
   deleteReminder, id, ...rest
@@ -9,9 +9,9 @@ const DeleteConfirmationModal = ({
    * @private
    */
   const _handleSend = () => {
-    deleteReminder(id);
-    rest.close();
-  };
+    deleteReminder(id)
+    rest.close()
+  }
 
   return (
     <ConfirmModal
@@ -27,19 +27,19 @@ const DeleteConfirmationModal = ({
           color: 'secondary',
           variant: 'contained',
           value: 'Eliminar',
-          'data-cy': 'modal-close-button',
-        },
+          'data-cy': 'modal-close-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeleteConfirmationModal.propTypes = {
   close: PropTypes.func,
   id: PropTypes.string,
-  deleteReminder: PropTypes.func.isRequired,
-};
+  deleteReminder: PropTypes.func.isRequired
+}
 
-DeleteConfirmationModal.displayName = 'DeleteConfirmationModal';
-export const story = DeleteConfirmationModal;
-export default DeleteConfirmationModal;
+DeleteConfirmationModal.displayName = 'DeleteConfirmationModal'
+export const story = DeleteConfirmationModal
+export default DeleteConfirmationModal

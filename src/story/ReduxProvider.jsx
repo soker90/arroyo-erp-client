@@ -1,8 +1,8 @@
-import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Provider } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import account from 'reducers/account';
-import { configureStore } from '../store';
+import account from 'reducers/account'
+import { configureStore } from '../store'
 
 /**
  * Provider of redux for storybook
@@ -16,25 +16,25 @@ const ReduxProvider = ({ state, children }) => {
     ...state,
     account: {
       ...account,
-      user: 'storybook',
-    },
-  });
+      user: 'storybook'
+    }
+  })
 
   return (
     <Provider store={store}>
       {children}
     </Provider>
-  );
-};
+  )
+}
 
 ReduxProvider.propTypes = {
   state: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-};
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+}
 
 ReduxProvider.defaultProps = {
-  state: {},
-};
-ReduxProvider.displayName = 'ReduxProvider';
+  state: {}
+}
+ReduxProvider.displayName = 'ReduxProvider'
 
-export default ReduxProvider;
+export default ReduxProvider

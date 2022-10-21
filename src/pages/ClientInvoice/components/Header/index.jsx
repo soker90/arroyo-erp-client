@@ -1,39 +1,39 @@
-import { useState } from 'react';
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
-import PropTypes from 'prop-types';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather';
+import { useState } from 'react'
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
+import PropTypes from 'prop-types'
+import GetAppIcon from '@mui/icons-material/GetApp'
+import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather'
 
-import { Header } from 'components';
-import { downloadFile } from 'utils';
-import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal';
-import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal';
+import { Header } from 'components'
+import { downloadFile } from 'utils'
+import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal'
+import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal'
 
 const HeaderClientInvoice = ({
-  client, nameClient, nInvoice, createDeliveryOrder, id,
+  client, nameClient, nInvoice, createDeliveryOrder, id
 }) => {
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
 
   const _handleClickDownload = () => () => downloadFile(
     `client/invoices/export/${id}`,
-    `Factura ${nInvoice} - ${nameClient}.ods`,
-  );
+    `Factura ${nInvoice} - ${nameClient}.ods`
+  )
 
   const _handleClickNewOrder = () => {
-    createDeliveryOrder(id);
-  };
+    createDeliveryOrder(id)
+  }
 
   return (
     <>
       <Header
         routes={[{
           link: '/app/clientes',
-          title: 'Clientes',
+          title: 'Clientes'
         }, {
           link: `/app/clientes/${client}`,
-          title: `${nameClient}`,
-        },
+          title: `${nameClient}`
+        }
         ]}
         title='Factura'
         description=''
@@ -42,12 +42,12 @@ const HeaderClientInvoice = ({
           color: 'primary',
           Icon: GetAppIcon,
           label: 'Descargar',
-          variant: 'contained',
+          variant: 'contained'
         }, {
           variant: 'outlined',
           onClick: () => setShowDeleteModal(true),
           Icon: Trash2,
-          label: 'Eliminar',
+          label: 'Eliminar'
         }, {
           variant: 'contained',
           color: 'secondary',
@@ -55,7 +55,7 @@ const HeaderClientInvoice = ({
           Icon: CheckCircleOutlinedIcon,
           disableSvg: true,
           label: 'Confirmar',
-          disabled: Boolean(nInvoice),
+          disabled: Boolean(nInvoice)
         }, {
           variant: 'contained',
           color: 'primary',
@@ -63,23 +63,23 @@ const HeaderClientInvoice = ({
           Icon: PlusCircleIcon,
           disableSvg: true,
           label: 'Nuevo albarán',
-          disabled: Boolean(nInvoice),
+          disabled: Boolean(nInvoice)
         }]}
       />
       <ConfirmInvoiceModal show={showConfirmModal} setShow={setShowConfirmModal} />
       <DeleteInvoiceModal show={showDeleteModal} setShow={setShowDeleteModal} />
     </>
-  );
-};
+  )
+}
 
 HeaderClientInvoice.propTypes = {
   nameClient: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
   nInvoice: PropTypes.string,
   createDeliveryOrder: PropTypes.func.isRequired,
-  id: PropTypes.string,
-};
+  id: PropTypes.string
+}
 
-HeaderClientInvoice.displayName = 'HeaderClientInvoice';
+HeaderClientInvoice.displayName = 'HeaderClientInvoice'
 
-export default HeaderClientInvoice;
+export default HeaderClientInvoice
