@@ -1,4 +1,4 @@
-import { createReducer, setPayload } from 'store/utils';
+import { createReducer, setPayload } from 'store/utils'
 import {
   ADD_DELIVERY_ORDER,
   ADD_PRODUCT,
@@ -9,8 +9,8 @@ import {
   GET_CLIENT_INVOICE,
   RESET_CLIENT_INVOICE,
   UPDATE_DATA,
-  UPDATE_PRODUCT,
-} from './types';
+  UPDATE_PRODUCT
+} from './types'
 
 const INITIAL_STATE = {
   _id: '',
@@ -20,29 +20,29 @@ const INITIAL_STATE = {
   date: null,
   total: 0,
   iva: 0,
-  taxBase: 0,
-};
+  taxBase: 0
+}
 
 const setDataTotals = (state, {
   payload: {
     date,
-    totals,
-  },
+    totals
+  }
 }) => ({
   ...state,
   ...(date && { date }),
-  ...(totals && { totals }),
-});
+  ...(totals && { totals })
+})
 
 const removeDeliveryOrder = (state, { payload: { id } }) => ({
   ...state,
-  deliveryOrders: state.deliveryOrders.filter(deliveryOrder => deliveryOrder._id !== id),
-});
+  deliveryOrders: state.deliveryOrders.filter(deliveryOrder => deliveryOrder._id !== id)
+})
 
 const setNInvoice = (state, { payload: { nInvoice } }) => ({
   ...state,
-  nInvoice,
-});
+  nInvoice
+})
 
 const ACTION_HANDLERS = {
   [GET_CLIENT_INVOICE.SET]: setPayload,
@@ -54,7 +54,7 @@ const ACTION_HANDLERS = {
   [ADD_PRODUCT.SET]: setPayload,
   [UPDATE_PRODUCT.SET]: setPayload,
   [DELETE_PRODUCT.SET]: setPayload,
-  [CONFIRM_INVOICE.SET]: setNInvoice,
-};
+  [CONFIRM_INVOICE.SET]: setNInvoice
+}
 
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS)

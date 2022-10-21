@@ -1,19 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
-  Card, CardContent, CardHeader, Divider, IconButton, Tooltip,
-} from '@mui/material';
-import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import uniqId from 'uniqid';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useCallback, useState } from 'react';
+  Card, CardContent, CardHeader, Divider, IconButton, Tooltip
+} from '@mui/material'
+import PropTypes from 'prop-types'
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import uniqId from 'uniqid'
+import AddIcon from '@mui/icons-material/Add'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { useCallback, useState } from 'react'
 
-import { DatePickerForm, TextEuro } from 'components';
-import { useStyles } from './DeliveryOrderInvoice.styles';
-import ClientInvoiceProducts from '../ClientInvoiceProducts';
-import ProductOrderModal from '../../modals/ProductOrderModal';
-import DeleteProductModal from '../../modals/DeleteProductModal';
+import { DatePickerForm, TextEuro } from 'components'
+import { useStyles } from './DeliveryOrderInvoice.styles'
+import ClientInvoiceProducts from '../ClientInvoiceProducts'
+import ProductOrderModal from '../../modals/ProductOrderModal'
+import DeleteProductModal from '../../modals/DeleteProductModal'
 
 const DeliveryOrderInvoice = ({
   deliveryOrder,
@@ -21,24 +20,24 @@ const DeliveryOrderInvoice = ({
   updateDOClientInvoice,
   deleteDOClientInvoice,
   id,
-  refHeader,
+  refHeader
 }) => {
-  const classes = useStyles();
-  const [date, setDate] = useState(deliveryOrder.date);
-  const [showProduct, setShowProduct] = useState(false);
-  const [deleteId, setDeleteId] = useState(false);
+  const classes = useStyles()
+  const [date, setDate] = useState(deliveryOrder.date)
+  const [showProduct, setShowProduct] = useState(false)
+  const [deleteId, setDeleteId] = useState(false)
 
   const _closeModal = useCallback(() => {
-    setShowProduct(false);
-  }, [setShowProduct]);
+    setShowProduct(false)
+  }, [setShowProduct])
 
   const _handleAddClick = useCallback(() => {
-    setShowProduct(true);
-  }, [setShowProduct]);
+    setShowProduct(true)
+  }, [setShowProduct])
 
   const _closeDelete = useCallback(() => {
-    setDeleteId(false);
-  }, [setDeleteId]);
+    setDeleteId(false)
+  }, [setDeleteId])
   /**
    *
    * Handle change picker
@@ -46,49 +45,51 @@ const DeliveryOrderInvoice = ({
    * @private
    */
   const _handleChangePicker = newDate => {
-    setDate(newDate);
+    setDate(newDate)
     updateDOClientInvoice({
       id,
       deliveryOrderId: deliveryOrder._id,
-      date: newDate,
-    });
-  };
+      date: newDate
+    })
+  }
 
   const _handleDeleteClick = () => {
-    deleteDOClientInvoice(id, deliveryOrder._id);
-  };
+    deleteDOClientInvoice(id, deliveryOrder._id)
+  }
 
   const _handleUpdateClick = productData => {
-    setShowProduct(productData);
-  };
+    setShowProduct(productData)
+  }
 
   const _handleDeleteProductClick = productId => {
-    setDeleteId(productId);
-  };
+    setDeleteId(productId)
+  }
 
   /**
    * Return the buttons of the card
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (isEditable ? [
-    <Tooltip title='Añadir producto' key={uniqId()}>
-      <IconButton
-        size='small'
-        onClick={_handleAddClick}
-      >
-        <AddIcon />
-      </IconButton>
-    </Tooltip>,
-    <Tooltip title='Eliminar albarán' key={uniqId()}>
-      <IconButton
-        size='small'
-        onClick={_handleDeleteClick}
-      >
-        <DeleteIcon />
-      </IconButton>
-    </Tooltip>,
-  ] : false);
+  const _getActions = () => (isEditable
+    ? [
+      <Tooltip title='Añadir producto' key={uniqId()}>
+        <IconButton
+          size='small'
+          onClick={_handleAddClick}
+        >
+          <AddIcon />
+        </IconButton>
+      </Tooltip>,
+      <Tooltip title='Eliminar albarán' key={uniqId()}>
+        <IconButton
+          size='small'
+          onClick={_handleDeleteClick}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
+      ]
+    : false)
 
   return (
     <>
@@ -137,8 +138,8 @@ const DeliveryOrderInvoice = ({
         close={_closeDelete}
       />
     </>
-  );
-};
+  )
+}
 
 DeliveryOrderInvoice.propTypes = {
   deliveryOrder: PropTypes.object.isRequired,
@@ -146,9 +147,9 @@ DeliveryOrderInvoice.propTypes = {
   updateDOClientInvoice: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,
-  refHeader: PropTypes.any,
-};
+  refHeader: PropTypes.any
+}
 
-DeliveryOrderInvoice.displayName = 'ClientInvoiceCards';
+DeliveryOrderInvoice.displayName = 'ClientInvoiceCards'
 
-export default DeliveryOrderInvoice;
+export default DeliveryOrderInvoice

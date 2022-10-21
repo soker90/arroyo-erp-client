@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { story as DeleteNoteModal } from './DeleteNoteModal';
+import { story as DeleteNoteModal } from './DeleteNoteModal'
 
 export default {
   title: 'Rutas/Notas/Modales/Eliminar',
   parameters: {
     component: DeleteNoteModal,
-    componentSubtitle: 'Modal de confimación para eliminar una nota',
-  },
-};
+    componentSubtitle: 'Modal de confimación para eliminar una nota'
+  }
+}
 
 const DeleteModal = () => (
   <DeleteNoteModal
@@ -17,8 +17,8 @@ const DeleteModal = () => (
     close={action('Cerrar modal')}
 
   />
-);
+)
 
-DeleteModal.storyName = 'Eliminar producto';
+DeleteModal.storyName = 'Eliminar producto'
 
-export { DeleteModal };
+export { DeleteModal }

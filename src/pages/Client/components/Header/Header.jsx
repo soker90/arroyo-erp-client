@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import { useNavigate } from 'react-router';
+import PropTypes from 'prop-types'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import PostAddIcon from '@mui/icons-material/PostAdd'
+import { useNavigate } from 'react-router'
 
-import { Header } from 'components';
+import { Header } from 'components'
 
 const HeaderProvider = ({
   title,
   onExpand,
   expanded,
   clientId,
-  createClientInvoice,
+  createClientInvoice
 }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const _handleClickNewInvoice = () => {
     createClientInvoice(clientId, id => {
-      navigate(`/app/clientes/factura/${id}`);
-    });
-  };
+      navigate(`/app/clientes/factura/${id}`)
+    })
+  }
 
   return (
     <Header
       routes={[{
         link: '/app/clientes',
-        title: 'Clientes',
+        title: 'Clientes'
       }]}
       title={title}
       description={title}
@@ -33,28 +33,28 @@ const HeaderProvider = ({
         onClick: onExpand,
         Icon: expanded ? ExpandLessIcon : ExpandMoreIcon,
         disableSvg: true,
-        label: expanded ? 'Ocultar información' : 'Mostrar información',
+        label: expanded ? 'Ocultar información' : 'Mostrar información'
       }]}
       buttons={[{
         variant: 'contained',
         onClick: _handleClickNewInvoice,
         Icon: PostAddIcon,
         disableSvg: true,
-        label: 'Crear factura',
+        label: 'Crear factura'
       }]}
     />
-  );
-};
+  )
+}
 
 HeaderProvider.propTypes = {
   title: PropTypes.string,
   onExpand: PropTypes.func.isRequired,
   expanded: PropTypes.bool.isRequired,
   createClientInvoice: PropTypes.func.isRequired,
-  clientId: PropTypes.string,
-};
+  clientId: PropTypes.string
+}
 
-HeaderProvider.displayName = 'Client-Header';
+HeaderProvider.displayName = 'Client-Header'
 
-export const story = HeaderProvider;
-export default HeaderProvider;
+export const story = HeaderProvider
+export default HeaderProvider

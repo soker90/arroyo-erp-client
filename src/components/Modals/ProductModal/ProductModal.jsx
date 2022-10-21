@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { InputForm, ModalGrid } from 'components';
-import { addNotification } from 'reducers/notifications';
+import { InputForm, ModalGrid } from 'components'
+import { addNotification } from 'reducers/notifications'
 
 const ProductModal = ({
   show, close, state, setState, action, ...rest
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   /**
    * Handle event onChange input
@@ -16,8 +16,8 @@ const ProductModal = ({
    * @private
    */
   const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle event save button
@@ -32,18 +32,18 @@ const ProductModal = ({
         re: Number(state.re) / 100,
         sale: Number(state.sale),
         rate: Number(state.rate),
-        ...(state.provider && { provider: state.provider }),
-      };
-      action(model, close);
+        ...(state.provider && { provider: state.provider })
+      }
+      action(model, close)
     } catch (e) {
-      console.error(e);
+      console.error(e)
       dispatch(addNotification({
         level: 'error',
         message: 'El IVA, el recargo o la tasa no son correctos',
-        dismissible: true,
-      }));
+        dismissible: true
+      }))
     }
-  };
+  }
 
   /**
    * Handle press enter key
@@ -51,8 +51,8 @@ const ProductModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -71,7 +71,7 @@ const ProductModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -87,17 +87,17 @@ const ProductModal = ({
       {_renderInput('sale', 'PVP', { type: 'number' })}
       {_renderInput('rate', 'Tasa', { type: 'number' })}
     </ModalGrid>
-  );
-};
+  )
+}
 
 ProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  action: PropTypes.func.isRequired,
-};
+  action: PropTypes.func.isRequired
+}
 
-ProductModal.displayName = 'ProductModal';
-export const story = ProductModal;
-export default ProductModal;
+ProductModal.displayName = 'ProductModal'
+export const story = ProductModal
+export default ProductModal

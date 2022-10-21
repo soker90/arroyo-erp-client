@@ -1,1 +1,1 @@
-export { default } from './EditInvoiceTotalsModalContainer';
+export { default } from './EditInvoiceTotalsModalContainer'

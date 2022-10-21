@@ -1,21 +1,21 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
   Card,
-  Grid,
-} from '@mui/material';
+  Grid
+} from '@mui/material'
 
-import { useSumSelected } from './hooks';
-import DeliveryOrderSelectedSumItem from './DeliveryOrderSelectedSumItem';
-import { useStyles } from './styles';
+import { useSumSelected } from './hooks'
+import DeliveryOrderSelectedSumItem from './DeliveryOrderSelectedSumItem'
+import { useStyles } from './styles'
 
 const DeliveryOrderSelectedSum = ({
-  free, selected,
+  free, selected
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const sumSelected = useSumSelected({
     free,
-    selected,
-  });
+    selected
+  })
 
   return (
     <Card
@@ -35,14 +35,14 @@ const DeliveryOrderSelectedSum = ({
         ))}
       </Grid>
     </Card>
-  );
-};
+  )
+}
 
 DeliveryOrderSelectedSum.propTypes = {
   free: PropTypes.array.isRequired,
-  selected: PropTypes.array.isRequired,
-};
+  selected: PropTypes.array.isRequired
+}
 
-DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum';
+DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum'
 
-export default DeliveryOrderSelectedSum;
+export default DeliveryOrderSelectedSum

@@ -1,26 +1,26 @@
 /* eslint-disable react/prop-types */
 
-import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import { Typography } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Link } from 'react-router-dom'
 
-import { TableMaterial, TextEuro } from 'components';
-import { format } from 'utils';
-import { BASE_PATH } from 'constants/index';
-import { diffColor } from './utils';
-import { useStyles } from './DeliveryOrderProducts.styles';
+import { TableMaterial, TextEuro } from 'components'
+import { format } from 'utils'
+import { BASE_PATH } from 'constants/index'
+import { diffColor } from './utils'
+import { useStyles } from './DeliveryOrderProducts.styles'
 
 const DeliveryOrderProducts = ({
   products,
   showDeleteProductModal,
   showEditProductModal,
   isEditable,
-  hasCanal,
+  hasCanal
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Rencer cell of diff
@@ -35,9 +35,9 @@ const DeliveryOrderProducts = ({
         <Typography variant='subtitle1' style={{ color: diffColor(diff) }}>
           {format.euro(diff)}
         </Typography>
-      )
+        )
       : 'Sin datos'
-  );
+  )
 
   /**
    * Muesta el modal de confirmación para borrar el elemento
@@ -45,8 +45,8 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _showDeleteProductModal = (row, index) => {
-    showDeleteProductModal(index);
-  };
+    showDeleteProductModal(index)
+  }
 
   /**
    * Muesta el modal para editar el producto añadido
@@ -55,8 +55,8 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _showEditProductModal = (row, index) => {
-    showEditProductModal(row, index);
-  };
+    showEditProductModal(row, index)
+  }
 
   return (
     <TableMaterial
@@ -64,32 +64,34 @@ const DeliveryOrderProducts = ({
       columns={[
         {
           title: 'Código',
-          field: 'code',
+          field: 'code'
         },
-        ...(hasCanal ? [{
-          title: 'Nº Canal',
-          field: 'canal',
-        }] : []),
+        ...(hasCanal
+          ? [{
+              title: 'Nº Canal',
+              field: 'canal'
+            }]
+          : []),
         {
           title: 'Producto',
-          field: 'name',
+          field: 'name'
         },
         {
           title: 'Cantidad / Peso',
-          render: ({ quantity }) => format.number(quantity),
+          render: ({ quantity }) => format.number(quantity)
         },
         {
           title: 'Precio',
-          render: ({ price }) => <TextEuro num={price} decimals={3} />,
+          render: ({ price }) => <TextEuro num={price} decimals={3} />
         },
         {
           title: 'Base imponible',
-          render: ({ taxBase }) => <TextEuro num={taxBase} />,
+          render: ({ taxBase }) => <TextEuro num={taxBase} />
         },
         {
           title: 'Diferencia',
-          render: _formatDiff,
-        },
+          render: _formatDiff
+        }
       ]}
       data={products}
       actions={[
@@ -97,33 +99,35 @@ const DeliveryOrderProducts = ({
           icon: VisibilityIcon,
           tooltip: 'Ver producto',
           component: Link,
-          to: ({ _id }) => `${BASE_PATH}/productos/${_id}`,
+          to: ({ _id }) => `${BASE_PATH}/productos/${_id}`
         },
-        ...(isEditable ? [
-          {
-            icon: EditIcon,
-            tooltip: 'Editar',
-            onClick: _showEditProductModal,
-          },
-          {
-            icon: DeleteIcon,
-            tooltip: 'Eliminar',
-            onClick: _showDeleteProductModal,
-          },
-        ] : []),
+        ...(isEditable
+          ? [
+              {
+                icon: EditIcon,
+                tooltip: 'Editar',
+                onClick: _showEditProductModal
+              },
+              {
+                icon: DeleteIcon,
+                tooltip: 'Eliminar',
+                onClick: _showDeleteProductModal
+              }
+            ]
+          : [])
       ]}
     />
-  );
-};
+  )
+}
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
-  hasCanal: PropTypes.bool,
-};
+  hasCanal: PropTypes.bool
+}
 
-DeliveryOrderProducts.displayName = 'DeliveryOrderProducts';
-export const story = DeliveryOrderProducts;
-export default DeliveryOrderProducts;
+DeliveryOrderProducts.displayName = 'DeliveryOrderProducts'
+export const story = DeliveryOrderProducts
+export default DeliveryOrderProducts

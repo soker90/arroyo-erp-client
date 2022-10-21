@@ -1,12 +1,12 @@
-import { story as InvoiceTotals } from './InvoicePayment';
+import { story as InvoiceTotals } from './InvoicePayment'
 
 export default {
   title: 'Rutas/Factura/Totales',
   parameters: {
     component: InvoiceTotals,
-    componentSubtitle: 'Totales',
-  },
-};
+    componentSubtitle: 'Totales'
+  }
+}
 
 const InvoiceTotalsStory = () => (
   <InvoiceTotals
@@ -15,8 +15,8 @@ const InvoiceTotalsStory = () => (
     total={63.25}
     taxBase={33.2}
   />
-);
+)
 
-InvoiceTotalsStory.storyName = 'Totales';
+InvoiceTotalsStory.storyName = 'Totales'
 
-export { InvoiceTotalsStory };
+export { InvoiceTotalsStory }

@@ -1,44 +1,44 @@
-import { useRef, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import {
-  Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { logout } from 'actions/auth';
-import { useNavigate } from 'react-router';
+  Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { logout } from 'actions/auth'
+import { useNavigate } from 'react-router'
 
 const useStyles = makeStyles(theme => ({
   avatar: {
     height: 32,
     width: 32,
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   popover: {
-    width: 200,
-  },
-}));
+    width: 200
+  }
+}))
 
 const Account = () => {
-  const classes = useStyles();
-  const ref = useRef(null);
-  const dispatch = useDispatch();
-  const account = useSelector(state => state.account);
-  const [isOpen, setOpen] = useState(false);
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const ref = useRef(null)
+  const dispatch = useDispatch()
+  const account = useSelector(state => state.account)
+  const [isOpen, setOpen] = useState(false)
+  const navigate = useNavigate()
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleLogout = () => {
-    handleClose();
-    dispatch(logout(navigate));
-  };
+    handleClose()
+    dispatch(logout(navigate))
+  }
 
   return (
     <>
@@ -67,7 +67,7 @@ const Account = () => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'center'
         }}
         keepMounted
         PaperProps={{ className: classes.popover }}
@@ -91,7 +91,7 @@ const Account = () => {
         </MenuItem>
       </Menu>
     </>
-  );
-};
+  )
+}
 
-export default Account;
+export default Account

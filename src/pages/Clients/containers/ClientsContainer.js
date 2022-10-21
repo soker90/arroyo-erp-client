@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import Clients from '../components/Clients';
-import { getClients } from '../modules/actions';
+import Clients from '../components/Clients'
+import { getClients } from '../modules/actions'
 
 const mapStateToProps = ({ clients: { clients } }) => ({
-  clients,
-});
+  clients
+})
 
 const mapDispatchToProps = {
-  getClients,
-};
+  getClients
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Clients);
+  mapDispatchToProps
+)(Clients)

@@ -1,40 +1,40 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider,
-} from '@mui/material';
+  Card, CardContent, CardHeader, Divider
+} from '@mui/material'
 
-import { DatePickerForm, InputForm } from 'components';
-import { useStyles } from './DeliveryOrderData.styles';
+import { DatePickerForm, InputForm } from 'components'
+import { useStyles } from './DeliveryOrderData.styles'
 
 const DeliveryOrderData = ({
   date,
   readOnly,
   updateData,
   note,
-  idDeliveryOrder,
+  idDeliveryOrder
 }) => {
-  const classes = useStyles();
-  const { search } = useLocation();
+  const classes = useStyles()
+  const { search } = useLocation()
   // eslint-disable-next-line no-unused-vars
-  const [showDateModal, setShowDateModal] = useState(false);
+  const [showDateModal, setShowDateModal] = useState(false)
 
   const _handleChangeDate = value => {
-    updateData({ date: value });
-    setShowDateModal(false);
-  };
+    updateData({ date: value })
+    setShowDateModal(false)
+  }
 
   useEffect(() => {
-    if (search && !readOnly) setShowDateModal(true);
-  }, [setShowDateModal, search, idDeliveryOrder]);
+    if (search && !readOnly) setShowDateModal(true)
+  }, [setShowDateModal, search, idDeliveryOrder])
 
   const _handleKeyDownNote = ({
     key,
-    target: { value },
+    target: { value }
   }) => {
-    if (key === 'Enter') updateData({ note: value });
-  };
+    if (key === 'Enter') updateData({ note: value })
+  }
 
   return (
     <Card>
@@ -62,17 +62,17 @@ const DeliveryOrderData = ({
         )}
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
 DeliveryOrderData.propTypes = {
   date: PropTypes.number,
   note: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   updateData: PropTypes.func.isRequired,
-  idDeliveryOrder: PropTypes.string.isRequired,
-};
+  idDeliveryOrder: PropTypes.string.isRequired
+}
 
-DeliveryOrderData.displayName = 'DeliveryOrderData';
-export const story = DeliveryOrderData;
-export default DeliveryOrderData;
+DeliveryOrderData.displayName = 'DeliveryOrderData'
+export const story = DeliveryOrderData
+export default DeliveryOrderData

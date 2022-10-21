@@ -1,1 +1,1 @@
-export { default } from './EditDeliveryOrderTotalsModalContainer';
+export { default } from './EditDeliveryOrderTotalsModalContainer'

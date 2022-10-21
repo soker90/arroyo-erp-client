@@ -1,15 +1,15 @@
 import {
-  lazy, useEffect, useState,
-} from 'react';
-import PropTypes from 'prop-types';
-import { Button } from '@mui/material';
+  lazy, useEffect, useState
+} from 'react'
+import PropTypes from 'prop-types'
+import { Button } from '@mui/material'
 
-import { LoadingScreen } from 'components';
-import NoInvoices from './components/NoInvoices';
-import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum';
-import { useStyles } from './DeliveryOrder.styles';
+import { LoadingScreen } from 'components'
+import NoInvoices from './components/NoInvoices'
+import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum'
+import { useStyles } from './DeliveryOrder.styles'
 
-const InInvoices = lazy(() => import('./components/InInvoices'));
+const InInvoices = lazy(() => import('./components/InInvoices'))
 
 const DeliveryOrder = ({
   free,
@@ -17,20 +17,20 @@ const DeliveryOrder = ({
   getDeliveryOrders,
   idProvider,
   selected,
-  setSelected,
+  setSelected
 }) => {
-  const classes = useStyles();
-  const [showInInvoices, setShowInInvoices] = useState(false);
+  const classes = useStyles()
+  const [showInInvoices, setShowInInvoices] = useState(false)
 
   useEffect(() => {
-    if (idProvider) getDeliveryOrders({ provider: idProvider });
-  }, [getDeliveryOrders, idProvider]);
+    if (idProvider) getDeliveryOrders({ provider: idProvider })
+  }, [getDeliveryOrders, idProvider])
 
   const _handleShowClick = () => {
-    setShowInInvoices(state => !state);
-  };
+    setShowInInvoices(state => !state)
+  }
 
-  if (!idProvider) return <LoadingScreen />;
+  if (!idProvider) return <LoadingScreen />
 
   return (
     <>
@@ -60,21 +60,21 @@ const DeliveryOrder = ({
         />
       )}
     </>
-  );
-};
+  )
+}
 
 DeliveryOrder.propTypes = {
   free: PropTypes.array.isRequired,
   inInvoices: PropTypes.shape({
     data: PropTypes.array,
-    count: PropTypes.number,
+    count: PropTypes.number
   }),
   idProvider: PropTypes.string,
   getDeliveryOrders: PropTypes.func.isRequired,
   setSelected: PropTypes.func.isRequired,
-  selected: PropTypes.array.isRequired,
-};
+  selected: PropTypes.array.isRequired
+}
 
-DeliveryOrder.displayName = 'DeliveryOrder';
+DeliveryOrder.displayName = 'DeliveryOrder'
 
-export default DeliveryOrder;
+export default DeliveryOrder

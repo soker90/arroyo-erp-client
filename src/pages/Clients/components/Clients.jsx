@@ -1,33 +1,33 @@
 import {
-  useCallback, useEffect, useState,
-} from 'react';
-import { Box, Container } from '@mui/material';
-import PropTypes from 'prop-types';
-import { PlusCircle as PlusCircleIcon } from 'react-feather';
-import { Link } from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+  useCallback, useEffect, useState
+} from 'react'
+import { Box, Container } from '@mui/material'
+import PropTypes from 'prop-types'
+import { PlusCircle as PlusCircleIcon } from 'react-feather'
+import { Link } from 'react-router-dom'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { BASE_PATH } from 'constants/index';
-import { Header, Page, TableMaterial } from 'components';
-import { useStyles } from './Clients.styles';
-import NewProviderModal from '../modals/NewClientModal';
+import { BASE_PATH } from 'constants/index'
+import { Header, Page, TableMaterial } from 'components'
+import { useStyles } from './Clients.styles'
+import NewProviderModal from '../modals/NewClientModal'
 
 const Clients = ({ clients, getClients }) => {
-  const classes = useStyles();
-  const [showModal, setShowModal] = useState(false);
+  const classes = useStyles()
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
-    getClients();
-  }, [getClients]);
+    getClients()
+  }, [getClients])
 
-  const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`;
+  const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`
 
   /**
    * Oculta el modal de crear proveedor
    * @type {function(): void}
    * @private
    */
-  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
   return (
     <>
@@ -39,8 +39,8 @@ const Clients = ({ clients, getClients }) => {
               {
                 onClick: () => setShowModal(true),
                 Icon: PlusCircleIcon,
-                label: 'Nuevo Cliente',
-              },
+                label: 'Nuevo Cliente'
+              }
             ]}
           />
           <Box mt={3}>
@@ -49,16 +49,16 @@ const Clients = ({ clients, getClients }) => {
               columns={[
                 {
                   title: 'Nombre',
-                  field: 'name',
+                  field: 'name'
                 },
                 {
                   title: 'Facturas',
-                  field: 'invoices',
+                  field: 'invoices'
                 },
                 {
                   title: 'Fac. pendientes',
-                  field: 'pending',
-                },
+                  field: 'pending'
+                }
               ]}
               data={clients}
               title={`Clientes (${clients.length})`}
@@ -67,8 +67,8 @@ const Clients = ({ clients, getClients }) => {
                   icon: VisibilityIcon,
                   tooltip: 'Editar',
                   component: Link,
-                  to: _hrefRow,
-                },
+                  to: _hrefRow
+                }
               ]}
               href={_hrefRow}
             />
@@ -77,15 +77,15 @@ const Clients = ({ clients, getClients }) => {
       </Page>
       <NewProviderModal show={showModal} close={_closeModal} />
     </>
-  );
-};
+  )
+}
 
 Clients.propTypes = {
   clients: PropTypes.array.isRequired,
-  getClients: PropTypes.func.isRequired,
-};
+  getClients: PropTypes.func.isRequired
+}
 
-Clients.displayName = 'Clients';
+Clients.displayName = 'Clients'
 
-export const story = Clients;
-export default Clients;
+export const story = Clients
+export default Clients

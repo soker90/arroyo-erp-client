@@ -1,15 +1,15 @@
-import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
+import { useState, memo } from 'react'
+import PropTypes from 'prop-types'
 import {
-  Box, Button, TextField, Typography,
-} from '@mui/material';
-import { useStyles } from './LoginForm.styles';
+  Box, Button, TextField, Typography
+} from '@mui/material'
+import { useStyles } from './LoginForm.styles'
 
 const LoginForm = memo(({ login, loginError, isLoading }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Handle change input function
@@ -17,32 +17,32 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
    * @param {function} set
    */
   const handleChange = ({ target: { value } }, set) => {
-    set(value);
-  };
+    set(value)
+  }
 
   /**
    * Handle submit function of the form
    * @param {object} event
    */
   const handleSubmit = event => {
-    event.preventDefault();
-    login(username, password);
-  };
+    event.preventDefault()
+    login(username, password)
+  }
 
   /**
    * Render error if exist
    * @returns {boolean || Box}
    */
   const renderError = () => loginError && (
-  <Box
-    bgcolor='error.main'
-    color='secondary.contrastText'
-    p={2}
-    className={classes.error}
-  >
-    {loginError}
-  </Box>
-  );
+    <Box
+      bgcolor='error.main'
+      color='secondary.contrastText'
+      p={2}
+      className={classes.error}
+    >
+      {loginError}
+    </Box>
+  )
 
   /**
    *
@@ -53,7 +53,7 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
    * @returns {*}
    */
   const renderInput = ({
-    label, set, value, type,
+    label, set, value, type
   }) => (
     <TextField
       className={classes.textField}
@@ -64,7 +64,7 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
       value={value}
       variant='outlined'
     />
-  );
+  )
 
   /**
    * Press Enter key event
@@ -72,11 +72,10 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
    * @private
    */
   const _handleKeyPress = ev => {
-    if (ev.key === 'Enter') handleSubmit(ev);
-  };
+    if (ev.key === 'Enter') handleSubmit(ev)
+  }
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <form
       className={classes.form}
       onKeyPress={_handleKeyPress}
@@ -91,13 +90,13 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
         label: 'Usuario',
         set: setUsername,
         value: username,
-        type: 'text',
+        type: 'text'
       })}
       {renderInput({
         label: 'Contraseña',
         set: setPassword,
         value: password,
-        type: 'password',
+        type: 'password'
       })}
       {renderError()}
       <Button
@@ -112,16 +111,16 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
         Entrar
       </Button>
     </form>
-  );
-});
+  )
+})
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
   loginError: PropTypes.string,
-  isLoading: PropTypes.bool,
-};
+  isLoading: PropTypes.bool
+}
 
-LoginForm.displayName = 'LoginForm';
+LoginForm.displayName = 'LoginForm'
 
-export const story = LoginForm;
-export default LoginForm;
+export const story = LoginForm
+export default LoginForm

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components';
+import PropTypes from 'prop-types'
+import { ConfirmModal } from 'components'
 
 const DeleteProductModal = ({
   deleteProduct,
@@ -13,10 +13,10 @@ const DeleteProductModal = ({
     deleteProduct({
       invoice,
       deliveryOrder,
-      product: deleteId,
-    });
-    close();
-  };
+      product: deleteId
+    })
+    close()
+  }
 
   return (
     <ConfirmModal
@@ -31,26 +31,26 @@ const DeleteProductModal = ({
           variant: 'contained',
           color: 'primary',
           onClick: close,
-          value: 'Cerrar',
+          value: 'Cerrar'
         },
         {
           onClick: _handleSend,
           variant: 'contained',
-          value: 'Eliminar',
-        },
+          value: 'Eliminar'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeleteProductModal.propTypes = {
   close: PropTypes.func,
   invoice: PropTypes.string,
   deleteProduct: PropTypes.func.isRequired,
   deliveryOrder: PropTypes.string,
-  deleteId: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-};
+  deleteId: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+}
 
-DeleteProductModal.displayName = 'DeleteProductModal';
-export const story = DeleteProductModal;
-export default DeleteProductModal;
+DeleteProductModal.displayName = 'DeleteProductModal'
+export const story = DeleteProductModal
+export default DeleteProductModal

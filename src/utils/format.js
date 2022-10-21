@@ -1,7 +1,7 @@
-import moment from 'moment';
+import moment from 'moment'
 
 const date = cell => cell && moment(cell)
-  .format('DD/MM/YYYY');
+  .format('DD/MM/YYYY')
 
 /**
  * Número de la semana del año
@@ -9,7 +9,7 @@ const date = cell => cell && moment(cell)
  * @return {string}
  */
 const weekOfYear = cell => cell && moment(cell)
-  .format('w');
+  .format('w')
 
 /**
  * Devuelve el nombre del día de la semana
@@ -17,19 +17,19 @@ const weekOfYear = cell => cell && moment(cell)
  * @returns {*|string}
  */
 const dayOfWeek = cell => cell && moment()
-  .format('dddd');
+  .format('dddd')
 /**
  * Date con el formato para enviarlo al backend
  * @param {Date} cell
  * @returns {*|number}
  */
 const dateToSend = cell => {
-  if (!cell) return null;
+  if (!cell) return null
 
-  const cellDate = new Date(cell);
+  const cellDate = new Date(cell)
   return new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate())
-    .getTime();
-};
+    .getTime()
+}
 
 /**
  * Return number format with 2 decilms and euro symbol
@@ -43,10 +43,10 @@ const euro = (cell, options = {}) => {
     currency: 'EUR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
-    ...options,
-  });
-  return n.format(cell);
-};
+    ...options
+  })
+  return n.format(cell)
+}
 
 /**
  *
@@ -56,10 +56,10 @@ const euro = (cell, options = {}) => {
 const number = cell => {
   const num = new Intl.NumberFormat('es-ES', {
     style: 'decimal',
-    maximumFractionDigits: 3,
-  });
-  return num.format(cell);
-};
+    maximumFractionDigits: 3
+  })
+  return num.format(cell)
+}
 
 /**
  *
@@ -70,17 +70,17 @@ const percent = (cell, options = {}) => {
   const num = new Intl.NumberFormat('es-ES', {
     style: 'percent',
     maximumFractionDigits: 3,
-    ...options,
-  });
-  return num.format(cell);
-};
+    ...options
+  })
+  return num.format(cell)
+}
 
 /**
  * Return Si or No
  * @param {boolean} condition
  * @return {string}
  */
-const yesOrNot = condition => (condition ? 'Sí' : 'No');
+const yesOrNot = condition => (condition ? 'Sí' : 'No')
 
 export default {
   date,
@@ -90,5 +90,5 @@ export default {
   percent,
   dayOfWeek,
   weekOfYear,
-  yesOrNot,
-};
+  yesOrNot
+}

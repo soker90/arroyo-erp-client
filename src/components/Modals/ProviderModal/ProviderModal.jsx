@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { FormControlLabel, Switch } from '@mui/material';
+import PropTypes from 'prop-types'
+import { FormControlLabel, Switch } from '@mui/material'
 
-import { InputForm, ModalGrid, SelectForm } from 'components';
-import { TYPE_PROVIDER_LIST } from '../../../constants';
+import { InputForm, ModalGrid, SelectForm } from 'components'
+import { TYPE_PROVIDER_LIST } from '../../../constants'
 
 const ProviderModal = ({
   show, close, state, setState, action, hasType, ...rest
@@ -15,17 +15,17 @@ const ProviderModal = ({
    * @private
    */
   const _handleChange = ({ target: { name, value, checked } }) => {
-    if (checked) setState({ [name]: checked });
-    else setState({ [name]: value });
-  };
+    if (checked) setState({ [name]: checked })
+    else setState({ [name]: value })
+  }
 
   /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = () => {
-    action();
-  };
+    action()
+  }
 
   /**
    * Handle press enter key
@@ -33,8 +33,8 @@ const ProviderModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -53,7 +53,7 @@ const ProviderModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -81,7 +81,7 @@ const ProviderModal = ({
           onChange={_handleChange}
           size={6}
           InputLabelProps={{
-            shrink: true,
+            shrink: true
           }}
           onKeyPress={_handleKeyPress}
         >
@@ -95,21 +95,21 @@ const ProviderModal = ({
       )}
       {/* Todo terminar */}
       {false && (
-      <FormControlLabel
-        control={(
-          <Switch
-            checked={state.canal}
-            onChange={_handleChange}
-            name='canal'
-            color='primary'
-          />
+        <FormControlLabel
+          control={(
+            <Switch
+              checked={state.canal}
+              onChange={_handleChange}
+              name='canal'
+              color='primary'
+            />
         )}
-        label='Tiene canal'
-      />
+          label='Tiene canal'
+        />
       )}
     </ModalGrid>
-  );
-};
+  )
+}
 
 ProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -117,13 +117,13 @@ ProviderModal.propTypes = {
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
-  hasType: PropTypes.bool,
-};
+  hasType: PropTypes.bool
+}
 
 ProviderModal.defaultProps = {
-  hasType: false,
-};
+  hasType: false
+}
 
-ProviderModal.displayName = 'ProviderModal';
-export const story = ProviderModal;
-export default ProviderModal;
+ProviderModal.displayName = 'ProviderModal'
+export const story = ProviderModal
+export default ProviderModal

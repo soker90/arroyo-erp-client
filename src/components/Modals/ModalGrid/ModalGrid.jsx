@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
   Modal,
   Card,
@@ -7,22 +7,22 @@ import {
   CardActions,
   Grid,
   Divider,
-  Button,
-} from '@mui/material';
+  Button
+} from '@mui/material'
 
-import { useStyles } from './ModalGrid.styles';
+import { useStyles } from './ModalGrid.styles'
 
 const ModalGrid = ({
-  show, close, title, children, action, actions, setShow,
+  show, close, title, children, action, actions, setShow
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Close Modal
    */
   const onClose = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   /**
    * Render all buttons
@@ -40,7 +40,7 @@ const ModalGrid = ({
         </Button>
       )}
     </>
-  );
+  )
 
   /**
    *
@@ -55,7 +55,7 @@ const ModalGrid = ({
     <Button key={index} {...rest}>
       {value}
     </Button>
-  );
+  )
 
   return (
     <Modal
@@ -83,8 +83,8 @@ const ModalGrid = ({
         </form>
       </Card>
     </Modal>
-  );
-};
+  )
+}
 
 ModalGrid.propTypes = {
   close: PropTypes.func,
@@ -93,9 +93,9 @@ ModalGrid.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   action: PropTypes.func,
   actions: PropTypes.array,
-  setShow: PropTypes.func,
-};
+  setShow: PropTypes.func
+}
 
-ModalGrid.displayName = 'ModalGrid';
+ModalGrid.displayName = 'ModalGrid'
 
-export default ModalGrid;
+export default ModalGrid

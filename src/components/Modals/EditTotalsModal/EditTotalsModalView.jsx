@@ -1,7 +1,7 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
 
-import { ModalGrid, InputForm } from 'components';
+import { ModalGrid, InputForm } from 'components'
 
 const EditTotalsModalView = ({
   show,
@@ -12,7 +12,7 @@ const EditTotalsModalView = ({
   rate,
   taxBase,
   update,
-  id,
+  id
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -21,9 +21,9 @@ const EditTotalsModalView = ({
       ...(iva !== undefined && { iva }),
       ...(re !== undefined && { re }),
       ...(rate !== undefined && { rate }),
-      ...(taxBase !== undefined && { taxBase }),
+      ...(taxBase !== undefined && { taxBase })
     }
-  );
+  )
 
   const [errors, setErrors] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -32,17 +32,17 @@ const EditTotalsModalView = ({
       iva: false,
       re: false,
       rate: false,
-      taxBase: false,
+      taxBase: false
     }
-  );
+  )
 
   useEffect(() => {
-    let sum = 0;
+    let sum = 0
     if (total && state.taxBase) {
-      sum = state.iva + state.re + state.taxBase;
-      setState({ total: sum });
+      sum = state.iva + state.re + state.taxBase
+      setState({ total: sum })
     }
-  }, [state.iva, state.re, state.taxBase]);
+  }, [state.iva, state.re, state.taxBase])
 
   /**
    * Handle event onChange input
@@ -53,23 +53,23 @@ const EditTotalsModalView = ({
   const _handleChange = ({
     target: {
       name,
-      value,
-    },
+      value
+    }
   }) => {
-    const number = parseFloat(value);
-    setState({ [name]: number });
-    setErrors({ [name]: (typeof number !== 'number') });
-  };
+    const number = parseFloat(value)
+    setState({ [name]: number })
+    setErrors({ [name]: (typeof number !== 'number') })
+  }
 
   const _close = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const _handleSubmit = () => {
     update(id, {
-      totals: state,
-    }, _close);
-  };
+      totals: state
+    }, _close)
+  }
 
   /**
    * Handle press enter key
@@ -77,8 +77,8 @@ const EditTotalsModalView = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -94,14 +94,14 @@ const EditTotalsModalView = ({
       name={name}
       label={label}
       InputLabelProps={{
-        shrink: true,
+        shrink: true
       }}
       type='number'
       size={4}
       onKeyPress={_handleKeyPress}
       error={errors[name]}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -116,8 +116,8 @@ const EditTotalsModalView = ({
       {Boolean(rate) && _renderInput('rate', 'Tasa')}
       {_renderInput('total', 'Total')}
     </ModalGrid>
-  );
-};
+  )
+}
 
 EditTotalsModalView.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -128,8 +128,8 @@ EditTotalsModalView.propTypes = {
   rate: PropTypes.number,
   taxBase: PropTypes.number,
   id: PropTypes.string.isRequired,
-  update: PropTypes.func.isRequired,
-};
+  update: PropTypes.func.isRequired
+}
 
-EditTotalsModalView.displayName = 'EditInvoiceDataModalView';
-export default EditTotalsModalView;
+EditTotalsModalView.displayName = 'EditInvoiceDataModalView'
+export default EditTotalsModalView

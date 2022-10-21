@@ -1,1 +1,1 @@
-export { default } from './ListActions';
+export { default } from './ListActions'

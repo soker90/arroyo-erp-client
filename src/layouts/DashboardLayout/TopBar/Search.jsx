@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
 import {
   ClickAwayListener,
   Hidden,
@@ -9,26 +9,26 @@ import {
   ListItemIcon,
   ListItemText,
   Paper,
-  Popper,
-} from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+  Popper
+} from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
-import { navigateTo } from 'utils';
-import { useStyles } from './Search.styles';
+import { navigateTo } from 'utils'
+import { useStyles } from './Search.styles'
 
 /**
  * Barra de busqueda de proveedores
  */
 const Search = () => {
-  const classes = useStyles();
-  const searchRef = useRef(null);
-  const [openSearchPopover, setOpenSearchPopover] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const classes = useStyles()
+  const searchRef = useRef(null)
+  const [openSearchPopover, setOpenSearchPopover] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
   // eslint-disable-next-line no-shadow
-  const providers = useSelector(({ providers }) => providers.providers);
-  const navigate = useNavigate();
+  const providers = useSelector(({ providers }) => providers.providers)
+  const navigate = useNavigate()
 
   /**
    * Establece el texto buscado en el estado
@@ -37,13 +37,13 @@ const Search = () => {
    * @private
    */
   const _handleSearchChange = ({ target: { value } }) => {
-    setSearchValue(value);
+    setSearchValue(value)
 
     // eslint-disable-next-line no-unused-expressions
     value
       ? !openSearchPopover && setOpenSearchPopover(true)
-      : setOpenSearchPopover(false);
-  };
+      : setOpenSearchPopover(false)
+  }
 
   /**
    * Cierra la lista de sugerencias a pinchar en otro
@@ -51,8 +51,8 @@ const Search = () => {
    * @private
    */
   const _handleSearchPopverClose = () => {
-    setOpenSearchPopover(false);
-  };
+    setOpenSearchPopover(false)
+  }
 
   /**
    * Navigate to provider selected
@@ -60,9 +60,9 @@ const Search = () => {
    * @private
    */
   const _handleSelectProvider = idProvider => {
-    _handleSearchPopverClose();
-    navigateTo(`proveedores/${idProvider}`, navigate);
-  };
+    _handleSearchPopverClose()
+    navigateTo(`proveedores/${idProvider}`, navigate)
+  }
 
   /**
    * Filtra los posibles proveedores que coincidan
@@ -73,7 +73,7 @@ const Search = () => {
    */
   const _filterPossibles = provider => provider.name
     .toLowerCase()
-    .includes(searchValue.toLowerCase());
+    .includes(searchValue.toLowerCase())
 
   /**
    * Renderiza un elemento de la busqueda
@@ -84,7 +84,7 @@ const Search = () => {
    */
   const _renderSearchedItem = ({
     _id,
-    name,
+    name
   }) => (
     <ListItem
       button
@@ -96,7 +96,7 @@ const Search = () => {
       </ListItemIcon>
       <ListItemText primary={name} />
     </ListItem>
-  );
+  )
 
   return (
     <Hidden mdDown>
@@ -132,9 +132,9 @@ const Search = () => {
         </ClickAwayListener>
       </Popper>
     </Hidden>
-  );
-};
+  )
+}
 
-Search.displayName = 'Search';
+Search.displayName = 'Search'
 
-export default Search;
+export default Search

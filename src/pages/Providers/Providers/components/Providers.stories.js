@@ -1,8 +1,8 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { ReduxProvider } from 'story';
-import RoutesWrapper from 'story/RoutesWrapper';
-import { story as Providers } from './Providers';
+import { ReduxProvider } from 'story'
+import RoutesWrapper from 'story/RoutesWrapper'
+import { story as Providers } from './Providers'
 
 export default {
   title: 'Rutas/Proveedores',
@@ -12,7 +12,7 @@ export default {
   },
   decorators: [storyFn =>
     <ReduxProvider><RoutesWrapper>{storyFn()}</RoutesWrapper></ReduxProvider>]
-};
+}
 
 const providers = [
   {
@@ -23,15 +23,15 @@ const providers = [
     _id: '4567s3389okjs',
     name: 'Proveedor 2'
   }
-];
+]
 
 const ProvidersDefault = () => (
   <Providers
     providers={providers}
     showCreateModal={action('Muestra la modal de crear proveedor')}
   />
-);
+)
 
-ProvidersDefault.storyName = 'Vista';
+ProvidersDefault.storyName = 'Vista'
 
-export { ProvidersDefault };
+export { ProvidersDefault }

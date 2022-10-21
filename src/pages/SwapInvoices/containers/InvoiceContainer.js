@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import SwapInvoices from '../components/SwapInvoices';
-import { swapInvoices } from '../modules/actions';
+import { connect } from 'react-redux'
+import SwapInvoices from '../components/SwapInvoices'
+import { swapInvoices } from '../modules/actions'
 
 const mapDispatchToProps = {
-  swapInvoices,
-};
+  swapInvoices
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(SwapInvoices);
+  mapDispatchToProps
+)(SwapInvoices)

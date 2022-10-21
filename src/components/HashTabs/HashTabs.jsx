@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { Card, Tab, Tabs } from '@mui/material';
-import { useNavigate } from 'react-router';
+import PropTypes from 'prop-types'
+import { Card, Tab, Tabs } from '@mui/material'
+import { useNavigate } from 'react-router'
 
-import { useStyles } from './HashTabs.styles';
+import { useStyles } from './HashTabs.styles'
 
 const HashTabs = ({
   currentTab,
-  tabs,
+  tabs
 }) => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const navigate = useNavigate()
 
   /**
    * Event onChange tabs
@@ -18,8 +18,8 @@ const HashTabs = ({
    * @private
    */
   const _handleTabsChange = (event, value) => {
-    navigate(`#${value}`);
-  };
+    navigate(`#${value}`)
+  }
 
   return (
     <Card className={classes.tabs}>
@@ -40,14 +40,14 @@ const HashTabs = ({
         ))}
       </Tabs>
     </Card>
-  );
-};
+  )
+}
 
 HashTabs.propTypes = {
   currentTab: PropTypes.string.isRequired,
-  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
-HashTabs.displayName = 'HashTabs';
-export const story = HashTabs;
-export default HashTabs;
+HashTabs.displayName = 'HashTabs'
+export const story = HashTabs
+export default HashTabs

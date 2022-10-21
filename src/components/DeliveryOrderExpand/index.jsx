@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
   Accordion,
   AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+  AccordionSummary
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import ProductsOrderTable from './ProductsOrderTable';
-import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader';
+import ProductsOrderTable from './ProductsOrderTable'
+import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader'
 
 const DeliveryOrderExpand = ({ products, ...props }) => (
   <Accordion TransitionProps={{ unmountOnExit: true }}>
@@ -21,7 +21,7 @@ const DeliveryOrderExpand = ({ products, ...props }) => (
       <ProductsOrderTable products={products} />
     </AccordionDetails>
   </Accordion>
-);
+)
 
 DeliveryOrderExpand.propTypes = {
   products: PropTypes.array.isRequired,
@@ -31,9 +31,9 @@ DeliveryOrderExpand.propTypes = {
   iva: PropTypes.number.isRequired,
   re: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
-  _id: PropTypes.string.isRequired,
-};
+  _id: PropTypes.string.isRequired
+}
 
-DeliveryOrderExpand.displayName = 'DeliveryOrderExpand';
-export const story = DeliveryOrderExpand;
-export default DeliveryOrderExpand;
+DeliveryOrderExpand.displayName = 'DeliveryOrderExpand'
+export const story = DeliveryOrderExpand
+export default DeliveryOrderExpand

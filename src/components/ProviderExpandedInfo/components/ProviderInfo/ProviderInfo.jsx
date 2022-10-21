@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -6,24 +6,24 @@ import {
   Divider,
   Grid,
   IconButton,
-  Tooltip,
-} from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+  Tooltip
+} from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard } from 'components';
-import { useStyles } from './ProviderInfo.styles';
-import { adapterProviderInfo } from './adapterProviderInfo';
-import EditProviderModal from '../../modals/EditProviderModal';
+import { ItemGroupsCard } from 'components'
+import { useStyles } from './ProviderInfo.styles'
+import { adapterProviderInfo } from './adapterProviderInfo'
+import EditProviderModal from '../../modals/EditProviderModal'
 
 const ProviderInfo = props => {
-  const classes = useStyles();
-  const [showModal, setShowModal] = useState(false);
+  const classes = useStyles()
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Close modal
    * @private
    */
-  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
   /**
    * Render edit button
@@ -36,7 +36,7 @@ const ProviderInfo = props => {
         <EditIcon />
       </IconButton>
     </Tooltip>
-  );
+  )
 
   return (
     <>
@@ -59,9 +59,9 @@ const ProviderInfo = props => {
       </Grid>
       <EditProviderModal show={showModal} provider={props} close={_closeModal} />
     </>
-  );
-};
+  )
+}
 
-ProviderInfo.displayName = 'ProviderInfo';
+ProviderInfo.displayName = 'ProviderInfo'
 
-export default ProviderInfo;
+export default ProviderInfo

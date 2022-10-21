@@ -1,18 +1,18 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { Billing } from 'components';
-import { getBilling } from '../modules/actions';
+import { Billing } from 'components'
+import { getBilling } from '../modules/actions'
 
 const mapStateToProps = ({ clientBilling }) => ({
   ...clientBilling,
-  type: 'clientes',
-});
+  type: 'clientes'
+})
 
 const mapDispatchToProps = {
-  getBilling,
-};
+  getBilling
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Billing);
+  mapDispatchToProps
+)(Billing)

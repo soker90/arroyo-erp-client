@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
-import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components/Modals';
+import PropTypes from 'prop-types'
+import { ConfirmModal } from 'components/Modals'
 
 const DeletePriceChangeModal = ({
   deletePriceChanges,
@@ -18,9 +18,9 @@ const DeletePriceChangeModal = ({
   const _handleSend = () => {
     id
       ? deletePriceChanges(id)
-      : deleteManyChangesPrice(ids);
-    rest.close();
-  };
+      : deleteManyChangesPrice(ids)
+    rest.close()
+  }
 
   return (
     <ConfirmModal
@@ -33,19 +33,19 @@ const DeletePriceChangeModal = ({
         {
           onClick: rest.close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button',
+          'data-cy': 'modal-close-button'
         },
         {
           onClick: _handleSend,
           color: 'secondary',
           variant: 'contained',
           value: 'Borrar',
-          'data-cy': 'modal-close-button',
-        },
+          'data-cy': 'modal-close-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeletePriceChangeModal.propTypes = {
   close: PropTypes.func,
@@ -53,9 +53,9 @@ DeletePriceChangeModal.propTypes = {
   deletePriceChanges: PropTypes.func.isRequired,
   ids: PropTypes.array,
   deleteManyChangesPrice: PropTypes.func.isRequired,
-  show: PropTypes.bool,
-};
+  show: PropTypes.bool
+}
 
-DeletePriceChangeModal.displayName = 'DeletePriceChangeModal';
-export const story = DeletePriceChangeModal;
-export default DeletePriceChangeModal;
+DeletePriceChangeModal.displayName = 'DeletePriceChangeModal'
+export const story = DeletePriceChangeModal
+export default DeletePriceChangeModal

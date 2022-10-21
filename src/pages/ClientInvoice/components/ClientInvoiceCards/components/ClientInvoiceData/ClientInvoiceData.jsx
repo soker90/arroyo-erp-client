@@ -1,25 +1,25 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid,
-} from '@mui/material';
+  Card, CardContent, CardHeader, Divider, Grid
+} from '@mui/material'
 
-import { DatePickerForm, ItemCard } from 'components';
-import { format } from 'utils';
-import { useStyles } from './ClientInvoiceData.styles';
+import { DatePickerForm, ItemCard } from 'components'
+import { format } from 'utils'
+import { useStyles } from './ClientInvoiceData.styles'
 
 const ClientInvoiceData = ({
   date,
   readOnly,
   updateData,
   nInvoice,
-  id,
+  id
 }) => {
   // eslint-disable-next-line no-unused-vars
-  const classes = useStyles();
+  const classes = useStyles()
 
   const _handleChangeDate = value => {
-    updateData(id, { date: format.dateToSend(value) });
-  };
+    updateData(id, { date: format.dateToSend(value) })
+  }
 
   return (
     <Card>
@@ -40,17 +40,17 @@ const ClientInvoiceData = ({
         </Grid>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
 ClientInvoiceData.propTypes = {
   date: PropTypes.number,
   nInvoice: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   updateData: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-};
+  id: PropTypes.string.isRequired
+}
 
-ClientInvoiceData.displayName = 'ClientInvoiceData';
-export const story = ClientInvoiceData;
-export default ClientInvoiceData;
+ClientInvoiceData.displayName = 'ClientInvoiceData'
+export const story = ClientInvoiceData
+export default ClientInvoiceData

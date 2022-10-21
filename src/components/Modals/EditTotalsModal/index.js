@@ -1,1 +1,1 @@
-export { default } from './EditTotalsModalView';
+export { default } from './EditTotalsModalView'

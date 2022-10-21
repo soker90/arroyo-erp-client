@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -6,26 +6,26 @@ export const useStyles = makeStyles(theme => ({
     paddingTop: '10vh',
     display: 'flex',
     flexDirection: 'column',
-    alignContent: 'center',
+    alignContent: 'center'
   },
   imageContainer: {
     marginTop: theme.spacing(6),
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   image: {
     maxWidth: '100%',
     width: 560,
     maxHeight: 300,
-    height: 'auto',
+    height: 'auto'
   },
   buttonContainer: {
     marginTop: theme.spacing(6),
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   subtitle: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(3),
-  },
-}));
+    marginBottom: theme.spacing(3)
+  }
+}))

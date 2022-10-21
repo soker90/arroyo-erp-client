@@ -1,5 +1,5 @@
-import providers from './providers';
+import providers from './providers'
 
 export default {
-  providers,
-};
+  providers
+}

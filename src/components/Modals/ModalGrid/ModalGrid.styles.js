@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -11,9 +11,9 @@ export const useStyles = makeStyles(theme => ({
     width: 700,
     maxHeight: '100%',
     overflowY: 'auto',
-    maxWidth: '100%',
+    maxWidth: '100%'
   },
   actions: {
-    justifyContent: 'flex-end',
-  },
-}));
+    justifyContent: 'flex-end'
+  }
+}))

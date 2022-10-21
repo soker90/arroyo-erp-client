@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_PRODUCT } from '../types';
+import axios from 'axios'
+import { DELETE_PRODUCT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteProductRequest = () => ({ type: DELETE_PRODUCT.REQUEST });
+const _deleteProductRequest = () => ({ type: DELETE_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _deleteProductSuccess = () => ({
   type: DELETE_PRODUCT.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto borradao',
-  },
-});
+    message: 'Producto borradao'
+  }
+})
 
 /**
  * Set action
@@ -29,8 +29,8 @@ const _deleteProductSuccess = () => ({
  */
 const _deleteProductSet = data => ({
   type: DELETE_PRODUCT.SET,
-  payload: data,
-});
+  payload: data
+})
 /**
  * Error action
  * @param error
@@ -39,8 +39,8 @@ const _deleteProductSet = data => ({
  */
 const _deleteProductError = error => ({
   type: DELETE_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Elimina un producto del albarán
@@ -50,18 +50,18 @@ const _deleteProductError = error => ({
 export const deleteProduct = ({
   invoice,
   deliveryOrder,
-  product,
+  product
 }) => async dispatch => {
-  dispatch(_deleteProductRequest());
+  dispatch(_deleteProductRequest())
 
   try {
     const { data } = await axios.delete(
-      `client/invoices/${invoice}/deliveryOrder/${deliveryOrder}/product/${product}`,
-    );
+      `client/invoices/${invoice}/deliveryOrder/${deliveryOrder}/product/${product}`
+    )
 
-    dispatch(_deleteProductSuccess());
-    dispatch(_deleteProductSet(data));
+    dispatch(_deleteProductSuccess())
+    dispatch(_deleteProductSet(data))
   } catch (error) {
-    dispatch(_deleteProductError(error));
+    dispatch(_deleteProductError(error))
   }
-};
+}

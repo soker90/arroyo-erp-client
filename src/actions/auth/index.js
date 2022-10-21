@@ -1,3 +1,3 @@
-export * from './login';
-export * from './setUserData';
-export * from './logout';
+export * from './login'
+export * from './setUserData'
+export * from './logout'

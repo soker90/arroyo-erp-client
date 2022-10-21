@@ -8,43 +8,43 @@
  * @returns {[]}
  */
 export const itemsCard = ({
-  iva, re, total, taxBase, rate,
+  iva, re, total, taxBase, rate
 }) => {
-  const size = rate ? 3 : 4;
+  const size = rate ? 3 : 4
   return [
     ...(
       rate
         ? [{
-          size,
-          label: 'Tasa',
-          value: rate,
-          variant: 'euro',
-        }]
+            size,
+            label: 'Tasa',
+            value: rate,
+            variant: 'euro'
+          }]
         : []
     ),
     {
       size,
       label: 'Base imponible',
       value: taxBase,
-      variant: 'euro',
+      variant: 'euro'
     },
     {
       size,
       label: 'IVA',
       value: iva,
-      variant: 'euro',
+      variant: 'euro'
     },
     {
       size,
       label: 'Recargo',
       value: re,
-      variant: 'euro',
+      variant: 'euro'
     },
     {
       size: 12,
       label: 'Total',
       value: total,
-      variant: 'euro',
-    },
-  ];
-};
+      variant: 'euro'
+    }
+  ]
+}

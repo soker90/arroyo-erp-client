@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Box, Typography } from '@mui/material'
 
 const NoData = ({ elements }) => (
   (elements === 0)
@@ -13,14 +13,14 @@ const NoData = ({ elements }) => (
           No se han encontrado datos
         </Typography>
       </Box>
-    )
+      )
     : null
-);
+)
 
 NoData.propTypes = {
-  elements: PropTypes.number.isRequired,
-};
+  elements: PropTypes.number.isRequired
+}
 
-NoData.displayName = 'NoData';
-export const story = NoData;
-export default NoData;
+NoData.displayName = 'NoData'
+export const story = NoData
+export default NoData

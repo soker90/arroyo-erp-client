@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getProvider, createInvoice } from 'modules/providers/actions';
-import { showModal } from 'reducers/modal';
-import { createDeliveryOrder } from 'pages/DeliveryOrder/modules/actions';
-import Providers from '../components/Provider';
-import { NEW_PRODUCT_MODAL } from '../modals/types';
+import { getProvider, createInvoice } from 'modules/providers/actions'
+import { showModal } from 'reducers/modal'
+import { createDeliveryOrder } from 'pages/DeliveryOrder/modules/actions'
+import Providers from '../components/Provider'
+import { NEW_PRODUCT_MODAL } from '../modals/types'
 
 const mapStateToProps = ({ providers: { provider, billing } }) => ({
   provider,
-  billing,
-});
+  billing
+})
 
 const mapDispatchToProps = {
   getProvider,
@@ -17,13 +17,13 @@ const mapDispatchToProps = {
   showEditProductModal: product => showModal({
     modalType: NEW_PRODUCT_MODAL,
     modalProps: {
-      product,
-    },
+      product
+    }
   }),
-  createInvoice,
-};
+  createInvoice
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Providers);
+  mapDispatchToProps
+)(Providers)

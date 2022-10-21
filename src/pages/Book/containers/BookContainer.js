@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import Book from '../components/Book';
+import Book from '../components/Book'
 
 /**
  * @param products
  * @return {{products: *}}
  */
-const mapStateToProps = ({ book }) => book;
+const mapStateToProps = ({ book }) => book
 
 export default connect(
-  mapStateToProps,
-)(Book);
+  mapStateToProps
+)(Book)

@@ -1,21 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
-  lazy, useCallback, useEffect, useState,
-} from 'react';
+  lazy, useCallback, useEffect, useState
+} from 'react'
 import {
-  Box, Container,
-} from '@mui/material';
-import PropTypes from 'prop-types';
-import { useLocation, useParams } from 'react-router';
+  Box, Container
+} from '@mui/material'
+import PropTypes from 'prop-types'
+import { useLocation, useParams } from 'react-router'
 
-import { HashTabs, Page, ProviderExpandedInfo } from 'components';
-import { HASH_TABS, TABS } from '../constants';
-import Header from './Header';
-import { useStyles } from './Provider.styles';
+import { HashTabs, Page, ProviderExpandedInfo } from 'components'
+import { HASH_TABS, TABS } from '../constants'
+import Header from './Header'
+import { useStyles } from './Provider.styles'
 
-const DeliveryOrders = lazy(() => import('./DeliveryOrder'));
-const Products = lazy(() => import('./ProductsTable'));
-const Invoices = lazy(() => import('components/ProviderInvoices'));
+const DeliveryOrders = lazy(() => import('./DeliveryOrder'))
+const Products = lazy(() => import('./ProductsTable'))
+const Invoices = lazy(() => import('components/ProviderInvoices'))
 
 const Provider = ({
   provider,
@@ -23,39 +22,37 @@ const Provider = ({
   getProvider,
   ...props
 }) => {
-  const classes = useStyles();
-  const { hash } = useLocation();
-  const { idProvider } = useParams();
-  const [expand, setExpand] = useState(false);
-  const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS);
-  const [deliveryOrdersSelected, setDeliveryOrdersSelected] = useState([]);
+  const classes = useStyles()
+  const { hash } = useLocation()
+  const { idProvider } = useParams()
+  const [expand, setExpand] = useState(false)
+  const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS)
+  const [deliveryOrdersSelected, setDeliveryOrdersSelected] = useState([])
 
   useEffect(() => {
-    if (idProvider) getProvider(idProvider);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idProvider]);
+    if (idProvider) getProvider(idProvider)
+  }, [idProvider])
 
   useEffect(() => {
-    // eslint-disable-next-line
-    HASH_TABS[hash]
-    && setCurrentTab(HASH_TABS[hash]);
-  }, [hash]);
+    HASH_TABS[hash] &&
+    setCurrentTab(HASH_TABS[hash])
+  }, [hash])
 
   /**
    * Expande o contrae la información
    * @private
    */
   const _toggleExpand = () => {
-    setExpand(!expand);
-  };
+    setExpand(!expand)
+  }
 
   /**
    * Reset delivery orders selected
    * @private
    */
   const _resetSelectedOrders = useCallback(() => {
-    setDeliveryOrdersSelected([]);
-  }, [setDeliveryOrdersSelected]);
+    setDeliveryOrdersSelected([])
+  }, [setDeliveryOrdersSelected])
 
   return (
     <Page className={classes.root} title={provider.name}>
@@ -93,8 +90,8 @@ const Provider = ({
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 Provider.propTypes = {
   provider: PropTypes.object.isRequired,
@@ -102,10 +99,10 @@ Provider.propTypes = {
   getProvider: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
-  createInvoice: PropTypes.func.isRequired,
-};
+  createInvoice: PropTypes.func.isRequired
+}
 
-Provider.displayName = 'Providers';
+Provider.displayName = 'Providers'
 
-export const story = Provider;
-export default Provider;
+export const story = Provider
+export default Provider

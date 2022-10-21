@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useNavigate } from 'react-router';
+import { useMemo } from 'react'
+import PropTypes from 'prop-types'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useNavigate } from 'react-router'
 
-import { Label, Header } from 'components';
-import { getButtons } from './utils';
-import { useStyles } from './styles';
+import { Label, Header } from 'components'
+import { getButtons } from './utils'
+import { useStyles } from './styles'
 
 const HeaderProvider = ({
   title,
@@ -20,10 +20,10 @@ const HeaderProvider = ({
   currentTab,
   resetSelected,
   note,
-  nameProvider,
+  nameProvider
 }) => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const navigate = useNavigate()
   /**
    * Navega a la página de nuevo albarán
    * @private
@@ -31,14 +31,14 @@ const HeaderProvider = ({
   const _handleClickNewDeliveryOrder = () => {
     createDeliveryOrder({
       provider: idProvider,
-      navigate,
-    });
-    resetSelected();
-  };
+      navigate
+    })
+    resetSelected()
+  }
 
   const _handleClickNewInvoice = () => {
-    createInvoice(deliveryOrdersSelected, navigate);
-  };
+    createInvoice(deliveryOrdersSelected, navigate)
+  }
 
   const _buttons = useMemo(() => (
     getButtons({
@@ -48,7 +48,7 @@ const HeaderProvider = ({
       _handleClickNewInvoice,
       showEditProductModal,
       nameProvider,
-      idProvider,
+      idProvider
       // eslint-disable-next-line
     })), [currentTab, deliveryOrdersSelected.length]);
 
@@ -64,13 +64,13 @@ const HeaderProvider = ({
     >
       {note}
     </Label>
-  );
+  )
 
   return (
     <Header
       routes={[{
         link: '/app/proveedores',
-        title: 'Proveedores',
+        title: 'Proveedores'
       }]}
       title={title}
       description={(
@@ -84,12 +84,12 @@ const HeaderProvider = ({
         onClick: onExpand,
         Icon: expanded ? ExpandLessIcon : ExpandMoreIcon,
         disableSvg: true,
-        label: expanded ? 'Ocultar información' : 'Mostrar información',
+        label: expanded ? 'Ocultar información' : 'Mostrar información'
       }]}
       buttons={_buttons}
     />
-  );
-};
+  )
+}
 
 HeaderProvider.propTypes = {
   title: PropTypes.string,
@@ -103,10 +103,10 @@ HeaderProvider.propTypes = {
   currentTab: PropTypes.string.isRequired,
   resetSelected: PropTypes.func.isRequired,
   note: PropTypes.string,
-  nameProvider: PropTypes.string,
-};
+  nameProvider: PropTypes.string
+}
 
-HeaderProvider.displayName = 'Provider-Header';
+HeaderProvider.displayName = 'Provider-Header'
 
-export const story = HeaderProvider;
-export default HeaderProvider;
+export const story = HeaderProvider
+export default HeaderProvider

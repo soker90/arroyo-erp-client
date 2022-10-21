@@ -1,14 +1,14 @@
-import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions'
 
-import { ReduxProvider, DatePickerProvider } from 'story';
-import RoutesWrapper from 'story/RoutesWrapper';
-import { story as DeliveryOrder } from './DeliveryOrder';
+import { ReduxProvider, DatePickerProvider } from 'story'
+import RoutesWrapper from 'story/RoutesWrapper'
+import { story as DeliveryOrder } from './DeliveryOrder'
 
 export default {
   title: 'Rutas/Albarán',
   parameters: {
     component: DeliveryOrder,
-    componentSubtitle: 'Vista de albarán',
+    componentSubtitle: 'Vista de albarán'
   },
   decorators: [storyFn => (
     <ReduxProvider>
@@ -18,9 +18,9 @@ export default {
         </RoutesWrapper>
       </DatePickerProvider>
     </ReduxProvider>
-  ),
-  ],
-};
+  )
+  ]
+}
 
 /**
  * code, productName, quantity, price, amount, diff
@@ -39,7 +39,7 @@ const DeliveryOrderStory = () => (
         quantity: 6.6,
         price: 1.3,
         taxBase: 15,
-        diff: -1.2,
+        diff: -1.2
       },
       {
         code: '1111',
@@ -47,7 +47,7 @@ const DeliveryOrderStory = () => (
         quantity: 2,
         price: 3.3,
         taxBase: 1,
-        diff: 6.35,
+        diff: 6.35
       },
       {
         code: '6846',
@@ -55,13 +55,13 @@ const DeliveryOrderStory = () => (
         quantity: 2,
         price: 0.5,
         taxBase: 1,
-        diff: 0,
-      },
+        diff: 0
+      }
     ]}
     totals={{
       iva: 19.3,
       re: 2.6,
-      total: 63.25,
+      total: 63.25
     }}
     getDeliveryOrder={action('getDeliveryOrder')}
     getProducts={action('getProducts')}
@@ -73,8 +73,8 @@ const DeliveryOrderStory = () => (
     resetDeliveryOrder={action('resetDeliveryOrder')}
     updateDataDeliveryOrder={action('updateDataDeliveryOrder')}
   />
-);
+)
 
-DeliveryOrderStory.storyName = 'Vista';
+DeliveryOrderStory.storyName = 'Vista'
 
-export { DeliveryOrderStory };
+export { DeliveryOrderStory }

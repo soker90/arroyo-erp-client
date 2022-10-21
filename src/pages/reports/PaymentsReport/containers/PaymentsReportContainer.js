@@ -1,18 +1,18 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getTotals, getCheques } from '../modules/actions';
-import PaymentsReportView from '../components/PaymentsReportView';
+import { getTotals, getCheques } from '../modules/actions'
+import PaymentsReportView from '../components/PaymentsReportView'
 
 const mapStateToProps = ({
-  paymentsReport,
-}) => paymentsReport;
+  paymentsReport
+}) => paymentsReport
 
 const mapDispatchToProps = {
   getTotals,
-  getCheques,
-};
+  getCheques
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PaymentsReportView);
+)(PaymentsReportView)

@@ -1,21 +1,21 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   root: {},
   grid: {
     width: '100%',
-    paddingBottom: theme.spacing(3),
+    paddingBottom: theme.spacing(3)
   },
   list: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
     // marginLeft: theme.spacing(2),
   },
   listFirst: {
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.up('lg')]: {
-      marginLeft: theme.spacing(2),
-    },
-  },
-}));
+      marginLeft: theme.spacing(2)
+    }
+  }
+}))

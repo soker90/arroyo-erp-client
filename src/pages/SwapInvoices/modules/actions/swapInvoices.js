@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { SWAP_INVOICES } from '../types';
+import axios from 'axios'
+import { SWAP_INVOICES } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _swapInvoicesRequest = () => ({ type: SWAP_INVOICES.REQUEST });
+const _swapInvoicesRequest = () => ({ type: SWAP_INVOICES.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _swapInvoicesSuccess = () => ({
   type: SWAP_INVOICES.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Intercambiados Nº de orden',
-  },
-});
+    message: 'Intercambiados Nº de orden'
+  }
+})
 
 /**
  * Error action
@@ -29,21 +29,21 @@ const _swapInvoicesSuccess = () => ({
  */
 const _swapInvoicesError = error => ({
   type: SWAP_INVOICES.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Intercambia los números de orden de las facturas
  * @returns {function(...[*]=)}
  */
 export const swapInvoices = (invoiceA, invoiceB) => async dispatch => {
-  dispatch(_swapInvoicesRequest());
+  dispatch(_swapInvoicesRequest())
 
   try {
-    await axios.patch(`invoices/swap/${invoiceA}/${invoiceB}`);
+    await axios.patch(`invoices/swap/${invoiceA}/${invoiceB}`)
 
-    dispatch(_swapInvoicesSuccess());
+    dispatch(_swapInvoicesSuccess())
   } catch (error) {
-    dispatch(_swapInvoicesError(error));
+    dispatch(_swapInvoicesError(error))
   }
-};
+}

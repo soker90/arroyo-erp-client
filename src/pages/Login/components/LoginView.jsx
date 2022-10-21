@@ -1,22 +1,22 @@
-import PropTypes from 'prop-types';
-import { Grid, LinearProgress } from '@mui/material';
-import GuestGuard from 'components/GuestGuard';
-import AuthLayout from './AuthLayout';
-import LoginForm from './LoginForm';
-import { useStyles } from './Login.styles';
+import PropTypes from 'prop-types'
+import { Grid, LinearProgress } from '@mui/material'
+import GuestGuard from 'components/GuestGuard'
+import AuthLayout from './AuthLayout'
+import LoginForm from './LoginForm'
+import { useStyles } from './Login.styles'
 
 const LoginView = ({
   login,
   loginError,
-  isLoading,
+  isLoading
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Render loading bar
    * @returns {JSX.Element}
    */
-  const renderLoadingBar = () => isLoading && <LinearProgress />;
+  const renderLoadingBar = () => isLoading && <LinearProgress />
 
   return (
     <GuestGuard>
@@ -50,16 +50,16 @@ const LoginView = ({
         </div>
       </AuthLayout>
     </GuestGuard>
-  );
-};
+  )
+}
 
 LoginView.propTypes = {
   login: PropTypes.func.isRequired,
   loginError: PropTypes.string,
-  isLoading: PropTypes.bool,
-};
+  isLoading: PropTypes.bool
+}
 
-LoginView.displayName = 'LoginView';
+LoginView.displayName = 'LoginView'
 
-export const story = LoginView;
-export default LoginView;
+export const story = LoginView
+export default LoginView

@@ -1,1 +1,1 @@
-export const isClient = type => type === 'clientes';
+export const isClient = type => type === 'clientes'

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CREATE_PRODUCTS } from '../types';
+import axios from 'axios'
+import { CREATE_PRODUCTS } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _createProductRequest = () => ({ type: CREATE_PRODUCTS.REQUEST });
+const _createProductRequest = () => ({ type: CREATE_PRODUCTS.REQUEST })
 
 /**
  * Success action
@@ -14,15 +14,15 @@ const _createProductRequest = () => ({ type: CREATE_PRODUCTS.REQUEST });
  * @private
  */
 const _createProductSuccess = () => ({
-  type: CREATE_PRODUCTS.SUCCESS,
-});
+  type: CREATE_PRODUCTS.SUCCESS
+})
 
 const _createProductsSet = products => ({
   type: CREATE_PRODUCTS.SET,
   payload: {
-    products,
-  },
-});
+    products
+  }
+})
 
 /**
  * Error action
@@ -32,8 +32,8 @@ const _createProductsSet = products => ({
  */
 const _createProductError = error => ({
   type: CREATE_PRODUCTS.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea un producto para los clientes
@@ -42,14 +42,14 @@ const _createProductError = error => ({
  * @returns {function(...[*]=)}
  */
 export const createProduct = (dataProduct, callback) => async dispatch => {
-  dispatch(_createProductRequest());
+  dispatch(_createProductRequest())
   try {
-    const { data } = await axios.post('products/clients', dataProduct);
+    const { data } = await axios.post('products/clients', dataProduct)
 
-    dispatch(_createProductSuccess());
-    dispatch(_createProductsSet(data));
-    callback();
+    dispatch(_createProductSuccess())
+    dispatch(_createProductsSet(data))
+    callback()
   } catch (error) {
-    dispatch(_createProductError(error));
+    dispatch(_createProductError(error))
   }
-};
+}

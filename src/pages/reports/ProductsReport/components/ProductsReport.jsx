@@ -1,27 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import PropTypes from 'prop-types';
-import { Container, Grid } from '@mui/material';
-import { ShoppingCart, Users } from 'react-feather';
+import PropTypes from 'prop-types'
+import { Container, Grid } from '@mui/material'
+import { ShoppingCart, Users } from 'react-feather'
 
 import {
-  Header, ListActions, LoadingScreen, Page, PricesChart,
-} from 'components';
-import { useStyles } from './ProductsReport.styles';
+  Header, ListActions, LoadingScreen, Page, PricesChart
+} from 'components'
+import { useStyles } from './ProductsReport.styles'
 
 const ProductsReport = ({
-  prices, providers, getProducts, products, getProduct, resetProduct,
+  prices, providers, getProducts, products, getProduct, resetProduct
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const _handleClickProvider = ({ _id }) => {
-    resetProduct();
-    getProducts(_id);
-  };
+    resetProduct()
+    getProducts(_id)
+  }
 
   const _handleClickProduct = ({ _id }) => {
-    getProduct(_id);
-  };
-  if (!providers.length) return <LoadingScreen />;
+    getProduct(_id)
+  }
+  if (!providers.length) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title='Informes de producto'>
@@ -45,17 +44,17 @@ const ProductsReport = ({
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            {Boolean(prices?.length)
-            && (
-              <PricesChart prices={prices.reverse()} className={classes.chart} />
-            )}
+            {Boolean(prices?.length) &&
+              (
+                <PricesChart prices={prices.reverse()} className={classes.chart} />
+              )}
           </Grid>
         </Grid>
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 ProductsReport.propTypes = {
   prices: PropTypes.array.isRequired,
@@ -63,9 +62,9 @@ ProductsReport.propTypes = {
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
   getProduct: PropTypes.func.isRequired,
-  resetProduct: PropTypes.func.isRequired,
-};
+  resetProduct: PropTypes.func.isRequired
+}
 
-ProductsReport.displayName = 'Product';
-export const story = ProductsReport;
-export default ProductsReport;
+ProductsReport.displayName = 'Product'
+export const story = ProductsReport
+export default ProductsReport

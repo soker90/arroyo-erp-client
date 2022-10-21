@@ -1,5 +1,5 @@
-import { createReducer } from 'store/utils';
-import { GET_TOTALS, GET_CHEQUES } from './types';
+import { createReducer } from 'store/utils'
+import { GET_TOTALS, GET_CHEQUES } from './types'
 
 const INITIAL_STATE = {
   totals: {
@@ -7,26 +7,26 @@ const INITIAL_STATE = {
     2: 0,
     3: 0,
     4: 0,
-    total: 0,
+    total: 0
   },
   cheques: [],
-  countCheques: 0,
-};
+  countCheques: 0
+}
 
 const setTotals = (state, { payload: { totals } }) => ({
   ...state,
-  totals,
-});
+  totals
+})
 
 const setCheques = (state, { payload: { cheques, count } }) => ({
   ...state,
   cheques,
-  countCheques: count,
-});
+  countCheques: count
+})
 
 const ACTION_HANDLERS = {
   [GET_CHEQUES.SET]: setCheques,
-  [GET_TOTALS.SET]: setTotals,
-};
+  [GET_TOTALS.SET]: setTotals
+}
 
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS)

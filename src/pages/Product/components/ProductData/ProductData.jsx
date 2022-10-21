@@ -1,35 +1,35 @@
-import { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback, useState } from 'react'
+import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip,
-} from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import uniqId from 'uniqid';
+  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+} from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import uniqId from 'uniqid'
 
-import ProductItemCard from './ProductItemCard';
-import { generateLabels } from './utils';
-import EditProductModal from '../../modals/EditProductModal';
+import ProductItemCard from './ProductItemCard'
+import { generateLabels } from './utils'
+import EditProductModal from '../../modals/EditProductModal'
 
 const ProductData = ({
   product,
   className,
-  provider,
+  provider
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Close the modal
    * @private
    */
-  const _closeModal = useCallback(() => setShowModal(false), [setShowModal]);
+  const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
   /**
    * Show the modal
    * @private
    */
   const _handleEditClick = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   return (
     <>
@@ -44,7 +44,7 @@ const ProductData = ({
               >
                 <EditIcon />
               </IconButton>
-            </Tooltip>,
+            </Tooltip>
           ]}
         />
         <Divider />
@@ -57,14 +57,14 @@ const ProductData = ({
       </Card>
       <EditProductModal show={showModal} close={_closeModal} product={product} />
     </>
-  );
-};
+  )
+}
 
 ProductData.propTypes = {
   product: PropTypes.object.isRequired,
   className: PropTypes.string,
-  provider: PropTypes.string,
-};
+  provider: PropTypes.string
+}
 
-export const story = ProductData;
-export default ProductData;
+export const story = ProductData
+export default ProductData

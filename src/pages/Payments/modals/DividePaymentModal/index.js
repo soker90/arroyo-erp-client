@@ -1,1 +1,1 @@
-export { default } from './DividePaymentModalContainer';
+export { default } from './DividePaymentModalContainer'

@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import { ConfirmModal } from 'components/Modals';
+import { ConfirmModal } from 'components/Modals'
 
 const DeleteNoteModal = ({
-  deleteNote, id, close,
+  deleteNote, id, close
 }) => {
   /**
    * Send email to the client for change password
    * @private
    */
   const _handleSend = () => {
-    deleteNote(id, close);
-  };
+    deleteNote(id, close)
+  }
 
   return (
     <ConfirmModal
@@ -24,26 +24,26 @@ const DeleteNoteModal = ({
         {
           onClick: close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button',
+          'data-cy': 'modal-close-button'
         },
         {
           onClick: _handleSend,
           color: 'secondary',
           variant: 'contained',
           value: 'Eliminar',
-          'data-cy': 'modal-close-button',
-        },
+          'data-cy': 'modal-close-button'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeleteNoteModal.propTypes = {
   close: PropTypes.func,
   id: PropTypes.string,
-  deleteNote: PropTypes.func.isRequired,
-};
+  deleteNote: PropTypes.func.isRequired
+}
 
-DeleteNoteModal.displayName = 'DeleteConfirmationModal';
-export const story = DeleteNoteModal;
-export default DeleteNoteModal;
+DeleteNoteModal.displayName = 'DeleteConfirmationModal'
+export const story = DeleteNoteModal
+export default DeleteNoteModal

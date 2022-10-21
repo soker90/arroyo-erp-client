@@ -1,22 +1,22 @@
-import { connect } from 'react-redux';
-import { getDeliveryOrders } from 'modules/providers/actions';
-import DeliveryOrder from './DeliveryOrder';
+import { connect } from 'react-redux'
+import { getDeliveryOrders } from 'modules/providers/actions'
+import DeliveryOrder from './DeliveryOrder'
 
 const mapStateToProps = ({
   providers: {
-    deliveryOrdersFree, deliveryOrdersInInvoices, provider,
-  },
+    deliveryOrdersFree, deliveryOrdersInInvoices, provider
+  }
 }) => ({
   free: deliveryOrdersFree,
   inInvoices: deliveryOrdersInInvoices,
-  idProvider: provider._id,
-});
+  idProvider: provider._id
+})
 
 const mapDispatchToProps = {
-  getDeliveryOrders,
-};
+  getDeliveryOrders
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(DeliveryOrder);
+  mapDispatchToProps
+)(DeliveryOrder)

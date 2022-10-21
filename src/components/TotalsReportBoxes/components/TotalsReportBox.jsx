@@ -1,33 +1,33 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
-  Avatar, Box, Card, Grid, Typography,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import EuroIcon from '@mui/icons-material/Euro';
+  Avatar, Box, Card, Grid, Typography
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import EuroIcon from '@mui/icons-material/Euro'
 
-import { format } from 'utils';
+import { format } from 'utils'
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3),
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   avatar: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
     height: 48,
-    width: 48,
-  },
-}));
+    width: 48
+  }
+}))
 
 const TotalsReportBox = ({
   title,
   value,
-  size,
+  size
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid
@@ -64,13 +64,13 @@ const TotalsReportBox = ({
         </Avatar>
       </Card>
     </Grid>
-  );
-};
+  )
+}
 
 TotalsReportBox.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.number,
-  size: PropTypes.number,
-};
+  size: PropTypes.number
+}
 
-export default TotalsReportBox;
+export default TotalsReportBox

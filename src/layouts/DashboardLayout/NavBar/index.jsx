@@ -1,22 +1,22 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
-import { matchPath, useLocation } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react'
+import { matchPath, useLocation } from 'react-router'
+import { Link as RouterLink } from 'react-router-dom'
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import PropTypes from 'prop-types'
 import {
-  Box, Divider, Drawer, Hidden, List, ListSubheader, Typography,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import uniqId from 'uniqid';
+  Box, Divider, Drawer, Hidden, List, ListSubheader, Typography
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import uniqId from 'uniqid'
 
-import Logo from 'components/Logo';
-import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig';
-import { format } from 'utils';
-import NavItem from './NavItem';
+import Logo from 'components/Logo'
+import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig'
+import { format } from 'utils'
+import NavItem from './NavItem'
 
-function renderNavItems({
+function renderNavItems ({
   items,
   ...rest
 }) {
@@ -26,27 +26,27 @@ function renderNavItems({
         (acc, item) => reduceChildRoutes({
           acc,
           item,
-          ...rest,
+          ...rest
         }),
-        [],
+        []
       )}
     </List>
-  );
+  )
 }
 
-function reduceChildRoutes({
+function reduceChildRoutes ({
   acc,
   pathname,
   item,
-  depth = 0,
+  depth = 0
 }) {
-  const key = item.title + depth;
+  const key = item.title + depth
 
   if (item.items) {
     const open = matchPath({
       path: item.href,
-      end: false,
-    }, pathname);
+      end: false
+    }, pathname)
 
     acc.push(
       <NavItem
@@ -60,10 +60,10 @@ function reduceChildRoutes({
         {renderNavItems({
           depth: depth + 1,
           pathname,
-          items: item.items,
+          items: item.items
         })}
-      </NavItem>,
-    );
+      </NavItem>
+    )
   } else {
     acc.push(
       <NavItem
@@ -73,38 +73,38 @@ function reduceChildRoutes({
         key={key}
         info={item.info}
         title={item.title}
-      />,
-    );
+      />
+    )
   }
 
-  return acc;
+  return acc
 }
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
-    width: 256,
+    width: 256
   },
   desktopDrawer: {
     width: 236,
     top: 64,
-    height: 'calc(100% - 64px)',
+    height: 'calc(100% - 64px)'
   },
   avatar: {
     cursor: 'pointer',
     width: 64,
-    height: 64,
-  },
-}));
+    height: 64
+  }
+}))
 
 const NavBar = ({
   openMobile,
-  onMobileClose,
+  onMobileClose
 }) => {
-  const classes = useStyles();
-  const location = useLocation();
+  const classes = useStyles()
+  const location = useLocation()
 
   useEffect(() => {
-    if (openMobile && onMobileClose) onMobileClose();
+    if (openMobile && onMobileClose) onMobileClose()
 
     // eslint-disable-next-line
   }, [location.pathname]);
@@ -167,14 +167,14 @@ const NavBar = ({
             >
               {renderNavItems({
                 items: config.items,
-                pathname: location.pathname,
+                pathname: location.pathname
               })}
             </List>
           ))}
         </Box>
       </PerfectScrollbar>
     </Box>
-  );
+  )
 
   return (
     <>
@@ -200,12 +200,12 @@ const NavBar = ({
         </Drawer>
       </Hidden>
     </>
-  );
-};
+  )
+}
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool,
-};
+  openMobile: PropTypes.bool
+}
 
-export default NavBar;
+export default NavBar

@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
-import { Container } from '@mui/material';
-import uniqId from 'uniqid';
+import { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
+import { Container } from '@mui/material'
+import uniqId from 'uniqid'
 
-import { LoadingScreen, Page } from 'components';
-import DeliveryOrderExpand from 'components/DeliveryOrderExpand';
-import Header from './Header';
-import { useStyles } from './Invoice.styles';
-import InvoiceCards from './InvoiceCards';
+import { LoadingScreen, Page } from 'components'
+import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
+import Header from './Header'
+import { useStyles } from './Invoice.styles'
+import InvoiceCards from './InvoiceCards'
 
 const Invoice = ({
   getInvoice,
@@ -20,18 +19,18 @@ const Invoice = ({
   totals,
   data,
   payment,
-  resetInvoiceState,
+  resetInvoiceState
 }) => {
-  const { idInvoice } = useParams();
-  const classes = useStyles();
+  const { idInvoice } = useParams()
+  const classes = useStyles()
 
   useEffect(() => {
-    if (idInvoice && idInvoice !== id) getInvoice(idInvoice);
-  }, [idInvoice]);
+    if (idInvoice && idInvoice !== id) getInvoice(idInvoice)
+  }, [idInvoice])
 
-  useEffect(() => () => resetInvoiceState(), []);
+  useEffect(() => () => resetInvoiceState(), [])
 
-  if (!id) return <LoadingScreen />;
+  if (!id) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
@@ -52,8 +51,8 @@ const Invoice = ({
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 Invoice.propTypes = {
   getInvoice: PropTypes.func.isRequired,
@@ -64,9 +63,9 @@ Invoice.propTypes = {
   totals: PropTypes.object,
   data: PropTypes.object,
   payment: PropTypes.object,
-  resetInvoiceState: PropTypes.func.isRequired,
-};
+  resetInvoiceState: PropTypes.func.isRequired
+}
 
-Invoice.displayName = 'Invoice';
-export const story = Invoice;
-export default Invoice;
+Invoice.displayName = 'Invoice'
+export const story = Invoice
+export default Invoice

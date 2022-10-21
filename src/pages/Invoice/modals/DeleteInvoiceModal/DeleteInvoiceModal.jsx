@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { ConfirmModal } from 'components';
-import { useNavigate } from 'react-router';
+import PropTypes from 'prop-types'
+import { ConfirmModal } from 'components'
+import { useNavigate } from 'react-router'
 
 const DeleteInvoiceModal = ({
   deleteInvoice,
@@ -9,11 +9,11 @@ const DeleteInvoiceModal = ({
   providerId,
   ...rest
 }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const _close = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   /**
    * Send email to the client for change password
@@ -23,9 +23,9 @@ const DeleteInvoiceModal = ({
     deleteInvoice(
       id,
       () => navigate(`/app/proveedores/${providerId}#Facturas`)
-    );
-    _close();
-  };
+    )
+    _close()
+  }
 
   return (
     <ConfirmModal
@@ -39,25 +39,25 @@ const DeleteInvoiceModal = ({
           variant: 'contained',
           color: 'primary',
           onClick: _close,
-          value: 'Cerrar',
+          value: 'Cerrar'
         },
         {
           onClick: _handleSend,
           variant: 'contained',
-          value: 'Eliminar',
-        },
+          value: 'Eliminar'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 DeleteInvoiceModal.propTypes = {
   setShow: PropTypes.func,
   id: PropTypes.string.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
-  providerId: PropTypes.string,
-};
+  providerId: PropTypes.string
+}
 
-DeleteInvoiceModal.displayName = 'DeleteInvoiceModal';
-export const story = DeleteInvoiceModal;
-export default DeleteInvoiceModal;
+DeleteInvoiceModal.displayName = 'DeleteInvoiceModal'
+export const story = DeleteInvoiceModal
+export default DeleteInvoiceModal

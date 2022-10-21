@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_PAYMENTS } from '../types';
+import axios from 'axios'
+import { GET_PAYMENTS } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getPaymentRequest = () => ({ type: GET_PAYMENTS.REQUEST });
+const _getPaymentRequest = () => ({ type: GET_PAYMENTS.REQUEST })
 
 /**
  * Success action
@@ -14,15 +14,15 @@ const _getPaymentRequest = () => ({ type: GET_PAYMENTS.REQUEST });
  * @private
  */
 const _getPaymentsSuccess = () => ({
-  type: GET_PAYMENTS.SUCCESS,
-});
+  type: GET_PAYMENTS.SUCCESS
+})
 
 const _getPaymentsSet = payments => ({
   type: GET_PAYMENTS.SET,
   payload: {
-    payments,
-  },
-});
+    payments
+  }
+})
 
 /**
  * Error action
@@ -32,22 +32,22 @@ const _getPaymentsSet = payments => ({
  */
 const _getPaymentsError = error => ({
   type: GET_PAYMENTS.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Pide los pagos pendientes de cobro
  * @returns {function(...[*]=)}
  */
 export const getPayments = () => async dispatch => {
-  dispatch(_getPaymentRequest());
+  dispatch(_getPaymentRequest())
 
   try {
-    const { data } = await axios('payments');
+    const { data } = await axios('payments')
 
-    dispatch(_getPaymentsSuccess());
-    dispatch(_getPaymentsSet(data));
+    dispatch(_getPaymentsSuccess())
+    dispatch(_getPaymentsSet(data))
   } catch (error) {
-    dispatch(_getPaymentsError(error));
+    dispatch(_getPaymentsError(error))
   }
-};
+}

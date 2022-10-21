@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
-import axios from 'axios';
-import { format } from 'utils';
-import { UPDATE_DATA_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { format } from 'utils'
+import { UPDATE_DATA_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action for updateDateDeliveryOrder
@@ -9,8 +9,8 @@ import { UPDATE_DATA_DELIVERY_ORDER } from '../types';
  * @private
  */
 const _updateDataDeliveryOrderRequest = () => ({
-  type: UPDATE_DATA_DELIVERY_ORDER.REQUEST,
-});
+  type: UPDATE_DATA_DELIVERY_ORDER.REQUEST
+})
 
 /**
  * Success action for updateDateDeliveryOrder
@@ -21,9 +21,9 @@ const _updateDataDeliveryOrderSuccess = () => ({
   type: UPDATE_DATA_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Datos del albarán actualizados',
-  },
-});
+    message: 'Datos del albarán actualizados'
+  }
+})
 
 /**
  * Set data
@@ -33,8 +33,8 @@ const _updateDataDeliveryOrderSuccess = () => ({
  */
 const _updateDateDeliveryOrderSet = ({ data }) => ({
   type: UPDATE_DATA_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for updateDateDeliveryOrder
@@ -44,8 +44,8 @@ const _updateDateDeliveryOrderSet = ({ data }) => ({
  */
 const _updateDataDeliveryOrderError = error => ({
   type: UPDATE_DATA_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Actualiza la fecha del albaran
@@ -56,21 +56,21 @@ const _updateDataDeliveryOrderError = error => ({
  * @return {function(...[*]=)}
  */
 export const updateDataDeliveryOrder = (id, { date, note, totals }, callback) => async dispatch => {
-  dispatch(_updateDataDeliveryOrderRequest());
+  dispatch(_updateDataDeliveryOrderRequest())
   const data = {
     ...(date && { date: format.dateToSend(date) }),
     ...(note !== undefined && { note }),
-    ...(totals && { totals }),
-  };
+    ...(totals && { totals })
+  }
 
   try {
-    const response = await axios.patch(`deliveryorders/${id}`, data);
+    const response = await axios.patch(`deliveryorders/${id}`, data)
 
-    dispatch(_updateDataDeliveryOrderSuccess());
-    dispatch(_updateDateDeliveryOrderSet(response));
-    callback?.();
+    dispatch(_updateDataDeliveryOrderSuccess())
+    dispatch(_updateDateDeliveryOrderSet(response))
+    callback?.()
   } catch (error) {
-    console.error(error);
-    dispatch(_updateDataDeliveryOrderError(error));
+    console.error(error)
+    dispatch(_updateDataDeliveryOrderError(error))
   }
-};
+}

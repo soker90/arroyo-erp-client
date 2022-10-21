@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import PropTypes from 'prop-types'
+import SkipNextIcon from '@mui/icons-material/SkipNext'
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
 
-import { Header } from 'components';
-import { NavLink } from 'react-router-dom';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import { downloadFile } from '../../../../utils';
+import { Header } from 'components'
+import { NavLink } from 'react-router-dom'
+import GetAppIcon from '@mui/icons-material/GetApp'
+import { downloadFile } from '../../../../utils'
 
 const HeaderBook = ({ year }) => {
   const _handleClickDownload = () => {
-    downloadFile(`client/invoices/export?year=${year}`, `Libro ${year}.ods`);
-  };
+    downloadFile(`client/invoices/export?year=${year}`, `Libro ${year}.ods`)
+  }
 
   return (
     <Header
@@ -18,38 +18,38 @@ const HeaderBook = ({ year }) => {
       description={`Libro clientes ${year}`}
       routes={[{
         link: '/app/clientes/listado',
-        title: 'Clientes',
+        title: 'Clientes'
       }]}
       buttons={[
         {
           onClick: _handleClickDownload,
           Icon: GetAppIcon,
           label: 'Descargar',
-          variant: 'contained',
+          variant: 'contained'
         },
         {
           component: NavLink,
           to: `/app/clientes/libro/${year - 1}`,
           Icon: SkipPreviousIcon,
           label: `${year - 1}`,
-          variant: 'outlined',
+          variant: 'outlined'
         },
         {
           component: NavLink,
           to: `/app/clientes/libro/${year + 1}`,
           Icon: SkipNextIcon,
           label: `${year + 1}`,
-          variant: 'outlined',
-        },
+          variant: 'outlined'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 HeaderBook.propTypes = {
-  year: PropTypes.number.isRequired,
-};
+  year: PropTypes.number.isRequired
+}
 
-HeaderBook.displayName = 'HeaderBook';
-export const story = HeaderBook;
-export default HeaderBook;
+HeaderBook.displayName = 'HeaderBook'
+export const story = HeaderBook
+export default HeaderBook

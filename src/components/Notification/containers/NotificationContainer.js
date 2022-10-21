@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import Notification from '../components/Notification';
+import { connect } from 'react-redux'
+import Notification from '../components/Notification'
 
 const mapStateToProps = ({ notifications }) => ({
-  notification: notifications.notification,
-});
+  notification: notifications.notification
+})
 
-export default connect(mapStateToProps)(Notification);
+export default connect(mapStateToProps)(Notification)

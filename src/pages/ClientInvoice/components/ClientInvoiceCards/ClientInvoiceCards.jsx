@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Grid } from '@mui/material';
-import PropTypes from 'prop-types';
+import { Grid } from '@mui/material'
+import PropTypes from 'prop-types'
 
-import { useStyles } from './ClientInvoiceCards.styles';
-import ClientInvoiceData from './components/ClientInvoiceData';
-import ClientInvoiceTotals from './components/ClientInvoiceTotals';
+import { useStyles } from './ClientInvoiceCards.styles'
+import ClientInvoiceData from './components/ClientInvoiceData'
+import ClientInvoiceTotals from './components/ClientInvoiceTotals'
 
 const ClientInvoiceCards = ({
   date,
@@ -13,9 +12,9 @@ const ClientInvoiceCards = ({
   iva,
   id,
   nInvoice,
-  updateDataClientInvoice,
+  updateDataClientInvoice
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container spacing={3} className={classes.cards}>
@@ -37,8 +36,8 @@ const ClientInvoiceCards = ({
         />
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
 ClientInvoiceCards.propTypes = {
   total: PropTypes.number.isRequired,
@@ -47,9 +46,9 @@ ClientInvoiceCards.propTypes = {
   date: PropTypes.number,
   nInvoice: PropTypes.string,
   id: PropTypes.string.isRequired,
-  updateDataClientInvoice: PropTypes.func.isRequired,
-};
+  updateDataClientInvoice: PropTypes.func.isRequired
+}
 
-ClientInvoiceCards.displayName = 'ClientInvoiceCards';
+ClientInvoiceCards.displayName = 'ClientInvoiceCards'
 
-export default ClientInvoiceCards;
+export default ClientInvoiceCards

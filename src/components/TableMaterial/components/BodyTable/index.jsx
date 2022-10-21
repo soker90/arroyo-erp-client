@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
-  Box, TableBody, TableCell, TableRow, Checkbox,
-} from '@mui/material';
-import uniqId from 'uniqid';
-import { Link } from 'react-router-dom';
+  Box, TableBody, TableCell, TableRow, Checkbox
+} from '@mui/material'
+import uniqId from 'uniqid'
+import { Link } from 'react-router-dom'
 
-import BodyActionsButtons from './components/BodyActionsButtons';
+import BodyActionsButtons from './components/BodyActionsButtons'
 
 const BodyTable = ({
-  data, onRowClick, columns, href, classes, actions, multiSelect, onSelected, rowClass,
+  data, onRowClick, columns, href, classes, actions, multiSelect, onSelected, rowClass
 }) => (
   <TableBody>
     {data.map((row, index) => {
-      const isSelected = multiSelect?.(row);
+      const isSelected = multiSelect?.(row)
       return (
         <TableRow
           onMouseDown={() => onRowClick?.(row)}
@@ -36,7 +36,7 @@ const BodyTable = ({
                 {...(href && {
                   component: Link,
                   to: href(row),
-                  className: classes.cell,
+                  className: classes.cell
                 })}
               >
                 {render?.(row) || row[field]}
@@ -44,8 +44,8 @@ const BodyTable = ({
             </TableCell>
           ))}
 
-          {actions
-          && (
+          {actions &&
+          (
             <BodyActionsButtons
               actions={actions}
               index={index}
@@ -53,10 +53,10 @@ const BodyTable = ({
             />
           )}
         </TableRow>
-      );
+      )
     })}
   </TableBody>
-);
+)
 
 BodyTable.propTypes = {
   data: PropTypes.array.isRequired,
@@ -67,9 +67,9 @@ BodyTable.propTypes = {
   actions: PropTypes.array,
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
-  rowClass: PropTypes.func,
-};
+  rowClass: PropTypes.func
+}
 
-BodyTable.displayName = 'BodyTable';
-export const story = BodyTable;
-export default BodyTable;
+BodyTable.displayName = 'BodyTable'
+export const story = BodyTable
+export default BodyTable

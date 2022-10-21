@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { InputForm, ModalGrid } from 'components';
-import { addNotification } from 'reducers/notifications';
-import { fields } from './constants';
+import { InputForm, ModalGrid } from 'components'
+import { addNotification } from 'reducers/notifications'
+import { fields } from './constants'
 
 const ProductClientModal = ({
   show,
@@ -15,7 +15,7 @@ const ProductClientModal = ({
   action,
   ...rest
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   /**
    * Handle event onChange input
@@ -26,11 +26,11 @@ const ProductClientModal = ({
   const _handleChange = ({
     target: {
       name,
-      value,
-    },
+      value
+    }
   }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle event save button
@@ -40,18 +40,18 @@ const ProductClientModal = ({
     try {
       const model = {
         name: state.name,
-        price: Number(state.price),
-      };
-      action(model, close);
+        price: Number(state.price)
+      }
+      action(model, close)
     } catch (e) {
-      console.error(e);
+      console.error(e)
       dispatch(addNotification({
         level: 'error',
         message: 'El precio no es correcto',
-        dismissible: true,
-      }));
+        dismissible: true
+      }))
     }
-  };
+  }
 
   /**
    * Handle press enter key
@@ -59,8 +59,8 @@ const ProductClientModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -84,7 +84,7 @@ const ProductClientModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -95,17 +95,17 @@ const ProductClientModal = ({
     >
       {fields.map(_renderInput)}
     </ModalGrid>
-  );
-};
+  )
+}
 
 ProductClientModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  action: PropTypes.func.isRequired,
-};
+  action: PropTypes.func.isRequired
+}
 
-ProductClientModal.displayName = 'ProductClientModal';
-export const story = ProductClientModal;
-export default ProductClientModal;
+ProductClientModal.displayName = 'ProductClientModal'
+export const story = ProductClientModal
+export default ProductClientModal

@@ -1,23 +1,23 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
 
-import { format } from 'utils';
-import NoteModal, { INITIAL_STATE } from '../NoteModal';
+import { format } from 'utils'
+import NoteModal, { INITIAL_STATE } from '../NoteModal'
 
 const NewNoteModal = ({
   show,
   close,
   createNote,
-  year,
+  year
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
+    INITIAL_STATE
+  )
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-  }, [show]);
+    if (!show) setState(INITIAL_STATE)
+  }, [show])
 
   /**
    * Handle event save button
@@ -27,10 +27,10 @@ const NewNoteModal = ({
     const model = {
       ...data,
       date: format.dateToSend(data.date),
-      year,
-    };
-    createNote(model, close);
-  };
+      year
+    }
+    createNote(model, close)
+  }
 
   return (
     <NoteModal
@@ -41,16 +41,16 @@ const NewNoteModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 NewNoteModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createNote: PropTypes.func.isRequired,
-  year: PropTypes.string.isRequired,
-};
+  year: PropTypes.string.isRequired
+}
 
-NewNoteModal.displayName = 'NewNoteModal';
-export const story = NewNoteModal;
-export default NewNoteModal;
+NewNoteModal.displayName = 'NewNoteModal'
+export const story = NewNoteModal
+export default NewNoteModal

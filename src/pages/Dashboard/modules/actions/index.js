@@ -1,3 +1,3 @@
-export * from './getDashboard';
-export * from './createReminder';
-export * from './deleteReminder';
+export * from './getDashboard'
+export * from './createReminder'
+export * from './deleteReminder'

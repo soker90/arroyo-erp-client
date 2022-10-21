@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types, no-shadow */
 
-import { Link as RouterLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import { Link as RouterLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import {
-  Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box,
-} from '@mui/material';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import uniqId from 'uniqid';
+  Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box
+} from '@mui/material'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import uniqId from 'uniqid'
 
-import { useStyles } from './Header.styles';
+import { useStyles } from './Header.styles'
 
 const Header = ({
   className, routes, title, description, buttons, buttonsSecondary, ...rest
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Renderiza un elemento de la cabecera de navegación
@@ -34,7 +34,7 @@ const Header = ({
     >
       {title}
     </Link>
-  );
+  )
 
   /**
    * Render button in header
@@ -66,10 +66,10 @@ const Header = ({
           >
             <Icon />
           </SvgIcon>
-        )}
+          )}
       {label}
     </Button>
-  );
+  )
 
   return (
     <Grid
@@ -102,8 +102,8 @@ const Header = ({
           {description ?? title}
         </Typography>
         {
-          buttonsSecondary
-          && (
+          buttonsSecondary &&
+          (
             <Box mt={2}>
               {buttonsSecondary.map(_renderButton)}
             </Box>
@@ -111,22 +111,22 @@ const Header = ({
         }
       </Grid>
       {
-        buttons
-        && (
+        buttons &&
+        (
           <Grid item>
             {buttons.map(_renderButton)}
           </Grid>
         )
       }
     </Grid>
-  );
-};
+  )
+}
 
 Header.propTypes = {
   className: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.shape({
     link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   })),
   title: PropTypes.string,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -139,7 +139,7 @@ Header.propTypes = {
     label: PropTypes.string.isRequired,
     component: PropTypes.object,
     to: PropTypes.string,
-    disabled: PropTypes.bool,
+    disabled: PropTypes.bool
   })), PropTypes.bool]),
   buttonsSecondary: PropTypes.arrayOf(PropTypes.shape({
     color: PropTypes.string,
@@ -147,12 +147,12 @@ Header.propTypes = {
     disableSvg: PropTypes.bool,
     Icon: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired,
-  })),
-};
+    label: PropTypes.string.isRequired
+  }))
+}
 
 Header.defaultProps = {
-  routes: [],
-};
+  routes: []
+}
 
-export default Header;
+export default Header

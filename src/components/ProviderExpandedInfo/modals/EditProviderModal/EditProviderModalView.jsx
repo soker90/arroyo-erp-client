@@ -1,21 +1,21 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import ProviderModal, { INITIAL_STATE } from 'components/Modals/ProviderModal';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import ProviderModal, { INITIAL_STATE } from 'components/Modals/ProviderModal'
 
 const EditProviderModal = ({
-  show, close, editProvider, provider,
+  show, close, editProvider, provider
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
-  );
+  )
 
   useEffect(() => {
     if (show) {
       setState({
         ...INITIAL_STATE,
-        ...provider,
-      });
+        ...provider
+      })
     }
     // eslint-disable-next-line
   }, [show]);
@@ -25,8 +25,8 @@ const EditProviderModal = ({
    * @private
    */
   const _handleSubmit = () => {
-    editProvider(provider._id, state, close);
-  };
+    editProvider(provider._id, state, close)
+  }
 
   return (
     <ProviderModal
@@ -37,14 +37,14 @@ const EditProviderModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 EditProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   editProvider: PropTypes.func.isRequired,
-  provider: PropTypes.object.isRequired,
-};
+  provider: PropTypes.object.isRequired
+}
 
-export default EditProviderModal;
+export default EditProviderModal

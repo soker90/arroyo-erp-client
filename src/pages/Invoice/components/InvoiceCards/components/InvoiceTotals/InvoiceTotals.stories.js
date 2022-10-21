@@ -1,5 +1,5 @@
-import { ReduxProvider } from 'story';
-import { story as InvoiceTotals } from './InvoiceTotals';
+import { ReduxProvider } from 'story'
+import { story as InvoiceTotals } from './InvoiceTotals'
 
 export default {
   title: 'Rutas/Factura/Totales',
@@ -12,7 +12,7 @@ export default {
       {storyFn()}
     </ReduxProvider>
   )]
-};
+}
 
 const InvoiceTotalsStory = () => (
   <InvoiceTotals
@@ -20,11 +20,11 @@ const InvoiceTotalsStory = () => (
     re={2.6}
     total={63.25}
     taxBase={33.2}
-    isEditable={true}
+    isEditable
     className='clase'
   />
-);
+)
 
-InvoiceTotalsStory.storyName = 'Totales';
+InvoiceTotalsStory.storyName = 'Totales'
 
-export { InvoiceTotalsStory };
+export { InvoiceTotalsStory }

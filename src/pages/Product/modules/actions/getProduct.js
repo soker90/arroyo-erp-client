@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_PRODUCT } from '../types';
+import axios from 'axios'
+import { GET_PRODUCT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getProductRequest = () => ({ type: GET_PRODUCT.REQUEST });
+const _getProductRequest = () => ({ type: GET_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -14,8 +14,8 @@ const _getProductRequest = () => ({ type: GET_PRODUCT.REQUEST });
  * @private
  */
 const _getProductSuccess = () => ({
-  type: GET_PRODUCT.SUCCESS,
-});
+  type: GET_PRODUCT.SUCCESS
+})
 
 /**
  * Set action
@@ -25,8 +25,8 @@ const _getProductSuccess = () => ({
  */
 const _getProductSet = data => ({
   type: GET_PRODUCT.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for getProduct
@@ -36,22 +36,22 @@ const _getProductSet = data => ({
  */
 const _getProductError = error => ({
   type: GET_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae los proveedores
  * @returns {function(...[*]=)}
  */
 export const getProduct = id => async dispatch => {
-  dispatch(_getProductRequest());
+  dispatch(_getProductRequest())
 
   try {
-    const { data } = await axios(`products/${id}`);
+    const { data } = await axios(`products/${id}`)
 
-    dispatch(_getProductSuccess());
-    dispatch(_getProductSet(data));
+    dispatch(_getProductSuccess())
+    dispatch(_getProductSet(data))
   } catch (error) {
-    dispatch(_getProductError(error));
+    dispatch(_getProductError(error))
   }
-};
+}

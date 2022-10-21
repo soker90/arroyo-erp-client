@@ -1,12 +1,12 @@
-import AddIcon from '@mui/icons-material/Add';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import { downloadFile } from 'utils';
-import { TABS } from '../../constants';
+import AddIcon from '@mui/icons-material/Add'
+import PostAddIcon from '@mui/icons-material/PostAdd'
+import GetAppIcon from '@mui/icons-material/GetApp'
+import { downloadFile } from 'utils'
+import { TABS } from '../../constants'
 
 const _handleClickDownloadProducts = (idProvider, nameProvider) => () => {
-  downloadFile(`products/export-provider/${idProvider}`, `Productos de ${nameProvider}.ods`);
-};
+  downloadFile(`products/export-provider/${idProvider}`, `Productos de ${nameProvider}.ods`)
+}
 
 /**
  * Buttons for header
@@ -14,19 +14,19 @@ const _handleClickDownloadProducts = (idProvider, nameProvider) => () => {
  */
 export const getButtons = ({
   showEditProductModal, _handleClickNewInvoice, deliveryOrdersSelected,
-  _handleClickNewDeliveryOrder, currentTab, idProvider, nameProvider,
+  _handleClickNewDeliveryOrder, currentTab, idProvider, nameProvider
 }) => ({
   [TABS.PRODUCTS]: [{
     onClick: _handleClickDownloadProducts(idProvider, nameProvider),
     Icon: GetAppIcon,
     label: 'Descargar',
-    variant: 'contained',
+    variant: 'contained'
   }, {
     variant: 'contained',
     onClick: showEditProductModal,
     Icon: AddIcon,
     disableSvg: true,
-    label: 'Nuevo producto',
+    label: 'Nuevo producto'
   }],
   [TABS.DELIVERY_ORDERS]: [{
     variant: 'contained',
@@ -34,14 +34,14 @@ export const getButtons = ({
     Icon: PostAddIcon,
     disableSvg: true,
     label: 'Crear factura',
-    disabled: deliveryOrdersSelected.length === 0,
+    disabled: deliveryOrdersSelected.length === 0
   },
   {
     variant: 'contained',
     onClick: _handleClickNewDeliveryOrder,
     Icon: AddIcon,
     disableSvg: true,
-    label: 'Nuevo albarán',
+    label: 'Nuevo albarán'
   }],
-  [TABS.INVOICES]: [],
-}[currentTab]);
+  [TABS.INVOICES]: []
+}[currentTab])

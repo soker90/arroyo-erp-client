@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 
 const DatePickerProvider = ({
-  children,
+  children
 }) => (
   <LocalizationProvider dateAdapter={AdapterMoment}>
     {children}
   </LocalizationProvider>
-);
+)
 
 DatePickerProvider.propTypes = {
-  children: PropTypes.any,
-};
+  children: PropTypes.any
+}
 
-export default DatePickerProvider;
+export default DatePickerProvider

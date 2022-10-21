@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { ADD_PRODUCT } from '../types';
+import axios from 'axios'
+import { ADD_PRODUCT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _createProductRequest = () => ({ type: ADD_PRODUCT.REQUEST });
+const _createProductRequest = () => ({ type: ADD_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _createProductSuccess = () => ({
   type: ADD_PRODUCT.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto añadido correctamente',
-  },
-});
+    message: 'Producto añadido correctamente'
+  }
+})
 
 /**
  * Set action
@@ -29,8 +29,8 @@ const _createProductSuccess = () => ({
  */
 const _createProductSet = data => ({
   type: ADD_PRODUCT.SET,
-  payload: data,
-});
+  payload: data
+})
 /**
  * Error action
  * @param error
@@ -39,8 +39,8 @@ const _createProductSet = data => ({
  */
 const _createProductError = error => ({
   type: ADD_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Añade un albarán a la factura
@@ -50,20 +50,20 @@ const _createProductError = error => ({
 export const createProduct = ({
   invoice,
   deliveryOrder,
-  model,
+  model
 }, callback) => async dispatch => {
-  dispatch(_createProductRequest());
+  dispatch(_createProductRequest())
 
   try {
     const { data } = await axios.post(
       `client/invoices/${invoice}/deliveryOrder/${deliveryOrder}/product`,
       model
-    );
+    )
 
-    dispatch(_createProductSuccess());
-    dispatch(_createProductSet(data));
-    callback();
+    dispatch(_createProductSuccess())
+    dispatch(_createProductSet(data))
+    callback()
   } catch (error) {
-    dispatch(_createProductError(error));
+    dispatch(_createProductError(error))
   }
-};
+}

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import { InputForm, ModalGrid } from 'components';
-import { fields } from './constants';
+import { InputForm, ModalGrid } from 'components'
+import { fields } from './constants'
 
 const ClientModal = ({
   show, close, state, setState, action, ...rest
@@ -13,16 +13,16 @@ const ClientModal = ({
    * @private
    */
   const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = () => {
-    action();
-  };
+    action()
+  }
 
   /**
    * Handle press enter key
@@ -30,8 +30,8 @@ const ClientModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -52,7 +52,7 @@ const ClientModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -64,17 +64,17 @@ const ClientModal = ({
       {fields.map(_renderInput)}
 
     </ModalGrid>
-  );
-};
+  )
+}
 
 ClientModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  action: PropTypes.func.isRequired,
-};
+  action: PropTypes.func.isRequired
+}
 
-ClientModal.displayName = 'ClientModal';
-export const story = ClientModal;
-export default ClientModal;
+ClientModal.displayName = 'ClientModal'
+export const story = ClientModal
+export default ClientModal

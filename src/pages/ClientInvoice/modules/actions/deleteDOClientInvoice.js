@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { DELETE_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteDOClientInvoiceRequest = () => ({ type: DELETE_DELIVERY_ORDER.REQUEST });
+const _deleteDOClientInvoiceRequest = () => ({ type: DELETE_DELIVERY_ORDER.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _deleteDOClientInvoiceSuccess = () => ({
   type: DELETE_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Albarán eliminado',
-  },
-});
+    message: 'Albarán eliminado'
+  }
+})
 
 /**
  * Set action
@@ -30,9 +30,9 @@ const _deleteDOClientInvoiceSuccess = () => ({
 const _deleteDOClientInvoiceSet = id => ({
   type: DELETE_DELIVERY_ORDER.SET,
   payload: {
-    id,
-  },
-});
+    id
+  }
+})
 
 /**
  * Error action
@@ -42,8 +42,8 @@ const _deleteDOClientInvoiceSet = id => ({
  */
 const _deleteDOClientInvoiceError = error => ({
   type: DELETE_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Borra un albarán de la factura
@@ -54,18 +54,18 @@ const _deleteDOClientInvoiceError = error => ({
  */
 export const deleteDOClientInvoice = (
   id,
-  deliveryOrderId,
+  deliveryOrderId
 ) => async dispatch => {
-  dispatch(_deleteDOClientInvoiceRequest());
+  dispatch(_deleteDOClientInvoiceRequest())
 
   try {
     await axios.delete(
-      `client/invoices/${id}/deliveryOrder/${deliveryOrderId}`,
-    );
+      `client/invoices/${id}/deliveryOrder/${deliveryOrderId}`
+    )
 
-    dispatch(_deleteDOClientInvoiceSuccess());
-    dispatch(_deleteDOClientInvoiceSet(deliveryOrderId));
+    dispatch(_deleteDOClientInvoiceSuccess())
+    dispatch(_deleteDOClientInvoiceSet(deliveryOrderId))
   } catch (error) {
-    dispatch(_deleteDOClientInvoiceError(error));
+    dispatch(_deleteDOClientInvoiceError(error))
   }
-};
+}

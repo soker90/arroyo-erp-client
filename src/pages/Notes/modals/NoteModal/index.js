@@ -1,2 +1,2 @@
-export { default } from './NoteModal';
-export * from './constants';
+export { default } from './NoteModal'
+export * from './constants'

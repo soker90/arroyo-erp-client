@@ -1,26 +1,26 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import ProductClientModal, { INITIAL_STATE } from 'components/Modals/ProductClientModal';
-import { format } from 'utils';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import ProductClientModal, { INITIAL_STATE } from 'components/Modals/ProductClientModal'
+import { format } from 'utils'
 
 const EditProductModal = ({
   show,
   close,
   editProduct,
-  product,
+  product
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
+    INITIAL_STATE
+  )
 
   useEffect(() => {
     if (show) {
       setState({
         ...INITIAL_STATE,
         ...(product?.name && { name: product?.name }),
-        ...(product?.price && { price: format.number(product?.price) }),
-      });
+        ...(product?.price && { price: format.number(product?.price) })
+      })
     }
     // eslint-disable-next-line
   }, [show]);
@@ -30,8 +30,8 @@ const EditProductModal = ({
    * @private
    */
   const _handleSubmit = model => {
-    editProduct(product?._id, model, close);
-  };
+    editProduct(product?._id, model, close)
+  }
 
   return (
     <ProductClientModal
@@ -42,16 +42,16 @@ const EditProductModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 EditProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   editProduct: PropTypes.func.isRequired,
-  product: PropTypes.object,
-};
+  product: PropTypes.object
+}
 
-EditProductModal.displayName = 'EditProductModal';
+EditProductModal.displayName = 'EditProductModal'
 
-export default EditProductModal;
+export default EditProductModal

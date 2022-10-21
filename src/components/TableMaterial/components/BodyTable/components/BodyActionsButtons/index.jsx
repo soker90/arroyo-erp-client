@@ -1,19 +1,19 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { IconButton, TableCell, Tooltip } from '@mui/material';
-import uniqId from 'uniqid';
+import { useMemo } from 'react'
+import PropTypes from 'prop-types'
+import { IconButton, TableCell, Tooltip } from '@mui/material'
+import uniqId from 'uniqid'
 
-import { useStyles } from './styles';
+import { useStyles } from './styles'
 
 const BodyActionsButtons = ({
-  row, index, actions,
+  row, index, actions
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const actionsFiltered = useMemo(
     () => actions.filter(({ isFreeAction }) => !isFreeAction),
-    [actions],
-  );
+    [actions]
+  )
 
   /**
    * Return if button is disabled
@@ -25,7 +25,7 @@ const BodyActionsButtons = ({
     typeof disabled === 'function'
       ? disabled(row)
       : disabled
-  );
+  )
 
   return (
     <TableCell align='right'>
@@ -51,15 +51,15 @@ const BodyActionsButtons = ({
           </Tooltip>
         ))}
     </TableCell>
-  );
-};
+  )
+}
 
 BodyActionsButtons.propTypes = {
   actions: PropTypes.array.isRequired,
   row: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-};
+  index: PropTypes.number.isRequired
+}
 
-BodyActionsButtons.displayName = 'BodyActionsButtons';
-export const story = BodyActionsButtons;
-export default BodyActionsButtons;
+BodyActionsButtons.displayName = 'BodyActionsButtons'
+export const story = BodyActionsButtons
+export default BodyActionsButtons

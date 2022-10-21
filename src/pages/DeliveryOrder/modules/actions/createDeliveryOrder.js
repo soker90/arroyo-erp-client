@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { navigateTo } from 'utils';
-import { CREATE_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { navigateTo } from 'utils'
+import { CREATE_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action for createDeliveryOrder
@@ -8,8 +8,8 @@ import { CREATE_DELIVERY_ORDER } from '../types';
  * @private
  */
 const _createDeliveryOrderRequest = () => ({
-  type: CREATE_DELIVERY_ORDER.REQUEST,
-});
+  type: CREATE_DELIVERY_ORDER.REQUEST
+})
 
 /**
  * Success action for createDeliveryOrder
@@ -20,9 +20,9 @@ const _createDeliveryOrderSuccess = () => ({
   type: CREATE_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Albarán creado',
-  },
-});
+    message: 'Albarán creado'
+  }
+})
 
 /**
  * Set data
@@ -32,8 +32,8 @@ const _createDeliveryOrderSuccess = () => ({
  */
 const _createDeliveryOrderSet = ({ data }) => ({
   type: CREATE_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for createDeliveryOrder
@@ -43,8 +43,8 @@ const _createDeliveryOrderSet = ({ data }) => ({
  */
 const _createDeliveryOrderError = error => ({
   type: CREATE_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea un nuevo albarán del proveedor
@@ -53,20 +53,20 @@ const _createDeliveryOrderError = error => ({
 export const createDeliveryOrder = ({
   provider,
   callback,
-  navigate,
+  navigate
 }) => async dispatch => {
-  dispatch(_createDeliveryOrderRequest());
+  dispatch(_createDeliveryOrderRequest())
 
   try {
-    const response = await axios.post('deliveryorders', { provider });
+    const response = await axios.post('deliveryorders', { provider })
 
-    dispatch(_createDeliveryOrderSuccess());
-    dispatch(_createDeliveryOrderSet(response));
+    dispatch(_createDeliveryOrderSuccess())
+    dispatch(_createDeliveryOrderSet(response))
     // eslint-disable-next-line
     callback?.();
-    navigateTo(`albaranes/${response.data._id}?search=creado`, navigate);
+    navigateTo(`albaranes/${response.data._id}?search=creado`, navigate)
   } catch (error) {
-    console.error(error);
-    dispatch(_createDeliveryOrderError(error));
+    console.error(error)
+    dispatch(_createDeliveryOrderError(error))
   }
-};
+}

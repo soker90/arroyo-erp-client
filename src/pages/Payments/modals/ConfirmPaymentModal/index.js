@@ -1,1 +1,1 @@
-export { default } from './ConfirmPaymentModalContainer';
+export { default } from './ConfirmPaymentModalContainer'

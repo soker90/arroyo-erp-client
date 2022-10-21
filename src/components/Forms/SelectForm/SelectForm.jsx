@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Grid, TextField } from '@mui/material';
+import PropTypes from 'prop-types'
+import { Grid, TextField } from '@mui/material'
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir
@@ -19,14 +19,14 @@ const SelectForm = ({
       select
       variant={variant}
       SelectProps={{
-        native: true,
+        native: true
       }}
       {...rest}
     >
       {children}
     </TextField>
   </Grid>
-);
+)
 
 SelectForm.propTypes = {
   size: PropTypes.number,
@@ -36,14 +36,14 @@ SelectForm.propTypes = {
   variant: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-};
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+}
 
 SelectForm.defaultProps = {
-  size: 6,
-};
+  size: 6
+}
 
-SelectForm.displayName = 'SelectForm';
+SelectForm.displayName = 'SelectForm'
 
-export const story = SelectForm;
-export default SelectForm;
+export const story = SelectForm
+export default SelectForm

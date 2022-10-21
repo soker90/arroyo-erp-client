@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_REMINDER } from '../types';
+import axios from 'axios'
+import { DELETE_REMINDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteReminderRequest = () => ({ type: DELETE_REMINDER.REQUEST });
+const _deleteReminderRequest = () => ({ type: DELETE_REMINDER.REQUEST })
 
 /**
  * Success action
@@ -17,14 +17,14 @@ const _deleteReminderSuccess = () => ({
   type: DELETE_REMINDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Recordatorio borrado',
-  },
-});
+    message: 'Recordatorio borrado'
+  }
+})
 
 const _deleteReminderSet = ({ data }) => ({
   type: DELETE_REMINDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action
@@ -34,8 +34,8 @@ const _deleteReminderSet = ({ data }) => ({
  */
 const _deleteReminderError = error => ({
   type: DELETE_REMINDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Elimina un recordatorio
@@ -43,14 +43,14 @@ const _deleteReminderError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteReminder = id => async dispatch => {
-  dispatch(_deleteReminderRequest());
+  dispatch(_deleteReminderRequest())
 
   try {
-    const response = await axios.delete(`dashboard/deleteReminder/${id}`);
+    const response = await axios.delete(`dashboard/deleteReminder/${id}`)
 
-    dispatch(_deleteReminderSuccess());
-    dispatch(_deleteReminderSet(response));
+    dispatch(_deleteReminderSuccess())
+    dispatch(_deleteReminderSet(response))
   } catch (error) {
-    dispatch(_deleteReminderError(error));
+    dispatch(_deleteReminderError(error))
   }
-};
+}

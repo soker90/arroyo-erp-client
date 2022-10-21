@@ -1,11 +1,11 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { AppBar, Toolbar } from '@mui/material';
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import { AppBar, Toolbar } from '@mui/material'
 
-import { useStyles } from './TopBar.styles';
+import { useStyles } from './TopBar.styles'
 
 const TopBar = ({ className }) => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <AppBar
       className={clsx(classes.root, className)}
@@ -20,14 +20,14 @@ const TopBar = ({ className }) => {
         />
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 TopBar.propTypes = {
-  className: PropTypes.string,
-};
+  className: PropTypes.string
+}
 
-TopBar.displayName = 'TopBar';
+TopBar.displayName = 'TopBar'
 
-export const story = TopBar;
-export default TopBar;
+export const story = TopBar
+export default TopBar

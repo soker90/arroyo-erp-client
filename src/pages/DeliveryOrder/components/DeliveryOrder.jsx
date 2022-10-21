@@ -1,36 +1,35 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
-import { Container, Grid } from '@mui/material';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react'
+import { Container, Grid } from '@mui/material'
+import PropTypes from 'prop-types'
 
-import { Page } from 'components';
-import { useParams } from 'react-router';
-import DeliveryOrderProducts from './DeliveryOrderProducts';
-import DeliveryOrderData from './DeliveryOrderData';
-import DeliveryOrderTotals from './DeliveryOrderTotals';
-import Header from './Header';
-import { useStyles } from './DeliveryOrder.styles';
+import { Page } from 'components'
+import { useParams } from 'react-router'
+import DeliveryOrderProducts from './DeliveryOrderProducts'
+import DeliveryOrderData from './DeliveryOrderData'
+import DeliveryOrderTotals from './DeliveryOrderTotals'
+import Header from './Header'
+import { useStyles } from './DeliveryOrder.styles'
 
 const DeliveryOrder = (
   {
     getProducts, getDeliveryOrder, provider, nameProvider,
     products, date, totals, _id, nOrder, updateDataDeliveryOrder,
     showDeleteProductModal, showEditProductModal, resetDeliveryOrder,
-    note, hasCanal, invoice,
-  },
+    note, hasCanal, invoice
+  }
 ) => {
-  const classes = useStyles();
-  const { idDeliveryOrder } = useParams();
+  const classes = useStyles()
+  const { idDeliveryOrder } = useParams()
 
-  useEffect(() => (() => resetDeliveryOrder()), [resetDeliveryOrder]);
-
-  useEffect(() => {
-    if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder);
-  }, [idDeliveryOrder]);
+  useEffect(() => () => resetDeliveryOrder(), [resetDeliveryOrder])
 
   useEffect(() => {
-    if (provider) getProducts(provider);
-  }, [provider]);
+    if (idDeliveryOrder && idDeliveryOrder !== _id) getDeliveryOrder(idDeliveryOrder)
+  }, [idDeliveryOrder])
+
+  useEffect(() => {
+    if (provider) getProducts(provider)
+  }, [provider])
 
   /**
    * Handle change data
@@ -38,8 +37,8 @@ const DeliveryOrder = (
    * @private
    */
   const _updateData = value => {
-    updateDataDeliveryOrder(idDeliveryOrder, value);
-  };
+    updateDataDeliveryOrder(idDeliveryOrder, value)
+  }
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Albarán`}>
@@ -52,16 +51,16 @@ const DeliveryOrder = (
         />
 
         {
-            date && (
-              <DeliveryOrderProducts
-                products={products}
-                showDeleteProductModal={showDeleteProductModal}
-                showEditProductModal={showEditProductModal}
-                isEditable={!nOrder}
-                hasCanal={hasCanal}
-              />
-            )
-          }
+          date && (
+            <DeliveryOrderProducts
+              products={products}
+              showDeleteProductModal={showDeleteProductModal}
+              showEditProductModal={showEditProductModal}
+              isEditable={!nOrder}
+              hasCanal={hasCanal}
+            />
+          )
+        }
 
         <Grid container spacing={3} className={classes.cards}>
           <Grid item xs={12} md={4}>
@@ -80,8 +79,8 @@ const DeliveryOrder = (
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 DeliveryOrder.propTypes = {
   getProducts: PropTypes.func.isRequired,
@@ -99,9 +98,9 @@ DeliveryOrder.propTypes = {
   resetDeliveryOrder: PropTypes.func.isRequired,
   note: PropTypes.string,
   hasCanal: PropTypes.bool,
-  invoice: PropTypes.string,
-};
+  invoice: PropTypes.string
+}
 
-DeliveryOrder.displayName = 'DeliveryOrder';
-export const story = DeliveryOrder;
-export default DeliveryOrder;
+DeliveryOrder.displayName = 'DeliveryOrder'
+export const story = DeliveryOrder
+export default DeliveryOrder

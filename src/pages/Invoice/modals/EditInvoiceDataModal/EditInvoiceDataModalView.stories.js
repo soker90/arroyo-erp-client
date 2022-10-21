@@ -1,18 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
-import { date, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions'
+import { date, text } from '@storybook/addon-knobs'
 
-import DatePickerProvider from 'contexts/DatePickerProvider';
-import { story as EditInvoiceDataModalView } from './EditInvoiceDataModalView';
+import DatePickerProvider from 'contexts/DatePickerProvider'
+import { story as EditInvoiceDataModalView } from './EditInvoiceDataModalView'
 
 export default {
   title: 'Rutas/Factura/Modales/Editar datos',
   parameters: {
     component: EditInvoiceDataModalView,
-    componentSubtitle: 'Modal para editar los datos de una factura',
+    componentSubtitle: 'Modal para editar los datos de una factura'
   },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>],
-};
+  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+}
 
 const EditInvoiceData = () => (
   <EditInvoiceDataModalView
@@ -23,8 +23,8 @@ const EditInvoiceData = () => (
     dateRegister={date('Fecha de registro', new Date(1609428038070), 'Componente')}
     updateDataInvoice={action('updateDataInvoice')}
   />
-);
+)
 
-EditInvoiceData.storyName = 'Editar Datos';
+EditInvoiceData.storyName = 'Editar Datos'
 
-export { EditInvoiceData };
+export { EditInvoiceData }

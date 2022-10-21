@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Line } from 'react-chartjs-2';
-import { alpha, useTheme } from '@mui/material';
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import { Line } from 'react-chartjs-2'
+import { alpha, useTheme } from '@mui/material'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,11 +10,11 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
-} from 'chart.js';
+  Legend
+} from 'chart.js'
 
-import makeStyles from '@mui/styles/makeStyles';
-import { useEffect, useRef, useState } from 'react';
+import makeStyles from '@mui/styles/makeStyles'
+import { useEffect, useRef, useState } from 'react'
 
 ChartJS.register(
   CategoryScale,
@@ -24,13 +24,13 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
 const useStyles = makeStyles(() => ({
   root: {
-    position: 'relative',
-  },
-}));
+    position: 'relative'
+  }
+}))
 
 const Chart = ({
   className,
@@ -38,22 +38,22 @@ const Chart = ({
   labels,
   ...rest
 }) => {
-  const classes = useStyles();
-  const theme = useTheme();
+  const classes = useStyles()
+  const theme = useTheme()
 
-  const chartRef = useRef(null);
+  const chartRef = useRef(null)
   const [chartData, setChartData] = useState({
     datasets: [],
-    labels: [],
-  });
+    labels: []
+  })
 
   const data = chart => {
     // const ctx = canvas.getContext('2d');
-    const gradient = chart.ctx.createLinearGradient(0, 0, 0, 400);
+    const gradient = chart.ctx.createLinearGradient(0, 0, 0, 400)
 
-    gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.2));
-    gradient.addColorStop(0.9, 'rgba(255,255,255,0)');
-    gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.2))
+    gradient.addColorStop(0.9, 'rgba(255,255,255,0)')
+    gradient.addColorStop(1, 'rgba(255,255,255,0)')
 
     return {
       datasets: [
@@ -64,18 +64,18 @@ const Chart = ({
           pointBorderColor: theme.palette.background.default,
           pointBorderWidth: 3,
           pointRadius: 6,
-          pointBackgroundColor: theme.palette.secondary.main,
-        },
+          pointBackgroundColor: theme.palette.secondary.main
+        }
       ],
-      labels,
-    };
-  };
+      labels
+    }
+  }
 
   useEffect(() => {
-    const chart = chartRef.current;
+    const chart = chartRef.current
 
-    if (chart) setChartData(data(chart));
-  }, [dataProp]);
+    if (chart) setChartData(data(chart))
+  }, [dataProp])
 
   const options = {
     responsive: true,
@@ -83,7 +83,7 @@ const Chart = ({
     animation: false,
     plugins: {
       legend: {
-        display: false,
+        display: false
       },
       tooltip: {
         enabled: true,
@@ -102,29 +102,29 @@ const Chart = ({
           title: () => {
           },
           label: tooltipItem => {
-            let label = `Precio: ${tooltipItem.parsed.y}`;
+            let label = `Precio: ${tooltipItem.parsed.y}`
 
-            if (tooltipItem.parsed.y > 0) label += '€';
+            if (tooltipItem.parsed.y > 0) label += '€'
 
-            return label;
-          },
-        },
-      },
+            return label
+          }
+        }
+      }
     },
     layout: {
-      padding: 0,
+      padding: 0
     },
     scales: {
       x:
         {
           gridLines: {
             display: false,
-            drawBorder: false,
+            drawBorder: false
           },
           ticks: {
             padding: 20,
-            fontColor: theme.palette.text.secondary,
-          },
+            fontColor: theme.palette.text.secondary
+          }
         },
       y:
         {
@@ -135,7 +135,7 @@ const Chart = ({
             drawBorder: false,
             zeroLineBorderDash: [2],
             zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider,
+            zeroLineColor: theme.palette.divider
           },
           ticks: {
             padding: 20,
@@ -144,11 +144,11 @@ const Chart = ({
             min: 0,
             maxTicksLimit: 7,
             precision: 2,
-            callback: value => (value > 0 ? `${value}€` : value),
-          },
-        },
-    },
-  };
+            callback: value => (value > 0 ? `${value}€` : value)
+          }
+        }
+    }
+  }
 
   return (
     <div
@@ -161,13 +161,13 @@ const Chart = ({
         options={options}
       />
     </div>
-  );
-};
+  )
+}
 
 Chart.propTypes = {
   className: PropTypes.string,
   data: PropTypes.array.isRequired,
-  labels: PropTypes.array.isRequired,
-};
+  labels: PropTypes.array.isRequired
+}
 
-export default Chart;
+export default Chart

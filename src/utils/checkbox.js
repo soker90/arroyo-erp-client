@@ -6,10 +6,10 @@
  * @private
  */
 export const addSelectedToState = (element, state, setState) => {
-  const newSelected = state.slice();
-  newSelected.push(element);
-  setState(newSelected);
-};
+  const newSelected = state.slice()
+  newSelected.push(element)
+  setState(newSelected)
+}
 
 /**
  * Remove element from selected array
@@ -19,6 +19,6 @@ export const addSelectedToState = (element, state, setState) => {
  * @private
  */
 export const removeSelectedFromState = (element, state, setState) => {
-  const newSelected = state.filter(item => item !== element);
-  setState(newSelected);
-};
+  const newSelected = state.filter(item => item !== element)
+  setState(newSelected)
+}

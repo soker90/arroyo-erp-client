@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_LAST_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { GET_LAST_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getLastDeliveryOrderRequest = () => ({ type: GET_LAST_DELIVERY_ORDER.REQUEST });
+const _getLastDeliveryOrderRequest = () => ({ type: GET_LAST_DELIVERY_ORDER.REQUEST })
 
 /**
  * Success action
@@ -14,8 +14,8 @@ const _getLastDeliveryOrderRequest = () => ({ type: GET_LAST_DELIVERY_ORDER.REQU
  * @private
  */
 const _getProductLastDeliveryOrderSuccess = () => ({
-  type: GET_LAST_DELIVERY_ORDER.SUCCESS,
-});
+  type: GET_LAST_DELIVERY_ORDER.SUCCESS
+})
 
 /**
  * Set action
@@ -25,8 +25,8 @@ const _getProductLastDeliveryOrderSuccess = () => ({
  */
 const _getLastDeliveryOrderSet = data => ({
   type: GET_LAST_DELIVERY_ORDER.SET,
-  payload: { last: data.last, nextToLast: data.nextToLast },
-});
+  payload: { last: data.last, nextToLast: data.nextToLast }
+})
 
 /**
  * Error action for getProduct
@@ -36,22 +36,22 @@ const _getLastDeliveryOrderSet = data => ({
  */
 const _getLastDeliveryOrderError = error => ({
   type: GET_LAST_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae los proveedores
  * @returns {function(...[*]=)}
  */
 export const getLastDeliveryOrder = id => async dispatch => {
-  dispatch(_getLastDeliveryOrderRequest());
+  dispatch(_getLastDeliveryOrderRequest())
 
   try {
-    const { data } = await axios(`products/last-delivery-order/${id}`);
+    const { data } = await axios(`products/last-delivery-order/${id}`)
 
-    dispatch(_getProductLastDeliveryOrderSuccess());
-    dispatch(_getLastDeliveryOrderSet(data));
+    dispatch(_getProductLastDeliveryOrderSuccess())
+    dispatch(_getLastDeliveryOrderSet(data))
   } catch (error) {
-    dispatch(_getLastDeliveryOrderError(error));
+    dispatch(_getLastDeliveryOrderError(error))
   }
-};
+}

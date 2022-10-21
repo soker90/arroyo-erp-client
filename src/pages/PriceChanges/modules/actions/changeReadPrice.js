@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { CHANGE_READ_PRICE } from '../types';
+import axios from 'axios'
+import { CHANGE_READ_PRICE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _changeReadPriceRequest = () => ({ type: CHANGE_READ_PRICE.REQUEST });
+const _changeReadPriceRequest = () => ({ type: CHANGE_READ_PRICE.REQUEST })
 
 /**
  * Success action
@@ -14,19 +14,19 @@ const _changeReadPriceRequest = () => ({ type: CHANGE_READ_PRICE.REQUEST });
  * @private
  */
 const _changeReadPriceSuccess = () => ({
-  type: CHANGE_READ_PRICE.SUCCESS,
-});
+  type: CHANGE_READ_PRICE.SUCCESS
+})
 
 const _changeReadPriceSet = ({
   priceChanges,
-  count,
+  count
 }) => ({
   type: CHANGE_READ_PRICE.SET,
   payload: {
     priceChanges,
-    count,
-  },
-});
+    count
+  }
+})
 
 /**
  * Error action for getInitData
@@ -36,8 +36,8 @@ const _changeReadPriceSet = ({
  */
 const _changeReadPriceError = error => ({
   type: CHANGE_READ_PRICE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae el registro de cambio de precios
@@ -46,14 +46,14 @@ const _changeReadPriceError = error => ({
  * @returns {function(...[*]=)}
  */
 export const changeReadPrice = (id, read) => async dispatch => {
-  dispatch(_changeReadPriceRequest());
+  dispatch(_changeReadPriceRequest())
 
   try {
-    const { data } = await axios.patch(`pricechanges/${id}`, { read });
+    const { data } = await axios.patch(`pricechanges/${id}`, { read })
 
-    dispatch(_changeReadPriceSuccess());
-    dispatch(_changeReadPriceSet(data));
+    dispatch(_changeReadPriceSuccess())
+    dispatch(_changeReadPriceSet(data))
   } catch (error) {
-    dispatch(_changeReadPriceError(error));
+    dispatch(_changeReadPriceError(error))
   }
-};
+}

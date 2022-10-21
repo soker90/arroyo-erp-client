@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import DeleteConfirmationModal from './DeleteConfirmationModal';
-import { deleteReminder } from '../../modules/actions';
+import DeleteConfirmationModal from './DeleteConfirmationModal'
+import { deleteReminder } from '../../modules/actions'
 
 const mapDispatchToProps = {
-  deleteReminder,
-};
+  deleteReminder
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(DeleteConfirmationModal);
+  mapDispatchToProps
+)(DeleteConfirmationModal)

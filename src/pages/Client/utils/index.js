@@ -7,42 +7,42 @@ export const adapterClientInfo = ({
   phone,
   email,
   businessName,
-  cif,
+  cif
 }) => [
   {
     label: 'Nombre',
-    value: name,
+    value: name
   },
   {
     label: 'Razón social',
-    value: businessName,
+    value: businessName
   },
   {
     label: 'CIF/NIF',
-    value: cif,
+    value: cif
   },
   {
     label: 'Dirección',
-    value: address,
+    value: address
   },
   {
     label: 'Localidad',
-    value: city,
+    value: city
   },
   {
     label: 'Código postal',
-    value: postalCode,
+    value: postalCode
   },
   {
     label: 'Provincia',
-    value: province,
+    value: province
   },
   {
     label: 'Teléfono',
-    value: phone,
+    value: phone
   },
   {
     label: 'Correo electrónico',
-    value: email,
-  },
-];
+    value: email
+  }
+]

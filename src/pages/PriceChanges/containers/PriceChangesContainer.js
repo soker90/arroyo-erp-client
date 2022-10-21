@@ -1,23 +1,23 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import PriceChanges from '../components/PriceChanges';
+import PriceChanges from '../components/PriceChanges'
 import {
   changeReadPrice,
   deleteManyChangesPrice,
-  getPriceChanges,
-} from '../modules/actions';
+  getPriceChanges
+} from '../modules/actions'
 
 const mapStateToProps = ({ priceChanges: { priceChanges } }) => ({
-  priceChanges,
-});
+  priceChanges
+})
 
 const mapDispatchToProps = {
   getPriceChanges,
   changeReadPrice,
-  deleteManyChangesPrice,
-};
+  deleteManyChangesPrice
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(PriceChanges);
+  mapDispatchToProps
+)(PriceChanges)

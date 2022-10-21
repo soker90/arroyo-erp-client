@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_CLIENT_INVOICE } from '../types';
+import axios from 'axios'
+import { GET_CLIENT_INVOICE } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _getClientInvoiceRequest = () => ({ type: GET_CLIENT_INVOICE.REQUEST });
+const _getClientInvoiceRequest = () => ({ type: GET_CLIENT_INVOICE.REQUEST })
 
 /**
  * Success action
@@ -14,8 +14,8 @@ const _getClientInvoiceRequest = () => ({ type: GET_CLIENT_INVOICE.REQUEST });
  * @private
  */
 const _getClientInvoiceSuccess = () => ({
-  type: GET_CLIENT_INVOICE.SUCCESS,
-});
+  type: GET_CLIENT_INVOICE.SUCCESS
+})
 
 /**
  * Set action
@@ -25,8 +25,8 @@ const _getClientInvoiceSuccess = () => ({
  */
 const _getClientInvoiceSet = data => ({
   type: GET_CLIENT_INVOICE.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for getInitData
@@ -36,22 +36,22 @@ const _getClientInvoiceSet = data => ({
  */
 const _getClientInvoiceError = error => ({
   type: GET_CLIENT_INVOICE.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae las facturas de clientes
  * @returns {function(...[*]=)}
  */
 export const getClientInvoice = id => async dispatch => {
-  dispatch(_getClientInvoiceRequest());
+  dispatch(_getClientInvoiceRequest())
 
   try {
-    const { data } = await axios(`client/invoices/${id}`);
+    const { data } = await axios(`client/invoices/${id}`)
 
-    dispatch(_getClientInvoiceSuccess());
-    dispatch(_getClientInvoiceSet(data));
+    dispatch(_getClientInvoiceSuccess())
+    dispatch(_getClientInvoiceSet(data))
   } catch (error) {
-    dispatch(_getClientInvoiceError(error));
+    dispatch(_getClientInvoiceError(error))
   }
-};
+}

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { ADD_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { ADD_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _createDeliveryOrderRequest = () => ({ type: ADD_DELIVERY_ORDER.REQUEST });
+const _createDeliveryOrderRequest = () => ({ type: ADD_DELIVERY_ORDER.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _createDeliveryOrderSuccess = () => ({
   type: ADD_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Albarán añadido correctamente',
-  },
-});
+    message: 'Albarán añadido correctamente'
+  }
+})
 
 /**
  * Set action
@@ -29,8 +29,8 @@ const _createDeliveryOrderSuccess = () => ({
  */
 const _createDeliveryOrderSet = data => ({
   type: ADD_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 /**
  * Error action
  * @param error
@@ -39,8 +39,8 @@ const _createDeliveryOrderSet = data => ({
  */
 const _createDeliveryOrderError = error => ({
   type: ADD_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Añade un albarán a la factura
@@ -48,14 +48,14 @@ const _createDeliveryOrderError = error => ({
  * @returns {function(...[*]=)}
  */
 export const createDeliveryOrder = id => async dispatch => {
-  dispatch(_createDeliveryOrderRequest());
+  dispatch(_createDeliveryOrderRequest())
 
   try {
-    const { data } = await axios.post(`client/invoices/${id}/deliveryOrder`);
+    const { data } = await axios.post(`client/invoices/${id}/deliveryOrder`)
 
-    dispatch(_createDeliveryOrderSuccess());
-    dispatch(_createDeliveryOrderSet(data));
+    dispatch(_createDeliveryOrderSuccess())
+    dispatch(_createDeliveryOrderSet(data))
   } catch (error) {
-    dispatch(_createDeliveryOrderError(error));
+    dispatch(_createDeliveryOrderError(error))
   }
-};
+}

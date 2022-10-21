@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import { DatePickerForm, InputForm, ModalGrid } from 'components';
-import { INPUTS } from './constants';
+import { DatePickerForm, InputForm, ModalGrid } from 'components'
+import { INPUTS } from './constants'
 
 const NoteModal = ({
-  show, close, state, setState, action, title,
+  show, close, state, setState, action, title
 }) => {
   /**
    * Handle event onChange input
@@ -13,8 +13,8 @@ const NoteModal = ({
    * @private
    */
   const _handleChange = ({ target: { name, value } }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle change picker
@@ -22,8 +22,8 @@ const NoteModal = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setState({ date });
-  };
+    setState({ date })
+  }
 
   /**
    * Handle event save button
@@ -36,10 +36,10 @@ const NoteModal = ({
       quantity: state.quantity,
       price: state.price,
       amount: state.amount,
-      clarification: state.clarification,
-    };
-    action(model, close);
-  };
+      clarification: state.clarification
+    }
+    action(model, close)
+  }
 
   /**
    * Handle press enter key
@@ -47,8 +47,8 @@ const NoteModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Render a input element
@@ -67,7 +67,7 @@ const NoteModal = ({
       label={label}
       onKeyPress={_handleKeyPress}
     />
-  );
+  )
 
   return (
     <ModalGrid
@@ -86,8 +86,8 @@ const NoteModal = ({
       />
       {INPUTS.map(_renderInput)}
     </ModalGrid>
-  );
-};
+  )
+}
 
 NoteModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -95,8 +95,8 @@ NoteModal.propTypes = {
   state: PropTypes.object,
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-};
+  title: PropTypes.string.isRequired
+}
 
-NoteModal.displayName = 'NoteModal';
-export default NoteModal;
+NoteModal.displayName = 'NoteModal'
+export default NoteModal

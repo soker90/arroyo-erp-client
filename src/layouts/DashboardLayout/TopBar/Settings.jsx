@@ -1,49 +1,49 @@
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
 import {
-  Box, Button, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { Settings as SettingsIcon } from 'react-feather';
-import useSettings from 'hooks/useSettings';
-import { THEMES, THEMES_NAME } from 'constants/common';
+  Box, Button, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { Settings as SettingsIcon } from 'react-feather'
+import useSettings from 'hooks/useSettings'
+import { THEMES, THEMES_NAME } from 'constants/common'
 
 const useStyles = makeStyles(theme => ({
   popover: {
     width: 320,
-    padding: theme.spacing(2),
-  },
-}));
+    padding: theme.spacing(2)
+  }
+}))
 
 const Settings = () => {
-  const classes = useStyles();
-  const ref = useRef(null);
-  const { settings, saveSettings } = useSettings();
-  const [isOpen, setOpen] = useState(false);
+  const classes = useStyles()
+  const ref = useRef(null)
+  const { settings, saveSettings } = useSettings()
+  const [isOpen, setOpen] = useState(false)
   const [values, setValues] = useState({
     direction: settings.direction,
     responsiveFontSizes: settings.responsiveFontSizes,
-    theme: settings.theme,
-  });
+    theme: settings.theme
+  })
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleChange = (field, value) => {
     setValues({
       ...values,
-      [field]: value,
-    });
-  };
+      [field]: value
+    })
+  }
 
   const handleSave = () => {
-    saveSettings(values);
-    setOpen(false);
-  };
+    saveSettings(values)
+    setOpen(false)
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ const Settings = () => {
       <Popover
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'center'
         }}
         classes={{ paper: classes.popover }}
         anchorEl={ref.current}
@@ -101,8 +101,8 @@ const Settings = () => {
         </Box>
       </Popover>
     </>
-  );
-};
+  )
+}
 
-Settings.displayName = 'Settings';
-export default Settings;
+Settings.displayName = 'Settings'
+export default Settings

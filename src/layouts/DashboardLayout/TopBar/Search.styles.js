@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 export const useStyles = makeStyles(theme => ({
   search: {
@@ -8,25 +8,25 @@ export const useStyles = makeStyles(theme => ({
     height: 36,
     padding: theme.spacing(0, 2),
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   searchIcon: {
     marginRight: theme.spacing(2),
-    color: 'inherit',
+    color: 'inherit'
   },
   searchInput: {
     flexGrow: 1,
     color: 'inherit',
     '& input::placeholder': {
       opacity: 1,
-      color: 'inherit',
-    },
+      color: 'inherit'
+    }
   },
   searchPopper: {
-    zIndex: theme.zIndex.appBar + 200,
+    zIndex: theme.zIndex.appBar + 200
   },
   searchPopperContent: {
     marginTop: theme.spacing(1),
-    width: '18rem',
-  },
-}));
+    width: '18rem'
+  }
+}))

@@ -1,41 +1,45 @@
-import { Link as RouterLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import { Link as RouterLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import {
-  AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { Menu as MenuIcon } from 'react-feather';
+  AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { Menu as MenuIcon } from 'react-feather'
 
-import Logo from 'components/Logo';
-import { THEMES } from 'constants/common';
-import Account from './Account';
-import PricesNotification from './PricesNotification';
-import Search from './Search';
-import Settings from './Settings';
+import Logo from 'components/Logo'
+import { THEMES } from 'constants/common'
+import Account from './Account'
+import PricesNotification from './PricesNotification'
+import Search from './Search'
+import Settings from './Settings'
 
 const useStyles = makeStyles(theme => ({
   root: {
     zIndex: theme.zIndex.drawer + 100,
-    ...(theme.name === THEMES.LIGHT ? {
-      boxShadow: 'none',
-      backgroundColor: theme.palette.primary.main,
-    } : {}),
-    ...(theme.name === THEMES.ONE_DARK ? {
-      backgroundColor: theme.palette.background.default,
-    } : {}),
+    ...(theme.name === THEMES.LIGHT
+      ? {
+          boxShadow: 'none',
+          backgroundColor: theme.palette.primary.main
+        }
+      : {}),
+    ...(theme.name === THEMES.ONE_DARK
+      ? {
+          backgroundColor: theme.palette.background.default
+        }
+      : {})
   },
   toolbar: {
-    minHeight: 64,
-  },
-}));
+    minHeight: 64
+  }
+}))
 
 const TopBar = ({
   className,
   onMobileNavOpen,
   ...rest
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <AppBar
@@ -72,12 +76,12 @@ const TopBar = ({
         </Box>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 TopBar.propTypes = {
   className: PropTypes.string,
-  onMobileNavOpen: PropTypes.func,
-};
+  onMobileNavOpen: PropTypes.func
+}
 
-export default TopBar;
+export default TopBar

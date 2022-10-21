@@ -8,21 +8,21 @@
 export const itemsCard = ({
   iva,
   total,
-  taxBase,
+  taxBase
 }) => [
   {
     label: 'Base imponible',
     value: taxBase || 0,
-    variant: 'euro',
+    variant: 'euro'
   },
   {
     label: 'IVA',
     value: iva || 0,
-    variant: 'euro',
+    variant: 'euro'
   },
   {
     label: 'Total',
     value: total || 0,
-    variant: 'euro',
-  },
-];
+    variant: 'euro'
+  }
+]

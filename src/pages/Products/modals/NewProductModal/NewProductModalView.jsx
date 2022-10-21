@@ -1,32 +1,32 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import ProductClientModal from 'components/Modals/ProductClientModal';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import ProductClientModal from 'components/Modals/ProductClientModal'
 
 const INITIAL_STATE = {
   code: '',
   name: '',
-  price: 0,
-};
+  price: 0
+}
 
 const NewProductModal = ({
-  show, close, createProduct,
+  show, close, createProduct
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
+    INITIAL_STATE
+  )
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-  }, [show]);
+    if (!show) setState(INITIAL_STATE)
+  }, [show])
 
   /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = model => {
-    createProduct(model, close);
-  };
+    createProduct(model, close)
+  }
 
   return (
     <ProductClientModal
@@ -37,15 +37,15 @@ const NewProductModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 NewProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  createProduct: PropTypes.func.isRequired,
-};
+  createProduct: PropTypes.func.isRequired
+}
 
-NewProductModal.displayName = 'NewProductModal';
+NewProductModal.displayName = 'NewProductModal'
 
-export default NewProductModal;
+export default NewProductModal

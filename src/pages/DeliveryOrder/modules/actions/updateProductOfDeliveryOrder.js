@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { UPDATE_PRODUCT_OF_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { UPDATE_PRODUCT_OF_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action
@@ -7,8 +7,8 @@ import { UPDATE_PRODUCT_OF_DELIVERY_ORDER } from '../types';
  * @private
  */
 const _updateProductOfDeliveryOrderRequest = () => ({
-  type: UPDATE_PRODUCT_OF_DELIVERY_ORDER.REQUEST,
-});
+  type: UPDATE_PRODUCT_OF_DELIVERY_ORDER.REQUEST
+})
 
 /**
  * Success action
@@ -19,9 +19,9 @@ const _updateProductOfDeliveryOrderSuccess = () => ({
   type: UPDATE_PRODUCT_OF_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto actualizado',
-  },
-});
+    message: 'Producto actualizado'
+  }
+})
 
 /**
  * Set data
@@ -31,8 +31,8 @@ const _updateProductOfDeliveryOrderSuccess = () => ({
  */
 const _updateProductOfDeliveryOrderSet = ({ data }) => ({
   type: UPDATE_PRODUCT_OF_DELIVERY_ORDER.SET,
-  payload: data,
-});
+  payload: data
+})
 
 /**
  * Error action for createDeliveryOrder
@@ -42,8 +42,8 @@ const _updateProductOfDeliveryOrderSet = ({ data }) => ({
  */
 const _updateProductOfDeliveryOrderError = error => ({
   type: UPDATE_PRODUCT_OF_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Crea un nuevo albarán del proveedor
@@ -51,17 +51,17 @@ const _updateProductOfDeliveryOrderError = error => ({
  */
 // eslint-disable-next-line max-len
 export const updateProductOfDeliveryOrder = (index, model, callback) => async (dispatch, getState) => {
-  dispatch(_updateProductOfDeliveryOrderRequest());
-  const id = getState().deliveryOrders._id;
+  dispatch(_updateProductOfDeliveryOrderRequest())
+  const id = getState().deliveryOrders._id
 
   try {
-    const response = await axios.put(`deliveryorders/${id}/product/${index}`, model);
+    const response = await axios.put(`deliveryorders/${id}/product/${index}`, model)
 
-    dispatch(_updateProductOfDeliveryOrderSuccess());
-    dispatch(_updateProductOfDeliveryOrderSet(response));
-    callback();
+    dispatch(_updateProductOfDeliveryOrderSuccess())
+    dispatch(_updateProductOfDeliveryOrderSet(response))
+    callback()
   } catch (error) {
-    console.error(error);
-    dispatch(_updateProductOfDeliveryOrderError(error));
+    console.error(error)
+    dispatch(_updateProductOfDeliveryOrderError(error))
   }
-};
+}

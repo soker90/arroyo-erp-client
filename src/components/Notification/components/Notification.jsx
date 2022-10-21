@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Snackbar from '@mui/material/Snackbar';
+import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import Snackbar from '@mui/material/Snackbar'
 
-import MySnackbarContentWrapper from './MySnackbarContentWrapper';
-import { useStyles } from './Notification.styles';
+import MySnackbarContentWrapper from './MySnackbarContentWrapper'
+import { useStyles } from './Notification.styles'
 
 const Notification = ({ notification }) => {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const classes = useStyles()
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    if (notification.message) setOpen(true);
-  }, [notification]);
+    if (notification.message) setOpen(true)
+  }, [notification])
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') return;
+    if (reason === 'clickaway') return
 
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <Snackbar
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'center',
+        horizontal: 'center'
       }}
       open={open}
       autoHideDuration={5000 || notification.autoDismiss}
@@ -36,13 +36,13 @@ const Notification = ({ notification }) => {
         message={notification.message}
       />
     </Snackbar>
-  );
-};
+  )
+}
 
 Notification.propTypes = {
-  notification: PropTypes.object.isRequired,
-};
+  notification: PropTypes.object.isRequired
+}
 
-Notification.displayName = 'Notification';
+Notification.displayName = 'Notification'
 
-export default Notification;
+export default Notification

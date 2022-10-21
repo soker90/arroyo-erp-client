@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DELETE_PRODUCT } from '../types';
+import axios from 'axios'
+import { DELETE_PRODUCT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _deleteProductRequest = () => ({ type: DELETE_PRODUCT.REQUEST });
+const _deleteProductRequest = () => ({ type: DELETE_PRODUCT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _deleteProductSuccess = () => ({
   type: DELETE_PRODUCT.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Producto eliminado',
-  },
-});
+    message: 'Producto eliminado'
+  }
+})
 
 /**
  * Success action
@@ -29,9 +29,9 @@ const _deleteProductSuccess = () => ({
 const _deleteProductSet = products => ({
   type: DELETE_PRODUCT.SET,
   payload: {
-    products,
-  },
-});
+    products
+  }
+})
 
 /**
  * Error action
@@ -41,8 +41,8 @@ const _deleteProductSet = products => ({
  */
 const _deleteProductError = error => ({
   type: DELETE_PRODUCT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Elimina el producto
@@ -50,14 +50,14 @@ const _deleteProductError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteProduct = id => async dispatch => {
-  dispatch(_deleteProductRequest());
+  dispatch(_deleteProductRequest())
 
   try {
-    const { data } = await axios.delete(`products/${id}`);
+    const { data } = await axios.delete(`products/${id}`)
 
-    dispatch(_deleteProductSuccess());
-    dispatch(_deleteProductSet(data));
+    dispatch(_deleteProductSuccess())
+    dispatch(_deleteProductSet(data))
   } catch (error) {
-    dispatch(_deleteProductError(error));
+    dispatch(_deleteProductError(error))
   }
-};
+}

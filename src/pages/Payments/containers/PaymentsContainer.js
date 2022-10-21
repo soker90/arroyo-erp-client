@@ -1,19 +1,19 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getPayments } from '../modules/actions';
-import Payments from '../components/Payments';
+import { getPayments } from '../modules/actions'
+import Payments from '../components/Payments'
 
 /**
  * @param products
  * @return {{products: *}}
  */
-const mapStateToProps = ({ payments }) => payments;
+const mapStateToProps = ({ payments }) => payments
 
 const mapDispatchToProps = {
-  getPayments,
-};
+  getPayments
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Payments);
+  mapDispatchToProps
+)(Payments)

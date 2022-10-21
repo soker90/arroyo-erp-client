@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getDeliveryOrderCount } from '../modules/actions';
-import Billing from '../components/DeliveryOrders';
+import { getDeliveryOrderCount } from '../modules/actions'
+import Billing from '../components/DeliveryOrders'
 
-const mapStateToProps = ({ doCount }) => doCount;
+const mapStateToProps = ({ doCount }) => doCount
 
 const mapDispatchToProps = {
-  getDeliveryOrderCount,
-};
+  getDeliveryOrderCount
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Billing);
+  mapDispatchToProps
+)(Billing)

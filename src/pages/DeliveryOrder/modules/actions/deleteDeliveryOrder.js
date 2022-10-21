@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { DELETE_DELIVERY_ORDER } from '../types';
+import axios from 'axios'
+import { DELETE_DELIVERY_ORDER } from '../types'
 
 /**
  * Request action for createDeliveryOrder
@@ -7,8 +7,8 @@ import { DELETE_DELIVERY_ORDER } from '../types';
  * @private
  */
 const _deleteDeliveryOrderRequest = () => ({
-  type: DELETE_DELIVERY_ORDER.REQUEST,
-});
+  type: DELETE_DELIVERY_ORDER.REQUEST
+})
 
 /**
  * Success action for createDeliveryOrder
@@ -19,9 +19,9 @@ const _deleteDeliveryOrderSuccess = () => ({
   type: DELETE_DELIVERY_ORDER.SUCCESS,
   payload: {
     level: 'success',
-    message: 'Se ha eliminado el albarán correctamente',
-  },
-});
+    message: 'Se ha eliminado el albarán correctamente'
+  }
+})
 
 /**
  * Error action for createDeliveryOrder
@@ -31,8 +31,8 @@ const _deleteDeliveryOrderSuccess = () => ({
  */
 const _deleteDeliveryOrderError = error => ({
   type: DELETE_DELIVERY_ORDER.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Elimina el albarán
@@ -40,16 +40,16 @@ const _deleteDeliveryOrderError = error => ({
  * @returns {function(...[*]=)}
  */
 export const deleteDeliveryOrder = callback => async (dispatch, getState) => {
-  dispatch(_deleteDeliveryOrderRequest());
-  const id = getState().deliveryOrders._id;
+  dispatch(_deleteDeliveryOrderRequest())
+  const id = getState().deliveryOrders._id
 
   try {
-    await axios.delete(`deliveryorders/${id}`);
+    await axios.delete(`deliveryorders/${id}`)
 
-    dispatch(_deleteDeliveryOrderSuccess());
-    callback();
+    dispatch(_deleteDeliveryOrderSuccess())
+    callback()
   } catch (error) {
-    console.error(error);
-    dispatch(_deleteDeliveryOrderError(error));
+    console.error(error)
+    dispatch(_deleteDeliveryOrderError(error))
   }
-};
+}

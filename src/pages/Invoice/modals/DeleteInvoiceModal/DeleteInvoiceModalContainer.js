@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import DeleteInvoiceModal from './DeleteInvoiceModal';
-import { deleteInvoice } from '../../modules/actions';
+import DeleteInvoiceModal from './DeleteInvoiceModal'
+import { deleteInvoice } from '../../modules/actions'
 
 const mapStateToProps = ({ invoice: { id, provider } }) => ({
-  id, providerId: provider,
-});
+  id, providerId: provider
+})
 
 const mapDispatchToProps = {
-  deleteInvoice,
-};
+  deleteInvoice
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DeleteInvoiceModal);
+)(DeleteInvoiceModal)

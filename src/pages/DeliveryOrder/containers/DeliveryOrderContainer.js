@@ -1,19 +1,19 @@
-import { connect } from 'react-redux';
-import { showModal } from 'reducers/modal';
+import { connect } from 'react-redux'
+import { showModal } from 'reducers/modal'
 import {
-  DELETE_PRODUCT_DELIVERY_ORDER, EDIT_PRODUCT_TO_DELIVERY_ORDER,
-} from 'pages/DeliveryOrder/modals/types';
-import { getProducts } from 'modules/products/actions';
-import DeliveryOrder from '../components/DeliveryOrder';
+  DELETE_PRODUCT_DELIVERY_ORDER, EDIT_PRODUCT_TO_DELIVERY_ORDER
+} from 'pages/DeliveryOrder/modals/types'
+import { getProducts } from 'modules/products/actions'
+import DeliveryOrder from '../components/DeliveryOrder'
 import {
-  getDeliveryOrder, updateDataDeliveryOrder, resetDeliveryOrder,
-} from '../modules/actions';
+  getDeliveryOrder, updateDataDeliveryOrder, resetDeliveryOrder
+} from '../modules/actions'
 
 /**
  * @param products
  * @return {{products: *}}
  */
-const mapStateToProps = ({ deliveryOrders }) => deliveryOrders;
+const mapStateToProps = ({ deliveryOrders }) => deliveryOrders
 
 const mapDispatchToProps = {
   getProducts,
@@ -23,19 +23,19 @@ const mapDispatchToProps = {
   showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {
-      index,
-    },
+      index
+    }
   }),
   showEditProductModal: (product, index) => showModal({
     modalType: EDIT_PRODUCT_TO_DELIVERY_ORDER,
     modalProps: {
       product,
-      index,
-    },
-  }),
-};
+      index
+    }
+  })
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(DeliveryOrder);
+  mapDispatchToProps
+)(DeliveryOrder)

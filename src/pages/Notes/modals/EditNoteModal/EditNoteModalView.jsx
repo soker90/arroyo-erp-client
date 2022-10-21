@@ -1,17 +1,17 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import NoteModal, { INITIAL_STATE } from '../NoteModal';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import NoteModal, { INITIAL_STATE } from '../NoteModal'
 
 const EditNoteModal = ({
-  close, editNote, note,
+  close, editNote, note
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
-    INITIAL_STATE,
-  );
+    INITIAL_STATE
+  )
 
   useEffect(() => {
-    if (note) setState(note);
+    if (note) setState(note)
 
     // eslint-disable-next-line
   }, [note]);
@@ -22,8 +22,8 @@ const EditNoteModal = ({
    * @private
    */
   const _handleSubmit = data => {
-    editNote(note._id, data, close);
-  };
+    editNote(note._id, data, close)
+  }
 
   return (
     <NoteModal
@@ -34,15 +34,15 @@ const EditNoteModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 EditNoteModal.propTypes = {
   close: PropTypes.func.isRequired,
   editNote: PropTypes.func.isRequired,
-  note: PropTypes.object,
-};
+  note: PropTypes.object
+}
 
-EditNoteModal.displayName = 'EditNoteModal';
-export const story = EditNoteModal;
-export default EditNoteModal;
+EditNoteModal.displayName = 'EditNoteModal'
+export const story = EditNoteModal
+export default EditNoteModal

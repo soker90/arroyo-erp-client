@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
   Card,
   CardContent,
   Grid,
   Divider,
-  CardHeader,
-} from '@mui/material';
+  CardHeader
+} from '@mui/material'
 
 import {
   DatePickerForm,
-  InputForm, SwitchForm,
-} from 'components';
+  InputForm, SwitchForm
+} from 'components'
 
-import { useStyles } from './SearchForm.styles';
-import { fields } from '../../constans';
+import { useStyles } from './SearchForm.styles'
+import { fields } from '../../constans'
 
 const SearchForm = ({
   filters,
-  setFilters,
+  setFilters
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Handle event onChange input
@@ -34,12 +34,12 @@ const SearchForm = ({
     target: {
       name,
       value,
-      checked,
-    },
+      checked
+    }
   }) => {
-    const newValue = name === 'expenses' ? checked : value;
-    setFilters({ [name]: newValue });
-  };
+    const newValue = name === 'expenses' ? checked : value
+    setFilters({ [name]: newValue })
+  }
 
   /**
    * Handle change picker
@@ -47,8 +47,8 @@ const SearchForm = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setFilters({ dateInvoice: date });
-  };
+    setFilters({ dateInvoice: date })
+  }
 
   /**
    * Render a input element
@@ -61,7 +61,7 @@ const SearchForm = ({
   const _renderInput = ({
     id,
     label,
-    options = {},
+    options = {}
   }) => (
     <InputForm
       key={id}
@@ -72,7 +72,7 @@ const SearchForm = ({
       size={2}
       {...options}
     />
-  );
+  )
 
   return (
     <Card className={classes.root}>
@@ -100,14 +100,14 @@ const SearchForm = ({
         </Grid>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
 SearchForm.propTypes = {
   filters: PropTypes.object.isRequired,
-  setFilters: PropTypes.func.isRequired,
-};
+  setFilters: PropTypes.func.isRequired
+}
 
-SearchForm.displayName = 'SearchForm';
+SearchForm.displayName = 'SearchForm'
 
-export default SearchForm;
+export default SearchForm

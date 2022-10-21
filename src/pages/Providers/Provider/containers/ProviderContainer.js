@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getProvider } from 'modules/providers/actions';
-import Providers from '../components/Provider';
+import { getProvider } from 'modules/providers/actions'
+import Providers from '../components/Provider'
 
 const mapStateToProps = ({ providers: { provider } }) => ({
-  provider,
-});
+  provider
+})
 
 const mapDispatchToProps = {
-  getProvider,
-};
+  getProvider
+}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Providers);
+  mapDispatchToProps
+)(Providers)

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET_PRICE_CHANGES } from '../types';
+import axios from 'axios'
+import { GET_PRICE_CHANGES } from '../types'
 
 /**
  * Request action for getInitData
  * @returns {{type: string}}
  * @private
  */
-const _getPriceChangesRequest = () => ({ type: GET_PRICE_CHANGES.REQUEST });
+const _getPriceChangesRequest = () => ({ type: GET_PRICE_CHANGES.REQUEST })
 
 /**
  * Success action for getInitData
@@ -14,19 +14,19 @@ const _getPriceChangesRequest = () => ({ type: GET_PRICE_CHANGES.REQUEST });
  * @private
  */
 const _getPriceChangesSuccess = () => ({
-  type: GET_PRICE_CHANGES.SUCCESS,
-});
+  type: GET_PRICE_CHANGES.SUCCESS
+})
 
 const _getPriceChangesSet = ({
   priceChanges,
-  count,
+  count
 }) => ({
   type: GET_PRICE_CHANGES.SET,
   payload: {
     priceChanges,
-    count,
-  },
-});
+    count
+  }
+})
 
 /**
  * Error action for getInitData
@@ -36,22 +36,22 @@ const _getPriceChangesSet = ({
  */
 const _getPriceChangesError = error => ({
   type: GET_PRICE_CHANGES.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Trae el registro de cambio de precios
  * @returns {function(...[*]=)}
  */
 export const getPriceChanges = () => async dispatch => {
-  dispatch(_getPriceChangesRequest());
+  dispatch(_getPriceChangesRequest())
 
   try {
-    const { data } = await axios('pricechanges');
+    const { data } = await axios('pricechanges')
 
-    dispatch(_getPriceChangesSuccess());
-    dispatch(_getPriceChangesSet(data));
+    dispatch(_getPriceChangesSuccess())
+    dispatch(_getPriceChangesSet(data))
   } catch (error) {
-    dispatch(_getPriceChangesError(error));
+    dispatch(_getPriceChangesError(error))
   }
-};
+}

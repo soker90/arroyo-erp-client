@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { Grid, TextField } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
+import PropTypes from 'prop-types'
+import { Grid, TextField } from '@mui/material'
+import Autocomplete from '@mui/material/Autocomplete'
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir
@@ -28,9 +28,9 @@ const AutocompleteForm = ({
       handleHomeEndKeys
       autoSelect
       onChange={(event, newValue) => {
-        if (typeof newValue === 'string') onChange(newValue);
-        else if (newValue && newValue.inputValue) onChange(newValue.inputValue);
-        else onChange(newValue);
+        if (typeof newValue === 'string') onChange(newValue)
+        else if (newValue && newValue.inputValue) onChange(newValue.inputValue)
+        else onChange(newValue)
       }}
       {...rest}
       renderInput={params => (
@@ -41,13 +41,13 @@ const AutocompleteForm = ({
           label={label}
           InputProps={{
             ...params.InputProps,
-            ...(inputRef && { inputRef }),
+            ...(inputRef && { inputRef })
           }}
         />
       )}
     />
   </Grid>
-);
+)
 
 AutocompleteForm.propTypes = {
   size: PropTypes.number,
@@ -63,8 +63,8 @@ AutocompleteForm.propTypes = {
   selectOnFocus: PropTypes.bool,
   handleHomeEndKeys: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  inputRef: PropTypes.any,
-};
+  inputRef: PropTypes.any
+}
 
 AutocompleteForm.defaultProps = {
   size: 6,
@@ -72,10 +72,10 @@ AutocompleteForm.defaultProps = {
   clearOnBlur: true,
   selectOnFocus: true,
   handleHomeEndKeys: true,
-  autoFocus: false,
-};
+  autoFocus: false
+}
 
-AutocompleteForm.displayName = 'AutocompleteForm';
+AutocompleteForm.displayName = 'AutocompleteForm'
 
-export const story = AutocompleteForm;
-export default AutocompleteForm;
+export const story = AutocompleteForm
+export default AutocompleteForm

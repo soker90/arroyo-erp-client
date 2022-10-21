@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   Button,
   Card,
@@ -7,21 +6,21 @@ import {
   CardHeader,
   Container,
   Divider,
-  Grid, IconButton, InputAdornment, Tooltip,
-} from '@mui/material';
-import PropTypes from 'prop-types';
+  Grid, IconButton, InputAdornment, Tooltip
+} from '@mui/material'
+import PropTypes from 'prop-types'
 
 import {
-  InputForm, Page,
-} from 'components';
-import SearchIcon from '@mui/icons-material/Search';
-import Header from './Header';
-import { useStyles } from './SwapInvoices.styles';
+  InputForm, Page
+} from 'components'
+import SearchIcon from '@mui/icons-material/Search'
+import Header from './Header'
+import { useStyles } from './SwapInvoices.styles'
 
 const SwapInvoices = ({ swapInvoices }) => {
-  const classes = useStyles();
-  const [invoiceA, setInvoiceA] = useState('');
-  const [invoiceB, setInvoiceB] = useState('');
+  const classes = useStyles()
+  const [invoiceA, setInvoiceA] = useState('')
+  const [invoiceB, setInvoiceB] = useState('')
 
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
@@ -31,11 +30,11 @@ const SwapInvoices = ({ swapInvoices }) => {
         </IconButton>
       </Tooltip>
     </InputAdornment>
-  );
+  )
 
   const _handleChange = set => ({ target: { value } }) => {
-    set(value);
-  };
+    set(value)
+  }
   return (
     <Page className={classes.root} title='Intercambiar nº orden'>
       <Container maxWidth={false}>
@@ -52,7 +51,7 @@ const SwapInvoices = ({ swapInvoices }) => {
                 onChange={_handleChange(setInvoiceA)}
                 InputProps={{
                   endAdornment: _renderAdornment(() => {
-                  }),
+                  })
                 }}
                 value={invoiceA}
               />
@@ -63,7 +62,7 @@ const SwapInvoices = ({ swapInvoices }) => {
                 onChange={_handleChange(setInvoiceB)}
                 InputProps={{
                   endAdornment: _renderAdornment(() => {
-                  }),
+                  })
                 }}
               />
               <Grid item md={2} xs={12}>
@@ -82,13 +81,13 @@ const SwapInvoices = ({ swapInvoices }) => {
 
       </Container>
     </Page>
-  );
-};
+  )
+}
 
 SwapInvoices.propTypes = {
-  swapInvoices: PropTypes.func.isRequired,
-};
+  swapInvoices: PropTypes.func.isRequired
+}
 
-SwapInvoices.displayName = 'SwapInvoices';
-export const story = SwapInvoices;
-export default SwapInvoices;
+SwapInvoices.displayName = 'SwapInvoices'
+export const story = SwapInvoices
+export default SwapInvoices

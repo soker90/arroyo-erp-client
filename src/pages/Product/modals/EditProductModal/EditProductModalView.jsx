@@ -1,7 +1,7 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import ProductModal, { INITIAL_STATE } from 'components/Modals/ProductModal';
-import { format } from 'utils';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import ProductModal, { INITIAL_STATE } from 'components/Modals/ProductModal'
+import { format } from 'utils'
 
 const EditProductModal = ({
   show,
@@ -15,13 +15,13 @@ const EditProductModal = ({
     rate,
     _id,
     sale,
-    provider,
-  },
+    provider
+  }
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
-  );
+  )
 
   useEffect(() => {
     if (show) {
@@ -33,8 +33,8 @@ const EditProductModal = ({
         ...(iva && { iva: iva * 100 }),
         ...(sale && { sale: format.number(sale) }),
         ...(rate && { rate }),
-        ...(provider && { provider }),
-      });
+        ...(provider && { provider })
+      })
     }
     // eslint-disable-next-line
   }, [show]);
@@ -44,8 +44,8 @@ const EditProductModal = ({
    * @private
    */
   const _handleSubmit = model => {
-    editProduct(_id, model, close);
-  };
+    editProduct(_id, model, close)
+  }
 
   return (
     <ProductModal
@@ -56,14 +56,14 @@ const EditProductModal = ({
       state={state}
       setState={setState}
     />
-  );
-};
+  )
+}
 
 EditProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   editProduct: PropTypes.func.isRequired,
-  product: PropTypes.object.isRequired,
-};
+  product: PropTypes.object.isRequired
+}
 
-export default EditProductModal;
+export default EditProductModal

@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
-import NProgress from 'nprogress';
-import { Box, LinearProgress } from '@mui/material';
+import { useEffect } from 'react'
+import NProgress from 'nprogress'
+import { Box, LinearProgress } from '@mui/material'
 
-import { useStyles } from './LoadingScreen.style';
+import { useStyles } from './LoadingScreen.style'
 
 const LoadingScreen = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   useEffect(() => {
-    NProgress.start();
+    NProgress.start()
 
     return () => {
-      NProgress.done();
-    };
-  }, []);
+      NProgress.done()
+    }
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -21,7 +21,7 @@ const LoadingScreen = () => {
         <LinearProgress />
       </Box>
     </div>
-  );
-};
+  )
+}
 
-export default LoadingScreen;
+export default LoadingScreen

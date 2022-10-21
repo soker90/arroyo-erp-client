@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { DIVIDE_PAYMENT } from '../types';
+import axios from 'axios'
+import { DIVIDE_PAYMENT } from '../types'
 
 /**
  * Request action
  * @returns {{type: string}}
  * @private
  */
-const _mergePaymentRequest = () => ({ type: DIVIDE_PAYMENT.REQUEST });
+const _mergePaymentRequest = () => ({ type: DIVIDE_PAYMENT.REQUEST })
 
 /**
  * Success action
@@ -17,9 +17,9 @@ const _mergePaymentSuccess = () => ({
   type: DIVIDE_PAYMENT.SUCCESS,
   payload: {
     level: 'success',
-    message: '¡Dividido!',
-  },
-});
+    message: '¡Dividido!'
+  }
+})
 
 /**
  * Set action
@@ -29,9 +29,9 @@ const _mergePaymentSuccess = () => ({
 const _mergePaymentSet = ({ data }) => ({
   type: DIVIDE_PAYMENT.SET,
   payload: {
-    payments: data,
-  },
-});
+    payments: data
+  }
+})
 
 /**
  * Error action
@@ -41,22 +41,22 @@ const _mergePaymentSet = ({ data }) => ({
  */
 const _mergePaymentError = error => ({
   type: DIVIDE_PAYMENT.FAILURE,
-  error,
-});
+  error
+})
 
 /**
  * Divide un pago fusionado
  * @param {string} id
  */
 export const dividePayment = id => async dispatch => {
-  dispatch(_mergePaymentRequest());
+  dispatch(_mergePaymentRequest())
 
   try {
-    const response = await axios.put(`payments/divide/${id}`);
+    const response = await axios.put(`payments/divide/${id}`)
 
-    dispatch(_mergePaymentSuccess());
-    dispatch(_mergePaymentSet(response));
+    dispatch(_mergePaymentSuccess())
+    dispatch(_mergePaymentSet(response))
   } catch (error) {
-    dispatch(_mergePaymentError(error));
+    dispatch(_mergePaymentError(error))
   }
-};
+}

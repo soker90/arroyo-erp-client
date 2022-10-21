@@ -1,1 +1,1 @@
-export { default } from './components/TotalsReportBoxes';
+export { default } from './components/TotalsReportBoxes'

@@ -1,1 +1,1 @@
-export { default } from './AutocompleteForm';
+export { default } from './AutocompleteForm'

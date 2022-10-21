@@ -1,13 +1,13 @@
-import { useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router';
+import { useEffect, useReducer } from 'react'
+import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router'
 
 import {
-  DatePickerForm, InputForm, ModalGrid, SelectForm,
-} from 'components';
-import { format } from 'utils';
-import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices';
-import AutocompleteForm from 'components/Forms/AutocompleteForm';
+  DatePickerForm, InputForm, ModalGrid, SelectForm
+} from 'components'
+import { format } from 'utils'
+import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices'
+import AutocompleteForm from 'components/Forms/AutocompleteForm'
 
 const INITIAL_STATE = {
   nInvoice: '',
@@ -17,24 +17,24 @@ const INITIAL_STATE = {
   concept: EXPENSE_CONCEPTS[0],
   type: TYPE_PAYMENT[0],
   paymentDate: null,
-  bookColumn: '',
-};
+  bookColumn: ''
+}
 
 const NewInvoiceModal = ({
   show,
   close,
   createInvoiceExpense,
-  idProvider,
+  idProvider
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
-  );
-  const navigate = useNavigate();
+  )
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE);
-  }, [show]);
+    if (!show) setState(INITIAL_STATE)
+  }, [show])
 
   /**
    * Handle event save button
@@ -50,8 +50,8 @@ const NewInvoiceModal = ({
       concept,
       paymentDate,
       type,
-      bookColumn,
-    } = state;
+      bookColumn
+    } = state
 
     createInvoiceExpense({
       nInvoice,
@@ -63,9 +63,9 @@ const NewInvoiceModal = ({
       concept,
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
       type,
-      bookColumn,
-    }, navigate);
-  };
+      bookColumn
+    }, navigate)
+  }
 
   /**
    * Handle press enter key
@@ -73,8 +73,8 @@ const NewInvoiceModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit();
-  };
+    if (key === 'Enter') _handleSubmit()
+  }
 
   /**
    * Handle event onChange input
@@ -85,11 +85,11 @@ const NewInvoiceModal = ({
   const _handleChange = ({
     target: {
       name,
-      value,
-    },
+      value
+    }
   }) => {
-    setState({ [name]: value });
-  };
+    setState({ [name]: value })
+  }
 
   /**
    * Handle change picker
@@ -98,8 +98,8 @@ const NewInvoiceModal = ({
    * @private
    */
   const _handleChangePicker = (date, name) => {
-    setState({ [name]: date });
-  };
+    setState({ [name]: date })
+  }
 
   /**
    * Handle change picker
@@ -108,8 +108,8 @@ const NewInvoiceModal = ({
    * @private
    */
   const _handleChangeAutocomplete = value => {
-    setState({ concept: value });
-  };
+    setState({ concept: value })
+  }
 
   /**
    * Render a input element
@@ -128,7 +128,7 @@ const NewInvoiceModal = ({
       onKeyPress={_handleKeyPress}
       {...options}
     />
-  );
+  )
 
   /**
    * Render select product
@@ -143,7 +143,7 @@ const NewInvoiceModal = ({
       onChange={_handleChange}
       size={6}
       InputLabelProps={{
-        shrink: true,
+        shrink: true
       }}
       onKeyPress={_handleKeyPress}
     >
@@ -153,7 +153,7 @@ const NewInvoiceModal = ({
         </option>
       ))}
     </SelectForm>
-  );
+  )
 
   /**
    * Renderiza un datepicker con opciones predeterimnadas
@@ -170,7 +170,7 @@ const NewInvoiceModal = ({
       value={state[name]}
       onChange={date => _handleChangePicker(date, name)}
     />
-  );
+  )
 
   const _renderAutocomplete = () => (
     <AutocompleteForm
@@ -182,7 +182,7 @@ const NewInvoiceModal = ({
       margin='normal'
       onChange={_handleChangeAutocomplete}
     />
-  );
+  )
 
   /**
    * Fecha de factura
@@ -210,16 +210,16 @@ const NewInvoiceModal = ({
       {_renderDatePicker('Fecha de cobro', 'paymentDate')}
       {_renderSelect('type', 'Tipo de cobro', TYPE_PAYMENT)}
     </ModalGrid>
-  );
-};
+  )
+}
 
 NewInvoiceModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   createInvoiceExpense: PropTypes.func.isRequired,
-  idProvider: PropTypes.string,
-};
+  idProvider: PropTypes.string
+}
 
-NewInvoiceModal.displayName = 'NewInvoiceModal';
+NewInvoiceModal.displayName = 'NewInvoiceModal'
 
-export default NewInvoiceModal;
+export default NewInvoiceModal

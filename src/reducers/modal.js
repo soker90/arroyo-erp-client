@@ -1,6 +1,6 @@
-import { createReducer } from 'store/utils/create-reducer';
+import { createReducer } from 'store/utils/create-reducer'
 
-import { HIDE_MODAL, SHOW_MODAL } from 'actions/types';
+import { HIDE_MODAL, SHOW_MODAL } from 'actions/types'
 
 // ------------------------------------
 // Actions
@@ -9,8 +9,8 @@ import { HIDE_MODAL, SHOW_MODAL } from 'actions/types';
 export const showModalAction = ({ modalType, modalProps = {} }) => ({
   type: SHOW_MODAL,
   modalType,
-  modalProps,
-});
+  modalProps
+})
 
 // ------------------------------------
 // Functions
@@ -19,16 +19,16 @@ export const showModalAction = ({ modalType, modalProps = {} }) => ({
 export const showModal = ({ modalType, modalProps }) => dispatch => (
   dispatch(showModalAction({
     modalType,
-    modalProps,
+    modalProps
   }))
-);
+)
 
-export const close = () => dispatch => dispatch({ type: HIDE_MODAL });
+export const close = () => dispatch => dispatch({ type: HIDE_MODAL })
 
 export const actions = {
   showModal,
-  close,
-};
+  close
+}
 
 // ------------------------------------
 // Initial state
@@ -37,8 +37,8 @@ export const actions = {
 const INITIAL_STATE = {
   modalType: null,
   modalProps: {},
-  show: false,
-};
+  show: false
+}
 
 // ------------------------------------
 // Action Handlers
@@ -46,13 +46,13 @@ const INITIAL_STATE = {
 
 const ACTION_HANDLERS = {
   [SHOW_MODAL]: (state, { modalType, modalProps }) => ({
-    ...state, show: true, modalType, modalProps,
+    ...state, show: true, modalType, modalProps
   }),
-  [HIDE_MODAL]: state => ({ ...state, show: false }),
-};
+  [HIDE_MODAL]: state => ({ ...state, show: false })
+}
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS)

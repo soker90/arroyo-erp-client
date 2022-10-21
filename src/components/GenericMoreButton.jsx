@@ -1,34 +1,34 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import {
-  ListItemIcon, ListItemText, Tooltip, IconButton, Menu, MenuItem,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import AchiveIcon from '@mui/icons-material/ArchiveOutlined';
+  ListItemIcon, ListItemText, Tooltip, IconButton, Menu, MenuItem
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import MoreIcon from '@mui/icons-material/MoreVert'
+import GetAppIcon from '@mui/icons-material/GetApp'
+import FileCopyIcon from '@mui/icons-material/FileCopy'
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
+import AchiveIcon from '@mui/icons-material/ArchiveOutlined'
 
 const useStyles = makeStyles(() => ({
   menu: {
     width: 256,
-    maxWidth: '100%',
-  },
-}));
+    maxWidth: '100%'
+  }
+}))
 
 const GenericMoreButton = props => {
-  const classes = useStyles();
-  const moreRef = useRef(null);
-  const [openMenu, setOpenMenu] = useState(false);
+  const classes = useStyles()
+  const moreRef = useRef(null)
+  const [openMenu, setOpenMenu] = useState(false)
 
   const handleMenuOpen = () => {
-    setOpenMenu(true);
-  };
+    setOpenMenu(true)
+  }
 
   const handleMenuClose = () => {
-    setOpenMenu(false);
-  };
+    setOpenMenu(false)
+  }
 
   return (
     <>
@@ -41,14 +41,14 @@ const GenericMoreButton = props => {
         anchorEl={moreRef.current}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'left'
         }}
         onClose={handleMenuClose}
         open={openMenu}
         PaperProps={{ className: classes.menu }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'left'
         }}
       >
         <MenuItem>
@@ -77,11 +77,11 @@ const GenericMoreButton = props => {
         </MenuItem>
       </Menu>
     </>
-  );
-};
+  )
+}
 
 GenericMoreButton.propTypes = {
-  className: PropTypes.string,
-};
+  className: PropTypes.string
+}
 
-export default GenericMoreButton;
+export default GenericMoreButton

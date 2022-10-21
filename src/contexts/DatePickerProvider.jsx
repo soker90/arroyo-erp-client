@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const DatePickerProvider = ({ children }) => (
   <DatePickerProvider>
     {children}
   </DatePickerProvider>
-);
+)
 
 DatePickerProvider.propTypes = {
-  children: PropTypes.oneOf([PropTypes.array, PropTypes.object]).isRequired,
-};
+  children: PropTypes.oneOf([PropTypes.array, PropTypes.object]).isRequired
+}
 
-export default DatePickerProvider;
+export default DatePickerProvider

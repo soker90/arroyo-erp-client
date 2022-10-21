@@ -1,28 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+import { Container } from '@mui/material'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
 
-import { Container } from '@mui/material';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
+import { Page } from 'components'
 
-import { Page } from 'components';
-
-import Header from './Header';
-import { useStyles } from './Book.styles';
-import InvoicesTable from './InvoicesTable';
-import SearchForm from './SearchForm';
-import { useInvoices } from '../hooks/useInvoices';
+import Header from './Header'
+import { useStyles } from './Book.styles'
+import InvoicesTable from './InvoicesTable'
+import SearchForm from './SearchForm'
+import { useInvoices } from '../hooks/useInvoices'
 
 const Book = ({
   invoices,
-  count,
+  count
 }) => {
-  const { year } = useParams();
+  const { year } = useParams()
 
-  const classes = useStyles();
+  const classes = useStyles()
   const {
     filters,
-    setFilters,
-  } = useInvoices(year);
+    setFilters
+  } = useInvoices(year)
 
   return (
     <Page className={classes.root} title='Libro'>
@@ -33,13 +31,13 @@ const Book = ({
         <InvoicesTable invoices={invoices} count={count} setFilters={setFilters} />
       </Container>
     </Page>
-  );
-};
+  )
+}
 Book.propTypes = {
   invoices: PropTypes.array.isRequired,
-  count: PropTypes.number,
-};
+  count: PropTypes.number
+}
 
-Book.displayName = 'Book';
-export const story = Book;
-export default Book;
+Book.displayName = 'Book'
+export const story = Book
+export default Book

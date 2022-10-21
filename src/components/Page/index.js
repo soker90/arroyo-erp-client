@@ -1,1 +1,1 @@
-export { default } from './PageView';
+export { default } from './PageView'

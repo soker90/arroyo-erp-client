@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
 
-import PropTypes from 'prop-types';
-import makeStyles from '@mui/styles/makeStyles';
-import { Typography } from '@mui/material';
+import PropTypes from 'prop-types'
+import makeStyles from '@mui/styles/makeStyles'
+import { Typography } from '@mui/material'
 
-import { TableMaterial, TextEuro } from 'components';
-import { format } from 'utils';
+import { TableMaterial, TextEuro } from 'components'
+import { format } from 'utils'
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-  },
-});
+    width: '100%'
+  }
+})
 
 const ProductsOrderTable = ({ products }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   /**
    * Render message for delivery orders without products
@@ -25,7 +25,7 @@ const ProductsOrderTable = ({ products }) => {
     <Typography color='textSecondary'>
       No hay productos
     </Typography>
-  );
+  )
 
   const _renderTable = () => (
     <TableMaterial
@@ -33,33 +33,33 @@ const ProductsOrderTable = ({ products }) => {
       columns={[
         {
           title: 'Producto',
-          field: 'name',
+          field: 'name'
         },
         {
           title: 'Cantidad / Peso',
-          render: ({ quantity }) => format.number(quantity),
+          render: ({ quantity }) => format.number(quantity)
         },
         {
           title: 'Precio',
-          render: ({ price }) => <TextEuro num={price} />,
+          render: ({ price }) => <TextEuro num={price} />
         },
         {
           title: 'Base imponible',
-          render: ({ taxBase }) => <TextEuro num={taxBase} />,
-        },
+          render: ({ taxBase }) => <TextEuro num={taxBase} />
+        }
       ]}
       data={products}
       withCard={false}
     />
-  );
+  )
 
-  return products?.length ? _renderTable() : _renderNoProducts();
-};
+  return products?.length ? _renderTable() : _renderNoProducts()
+}
 
 ProductsOrderTable.propTypes = {
-  products: PropTypes.array,
-};
+  products: PropTypes.array
+}
 
-ProductsOrderTable.displayName = 'ProductsOrderTable';
-export const story = ProductsOrderTable;
-export default ProductsOrderTable;
+ProductsOrderTable.displayName = 'ProductsOrderTable'
+export const story = ProductsOrderTable
+export default ProductsOrderTable

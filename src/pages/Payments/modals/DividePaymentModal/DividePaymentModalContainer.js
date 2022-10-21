@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { dividePayment } from '../../modules/actions';
-import DividePaymentModal from './DividePaymentModal';
+import { dividePayment } from '../../modules/actions'
+import DividePaymentModal from './DividePaymentModal'
 
 const mapDispatchToProps = {
-  dividePayment,
-};
+  dividePayment
+}
 
 export default connect(
   null,
-  mapDispatchToProps,
-)(DividePaymentModal);
+  mapDispatchToProps
+)(DividePaymentModal)

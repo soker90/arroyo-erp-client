@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import {
   Card,
   CardContent,
@@ -7,44 +7,46 @@ import {
   Divider,
   Grid,
   IconButton,
-  Tooltip,
-} from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import uniqId from 'uniqid';
+  Tooltip
+} from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import uniqId from 'uniqid'
 
-import { ItemCard } from 'components';
-import { itemsCard } from './utils';
-import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal';
+import { ItemCard } from 'components'
+import { itemsCard } from './utils'
+import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal'
 
 const ClientInvoiceTotals = ({
   isEditable,
   ...props
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   /**
    * Show the modal
    * @private
    */
   const _handleEditClick = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   /**
    * Return the buttons of the card
    * @returns {Array || false}
    * @private
    */
-  const _getActions = () => (isEditable ? [
-    <Tooltip title='Editar' key={uniqId()}>
-      <IconButton
-        size='small'
-        onClick={_handleEditClick}
-      >
-        <EditIcon />
-      </IconButton>
-    </Tooltip>,
-  ] : false);
+  const _getActions = () => (isEditable
+    ? [
+      <Tooltip title='Editar' key={uniqId()}>
+        <IconButton
+          size='small'
+          onClick={_handleEditClick}
+        >
+          <EditIcon />
+        </IconButton>
+      </Tooltip>
+      ]
+    : false)
 
   return (
     <>
@@ -65,16 +67,16 @@ const ClientInvoiceTotals = ({
       </Card>
       <EditClientInvoiceTotalsModal show={showModal} setShow={setShowModal} />
     </>
-  );
-};
+  )
+}
 
 ClientInvoiceTotals.propTypes = {
   total: PropTypes.number.isRequired,
   taxBase: PropTypes.number.isRequired,
   iva: PropTypes.number.isRequired,
-  isEditable: PropTypes.bool.isRequired,
-};
+  isEditable: PropTypes.bool.isRequired
+}
 
-ClientInvoiceTotals.displayName = 'DeliveryOrderTotals';
-export const story = ClientInvoiceTotals;
-export default ClientInvoiceTotals;
+ClientInvoiceTotals.displayName = 'DeliveryOrderTotals'
+export const story = ClientInvoiceTotals
+export default ClientInvoiceTotals

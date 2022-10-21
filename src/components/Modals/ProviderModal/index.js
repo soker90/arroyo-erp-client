@@ -1,2 +1,2 @@
-export { default } from './ProviderModal';
-export * from './constants';
+export { default } from './ProviderModal'
+export * from './constants'

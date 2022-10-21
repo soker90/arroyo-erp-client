@@ -1,1 +1,1 @@
-export { default } from './DeliveryOrdersTable';
+export { default } from './DeliveryOrdersTable'

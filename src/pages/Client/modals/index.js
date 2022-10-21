@@ -1,1 +1,1 @@
-export { default as EditClientModal } from './EditClientModal';
+export { default as EditClientModal } from './EditClientModal'

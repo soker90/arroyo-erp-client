@@ -1,4 +1,4 @@
 export const calcProfit = ({
   cost,
-  sale,
-}) => (sale - cost) / sale;
+  sale
+}) => (sale - cost) / sale

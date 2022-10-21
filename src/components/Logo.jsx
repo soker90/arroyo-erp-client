@@ -4,6 +4,6 @@ const Logo = props => (
     src='/static/logo.png'
     {...props}
   />
-);
+)
 
-export default Logo;
+export default Logo

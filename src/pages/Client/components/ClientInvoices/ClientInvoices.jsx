@@ -1,21 +1,21 @@
-import PropTypes from 'prop-types';
-import EditIcon from '@mui/icons-material/Edit';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import EditIcon from '@mui/icons-material/Edit'
+import { Link } from 'react-router-dom'
 
 import {
-  LoadingScreen, TableMaterial, TextEuro,
-} from 'components';
-import { BASE_PATH } from 'constants/index';
-import { format } from 'utils';
-import LabelPending from 'components/LabelPending';
+  LoadingScreen, TableMaterial, TextEuro
+} from 'components'
+import { BASE_PATH } from 'constants/index'
+import { format } from 'utils'
+import LabelPending from 'components/LabelPending'
 
 const ClientInvoices = ({
   invoices,
   idClient,
   count,
-  getClientInvoices,
+  getClientInvoices
 }) => {
-  if (!idClient) return <LoadingScreen />;
+  if (!idClient) return <LoadingScreen />
 
   return idClient && (
     <TableMaterial
@@ -23,17 +23,17 @@ const ClientInvoices = ({
         {
           title: 'Fecha',
           field: 'date',
-          render: ({ date }) => format.date(date),
+          render: ({ date }) => format.date(date)
         },
         {
           title: 'Nº de factura',
-          render: ({ nInvoice }) => nInvoice || <LabelPending />,
+          render: ({ nInvoice }) => nInvoice || <LabelPending />
         },
         {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
-          render: ({ total }) => <TextEuro num={total} />,
-        },
+          render: ({ total }) => <TextEuro num={total} />
+        }
       ]}
       data={invoices}
       actions={[
@@ -41,27 +41,27 @@ const ClientInvoices = ({
           icon: EditIcon,
           tooltip: 'Editar',
           component: Link,
-          to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`,
-        },
+          to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`
+        }
       ]}
       count={count}
       refresh={({
         offset,
-        limit,
+        limit
       }) => {
-        getClientInvoices(idClient, offset, limit);
+        getClientInvoices(idClient, offset, limit)
       }}
     />
-  );
-};
+  )
+}
 
 ClientInvoices.propTypes = {
   invoices: PropTypes.array.isRequired,
   idClient: PropTypes.string,
   count: PropTypes.number.isRequired,
-  getClientInvoices: PropTypes.func.isRequired,
-};
+  getClientInvoices: PropTypes.func.isRequired
+}
 
-ClientInvoices.displayName = 'ProviderInvoices';
+ClientInvoices.displayName = 'ProviderInvoices'
 
-export default ClientInvoices;
+export default ClientInvoices

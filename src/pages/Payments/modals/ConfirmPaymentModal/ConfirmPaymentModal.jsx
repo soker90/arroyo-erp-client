@@ -1,36 +1,36 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { ModalGrid } from 'components/Modals';
-import { DatePickerForm, InputForm, SelectForm } from 'components/Forms';
-import { TYPE_PAYMENT } from 'constants/invoices';
-import { format } from 'utils';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { ModalGrid } from 'components/Modals'
+import { DatePickerForm, InputForm, SelectForm } from 'components/Forms'
+import { TYPE_PAYMENT } from 'constants/invoices'
+import { format } from 'utils'
 
 const ConfirmPaymentModal = ({
   confirmPayment, payment, setShow, ...rest
 }) => {
-  const [paymentDate, setPaymentDate] = useState(null);
-  const [type, setType] = useState('?');
-  const [numCheque, setNumCheque] = useState(null);
+  const [paymentDate, setPaymentDate] = useState(null)
+  const [type, setType] = useState('?')
+  const [numCheque, setNumCheque] = useState(null)
 
   useEffect(() => {
     if (payment) {
-      setType(payment.type);
-      setPaymentDate(payment.paymentDate || null);
-      setNumCheque(null);
+      setType(payment.type)
+      setPaymentDate(payment.paymentDate || null)
+      setNumCheque(null)
     }
-  }, [payment]);
+  }, [payment])
 
   const _close = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const _handleSend = () => {
     confirmPayment(payment._id, {
       paymentDate: format.dateToSend(paymentDate),
       type,
-      ...(numCheque && { numCheque }),
-    }, _close);
-  };
+      ...(numCheque && { numCheque })
+    }, _close)
+  }
 
   /**
    * Handle change picker
@@ -38,8 +38,8 @@ const ConfirmPaymentModal = ({
    * @private
    */
   const _handleChangePicker = date => {
-    setPaymentDate((date));
-  };
+    setPaymentDate((date))
+  }
 
   /**
    * Handle change select
@@ -47,8 +47,8 @@ const ConfirmPaymentModal = ({
    * @private
    */
   const _handleSelect = ({ target: { value } }) => {
-    setType(value);
-  };
+    setType(value)
+  }
 
   /**
    * Handle change number of cheque
@@ -56,8 +56,8 @@ const ConfirmPaymentModal = ({
    * @private
    */
   const _handleCheque = ({ target: { value } }) => {
-    setNumCheque(value);
-  };
+    setNumCheque(value)
+  }
 
   /**
    * Handle press enter key
@@ -65,8 +65,8 @@ const ConfirmPaymentModal = ({
    * @private
    */
   const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSend();
-  };
+    if (key === 'Enter') _handleSend()
+  }
 
   /**
    * Render input of number cheque
@@ -83,9 +83,9 @@ const ConfirmPaymentModal = ({
           onKeyPress={_handleKeyPress}
           size={4}
         />
-      )
+        )
       : null
-  );
+  )
 
   return (
     <ModalGrid
@@ -109,7 +109,7 @@ const ConfirmPaymentModal = ({
         onChange={_handleSelect}
         size={4}
         InputLabelProps={{
-          shrink: true,
+          shrink: true
         }}
         onKeyPress={_handleKeyPress}
       >
@@ -121,13 +121,13 @@ const ConfirmPaymentModal = ({
       </SelectForm>
       {_renderNumberCheque()}
     </ModalGrid>
-  );
-};
+  )
+}
 
 ConfirmPaymentModal.propTypes = {
   setShow: PropTypes.func,
   payment: PropTypes.object,
-  confirmPayment: PropTypes.func.isRequired,
-};
+  confirmPayment: PropTypes.func.isRequired
+}
 
-export default ConfirmPaymentModal;
+export default ConfirmPaymentModal

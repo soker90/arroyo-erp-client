@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import {
   Box,
   Grid,
-  Typography,
-} from '@mui/material';
-import Label from 'components/Label';
-import { format } from 'utils';
-import { useStyles } from './styles';
+  Typography
+} from '@mui/material'
+import Label from 'components/Label'
+import { format } from 'utils'
+import { useStyles } from './styles'
 
 const DeliveryOrderSelectedSum = ({
-  label, value,
+  label, value
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid
@@ -41,13 +41,13 @@ const DeliveryOrderSelectedSum = ({
         </Label>
       </Box>
     </Grid>
-  );
-};
+  )
+}
 
 DeliveryOrderSelectedSum.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
-};
+  value: PropTypes.number.isRequired
+}
 
-DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum';
-export default DeliveryOrderSelectedSum;
+DeliveryOrderSelectedSum.displayName = 'DeliveryOrderSelectedSum'
+export default DeliveryOrderSelectedSum
