@@ -9,7 +9,8 @@ const {
 
 const PageView = ({
   title,
-  children
+  children,
+  ...rest
 }) => {
   const composeTile = useMemo(() => {
     const env = VITE_ENV_NAME ? `[${VITE_ENV_NAME}] ` : ''
@@ -17,7 +18,7 @@ const PageView = ({
   }, [title])
 
   return (
-    <div>
+    <div {...rest}>
       <Helmet>
         <title>{composeTile}</title>
       </Helmet>
@@ -28,7 +29,8 @@ const PageView = ({
 
 PageView.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string
+  title: PropTypes.string,
+  className: PropTypes.string
 }
 
 export default PageView
