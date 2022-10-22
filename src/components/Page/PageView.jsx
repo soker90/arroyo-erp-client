@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import { APP_VERSION } from 'config'
@@ -7,31 +7,28 @@ const {
   VITE_ENV_NAME
 } = import.meta.env
 
-const PageView = forwardRef(({
+const PageView = ({
   title,
-  children,
-  ...rest
-}, ref) => {
+  children
+}) => {
   const composeTile = useMemo(() => {
     const env = VITE_ENV_NAME ? `[${VITE_ENV_NAME}] ` : ''
     return `${env}${title} - Arroyo v${APP_VERSION}`
   }, [title])
 
   return (
-    <div ref={ref} {...rest}>
+    <div>
       <Helmet>
         <title>{composeTile}</title>
       </Helmet>
       {children}
     </div>
   )
-})
+}
 
 PageView.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string
 }
-
-PageView.displayName = 'PageView'
 
 export default PageView

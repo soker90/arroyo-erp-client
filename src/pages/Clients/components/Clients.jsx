@@ -9,7 +9,6 @@ import useSWR from 'swr'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial } from 'components'
-import axios from 'axios'
 import { useStyles } from './Clients.styles'
 import NewProviderModal from '../modals/NewClientModal'
 
