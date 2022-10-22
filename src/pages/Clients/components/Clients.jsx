@@ -18,8 +18,7 @@ const Clients = () => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
 
-  const { data } = useSWR('clients', url => axios(url)
-    .then(response => response.data))
+  const { data } = useSWR('clients')
 
   const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`
 
