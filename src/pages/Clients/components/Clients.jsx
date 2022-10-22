@@ -1,5 +1,5 @@
 import {
-  useCallback, useState,
+  useCallback, useState
 } from 'react'
 import { Box, Container } from '@mui/material'
 import { PlusCircle as PlusCircleIcon } from 'react-feather'
@@ -27,37 +27,39 @@ const Clients = () => {
    */
   const _closeModal = useCallback(() => setShowModal(false), [setShowModal])
 
-  return (<>
-    <Page className={classes.root} title="Clientes">
-      <Container maxWidth={false}>
-        <Header
-          title="Clientes"
-          buttons={[{
-            onClick: () => setShowModal(true), Icon: PlusCircleIcon, label: 'Nuevo Cliente'
-          }]}
-        />
-        <Box mt={3}>
-          <TableMaterial
-            className={classes.table}
-            columns={[{
-              title: 'Nombre', field: 'name'
-            }, {
-              title: 'Facturas', field: 'invoices'
-            }, {
-              title: 'Fac. pendientes', field: 'pending'
+  return (
+    <>
+      <Page className={classes.root} title='Clientes'>
+        <Container maxWidth={false}>
+          <Header
+            title='Clientes'
+            buttons={[{
+              onClick: () => setShowModal(true), Icon: PlusCircleIcon, label: 'Nuevo Cliente'
             }]}
-            data={data}
-            title={`Clientes (${data?.length})`}
-            actions={[{
-              icon: VisibilityIcon, tooltip: 'Editar', component: Link, to: _hrefRow
-            }]}
-            href={_hrefRow}
           />
-        </Box>
-      </Container>
-    </Page>
-    <NewProviderModal show={showModal} close={_closeModal}/>
-  </>)
+          <Box mt={3}>
+            <TableMaterial
+              className={classes.table}
+              columns={[{
+                title: 'Nombre', field: 'name'
+              }, {
+                title: 'Facturas', field: 'invoices'
+              }, {
+                title: 'Fac. pendientes', field: 'pending'
+              }]}
+              data={data}
+              title={`Clientes (${data?.length})`}
+              actions={[{
+                icon: VisibilityIcon, tooltip: 'Editar', component: Link, to: _hrefRow
+              }]}
+              href={_hrefRow}
+            />
+          </Box>
+        </Container>
+      </Page>
+      <NewProviderModal show={showModal} close={_closeModal} />
+    </>
+  )
 }
 
 export default Clients
