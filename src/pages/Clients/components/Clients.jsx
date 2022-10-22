@@ -2,7 +2,6 @@ import {
   useCallback, useState,
 } from 'react'
 import { Box, Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { PlusCircle as PlusCircleIcon } from 'react-feather'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -60,10 +59,6 @@ const Clients = () => {
     </Page>
     <NewProviderModal show={showModal} close={_closeModal}/>
   </>)
-}
-
-Clients.propTypes = {
-  clients: PropTypes.array.isRequired, getClients: PropTypes.func.isRequired
 }
 
 export default Clients
