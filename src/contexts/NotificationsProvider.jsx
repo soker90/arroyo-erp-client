@@ -3,11 +3,18 @@ import PropTypes from 'prop-types'
 
 const NotificationsContext = createContext()
 
+export const notificationDefaultParams = {
+  message: '',
+  level: 'success', // success | error | warning | info
+  position: 'tr', // tr | tl | tc | br | bl | bc
+  autoDismiss: 2000
+}
+
 export const NotificationsProvider = ({ children }) => {
   const [notification, setNotification] = useState(null)
 
-  const addNotification = (newNotification) => {
-    setNotification(newNotification)
+  const addNotification = (notificationConfig) => {
+    setNotification({ ...notificationDefaultParams, ...notificationConfig })
   }
 
   const showError = (message) => {
@@ -19,13 +26,28 @@ export const NotificationsProvider = ({ children }) => {
     })
   }
 
+  const showSuccess = (message) => {
+    setNotification({
+      message,
+      level: 'success',
+      position: 'tr',
+      autoDismiss: 2000
+    })
+  }
+
   const clearNotification = () => {
     setNotification(null)
   }
 
   return (
     <NotificationsContext.Provider
-      value={{ notification, addNotification, showError, clearNotification }}
+      value={{
+        notification,
+        addNotification,
+        showError,
+        clearNotification,
+        showSuccess
+      }}
     >
       {children}
     </NotificationsContext.Provider>
@@ -33,7 +55,7 @@ export const NotificationsProvider = ({ children }) => {
 }
 
 NotificationsProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default NotificationsContext

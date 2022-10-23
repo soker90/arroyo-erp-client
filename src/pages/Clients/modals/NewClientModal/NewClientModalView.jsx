@@ -2,16 +2,17 @@ import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 import ClientModal, { INITIAL_STATE } from 'components/Modals/ClientModal'
+import { useCreateClient } from '../../hooks'
 
 const NewProviderModal = ({
   show,
   close,
-  createClient
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
+  const { addClient } = useCreateClient()
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE)
@@ -22,7 +23,8 @@ const NewProviderModal = ({
    * @private
    */
   const _handleSubmit = () => {
-    createClient(state, close)
+    addClient(state, close)
+    // createClient(state, close)
   }
 
   return (
