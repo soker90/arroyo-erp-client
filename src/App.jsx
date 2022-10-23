@@ -5,11 +5,12 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment' // Change luxon
 import { LoadingBar } from 'react-redux-loading-bar'
 import { LocalizationProvider } from '@mui/x-date-pickers'
-import NotificationsProvider from 'contexts/NotificationsProvider'
+import { NotificationsProvider } from 'contexts/NotificationsProvider'
 
 import { ModalRoot } from 'components'
 import Auth from 'components/Auth'
-import Notification from 'components/Notification'
+import NotificationLegacy from 'components/Notification'
+import Notification from 'components/Notification/components/Notification'
 import ScrollReset from 'components/ScrollReset'
 import useSettings from 'hooks/useSettings'
 import { createTheme } from 'theme'
@@ -38,6 +39,7 @@ const App = () => {
                     }}
                   />
                   <Notification/>
+                  <NotificationLegacy/>
                   <Auth>
                     <ScrollReset/>
                     <Routes/>

@@ -1,24 +1,21 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Snackbar from '@mui/material/Snackbar'
 
-import { useNotifications } from 'hooks'
 import MySnackbarContentWrapper from './MySnackbarContentWrapper'
 import { useStyles } from './Notification.styles'
 
-const Notification = () => {
+const Notification = ({ notification }) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
-  const { notification, clearNotification } = useNotifications()
 
   useEffect(() => {
-    if (notification?.message) setOpen(true)
+    if (notification.message) setOpen(true)
   }, [notification])
-
-  if (!notification) return null
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') return
-    clearNotification()
+
     setOpen(false)
   }
 
@@ -41,5 +38,11 @@ const Notification = () => {
     </Snackbar>
   )
 }
+
+Notification.propTypes = {
+  notification: PropTypes.object.isRequired
+}
+
+Notification.displayName = 'Notification'
 
 export default Notification

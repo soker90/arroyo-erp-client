@@ -7,7 +7,7 @@ export const clientsHandlers = [
   rest.get(`${API_HOST}/clients`, (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json(clientsResponse)
+      ctx.json(clientsResponse())
     )
   })
 ]

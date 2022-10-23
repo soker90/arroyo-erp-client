@@ -11,12 +11,13 @@ import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial } from 'components'
 import { useStyles } from './Clients.styles'
 import NewProviderModal from '../modals/NewClientModal'
+import { useClients } from '../hooks'
 
 const Clients = () => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
 
-  const { data } = useSWR('clients')
+  const { clients } = useClients()
 
   const _hrefRow = ({ _id }) => `${BASE_PATH}/clientes/${_id}`
 
@@ -29,10 +30,10 @@ const Clients = () => {
 
   return (
     <>
-      <Page className={classes.root} title='Clientes'>
+      <Page className={classes.root} title="Clientes">
         <Container maxWidth={false}>
           <Header
-            title='Clientes'
+            title="Clientes"
             buttons={[{
               onClick: () => setShowModal(true), Icon: PlusCircleIcon, label: 'Nuevo Cliente'
             }]}
@@ -47,8 +48,8 @@ const Clients = () => {
               }, {
                 title: 'Fac. pendientes', field: 'pending'
               }]}
-              data={data}
-              title={`Clientes (${data?.length})`}
+              data={clients}
+              title={`Clientes (${clients?.length})`}
               actions={[{
                 icon: VisibilityIcon, tooltip: 'Editar', component: Link, to: _hrefRow
               }]}
@@ -57,7 +58,7 @@ const Clients = () => {
           </Box>
         </Container>
       </Page>
-      <NewProviderModal show={showModal} close={_closeModal} />
+      <NewProviderModal show={showModal} close={_closeModal}/>
     </>
   )
 }

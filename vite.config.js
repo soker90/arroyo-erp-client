@@ -11,7 +11,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-/*    rollupOptions: {
+    rollupOptions: {
       output: {
         manualChunks: {
           material: ['@mui/material'],
@@ -22,7 +22,7 @@ export default defineConfig({
           feather: ['react-feather']
         }
       }
-    }*/
+    }
   },
   resolve: {
     alias: [
