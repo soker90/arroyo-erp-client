@@ -29,7 +29,7 @@ const App = () => {
         <RootStyles>
           <LocalizationProvider dateAdapter={AdapterMoment}>
             <NotificationsProvider>
-              <Suspense fallback={<LoadingScreen/>}>
+              <Suspense fallback={<LoadingScreen />}>
                 <BrowserRouter>
                   <LoadingBar
                     style={{
@@ -38,12 +38,12 @@ const App = () => {
                       height: '5px'
                     }}
                   />
-                  <Notification/>
-                  <NotificationLegacy/>
+                  <Notification />
+                  <NotificationLegacy />
                   <Auth>
-                    <ScrollReset/>
-                    <Routes/>
-                    <ModalRoot/>
+                    <ScrollReset />
+                    <Routes />
+                    <ModalRoot />
                   </Auth>
                 </BrowserRouter>
               </Suspense>

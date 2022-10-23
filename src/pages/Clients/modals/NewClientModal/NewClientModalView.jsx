@@ -6,7 +6,7 @@ import { useCreateClient } from '../../hooks'
 
 const NewProviderModal = ({
   show,
-  close,
+  close
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -41,11 +41,7 @@ const NewProviderModal = ({
 
 NewProviderModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  createClient: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired
 }
 
-NewProviderModal.displayName = 'NewProviderModal'
-
-export const story = NewProviderModal
 export default NewProviderModal

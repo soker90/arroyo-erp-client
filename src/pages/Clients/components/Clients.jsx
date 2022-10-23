@@ -5,7 +5,6 @@ import { Box, Container } from '@mui/material'
 import { PlusCircle as PlusCircleIcon } from 'react-feather'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import useSWR from 'swr'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial } from 'components'
@@ -30,10 +29,10 @@ const Clients = () => {
 
   return (
     <>
-      <Page className={classes.root} title="Clientes">
+      <Page className={classes.root} title='Clientes'>
         <Container maxWidth={false}>
           <Header
-            title="Clientes"
+            title='Clientes'
             buttons={[{
               onClick: () => setShowModal(true), Icon: PlusCircleIcon, label: 'Nuevo Cliente'
             }]}
@@ -58,7 +57,7 @@ const Clients = () => {
           </Box>
         </Container>
       </Page>
-      <NewProviderModal show={showModal} close={_closeModal}/>
+      <NewProviderModal show={showModal} close={_closeModal} />
     </>
   )
 }
