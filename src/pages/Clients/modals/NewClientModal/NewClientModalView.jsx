@@ -18,13 +18,8 @@ const NewProviderModal = ({
     if (!show) setState(INITIAL_STATE)
   }, [show])
 
-  /**
-   * Handle event save button
-   * @private
-   */
   const _handleSubmit = () => {
     addClient(state, close)
-    // createClient(state, close)
   }
 
   return (
