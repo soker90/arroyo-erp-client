@@ -18,3 +18,9 @@ export const clientsResponse = () => rangeFill(faker.datatype.number({
   max: 40,
   min: 2
 }), generateClient)
+
+export const CREATE_CLIENT_NO_NAME_ERROR = {
+  statusCode: 400,
+  error: 'Bad Request',
+  message: 'El nombre es obligatorio'
+}
