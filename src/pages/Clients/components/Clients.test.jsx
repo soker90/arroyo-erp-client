@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-import { fireEvent, render, screen, act } from 'tests/testUtils'
+import { render, screen, act } from 'tests/testUtils'
 import { describe, expect, it, beforeAll, vi, afterEach } from 'vitest'
 
 import Clients from './Clients'
@@ -14,7 +14,7 @@ vi.mock('../../../hooks/useNotifications', () => {
   }
 })
 
-describe.only('Clients', () => {
+describe('Clients', () => {
   beforeAll(async () => {
     await act(() => { render(<Clients />) }
     )
