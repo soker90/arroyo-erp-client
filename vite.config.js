@@ -83,6 +83,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, '/src/store')
       },
       {
+        find: 'tests',
+        replacement: path.resolve(__dirname, '/src/tests')
+      },
+      {
         find: 'theme',
         replacement: path.resolve(__dirname, '/src/theme')
       },
