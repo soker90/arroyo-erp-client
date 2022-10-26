@@ -43,7 +43,12 @@ Se declaran en los archivos `.env` del proyecto y en las properties, y van prece
 
 `npm start`
 
-Se sirve en <http://localhost:3000>
+Con mocks:
+
+`npm run dev`
+
+Se sirve en <http://localhost:5173>
+
 
 # Ejemplos
 
@@ -56,23 +61,25 @@ Se sirve en <http://localhost:3000>
 │   └───Route
 │        └───components
 │             └───Route.js
-│             └───Route.stories.js
 |             └───Route.test.js
 │             └───Route.styles.js
-│        └───containers
-│             └───RouteContainer.js
+│        └───hooks
+│             └───index.js
+│             └───useData.js
+~~ │        └───containers ~~
+~~ │             └───RouteContainer.js ~~ 
 │        └───modals
 │             └───RouteModal
-│                   └───RouteModalContainer.js
+~~ │                   └───RouteModalContainer.js ~~ 
 │                   └───RouteModal.js
 │                   └───RouteModal.styles.js
 │                   └───index.js
-│        └───modules
-│             └───actions
-│                   └───index.js
-│                   └───action1.js
-│             └───types.js
-│             └───index.js
+~~ │        └───modules ~~ 
+~~ │             └───actions ~~ 
+~~ │                   └───index.js ~~ 
+~~ │                   └───action1.js ~~ 
+~~ │             └───types.js ~~ 
+~~ │             └───index.js ~~ 
 │        │   index.js
 ```
 
@@ -81,7 +88,7 @@ Se sirve en <http://localhost:3000>
 Componente funcional standar de React, con memo:
 ```js
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const ComponentName = () =>
       <div>
@@ -89,33 +96,10 @@ const ComponentName = () =>
       </div>;
 
 ComponentName.propTypes = {
-};
+}
 
-ComponentName.displayName = 'ComponentName';
-export default ComponentName;
-```
-
-### Container
-
-El contenedor es el responsable de inyectar Redux o cualquier otro accesorio desde el exterior.
-
-```js
-import {connect} from 'react-redux';
-
-import Route from '../components/Route';
-import {myAction} from '../modules/actions';
-
-const mapStateToProps = ({myState}) => ({ // Receiver (state)
-  hello: myState.hello,
-});
-
-const mapDispatchToProps = {
-  myAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Route);
-
-
+ComponentName.displayName = 'ComponentName' // Solo en funciones anónimas
+export default ComponentName
 ```
 
 ### Modals
@@ -137,15 +121,79 @@ return (
 );
 ```
 
+### Hooks
+Los hooks permiten usar estado y otras características de React sin escribir una clase. En el código nuevo se usan custom hooks que hacen uso de swr para realizar las peticiones GET que antes se realizaban en actions de redux.
+
+```js
+import { useEffect } from 'react'
+import useSWR from 'swr'
+import { API_DATA } from 'constants/paths'
+import { useNotifications } from 'hooks'
+
+export const useData = () => {
+  const { data, error } = useSWR(API_DATA)
+  const { showError } = useNotifications()
+
+  useEffect(() => {
+    if (error) {
+      showError(error.message)
+    }
+  }, [error, data])
+
+  return { data || [], isLoading: !data }
+}
+```
+
+## Notificaciones
+Para enviar notificaciones al usuario existe un custom hook.
+
+```js
+import { useEffect } from 'react'
+import { useNotifications } from 'hooks'
+
+export const useData = () => {
+  const { showError } = useNotifications()
+  
+  sendError('Mi mensaje') // Envía un mensaje de error al usuario
+  
+  
+}
+````
+
+### Container
+#### ⚠️ Código obsoleto ⚠️
+
+El contenedor es el responsable de inyectar Redux o cualquier otro accesorio desde el exterior.
+
+```js
+import {connect} from 'react-redux'
+
+import Route from '../components/Route'
+import {myAction} from '../modules/actions'
+
+const mapStateToProps = ({myState}) => ({ // Receiver (state)
+  hello: myState.hello,
+})
+
+const mapDispatchToProps = {
+  myAction,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Route)
+
+
+```
 
 ### Modules
+#### ⚠️ Código obsoleto ⚠️
 Este archivo es responsable de manejar las acciones de redux y de gestionar el estado de la ruta, pueden crearse modules fuera de una ruta en caso de ser necesario.
 
 #### Action
+#### ⚠️ Código obsoleto ⚠️
 
 ```js
-import {GET_MY_DATA} from '../types';
-import axios from 'axios';
+import {GET_MY_DATA} from '../types'
+import axios from 'axios'
 
 /**
  * Return actions for init request model
@@ -153,7 +201,7 @@ import axios from 'axios';
  */
 const _getMyDataRequest = () => ({
   type: GET_MY_DATA.REQUEST,
-});
+})
 
 /**
  * Return actions for success request model
@@ -164,7 +212,7 @@ const _getMyDataSuccess = () => ({
     level: 'success',
     message: 'El middleware de notificaciones mostrará este mensaje' // Mas información en la documentación de Storybook
   }
-});
+})
 
 /**
  * Set data in redux
@@ -176,7 +224,7 @@ const _getMyDataSet = ({data}) => ({
   payload: {
     myData: data,
   },
-});
+})
 
 /**
  * Return action with error cause
@@ -186,7 +234,7 @@ const _getMyDataSet = ({data}) => ({
 const _getMyDataError = error => ({
   type: GET_MY_DATA.FAILURE,
   error,
-});
+})
 
 
 export const getMyData = () => async dispatch => {
@@ -201,13 +249,14 @@ export const getMyData = () => async dispatch => {
     console.log(error);
     dispatch(_getMyDataError(error));
   }
-};
+}
 ```
 
 #### Reducer
+#### ⚠️ Código obsoleto ⚠️
 ```js
-import {GET_MY_DATA} from './types';
-import {createReducer, setPayload} from 'store/utils';
+import {GET_MY_DATA} from './types'
+import {createReducer, setPayload} from 'store/utils'
 
 const INITIAL_STATE = {
   myData: [],
@@ -216,16 +265,17 @@ const INITIAL_STATE = {
 //Esto es posible que cambie
 const ACTION_HANDLERS = {
   [GET_MY_DATA.SET]: setPayload,
-};
+}
 
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS);
+export default createReducer(INITIAL_STATE, ACTION_HANDLERS)
 ```
 
 #### Types
+#### ⚠️ Código obsoleto ⚠️
 ```js
-import {requestActions} from 'utils';
+import {requestActions} from 'utils'
 
-export const GET_MY_DATA = requestActions('@route/GET_MY_DATA');
+export const GET_MY_DATA = requestActions('@route/GET_MY_DATA')
 
 ```
 

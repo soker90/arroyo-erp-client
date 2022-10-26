@@ -5,10 +5,12 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment' // Change luxon
 import { LoadingBar } from 'react-redux-loading-bar'
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import { NotificationsProvider } from 'contexts/NotificationsProvider'
 
 import { ModalRoot } from 'components'
 import Auth from 'components/Auth'
-import Notification from 'components/Notification'
+import NotificationLegacy from 'components/Notification'
+import Notification from 'components/Notification/components/Notification'
 import ScrollReset from 'components/ScrollReset'
 import useSettings from 'hooks/useSettings'
 import { createTheme } from 'theme'
@@ -26,23 +28,26 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <RootStyles>
           <LocalizationProvider dateAdapter={AdapterMoment}>
-            <Suspense fallback={<LoadingScreen />}>
-              <BrowserRouter>
-                <LoadingBar
-                  style={{
-                    zIndex: 999999,
-                    backgroundColor: theme.palette.secondary.main,
-                    height: '5px'
-                  }}
-                />
-                <Notification />
-                <Auth>
-                  <ScrollReset />
-                  <Routes />
-                  <ModalRoot />
-                </Auth>
-              </BrowserRouter>
-            </Suspense>
+            <NotificationsProvider>
+              <Suspense fallback={<LoadingScreen />}>
+                <BrowserRouter>
+                  <LoadingBar
+                    style={{
+                      zIndex: 999999,
+                      backgroundColor: theme.palette.secondary.main,
+                      height: '5px'
+                    }}
+                  />
+                  <Notification />
+                  <NotificationLegacy />
+                  <Auth>
+                    <ScrollReset />
+                    <Routes />
+                    <ModalRoot />
+                  </Auth>
+                </BrowserRouter>
+              </Suspense>
+            </NotificationsProvider>
           </LocalizationProvider>
         </RootStyles>
       </ThemeProvider>

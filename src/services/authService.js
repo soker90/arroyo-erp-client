@@ -8,13 +8,13 @@ class AuthService {
     axios.interceptors.response.use(
       response => response,
       error => {
-        if (error.response && error.response.status === 401) {
+        if (error.response?.status === 401) {
           this.setSession(null)
 
           if (onLogout) onLogout()
         }
 
-        return Promise.reject(error)
+        return Promise.reject(error?.response?.data)
       }
     )
   }

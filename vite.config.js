@@ -83,6 +83,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, '/src/store')
       },
       {
+        find: 'tests',
+        replacement: path.resolve(__dirname, '/src/tests')
+      },
+      {
         find: 'theme',
         replacement: path.resolve(__dirname, '/src/theme')
       },
@@ -96,6 +100,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+    setupFiles: './src/tests/setup.js',
     coverage: {
       reporter: ['json', 'html'],
       exclude: [
