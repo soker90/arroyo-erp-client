@@ -1,14 +1,13 @@
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { Page } from 'components'
 
+import { useInvoices } from '../hooks'
 import Header from './Header'
-import { useStyles } from './Book.styles'
 import InvoicesTable from './InvoicesTable'
 import SearchForm from './SearchForm'
-import { useInvoices } from '../hooks'
+import { useStyles } from './Book.styles'
 
 const Book = () => {
   const { year } = useParams()
@@ -19,8 +18,7 @@ const Book = () => {
     invoices,
     count,
     filters,
-    setFilters,
-    isLoading
+    setFilters
   } = useInvoices(year)
 
   return (
@@ -29,7 +27,7 @@ const Book = () => {
         <Header year={Number(year)} filter={filters} />
         <SearchForm setFilters={setFilters} filters={filters} />
 
-        {!isLoading && <InvoicesTable invoices={invoices} count={count} setFilters={setFilters} />}
+        <InvoicesTable invoices={invoices} count={count} setFilters={setFilters} />
       </Container>
     </Page>
   )
