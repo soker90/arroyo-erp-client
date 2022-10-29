@@ -1,1 +1,1 @@
-export { default } from './containers/BookContainer'
+export { default } from './components/Book'

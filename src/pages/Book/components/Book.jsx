@@ -8,18 +8,19 @@ import Header from './Header'
 import { useStyles } from './Book.styles'
 import InvoicesTable from './InvoicesTable'
 import SearchForm from './SearchForm'
-import { useInvoices } from '../hooks/useInvoices'
+import { useInvoices } from '../hooks'
 
-const Book = ({
-  invoices,
-  count
-}) => {
+const Book = () => {
   const { year } = useParams()
 
   const classes = useStyles()
+
   const {
+    invoices,
+    count,
     filters,
-    setFilters
+    setFilters,
+    isLoading
   } = useInvoices(year)
 
   return (
@@ -28,16 +29,10 @@ const Book = ({
         <Header year={Number(year)} filter={filters} />
         <SearchForm setFilters={setFilters} filters={filters} />
 
-        <InvoicesTable invoices={invoices} count={count} setFilters={setFilters} />
+        {!isLoading && <InvoicesTable invoices={invoices} count={count} setFilters={setFilters} />}
       </Container>
     </Page>
   )
 }
-Book.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  count: PropTypes.number
-}
 
-Book.displayName = 'Book'
-export const story = Book
 export default Book
