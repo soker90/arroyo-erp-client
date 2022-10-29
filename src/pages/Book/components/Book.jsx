@@ -1,23 +1,22 @@
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { Page } from 'components'
 
+import { useInvoices } from '../hooks'
 import Header from './Header'
-import { useStyles } from './Book.styles'
 import InvoicesTable from './InvoicesTable'
 import SearchForm from './SearchForm'
-import { useInvoices } from '../hooks/useInvoices'
+import { useStyles } from './Book.styles'
 
-const Book = ({
-  invoices,
-  count
-}) => {
+const Book = () => {
   const { year } = useParams()
 
   const classes = useStyles()
+
   const {
+    invoices,
+    count,
     filters,
     setFilters
   } = useInvoices(year)
@@ -33,11 +32,5 @@ const Book = ({
     </Page>
   )
 }
-Book.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  count: PropTypes.number
-}
 
-Book.displayName = 'Book'
-export const story = Book
 export default Book

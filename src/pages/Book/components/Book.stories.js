@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import { DatePickerProvider, ReduxProvider } from 'story'
 import RoutesWrapper from 'story/RoutesWrapper'
-import { story as Book } from './Book'
+import Book from './Book'
 
 export default {
   title: 'Rutas/Libro',

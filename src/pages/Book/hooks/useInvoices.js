@@ -1,49 +1,37 @@
 import { useEffect, useReducer } from 'react'
-import { useDispatch } from 'react-redux'
-
-import { useDebounce } from 'hooks'
-import { format } from 'utils'
-
+import useSWR from 'swr'
+import { API_INVOICES } from 'constants/paths'
+import { useDebounce, useNotifications } from 'hooks'
+import { format, objectToParams } from 'utils'
+import axios from 'axios'
 import { INITIAL_STATE } from '../constans'
-import { getInvoices } from '../modules/actions'
 
-export const useInvoices = year => {
-  const dispatch = useDispatch()
+export const useInvoices = (year) => {
   const [filters, setFilters] = useReducer(
     (oldstate, newState) => ({ ...oldstate, ...newState }),
     INITIAL_STATE
   )
+  const { dateInvoice, expenses, ...restFilters } = filters
+
+  const fetcher = (url) => axios.get(`${url}?year=${year}${objectToParams({
+    ...restFilters,
+    ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
+    ...(expenses && { expenses })
+  }, false)}`).then(res => res.data)
+
+  const { data, error, mutate } = useSWR(API_INVOICES, fetcher)
+  const { showError } = useNotifications()
   const debounce = useDebounce()
 
-  const _getData = () => {
-    const {
-      total,
-      dateInvoice,
-      numCheque,
-      nInvoice,
-      nameProvider,
-      expenses,
-      offset,
-      limit
-    } = filters
-    dispatch(getInvoices(year, {
-      ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
-      ...(total && { total }),
-      ...(numCheque && { numCheque }),
-      ...(nInvoice && { nInvoice }),
-      ...(nameProvider && { nameProvider }),
-      ...(expenses && { expenses }),
-      ...(offset && { offset }),
-      ...(limit && { limit })
-    }))
-  }
+  useEffect(() => {
+    if (error) {
+      showError(error.message)
+    }
+  }, [error, data])
 
   useEffect(() => {
-    if (year) debounce(_getData, 200)
+    if (year) debounce(() => mutate(), 200)
   }, [filters, year])
 
-  return {
-    filters,
-    setFilters
-  }
+  return { invoices: data?.invoices || [], count: data?.count || 0, isLoading: !data, filters, setFilters }
 }
