@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import { Container } from '@mui/material'
 import PropTypes from 'prop-types'
-import { useParams } from 'react-router'
 
 import { Page } from 'components'
 import BillingTable from './BillingTable'
@@ -10,15 +8,10 @@ import { useStyles } from './Billing.styles'
 
 const Billing = ({
   billing,
-  getBilling,
-  type
+  type,
+  year
 }) => {
   const classes = useStyles()
-  const { year } = useParams()
-
-  useEffect(() => {
-    getBilling(year)
-  }, [year])
 
   return (
     <Page className={classes.root} title={`Facturación ${type || ''} ${year}`}>
@@ -32,9 +25,8 @@ const Billing = ({
 }
 Billing.propTypes = {
   billing: PropTypes.array.isRequired,
-  getBilling: PropTypes.func.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
+  year: PropTypes.string
 }
 
-export const story = Billing
 export default Billing
