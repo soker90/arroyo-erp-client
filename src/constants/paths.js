@@ -7,3 +7,7 @@ export const API_CLIENTS = 'clients'
 export const API_INVOICES = 'invoices'
 export const API_BILLINGS = 'billings'
 export const API_BILLINGS_CLIENTS = 'client/invoices/billing'
+
+/* Deliver orders */
+export const API_DELIVERY_ORDERS = 'deliveryorders'
+export const API_DELIVERY_ORDERS_COUNT_FREE = `${API_DELIVERY_ORDERS}/countfree`

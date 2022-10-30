@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import RoutesWrapper from 'story/RoutesWrapper'
 import { ReduxProvider } from 'story'
-import { story as DeliveryOrders } from './DeliveryOrders'
+import DeliveryOrders from './DeliveryOrders'
 
 export default {
   title: 'Rutas/Informes/Albaranes',
