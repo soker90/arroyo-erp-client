@@ -63,7 +63,7 @@
     "@babel/core": "^7.19.3",
     "@faker-js/faker": "^7.6.0",
     "@testing-library/react": "^13.4.0",
-    "@vitejs/plugin-react": "^2.1.0",
+    "@vitejs/plugin-react": "^2.2.0",
     "@vitest/coverage-c8": "^0.24.4",
     "happy-dom": "^7.6.6",
     "msw": "^0.47.4",
