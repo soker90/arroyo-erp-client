@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 
 import { ReduxProvider, DatePickerProvider } from 'story'
 import RoutesWrapper from 'story/RoutesWrapper'
-import { story as ClientBook } from './ClientBook'
+import ClientBook from './ClientBook'
 
 export default {
   title: 'Rutas/Libro Cliente',

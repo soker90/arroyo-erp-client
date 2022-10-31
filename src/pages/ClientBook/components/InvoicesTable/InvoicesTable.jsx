@@ -10,7 +10,7 @@ import EuroIcon from '@mui/icons-material/Euro'
 import { useStyles } from './InvoicesTable.styles'
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal'
 
-const InvoicesTable = ({ invoices }) => {
+const InvoicesTable = ({ invoices, year }) => {
   const classes = useStyles()
   const [invoice, setInvoice] = useState(null)
 
@@ -65,13 +65,14 @@ const InvoicesTable = ({ invoices }) => {
           }
         ]}
       />
-      <ConfirmPaymentModal invoice={invoice} setShow={setInvoice} />
+      <ConfirmPaymentModal invoice={invoice} setShow={setInvoice} year={year} />
     </>
   )
 }
 
 InvoicesTable.propTypes = {
-  invoices: PropTypes.array.isRequired
+  invoices: PropTypes.array.isRequired,
+  year: PropTypes.string.isRequired
 }
 
 InvoicesTable.displayName = 'BillingTable'

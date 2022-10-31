@@ -3,7 +3,6 @@ import providers from 'modules/providers'
 import products from 'modules/products'
 
 import client from 'pages/Client/modules'
-import clientBook from 'pages/ClientBook/modules'
 import clientInvoice from 'pages/ClientInvoice/modules'
 import dashboard from 'pages/Dashboard/modules'
 import deliveryOrders from 'pages/DeliveryOrder/modules'
@@ -23,7 +22,6 @@ import account from './account'
 const rootReducer = combineReducers({
   account,
   client,
-  clientBook,
   clientInvoice,
   dashboard,
   deliveryOrders,

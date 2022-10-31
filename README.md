@@ -152,9 +152,10 @@ import { useEffect } from 'react'
 import { useNotifications } from 'hooks'
 
 export const useData = () => {
-  const { showError } = useNotifications()
+  const { showError, showSuccess } = useNotifications()
   
   sendError('Mi mensaje') // Envía un mensaje de error al usuario
+  showSuccess('Mi mensaje') // Envía un mensaje satisfactorio al usuario
   
   
 }

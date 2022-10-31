@@ -1,12 +1,12 @@
 import { billingsHandlers } from './billings'
-import { clientBillingsHandlers } from './clientBillings'
+import { clientInvoicesHandlers } from './clientInvoices'
 import { clientsHandlers } from './clients'
 import { deliveryOrdersHandlers } from './deliveryorders'
 import { invoicesHandlers } from './invoices'
 
 export const handlers = [
   ...billingsHandlers,
-  ...clientBillingsHandlers,
+  ...clientInvoicesHandlers,
   ...clientsHandlers,
   ...deliveryOrdersHandlers,
   ...invoicesHandlers
