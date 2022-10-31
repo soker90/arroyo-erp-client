@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { rangeFill } from 'utils'
-import { CONCEPT, TYPE_CLIENT_PAYMENT } from '../../constants'
+import { TYPE_CLIENT_PAYMENT } from '../../constants'
 
 const generateClientBilling = () => ({
   _id: faker.database.mongodbObjectId(),
