@@ -1,20 +1,16 @@
-import { useEffect } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { Page } from 'components'
+import { useDOCountFree } from '../hooks'
 import DeliveryOrdersTable from './DeliveryOrdersTable'
 import Header from './Header'
 import { useStyles } from './DeliveryOrders.styles'
 
-const DeliveryOrders = ({ doCount, getDeliveryOrderCount }) => {
+const DeliveryOrders = () => {
   const classes = useStyles()
   const { year } = useParams()
-
-  useEffect(() => {
-    getDeliveryOrderCount(year)
-  }, [year])
+  const { doCount } = useDOCountFree(year)
 
   return (
     <Page className={classes.root} title={`Albaranes ${year}`}>
@@ -26,11 +22,5 @@ const DeliveryOrders = ({ doCount, getDeliveryOrderCount }) => {
     </Page>
   )
 }
-DeliveryOrders.propTypes = {
-  doCount: PropTypes.array.isRequired,
-  getDeliveryOrderCount: PropTypes.func.isRequired
-}
 
-DeliveryOrders.displayName = 'DeliveryOrders'
-export const story = DeliveryOrders
 export default DeliveryOrders
