@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { ModalGrid } from 'components/Modals'
 import { DatePickerForm, SelectForm } from 'components/Forms'
-// import { TYPE_PAYMENT } from 'constants/invoices';
 import { format } from 'utils'
 import { TYPE_CLIENT_PAYMENT } from '../../../../constants'
+import { useConfirmClientPayment } from '../../hooks'
 
 const ConfirmClientPaymentModal = ({
-  confirmClientPayment,
   invoice,
   setShow,
+  year,
   ...rest
 }) => {
   const [paymentDate, setPaymentDate] = useState(null)
   const [paymentType, setPaymentType] = useState('?')
+  const { confirmPayment } = useConfirmClientPayment(year)
 
   useEffect(() => {
     if (invoice) {
@@ -27,7 +28,7 @@ const ConfirmClientPaymentModal = ({
   }
 
   const _handleSend = () => {
-    confirmClientPayment(invoice._id, {
+    confirmPayment(invoice._id, {
       paymentDate: format.dateToSend(paymentDate),
       paymentType
     }, _close)
@@ -99,9 +100,7 @@ const ConfirmClientPaymentModal = ({
 ConfirmClientPaymentModal.propTypes = {
   setShow: PropTypes.func,
   invoice: PropTypes.object,
-  confirmClientPayment: PropTypes.func.isRequired
+  year: PropTypes.string.isRequired
 }
 
-ConfirmClientPaymentModal.displayName = 'ConfirmClientPaymentModal'
-export const story = ConfirmClientPaymentModal
 export default ConfirmClientPaymentModal

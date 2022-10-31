@@ -17,7 +17,7 @@ const BannerPaid = ({
 
 BannerPaid.propTypes = {
   className: PropTypes.string,
-  paid: PropTypes.bool.isRequired,
+  paid: PropTypes.bool,
   paymentDate: PropTypes.number,
   paymentType: PropTypes.string
 }

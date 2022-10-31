@@ -1,38 +1,25 @@
-import { useEffect } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { Page } from 'components'
 import Header from './Header'
 import { useStyles } from './ClientBook.styles'
 import InvoicesTable from './InvoicesTable'
+import { useClientInvoices } from '../hooks'
 
-const ClientBook = ({
-  invoices,
-  getClientInvoices
-}) => {
+const ClientBook = () => {
   const classes = useStyles()
   const { year } = useParams()
-
-  useEffect(() => {
-    getClientInvoices(year)
-  }, [year])
+  const { invoices } = useClientInvoices(year)
 
   return (
     <Page className={classes.root} title='Libro'>
       <Container maxWidth={false}>
         <Header year={Number(year)} />
-        <InvoicesTable invoices={invoices} />
+        <InvoicesTable invoices={invoices} year={year} />
       </Container>
     </Page>
   )
 }
-ClientBook.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  getClientInvoices: PropTypes.func.isRequired
-}
 
-ClientBook.displayName = 'ClientBook'
-export const story = ClientBook
 export default ClientBook
