@@ -65,7 +65,7 @@
     "@testing-library/react": "^13.4.0",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.3",
-    "happy-dom": "^7.6.0",
+    "happy-dom": "^7.6.6",
     "msw": "^0.47.4",
     "prettier": "^2.7.1",
     "standard": "^17.0.0",
