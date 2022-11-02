@@ -6,16 +6,16 @@ import { useNavigate } from 'react-router'
 
 import { Header } from 'components'
 
-const HeaderProvider = ({
+const HeaderClient = ({
   title,
   onExpand,
   expanded,
   clientId,
-  createClientInvoice
+  createInvoice
 }) => {
   const navigate = useNavigate()
   const _handleClickNewInvoice = () => {
-    createClientInvoice(clientId, id => {
+    createInvoice(clientId, id => {
       navigate(`/app/clientes/factura/${id}`)
     })
   }
@@ -46,15 +46,12 @@ const HeaderProvider = ({
   )
 }
 
-HeaderProvider.propTypes = {
+HeaderClient.propTypes = {
   title: PropTypes.string,
   onExpand: PropTypes.func.isRequired,
   expanded: PropTypes.bool.isRequired,
-  createClientInvoice: PropTypes.func.isRequired,
+  createInvoice: PropTypes.func.isRequired,
   clientId: PropTypes.string
 }
 
-HeaderProvider.displayName = 'Client-Header'
-
-export const story = HeaderProvider
-export default HeaderProvider
+export default HeaderClient
