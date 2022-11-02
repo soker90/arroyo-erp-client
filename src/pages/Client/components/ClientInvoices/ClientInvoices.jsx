@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import EditIcon from '@mui/icons-material/Edit'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 import {
   LoadingScreen, TableMaterial, TextEuro
@@ -8,13 +8,17 @@ import {
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
 import LabelPending from 'components/LabelPending'
+import { useClientInvoices } from '../../hooks'
 
 const ClientInvoices = ({
-  invoices,
-  idClient,
-  count,
-  getClientInvoices
+  idClient
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const { invoices, count } = useClientInvoices({
+    client: idClient,
+    offset: searchParams.get('offset'),
+    limit: searchParams.get('limit')
+  })
   if (!idClient) return <LoadingScreen />
 
   return idClient && (
@@ -49,19 +53,14 @@ const ClientInvoices = ({
         offset,
         limit
       }) => {
-        getClientInvoices(idClient, offset, limit)
+        setSearchParams({ offset, limit })
       }}
     />
   )
 }
 
 ClientInvoices.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  idClient: PropTypes.string,
-  count: PropTypes.number.isRequired,
-  getClientInvoices: PropTypes.func.isRequired
+  idClient: PropTypes.string
 }
-
-ClientInvoices.displayName = 'ProviderInvoices'
 
 export default ClientInvoices

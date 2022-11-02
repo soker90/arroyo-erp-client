@@ -10,13 +10,11 @@ import ClientInvoices from './ClientInvoices'
 import { useClient } from '../hooks'
 import { useStyles } from './Client.styles'
 
-const Client = ({
-  getClientInvoices
-}) => {
+const Client = () => {
   const classes = useStyles()
   const { id } = useParams()
   const [expand, setExpand] = useState(false)
-  const { client, invoices, count, createInvoice } = useClient(id)
+  const { client, createInvoice } = useClient(id)
 
   /**
    * Expande o contrae la información
@@ -47,9 +45,6 @@ const Client = ({
         <Box py={3} pb={6}>
           <ClientInvoices
             idClient={id}
-            invoices={invoices}
-            count={count}
-            getClientInvoices={getClientInvoices}
           />
         </Box>
 
@@ -58,14 +53,4 @@ const Client = ({
   )
 }
 
-Client.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  count: PropTypes.number.isRequired,
-  getClientInvoices: PropTypes.func.isRequired,
-  createClientInvoice: PropTypes.func.isRequired
-}
-
-Client.displayName = 'Client'
-
-export const story = Client
 export default Client

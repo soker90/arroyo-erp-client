@@ -5,13 +5,12 @@ import { useNotifications } from 'hooks'
 import { createClientInvoice } from 'services/apiService'
 
 const DEFAULT_RESPONSE = {
-  client: {},
-  invoices: [],
-  count: 0
+  client: {}
+
 }
 
 export const useClient = (id) => {
-  const { data, error, mutate } = useSWR(() => `${API_CLIENTS}/${id}`)
+  const { data, error } = useSWR(() => `${API_CLIENTS}/${id}`)
   const { showError } = useNotifications()
 
   useEffect(() => {
@@ -29,9 +28,5 @@ export const useClient = (id) => {
       })
   }
 
-  const getInvoices = () => {
-    /// mutate with pages
-
-  }
   return { ...(id ? data : DEFAULT_RESPONSE), isLoading: !data, createInvoice }
 }
