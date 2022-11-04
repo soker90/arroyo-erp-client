@@ -46,3 +46,28 @@ export const clientInvoicesResponse = () => rangeFill(faker.datatype.number({
   max: 40,
   min: 2
 }), generateClientInvoice)
+
+const generateClientInvoiceShort = () => {
+  const date = faker.date.past()
+  return {
+    _id: faker.database.mongodbObjectId(),
+    date: date.getTime(),
+    total: faker.datatype.number(),
+    nInvoice: `${date.toLocaleDateString('es-ES', { year: '2-digit' })}`
+  }
+}
+
+export const clientInvoicesShortResponse = ({
+  offset,
+  limit
+}) => {
+  const invoices = rangeFill(faker.datatype.number({
+    max: 60,
+    min: offset + 2
+  }), generateClientInvoiceShort)
+
+  return ({
+    invoices: window.structuredClone(invoices).slice(offset, offset + limit),
+    count: invoices.length
+  })
+}

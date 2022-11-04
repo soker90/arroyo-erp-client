@@ -14,7 +14,11 @@ const Client = () => {
   const classes = useStyles()
   const { id } = useParams()
   const [expand, setExpand] = useState(false)
-  const { client, createInvoice } = useClient(id)
+  const {
+    client,
+    createInvoice,
+    editClient
+  } = useClient(id)
 
   /**
    * Expande o contrae la información
@@ -24,7 +28,7 @@ const Client = () => {
     setExpand(!expand)
   }
 
-  if (!id) return <LoadingScreen />
+  if (!id || !client) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={client.name}>
@@ -40,6 +44,7 @@ const Client = () => {
         <ClientExpandedInfo
           expanded={expand}
           client={client}
+          editClient={editClient}
         />
 
         <Box py={3} pb={6}>

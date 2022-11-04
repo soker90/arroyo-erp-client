@@ -16,7 +16,9 @@ import { EditClientModal } from '../../modals'
 import { useStyles } from './ClientExpandedInfo.styles'
 
 const ClientExpandedInfo = ({
-  expanded, client
+  expanded,
+  client,
+  editClient
 }) => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
@@ -54,16 +56,18 @@ const ClientExpandedInfo = ({
           <ItemGroupsCard items={adapterClientInfo(client)} groups={3} />
         </CardContent>
       </Card>
-      <EditClientModal show={showModal} client={client} close={_closeModal} />
+      <EditClientModal
+        show={showModal} client={client} close={_closeModal}
+        editClient={editClient}
+      />
     </>
   )
 }
 
 ClientExpandedInfo.propTypes = {
   expanded: PropTypes.bool.isRequired,
-  client: PropTypes.object
+  client: PropTypes.object,
+  editClient: PropTypes.func.isRequired
 }
 
-ClientExpandedInfo.displayName = 'ProviderExpandedInfo'
-export const story = ClientExpandedInfo
 export default ClientExpandedInfo
