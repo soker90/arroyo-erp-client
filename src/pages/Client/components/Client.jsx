@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Box, Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { LoadingScreen, Page } from 'components'
