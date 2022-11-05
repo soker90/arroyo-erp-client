@@ -14,3 +14,5 @@ export const createClientInvoice = (clientId) => axios.post(API_CLIENT_INVOICES,
 export const confirmClientPayment = (id, data) => {
   return axios.patch(`client/invoices/payments/${id}`, data)
 }
+
+export const confirmClientInvoice = (id) => axios.patch(`${API_CLIENT_INVOICES}/${id}/confirm`)

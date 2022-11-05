@@ -9,36 +9,35 @@ import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
 import DeliveryOrderInvoice from './DeliveryOrderInvoice'
 import BannerPaid from '../../../components/BannerPaid'
+import { useClientInvoice } from '../hooks'
 
 const ClientInvoice = ({
-  getClientInvoice,
-  _id,
-  nameClient,
-  client,
   resetClientInvoiceState,
-  date,
-  total,
-  taxBase,
-  iva,
   updateDataClientInvoice,
   createDeliveryOrder,
-  deliveryOrders,
-  nInvoice,
   updateDOClientInvoice,
   deleteDOClientInvoice,
-  getProducts,
-  paid,
-  paymentType,
-  paymentDate
+  getProducts
 }) => {
   const { idInvoice } = useParams()
   const classes = useStyles()
   const lastDORef = useRef(null)
   const isDOCreated = useRef(false)
-
-  useEffect(() => {
-    if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice)
-  }, [idInvoice])
+  const {
+    _id,
+    nameClient,
+    client,
+    date,
+    deliveryOrders,
+    iva,
+    taxBase,
+    total,
+    nInvoice,
+    paid,
+    paymentType,
+    paymentDate,
+    confirmInvoice
+  } = useClientInvoice(idInvoice)
 
   useEffect(() => {
     getProducts()
@@ -72,6 +71,7 @@ const ClientInvoice = ({
           createDeliveryOrder={createDOAndRedirect}
           id={idInvoice}
           nInvoice={nInvoice}
+          confirmInvoice={confirmInvoice}
         />
 
         {!!nInvoice && (
@@ -111,27 +111,12 @@ const ClientInvoice = ({
 }
 
 ClientInvoice.propTypes = {
-  getClientInvoice: PropTypes.func.isRequired,
-  _id: PropTypes.string,
-  nameClient: PropTypes.string,
-  client: PropTypes.string,
   resetClientInvoiceState: PropTypes.func.isRequired,
-  date: PropTypes.number,
   updateDataClientInvoice: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
-  deliveryOrders: PropTypes.array.isRequired,
-  nInvoice: PropTypes.string,
   updateDOClientInvoice: PropTypes.func.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired,
-  taxBase: PropTypes.number.isRequired,
-  iva: PropTypes.number.isRequired,
-  getProducts: PropTypes.func.isRequired,
-  paid: PropTypes.bool,
-  paymentType: PropTypes.string,
-  paymentDate: PropTypes.number
+  getProducts: PropTypes.func.isRequired
 }
 
-ClientInvoice.displayName = 'ClientInvoice'
-export const story = ClientInvoice
 export default ClientInvoice

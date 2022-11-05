@@ -3,17 +3,13 @@ import ClientInvoice from '../components/ClientInvoice'
 import {
   createDeliveryOrder,
   deleteDOClientInvoice,
-  getClientInvoice,
   resetClientInvoiceState,
   updateDataClientInvoice,
   updateDOClientInvoice
 } from '../modules/actions'
 import { getProducts } from '../../Products/modules/actions'
 
-const mapStateToProps = ({ clientInvoice }) => clientInvoice
-
 const mapDispatchToProps = {
-  getClientInvoice,
   resetClientInvoiceState,
   updateDataClientInvoice,
   createDeliveryOrder,
@@ -23,6 +19,6 @@ const mapDispatchToProps = {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(ClientInvoice)
