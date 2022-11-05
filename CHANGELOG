@@ -1,5 +1,8 @@
-# [] - xx/10/2022
+# [3.0.0] - xx/11/2022
   - Migración de CRA a vite y vitest
+  - Eliminado redux
+  - Las peticiones get ahora se realizan con swr
+  - Añadidos mocks para desarrollo
 
 # [2.6.3] - 10/10/2022
   - Corregida errata de "Basuras semestre"

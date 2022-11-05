@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import ClientModal, { INITIAL_STATE } from 'components/Modals/ClientModal'
 
 const EditClientModal = ({
-  show, close, editClient, client
+  show,
+  close,
+  editClient,
+  client
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -18,14 +21,14 @@ const EditClientModal = ({
       })
     }
     // eslint-disable-next-line
-  }, [show]);
+  }, [show])
 
   /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = () => {
-    editClient(client._id, state, close)
+    editClient(state, close)
   }
 
   return (
@@ -46,7 +49,5 @@ EditClientModal.propTypes = {
   editClient: PropTypes.func.isRequired,
   client: PropTypes.object.isRequired
 }
-
-EditClientModal.displayName = 'EditClientModal'
 
 export default EditClientModal

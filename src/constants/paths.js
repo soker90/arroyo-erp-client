@@ -7,6 +7,7 @@ export const API_CLIENTS = 'clients'
 export const API_INVOICES = 'invoices'
 export const API_BILLINGS = 'billings'
 export const API_CLIENT_INVOICES = 'client/invoices'
+export const API_CLIENT_INVOICES_SHORT = `${API_CLIENT_INVOICES}/short`
 export const API_BILLINGS_CLIENTS = `${API_CLIENT_INVOICES}/billing`
 
 /* Deliver orders */

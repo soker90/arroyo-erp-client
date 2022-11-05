@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Box, Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { LoadingScreen, Page } from 'components'
 import ClientExpandedInfo from './ClientExpandedInfo'
 import Header from './Header'
 import ClientInvoices from './ClientInvoices'
+import { useClient } from '../hooks'
 import { useStyles } from './Client.styles'
 
-const Client = ({
-  client,
-  getClient,
-  invoices,
-  count,
-  getClientInvoices,
-  createClientInvoice
-}) => {
+const Client = () => {
   const classes = useStyles()
   const { id } = useParams()
   const [expand, setExpand] = useState(false)
-
-  useEffect(() => {
-    if (id) getClient(id)
-  }, [id, getClient])
+  const {
+    client,
+    createInvoice,
+    editClient
+  } = useClient(id)
 
   /**
    * Expande o contrae la información
@@ -33,7 +27,7 @@ const Client = ({
     setExpand(!expand)
   }
 
-  if (!id) return <LoadingScreen />
+  if (!id || !client) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={client.name}>
@@ -43,20 +37,18 @@ const Client = ({
           onExpand={_toggleExpand}
           title={client?.name}
           clientId={id}
-          createClientInvoice={createClientInvoice}
+          createInvoice={createInvoice}
         />
 
         <ClientExpandedInfo
           expanded={expand}
           client={client}
+          editClient={editClient}
         />
 
         <Box py={3} pb={6}>
           <ClientInvoices
             idClient={id}
-            invoices={invoices}
-            count={count}
-            getClientInvoices={getClientInvoices}
           />
         </Box>
 
@@ -65,16 +57,4 @@ const Client = ({
   )
 }
 
-Client.propTypes = {
-  client: PropTypes.object.isRequired,
-  getClient: PropTypes.func.isRequired,
-  invoices: PropTypes.array.isRequired,
-  count: PropTypes.number.isRequired,
-  getClientInvoices: PropTypes.func.isRequired,
-  createClientInvoice: PropTypes.func.isRequired
-}
-
-Client.displayName = 'Client'
-
-export const story = Client
 export default Client
