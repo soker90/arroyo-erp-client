@@ -15,8 +15,7 @@ const ClientInvoice = ({
   resetClientInvoiceState,
   createDeliveryOrder,
   updateDOClientInvoice,
-  deleteDOClientInvoice,
-  getProducts
+  deleteDOClientInvoice
 }) => {
   const { idInvoice } = useParams()
   const classes = useStyles()
@@ -38,10 +37,6 @@ const ClientInvoice = ({
     confirmInvoice,
     updateDataClientInvoice
   } = useClientInvoice(idInvoice)
-
-  useEffect(() => {
-    getProducts()
-  }, [])
 
   useEffect(() => () => resetClientInvoiceState(), [])
 
@@ -114,8 +109,7 @@ ClientInvoice.propTypes = {
   resetClientInvoiceState: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   updateDOClientInvoice: PropTypes.func.isRequired,
-  deleteDOClientInvoice: PropTypes.func.isRequired,
-  getProducts: PropTypes.func.isRequired
+  deleteDOClientInvoice: PropTypes.func.isRequired
 }
 
 export default ClientInvoice
