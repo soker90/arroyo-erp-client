@@ -11,8 +11,10 @@ export const editClientApi = (clientId, data) => axios.put(`${API_CLIENTS}/${cli
  */
 export const createClientInvoice = (clientId) => axios.post(API_CLIENT_INVOICES, { client: clientId }).then(({ data }) => data)
 
+export const updateDataClientInvoiceApi = (id, data) => axios.patch(`${API_CLIENT_INVOICES}/${id}`, data).then(({ data }) => data)
+
 export const confirmClientPayment = (id, data) => {
   return axios.patch(`client/invoices/payments/${id}`, data)
 }
 
-export const confirmClientInvoice = (id) => axios.patch(`${API_CLIENT_INVOICES}/${id}/confirm`)
+export const confirmClientInvoice = (id) => axios.patch(`${API_CLIENT_INVOICES}/${id}/confirm`).then(({ data }) => data)

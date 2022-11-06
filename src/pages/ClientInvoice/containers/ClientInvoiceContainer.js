@@ -4,14 +4,12 @@ import {
   createDeliveryOrder,
   deleteDOClientInvoice,
   resetClientInvoiceState,
-  updateDataClientInvoice,
   updateDOClientInvoice
 } from '../modules/actions'
 import { getProducts } from '../../Products/modules/actions'
 
 const mapDispatchToProps = {
   resetClientInvoiceState,
-  updateDataClientInvoice,
   createDeliveryOrder,
   updateDOClientInvoice,
   deleteDOClientInvoice,

@@ -12,12 +12,12 @@ import {
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
 
-import { ItemCard } from 'components'
+import { EditTotalsModal, ItemCard } from 'components'
 import { itemsCard } from './utils'
-import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal'
 
 const ClientInvoiceTotals = ({
   isEditable,
+  updateData,
   ...props
 }) => {
   const [showModal, setShowModal] = useState(false)
@@ -65,7 +65,10 @@ const ClientInvoiceTotals = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditClientInvoiceTotalsModal show={showModal} setShow={setShowModal} />
+      <EditTotalsModal
+        show={showModal} setShow={setShowModal} {...props}
+        update={(id, data, _close) => updateData(data, _close)}
+      />
     </>
   )
 }
@@ -74,9 +77,8 @@ ClientInvoiceTotals.propTypes = {
   total: PropTypes.number.isRequired,
   taxBase: PropTypes.number.isRequired,
   iva: PropTypes.number.isRequired,
-  isEditable: PropTypes.bool.isRequired
+  isEditable: PropTypes.bool.isRequired,
+  updateData: PropTypes.func.isRequired
 }
 
-ClientInvoiceTotals.displayName = 'DeliveryOrderTotals'
-export const story = ClientInvoiceTotals
 export default ClientInvoiceTotals

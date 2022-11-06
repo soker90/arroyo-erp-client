@@ -127,9 +127,8 @@ EditTotalsModalView.propTypes = {
   re: PropTypes.number,
   rate: PropTypes.number,
   taxBase: PropTypes.number,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   update: PropTypes.func.isRequired
 }
 
-EditTotalsModalView.displayName = 'EditInvoiceDataModalView'
 export default EditTotalsModalView

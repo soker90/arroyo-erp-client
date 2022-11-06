@@ -13,7 +13,6 @@ import { useClientInvoice } from '../hooks'
 
 const ClientInvoice = ({
   resetClientInvoiceState,
-  updateDataClientInvoice,
   createDeliveryOrder,
   updateDOClientInvoice,
   deleteDOClientInvoice,
@@ -36,7 +35,8 @@ const ClientInvoice = ({
     paid,
     paymentType,
     paymentDate,
-    confirmInvoice
+    confirmInvoice,
+    updateDataClientInvoice
   } = useClientInvoice(idInvoice)
 
   useEffect(() => {
@@ -112,7 +112,6 @@ const ClientInvoice = ({
 
 ClientInvoice.propTypes = {
   resetClientInvoiceState: PropTypes.func.isRequired,
-  updateDataClientInvoice: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   updateDOClientInvoice: PropTypes.func.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,

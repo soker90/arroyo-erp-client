@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import useSWR from 'swr'
 import { API_CLIENT_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
-import { confirmClientInvoice } from 'services/apiService'
+import { confirmClientInvoice, updateDataClientInvoiceApi } from 'services/apiService'
 
 const DEFAULT_RESPONSE = {}
 
@@ -28,7 +28,26 @@ export const useClientInvoice = (id) => {
       .then(({ nInvoice }) => {
         showSuccess('Factura confirmada')
         callback()
-        return mutate({ ...data, nInvoice })
+        return mutate({
+          ...data,
+          nInvoice
+        })
+      })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
+  const updateDataClientInvoice = (data, callback) => {
+    updateDataClientInvoiceApi(id, data)
+      .then(({ date, totals }) => {
+        showSuccess('La factura se ha actualizado correctamente')
+        callback?.()
+        return mutate({
+          ...data,
+          ...(date && { date }),
+          ...(totals && { totals })
+        })
       })
       .catch((error) => {
         showError(error.message)
@@ -38,6 +57,7 @@ export const useClientInvoice = (id) => {
   return {
     ...(id ? data : DEFAULT_RESPONSE),
     isLoading: !data,
-    confirmInvoice
+    confirmInvoice,
+    updateDataClientInvoice
   }
 }

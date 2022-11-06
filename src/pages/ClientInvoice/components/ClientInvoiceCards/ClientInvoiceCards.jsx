@@ -33,6 +33,7 @@ const ClientInvoiceCards = ({
           taxBase={taxBase}
           iva={iva}
           isEditable={!nInvoice}
+          updateData={updateDataClientInvoice}
         />
       </Grid>
     </Grid>
