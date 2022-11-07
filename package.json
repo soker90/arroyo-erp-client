@@ -55,7 +55,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.1",
+    "redux-thunk": "^2.4.2",
     "swr": "^1.2.1",
     "uniqid": "^5.4.0"
   },
