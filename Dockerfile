@@ -6,7 +6,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json package-lock.json ./
 
-RUN npm ci --silent
+RUN npm i --legacy-peer-deps --silent
 
 COPY . ./
 
