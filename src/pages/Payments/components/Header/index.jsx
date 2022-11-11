@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import VerticalAlignCenterIcon from '@mui/icons-material/VerticalAlignCenter'
+import GetAppIcon from '@mui/icons-material/GetApp'
 
 import { Header } from 'components'
 import MergePaymentModal from '../../modals/MergePaymentModal'
+import { downloadFile, format } from '../../../../utils'
 
 const HeaderPayments = ({ selected }) => {
   const [showModal, setShowModal] = useState(false)
@@ -19,6 +21,13 @@ const HeaderPayments = ({ selected }) => {
       <Header
         title='Pagos'
         buttons={[
+          {
+            Icon: GetAppIcon,
+            label: 'Descargar',
+            onClick: () => {
+              downloadFile('payments/export', `Pagos pendientes ${format.date(Date.now())}.ods`)
+            }
+          },
           {
             Icon: VerticalAlignCenterIcon,
             label: 'Fusionar',
