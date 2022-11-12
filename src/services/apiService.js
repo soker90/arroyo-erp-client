@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { API_CLIENT_INVOICES, API_CLIENTS } from 'constants/paths'
 import { format } from '../utils'
-import invoice from '../pages/Invoice/components/Invoice'
 
 export const createClient = (client) => {
   return axios.post(API_CLIENTS, client)
