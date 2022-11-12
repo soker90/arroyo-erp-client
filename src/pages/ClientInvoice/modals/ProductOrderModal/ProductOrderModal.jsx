@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   useEffect, useReducer, useRef
 } from 'react'
@@ -56,7 +55,7 @@ const ProductOrderModal = ({
    */
   const _handleSubmit = (event, callback) => {
     try {
-      const model = {
+      const data = {
         name: state.name,
         price: Number(state.price),
         weight: Number(state.weight),
@@ -65,8 +64,7 @@ const ProductOrderModal = ({
       };
 
       (typeof show === 'boolean' ? createProduct : updateProduct)({
-        model,
-        invoice,
+        data,
         deliveryOrder,
         product: show?._id
       }, (callback || close))
@@ -162,7 +160,7 @@ ProductOrderModal.propTypes = {
   createProduct: PropTypes.func.isRequired,
   invoice: PropTypes.string.isRequired,
   deliveryOrder: PropTypes.string.isRequired,
-  product: PropTypes.object,
+  product: PropTypes.object
 }
 
 ProductOrderModal.displayName = 'ProductOrderModal'

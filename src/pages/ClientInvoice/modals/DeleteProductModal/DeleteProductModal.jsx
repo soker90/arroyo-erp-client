@@ -51,6 +51,4 @@ DeleteProductModal.propTypes = {
   deleteId: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 }
 
-DeleteProductModal.displayName = 'DeleteProductModal'
-export const story = DeleteProductModal
 export default DeleteProductModal

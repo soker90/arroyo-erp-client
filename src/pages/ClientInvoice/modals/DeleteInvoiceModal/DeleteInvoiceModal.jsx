@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router'
 
 const DeleteInvoiceModal = ({
   deleteClientInvoice,
-  id,
   setShow,
   client,
   ...rest
@@ -16,10 +15,9 @@ const DeleteInvoiceModal = ({
   }, [setShow])
 
   const _handleSend = () => {
-    deleteClientInvoice(id, () => {
+    deleteClientInvoice(() => {
       navigate(`/app/clientes/${client}`, { replace: true })
     })
-    _close()
   }
 
   return (
@@ -48,7 +46,6 @@ const DeleteInvoiceModal = ({
 
 DeleteInvoiceModal.propTypes = {
   setShow: PropTypes.func,
-  id: PropTypes.string,
   deleteClientInvoice: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   client: PropTypes.string.isRequired

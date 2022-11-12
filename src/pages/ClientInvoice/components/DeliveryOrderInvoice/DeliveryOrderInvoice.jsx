@@ -20,7 +20,10 @@ const DeliveryOrderInvoice = ({
   updateDOClientInvoice,
   deleteDOClientInvoice,
   id,
-  refHeader
+  refHeader,
+  deleteProduct,
+  createProduct,
+  updateProduct
 }) => {
   const classes = useStyles()
   const [date, setDate] = useState(deliveryOrder.date)
@@ -41,20 +44,19 @@ const DeliveryOrderInvoice = ({
   /**
    *
    * Handle change picker
-   * @param {Date} date
+   * @param {Date} newDate
    * @private
    */
   const _handleChangePicker = newDate => {
     setDate(newDate)
     updateDOClientInvoice({
-      id,
       deliveryOrderId: deliveryOrder._id,
       date: newDate
     })
   }
 
   const _handleDeleteClick = () => {
-    deleteDOClientInvoice(id, deliveryOrder._id)
+    deleteDOClientInvoice(deliveryOrder._id)
   }
 
   const _handleUpdateClick = productData => {
@@ -130,12 +132,15 @@ const DeliveryOrderInvoice = ({
         deliveryOrder={deliveryOrder._id}
         show={showProduct}
         close={_closeModal}
+        createProduct={createProduct}
+        updateProduct={updateProduct}
       />
       <DeleteProductModal
         invoice={id}
         deliveryOrder={deliveryOrder._id}
         deleteId={deleteId}
         close={_closeDelete}
+        deleteProduct={deleteProduct}
       />
     </>
   )
@@ -147,9 +152,10 @@ DeliveryOrderInvoice.propTypes = {
   updateDOClientInvoice: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   deleteDOClientInvoice: PropTypes.func.isRequired,
-  refHeader: PropTypes.any
+  refHeader: PropTypes.any,
+  deleteProduct: PropTypes.func.isRequired,
+  createProduct: PropTypes.func.isRequired,
+  updateProduct: PropTypes.func.isRequired
 }
-
-DeliveryOrderInvoice.displayName = 'ClientInvoiceCards'
 
 export default DeliveryOrderInvoice

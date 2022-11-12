@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
@@ -11,12 +10,7 @@ import DeliveryOrderInvoice from './DeliveryOrderInvoice'
 import BannerPaid from '../../../components/BannerPaid'
 import { useClientInvoice } from '../hooks'
 
-const ClientInvoice = ({
-  resetClientInvoiceState,
-  createDeliveryOrder,
-  updateDOClientInvoice,
-  deleteDOClientInvoice
-}) => {
+const ClientInvoice = () => {
   const { idInvoice } = useParams()
   const classes = useStyles()
   const lastDORef = useRef(null)
@@ -35,10 +29,15 @@ const ClientInvoice = ({
     paymentType,
     paymentDate,
     confirmInvoice,
-    updateDataClientInvoice
+    updateDataClientInvoice,
+    deleteDeliveryOrder,
+    createDeliveryOrder,
+    updateDeliveryOrder,
+    deleteClientInvoice,
+    deleteProduct,
+    createProduct,
+    updateProduct
   } = useClientInvoice(idInvoice)
-
-  useEffect(() => () => resetClientInvoiceState(), [])
 
   useEffect(() => {
     if (isDOCreated?.current) {
@@ -67,6 +66,7 @@ const ClientInvoice = ({
           id={idInvoice}
           nInvoice={nInvoice}
           confirmInvoice={confirmInvoice}
+          deleteClientInvoice={deleteClientInvoice}
         />
 
         {!!nInvoice && (
@@ -93,23 +93,19 @@ const ClientInvoice = ({
             key={deliveryOrder._id}
             deliveryOrder={deliveryOrder}
             isEditable={!nInvoice}
-            updateDOClientInvoice={updateDOClientInvoice}
-            deleteDOClientInvoice={deleteDOClientInvoice}
+            updateDOClientInvoice={updateDeliveryOrder}
+            deleteDOClientInvoice={deleteDeliveryOrder}
             id={_id}
             refHeader={_isLastDO(index) ? lastDORef : null}
+            deleteProduct={deleteProduct}
+            createProduct={createProduct}
+            updateProduct={updateProduct}
           />
         ))}
 
       </Container>
     </Page>
   )
-}
-
-ClientInvoice.propTypes = {
-  resetClientInvoiceState: PropTypes.func.isRequired,
-  createDeliveryOrder: PropTypes.func.isRequired,
-  updateDOClientInvoice: PropTypes.func.isRequired,
-  deleteDOClientInvoice: PropTypes.func.isRequired
 }
 
 export default ClientInvoice

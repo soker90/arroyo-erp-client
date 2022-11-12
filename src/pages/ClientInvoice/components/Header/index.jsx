@@ -10,7 +10,13 @@ import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal'
 import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal'
 
 const HeaderClientInvoice = ({
-  client, nameClient, nInvoice, createDeliveryOrder, id, confirmInvoice
+  client,
+  nameClient,
+  nInvoice,
+  createDeliveryOrder,
+  id,
+  confirmInvoice,
+  deleteClientInvoice
 }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -70,7 +76,10 @@ const HeaderClientInvoice = ({
         show={showConfirmModal} setShow={setShowConfirmModal} id={id}
         confirmInvoice={confirmInvoice}
       />
-      <DeleteInvoiceModal show={showDeleteModal} setShow={setShowDeleteModal} />
+      <DeleteInvoiceModal
+        show={showDeleteModal} setShow={setShowDeleteModal}
+        deleteClientInvoice={deleteClientInvoice} client={client}
+      />
     </>
   )
 }
@@ -81,7 +90,8 @@ HeaderClientInvoice.propTypes = {
   nInvoice: PropTypes.string,
   createDeliveryOrder: PropTypes.func.isRequired,
   id: PropTypes.string,
-  confirmInvoice: PropTypes.func.isRequired
+  confirmInvoice: PropTypes.func.isRequired,
+  deleteClientInvoice: PropTypes.func.isRequired
 }
 
 export default HeaderClientInvoice

@@ -74,9 +74,9 @@ const ClientInvoiceTotals = ({
 }
 
 ClientInvoiceTotals.propTypes = {
-  total: PropTypes.number.isRequired,
-  taxBase: PropTypes.number.isRequired,
-  iva: PropTypes.number.isRequired,
+  total: PropTypes.number,
+  taxBase: PropTypes.number,
+  iva: PropTypes.number,
   isEditable: PropTypes.bool.isRequired,
   updateData: PropTypes.func.isRequired
 }
