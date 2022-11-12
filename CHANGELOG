@@ -1,8 +1,10 @@
-# [3.0.0] - xx/11/2022
+# [3.0.0] - 11/11/2022
   - Migración de CRA a vite y vitest
-  - Eliminado redux
-  - Las peticiones get ahora se realizan con swr
-  - Añadidos mocks para desarrollo
+  - Eliminado redux (en progreso)
+  - Las peticiones get ahora se realizan con swr (en progreso)
+  - Añadidos mocks para desarrollo (en progreso)
+  - Añadido botón de desacarga para exportar los datos de la página de pagos
+  - Nuevo sistema de notificaciones con contextos
 
 # [2.6.3] - 10/10/2022
   - Corregida errata de "Basuras semestre"
