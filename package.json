@@ -3,7 +3,7 @@
   "author": "Eduardo Parra Mazuecos",
   "email": "eduparra90@gmail.com",
   "licence": "MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "scripts": {
     "lint": "standard",

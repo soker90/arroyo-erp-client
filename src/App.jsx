@@ -27,7 +27,7 @@ const App = () => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <RootStyles>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
             <NotificationsProvider>
               <Suspense fallback={<LoadingScreen />}>
                 <BrowserRouter>

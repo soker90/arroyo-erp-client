@@ -3,6 +3,7 @@
 import {
   colors, createTheme as createMuiTheme, responsiveFontSizes
 } from '@mui/material'
+import { esES } from '@mui/material/locale'
 import { THEMES } from 'constants/common'
 import typography from './typography'
 import { softShadows, strongShadows } from './shadows'
@@ -150,7 +151,7 @@ export function createTheme (settings = {}) {
   let theme = createMuiTheme({
     ...baseConfig,
     ...themeConfig
-  })
+  }, esES)
 
   if (settings.responsiveFontSizes) theme = responsiveFontSizes(theme)
 

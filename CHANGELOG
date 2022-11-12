@@ -1,3 +1,6 @@
+# [3.0.1] - 12/11/2022
+  - Correcciones de idioma al operar con fechas
+
 # [3.0.0] - 11/11/2022
   - Migración de CRA a vite y vitest
   - Eliminado redux (en progreso)
