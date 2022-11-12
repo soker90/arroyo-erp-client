@@ -2,7 +2,7 @@ import {
   boolean, date, number, text
 } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import 'moment/locale/es'
+import 'dayjs/locale/es'
 
 import { story as DatePickerForm } from './DatePickerForm'
 import { DatePickerProvider } from '../../../story'

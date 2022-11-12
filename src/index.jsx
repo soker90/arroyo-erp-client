@@ -1,15 +1,16 @@
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'nprogress/nprogress.css'
-import 'moment/locale/es'
 
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
+import dayjs from 'dayjs'
 import { SettingsProvider } from 'context/SettingsContext'
 import SwrProvider from './contexts/SwrProvider'
 import { configureStore } from 'store'
 import { restoreSettings } from 'utils/settings'
 import App from './App'
 
+dayjs.locale('es')
 const store = configureStore()
 const settings = restoreSettings()
 

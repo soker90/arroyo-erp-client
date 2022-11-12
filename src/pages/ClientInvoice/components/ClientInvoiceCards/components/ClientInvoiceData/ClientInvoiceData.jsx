@@ -18,7 +18,7 @@ const ClientInvoiceData = ({
   const classes = useStyles()
 
   const _handleChangeDate = value => {
-    updateData(id, { date: format.dateToSend(value) })
+    updateData({ date: format.dateToSend(value) })
   }
 
   return (

@@ -13,3 +13,5 @@ export const API_BILLINGS_CLIENTS = `${API_CLIENT_INVOICES}/billing`
 /* Deliver orders */
 export const API_DELIVERY_ORDERS = 'deliveryorders'
 export const API_DELIVERY_ORDERS_COUNT_FREE = `${API_DELIVERY_ORDERS}/countfree`
+
+export const API_PRODUCTS = 'products'

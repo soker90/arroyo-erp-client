@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
@@ -9,42 +8,36 @@ import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
 import DeliveryOrderInvoice from './DeliveryOrderInvoice'
 import BannerPaid from '../../../components/BannerPaid'
+import { useClientInvoice } from '../hooks'
 
-const ClientInvoice = ({
-  getClientInvoice,
-  _id,
-  nameClient,
-  client,
-  resetClientInvoiceState,
-  date,
-  total,
-  taxBase,
-  iva,
-  updateDataClientInvoice,
-  createDeliveryOrder,
-  deliveryOrders,
-  nInvoice,
-  updateDOClientInvoice,
-  deleteDOClientInvoice,
-  getProducts,
-  paid,
-  paymentType,
-  paymentDate
-}) => {
+const ClientInvoice = () => {
   const { idInvoice } = useParams()
   const classes = useStyles()
   const lastDORef = useRef(null)
   const isDOCreated = useRef(false)
-
-  useEffect(() => {
-    if (idInvoice && idInvoice !== _id) getClientInvoice(idInvoice)
-  }, [idInvoice])
-
-  useEffect(() => {
-    getProducts()
-  }, [])
-
-  useEffect(() => () => resetClientInvoiceState(), [])
+  const {
+    _id,
+    nameClient,
+    client,
+    date,
+    deliveryOrders,
+    iva,
+    taxBase,
+    total,
+    nInvoice,
+    paid,
+    paymentType,
+    paymentDate,
+    confirmInvoice,
+    updateDataClientInvoice,
+    deleteDeliveryOrder,
+    createDeliveryOrder,
+    updateDeliveryOrder,
+    deleteClientInvoice,
+    deleteProduct,
+    createProduct,
+    updateProduct
+  } = useClientInvoice(idInvoice)
 
   useEffect(() => {
     if (isDOCreated?.current) {
@@ -72,6 +65,8 @@ const ClientInvoice = ({
           createDeliveryOrder={createDOAndRedirect}
           id={idInvoice}
           nInvoice={nInvoice}
+          confirmInvoice={confirmInvoice}
+          deleteClientInvoice={deleteClientInvoice}
         />
 
         {!!nInvoice && (
@@ -98,10 +93,13 @@ const ClientInvoice = ({
             key={deliveryOrder._id}
             deliveryOrder={deliveryOrder}
             isEditable={!nInvoice}
-            updateDOClientInvoice={updateDOClientInvoice}
-            deleteDOClientInvoice={deleteDOClientInvoice}
+            updateDOClientInvoice={updateDeliveryOrder}
+            deleteDOClientInvoice={deleteDeliveryOrder}
             id={_id}
             refHeader={_isLastDO(index) ? lastDORef : null}
+            deleteProduct={deleteProduct}
+            createProduct={createProduct}
+            updateProduct={updateProduct}
           />
         ))}
 
@@ -110,28 +108,4 @@ const ClientInvoice = ({
   )
 }
 
-ClientInvoice.propTypes = {
-  getClientInvoice: PropTypes.func.isRequired,
-  _id: PropTypes.string,
-  nameClient: PropTypes.string,
-  client: PropTypes.string,
-  resetClientInvoiceState: PropTypes.func.isRequired,
-  date: PropTypes.number,
-  updateDataClientInvoice: PropTypes.func.isRequired,
-  createDeliveryOrder: PropTypes.func.isRequired,
-  deliveryOrders: PropTypes.array.isRequired,
-  nInvoice: PropTypes.string,
-  updateDOClientInvoice: PropTypes.func.isRequired,
-  deleteDOClientInvoice: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired,
-  taxBase: PropTypes.number.isRequired,
-  iva: PropTypes.number.isRequired,
-  getProducts: PropTypes.func.isRequired,
-  paid: PropTypes.bool,
-  paymentType: PropTypes.string,
-  paymentDate: PropTypes.number
-}
-
-ClientInvoice.displayName = 'ClientInvoice'
-export const story = ClientInvoice
 export default ClientInvoice

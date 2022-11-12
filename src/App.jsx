@@ -2,7 +2,7 @@ import { useMemo, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
 import { ThemeProvider, StyledEngineProvider } from '@mui/material'
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment' // Change luxon
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LoadingBar } from 'react-redux-loading-bar'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
@@ -27,7 +27,7 @@ const App = () => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <RootStyles>
-          <LocalizationProvider dateAdapter={AdapterMoment}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <NotificationsProvider>
               <Suspense fallback={<LoadingScreen />}>
                 <BrowserRouter>

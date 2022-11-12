@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 import {
-  useEffect, useMemo, useReducer, useRef
+  useEffect, useReducer, useRef
 } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 
 import { AutocompleteForm, InputForm, ModalGrid } from 'components'
+import { useProducts } from 'hooks'
 import { addNotification } from 'reducers/notifications'
 import { fields, INITIAL_STATE } from './constants'
 
@@ -17,7 +17,6 @@ const ProductOrderModal = ({
   invoice,
   deliveryOrder,
   updateProduct,
-  products,
   ...rest
 }) => {
   const dispatch = useDispatch()
@@ -25,7 +24,7 @@ const ProductOrderModal = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
-  const productsList = useMemo(() => products.map(p => p.name), [products])
+  const { products, productsList } = useProducts()
   const nameRef = useRef(null)
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const ProductOrderModal = ({
    */
   const _handleSubmit = (event, callback) => {
     try {
-      const model = {
+      const data = {
         name: state.name,
         price: Number(state.price),
         weight: Number(state.weight),
@@ -65,8 +64,7 @@ const ProductOrderModal = ({
       };
 
       (typeof show === 'boolean' ? createProduct : updateProduct)({
-        model,
-        invoice,
+        data,
         deliveryOrder,
         product: show?._id
       }, (callback || close))
@@ -162,8 +160,7 @@ ProductOrderModal.propTypes = {
   createProduct: PropTypes.func.isRequired,
   invoice: PropTypes.string.isRequired,
   deliveryOrder: PropTypes.string.isRequired,
-  product: PropTypes.object,
-  products: PropTypes.array.isRequired
+  product: PropTypes.object
 }
 
 ProductOrderModal.displayName = 'ProductOrderModal'

@@ -1,23 +1,23 @@
-import moment from 'moment'
+import { capitalize } from '@mui/material'
+import dayjs from 'dayjs'
+import weekYear from 'dayjs/plugin/weekOfYear'
+dayjs.extend(weekYear)
 
-const date = cell => cell && moment(cell)
-  .format('DD/MM/YYYY')
+const date = cell => cell && new Date(cell).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })
 
 /**
  * Número de la semana del año
  * @param {number} cell
  * @return {string}
  */
-const weekOfYear = cell => cell && moment(cell)
-  .format('w')
+const weekOfYear = cell => cell && dayjs(cell).week()
 
 /**
  * Devuelve el nombre del día de la semana
  * @param {Date} cell
  * @returns {*|string}
  */
-const dayOfWeek = cell => cell && moment()
-  .format('dddd')
+const dayOfWeek = () => capitalize(new Date().toLocaleDateString('es-ES', { weekday: 'long' }))
 /**
  * Date con el formato para enviarlo al backend
  * @param {Date} cell
