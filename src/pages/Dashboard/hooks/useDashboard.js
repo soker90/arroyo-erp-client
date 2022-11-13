@@ -4,6 +4,16 @@ import { API_DASHBOARD } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import { deleteReminderApi, createReminderApi } from 'services/apiService'
 
+const DEFAULT_RESPONSE = {
+  reminders: [],
+  cash: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    total: 0
+  }
+}
 export const useDashboard = () => {
   const {
     data,
@@ -32,10 +42,11 @@ export const useDashboard = () => {
       })
   }
 
-  const createReminder = (message) => {
+  const createReminder = (message, callback) => {
     createReminderApi(message)
-      .then(({ data }) => {
+      .then(({ reminders }) => {
         showSuccess('Recordatorio creado')
+        callback()
         return mutate({ ...data, reminders })
       })
       .catch((error) => {
@@ -44,7 +55,7 @@ export const useDashboard = () => {
   }
 
   return {
-    ...(data ?? {}),
+    ...(data ?? DEFAULT_RESPONSE),
     isLoading: !data,
     createReminder,
     deleteReminder
