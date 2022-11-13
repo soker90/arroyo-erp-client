@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_CLIENT_INVOICES, API_CLIENTS } from 'constants/paths'
+import { API_CLIENT_INVOICES, API_CLIENTS, API_DASHBOARD } from 'constants/paths'
 import { format } from '../utils'
 
 export const createClient = (client) => {
@@ -69,3 +69,8 @@ export const updateProductClientInvoice = ({
   data
 )
   .then(({ data }) => data)
+
+/* Dashboard */
+
+export const deleteReminderApi = (id) => axios.delete(`${API_DASHBOARD}/deleteReminder/${id}`).then(({ data }) => data)
+export const createReminderApi = (message) => axios.post(`${API_DASHBOARD}/createReminder`, { message }).then(({ data }) => data)
