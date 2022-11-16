@@ -1,26 +1,18 @@
 import {
-  useCallback, useEffect, useState
+  useCallback, useState
 } from 'react'
-import PropTypes from 'prop-types'
 import { Container, Grid } from '@mui/material'
 
 import { Header, Page, TotalsReportBoxes } from 'components'
 import { useStyles } from './DashboardView.styles'
 import Reminders from './Reminders'
 import DeleteConfirmationModal from '../modals/DeleteConfirmationModal'
+import { useDashboard } from '../hooks'
 
-const DashboardView = ({
-  getDashboard,
-  reminders,
-  createReminder,
-  cash
-}) => {
+const DashboardView = () => {
+  const { cash, reminders, createReminder, deleteReminder } = useDashboard()
   const classes = useStyles()
   const [deleteId, setDeleteId] = useState(null)
-
-  useEffect(() => {
-    getDashboard()
-  }, [getDashboard])
 
   const _closeModal = useCallback(() => {
     setDeleteId(null)
@@ -49,19 +41,9 @@ const DashboardView = ({
           </Grid>
         </Container>
       </Page>
-      <DeleteConfirmationModal id={deleteId} close={_closeModal} />
+      <DeleteConfirmationModal id={deleteId} close={_closeModal} deleteReminder={deleteReminder} />
     </>
   )
 }
 
-DashboardView.displayName = 'DashboardView'
-
-DashboardView.propTypes = {
-  getDashboard: PropTypes.func.isRequired,
-  reminders: PropTypes.array.isRequired,
-  createReminder: PropTypes.func.isRequired,
-  cash: PropTypes.object.isRequired
-}
-
-export const story = DashboardView
 export default DashboardView

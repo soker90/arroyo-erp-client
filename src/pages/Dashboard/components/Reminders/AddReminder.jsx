@@ -46,5 +46,4 @@ AddReminder.propTypes = {
   createReminder: PropTypes.func.isRequired
 }
 
-AddReminder.displayName = 'AddReminder'
 export default AddReminder

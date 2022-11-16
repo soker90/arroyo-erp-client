@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import providers from 'modules/providers'
 import products from 'modules/products'
 
-import dashboard from 'pages/Dashboard/modules'
 import deliveryOrders from 'pages/DeliveryOrder/modules'
 import expenses from 'pages/Expenses/modules'
 import invoice from 'pages/Invoice/modules'
@@ -19,7 +18,6 @@ import account from './account'
 
 const rootReducer = combineReducers({
   account,
-  dashboard,
   deliveryOrders,
   expenses,
   invoice,

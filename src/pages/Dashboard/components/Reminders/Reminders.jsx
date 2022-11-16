@@ -42,7 +42,10 @@ const Reminders = ({
 )
 
 Reminders.propTypes = {
-  reminders: PropTypes.array.isRequired,
+  reminders: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired
+  })),
   createReminder: PropTypes.func.isRequired,
   setDeleteId: PropTypes.func.isRequired
 }
