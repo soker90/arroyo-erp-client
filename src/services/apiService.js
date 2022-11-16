@@ -3,7 +3,6 @@ import {
   API_CLIENT_INVOICES,
   API_CLIENTS,
   API_CREATE_REMINDER,
-  API_DASHBOARD,
   API_DELETE_REMINDER
 } from 'constants/paths'
 import { format } from '../utils'
