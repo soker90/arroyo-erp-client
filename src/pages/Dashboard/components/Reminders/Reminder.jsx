@@ -53,6 +53,4 @@ Reminder.propTypes = {
   setDeleteId: PropTypes.func.isRequired
 }
 
-Reminder.displayName = 'Reminder'
-
 export default Reminder
