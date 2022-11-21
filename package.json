@@ -5,6 +5,7 @@
   "licence": "MIT",
   "version": "3.0.1",
   "private": true,
+  "type": "module"
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
