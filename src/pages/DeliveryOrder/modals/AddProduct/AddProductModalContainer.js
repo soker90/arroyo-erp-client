@@ -8,10 +8,8 @@ import { pricesChangesUnreadCount } from 'pages/PriceChanges/modules/actions'
 import AddProductModalView from './AddProductModalView'
 
 const mapStateToProps = ({
-  products: { products },
   deliveryOrders: { hasCanal }
 }) => ({
-  products,
   hasCanal
 })
 

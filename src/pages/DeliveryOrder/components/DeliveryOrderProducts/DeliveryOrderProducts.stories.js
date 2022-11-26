@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { story as DeliveryOrderProducts } from './DeliveryOrderProducts'
+import DeliveryOrderProducts from './DeliveryOrderProducts'
 import RoutesWrapper from '../../../../story/RoutesWrapper'
 
 export default {

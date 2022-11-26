@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router'
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
+import { useProducts } from 'hooks'
 import { INITIAL_STATE } from './constants'
 import { hasInitialData } from './utils'
 
 const AddProductModal = ({
   show,
   close,
-  products,
   addProductToDeliveryOrder,
   createDeliveryOrder,
   idProvider,
@@ -21,6 +21,7 @@ const AddProductModal = ({
     INITIAL_STATE
   )
   const navigate = useNavigate()
+  const { products } = useProducts(idProvider)
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE)
@@ -112,7 +113,6 @@ AddProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   addProductToDeliveryOrder: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
   hasCanal: PropTypes.bool,
