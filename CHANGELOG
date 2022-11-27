@@ -1,3 +1,6 @@
+# [3.0.2] - 27/11/2022
+  - AL introducir un nuevo producto a un albarán de clientes, no se cierra la modal
+
 # [3.0.1] - 12/11/2022
   - Correcciones de idioma al operar con fechas
 
