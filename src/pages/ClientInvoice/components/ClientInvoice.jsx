@@ -40,13 +40,11 @@ const ClientInvoice = () => {
   } = useClientInvoice(idInvoice)
 
   useEffect(() => {
-    if (isDOCreated?.current) {
+    if (isDOCreated?.current && deliveryOrders?.length) {
       lastDORef?.current?.scrollIntoView?.()
       isDOCreated.current = false
     }
   }, [deliveryOrders?.length])
-
-  if (!_id) return <LoadingScreen />
 
   // eslint-disable-next-line no-unsafe-optional-chaining
   const _isLastDO = index => deliveryOrders?.length - 1 === index
@@ -88,7 +86,7 @@ const ClientInvoice = () => {
           nInvoice={nInvoice}
         />
 
-        {deliveryOrders.map((deliveryOrder, index) => (
+        {deliveryOrders?.map((deliveryOrder, index) => (
           <DeliveryOrderInvoice
             key={deliveryOrder._id}
             deliveryOrder={deliveryOrder}
