@@ -141,15 +141,15 @@ export const useClientInvoice = (id) => {
   const createProduct = ({
     deliveryOrder,
     data
-  }) => {
+  }, callback) => {
     createProductClientInvoice({
       invoice: id,
       deliveryOrder,
       data
     })
-      .then(({ data }) => {
+      .then(() => {
         showSuccess('Producto añadido correctamente')
-        return mutate(data)
+        callback()
       })
       .catch((error) => {
         showError(error.message)
@@ -170,13 +170,14 @@ export const useClientInvoice = (id) => {
       .then(({ data }) => {
         showSuccess('Producto actualizado')
         return mutate(data)
-      }).catch((error) => {
+      })
+      .catch((error) => {
         showError(error.message)
       })
   }
 
   return {
-    ...(id ? data : DEFAULT_RESPONSE),
+    ...(data ?? DEFAULT_RESPONSE),
     isLoading: !data,
     confirmInvoice,
     updateDataClientInvoice,

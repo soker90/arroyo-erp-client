@@ -24,12 +24,16 @@ const ProductOrderModal = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
-  const { products, productsList } = useProducts()
+  const {
+    products,
+    productsList
+  } = useProducts()
   const nameRef = useRef(null)
 
   useEffect(() => {
-    if (!show) setState(INITIAL_STATE)
-    else if (typeof show !== 'boolean') setState(show)
+    if (!show) {
+      setState(INITIAL_STATE)
+    } else if (typeof show !== 'boolean') setState(show)
   }, [show])
 
   /**
@@ -61,9 +65,9 @@ const ProductOrderModal = ({
         weight: Number(state.weight),
         unit: state.unit,
         productId: state.productId
-      };
+      }
 
-      (typeof show === 'boolean' ? createProduct : updateProduct)({
+      ;(typeof show === 'boolean' ? createProduct : updateProduct)({
         data,
         deliveryOrder,
         product: show?._id
