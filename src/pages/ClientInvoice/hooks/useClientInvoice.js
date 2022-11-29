@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from 'swr'
 import { API_CLIENT_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
@@ -13,8 +13,6 @@ import {
   createProductClientInvoice,
   updateProductClientInvoice
 } from 'services/apiService'
-
-const DEFAULT_RESPONSE = {}
 
 export const useClientInvoice = (id) => {
   const {
@@ -147,9 +145,10 @@ export const useClientInvoice = (id) => {
       deliveryOrder,
       data
     })
-      .then(() => {
+      .then(({ data: newData }) => {
         showSuccess('Producto añadido correctamente')
         callback()
+        return mutate(newData)
       })
       .catch((error) => {
         showError(error.message)
@@ -160,7 +159,7 @@ export const useClientInvoice = (id) => {
     deliveryOrder,
     data,
     product
-  }) => {
+  }, callback) => {
     updateProductClientInvoice({
       invoice: id,
       deliveryOrder,
@@ -169,6 +168,7 @@ export const useClientInvoice = (id) => {
     })
       .then(({ data }) => {
         showSuccess('Producto actualizado')
+        callback()
         return mutate(data)
       })
       .catch((error) => {
@@ -177,7 +177,7 @@ export const useClientInvoice = (id) => {
   }
 
   return {
-    ...(data ?? DEFAULT_RESPONSE),
+    invoice: data,
     isLoading: !data,
     confirmInvoice,
     updateDataClientInvoice,

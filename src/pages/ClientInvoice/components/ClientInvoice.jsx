@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
@@ -9,25 +9,15 @@ import ClientInvoiceCards from './ClientInvoiceCards'
 import DeliveryOrderInvoice from './DeliveryOrderInvoice'
 import BannerPaid from '../../../components/BannerPaid'
 import { useClientInvoice } from '../hooks'
+import ProductOrderModal from '../modals/ProductOrderModal/index.js'
 
 const ClientInvoice = () => {
-  const {idInvoice} = useParams()
+  const { idInvoice } = useParams()
   const classes = useStyles()
   const lastDORef = useRef(null)
   const isDOCreated = useRef(false)
   const {
-    _id,
-    nameClient,
-    client,
-    date,
-    deliveryOrders,
-    iva,
-    taxBase,
-    total,
-    nInvoice,
-    paid,
-    paymentType,
-    paymentDate,
+    invoice,
     confirmInvoice,
     updateDataClientInvoice,
     deleteDeliveryOrder,
@@ -39,15 +29,39 @@ const ClientInvoice = () => {
     updateProduct
   } = useClientInvoice(idInvoice)
 
+  const {
+    _id,
+    nameClient,
+    date,
+    deliveryOrders,
+    iva,
+    taxBase,
+    total,
+    nInvoice,
+    paid,
+    paymentType,
+    paymentDate
+  } = invoice ?? {}
+
   useEffect(() => {
-    if (isDOCreated?.current && deliveryOrders?.length) {
+    if (isDOCreated?.current && invoice?.deliveryOrders?.length) {
       lastDORef?.current?.scrollIntoView?.()
       isDOCreated.current = false
     }
-  }, [deliveryOrders?.length])
+  }, [invoice?.deliveryOrders?.length])
+
+  const [showProduct, setShowProduct] = useState({ product: false })
+
+  const _closeModal = useCallback(() => {
+    setShowProduct({ product: false })
+  }, [setShowProduct])
+
+  const setSelectedProduct = useCallback((doAndProduct) => {
+    setShowProduct(doAndProduct)
+  }, [])
 
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const _isLastDO = index => deliveryOrders?.length - 1 === index
+  const _isLastDO = index => invoice?.deliveryOrders?.length - 1 === index
 
   const createDOAndRedirect = id => {
     isDOCreated.current = true
@@ -58,8 +72,8 @@ const ClientInvoice = () => {
     <Page className={classes.root} title={`${nameClient} | Factura`}>
       <Container maxWidth={false}>
         <Header
-          client={client}
-          nameClient={nameClient}
+          client={invoice?.client}
+          nameClient={invoice?.nameClient}
           createDeliveryOrder={createDOAndRedirect}
           id={idInvoice}
           nInvoice={nInvoice}
@@ -96,12 +110,19 @@ const ClientInvoice = () => {
             id={_id}
             refHeader={_isLastDO(index) ? lastDORef : null}
             deleteProduct={deleteProduct}
-            createProduct={createProduct}
-            updateProduct={updateProduct}
+            setSelectedProduct={setSelectedProduct}
           />
         ))}
 
       </Container>
+      <ProductOrderModal
+        invoice={invoice?._id}
+        deliveryOrder={showProduct?.deliveryOrder}
+        show={showProduct?.product}
+        close={_closeModal}
+        createProduct={createProduct}
+        updateProduct={updateProduct}
+      />
     </Page>
   )
 }

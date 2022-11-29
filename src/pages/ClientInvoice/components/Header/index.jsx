@@ -76,17 +76,17 @@ const HeaderClientInvoice = ({
         show={showConfirmModal} setShow={setShowConfirmModal} id={id}
         confirmInvoice={confirmInvoice}
       />
-      <DeleteInvoiceModal
+      {client && <DeleteInvoiceModal
         show={showDeleteModal} setShow={setShowDeleteModal}
         deleteClientInvoice={deleteClientInvoice} client={client}
-      />
+                 />}
     </>
   )
 }
 
 HeaderClientInvoice.propTypes = {
-  nameClient: PropTypes.string.isRequired,
-  client: PropTypes.string.isRequired,
+  nameClient: PropTypes.string,
+  client: PropTypes.string,
   nInvoice: PropTypes.string,
   createDeliveryOrder: PropTypes.func.isRequired,
   id: PropTypes.string,

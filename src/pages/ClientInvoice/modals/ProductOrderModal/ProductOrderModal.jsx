@@ -162,8 +162,8 @@ ProductOrderModal.propTypes = {
   show: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
   close: PropTypes.func.isRequired,
   createProduct: PropTypes.func.isRequired,
-  invoice: PropTypes.string.isRequired,
-  deliveryOrder: PropTypes.string.isRequired,
+  invoice: PropTypes.string,
+  deliveryOrder: PropTypes.string,
   product: PropTypes.object
 }
 

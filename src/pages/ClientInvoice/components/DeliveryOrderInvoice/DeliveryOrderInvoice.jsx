@@ -22,21 +22,17 @@ const DeliveryOrderInvoice = ({
   id,
   refHeader,
   deleteProduct,
-  createProduct,
-  updateProduct
+  setSelectedProduct
+
 }) => {
   const classes = useStyles()
   const [date, setDate] = useState(deliveryOrder.date)
-  const [showProduct, setShowProduct] = useState(false)
+
   const [deleteId, setDeleteId] = useState(false)
 
-  const _closeModal = useCallback(() => {
-    setShowProduct(false)
-  }, [setShowProduct])
-
   const _handleAddClick = useCallback(() => {
-    setShowProduct(true)
-  }, [setShowProduct])
+    setSelectedProduct({ deliveryOrder: deliveryOrder._id, product: true })
+  }, [setSelectedProduct])
 
   const _closeDelete = useCallback(() => {
     setDeleteId(false)
@@ -60,7 +56,7 @@ const DeliveryOrderInvoice = ({
   }
 
   const _handleUpdateClick = productData => {
-    setShowProduct(productData)
+    setSelectedProduct({ deliveryOrder: deliveryOrder._id, product: productData })
   }
 
   const _handleDeleteProductClick = productId => {
@@ -127,14 +123,7 @@ const DeliveryOrderInvoice = ({
           </PerfectScrollbar>
         </CardContent>
       </Card>
-      <ProductOrderModal
-        invoice={id}
-        deliveryOrder={deliveryOrder._id}
-        show={showProduct}
-        close={_closeModal}
-        createProduct={createProduct}
-        updateProduct={updateProduct}
-      />
+
       <DeleteProductModal
         invoice={id}
         deliveryOrder={deliveryOrder._id}
@@ -154,8 +143,7 @@ DeliveryOrderInvoice.propTypes = {
   deleteDOClientInvoice: PropTypes.func.isRequired,
   refHeader: PropTypes.any,
   deleteProduct: PropTypes.func.isRequired,
-  createProduct: PropTypes.func.isRequired,
-  updateProduct: PropTypes.func.isRequired
+  setSelectedProduct: PropTypes.func.isRequired
 }
 
 export default DeliveryOrderInvoice
