@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react'
+import { afterAll, afterEach, beforeAll } from 'vitest'
 
 import SwrProvider from '../contexts/SwrProvider'
 import { RoutesWrapper, ThemeWrapper } from '../story'
+import { server } from '../mocks/server.js'
 
 const AllTheProviders = ({ children }) => {
   return (
@@ -25,3 +27,9 @@ export * from '@testing-library/react'
 // override render method
 // eslint-disable-next-line import/export
 export { customRender as render }
+
+export const setupMsw = () => {
+  beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
+  afterAll(() => server.close())
+  afterEach(() => server.resetHandlers())
+}

@@ -1,3 +1,6 @@
+# [3.0.3] - 29/11/2022
+  - Mejoras al actualizar los datos de las facturas de clientes, ahora se refrescan sin cerrar la modal
+
 # [3.0.2] - 27/11/2022
   - AL introducir un nuevo producto a un albarán de clientes, no se cierra la modal
 
