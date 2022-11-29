@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 import { API_CLIENT_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {

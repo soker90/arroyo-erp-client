@@ -11,7 +11,6 @@ import { useCallback, useState } from 'react'
 import { DatePickerForm, TextEuro } from 'components'
 import { useStyles } from './DeliveryOrderInvoice.styles'
 import ClientInvoiceProducts from '../ClientInvoiceProducts'
-import ProductOrderModal from '../../modals/ProductOrderModal'
 import DeleteProductModal from '../../modals/DeleteProductModal'
 
 const DeliveryOrderInvoice = ({
