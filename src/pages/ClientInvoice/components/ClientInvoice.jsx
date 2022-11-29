@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
-import { LoadingScreen, Page } from 'components'
+import { Page } from 'components'
 import Header from './Header'
 import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
@@ -11,7 +11,7 @@ import BannerPaid from '../../../components/BannerPaid'
 import { useClientInvoice } from '../hooks'
 
 const ClientInvoice = () => {
-  const { idInvoice } = useParams()
+  const {idInvoice} = useParams()
   const classes = useStyles()
   const lastDORef = useRef(null)
   const isDOCreated = useRef(false)
