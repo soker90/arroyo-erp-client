@@ -33,7 +33,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
-    "@mui/styles": "^5.10.15",
+    "@mui/styles": "^5.10.16",
     "@mui/x-date-pickers": "^5.0.9",
     "axios": "^1.2.0",
     "chart.js": "^4.0.1",
