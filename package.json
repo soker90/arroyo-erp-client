@@ -73,7 +73,7 @@
     "standard": "^17.0.0",
     "swr-devtools": "^1.2.0",
     "vite": "^4.0.0",
-    "vitest": "^0.25.2"
+    "vitest": "^0.25.7"
   },
   "eslintConfig": {
     "extends": [
