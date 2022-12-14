@@ -35,7 +35,7 @@
     "@mui/material": "^5.10.16",
     "@mui/styles": "^5.10.16",
     "@mui/x-date-pickers": "^5.0.9",
-    "axios": "^1.2.0",
+    "axios": "^1.2.1",
     "chart.js": "^4.0.1",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
