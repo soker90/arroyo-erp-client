@@ -1,36 +1,28 @@
 import { useEffect } from 'react'
 import { Container } from '@mui/material'
 import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
 
 import { Page } from 'components'
-import { useParams } from 'react-router'
 import Header from './Header'
 import NotesTable from './NotesTable'
 import { useStyles } from './Notes.styles'
+import { useNotes } from '../hooks'
 
-const Notes = ({ notes, getNotes }) => {
+const Notes = () => {
   const { year } = useParams()
   const classes = useStyles()
 
-  useEffect(() => {
-    getNotes(year)
-  }, [getNotes, year])
+  const { notes, createNote } = useNotes(year)
 
   return (
     <Page className={classes.root} title='Notas'>
       <Container maxWidth={false}>
-        <Header year={year} />
+        <Header year={year} createNote={createNote} />
 
         <NotesTable notes={notes} />
       </Container>
     </Page>
   )
 }
-Notes.propTypes = {
-  notes: PropTypes.array.isRequired,
-  getNotes: PropTypes.func.isRequired
-}
-
-Notes.displayName = 'Notes'
-export const story = Notes
 export default Notes
