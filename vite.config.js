@@ -17,7 +17,6 @@ export default defineConfig({
           material: ['@mui/material'],
           materialLegacyStyles: ['@mui/styles'],
           materialPicker: ['@mui/x-date-pickers'],
-          moment: ['moment'],
           materialIcons: ['@mui/icons-material'],
           feather: ['react-feather']
         }
