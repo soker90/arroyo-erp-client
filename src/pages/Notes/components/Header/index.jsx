@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 import { Header } from 'components'
 import NewNoteModal from '../../modals/NewNoteModal'
 
-const HeaderNotes = ({ year }) => {
+const HeaderNotes = ({ year, createNote }) => {
   const [showModal, setShowModal] = useState(false)
 
   /**
@@ -48,7 +48,7 @@ const HeaderNotes = ({ year }) => {
           }
         ]}
       />
-      <NewNoteModal close={_closeModal} show={showModal} year={year} />
+      <NewNoteModal close={_closeModal} show={showModal} year={year} createNote={createNote} />
     </>
   )
 }
@@ -56,7 +56,8 @@ const HeaderNotes = ({ year }) => {
 HeaderNotes.displayName = 'HeaderNotes'
 
 HeaderNotes.propTypes = {
-  year: PropTypes.string.isRequired
+  year: PropTypes.string.isRequired,
+  createNote: PropTypes.func.isRequired
 }
 
 export const story = HeaderNotes

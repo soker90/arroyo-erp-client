@@ -1,1 +1,1 @@
-export { default } from './EditNoteModalContainer'
+export { default } from './EditNoteModalView'

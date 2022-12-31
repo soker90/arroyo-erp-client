@@ -18,3 +18,5 @@ export const API_DELIVERY_ORDERS = 'deliveryorders'
 export const API_DELIVERY_ORDERS_COUNT_FREE = `${API_DELIVERY_ORDERS}/countfree`
 
 export const API_PRODUCTS = 'products'
+
+export const API_NOTES = 'notes'

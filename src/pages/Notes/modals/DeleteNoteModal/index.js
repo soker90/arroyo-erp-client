@@ -1,1 +1,1 @@
-export { default } from './DeleteNoteModalContainer'
+export { default } from './DeleteNoteModal'
