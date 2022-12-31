@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import { Page } from 'components'
