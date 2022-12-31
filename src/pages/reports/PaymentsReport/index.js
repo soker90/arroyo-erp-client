@@ -1,1 +1,1 @@
-export { default } from './containers/PaymentsReportContainer'
+export { default } from './components/PaymentsReportView'

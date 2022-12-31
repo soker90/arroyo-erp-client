@@ -6,15 +6,14 @@ import { useNavigate } from 'react-router'
 import { TableMaterial, TextEuro } from 'components'
 import { format, navigateTo } from 'utils'
 import { useStyles } from './ChequesTable.styles'
+import { useCheques } from '../../hooks/index.js'
 
 const ChequesTable = ({
-  cheques,
-  count,
-  getCheques,
   year
 }) => {
   const classes = useStyles()
   const navigate = useNavigate()
+  const { cheques, count, updateFilters } = useCheques({ year, limit: 3 })
 
   const _handleInvoiceButton = ({ _id }) => {
     navigateTo(`facturas/${_id}`, navigate)
@@ -24,7 +23,7 @@ const ChequesTable = ({
     offset,
     limit
   }) => {
-    getCheques({
+    updateFilters({
       year,
       offset,
       limit
@@ -71,12 +70,7 @@ const ChequesTable = ({
 }
 
 ChequesTable.propTypes = {
-  cheques: PropTypes.array.isRequired,
-  count: PropTypes.number.isRequired,
-  getCheques: PropTypes.func.isRequired,
   year: PropTypes.string
 }
-
-ChequesTable.displayName = 'ChequesTable'
 
 export default ChequesTable
