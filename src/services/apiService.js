@@ -81,3 +81,5 @@ export const deleteReminderApi = (id) => axios.delete(`${API_DELETE_REMINDER}/${
 export const createReminderApi = (message) => axios.post(`${API_CREATE_REMINDER}`, { message }).then(({ data }) => data)
 
 export const createNoteApi = (data) => axios.post(API_NOTES, data).then(({ data }) => data)
+export const editNoteApi = (id, data) => axios.put(`${API_NOTES}/${id}`, data).then(({ data }) => data)
+export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`).then(({ data }) => data)

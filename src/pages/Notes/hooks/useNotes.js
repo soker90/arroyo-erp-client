@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { API_NOTES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  createNoteApi
+  createNoteApi, deleteNoteApi, editNoteApi
 } from 'services/apiService'
 
 export const useNotes = (year) => {
@@ -35,9 +35,34 @@ export const useNotes = (year) => {
       })
   }
 
+  const editNote = (id, data, callback) => {
+    editNoteApi(id, data).then(({ data }) => {
+      showSuccess('Nota actualizada')
+      callback()
+      return mutate(data)
+    })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
+  const deleteNote = (id, callback) => {
+    deleteNoteApi(id)
+      .then(({ data }) => {
+        showSuccess('Nota borrada')
+        callback()
+        return mutate(data)
+      })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
   return {
     notes: data || [],
     isLoading: !data,
-    createNote
+    createNote,
+    editNote,
+    deleteNote
   }
 }
