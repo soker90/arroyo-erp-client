@@ -3,7 +3,6 @@ import providers from 'modules/providers'
 import products from 'modules/products'
 
 import deliveryOrders from 'pages/DeliveryOrder/modules'
-import expenses from 'pages/Expenses/modules'
 import invoice from 'pages/Invoice/modules'
 import priceChanges from 'pages/PriceChanges/modules'
 import product from 'pages/Product/modules'
@@ -17,7 +16,6 @@ import account from './account'
 const rootReducer = combineReducers({
   account,
   deliveryOrders,
-  expenses,
   invoice,
   priceChanges,
   product,

@@ -1,8 +1,7 @@
 import {
-  useCallback, useEffect, useState
+  useCallback, useState
 } from 'react'
 import { Box, Container } from '@mui/material'
-import PropTypes from 'prop-types'
 import { PlusCircle as PlusCircleIcon } from 'react-feather'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -11,14 +10,12 @@ import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial } from 'components'
 import NewProviderModal from '../modals/NewProviderModal'
 import { useStyles } from './Expenses.styles'
+import { useProviders } from '../hooks'
 
-const Expenses = ({ providers, getProviders }) => {
+const Expenses = () => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
-
-  useEffect(() => {
-    getProviders()
-  }, [getProviders])
+  const { providers, createProvider } = useProviders()
 
   /**
    * Oculta el modal de crear proveedor
@@ -76,17 +73,9 @@ const Expenses = ({ providers, getProviders }) => {
           </Box>
         </Container>
       </Page>
-      <NewProviderModal show={showModal} close={_closeModal} />
+      <NewProviderModal show={showModal} close={_closeModal} createProvider={createProvider} />
     </>
   )
 }
 
-Expenses.propTypes = {
-  providers: PropTypes.array.isRequired,
-  getProviders: PropTypes.func.isRequired
-}
-
-Expenses.displayName = 'Expenses'
-
-export const story = Expenses
 export default Expenses
