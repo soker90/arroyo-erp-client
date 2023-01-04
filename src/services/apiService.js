@@ -3,7 +3,10 @@ import {
   API_CLIENT_INVOICES,
   API_CLIENTS,
   API_CREATE_REMINDER,
-  API_DELETE_REMINDER, API_NOTES, API_PROVIDERS
+  API_DELETE_REMINDER,
+  API_NOTES,
+  API_PROVIDERS,
+  API_PAYMENTS, API_PAYMENTS_MERGE, API_PAYMENTS_DIVIDE
 } from 'constants/paths'
 import { format } from '../utils'
 
@@ -77,11 +80,23 @@ export const updateProductClientInvoice = ({
 
 /* Dashboard */
 
-export const deleteReminderApi = (id) => axios.delete(`${API_DELETE_REMINDER}/${id}`).then(({ data }) => data)
-export const createReminderApi = (message) => axios.post(`${API_CREATE_REMINDER}`, { message }).then(({ data }) => data)
+export const deleteReminderApi = (id) => axios.delete(`${API_DELETE_REMINDER}/${id}`)
+  .then(({ data }) => data)
+export const createReminderApi = (message) => axios.post(`${API_CREATE_REMINDER}`, { message })
+  .then(({ data }) => data)
 
-export const createProviderApi = (data) => axios.post(`${API_PROVIDERS}`, data).then(({ data }) => data)
+export const createProviderApi = (data) => axios.post(`${API_PROVIDERS}`, data)
+  .then(({ data }) => data)
 
-export const createNoteApi = (data) => axios.post(API_NOTES, data).then(({ data }) => data)
-export const editNoteApi = (id, data) => axios.put(`${API_NOTES}/${id}`, data).then(({ data }) => data)
-export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`).then(({ data }) => data)
+/** Payments **/
+export const confirmPaymentApi = (id, data) => axios.patch(`${API_PAYMENTS}/${id}/confirm`, data).then(({ data }) => data)
+export const mergePaymentsApi = (data) => axios.post(API_PAYMENTS_MERGE, data).then(({ data }) => data)
+export const dividePaymentsApi = (id) => axios.put(`${API_PAYMENTS_DIVIDE}/${id}`).then(({ data }) => data)
+/** **/
+
+export const createNoteApi = (data) => axios.post(API_NOTES, data)
+  .then(({ data }) => data)
+export const editNoteApi = (id, data) => axios.put(`${API_NOTES}/${id}`, data)
+  .then(({ data }) => data)
+export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`)
+  .then(({ data }) => data)

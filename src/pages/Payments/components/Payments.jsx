@@ -1,39 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 
 import { Page } from 'components'
+import { usePayments } from '../hooks'
 import Header from './Header'
 import PaymentsTable from './PaymentsTable'
 import { useStyles } from './Payments.styles'
 
-const Payments = ({ payments, getPayments }) => {
+const Payments = () => {
   const [selected, setSelected] = useState([])
+
+  const changeSelected = (newSelected) => {
+    setSelected(newSelected)
+  }
   const classes = useStyles()
-
-  useEffect(() => {
-    getPayments()
-  }, [getPayments])
-
-  useEffect(() => {
-    setSelected([])
-  }, [payments])
+  const {
+    payments,
+    mergePayments,
+    confirmPayment,
+    dividePayment
+  } = usePayments(changeSelected)
 
   return (
     <Page className={classes.root} title='Pagos'>
       <Container maxWidth={false}>
-        <Header selected={selected} />
+        <Header selected={selected} mergePayments={mergePayments} />
 
-        <PaymentsTable payments={payments} selected={selected} setSelected={setSelected} />
+        <PaymentsTable
+          payments={payments} selected={selected} setSelected={changeSelected}
+          confirmPayment={confirmPayment} divide={dividePayment}
+        />
       </Container>
     </Page>
   )
 }
-Payments.propTypes = {
-  payments: PropTypes.array.isRequired,
-  getPayments: PropTypes.func.isRequired
-}
-
-Payments.displayName = 'Payments'
-export const story = Payments
 export default Payments

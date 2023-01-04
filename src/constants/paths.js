@@ -22,4 +22,7 @@ export const API_DELIVERY_ORDERS_COUNT_FREE = `${API_DELIVERY_ORDERS}/countfree`
 
 export const API_PRODUCTS = 'products'
 export const API_PROVIDERS = 'providers'
+export const API_PAYMENTS = 'payments'
+export const API_PAYMENTS_MERGE = 'payments/merge'
+export const API_PAYMENTS_DIVIDE = 'payments/divide'
 export const API_NOTES = 'notes'

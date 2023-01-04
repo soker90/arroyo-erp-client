@@ -7,7 +7,10 @@ import { Header } from 'components'
 import MergePaymentModal from '../../modals/MergePaymentModal'
 import { downloadFile, format } from '../../../../utils'
 
-const HeaderPayments = ({ selected }) => {
+const HeaderPayments = ({
+  selected,
+  mergePayments
+}) => {
   const [showModal, setShowModal] = useState(false)
 
   /**
@@ -38,7 +41,10 @@ const HeaderPayments = ({ selected }) => {
           }
         ]}
       />
-      <MergePaymentModal selected={selected} close={_closeModal} show={showModal} />
+      <MergePaymentModal
+        selected={selected} close={_closeModal} show={showModal}
+        mergePayments={mergePayments}
+      />
     </>
   )
 }

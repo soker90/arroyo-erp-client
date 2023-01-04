@@ -1,1 +1,1 @@
-export { default } from './MergePaymentModalContainer'
+export { default } from './MergePaymentModal'

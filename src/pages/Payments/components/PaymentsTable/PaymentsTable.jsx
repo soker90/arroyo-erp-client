@@ -9,7 +9,13 @@ import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal'
 import DividePaymentModal from '../../modals/DividePaymentModal'
 import { useStyles } from './PaymentsTable.styles'
 
-const PaymentsTable = ({ payments, selected, setSelected }) => {
+const PaymentsTable = ({
+  payments,
+  selected,
+  setSelected,
+  confirmPayment,
+  divide
+}) => {
   const classes = useStyles()
   const [payment, setPayment] = useState(null)
   const [dividePayment, setDividePayment] = useState(null)
@@ -90,8 +96,11 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
         multiSelect={row => selected.includes(row._id)}
         onSelected={_handleChangeCheckbox}
       />
-      <ConfirmPaymentModal payment={payment} setShow={setPayment} />
-      <DividePaymentModal paymentId={dividePayment} setShow={setDividePayment} />
+      <ConfirmPaymentModal payment={payment} setShow={setPayment} confirmPayment={confirmPayment} />
+      <DividePaymentModal
+        paymentId={dividePayment} setShow={setDividePayment}
+        dividePayment={divide}
+      />
     </>
   )
 }
@@ -99,7 +108,9 @@ const PaymentsTable = ({ payments, selected, setSelected }) => {
 PaymentsTable.propTypes = {
   payments: PropTypes.array.isRequired,
   selected: PropTypes.array.isRequired,
-  setSelected: PropTypes.func.isRequired
+  setSelected: PropTypes.func.isRequired,
+  confirmPayment: PropTypes.func.isRequired,
+  divide: PropTypes.func.isRequired
 }
 
 PaymentsTable.displayName = 'ClientPaymentsTable'
