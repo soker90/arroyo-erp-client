@@ -1,1 +1,1 @@
-export { default } from './DeleteProductModalContainer'
+export { default } from './DeleteProductModal'

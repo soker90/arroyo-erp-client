@@ -1,36 +1,28 @@
-import { useEffect } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
 
 import { Page } from 'components'
 import Header from './Header'
 import ProductsTable from './ProductsTable'
 import { useStyles } from './Products.styles'
+import { useProducts } from '../hooks'
 
-const Products = ({
-  products,
-  getProducts
-}) => {
+const Products = () => {
   const classes = useStyles()
 
-  useEffect(() => {
-    getProducts()
-  }, [getProducts])
+  const {
+    products,
+    createProduct,
+    editProduct,
+    deleteProduct
+  } = useProducts()
 
   return (
     <Page className={classes.root} title='Productos para clientes'>
       <Container maxWidth={false}>
-        <Header />
-        <ProductsTable products={products} />
+        <Header createProduct={createProduct} />
+        <ProductsTable products={products} editProduct={editProduct} deleteProduct={deleteProduct} />
       </Container>
     </Page>
   )
 }
-Products.propTypes = {
-  products: PropTypes.array.isRequired,
-  getProducts: PropTypes.func.isRequired
-}
-
-Products.displayName = 'Products'
-export const story = Products
 export default Products

@@ -6,7 +6,7 @@ import {
   API_DELETE_REMINDER,
   API_NOTES,
   API_PROVIDERS,
-  API_PAYMENTS, API_PAYMENTS_MERGE, API_PAYMENTS_DIVIDE
+  API_PAYMENTS, API_PAYMENTS_MERGE, API_PAYMENTS_DIVIDE, API_PRODUCTS_CLIENT, API_PRODUCTS
 } from 'constants/paths'
 import { format } from '../utils'
 
@@ -89,9 +89,12 @@ export const createProviderApi = (data) => axios.post(`${API_PROVIDERS}`, data)
   .then(({ data }) => data)
 
 /** Payments **/
-export const confirmPaymentApi = (id, data) => axios.patch(`${API_PAYMENTS}/${id}/confirm`, data).then(({ data }) => data)
-export const mergePaymentsApi = (data) => axios.post(API_PAYMENTS_MERGE, data).then(({ data }) => data)
-export const dividePaymentsApi = (id) => axios.put(`${API_PAYMENTS_DIVIDE}/${id}`).then(({ data }) => data)
+export const confirmPaymentApi = (id, data) => axios.patch(`${API_PAYMENTS}/${id}/confirm`, data)
+  .then(({ data }) => data)
+export const mergePaymentsApi = (data) => axios.post(API_PAYMENTS_MERGE, data)
+  .then(({ data }) => data)
+export const dividePaymentsApi = (id) => axios.put(`${API_PAYMENTS_DIVIDE}/${id}`)
+  .then(({ data }) => data)
 /** **/
 
 export const createNoteApi = (data) => axios.post(API_NOTES, data)
@@ -100,3 +103,11 @@ export const editNoteApi = (id, data) => axios.put(`${API_NOTES}/${id}`, data)
   .then(({ data }) => data)
 export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`)
   .then(({ data }) => data)
+
+export const createProductClient = (data) => axios.post(`${API_PRODUCTS_CLIENT}`, data)
+  .then(({ data }) => data)
+
+export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`, data).then(({ data }) => {
+  return data
+})
+export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`).then(({ data }) => data)

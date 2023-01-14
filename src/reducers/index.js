@@ -6,7 +6,6 @@ import deliveryOrders from 'pages/DeliveryOrder/modules'
 import invoice from 'pages/Invoice/modules'
 import priceChanges from 'pages/PriceChanges/modules'
 import product from 'pages/Product/modules'
-import productsClients from 'pages/Products/modules'
 
 import notifications from './notifications'
 import modal from './modal'
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   priceChanges,
   product,
   products,
-  productsClients,
   providers,
   /**
    * Reducers del sistema
