@@ -6,7 +6,12 @@ import {
   API_DELETE_REMINDER,
   API_NOTES,
   API_PROVIDERS,
-  API_PAYMENTS, API_PAYMENTS_MERGE, API_PAYMENTS_DIVIDE, API_PRODUCTS_CLIENT, API_PRODUCTS
+  API_PAYMENTS,
+  API_PAYMENTS_MERGE,
+  API_PAYMENTS_DIVIDE,
+  API_PRODUCTS_CLIENT,
+  API_PRODUCTS,
+  API_INVOICES_SWAP
 } from 'constants/paths'
 import { format } from '../utils'
 
@@ -107,7 +112,11 @@ export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`)
 export const createProductClient = (data) => axios.post(`${API_PRODUCTS_CLIENT}`, data)
   .then(({ data }) => data)
 
-export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`, data).then(({ data }) => {
-  return data
-})
-export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`).then(({ data }) => data)
+export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`, data)
+  .then(({ data }) => {
+    return data
+  })
+export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`)
+  .then(({ data }) => data)
+
+export const swapInvoicesApi = (invoiceA, invoiceB) => axios.patch(`${API_INVOICES_SWAP}/${invoiceA}/${invoiceB}`)

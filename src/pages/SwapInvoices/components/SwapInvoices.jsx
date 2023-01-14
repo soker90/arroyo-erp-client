@@ -9,19 +9,32 @@ import {
   Grid, IconButton, InputAdornment, Tooltip
 } from '@mui/material'
 import PropTypes from 'prop-types'
+import SearchIcon from '@mui/icons-material/Search'
 
 import {
   InputForm, Page
 } from 'components'
-import SearchIcon from '@mui/icons-material/Search'
+import { useNotifications } from 'hooks'
+import { swapInvoicesApi } from 'services/apiService'
 import Header from './Header'
 import { useStyles } from './SwapInvoices.styles'
 
-const SwapInvoices = ({ swapInvoices }) => {
+const SwapInvoices = () => {
   const classes = useStyles()
   const [invoiceA, setInvoiceA] = useState('')
   const [invoiceB, setInvoiceB] = useState('')
+  const {
+    showError,
+    showSuccess
+  } = useNotifications()
 
+  const swapInvoices = () => {
+    swapInvoicesApi(invoiceA, invoiceB)
+      .then(() => showSuccess('Intercambiados Nº de orden'))
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
@@ -70,7 +83,7 @@ const SwapInvoices = ({ swapInvoices }) => {
                   color='primary'
                   variant='contained'
                   className={classes.button}
-                  onClick={() => swapInvoices(invoiceA, invoiceB)}
+                  onClick={swapInvoices}
                 >
                   Intercambiar
                 </Button>
