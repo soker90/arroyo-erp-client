@@ -28,4 +28,8 @@ export const API_PROVIDERS = 'providers'
 export const API_PAYMENTS = 'payments'
 export const API_PAYMENTS_MERGE = 'payments/merge'
 export const API_PAYMENTS_DIVIDE = 'payments/divide'
+
+export const API_PRICES_CHANGES = 'pricechanges'
+
+export const API_PRICES_CHANGES_UNREAD_COUNT = `${API_PRICES_CHANGES}/unread/count`
 export const API_NOTES = 'notes'

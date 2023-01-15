@@ -6,6 +6,8 @@ import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 import { useProducts } from 'hooks'
 import { INITIAL_STATE } from './constants'
 import { hasInitialData } from './utils'
+import { useSWRConfig } from 'swr'
+import { API_PRICES_CHANGES_UNREAD_COUNT } from '../../../../constants/paths.js'
 
 const AddProductModal = ({
   show,
@@ -22,6 +24,7 @@ const AddProductModal = ({
   )
   const navigate = useNavigate()
   const { products } = useProducts(idProvider)
+  const { mutate } = useSWRConfig()
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE)
@@ -54,7 +57,8 @@ const AddProductModal = ({
     _saveProduct(() => {
       close()
       setState(INITIAL_STATE)
-      pricesChangesUnreadCount()
+      pricesChangesUnreadCount() // TODO: remove
+      return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
     })
   }
 

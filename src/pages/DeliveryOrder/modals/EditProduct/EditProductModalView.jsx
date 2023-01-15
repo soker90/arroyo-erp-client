@@ -4,6 +4,8 @@ import {
 import PropTypes from 'prop-types'
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
+import { useSWRConfig } from 'swr'
+import { API_PRICES_CHANGES_UNREAD_COUNT } from '../../../../constants/paths.js'
 
 const EditProductModal = ({
   show,
@@ -19,6 +21,7 @@ const EditProductModal = ({
     (oldState, newState) => ({ ...oldState, ...newState }),
     product
   )
+  const { mutate } = useSWRConfig()
 
   useEffect(() => {
     setState(product)
@@ -27,7 +30,8 @@ const EditProductModal = ({
 
   const callbackClose = useCallback(() => {
     close()
-    pricesChangesUnreadCount()
+    pricesChangesUnreadCount() // TODO: remove
+    return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
   }, [close, pricesChangesUnreadCount])
 
   const _handleUpdate = () => {
