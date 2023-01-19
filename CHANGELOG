@@ -1,3 +1,6 @@
+# [3.1.0] - 19/01/2023
+  - Añadida nueva pantalla para ver los productos en los que no coincide el precio guardado con el del último albarán
+
 # [3.0.4] - 08/12/2022
   - Al modificar un albarán de clientes ya no se mueve el scroll al principio de la página
 
