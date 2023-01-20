@@ -26,3 +26,9 @@ jobs:
         with:
           push: true
           tags: soker90/arroyo-erp-client:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: soker90/arroyo-erp-client:${{ github.event.release.tag_name }}
