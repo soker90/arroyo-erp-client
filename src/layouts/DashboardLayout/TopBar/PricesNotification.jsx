@@ -2,7 +2,7 @@ import { NavLink as RouterLink } from 'react-router-dom'
 import { Badge, IconButton, Tooltip } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import EuroIcon from '@mui/icons-material/Euro'
-import { useSelector } from 'react-redux'
+import { usePricesChangesUnread } from 'hooks'
 
 const useStyles = makeStyles({
   badge: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 })
 
 const PricesNotification = () => {
-  const { count } = useSelector(({ priceChanges }) => priceChanges)
+  const { count } = usePricesChangesUnread()
   const classes = useStyles()
   return (
     <Tooltip title='Precios'>
@@ -30,5 +30,4 @@ const PricesNotification = () => {
   )
 }
 
-PricesNotification.displayName = 'PricesNotification'
 export default PricesNotification

@@ -4,31 +4,33 @@ import {
 import PropTypes from 'prop-types'
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
+import { useSWRConfig } from 'swr'
+import { API_PRICES_CHANGES_UNREAD_COUNT } from '../../../../constants/paths.js'
 
 const EditProductModal = ({
   show,
   close,
   products,
   updateProductOfDeliveryOrder,
-  product,
+  product = {},
   index,
-  hasCanal,
-  pricesChangesUnreadCount
+  hasCanal
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     product
   )
+  const { mutate } = useSWRConfig()
 
   useEffect(() => {
     setState(product)
     // eslint-disable-next-line
-  }, [show]);
+  }, [show])
 
   const callbackClose = useCallback(() => {
     close()
-    pricesChangesUnreadCount()
-  }, [close, pricesChangesUnreadCount])
+    return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
+  }, [close])
 
   const _handleUpdate = () => {
     try {
@@ -80,14 +82,7 @@ EditProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   product: PropTypes.object,
   index: PropTypes.number,
-  hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired
+  hasCanal: PropTypes.bool
 }
 
-EditProductModal.defaultProps = {
-  product: {}
-}
-
-EditProductModal.displayName = 'EditProductModal'
-export const story = EditProductModal
 export default EditProductModal

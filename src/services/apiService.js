@@ -11,9 +11,10 @@ import {
   API_PAYMENTS_DIVIDE,
   API_PRODUCTS_CLIENT,
   API_PRODUCTS,
-  API_INVOICES_SWAP
+  API_INVOICES_SWAP,
+  API_PRICES_CHANGES
 } from 'constants/paths'
-import { format } from '../utils'
+import { format } from 'utils'
 
 export const createClient = (client) => {
   return axios.post(API_CLIENTS, client)
@@ -120,3 +121,7 @@ export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`)
   .then(({ data }) => data)
 
 export const swapInvoicesApi = (invoiceA, invoiceB) => axios.patch(`${API_INVOICES_SWAP}/${invoiceA}/${invoiceB}`)
+
+export const changeReadPriceApi = (id, read) => axios.patch(`${API_PRICES_CHANGES}/${id}`, { read })
+export const deleteManyChangesPriceApi = ids => axios.post(`${API_PRICES_CHANGES}/deletemany`, { ids })
+export const deletePriceChangesApi = id => axios.delete(`${API_PRICES_CHANGES}/${id}`)
