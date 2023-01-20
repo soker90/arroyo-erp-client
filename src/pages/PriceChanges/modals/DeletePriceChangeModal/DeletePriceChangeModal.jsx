@@ -11,10 +11,6 @@ const DeletePriceChangeModal = ({
   ids,
   ...rest
 }) => {
-  /**
-   * Send email to the client for change password
-   * @private
-   */
   const _handleSend = () => {
     id
       ? deletePriceChanges(id)
@@ -56,6 +52,4 @@ DeletePriceChangeModal.propTypes = {
   show: PropTypes.bool
 }
 
-DeletePriceChangeModal.displayName = 'DeletePriceChangeModal'
-export const story = DeletePriceChangeModal
 export default DeletePriceChangeModal

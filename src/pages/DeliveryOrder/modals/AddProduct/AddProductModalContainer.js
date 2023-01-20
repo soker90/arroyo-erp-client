@@ -14,7 +14,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
   addProductToDeliveryOrder,
-  createDeliveryOrder,
+  createDeliveryOrder
 }
 
 export default connect(

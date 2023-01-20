@@ -4,7 +4,6 @@ import products from 'modules/products'
 
 import deliveryOrders from 'pages/DeliveryOrder/modules'
 import invoice from 'pages/Invoice/modules'
-import priceChanges from 'pages/PriceChanges/modules'
 import product from 'pages/Product/modules'
 
 import notifications from './notifications'
@@ -15,7 +14,6 @@ const rootReducer = combineReducers({
   account,
   deliveryOrders,
   invoice,
-  priceChanges,
   product,
   products,
   providers,

@@ -7,7 +7,7 @@ export const usePricesChangesUnread = () => {
   const {
     data,
     error
-  } = useSWR(API_PRICES_CHANGES_UNREAD_COUNT, { refreshInterval: 30000 })
+  } = useSWR(API_PRICES_CHANGES_UNREAD_COUNT)
   const {
     showError
   } = useNotifications()

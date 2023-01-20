@@ -15,7 +15,7 @@ const AddProductModal = ({
   addProductToDeliveryOrder,
   createDeliveryOrder,
   idProvider,
-  hasCanal,
+  hasCanal
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
