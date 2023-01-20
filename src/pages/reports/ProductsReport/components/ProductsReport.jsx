@@ -64,7 +64,7 @@ const ProductsReport = ({
 ProductsReport.propTypes = {
   providers: PropTypes.array.isRequired,
   getProducts: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired
 }
 
 export default ProductsReport
