@@ -7,10 +7,9 @@ export const usePricesChangesUnread = () => {
   const {
     data,
     error
-  } = useSWR(API_PRICES_CHANGES_UNREAD_COUNT)
+  } = useSWR(API_PRICES_CHANGES_UNREAD_COUNT, { refreshInterval: 30000 })
   const {
     showError
-
   } = useNotifications()
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export const usePricesChangesUnread = () => {
   }, [error, data])
 
   return {
-    count: data || 0,
+    count: data?.count || 0,
     isLoading: !data
   }
 }

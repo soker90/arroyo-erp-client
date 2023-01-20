@@ -12,10 +12,9 @@ const EditProductModal = ({
   close,
   products,
   updateProductOfDeliveryOrder,
-  product,
+  product = {},
   index,
-  hasCanal,
-  pricesChangesUnreadCount
+  hasCanal
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -26,13 +25,12 @@ const EditProductModal = ({
   useEffect(() => {
     setState(product)
     // eslint-disable-next-line
-  }, [show]);
+  }, [show])
 
   const callbackClose = useCallback(() => {
     close()
-    pricesChangesUnreadCount() // TODO: remove
     return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
-  }, [close, pricesChangesUnreadCount])
+  }, [close])
 
   const _handleUpdate = () => {
     try {
@@ -84,14 +82,7 @@ EditProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   product: PropTypes.object,
   index: PropTypes.number,
-  hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired
+  hasCanal: PropTypes.bool
 }
 
-EditProductModal.defaultProps = {
-  product: {}
-}
-
-EditProductModal.displayName = 'EditProductModal'
-export const story = EditProductModal
 export default EditProductModal

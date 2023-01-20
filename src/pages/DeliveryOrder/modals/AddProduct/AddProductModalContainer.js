@@ -4,7 +4,6 @@ import {
   addProductToDeliveryOrder,
   createDeliveryOrder
 } from 'pages/DeliveryOrder/modules/actions'
-import { pricesChangesUnreadCount } from 'pages/PriceChanges/modules/actions'
 import AddProductModalView from './AddProductModalView'
 
 const mapStateToProps = ({
@@ -16,7 +15,6 @@ const mapStateToProps = ({
 const mapDispatchToProps = {
   addProductToDeliveryOrder,
   createDeliveryOrder,
-  pricesChangesUnreadCount
 }
 
 export default connect(

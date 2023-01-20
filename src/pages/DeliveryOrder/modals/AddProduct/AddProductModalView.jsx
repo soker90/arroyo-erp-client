@@ -16,7 +16,6 @@ const AddProductModal = ({
   createDeliveryOrder,
   idProvider,
   hasCanal,
-  pricesChangesUnreadCount
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -57,7 +56,6 @@ const AddProductModal = ({
     _saveProduct(() => {
       close()
       setState(INITIAL_STATE)
-      pricesChangesUnreadCount() // TODO: remove
       return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
     })
   }
