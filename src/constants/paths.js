@@ -1,5 +1,8 @@
+import { BASE_PATH } from './common'
+
 export const PATH_CLIENT_BILLING = '/app/clientes/facturacion'
 export const PATH_PROVIDER_BILLING = '/app/informes/facturacion'
+export const PATH_PROVIDERS = `${BASE_PATH}/proveedores`
 
 export const API_DASHBOARD = 'dashboard'
 export const API_CREATE_REMINDER = `${API_DASHBOARD}/createReminder`
@@ -27,6 +30,8 @@ export const API_PAYMENTS_DIVIDE = 'payments/divide'
 export const API_PRODUCTS = 'products'
 export const API_PRODUCTS_WRONG_PRICES = `${API_PRODUCTS}/wrong`
 export const API_PRODUCTS_CLIENT = `${API_PRODUCTS}/clients`
+
+export const API_PRODUCTS_LAST_ORDER = `${API_PRODUCTS}/last-delivery-order`
 export const API_PROVIDERS = 'providers'
 
 export const API_PRICES_CHANGES = 'pricechanges'

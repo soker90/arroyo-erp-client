@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import ProductModal, { INITIAL_STATE } from 'components/Modals/ProductModal'
-import { format } from 'utils'
 
 const EditProductModal = ({
   show,
@@ -31,7 +30,7 @@ const EditProductModal = ({
         ...(name && { name }),
         ...(re && { re: re * 100 }),
         ...(iva && { iva: iva * 100 }),
-        ...(sale && { sale: format.number(sale) }),
+        ...(sale && { sale }),
         ...(rate && { rate }),
         ...(provider && { provider })
       })

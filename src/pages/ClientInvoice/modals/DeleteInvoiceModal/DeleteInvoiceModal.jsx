@@ -24,8 +24,8 @@ const DeleteInvoiceModal = ({
     <ConfirmModal
       {...rest}
       close={_close}
-      title='Eliminar producto'
-      description='¿Seguro que quieres eliminar este producto?'
+      title='Eliminar factura'
+      description='¿Seguro que quieres eliminar esta factura?'
       action={_handleSend}
       actions={[
         {

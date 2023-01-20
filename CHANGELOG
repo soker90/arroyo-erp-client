@@ -1,6 +1,8 @@
-# [3.1.1]
+# [3.2.0] - 20/01/2023
   - Añadido precio actual a la pantalla del producto
-  
+  - Corregido error por el que se borraba el precio de venta al actualizar datos de un producto
+  - Añadido botón para borrar un producto de proveedor junto con su histórico de precios
+
 # [3.1.0] - 19/01/2023
   - Añadida nueva pantalla para ver los productos en los que no coincide el precio guardado con el del último albarán
 

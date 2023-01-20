@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
@@ -8,30 +7,23 @@ import Header from './Header'
 import { useStyles } from './Product.styles'
 import ProductData from './ProductData/ProductData'
 import PricesTable from './PricesTable'
+import { useLastDeliveryOrder, useProduct } from '../hooks'
 
-const Product = ({
-  product,
-  prices,
-  getProduct,
-  getLastDeliveryOrder,
-  nextToLast,
-  last
-}) => {
+const Product = () => {
   const { id } = useParams()
   const classes = useStyles()
-  const [reversePrices, setReversePrices] = useState([])
+  const {
+    product,
+    prices,
+    reversePrices,
+    editProduct,
+    deleteProduct
+  } = useProduct(id)
 
-  useEffect(() => {
-    if (id) {
-      getProduct(id)
-      getLastDeliveryOrder(id)
-    }
-  }, [id])
-
-  useEffect(() => {
-    const clone = prices.slice()
-    setReversePrices(clone.reverse())
-  }, [prices])
+  const {
+    last,
+    nextToLast
+  } = useLastDeliveryOrder(id)
 
   if (!product._id) return <LoadingScreen />
 
@@ -44,9 +36,14 @@ const Product = ({
           product={product.name}
           lastDeliveryOrder={last}
           nextToLastDeliveryOrder={nextToLast}
+          editProduct={editProduct}
+          deleteProduct={deleteProduct}
         />
 
-        <ProductData product={product} className={classes.table} provider={product.provider} />
+        <ProductData
+          product={product} className={classes.table} provider={product.provider}
+          editProduct={editProduct}
+        />
 
         {Boolean(prices.length) &&
           (
