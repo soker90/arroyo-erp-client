@@ -1,13 +1,13 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router'
+import { useSWRConfig } from 'swr'
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 import { useProducts } from 'hooks'
 import { INITIAL_STATE } from './constants'
 import { hasInitialData } from './utils'
-import { useSWRConfig } from 'swr'
-import { API_PRICES_CHANGES_UNREAD_COUNT } from '../../../../constants/paths.js'
+import { API_PRICES_CHANGES_UNREAD_COUNT } from 'constants/paths'
 
 const AddProductModal = ({
   show,
