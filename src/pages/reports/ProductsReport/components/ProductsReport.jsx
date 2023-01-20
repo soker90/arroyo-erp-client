@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Container, Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'react-feather'
@@ -6,19 +7,23 @@ import {
   Header, ListActions, LoadingScreen, Page, PricesChart
 } from 'components'
 import { useStyles } from './ProductsReport.styles'
+import { useProduct } from 'pages/Product/hooks'
 
 const ProductsReport = ({
-  prices, providers, getProducts, products, getProduct, resetProduct
+  providers,
+  getProducts,
+  products
 }) => {
   const classes = useStyles()
+  const [productSelected, setProductSelected] = useState(undefined)
+  const { prices } = useProduct(productSelected)
 
   const _handleClickProvider = ({ _id }) => {
-    resetProduct()
     getProducts(_id)
   }
 
   const _handleClickProduct = ({ _id }) => {
-    getProduct(_id)
+    setProductSelected(_id)
   }
   if (!providers.length) return <LoadingScreen />
 
@@ -57,14 +62,9 @@ const ProductsReport = ({
 }
 
 ProductsReport.propTypes = {
-  prices: PropTypes.array.isRequired,
   providers: PropTypes.array.isRequired,
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
-  getProduct: PropTypes.func.isRequired,
-  resetProduct: PropTypes.func.isRequired
 }
 
-ProductsReport.displayName = 'Product'
-export const story = ProductsReport
 export default ProductsReport

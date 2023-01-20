@@ -14,7 +14,7 @@ export const useProduct = (id) => {
     data,
     error,
     mutate
-  } = useSWR(`${API_PRODUCTS}/${id}`)
+  } = useSWR(() => id ? `${API_PRODUCTS}/${id}` : null)
   const {
     showError,
     showSuccess
