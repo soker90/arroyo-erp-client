@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
@@ -8,19 +8,23 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { Link } from 'react-router-dom'
 
 import { TableMaterial, TextEuro } from 'components'
+import { useProducts } from 'hooks'
 import { format } from 'utils'
 import { BASE_PATH } from 'constants/index'
 import { diffColor } from './utils'
 import { useStyles } from './DeliveryOrderProducts.styles'
+import EditProductModal from '../../modals/EditProduct'
 
 const DeliveryOrderProducts = ({
   products,
   showDeleteProductModal,
-  showEditProductModal,
   isEditable,
-  hasCanal
+  hasCanal,
+  idProvider
 }) => {
   const classes = useStyles()
+  const [productToEdit, setProductToEdit] = useState(null)
+  const { products: productsProvider } = useProducts(idProvider, true)
 
   /**
    * Rencer cell of diff
@@ -55,79 +59,94 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _showEditProductModal = (row, index) => {
-    showEditProductModal(row, index)
+    setProductToEdit({
+      row,
+      index
+    })
   }
 
+  const _closeEditModal = useCallback(() => {
+    setProductToEdit(null)
+  }, [])
+
   return (
-    <TableMaterial
-      className={classes.root}
-      columns={[
-        {
-          title: 'Código',
-          field: 'code'
-        },
-        ...(hasCanal
-          ? [{
-              title: 'Nº Canal',
-              field: 'canal'
-            }]
-          : []),
-        {
-          title: 'Producto',
-          field: 'name'
-        },
-        {
-          title: 'Cantidad / Peso',
-          render: ({ quantity }) => format.number(quantity)
-        },
-        {
-          title: 'Precio',
-          render: ({ price }) => <TextEuro num={price} decimals={3} />
-        },
-        {
-          title: 'Base imponible',
-          render: ({ taxBase }) => <TextEuro num={taxBase} />
-        },
-        {
-          title: 'Diferencia',
-          render: _formatDiff
-        }
-      ]}
-      data={products}
-      actions={[
-        {
-          icon: VisibilityIcon,
-          tooltip: 'Ver producto',
-          component: Link,
-          to: ({ _id }) => `${BASE_PATH}/productos/${_id}`
-        },
-        ...(isEditable
-          ? [
-              {
-                icon: EditIcon,
-                tooltip: 'Editar',
-                onClick: _showEditProductModal
-              },
-              {
-                icon: DeleteIcon,
-                tooltip: 'Eliminar',
-                onClick: _showDeleteProductModal
-              }
-            ]
-          : [])
-      ]}
-    />
+    <>
+      <TableMaterial
+        className={classes.root}
+        columns={[
+          {
+            title: 'Código',
+            field: 'code'
+          },
+          ...(hasCanal
+            ? [{
+                title: 'Nº Canal',
+                field: 'canal'
+              }]
+            : []),
+          {
+            title: 'Producto',
+            field: 'name'
+          },
+          {
+            title: 'Cantidad / Peso',
+            render: ({ quantity }) => format.number(quantity)
+          },
+          {
+            title: 'Precio',
+            render: ({ price }) => <TextEuro num={price} decimals={3} />
+          },
+          {
+            title: 'Base imponible',
+            render: ({ taxBase }) => <TextEuro num={taxBase} />
+          },
+          {
+            title: 'Diferencia',
+            render: _formatDiff
+          }
+        ]}
+        data={products}
+        actions={[
+          {
+            icon: VisibilityIcon,
+            tooltip: 'Ver producto',
+            component: Link,
+            to: ({ _id }) => `${BASE_PATH}/productos/${_id}`
+          },
+          ...(isEditable
+            ? [
+                {
+                  icon: EditIcon,
+                  tooltip: 'Editar',
+                  onClick: _showEditProductModal
+                },
+                {
+                  icon: DeleteIcon,
+                  tooltip: 'Eliminar',
+                  onClick: _showDeleteProductModal
+                }
+              ]
+            : [])
+        ]}
+      />
+      <EditProductModal
+        show={Boolean(productToEdit)}
+        index={productToEdit?.index}
+        product={productToEdit?.row}
+        hasCanal={hasCanal}
+        close={_closeEditModal}
+        products={productsProvider}
+      />
+    </>
   )
 }
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
-  hasCanal: PropTypes.bool
+  hasCanal: PropTypes.bool,
+  idProvider: PropTypes.string
 }
 
-DeliveryOrderProducts.displayName = 'DeliveryOrderProducts'
-export const story = DeliveryOrderProducts
 export default DeliveryOrderProducts

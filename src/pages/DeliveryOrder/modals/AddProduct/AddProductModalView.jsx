@@ -117,8 +117,7 @@ AddProductModal.propTypes = {
   addProductToDeliveryOrder: PropTypes.func.isRequired,
   createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
-  hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired
+  hasCanal: PropTypes.bool
 }
 
 AddProductModal.displayName = 'AddProductModal'

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 import { useSWRConfig } from 'swr'
-import { API_PRICES_CHANGES_UNREAD_COUNT } from '../../../../constants/paths.js'
+import { API_PRICES_CHANGES_UNREAD_COUNT } from 'constants/paths'
 
 const EditProductModal = ({
   show,

@@ -58,6 +58,7 @@ const DeliveryOrder = (
               showEditProductModal={showEditProductModal}
               isEditable={!nOrder}
               hasCanal={hasCanal}
+              idProvider={provider}
             />
           )
         }
@@ -94,7 +95,6 @@ DeliveryOrder.propTypes = {
   nOrder: PropTypes.number,
   updateDataDeliveryOrder: PropTypes.func.isRequired,
   showDeleteProductModal: PropTypes.func.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
   resetDeliveryOrder: PropTypes.func.isRequired,
   note: PropTypes.string,
   hasCanal: PropTypes.bool,

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { showModal } from 'reducers/modal'
 import {
-  DELETE_PRODUCT_DELIVERY_ORDER, EDIT_PRODUCT_TO_DELIVERY_ORDER
+  DELETE_PRODUCT_DELIVERY_ORDER
 } from 'pages/DeliveryOrder/modals/types'
 import { getProducts } from 'modules/products/actions'
 import DeliveryOrder from '../components/DeliveryOrder'
@@ -23,13 +23,6 @@ const mapDispatchToProps = {
   showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {
-      index
-    }
-  }),
-  showEditProductModal: (product, index) => showModal({
-    modalType: EDIT_PRODUCT_TO_DELIVERY_ORDER,
-    modalProps: {
-      product,
       index
     }
   })

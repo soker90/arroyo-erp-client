@@ -3,11 +3,14 @@ import useSWR from 'swr'
 import { API_PRODUCTS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 
-export const useProducts = (provider) => {
+export const useProducts = (provider, providerRequired) => {
   const {
     data,
     error
-  } = useSWR(() => `${API_PRODUCTS}${provider ? `?provider=${provider}` : ''}`)
+  } = useSWR(() => {
+    if (!provider && providerRequired) return null
+    return `${API_PRODUCTS}${provider ? `?provider=${provider}` : ''}`
+  })
   const {
     showError
   } = useNotifications()
