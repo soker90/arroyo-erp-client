@@ -16,6 +16,8 @@ import {
 } from 'constants/paths'
 import { format } from 'utils'
 
+// TODO remove axios
+
 export const createClient = (client) => {
   return axios.post(API_CLIENTS, client)
 }

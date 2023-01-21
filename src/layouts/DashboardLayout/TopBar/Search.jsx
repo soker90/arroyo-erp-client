@@ -12,9 +12,9 @@ import {
   Popper
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
+import { useProviders } from 'hooks'
 import { navigateTo } from 'utils'
 import { useStyles } from './Search.styles'
 
@@ -27,7 +27,7 @@ const Search = () => {
   const [openSearchPopover, setOpenSearchPopover] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   // eslint-disable-next-line no-shadow
-  const providers = useSelector(({ providers }) => providers.providers)
+  const { providers } = useProviders()
   const navigate = useNavigate()
 
   /**
