@@ -77,7 +77,7 @@ const Providers = () => {
 }
 
 Providers.propTypes = {
-  providers: PropTypes.array.isRequired,
+  providers: PropTypes.array.isRequired
 }
 
 export default Providers
