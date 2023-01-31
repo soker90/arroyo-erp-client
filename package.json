@@ -58,7 +58,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
-    "swr": "^2.0.1",
+    "swr": "^2.0.3",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
