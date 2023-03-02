@@ -1,3 +1,6 @@
+# [3.2.1] - 02/03/2023
+  - Añadida columna Fecha de pago a las facturas del proveedor
+
 # [3.2.0] - 20/01/2023
   - Añadido precio actual a la pantalla del producto
   - Corregido error por el que se borraba el precio de venta al actualizar datos de un producto

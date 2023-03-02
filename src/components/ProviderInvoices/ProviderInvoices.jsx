@@ -40,6 +40,8 @@ const ProviderInvoices = ({
    */
   const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null)
 
+  const _renderPaymentDate = ({ payment }) => (payment?.paid ? format.date(payment?.paymentDate) : null)
+
   /**
    * Render mail icon
    * @param {boolean | undefined} mailSend
@@ -71,6 +73,10 @@ const ProviderInvoices = ({
         {
           title: 'Pago',
           render: _renderPaymentType
+        },
+        {
+          title: 'Fecha de pago',
+          render: _renderPaymentDate
         },
         {
           title: 'Por correo',
