@@ -79,7 +79,7 @@ const Search = () => {
    * Renderiza un elemento de la busqueda
    * @param {String} _id,
    * @param {String} name
-   * @return {ListItem}
+   * @return {JSX.Element}
    * @private
    */
   const _renderSearchedItem = ({
@@ -123,8 +123,7 @@ const Search = () => {
             elevation={3}
           >
             <List>
-              {providers
-                .filter(_filterPossibles)
+              {providers?.filter(_filterPossibles)
                 .map(_renderSearchedItem)}
             </List>
           </Paper>
