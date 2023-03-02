@@ -5,7 +5,7 @@ import {
   Hidden,
   Input,
   List,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Paper,
@@ -86,8 +86,7 @@ const Search = () => {
     _id,
     name
   }) => (
-    <ListItem
-      button
+    <ListItemButton
       key={_id}
       onClick={() => _handleSelectProvider(_id)}
     >
@@ -95,7 +94,7 @@ const Search = () => {
         <SearchIcon />
       </ListItemIcon>
       <ListItemText primary={name} />
-    </ListItem>
+    </ListItemButton>
   )
 
   return (
