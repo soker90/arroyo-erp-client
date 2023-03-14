@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LoadingBar } from 'react-redux-loading-bar'
-import { LocalizationProvider } from '@mui/x-date-pickers'
+import { LocalizationProvider, esES } from '@mui/x-date-pickers'
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
 
 import { ModalRoot } from 'components'

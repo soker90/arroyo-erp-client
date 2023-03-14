@@ -3,7 +3,8 @@
 import {
   colors, createTheme as createMuiTheme, responsiveFontSizes
 } from '@mui/material'
-import { esES } from '@mui/material/locale'
+import { esES as coreEsES } from '@mui/material/locale'
+import { esES } from '@mui/x-date-pickers'
 import { THEMES } from 'constants/common'
 import typography from './typography'
 import { softShadows, strongShadows } from './shadows'
@@ -151,7 +152,8 @@ export function createTheme (settings = {}) {
   let theme = createMuiTheme({
     ...baseConfig,
     ...themeConfig
-  }, esES)
+  }, esES,
+  coreEsES)
 
   if (settings.responsiveFontSizes) theme = responsiveFontSizes(theme)
 

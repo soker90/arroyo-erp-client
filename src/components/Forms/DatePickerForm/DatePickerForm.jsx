@@ -1,38 +1,43 @@
-/* eslint-disable */
-import PropTypes from 'prop-types';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import PropTypes from 'prop-types'
+import { Grid } from '@mui/material'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 
-import { InputForm } from 'components';
-import { useStyles } from './DatePickerForm.styles';
+import { useStyles } from './DatePickerForm.styles'
 
 const DatePickerForm = (
   {
-    size,
-    variant,
-    format,
-    autoOk,
+    size = 6,
+    variant = 'standard',
+    format = 'DD/MM/YYYY',
+    autoOk = true,
+    value = null,
+    disabled,
     ...rest
-  },
+  }
 ) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
-    <MobileDatePicker
-      disableToolbar
-      allowSameDateSelection
-      className={classes.picker}
-      showToolbar={false}
-      format={format}
-      inputVariant={variant}
-      closeOnSelect={autoOk}
-      cancelText='Cancelar'
-      clearText='Limpiar'
-      okText='Aceptar'
-      renderInput={params => <InputForm size={size} {...params} />}
-      {...rest}
-    />
-  );
-};
+    <Grid
+      item
+      md={size}
+      xs={12}
+    >
+      <MobileDatePicker
+        disableToolbar
+        allowSameDateSelection
+        className={classes.picker}
+        showToolbar={false}
+        format={format}
+        inputVariant={variant}
+        closeOnSelect={autoOk}
+        slotProps={{ textField: { variant, fullWidth: true, disabled } }}
+        value={value}
+        {...rest}
+      />
+    </Grid>
+  )
+}
 
 DatePickerForm.propTypes = {
   /**
@@ -73,17 +78,8 @@ DatePickerForm.propTypes = {
    */
   clearable: PropTypes.bool,
   variant: PropTypes.string,
-  closeOnSelect: PropTypes.bool,
-};
+  closeOnSelect: PropTypes.bool
+}
 
-DatePickerForm.defaultProps = {
-  format: 'DD/MM/YYYY',
-  size: 6,
-  autoOk: true,
-  value: null,
-};
-
-DatePickerForm.displayName = 'DatePickerForm';
-
-export const story = DatePickerForm;
-export default DatePickerForm;
+export const story = DatePickerForm
+export default DatePickerForm
