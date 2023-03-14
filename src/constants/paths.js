@@ -32,6 +32,7 @@ export const API_PRODUCTS_WRONG_PRICES = `${API_PRODUCTS}/wrong`
 export const API_PRODUCTS_CLIENT = `${API_PRODUCTS}/clients`
 
 export const API_PRODUCTS_LAST_ORDER = `${API_PRODUCTS}/last-delivery-order`
+export const API_PROVIDER = 'provider'
 export const API_PROVIDERS = 'providers'
 
 export const API_PRICES_CHANGES = 'pricechanges'
