@@ -21,7 +21,7 @@ ConfirmModal.propTypes = {
   show: PropTypes.bool,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  action: PropTypes.func.isRequired
+  action: PropTypes.func
 }
 
 ConfirmModal.displayName = 'ConfirmModal'

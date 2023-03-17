@@ -6,6 +6,7 @@ import { API_PRODUCTS, PATH_PROVIDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
   deleteProductApi,
+  deleteProductPriceApi,
   updateProductApi
 } from 'services/apiService'
 
@@ -51,6 +52,18 @@ export const useProduct = (id) => {
       })
   }
 
+  const deletePrice = (priceId, callback) => {
+    deleteProductPriceApi(id, priceId)
+      .then(() => {
+        showSuccess('Precio eliminado')
+        callback()
+        return mutate()
+      })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
   return {
     product: data?.product || {},
     prices: data?.prices || [],
@@ -58,6 +71,7 @@ export const useProduct = (id) => {
       .reverse() || [],
     isLoading: !data,
     editProduct,
-    deleteProduct
+    deleteProduct,
+    deletePrice
   }
 }

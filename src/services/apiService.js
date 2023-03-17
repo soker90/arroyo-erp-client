@@ -121,6 +121,8 @@ export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`,
   })
 export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`)
   .then(({ data }) => data)
+export const deleteProductPriceApi = (id, priceId) => axios.delete(`${API_PRODUCTS}/${id}/prices/${priceId}`)
+  .then(({ data }) => data)
 
 export const swapInvoicesApi = (invoiceA, invoiceB) => axios.patch(`${API_INVOICES_SWAP}/${invoiceA}/${invoiceB}`)
 

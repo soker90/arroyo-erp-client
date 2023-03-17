@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
 import { LoadingScreen, Page, PricesChart } from 'components'
-import Header from './Header'
-import { useStyles } from './Product.styles'
-import ProductData from './ProductData/ProductData'
-import PricesTable from './PricesTable'
+
 import { useLastDeliveryOrder, useProduct } from '../hooks'
+import Header from './Header'
+import ProductData from './ProductData'
+import PricesTable from './PricesTable'
+import { useStyles } from './Product.styles'
 
 const Product = () => {
   const { id } = useParams()
@@ -17,7 +17,8 @@ const Product = () => {
     prices,
     reversePrices,
     editProduct,
-    deleteProduct
+    deleteProduct,
+    deletePrice
   } = useProduct(id)
 
   const {
@@ -49,22 +50,13 @@ const Product = () => {
           (
             <>
               <PricesChart prices={reversePrices} className={classes.chart} />
-              <PricesTable prices={prices} provider={product.provider} />
+              <PricesTable prices={prices} provider={product.provider} deletePrice={deletePrice} />
             </>
           )}
 
       </Container>
     </Page>
   )
-}
-
-Product.propTypes = {
-  getProduct: PropTypes.func.isRequired,
-  product: PropTypes.object.isRequired,
-  prices: PropTypes.array.isRequired,
-  getLastDeliveryOrder: PropTypes.func.isRequired,
-  last: PropTypes.string,
-  nextToLast: PropTypes.string
 }
 
 export const story = Product

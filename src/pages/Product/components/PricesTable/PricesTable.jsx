@@ -1,17 +1,23 @@
+import DeleteIcon from '@mui/icons-material/Delete'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { TableMaterial } from 'components'
+import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import { Link } from 'react-router-dom'
+
 import { useStyles } from './PricesTable.styles'
-import { BASE_PATH } from '../../../../constants'
+import DeletePriceModal from '../../modals/DeletePriceModal'
 
 const PricesTable = ({
   prices,
-  provider
+  provider,
+  deletePrice
 }) => {
   const classes = useStyles()
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
 
   const providerUrl = ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`
   const clientUrl = ({ invoice }) => `${BASE_PATH}/clientes/factura/${invoice}`
@@ -24,35 +30,44 @@ const PricesTable = ({
   }]
 
   return (
-    <TableMaterial
-      className={classes.table}
-      columns={[
-        {
-          title: 'Fecha',
-          render: ({ date }) => format.date(date)
-        },
-        {
-          title: 'Precio',
-          render: ({ price }) => format.euro(price)
-        },
-        ...(provider ? columnsProvider : [])
-      ]}
-      actions={[
-        {
-          icon: VisibilityIcon,
-          tooltip: 'Ver albarán',
-          component: Link,
-          to: composeDoUrl
-        }
-      ]}
-      data={prices}
-    />
+    <>
+      <TableMaterial
+        className={classes.table}
+        columns={[
+          {
+            title: 'Fecha',
+            render: ({ date }) => format.date(date)
+          },
+          {
+            title: 'Precio',
+            render: ({ price }) => format.euro(price)
+          },
+          ...(provider ? columnsProvider : [])
+        ]}
+        actions={[
+          {
+            icon: DeleteIcon,
+            tooltip: 'Eliminar',
+            onClick: (product) => setShowDeleteModal(product)
+          },
+          {
+            icon: VisibilityIcon,
+            tooltip: 'Ver albarán',
+            component: Link,
+            to: composeDoUrl
+          }
+        ]}
+        data={prices}
+      />
+      <DeletePriceModal deletePrice={deletePrice} show={showDeleteModal} close={() => setShowDeleteModal(false)} />
+    </>
   )
 }
 
 PricesTable.propTypes = {
   prices: PropTypes.array.isRequired,
-  provider: PropTypes.string
+  provider: PropTypes.string,
+  deletePrice: PropTypes.func.isRequired,
 }
 
 export const story = PricesTable
