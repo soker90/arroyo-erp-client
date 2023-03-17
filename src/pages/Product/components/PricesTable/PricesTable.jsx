@@ -67,7 +67,7 @@ const PricesTable = ({
 PricesTable.propTypes = {
   prices: PropTypes.array.isRequired,
   provider: PropTypes.string,
-  deletePrice: PropTypes.func.isRequired,
+  deletePrice: PropTypes.func.isRequired
 }
 
 export const story = PricesTable
