@@ -8,7 +8,7 @@ const DeletePriceModal = ({
   ...rest
 }) => {
   const handleClose = () => {
-    deletePrice(show.id, rest.close)
+    deletePrice(show._id, rest.close)
   }
 
   return (
