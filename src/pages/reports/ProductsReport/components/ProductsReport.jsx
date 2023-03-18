@@ -16,7 +16,10 @@ const ProductsReport = ({
 }) => {
   const classes = useStyles()
   const [productSelected, setProductSelected] = useState(undefined)
-  const { prices } = useProduct(productSelected)
+  const {
+    prices,
+    pvps
+  } = useProduct(productSelected)
 
   const _handleClickProvider = ({ _id }) => {
     getProducts(_id)
@@ -51,7 +54,16 @@ const ProductsReport = ({
           <Grid item xs={12} md={8}>
             {Boolean(prices?.length) &&
               (
-                <PricesChart prices={prices.reverse()} className={classes.chart} />
+                <div className={classes.charts}>
+                  <PricesChart prices={prices.reverse()} />
+                  <PricesChart
+                    prices={pvps} className={classes.chart}
+                    title='Gráfica de precios de venta'
+                    tooltip='Venta'
+                    lineColor='#f73378'
+                    className={classes.secondChart}
+                  />
+                </div>
               )}
           </Grid>
         </Grid>

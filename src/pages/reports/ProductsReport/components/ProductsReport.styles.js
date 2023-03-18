@@ -10,8 +10,11 @@ export const useStyles = makeStyles(theme => ({
   container: {
     marginTop: theme.spacing(2)
   },
-  chart: {
+  charts: {
     position: 'sticky',
     top: '1.5rem'
+  },
+  secondChart: {
+    marginTop: theme.spacing(2)
   }
 }))

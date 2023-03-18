@@ -36,6 +36,8 @@ const Chart = ({
   className,
   data: dataProp,
   labels,
+  tooltip = 'Precio',
+  lineColor,
   ...rest
 }) => {
   const classes = useStyles()
@@ -60,11 +62,11 @@ const Chart = ({
         {
           data: dataProp,
           backgroundColor: gradient,
-          borderColor: theme.palette.secondary.main,
+          borderColor: lineColor ?? theme.palette.secondary.main,
           pointBorderColor: theme.palette.background.default,
           pointBorderWidth: 3,
           pointRadius: 6,
-          pointBackgroundColor: theme.palette.secondary.main
+          pointBackgroundColor: lineColor ?? theme.palette.secondary.main
         }
       ],
       labels
@@ -102,7 +104,7 @@ const Chart = ({
           title: () => {
           },
           label: tooltipItem => {
-            let label = `Precio: ${tooltipItem.parsed.y}`
+            let label = `${tooltip}: ${tooltipItem.parsed.y}`
 
             if (tooltipItem.parsed.y > 0) label += '€'
 
@@ -167,7 +169,9 @@ const Chart = ({
 Chart.propTypes = {
   className: PropTypes.string,
   data: PropTypes.array.isRequired,
-  labels: PropTypes.array.isRequired
+  labels: PropTypes.array.isRequired,
+  lineColor: PropTypes.string,
+  tooltip: PropTypes.string
 }
 
 export default Chart

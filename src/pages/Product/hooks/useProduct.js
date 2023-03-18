@@ -67,6 +67,7 @@ export const useProduct = (id) => {
   return {
     product: data?.product || {},
     prices: data?.prices || [],
+    pvps: data?.pvps || [],
     reversePrices: data?.prices.slice()
       .reverse() || [],
     isLoading: !data,

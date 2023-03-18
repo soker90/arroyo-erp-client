@@ -10,6 +10,9 @@ import { useStyles } from './PricesChart.styles'
 const PricesChart = ({
   className,
   prices,
+  title = 'Gráfico de precios',
+  tooltip,
+  lineColor,
   ...rest
 }) => {
   const classes = useStyles()
@@ -23,7 +26,7 @@ const PricesChart = ({
       {...rest}
     >
       <CardHeader
-        title='Gráfico de precios'
+        title={title}
       />
       <Divider />
       <CardContent>
@@ -36,6 +39,8 @@ const PricesChart = ({
               className={classes.chart}
               data={data}
               labels={labels}
+              tooltip={tooltip}
+              lineColor={lineColor}
             />
           </Box>
         </PerfectScrollbar>
@@ -46,7 +51,10 @@ const PricesChart = ({
 
 PricesChart.propTypes = {
   className: PropTypes.string,
-  prices: PropTypes.array
+  prices: PropTypes.array,
+  tooltip: PropTypes.string,
+  title: PropTypes.string,
+  lineColor: PropTypes.string
 }
 
 export default PricesChart
