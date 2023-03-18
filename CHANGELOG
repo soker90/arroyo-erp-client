@@ -1,6 +1,6 @@
 # [3.3.0] - 18/09/2023
   - Botón y modal para borrar el precio de un producto
-  - Añadida grafica de precios de venta en la pantalla de producto
+  - Añadida gráfica de precios de venta en la pantalla de producto y en la de los informes de producto
 
 # [3.2.4] - 02/03/2023
   - Correción undefined
