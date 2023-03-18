@@ -51,12 +51,12 @@ const Product = () => {
           (
             <>
               <PricesChart prices={reversePrices} className={classes.chart} />
-              <PricesChart
+              {Boolean(pvps?.length) && <PricesChart
                 prices={pvps} className={classes.chart}
                 title='Gráfica de precios de venta'
                 tooltip='Venta'
                 lineColor='#f73378'
-              />
+                                        />}
               <PricesTable prices={prices} provider={product.provider} deletePrice={deletePrice} />
             </>
           )}

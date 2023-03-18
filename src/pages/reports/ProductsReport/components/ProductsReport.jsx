@@ -55,7 +55,7 @@ const ProductsReport = ({
             {Boolean(prices?.length) &&
               (
                 <div className={classes.charts}>
-                  <PricesChart prices={prices.reverse()} />
+                  <PricesChart prices={structuredClone(prices).reverse()} />
                   <PricesChart
                     prices={pvps} className={classes.chart}
                     title='Gráfica de precios de venta'
