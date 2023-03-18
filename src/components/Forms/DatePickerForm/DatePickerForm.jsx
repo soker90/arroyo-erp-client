@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Grid } from '@mui/material'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
+import dayjs from 'dayjs'
 
 import { useStyles } from './DatePickerForm.styles'
 
@@ -32,7 +33,7 @@ const DatePickerForm = (
         inputVariant={variant}
         closeOnSelect={autoOk}
         slotProps={{ textField: { variant, fullWidth: true, disabled } }}
-        value={value}
+        value={dayjs(value)}
         {...rest}
       />
     </Grid>
