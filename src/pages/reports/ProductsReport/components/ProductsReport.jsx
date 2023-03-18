@@ -57,7 +57,7 @@ const ProductsReport = ({
                 <div className={classes.charts}>
                   <PricesChart prices={structuredClone(prices).reverse()} />
                   <PricesChart
-                    prices={pvps} className={classes.chart}
+                    prices={pvps}
                     title='Gráfica de precios de venta'
                     tooltip='Venta'
                     lineColor='#f73378'
