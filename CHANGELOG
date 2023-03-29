@@ -1,4 +1,7 @@
-# [3.3.0] - 18/09/2023
+# [3.3.1] - 29/03/2023
+  - Corregida página de cheques, antes solo mostraba los tres uĺtimos cheques siempre
+
+# [3.3.0] - 18/03/2023
   - Botón y modal para borrar el precio de un producto
   - Añadida gráfica de precios de venta en la pantalla de producto y en la de los informes de producto
   - Corregidas graficas de informes de producto, que a veces salía al revés

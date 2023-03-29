@@ -14,10 +14,6 @@ export const useCheques = (defaultFilters) => {
   } = useNotifications()
 
   useEffect(() => {
-    setFilters(defaultFilters)
-  }, [defaultFilters])
-
-  useEffect(() => {
     if (error) {
       showError(error.message)
     }

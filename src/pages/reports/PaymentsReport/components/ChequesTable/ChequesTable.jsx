@@ -13,7 +13,7 @@ const ChequesTable = ({
 }) => {
   const classes = useStyles()
   const navigate = useNavigate()
-  const { cheques, count, updateFilters } = useCheques({ year, limit: 3 })
+  const { cheques, count, updateFilters } = useCheques({ year, limit: 10 })
 
   const _handleInvoiceButton = ({ _id }) => {
     navigateTo(`facturas/${_id}`, navigate)
