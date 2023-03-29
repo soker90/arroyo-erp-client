@@ -10,14 +10,11 @@ on:
     branches: [ master ]
     types: [opened, synchronize]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }} # only if branch isn't master
+  
 jobs:
-  avoid_reduncy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cancel Previous Redundant Builds
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
   lint:
     runs-on: ubuntu-latest
     steps:
