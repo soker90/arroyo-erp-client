@@ -9,7 +9,7 @@ const mapStateToProps = ({ deliveryOrders: { totals, _id } }) => ({
 })
 
 const mapDispatchToProps = {
-  update: updateDataDeliveryOrder
+  update: updateDataDeliveryOrder // TODO: Ya no se pasa id
 }
 
 export default connect(
