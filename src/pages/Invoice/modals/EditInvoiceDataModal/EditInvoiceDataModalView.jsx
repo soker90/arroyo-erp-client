@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -13,11 +13,10 @@ const EditInvoiceDataModalView = ({
   nInvoice,
   dateInvoice,
   dateRegister,
-  updateDataInvoice,
-  id,
   concept,
   total,
-  mailSend
+  mailSend,
+  updateData
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
@@ -29,18 +28,6 @@ const EditInvoiceDataModalView = ({
       mailSend
     }
   )
-
-  useEffect(() => {
-    if (show) {
-      setState({
-        nInvoice,
-        dateInvoice,
-        dateRegister,
-        concept
-      })
-    }
-    // eslint-disable-next-line
-  }, [show]);
 
   /**
    * Handle event onChange input
@@ -55,8 +42,11 @@ const EditInvoiceDataModalView = ({
       checked
     }
   }) => {
-    if (name === 'nInvoice') setState({ [name]: value.toUpperCase() })
-    else setState({ [name]: checked ?? value })
+    if (name === 'nInvoice') {
+      setState({ [name]: value.toUpperCase() })
+    } else {
+      setState({ [name]: checked ?? value })
+    }
   }
 
   const _close = () => {
@@ -72,7 +62,7 @@ const EditInvoiceDataModalView = ({
       mailSend: state.mailSend
     }
 
-    updateDataInvoice(id, { data }, _close)
+    updateData({ data }, _close)
   }
 
   /**
@@ -195,13 +185,10 @@ EditInvoiceDataModalView.propTypes = {
   dateInvoice: PropTypes.number,
   nInvoice: PropTypes.string,
   dateRegister: PropTypes.number,
-  id: PropTypes.string.isRequired,
-  updateDataInvoice: PropTypes.func.isRequired,
   concept: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
-  mailSend: PropTypes.bool
+  mailSend: PropTypes.bool,
+  updateData: PropTypes.func.isRequired
 }
 
-EditInvoiceDataModalView.displayName = 'EditInvoiceDataModalView'
-export const story = EditInvoiceDataModalView
 export default EditInvoiceDataModalView

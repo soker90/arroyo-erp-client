@@ -12,7 +12,7 @@ import {
   API_PRODUCTS_CLIENT,
   API_PRODUCTS,
   API_INVOICES_SWAP,
-  API_PRICES_CHANGES
+  API_PRICES_CHANGES, API_INVOICES
 } from 'constants/paths'
 import { format } from 'utils'
 
@@ -82,6 +82,14 @@ export const updateProductClientInvoice = ({
   product
 }) => axios.patch(
   `${API_CLIENT_INVOICES}/${invoice}/deliveryOrder/${deliveryOrder}/product/${product}`,
+  data
+)
+  .then(({ data }) => data)
+
+/* Invoice */
+
+export const updateInvoiceData = (id, data) => axios.patch(
+  `${API_INVOICES}/${id}`,
   data
 )
   .then(({ data }) => data)

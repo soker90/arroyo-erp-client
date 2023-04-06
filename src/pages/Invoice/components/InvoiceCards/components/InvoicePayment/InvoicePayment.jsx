@@ -13,7 +13,8 @@ import EditIcon from '@mui/icons-material/Edit'
 const InvoicePayment = ({
   payment,
   className,
-  id
+  id,
+  updateData
 }) => {
   const [showModal, setShowModal] = useState(false)
 
@@ -65,7 +66,10 @@ const InvoicePayment = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditPaymentModal payment={payment} show={showModal} setShow={setShowModal} id={id} />
+      <EditPaymentModal
+        payment={payment} show={showModal} setShow={setShowModal} id={id}
+        updateData={updateData}
+      />
     </>
   )
 }
@@ -79,7 +83,8 @@ InvoicePayment.propTypes = {
     invoicesOrder: PropTypes.string
   }),
   className: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  updateData: PropTypes.func.isRequired
 }
 
 InvoicePayment.displayName = 'InvoiceTotals'

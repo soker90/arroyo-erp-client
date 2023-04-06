@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
@@ -9,28 +8,28 @@ import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
 import Header from './Header'
 import { useStyles } from './Invoice.styles'
 import InvoiceCards from './InvoiceCards'
+import { useInvoice } from '../hooks'
 
-const Invoice = ({
-  getInvoice,
-  id,
-  nameProvider,
-  provider,
-  deliveryOrders,
-  totals,
-  data,
-  payment,
-  resetInvoiceState
-}) => {
+const Invoice = () => {
   const { idInvoice } = useParams()
   const classes = useStyles()
 
-  useEffect(() => {
-    if (idInvoice && idInvoice !== id) getInvoice(idInvoice)
-  }, [idInvoice])
+  const {
+    invoice,
+    updateData
+  } = useInvoice(idInvoice)
 
-  useEffect(() => () => resetInvoiceState(), [])
+  if (!invoice) return <LoadingScreen />
 
-  if (!id) return <LoadingScreen />
+  const {
+    nameProvider,
+    provider,
+    deliveryOrders,
+    totals,
+    data,
+    payment,
+    id
+  } = invoice
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
@@ -41,7 +40,10 @@ const Invoice = ({
           nOrder={data.nOrder}
         />
 
-        <InvoiceCards totals={totals} data={data} payment={payment} id={id} />
+        <InvoiceCards
+          totals={totals} data={data} payment={payment} id={id}
+          updateData={updateData}
+        />
 
         <div className={classes.orders}>
           {deliveryOrders?.map(props => (

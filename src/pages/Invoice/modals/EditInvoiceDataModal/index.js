@@ -1,1 +1,1 @@
-export { default } from './EditInvoiceDataModalContainer'
+export { default } from './EditInvoiceDataModalView.jsx'
