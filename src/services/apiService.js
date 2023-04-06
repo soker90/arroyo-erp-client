@@ -94,6 +94,12 @@ export const updateInvoiceData = (id, data) => axios.patch(
 )
   .then(({ data }) => data)
 
+export const confirmInvoice = (id, data) => axios.patch(
+  `${API_INVOICES}/${id}/confirm`,
+  data
+)
+  .then(({ data }) => data)
+
 /* Dashboard */
 
 export const deleteReminderApi = (id) => axios.delete(`${API_DELETE_REMINDER}/${id}`)

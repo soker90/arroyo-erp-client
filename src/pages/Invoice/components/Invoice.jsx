@@ -16,7 +16,8 @@ const Invoice = () => {
 
   const {
     invoice,
-    updateData
+    updateData,
+    confirm
   } = useInvoice(idInvoice)
 
   if (!invoice) return <LoadingScreen />
@@ -38,6 +39,7 @@ const Invoice = () => {
           provider={provider}
           nameProvider={nameProvider}
           nOrder={data.nOrder}
+          confirm={confirm}
         />
 
         <InvoiceCards

@@ -2,12 +2,11 @@ import { useEffect } from 'react'
 import useSWR from 'swr'
 import { useNavigate } from 'react-router'
 
-import { API_INVOICES, API_PRODUCTS, PATH_PROVIDERS } from 'constants/paths'
+import { API_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  deleteProductApi,
+  confirmInvoice,
   deleteProductPriceApi, updateInvoiceData,
-  updateProductApi
 } from 'services/apiService'
 
 export const useInvoice = (id) => {
@@ -56,11 +55,18 @@ export const useInvoice = (id) => {
       })
   }
 
-  const deleteProduct = () => {
-    deleteProductApi(id)
-      .then(() => {
-        showSuccess(`Producto ${data?.product.name} eliminado`)
-        navigate(`${PATH_PROVIDERS}/${data?.product.provider}#Productos`)
+  const confirm = confirmData => {
+    confirmInvoice(id, confirmData)
+      .then(({
+        data: newData,
+        payment
+      }) => {
+        showSuccess('Factura confirmada')
+        return mutate({
+          ...data,
+          data: newData,
+          payment
+        })
       })
       .catch((error) => {
         showError(error.message)
@@ -81,7 +87,7 @@ export const useInvoice = (id) => {
 
   return {
     invoice: data,
-    updateData
-
+    updateData,
+    confirm
   }
 }
