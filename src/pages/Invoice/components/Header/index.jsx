@@ -11,7 +11,8 @@ const HeaderInvoice = ({
   provider,
   nameProvider,
   nOrder,
-  confirm
+  confirm,
+  deleteInvoice
 }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -47,7 +48,11 @@ const HeaderInvoice = ({
         show={showConfirmModal} setShow={setShowConfirmModal}
         confirmInvoice={confirm}
       />
-      <DeleteInvoiceModal show={showDeleteModal} setShow={setShowDeleteModal} />
+      <DeleteInvoiceModal
+        show={showDeleteModal} setShow={setShowDeleteModal}
+        deleteInvoice={deleteInvoice}
+        providerId={provider}
+      />
     </>
   )
 }
@@ -56,7 +61,8 @@ HeaderInvoice.propTypes = {
   nameProvider: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
   nOrder: PropTypes.number,
-  confirm: PropTypes.func.isRequired
+  confirm: PropTypes.func.isRequired,
+  deleteInvoice: PropTypes.func.isRequired
 }
 
 HeaderInvoice.displayName = 'HeaderInvoice'

@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router'
 import { API_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  confirmInvoice,
-  deleteProductPriceApi, updateInvoiceData,
+  confirmInvoice, deleteInvoiceApi,
+  deleteProductPriceApi, updateInvoiceData
 } from 'services/apiService'
 
 export const useInvoice = (id) => {
@@ -73,12 +73,11 @@ export const useInvoice = (id) => {
       })
   }
 
-  const deletePrice = (priceId, callback) => {
-    deleteProductPriceApi(id, priceId)
+  const deleteInvoice = () => {
+    deleteInvoiceApi(id)
       .then(() => {
-        showSuccess('Precio eliminado')
-        callback()
-        return mutate()
+        navigate(`/app/proveedores/${data.provider}#Facturas`)
+        showSuccess('Factura eliminada')
       })
       .catch((error) => {
         showError(error.message)
@@ -88,6 +87,7 @@ export const useInvoice = (id) => {
   return {
     invoice: data,
     updateData,
-    confirm
+    confirm,
+    deleteInvoice
   }
 }
