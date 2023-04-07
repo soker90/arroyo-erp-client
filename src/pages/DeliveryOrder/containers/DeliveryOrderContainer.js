@@ -6,20 +6,12 @@ import {
 import { getProducts } from 'modules/products/actions'
 import DeliveryOrder from '../components/DeliveryOrder'
 import {
-  getDeliveryOrder, updateDataDeliveryOrder, resetDeliveryOrder
+  updateDataDeliveryOrder
 } from '../modules/actions'
-
-/**
- * @param products
- * @return {{products: *}}
- */
-const mapStateToProps = ({ deliveryOrders }) => deliveryOrders
 
 const mapDispatchToProps = {
   getProducts,
-  getDeliveryOrder,
   updateDataDeliveryOrder,
-  resetDeliveryOrder,
   showDeleteProductModal: index => showModal({
     modalType: DELETE_PRODUCT_DELIVERY_ORDER,
     modalProps: {
@@ -29,6 +21,6 @@ const mapDispatchToProps = {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(DeliveryOrder)

@@ -5,13 +5,12 @@ import {
 } from '@mui/material'
 import uniqId from 'uniqid'
 
-import { ItemCard } from 'components'
+import { EditTotalsModal, ItemCard } from 'components'
 import EditIcon from '@mui/icons-material/Edit'
 import { itemsCard } from './utils'
-import EditDeliveryOrderTotalsModal from '../../modals/EditDeliveryOrderTotalsModal'
 
 const DeliveryOrderTotals = ({
-  totals, isEditable
+  totals, isEditable, updateData
 }) => {
   const [showModal, setShowModal] = useState(false)
 
@@ -59,7 +58,7 @@ const DeliveryOrderTotals = ({
           </Grid>
         </CardContent>
       </Card>
-      {showModal && <EditDeliveryOrderTotalsModal show={showModal} setShow={setShowModal} />}
+      <EditTotalsModal show={showModal} setShow={setShowModal} update={updateData} {...totals} />
     </>
   )
 }
@@ -71,7 +70,8 @@ DeliveryOrderTotals.propTypes = {
     total: PropTypes.number,
     taxBase: PropTypes.number
   }),
-  isEditable: PropTypes.bool.isRequired
+  isEditable: PropTypes.bool.isRequired,
+  updateData: PropTypes.func.isRequired
 }
 
 DeliveryOrderTotals.displayName = 'DeliveryOrderTotals'
