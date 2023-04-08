@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 import { API_DELIVERY_ORDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  confirmInvoice, deleteInvoiceApi, updateDataDeliveryOrder,
+  confirmInvoice, deleteInvoiceApi, deleteProductDeliveryOrder, updateDataDeliveryOrder,
   updateInvoiceData
 } from 'services/apiService'
 import { format } from '../../../utils/index.js'
@@ -30,7 +30,11 @@ export const useDeliveryOrder = (id) => {
     }
   }, [error, data])
 
-  const updateData = ({ date, note, totals }, callback) => {
+  const updateData = ({
+    date,
+    note,
+    totals
+  }, callback) => {
     const newData = {
       ...(date && { date: format.dateToSend(date) }),
       ...(note !== undefined && { note }),
@@ -66,6 +70,17 @@ export const useDeliveryOrder = (id) => {
       })
   }
 
+  const deleteProduct = index => {
+    deleteProductDeliveryOrder(id, index)
+      .then(newData => {
+        showSuccess('Se ha quitado el producto correctamente')
+        return mutate(newData)
+      })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
   const deleteInvoice = () => {
     deleteInvoiceApi(id)
       .then(() => {
@@ -79,6 +94,7 @@ export const useDeliveryOrder = (id) => {
 
   return {
     deliveryOrder: data,
-    updateData
+    updateData,
+    deleteProduct
   }
 }

@@ -58,7 +58,8 @@ export const updateDOClientInvoice = ({
 
 /* Delivery Order */
 
-export const updateDataDeliveryOrder = (id, newData) => axios.patch(`${API_DELIVERY_ORDERS}/${id}`, newData).then(({ data }) => data)
+export const updateDataDeliveryOrder = (id, newData) => axios.patch(`${API_DELIVERY_ORDERS}/${id}`, newData)
+  .then(({ data }) => data)
 
 export const deleteProductClientInvoice = ({
   invoice,
@@ -67,6 +68,9 @@ export const deleteProductClientInvoice = ({
 }) => axios.delete(
   `${API_CLIENT_INVOICES}/${invoice}/deliveryOrder/${deliveryOrder}/product/${product}`
 )
+  .then(({ data }) => data)
+
+export const deleteProductDeliveryOrder = (id, index) => axios.delete(`${API_DELIVERY_ORDERS}/${id}/product/${index}`)
   .then(({ data }) => data)
 
 export const createProductClientInvoice = ({

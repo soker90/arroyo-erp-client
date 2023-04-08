@@ -9,3 +9,5 @@ export default {
   [ADD_PRODUCT_TO_DELIVERY_ORDER]: lazy(() => import('./AddProduct')),
   [EDIT_PRODUCT_TO_DELIVERY_ORDER]: lazy(() => import('./EditProduct'))
 }
+
+export { default as DeleteConfirmationModal } from './DeleteConfirmationModal'

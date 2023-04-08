@@ -14,16 +14,18 @@ import { BASE_PATH } from 'constants/index'
 import { diffColor } from './utils'
 import { useStyles } from './DeliveryOrderProducts.styles'
 import EditProductModal from '../../modals/EditProduct'
+import { DeleteConfirmationModal } from '../../modals/index.js'
 
 const DeliveryOrderProducts = ({
   products,
-  showDeleteProductModal,
+  deleteProduct,
   isEditable,
   hasCanal,
   idProvider
 }) => {
   const classes = useStyles()
   const [productToEdit, setProductToEdit] = useState(null)
+  const [productIndexToDelete, setProductIndexToDelete] = useState(null)
   const { products: productsProvider } = useProducts(idProvider, true)
 
   /**
@@ -49,7 +51,7 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _showDeleteProductModal = (row, index) => {
-    showDeleteProductModal(index)
+    setProductIndexToDelete(index)
   }
 
   /**
@@ -137,13 +139,19 @@ const DeliveryOrderProducts = ({
         close={_closeEditModal}
         products={productsProvider}
       />
+      <DeleteConfirmationModal
+        show={productIndexToDelete !== null}
+        close={() => setProductIndexToDelete(null)}
+        deleteProductOfDeliveryOrder={deleteProduct}
+        index={productIndexToDelete}
+      />
     </>
   )
 }
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
   hasCanal: PropTypes.bool,
   idProvider: PropTypes.string

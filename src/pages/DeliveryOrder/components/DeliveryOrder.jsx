@@ -13,12 +13,16 @@ import { useDeliveryOrder } from '../hooks/index.js'
 
 const DeliveryOrder = (
   {
-    showDeleteProductModal, showEditProductModal
+    showEditProductModal
   }
 ) => {
   const classes = useStyles()
   const { idDeliveryOrder } = useParams()
-  const { deliveryOrder, updateData } = useDeliveryOrder(idDeliveryOrder)
+  const {
+    deliveryOrder,
+    updateData,
+    deleteProduct
+  } = useDeliveryOrder(idDeliveryOrder)
 
   /* useEffect(() => {
     if (provider) getProducts(provider)
@@ -52,8 +56,7 @@ const DeliveryOrder = (
           date && (
             <DeliveryOrderProducts
               products={products}
-              showDeleteProductModal={showDeleteProductModal}
-              showEditProductModal={showEditProductModal}
+              deleteProduct={deleteProduct}
               isEditable={!nOrder}
               hasCanal={hasCanal}
               idProvider={provider}
@@ -83,8 +86,7 @@ const DeliveryOrder = (
 
 DeliveryOrder.propTypes = {
   getProducts: PropTypes.func.isRequired,
-  updateDataDeliveryOrder: PropTypes.func.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired
+  updateDataDeliveryOrder: PropTypes.func.isRequired
 }
 
 export default DeliveryOrder
