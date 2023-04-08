@@ -6,7 +6,7 @@ import { API_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
   confirmInvoice, deleteInvoiceApi,
-  deleteProductPriceApi, updateInvoiceData
+  updateInvoiceData
 } from 'services/apiService'
 
 export const useInvoice = (id) => {

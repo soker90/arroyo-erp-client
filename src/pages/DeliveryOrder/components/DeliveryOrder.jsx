@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Container, Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 
@@ -11,11 +10,7 @@ import Header from './Header'
 import { useStyles } from './DeliveryOrder.styles'
 import { useDeliveryOrder } from '../hooks/index.js'
 
-const DeliveryOrder = (
-  {
-    showEditProductModal
-  }
-) => {
+const DeliveryOrder = () => {
   const classes = useStyles()
   const { idDeliveryOrder } = useParams()
   const {

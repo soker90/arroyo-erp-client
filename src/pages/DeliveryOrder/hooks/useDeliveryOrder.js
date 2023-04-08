@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
 import useSWR from 'swr'
-import { useNavigate } from 'react-router'
 
 import { API_DELIVERY_ORDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  confirmInvoice, deleteInvoiceApi, deleteProductDeliveryOrder, updateDataDeliveryOrder,
-  updateInvoiceData
+  deleteProductDeliveryOrder, updateDataDeliveryOrder
 } from 'services/apiService'
-import { format } from '../../../utils/index.js'
+import { format } from 'utils'
 
 export const useDeliveryOrder = (id) => {
   const {
@@ -21,8 +19,6 @@ export const useDeliveryOrder = (id) => {
     showError,
     showSuccess
   } = useNotifications()
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     if (error) {
@@ -52,40 +48,11 @@ export const useDeliveryOrder = (id) => {
       })
   }
 
-  const confirm = confirmData => {
-    confirmInvoice(id, confirmData)
-      .then(({
-        data: newData,
-        payment
-      }) => {
-        showSuccess('Factura confirmada')
-        return mutate({
-          ...data,
-          data: newData,
-          payment
-        })
-      })
-      .catch((error) => {
-        showError(error.message)
-      })
-  }
-
   const deleteProduct = index => {
     deleteProductDeliveryOrder(id, index)
       .then(newData => {
         showSuccess('Se ha quitado el producto correctamente')
         return mutate(newData)
-      })
-      .catch((error) => {
-        showError(error.message)
-      })
-  }
-
-  const deleteInvoice = () => {
-    deleteInvoiceApi(id)
-      .then(() => {
-        navigate(`/app/proveedores/${data.provider}#Facturas`)
-        showSuccess('Factura eliminada')
       })
       .catch((error) => {
         showError(error.message)
