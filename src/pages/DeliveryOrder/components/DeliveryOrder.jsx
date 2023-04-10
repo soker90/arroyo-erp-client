@@ -80,8 +80,7 @@ const DeliveryOrder = () => {
 }
 
 DeliveryOrder.propTypes = {
-  getProducts: PropTypes.func.isRequired,
-  updateDataDeliveryOrder: PropTypes.func.isRequired
+  getProducts: PropTypes.func.isRequired
 }
 
 export default DeliveryOrder

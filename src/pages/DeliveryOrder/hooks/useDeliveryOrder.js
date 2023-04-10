@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import { API_DELIVERY_ORDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
-  deleteProductDeliveryOrder, updateDataDeliveryOrder
+  deleteProductDeliveryOrder, updateDataDeliveryOrder, updateProductOfDeliveryOrder
 } from 'services/apiService'
 import { format } from 'utils'
 
@@ -48,6 +48,9 @@ export const useDeliveryOrder = (id) => {
       })
   }
 
+  const updateProduct = () => {
+    updateProductOfDeliveryOrder(id, {})
+  }
   const deleteProduct = index => {
     deleteProductDeliveryOrder(id, index)
       .then(newData => {

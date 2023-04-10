@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from '@mui/material'
@@ -138,6 +137,7 @@ const DeliveryOrderProducts = ({
         hasCanal={hasCanal}
         close={_closeEditModal}
         products={productsProvider}
+        idProvider={idProvider}
       />
       <DeleteConfirmationModal
         show={productIndexToDelete !== null}

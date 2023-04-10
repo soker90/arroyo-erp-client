@@ -73,6 +73,12 @@ export const deleteProductClientInvoice = ({
 export const deleteProductDeliveryOrder = (id, index) => axios.delete(`${API_DELIVERY_ORDERS}/${id}/product/${index}`)
   .then(({ data }) => data)
 
+export const updateProductOfDeliveryOrder = ({
+  id,
+  index,
+  model
+}) => axios.put(`${API_DELIVERY_ORDERS}/${id}/product/${index}`, model).then(({ data }) => data)
+/* Client Invoice */
 export const createProductClientInvoice = ({
   invoice,
   deliveryOrder,
