@@ -65,7 +65,7 @@
     "@faker-js/faker": "^7.6.0",
     "@testing-library/react": "^14.0.0",
     "@vitejs/plugin-react-swc": "^3.3.0",
-    "@vitest/coverage-c8": "^0.29.8",
+    "@vitest/coverage-c8": "^0.30.1",
     "happy-dom": "^9.1.9",
     "msw": "^1.2.1",
     "prettier": "^2.8.7",
