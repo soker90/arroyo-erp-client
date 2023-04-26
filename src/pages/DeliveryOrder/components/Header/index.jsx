@@ -13,7 +13,8 @@ const HeaderDeliveryOrder = ({
   provider,
   nameProvider,
   readOnly,
-  invoice
+  invoice,
+  deleteDeliveryOrder
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -36,8 +37,8 @@ const HeaderDeliveryOrder = ({
             link: `/app/proveedores/${provider}#Albaranes`,
             title: 'Albaranes'
           }]}
-        title='Albarán'
-        description=''
+        title="Albarán"
+        description=""
         buttons={[{
           variant: 'outlined',
           onClick: _openDeleteModal,
@@ -62,8 +63,9 @@ const HeaderDeliveryOrder = ({
           disabled: readOnly
         }]}
       />
-      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal} />
-      <DeleteDeliveryOrderModal show={showDeleteModal} close={_closeDeleteModal} />
+      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal}/>
+      <DeleteDeliveryOrderModal show={showDeleteModal} close={_closeDeleteModal}
+                                deleteDeliveryOrder={deleteDeliveryOrder} providerId={provider}/>
     </>
   )
 }
@@ -72,9 +74,10 @@ HeaderDeliveryOrder.propTypes = {
   provider: PropTypes.string,
   nameProvider: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
-  invoice: PropTypes.string
+  invoice: PropTypes.string,
+  deleteDeliveryOrder: PropTypes.func.isRequired
 }
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder'
-export const story = HeaderDeliveryOrder
+
 export default HeaderDeliveryOrder

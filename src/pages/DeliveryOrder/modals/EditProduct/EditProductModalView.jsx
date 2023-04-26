@@ -42,7 +42,6 @@ const EditProductModal = ({
         price: Number(state.price),
         ...(hasCanal && { canal: state.canal })
       }
-
       updateProductOfDeliveryOrder(index, model, callbackClose)
     } catch (e) {
       console.error(e)
@@ -56,7 +55,7 @@ const EditProductModal = ({
       state={state}
       setState={setState}
       show={show}
-      title='Editar producto'
+      title="Editar producto"
       hasCanal={hasCanal}
       productReadOnly
       actions={[

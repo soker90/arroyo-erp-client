@@ -4,6 +4,7 @@ import useSWR from 'swr'
 import { API_DELIVERY_ORDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
+  deleteDeliveryOrderApi,
   deleteProductDeliveryOrder, updateDataDeliveryOrder, updateProductOfDeliveryOrder
 } from 'services/apiService'
 import { format } from 'utils'
@@ -48,9 +49,25 @@ export const useDeliveryOrder = (id) => {
       })
   }
 
-  const updateProduct = () => {
-    updateProductOfDeliveryOrder(id, {})
+  const deleteDeliveryOrder = callback => {
+    deleteDeliveryOrderApi(id).then(() => {
+      showSuccess('Se ha eliminado el albarán correctamente')
+      callback?.()
+    }).catch((error) => {
+      showError(error.message)
+    })
   }
+
+  const updateProduct = (index, model, callback) => {
+    updateProductOfDeliveryOrder({ id, index, model }).then(response => {
+      showSuccess('Producto actualizado')
+      callback?.()
+      return mutate(response)
+    }).catch((error) => {
+      showError(error.message)
+    })
+  }
+
   const deleteProduct = index => {
     deleteProductDeliveryOrder(id, index)
       .then(newData => {
@@ -65,6 +82,8 @@ export const useDeliveryOrder = (id) => {
   return {
     deliveryOrder: data,
     updateData,
-    deleteProduct
+    deleteProduct,
+    updateProduct,
+    deleteDeliveryOrder
   }
 }

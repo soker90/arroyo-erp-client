@@ -16,14 +16,12 @@ const DeliveryOrder = () => {
   const {
     deliveryOrder,
     updateData,
-    deleteProduct
+    deleteProduct,
+    updateProduct,
+    deleteDeliveryOrder
   } = useDeliveryOrder(idDeliveryOrder)
 
-  /* useEffect(() => {
-    if (provider) getProducts(provider)
-  }, [deliveryOrder]) */
-
-  if (!deliveryOrder) return <LoadingScreen />
+  if (!deliveryOrder) return <LoadingScreen/>
 
   const {
     provider,
@@ -45,6 +43,7 @@ const DeliveryOrder = () => {
           provider={provider}
           readOnly={Boolean(nOrder)}
           invoice={invoice}
+          deleteDeliveryOrder={deleteDeliveryOrder}
         />
 
         {
@@ -55,6 +54,7 @@ const DeliveryOrder = () => {
               isEditable={!nOrder}
               hasCanal={hasCanal}
               idProvider={provider}
+              updateProduct={updateProduct}
             />
           )
         }
@@ -70,17 +70,13 @@ const DeliveryOrder = () => {
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData} />
+            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData}/>
           </Grid>
         </Grid>
 
       </Container>
     </Page>
   )
-}
-
-DeliveryOrder.propTypes = {
-  getProducts: PropTypes.func.isRequired
 }
 
 export default DeliveryOrder
