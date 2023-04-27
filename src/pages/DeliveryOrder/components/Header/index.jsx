@@ -38,8 +38,8 @@ const HeaderDeliveryOrder = ({
             link: `/app/proveedores/${provider}#Albaranes`,
             title: 'Albaranes'
           }]}
-        title="Albarán"
-        description=""
+        title='Albarán'
+        description=''
         buttons={[{
           variant: 'outlined',
           onClick: _openDeleteModal,
@@ -64,10 +64,14 @@ const HeaderDeliveryOrder = ({
           disabled: readOnly
         }]}
       />
-      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal}
-                       hasCanal={deleteDeliveryOrder?.hasCanal} addProductToDeliveryOrder={addProduct}  />
-      <DeleteDeliveryOrderModal show={showDeleteModal} close={_closeDeleteModal}
-                                deleteDeliveryOrder={deleteDeliveryOrder} providerId={provider}/>
+      <AddProductModal
+        idProvider={provider} show={showAddModal} close={_closeAddModal}
+        hasCanal={deleteDeliveryOrder?.hasCanal} addProductToDeliveryOrder={addProduct}
+      />
+      <DeleteDeliveryOrderModal
+        show={showDeleteModal} close={_closeDeleteModal}
+        deleteDeliveryOrder={deleteDeliveryOrder} providerId={provider}
+      />
     </>
   )
 }

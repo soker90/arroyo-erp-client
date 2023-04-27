@@ -55,7 +55,7 @@ const EditProductModal = ({
       state={state}
       setState={setState}
       show={show}
-      title="Editar producto"
+      title='Editar producto'
       hasCanal={hasCanal}
       productReadOnly
       actions={[

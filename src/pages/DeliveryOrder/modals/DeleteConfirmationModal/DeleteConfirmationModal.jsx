@@ -16,8 +16,8 @@ const DeleteConfirmationModal = ({
   return (
     <ConfirmModal
       {...rest}
-      title="Eliminar producto del albarán"
-      description="¿Seguro que quieres quitar el producto del albarán?"
+      title='Eliminar producto del albarán'
+      description='¿Seguro que quieres quitar el producto del albarán?'
       action={_handleSend}
       actions={[
         { onClick: rest.close, value: 'Cerrar', 'data-cy': 'modal-close-button' },

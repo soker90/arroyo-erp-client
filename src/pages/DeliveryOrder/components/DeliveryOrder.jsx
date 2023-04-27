@@ -1,14 +1,14 @@
 import { Container, Grid } from '@mui/material'
-import PropTypes from 'prop-types'
+import { useParams } from 'react-router'
 
 import { LoadingScreen, Page } from 'components'
-import { useParams } from 'react-router'
+
 import DeliveryOrderProducts from './DeliveryOrderProducts'
 import DeliveryOrderData from './DeliveryOrderData'
 import DeliveryOrderTotals from './DeliveryOrderTotals'
 import Header from './Header'
 import { useStyles } from './DeliveryOrder.styles'
-import { useDeliveryOrder } from '../hooks/index.js'
+import { useDeliveryOrder } from '../hooks'
 
 const DeliveryOrder = () => {
   const classes = useStyles()
@@ -22,7 +22,7 @@ const DeliveryOrder = () => {
     addProduct
   } = useDeliveryOrder(idDeliveryOrder)
 
-  if (!deliveryOrder) return <LoadingScreen/>
+  if (!deliveryOrder) return <LoadingScreen />
 
   const {
     provider,
@@ -72,7 +72,7 @@ const DeliveryOrder = () => {
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData}/>
+            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData} />
           </Grid>
         </Grid>
 

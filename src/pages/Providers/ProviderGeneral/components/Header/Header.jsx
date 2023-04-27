@@ -58,7 +58,7 @@ const HeaderProvider = ({
   const _renderNote = () => (
     <Label
       className={classes.label}
-      color="warning"
+      color='warning'
     >
       {note}
     </Label>

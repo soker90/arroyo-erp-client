@@ -34,16 +34,16 @@ const DeliveryOrderProducts = ({
    * @return {Typography}
    * @private
    */
-    // eslint-disable-next-line react/prop-types
+  // eslint-disable-next-line react/prop-types
   const _formatDiff = ({ diff }) => (
-      diff !== undefined
-        ? (
-          <Typography variant="subtitle1" style={{ color: diffColor(diff) }}>
-            {format.euro(diff)}
-          </Typography>
+    diff !== undefined
+      ? (
+        <Typography variant='subtitle1' style={{ color: diffColor(diff) }}>
+          {format.euro(diff)}
+        </Typography>
         )
-        : 'Sin datos'
-    )
+      : 'Sin datos'
+  )
 
   /**
    * Muesta el modal de confirmación para borrar el elemento
@@ -82,9 +82,9 @@ const DeliveryOrderProducts = ({
           },
           ...(hasCanal
             ? [{
-              title: 'Nº Canal',
-              field: 'canal'
-            }]
+                title: 'Nº Canal',
+                field: 'canal'
+              }]
             : []),
           {
             title: 'Producto',
@@ -96,11 +96,11 @@ const DeliveryOrderProducts = ({
           },
           {
             title: 'Precio',
-            render: ({ price }) => <TextEuro num={price} decimals={3}/>
+            render: ({ price }) => <TextEuro num={price} decimals={3} />
           },
           {
             title: 'Base imponible',
-            render: ({ taxBase }) => <TextEuro num={taxBase}/>
+            render: ({ taxBase }) => <TextEuro num={taxBase} />
           },
           {
             title: 'Diferencia',
@@ -117,17 +117,17 @@ const DeliveryOrderProducts = ({
           },
           ...(isEditable
             ? [
-              {
-                icon: EditIcon,
-                tooltip: 'Editar',
-                onClick: _showEditProductModal
-              },
-              {
-                icon: DeleteIcon,
-                tooltip: 'Eliminar',
-                onClick: _showDeleteProductModal
-              }
-            ]
+                {
+                  icon: EditIcon,
+                  tooltip: 'Editar',
+                  onClick: _showEditProductModal
+                },
+                {
+                  icon: DeleteIcon,
+                  tooltip: 'Eliminar',
+                  onClick: _showDeleteProductModal
+                }
+              ]
             : [])
         ]}
       />
