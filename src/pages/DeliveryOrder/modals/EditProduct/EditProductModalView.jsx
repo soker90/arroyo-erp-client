@@ -2,24 +2,26 @@ import {
   useCallback, useEffect, useReducer
 } from 'react'
 import PropTypes from 'prop-types'
-
-import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 import { useSWRConfig } from 'swr'
+
 import { API_PRICES_CHANGES_UNREAD_COUNT } from 'constants/paths'
+import { useProducts } from 'hooks'
+import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
 
 const EditProductModal = ({
   show,
   close,
-  products,
   updateProductOfDeliveryOrder,
   product = {},
   index,
+  idProvider,
   hasCanal
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     product
   )
+  const { products } = useProducts(idProvider)
   const { mutate } = useSWRConfig()
 
   useEffect(() => {
@@ -40,7 +42,6 @@ const EditProductModal = ({
         price: Number(state.price),
         ...(hasCanal && { canal: state.canal })
       }
-
       updateProductOfDeliveryOrder(index, model, callbackClose)
     } catch (e) {
       console.error(e)
@@ -82,6 +83,7 @@ EditProductModal.propTypes = {
   products: PropTypes.array.isRequired,
   product: PropTypes.object,
   index: PropTypes.number,
+  idProvider: PropTypes.string,
   hasCanal: PropTypes.bool
 }
 

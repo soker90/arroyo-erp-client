@@ -12,7 +12,7 @@ import {
   API_PRODUCTS_CLIENT,
   API_PRODUCTS,
   API_INVOICES_SWAP,
-  API_PRICES_CHANGES
+  API_PRICES_CHANGES, API_INVOICES, API_DELIVERY_ORDERS
 } from 'constants/paths'
 import { format } from 'utils'
 
@@ -56,6 +56,26 @@ export const updateDOClientInvoice = ({
   { date: format.dateToSend(date) }
 )
 
+/* Delivery Order */
+
+export const createDeliveryOrderApi = (provider) => axios.post(API_DELIVERY_ORDERS, { provider }).then(({ data }) => data)
+
+export const updateDataDeliveryOrder = (id, newData) => axios.patch(`${API_DELIVERY_ORDERS}/${id}`, newData)
+  .then(({ data }) => data)
+
+export const deleteDeliveryOrderApi = (id) => axios.delete(`${API_DELIVERY_ORDERS}/${id}`)
+
+export const deleteProductDeliveryOrder = (id, index) => axios.delete(`${API_DELIVERY_ORDERS}/${id}/product/${index}`)
+  .then(({ data }) => data)
+
+export const addProductToDeliveryOrder = (idDeliveryOrder, product) => axios.post(`${API_DELIVERY_ORDERS}/${idDeliveryOrder}/product`, product).then(({ data }) => data)
+
+export const updateProductOfDeliveryOrder = ({
+  id,
+  index,
+  model
+}) => axios.put(`${API_DELIVERY_ORDERS}/${id}/product/${index}`, model).then(({ data }) => data)
+/* Client Invoice */
 export const deleteProductClientInvoice = ({
   invoice,
   deliveryOrder,
@@ -85,6 +105,22 @@ export const updateProductClientInvoice = ({
   data
 )
   .then(({ data }) => data)
+
+/* Invoice */
+
+export const updateInvoiceData = (id, data) => axios.patch(
+  `${API_INVOICES}/${id}`,
+  data
+)
+  .then(({ data }) => data)
+
+export const confirmInvoice = (id, data) => axios.patch(
+  `${API_INVOICES}/${id}/confirm`,
+  data
+)
+  .then(({ data }) => data)
+
+export const deleteInvoiceApi = id => axios.delete(`${API_INVOICES}/${id}`)
 
 /* Dashboard */
 

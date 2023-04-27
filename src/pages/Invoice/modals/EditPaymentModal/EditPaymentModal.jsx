@@ -8,7 +8,7 @@ import { TYPE_PAYMENT } from 'constants/invoices'
 import { format } from 'utils'
 
 const EditPaymentModal = ({
-  updateDataInvoice,
+  updateData,
   payment,
   setShow,
   show,
@@ -36,7 +36,7 @@ const EditPaymentModal = ({
   }
 
   const _handleSend = () => {
-    updateDataInvoice(id, {
+    updateData({
       payment: {
         paymentDate: format.dateToSend(paymentDate),
         type,
@@ -159,11 +159,9 @@ const EditPaymentModal = ({
 EditPaymentModal.propTypes = {
   setShow: PropTypes.func,
   payment: PropTypes.object,
-  updateDataInvoice: PropTypes.func.isRequired,
+  updateData: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired
 }
 
-EditPaymentModal.displayName = 'ConfirmPaymentModal'
-export const story = EditPaymentModal
 export default EditPaymentModal

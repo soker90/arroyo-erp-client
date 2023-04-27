@@ -8,7 +8,11 @@ import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal'
 import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal'
 
 const HeaderInvoice = ({
-  provider, nameProvider, nOrder
+  provider,
+  nameProvider,
+  nOrder,
+  confirm,
+  deleteInvoice
 }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -40,8 +44,15 @@ const HeaderInvoice = ({
           disabled: Boolean(nOrder)
         }]}
       />
-      <ConfirmInvoiceModal show={showConfirmModal} setShow={setShowConfirmModal} />
-      <DeleteInvoiceModal show={showDeleteModal} setShow={setShowDeleteModal} />
+      <ConfirmInvoiceModal
+        show={showConfirmModal} setShow={setShowConfirmModal}
+        confirmInvoice={confirm}
+      />
+      <DeleteInvoiceModal
+        show={showDeleteModal} setShow={setShowDeleteModal}
+        deleteInvoice={deleteInvoice}
+        providerId={provider}
+      />
     </>
   )
 }
@@ -49,7 +60,9 @@ const HeaderInvoice = ({
 HeaderInvoice.propTypes = {
   nameProvider: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
-  nOrder: PropTypes.number
+  nOrder: PropTypes.number,
+  confirm: PropTypes.func.isRequired,
+  deleteInvoice: PropTypes.func.isRequired
 }
 
 HeaderInvoice.displayName = 'HeaderInvoice'

@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types'
 import { ConfirmModal } from 'components'
-import { useNavigate } from 'react-router'
 
 const DeleteInvoiceModal = ({
   deleteInvoice,
-  id,
   setShow,
-  providerId,
   ...rest
 }) => {
-  const navigate = useNavigate()
-
   const _close = () => {
     setShow(false)
   }
@@ -20,10 +15,7 @@ const DeleteInvoiceModal = ({
    * @private
    */
   const _handleSend = () => {
-    deleteInvoice(
-      id,
-      () => navigate(`/app/proveedores/${providerId}#Facturas`)
-    )
+    deleteInvoice()
     _close()
   }
 
@@ -44,6 +36,7 @@ const DeleteInvoiceModal = ({
         {
           onClick: _handleSend,
           variant: 'contained',
+          color: 'error',
           value: 'Eliminar'
         }
       ]}
@@ -53,11 +46,7 @@ const DeleteInvoiceModal = ({
 
 DeleteInvoiceModal.propTypes = {
   setShow: PropTypes.func,
-  id: PropTypes.string.isRequired,
-  deleteInvoice: PropTypes.func.isRequired,
-  providerId: PropTypes.string
+  deleteInvoice: PropTypes.func.isRequired
 }
 
-DeleteInvoiceModal.displayName = 'DeleteInvoiceModal'
-export const story = DeleteInvoiceModal
 export default DeleteInvoiceModal

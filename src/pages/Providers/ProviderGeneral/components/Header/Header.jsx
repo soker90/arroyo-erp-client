@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useNavigate } from 'react-router'
 
 import { Label, Header } from 'components'
+import { useCreateDeliveryOrder } from 'hooks'
 import { getButtons } from './utils'
 import { useStyles } from './styles'
 
@@ -12,7 +13,6 @@ const HeaderProvider = ({
   title,
   onExpand,
   expanded,
-  createDeliveryOrder,
   idProvider,
   deliveryOrdersSelected,
   createInvoice,
@@ -24,15 +24,13 @@ const HeaderProvider = ({
 }) => {
   const classes = useStyles()
   const navigate = useNavigate()
+  const { createDeliveryOrder } = useCreateDeliveryOrder(idProvider)
   /**
    * Navega a la página de nuevo albarán
    * @private
    */
   const _handleClickNewDeliveryOrder = () => {
-    createDeliveryOrder({
-      provider: idProvider,
-      navigate
-    })
+    createDeliveryOrder()
     resetSelected()
   }
 
@@ -50,7 +48,7 @@ const HeaderProvider = ({
       nameProvider,
       idProvider
       // eslint-disable-next-line
-    })), [currentTab, deliveryOrdersSelected.length]);
+    })), [currentTab, deliveryOrdersSelected.length])
 
   /**
    * Render note
@@ -95,7 +93,6 @@ HeaderProvider.propTypes = {
   title: PropTypes.string,
   onExpand: PropTypes.func.isRequired,
   expanded: PropTypes.bool.isRequired,
-  createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string.isRequired,
   deliveryOrdersSelected: PropTypes.array.isRequired,
   createInvoice: PropTypes.func.isRequired,

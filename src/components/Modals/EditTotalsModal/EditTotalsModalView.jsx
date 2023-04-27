@@ -66,7 +66,7 @@ const EditTotalsModalView = ({
   }
 
   const _handleSubmit = () => {
-    update(id, {
+    update({
       totals: state
     }, _close)
   }

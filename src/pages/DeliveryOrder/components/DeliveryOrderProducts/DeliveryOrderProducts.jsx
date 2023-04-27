@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from '@mui/material'
@@ -14,16 +13,19 @@ import { BASE_PATH } from 'constants/index'
 import { diffColor } from './utils'
 import { useStyles } from './DeliveryOrderProducts.styles'
 import EditProductModal from '../../modals/EditProduct'
+import DeleteConfirmationModal from '../../modals/DeleteConfirmationModal'
 
 const DeliveryOrderProducts = ({
   products,
-  showDeleteProductModal,
+  deleteProduct,
   isEditable,
   hasCanal,
-  idProvider
+  idProvider,
+  updateProduct
 }) => {
   const classes = useStyles()
   const [productToEdit, setProductToEdit] = useState(null)
+  const [productIndexToDelete, setProductIndexToDelete] = useState(null)
   const { products: productsProvider } = useProducts(idProvider, true)
 
   /**
@@ -49,7 +51,7 @@ const DeliveryOrderProducts = ({
    * @private
    */
   const _showDeleteProductModal = (row, index) => {
-    showDeleteProductModal(index)
+    setProductIndexToDelete(index)
   }
 
   /**
@@ -136,6 +138,14 @@ const DeliveryOrderProducts = ({
         hasCanal={hasCanal}
         close={_closeEditModal}
         products={productsProvider}
+        idProvider={idProvider}
+        updateProductOfDeliveryOrder={updateProduct}
+      />
+      <DeleteConfirmationModal
+        show={productIndexToDelete !== null}
+        close={() => setProductIndexToDelete(null)}
+        deleteProductOfDeliveryOrder={deleteProduct}
+        index={productIndexToDelete}
       />
     </>
   )
@@ -143,10 +153,11 @@ const DeliveryOrderProducts = ({
 
 DeliveryOrderProducts.propTypes = {
   products: PropTypes.array.isRequired,
-  showDeleteProductModal: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
   hasCanal: PropTypes.bool,
-  idProvider: PropTypes.string
+  idProvider: PropTypes.string,
+  updateProduct: PropTypes.func.isRequired
 }
 
 export default DeliveryOrderProducts
