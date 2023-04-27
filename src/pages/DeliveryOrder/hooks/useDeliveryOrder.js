@@ -5,7 +5,10 @@ import { API_DELIVERY_ORDERS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import {
   deleteDeliveryOrderApi,
-  deleteProductDeliveryOrder, updateDataDeliveryOrder, updateProductOfDeliveryOrder
+  deleteProductDeliveryOrder,
+  updateDataDeliveryOrder,
+  updateProductOfDeliveryOrder,
+  addProductToDeliveryOrder
 } from 'services/apiService'
 import { format } from 'utils'
 
@@ -58,6 +61,16 @@ export const useDeliveryOrder = (id) => {
     })
   }
 
+  const addProduct = (model, callback) => {
+    addProductToDeliveryOrder(id, model).then(response => {
+      showSuccess('Producto añadido')
+      callback?.()
+      return mutate(response)
+    }).catch((error) => {
+      showError(error.message)
+    })
+  }
+
   const updateProduct = (index, model, callback) => {
     updateProductOfDeliveryOrder({ id, index, model }).then(response => {
       showSuccess('Producto actualizado')
@@ -84,6 +97,7 @@ export const useDeliveryOrder = (id) => {
     updateData,
     deleteProduct,
     updateProduct,
-    deleteDeliveryOrder
+    deleteDeliveryOrder,
+    addProduct
   }
 }

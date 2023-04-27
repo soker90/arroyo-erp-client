@@ -18,7 +18,8 @@ const DeliveryOrder = () => {
     updateData,
     deleteProduct,
     updateProduct,
-    deleteDeliveryOrder
+    deleteDeliveryOrder,
+    addProduct
   } = useDeliveryOrder(idDeliveryOrder)
 
   if (!deliveryOrder) return <LoadingScreen/>
@@ -44,6 +45,7 @@ const DeliveryOrder = () => {
           readOnly={Boolean(nOrder)}
           invoice={invoice}
           deleteDeliveryOrder={deleteDeliveryOrder}
+          addProduct={addProduct}
         />
 
         {

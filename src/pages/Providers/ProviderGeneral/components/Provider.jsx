@@ -97,7 +97,6 @@ Provider.propTypes = {
   provider: PropTypes.object.isRequired,
   billing: PropTypes.object,
   getProvider: PropTypes.func.isRequired,
-  createDeliveryOrder: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   createInvoice: PropTypes.func.isRequired
 }

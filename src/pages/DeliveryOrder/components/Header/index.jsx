@@ -14,7 +14,8 @@ const HeaderDeliveryOrder = ({
   nameProvider,
   readOnly,
   invoice,
-  deleteDeliveryOrder
+  deleteDeliveryOrder,
+  addProduct
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -63,7 +64,8 @@ const HeaderDeliveryOrder = ({
           disabled: readOnly
         }]}
       />
-      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal}/>
+      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal}
+                       hasCanal={deleteDeliveryOrder?.hasCanal} addProductToDeliveryOrder={addProduct}  />
       <DeleteDeliveryOrderModal show={showDeleteModal} close={_closeDeleteModal}
                                 deleteDeliveryOrder={deleteDeliveryOrder} providerId={provider}/>
     </>
@@ -75,7 +77,8 @@ HeaderDeliveryOrder.propTypes = {
   nameProvider: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
   invoice: PropTypes.string,
-  deleteDeliveryOrder: PropTypes.func.isRequired
+  deleteDeliveryOrder: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired
 }
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder'

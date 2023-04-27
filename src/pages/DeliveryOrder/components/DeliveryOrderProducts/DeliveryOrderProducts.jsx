@@ -13,7 +13,7 @@ import { BASE_PATH } from 'constants/index'
 import { diffColor } from './utils'
 import { useStyles } from './DeliveryOrderProducts.styles'
 import EditProductModal from '../../modals/EditProduct'
-import { DeleteConfirmationModal } from '../../modals/index.js'
+import DeleteConfirmationModal from '../../modals/DeleteConfirmationModal'
 
 const DeliveryOrderProducts = ({
   products,

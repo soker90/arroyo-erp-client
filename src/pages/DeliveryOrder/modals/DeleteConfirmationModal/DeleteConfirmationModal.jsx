@@ -16,8 +16,8 @@ const DeleteConfirmationModal = ({
   return (
     <ConfirmModal
       {...rest}
-      title='Eliminar producto del albarán'
-      description='¿Seguro que quieres quitar el producto del albarán?'
+      title="Eliminar producto del albarán"
+      description="¿Seguro que quieres quitar el producto del albarán?"
       action={_handleSend}
       actions={[
         { onClick: rest.close, value: 'Cerrar', 'data-cy': 'modal-close-button' },
@@ -36,10 +36,8 @@ const DeleteConfirmationModal = ({
 DeleteConfirmationModal.propTypes = {
   close: PropTypes.func,
   show: PropTypes.bool,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
   deleteProductOfDeliveryOrder: PropTypes.func.isRequired
 }
 
-DeleteConfirmationModal.displayName = 'DeleteConfirmationModal'
-export const story = DeleteConfirmationModal
 export default DeleteConfirmationModal
