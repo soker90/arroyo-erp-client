@@ -6,6 +6,7 @@ import { useNotifications } from 'hooks'
 export const useProducts = (provider, providerRequired) => {
   const {
     data,
+    isLoading,
     error
   } = useSWR(() => {
     if (!provider && providerRequired) return null
@@ -24,7 +25,7 @@ export const useProducts = (provider, providerRequired) => {
 
   return {
     products: data || [],
-    isLoading: !data,
+    isLoading,
     productsList
   }
 }

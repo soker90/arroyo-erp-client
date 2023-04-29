@@ -8,8 +8,7 @@ const mapStateToProps = ({
   }
 }) => ({
   free: deliveryOrdersFree,
-  inInvoices: deliveryOrdersInInvoices,
-  idProvider: provider._id
+  inInvoices: deliveryOrdersInInvoices
 })
 
 const mapDispatchToProps = {
