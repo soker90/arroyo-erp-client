@@ -2,10 +2,9 @@ import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { useNavigate } from 'react-router'
 
 import { Label, Header } from 'components'
-import { useCreateDeliveryOrder } from 'hooks'
+import { useCreateDeliveryOrder, useCreateInvoice } from 'hooks'
 import { getButtons } from './utils'
 import { useStyles } from './styles'
 
@@ -15,7 +14,6 @@ const HeaderProvider = ({
   expanded,
   idProvider,
   deliveryOrdersSelected,
-  createInvoice,
   showEditProductModal,
   currentTab,
   resetSelected,
@@ -23,8 +21,8 @@ const HeaderProvider = ({
   nameProvider
 }) => {
   const classes = useStyles()
-  const navigate = useNavigate()
   const { createDeliveryOrder } = useCreateDeliveryOrder(idProvider)
+  const { createInvoice } = useCreateInvoice()
   /**
    * Navega a la página de nuevo albarán
    * @private
@@ -35,7 +33,7 @@ const HeaderProvider = ({
   }
 
   const _handleClickNewInvoice = () => {
-    createInvoice(deliveryOrdersSelected, navigate)
+    createInvoice(deliveryOrdersSelected)
   }
 
   const _buttons = useMemo(() => (
@@ -95,7 +93,6 @@ HeaderProvider.propTypes = {
   expanded: PropTypes.bool.isRequired,
   idProvider: PropTypes.string.isRequired,
   deliveryOrdersSelected: PropTypes.array.isRequired,
-  createInvoice: PropTypes.func.isRequired,
   showEditProductModal: PropTypes.func.isRequired,
   currentTab: PropTypes.string.isRequired,
   resetSelected: PropTypes.func.isRequired,
@@ -103,7 +100,4 @@ HeaderProvider.propTypes = {
   nameProvider: PropTypes.string
 }
 
-HeaderProvider.displayName = 'Provider-Header'
-
-export const story = HeaderProvider
 export default HeaderProvider

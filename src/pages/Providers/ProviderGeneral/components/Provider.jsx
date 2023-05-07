@@ -91,11 +91,6 @@ const Provider = (props) => {
 }
 
 Provider.propTypes = {
-  showEditProductModal: PropTypes.func.isRequired,
-  createInvoice: PropTypes.func.isRequired
+  showEditProductModal: PropTypes.func.isRequired
 }
-
-Provider.displayName = 'Providers'
-
-export const story = Provider
 export default Provider

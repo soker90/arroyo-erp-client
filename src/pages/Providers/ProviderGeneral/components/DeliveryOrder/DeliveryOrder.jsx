@@ -19,7 +19,12 @@ const DeliveryOrder = ({
 }) => {
   const classes = useStyles()
   const [showInInvoices, setShowInInvoices] = useState(false)
-  const { free, inInvoices, isLoading } = useDeliveryOrders({ provider: idProvider })
+  const {
+    free,
+    inInvoices,
+    isLoading,
+    updateFilters
+  } = useDeliveryOrders({ provider: idProvider })
 
   const _handleShowClick = () => {
     setShowInInvoices(state => !state)
@@ -51,7 +56,7 @@ const DeliveryOrder = ({
         <InInvoices
           deliveryOrders={inInvoices}
           idProvider={idProvider}
-          getDeliveryOrders={getDeliveryOrders}
+          updateFilters={updateFilters}
         />
       )}
     </>

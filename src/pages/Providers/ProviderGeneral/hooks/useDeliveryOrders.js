@@ -23,11 +23,16 @@ export const useDeliveryOrders = (initialFilters) => {
     }
   }, [error, data])
 
+  const updateFilters = (newFilters) => {
+    setFilters(newFilters)
+  }
+
   return {
     free: data?.free || [],
     inInvoices: data?.inInvoices || {},
     isLoading,
     filters,
-    setFilters
+    setFilters,
+    updateFilters
   }
 }
