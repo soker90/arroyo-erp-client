@@ -1,22 +1,22 @@
-import { faker } from '@faker-js/faker'
+import { fakerES as faker } from '@faker-js/faker'
 import { rangeFill } from 'utils'
 import { TYPE_CLIENT_PAYMENT } from 'constants/invoices'
 
 const generateClientBilling = () => ({
   _id: faker.database.mongodbObjectId(),
   name: faker.company.bsNoun(),
-  invoices: faker.datatype.number({
+  invoices: faker.number.int({
     min: 0,
     max: 100
   }),
-  pending: faker.datatype.number({
+  pending: faker.number.int({
     min: 0,
     max: 100
   })
 
 })
 
-export const clientBillingsResponse = () => rangeFill(faker.datatype.number({
+export const clientBillingsResponse = () => rangeFill(faker.number.int({
   max: 40,
   min: 2
 }), generateClientBilling)
@@ -26,13 +26,13 @@ const generateClientInvoice = () => ({
   nameClient: faker.company.bsNoun(),
   date: faker.date.past()
     .getTime(),
-  total: faker.datatype.float({
+  total: faker.number.float({
     min: 0
   }),
-  nInvoice: `${faker.datatype.number({
+  nInvoice: `${faker.number.int({
     min: 20,
     max: 29
-  })}/${faker.datatype.number({
+  })}/${faker.number.int({
     min: 10,
     max: 99
   })}`,
@@ -42,7 +42,7 @@ const generateClientInvoice = () => ({
   paymentType: faker.helpers.arrayElement(Object.values(TYPE_CLIENT_PAYMENT))
 })
 
-export const clientInvoicesResponse = () => rangeFill(faker.datatype.number({
+export const clientInvoicesResponse = () => rangeFill(faker.number.int({
   max: 40,
   min: 2
 }), generateClientInvoice)
@@ -52,7 +52,7 @@ const generateClientInvoiceShort = () => {
   return {
     _id: faker.database.mongodbObjectId(),
     date: date.getTime(),
-    total: faker.datatype.number(),
+    total: faker.number.int(),
     nInvoice: `${date.toLocaleDateString('es-ES', { year: '2-digit' })}`
   }
 }
@@ -61,7 +61,7 @@ export const clientInvoicesShortResponse = ({
   offset,
   limit
 }) => {
-  const invoices = rangeFill(faker.datatype.number({
+  const invoices = rangeFill(faker.number.int({
     max: 60,
     min: offset + 2
   }), generateClientInvoiceShort)
