@@ -62,7 +62,7 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm i --legacy-peer-deps
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: build
           path: build
