@@ -12,7 +12,10 @@ import {
   API_PRODUCTS_CLIENT,
   API_PRODUCTS,
   API_INVOICES_SWAP,
-  API_PRICES_CHANGES, API_INVOICES, API_DELIVERY_ORDERS
+  API_PRICES_CHANGES,
+  API_INVOICES,
+  API_DELIVERY_ORDERS,
+  API_PRODUCTS_WRONG_PRICES
 } from 'constants/paths'
 import { format } from 'utils'
 
@@ -159,6 +162,7 @@ export const deleteProductApi = (id) => axios.delete(`${API_PRODUCTS}/${id}`)
   .then(({ data }) => data)
 export const deleteProductPriceApi = (id, priceId) => axios.delete(`${API_PRODUCTS}/${id}/prices/${priceId}`)
   .then(({ data }) => data)
+export const fixProductPricesApi = () => axios.patch(API_PRODUCTS_WRONG_PRICES)
 
 export const swapInvoicesApi = (invoiceA, invoiceB) => axios.patch(`${API_INVOICES_SWAP}/${invoiceA}/${invoiceB}`)
 
