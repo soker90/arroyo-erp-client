@@ -1,3 +1,6 @@
+# [3.4.0] - 10/07/2023
+  - Añadido botón para corregir los errores de precio de los productos
+
 # [3.3.2] - 04/04/2023
   - Al modificar el total de una factura y pulsar intro, recargaba la página y no actualizaba
 
@@ -64,7 +67,7 @@
 
 # [2.5.1] - 20/08/2022
   - Cambiada imagen de la pantalla de iniciar sesión
-  
+
 # [2.5.0] - 12/08/2022
   - Añadido porcentaje de beneficio a la tabla de productos del proveedor y a la pantalla de producto
 
