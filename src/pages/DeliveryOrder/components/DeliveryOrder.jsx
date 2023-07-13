@@ -22,7 +22,7 @@ const DeliveryOrder = () => {
     addProduct
   } = useDeliveryOrder(idDeliveryOrder)
 
-  if (!deliveryOrder) return <LoadingScreen/>
+  if (!deliveryOrder) return <LoadingScreen />
 
   const {
     provider,
@@ -73,7 +73,7 @@ const DeliveryOrder = () => {
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData}/>
+            <DeliveryOrderTotals totals={totals} isEditable={!nOrder} updateData={updateData} />
           </Grid>
         </Grid>
 

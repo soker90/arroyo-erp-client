@@ -41,8 +41,8 @@ const HeaderDeliveryOrder = ({
             link: `/app/proveedores/${provider}#Albaranes`,
             title: 'Albaranes'
           }]}
-        title="Albarán"
-        description=""
+        title='Albarán'
+        description=''
         buttons={[{
           variant: 'outlined',
           onClick: _openDeleteModal,
