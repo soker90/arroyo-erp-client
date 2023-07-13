@@ -15,7 +15,8 @@ const HeaderDeliveryOrder = ({
   readOnly,
   invoice,
   deleteDeliveryOrder,
-  addProduct
+  addProduct,
+  hasCanal
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -23,6 +24,8 @@ const HeaderDeliveryOrder = ({
   const _openAddModal = useCallback(() => setShowAddModal(true), [setShowAddModal])
   const _closeDeleteModal = useCallback(() => setShowDeleteModal(false), [setShowDeleteModal])
   const _openDeleteModal = useCallback(() => setShowDeleteModal(true), [setShowDeleteModal])
+
+  console.log(provider, deleteDeliveryOrder)
   return (
     <>
       <Header
@@ -38,8 +41,8 @@ const HeaderDeliveryOrder = ({
             link: `/app/proveedores/${provider}#Albaranes`,
             title: 'Albaranes'
           }]}
-        title='Albarán'
-        description=''
+        title="Albarán"
+        description=""
         buttons={[{
           variant: 'outlined',
           onClick: _openDeleteModal,
@@ -66,7 +69,7 @@ const HeaderDeliveryOrder = ({
       />
       <AddProductModal
         idProvider={provider} show={showAddModal} close={_closeAddModal}
-        hasCanal={deleteDeliveryOrder?.hasCanal} addProductToDeliveryOrder={addProduct}
+        hasCanal={hasCanal} addProductToDeliveryOrder={addProduct}
       />
       <DeleteDeliveryOrderModal
         show={showDeleteModal} close={_closeDeleteModal}
@@ -82,7 +85,8 @@ HeaderDeliveryOrder.propTypes = {
   readOnly: PropTypes.bool.isRequired,
   invoice: PropTypes.string,
   deleteDeliveryOrder: PropTypes.func.isRequired,
-  addProduct: PropTypes.func.isRequired
+  addProduct: PropTypes.func.isRequired,
+  hasCanal: PropTypes.bool
 }
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder'
