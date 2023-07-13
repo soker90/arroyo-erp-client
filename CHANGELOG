@@ -1,3 +1,6 @@
+# [3.4.3] - 13/07/2023
+  - Añadida opción para agregar el canal al añadir un producto en un albarán nuevo
+
 # [3.4.2] - 13/07/2023
   - Corregida visualización de los totales en la modal de editar totales de un albarán
 

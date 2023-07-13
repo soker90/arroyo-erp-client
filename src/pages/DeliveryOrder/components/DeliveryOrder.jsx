@@ -46,6 +46,7 @@ const DeliveryOrder = () => {
           invoice={invoice}
           deleteDeliveryOrder={deleteDeliveryOrder}
           addProduct={addProduct}
+          hasCanal={deliveryOrder.hasCanal}
         />
 
         {
