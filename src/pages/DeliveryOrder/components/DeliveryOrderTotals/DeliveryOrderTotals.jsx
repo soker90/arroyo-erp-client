@@ -58,7 +58,7 @@ const DeliveryOrderTotals = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditTotalsModal show={showModal} setShow={setShowModal} update={updateData} {...totals} />
+      {showModal && <EditTotalsModal show={showModal} setShow={setShowModal} update={updateData} {...totals} />}
     </>
   )
 }
@@ -74,6 +74,4 @@ DeliveryOrderTotals.propTypes = {
   updateData: PropTypes.func.isRequired
 }
 
-DeliveryOrderTotals.displayName = 'DeliveryOrderTotals'
-export const story = DeliveryOrderTotals
 export default DeliveryOrderTotals
