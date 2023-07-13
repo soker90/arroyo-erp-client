@@ -88,7 +88,7 @@ const InvoiceTotals = ({
         iva={iva}
         re={re}
         total={total}
-        taxBase={total}
+        taxBase={taxBase}
         update={updateData}
       />
     </>
