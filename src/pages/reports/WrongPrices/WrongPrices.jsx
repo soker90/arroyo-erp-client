@@ -1,5 +1,6 @@
 import { Container } from '@mui/material'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh'
 import { Link } from 'react-router-dom'
 
 import { Header, Page, TableMaterial, TextEuro } from 'components'
@@ -10,7 +11,7 @@ import { useWrongPrices } from './hooks'
 import { useStyles } from './WrongPrices.styles'
 
 const WrongPrices = () => {
-  const { products } = useWrongPrices()
+  const { products, fixPrices } = useWrongPrices()
   const classes = useStyles()
 
   return (
@@ -19,6 +20,13 @@ const WrongPrices = () => {
         <Header
           title='Precios erróneos'
           description='Productos con errores en el precio'
+          buttons={[{
+            onClick: fixPrices,
+            Icon: AutoFixHighIcon,
+            label: 'Corregir',
+            variant: 'contained',
+            disableSvg: true
+          }]}
         />
 
         <TableMaterial
