@@ -1,19 +1,22 @@
 import { useEffect, useMemo } from 'react'
 import useSWR from 'swr'
-import { API_PRODUCTS } from 'constants/paths'
+import { API_PRODUCTS, PATH_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
+import { createProductApi } from '../services/apiService.js'
 
 export const useProducts = (provider, providerRequired) => {
   const {
     data,
     isLoading,
-    error
+    error,
+    mutate
   } = useSWR(() => {
     if (!provider && providerRequired) return null
     return `${API_PRODUCTS}${provider ? `?provider=${provider}` : ''}`
   })
   const {
-    showError
+    showError,
+    showSuccess
   } = useNotifications()
   const productsList = useMemo(() => data?.map(p => p.name), [data])
 
@@ -23,9 +26,22 @@ export const useProducts = (provider, providerRequired) => {
     }
   }, [error, data])
 
+  const createProduct = (product, callback) => {
+    createProductApi(product).then(({ name }) => {
+      showSuccess(`El producto ${name} se ha creado correctamente`)
+
+      callback?.()
+      mutate()
+    })
+      .catch((error) => {
+        showError(error.message)
+      })
+  }
+
   return {
     products: data || [],
     isLoading,
-    productsList
+    productsList,
+    createProduct
   }
 }

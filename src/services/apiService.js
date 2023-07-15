@@ -169,6 +169,9 @@ export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`)
 export const createProductClient = (data) => axios.post(`${API_PRODUCTS_CLIENT}`, data)
   .then(({ data }) => data)
 
+export const createProductApi = (data) => axios.post(`${API_PRODUCTS}`, data)
+  .then(({ data }) => data)
+
 export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`, data)
   .then(({ data }) => {
     return data
