@@ -29,11 +29,11 @@ export const useProducts = (provider, providerRequired) => {
   const createProduct = (product, callback) => {
     createProductApi(product).then(({ name }) => {
       showSuccess(`El producto ${name} se ha creado correctamente`)
-
       callback?.()
       mutate()
     })
       .catch((error) => {
+        console.log(error)
         showError(error.message)
       })
   }

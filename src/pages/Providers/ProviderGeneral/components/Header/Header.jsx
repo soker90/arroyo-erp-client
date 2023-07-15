@@ -15,7 +15,6 @@ const HeaderProvider = ({
   expanded,
   idProvider,
   deliveryOrdersSelected,
-  showEditProductModal,
   currentTab,
   resetSelected,
   note,
@@ -39,7 +38,7 @@ const HeaderProvider = ({
     createInvoice(deliveryOrdersSelected)
   }
 
-  const _closeModalProduct = () => useCallback(
+  const _closeModalProduct = useCallback(
     () => {
       setOpenModalProduct(false)
     },

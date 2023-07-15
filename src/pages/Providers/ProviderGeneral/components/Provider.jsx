@@ -4,7 +4,6 @@ import {
 import {
   Box, Container
 } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useLocation, useParams } from 'react-router'
 
 import { HashTabs, Page, ProviderExpandedInfo } from 'components'
@@ -71,7 +70,7 @@ const Provider = (props) => {
           provider={provider}
         />
 
-        <HashTabs currentTab={currentTab} tabs={Object.values(TABS)} />
+        <HashTabs currentTab={currentTab} tabs={Object.values(TABS)}/>
 
         <Box py={3} pb={6}>
           {currentTab === TABS.DELIVERY_ORDERS && (
@@ -81,8 +80,8 @@ const Provider = (props) => {
               idProvider={idProvider}
             />
           )}
-          {currentTab === TABS.INVOICES && <Invoices />}
-          {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider} />}
+          {currentTab === TABS.INVOICES && <Invoices/>}
+          {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider}/>}
         </Box>
 
       </Container>
@@ -90,7 +89,4 @@ const Provider = (props) => {
   )
 }
 
-Provider.propTypes = {
-  showEditProductModal: PropTypes.func.isRequired
-}
 export default Provider

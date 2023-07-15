@@ -8,16 +8,18 @@ import { useParams } from 'react-router'
 import {
   LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices
 } from 'components'
+import { useProvider } from 'hooks'
 import Header from './Header'
 
 import { useStyles } from './Provider.styles'
 
 const ProviderExpense = ({
-  provider, billing, getProvider, ...props
+  getProvider, ...props
 }) => {
   const classes = useStyles()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
+  const { provider, billing, isLoading } = useProvider(idProvider)
 
   useEffect(() => {
     if (idProvider) getProvider(idProvider)
@@ -31,7 +33,7 @@ const ProviderExpense = ({
     setExpand(!expand)
   }
 
-  if (!idProvider) return <LoadingScreen />
+  if (!idProvider || isLoading) return <LoadingScreen/>
 
   return (
     <Page className={classes.root} title={provider.name}>
@@ -51,7 +53,7 @@ const ProviderExpense = ({
         />
 
         <Box py={3} pb={6}>
-          <ProviderInvoices />
+          <ProviderInvoices/>
         </Box>
 
       </Container>
