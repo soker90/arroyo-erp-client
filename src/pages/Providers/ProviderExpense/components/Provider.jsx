@@ -53,7 +53,7 @@ const ProviderExpense = ({
         />
 
         <Box py={3} pb={6}>
-          <ProviderInvoices/>
+          <ProviderInvoices providerId={idProvider}/>
         </Box>
 
       </Container>

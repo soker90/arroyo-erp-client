@@ -80,7 +80,7 @@ const Provider = (props) => {
               idProvider={idProvider}
             />
           )}
-          {currentTab === TABS.INVOICES && <Invoices/>}
+          {currentTab === TABS.INVOICES && <Invoices idProvider={idProvider}/>}
           {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider}/>}
         </Box>
 

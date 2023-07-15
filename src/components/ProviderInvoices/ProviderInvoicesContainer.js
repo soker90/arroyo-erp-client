@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { getInvoicesByProvider } from 'modules/providers/actions'
 import InvoicesTable from './ProviderInvoices'
 
-const mapStateToProps = ({ providers: { provider, invoices, invoicesCount } }) => ({
+const mapStateToProps = ({ providers: { invoices, invoicesCount } }) => ({
   invoices,
-  idProvider: provider._id,
   invoicesCount
 })
 
