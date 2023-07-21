@@ -21,10 +21,6 @@ const ProviderExpense = ({
   const [expand, setExpand] = useState(false)
   const { provider, billing, isLoading } = useProvider(idProvider)
 
-  useEffect(() => {
-    if (idProvider) getProvider(idProvider)
-  }, [idProvider])
-
   /**
    * Expande o contrae la información
    * @private
@@ -53,7 +49,7 @@ const ProviderExpense = ({
         />
 
         <Box py={3} pb={6}>
-          <ProviderInvoices providerId={idProvider}/>
+          <ProviderInvoices idProvider={idProvider}/>
         </Box>
 
       </Container>

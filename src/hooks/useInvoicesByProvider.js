@@ -1,27 +1,21 @@
 import { useEffect, useReducer } from 'react'
 import useSWR from 'swr'
-import { API_INVOICES } from 'constants/paths'
-import { useDebounce, useNotifications } from 'hooks'
-import { format, objectToParams } from 'utils'
-import axios from 'axios'
-import { INITIAL_STATE } from '../constans'
+import { API_INVOICES_SHORT } from 'constants/paths'
+import { useNotifications } from 'hooks'
+import { objectToParams } from 'utils'
 
-export const useInvoices = (providerId) => {
+export const useInvoicesByProvider = (providerId) => {
   const [filters, setFilters] = useReducer(
     (oldstate, newState) => ({ ...oldstate, ...newState }),
-    initialFilters
+    { provider: providerId }
   )
-  const { dateInvoice, expenses, ...restFilters } = filters
 
-  const fetcher = (url) => axios.get(`${url}?year=${year}${objectToParams({
-    ...restFilters,
-    ...(dateInvoice && { dateInvoice: format.dateToSend(dateInvoice) }),
-    ...(expenses && { expenses })
-  }, false)}`).then(res => res.data)
-
-  const { data, error, mutate } = useSWR(API_INVOICES, fetcher)
+  const {
+    data,
+    error,
+    isLoading
+  } = useSWR(() => `${API_INVOICES_SHORT}${objectToParams(filters)}`)
   const { showError } = useNotifications()
-  const debounce = useDebounce()
 
   useEffect(() => {
     if (error) {
@@ -29,9 +23,15 @@ export const useInvoices = (providerId) => {
     }
   }, [error, data])
 
-  useEffect(() => {
-    if (year) debounce(() => mutate(), 200)
-  }, [filters, year])
+  const updateFilters = (newFilters) => {
+    setFilters(newFilters)
+  }
 
-  return { invoices: data?.invoices || [], count: data?.count || 0, isLoading: !data, filters, setFilters }
+  return {
+    invoices: data?.invoices || [],
+    count: data?.count || 0,
+    isLoading,
+    filters,
+    updateFilters,
+  }
 }

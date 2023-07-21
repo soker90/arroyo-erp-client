@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import EditIcon from '@mui/icons-material/Edit'
 import { Link } from 'react-router-dom'
@@ -9,25 +7,20 @@ import { LoadingScreen, TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
 import LabelPending from '../LabelPending'
+import { useInvoicesByProvider } from 'hooks'
 
 const ProviderInvoices = ({
-  invoices,
-  getInvoicesByProvider,
   idProvider,
-  invoicesCount
 }) => {
-  useEffect(() => {
-    if (idProvider) getInvoicesByProvider({ provider: idProvider })
-  }, [getInvoicesByProvider, idProvider])
+  const { updateFilters, invoices, count, isLoading } = useInvoicesByProvider(idProvider)
 
-  if (!idProvider) return <LoadingScreen />
+  if (isLoading || !idProvider) return <LoadingScreen/>
 
   const _refresh = ({
     offset,
     limit
   }) => {
-    getInvoicesByProvider({
-      provider: idProvider,
+    updateFilters({
       offset,
       limit
     })
@@ -48,14 +41,14 @@ const ProviderInvoices = ({
    * @return {JSX.Element|boolean}
    * @private
    */
-  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false)
+  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon/> : false)
 
   return idProvider && (
     <TableMaterial
       columns={[
         {
           title: 'Nº de Orden',
-          render: ({ nOrder }) => nOrder || <LabelPending />
+          render: ({ nOrder }) => nOrder || <LabelPending/>
         },
         {
           title: 'Fecha de factura',
@@ -68,7 +61,7 @@ const ProviderInvoices = ({
         {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
-          render: ({ total }) => <TextEuro num={total} />
+          render: ({ total }) => <TextEuro num={total}/>
         },
         {
           title: 'Pago',
@@ -92,19 +85,14 @@ const ProviderInvoices = ({
           to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`
         }
       ]}
-      count={invoicesCount}
+      count={count}
       refresh={_refresh}
     />
   )
 }
 
 ProviderInvoices.propTypes = {
-  invoices: PropTypes.array.isRequired,
   idProvider: PropTypes.string,
-  getInvoicesByProvider: PropTypes.func.isRequired,
-  invoicesCount: PropTypes.number.isRequired
 }
-
-ProviderInvoices.displayName = 'ProviderInvoices'
 
 export default ProviderInvoices
