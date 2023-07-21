@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Box, Container
 } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import {
@@ -13,9 +12,7 @@ import Header from './Header'
 
 import { useStyles } from './Provider.styles'
 
-const ProviderExpense = ({
-  getProvider, ...props
-}) => {
+const ProviderExpense = () => {
   const classes = useStyles()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
@@ -40,7 +37,6 @@ const ProviderExpense = ({
           title={provider?.name}
           idProvider={idProvider}
           note={provider?.note}
-          {...props}
         />
         <ProviderExpandedInfo
           expanded={expand}
@@ -57,11 +53,4 @@ const ProviderExpense = ({
   )
 }
 
-ProviderExpense.propTypes = {
-  provider: PropTypes.object.isRequired,
-  billing: PropTypes.object,
-  getProvider: PropTypes.func.isRequired
-}
-
-export const story = ProviderExpense
 export default ProviderExpense

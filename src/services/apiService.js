@@ -153,6 +153,8 @@ export const createReminderApi = (message) => axios.post(`${API_CREATE_REMINDER}
 export const createProviderApi = (data) => axios.post(`${API_PROVIDERS}`, data)
   .then(({ data }) => data)
 
+export const updateProviderApi = (id, data) => axios.put(`${API_PROVIDERS}/${id}`, data)
+
 /** Payments **/
 export const confirmPaymentApi = (id, data) => axios.patch(`${API_PAYMENTS}/${id}/confirm`, data)
   .then(({ data }) => data)

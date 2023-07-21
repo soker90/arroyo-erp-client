@@ -33,7 +33,6 @@ export const useProducts = (provider, providerRequired) => {
       mutate()
     })
       .catch((error) => {
-        console.log(error)
         showError(error.message)
       })
   }

@@ -25,7 +25,6 @@ const HeaderDeliveryOrder = ({
   const _closeDeleteModal = useCallback(() => setShowDeleteModal(false), [setShowDeleteModal])
   const _openDeleteModal = useCallback(() => setShowDeleteModal(true), [setShowDeleteModal])
 
-  console.log(provider, deleteDeliveryOrder)
   return (
     <>
       <Header

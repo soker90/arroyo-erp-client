@@ -16,7 +16,7 @@ const DeliveryOrders = lazy(() => import('./DeliveryOrder'))
 const Products = lazy(() => import('./ProductsTable'))
 const Invoices = lazy(() => import('components/ProviderInvoices'))
 
-const Provider = (props) => {
+const Provider = () => {
   const classes = useStyles()
   const { hash } = useLocation()
   const { idProvider } = useParams()
@@ -62,7 +62,6 @@ const Provider = (props) => {
           resetSelected={_resetSelectedOrders}
           note={provider?.note}
           nameProvider={provider?.name}
-          {...props}
         />
         <ProviderExpandedInfo
           expanded={expand}

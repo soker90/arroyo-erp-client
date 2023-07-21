@@ -107,7 +107,6 @@ HeaderProvider.propTypes = {
   expanded: PropTypes.bool.isRequired,
   idProvider: PropTypes.string.isRequired,
   deliveryOrdersSelected: PropTypes.array.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
   currentTab: PropTypes.string.isRequired,
   resetSelected: PropTypes.func.isRequired,
   note: PropTypes.string,

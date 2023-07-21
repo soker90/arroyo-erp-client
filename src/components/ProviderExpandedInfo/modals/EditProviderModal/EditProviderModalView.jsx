@@ -1,14 +1,17 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import ProviderModal, { INITIAL_STATE } from 'components/Modals/ProviderModal'
+import { useProvider } from '../../../../hooks/index.js'
 
 const EditProviderModal = ({
-  show, close, editProvider, provider
+  show, close, provider
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
+
+  const { editProvider } = useProvider(provider._id)
 
   useEffect(() => {
     if (show) {
@@ -18,14 +21,14 @@ const EditProviderModal = ({
       })
     }
     // eslint-disable-next-line
-  }, [show]);
+  }, [show])
 
   /**
    * Handle event save button
    * @private
    */
   const _handleSubmit = () => {
-    editProvider(provider._id, state, close)
+    editProvider(state, close)
   }
 
   return (
