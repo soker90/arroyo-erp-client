@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import useSWR from 'swr'
-import { API_PRODUCTS, PATH_INVOICES } from 'constants/paths'
+import { API_PRODUCTS } from 'constants/paths'
 import { useNotifications } from 'hooks'
 import { createProductApi } from '../services/apiService.js'
 
