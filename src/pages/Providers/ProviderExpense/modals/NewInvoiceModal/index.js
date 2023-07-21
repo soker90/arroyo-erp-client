@@ -1,1 +1,1 @@
-export { default } from './NewInvoiceModalContainer'
+export { default } from './NewInvoiceModalView'

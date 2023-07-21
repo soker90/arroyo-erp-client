@@ -15,7 +15,7 @@ import {
   API_PRICES_CHANGES,
   API_INVOICES,
   API_DELIVERY_ORDERS,
-  API_PRODUCTS_WRONG_PRICES
+  API_PRODUCTS_WRONG_PRICES, API_INVOICES_EXPENSE
 } from 'constants/paths'
 import { format } from 'utils'
 import { COLUMNS_INVOICES, CONCEPT } from '../constants/index.js'
@@ -124,6 +124,9 @@ export const createInvoiceApi = ({
   concept,
   bookColumn
 })
+  .then(({ data }) => data)
+
+export const createInvoiceExpenseApi = (data) => axios.post(API_INVOICES_EXPENSE, data)
   .then(({ data }) => data)
 
 export const updateInvoiceData = (id, data) => axios.patch(

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { getDeliveryOrders } from 'modules/providers/actions'
 import DeliveryOrder from './DeliveryOrder'
 
 const mapStateToProps = ({
@@ -11,11 +10,7 @@ const mapStateToProps = ({
   inInvoices: deliveryOrdersInInvoices
 })
 
-const mapDispatchToProps = {
-  getDeliveryOrders
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(DeliveryOrder)
