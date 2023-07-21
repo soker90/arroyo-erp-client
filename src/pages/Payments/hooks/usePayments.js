@@ -38,7 +38,6 @@ export const usePayments = (changeSelected) => {
   }
 
   const mergePayments = (payments) => {
-    console.log(payments)
     mergePaymentsApi({ payments })
       .then(({ data }) => {
         showSuccess('¡Fusionado!')

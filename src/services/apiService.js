@@ -15,9 +15,10 @@ import {
   API_PRICES_CHANGES,
   API_INVOICES,
   API_DELIVERY_ORDERS,
-  API_PRODUCTS_WRONG_PRICES
+  API_PRODUCTS_WRONG_PRICES, API_INVOICES_EXPENSE
 } from 'constants/paths'
 import { format } from 'utils'
+import { COLUMNS_INVOICES, CONCEPT } from '../constants/index.js'
 
 // TODO remove axios
 
@@ -61,7 +62,8 @@ export const updateDOClientInvoice = ({
 
 /* Delivery Order */
 
-export const createDeliveryOrderApi = (provider) => axios.post(API_DELIVERY_ORDERS, { provider }).then(({ data }) => data)
+export const createDeliveryOrderApi = (provider) => axios.post(API_DELIVERY_ORDERS, { provider })
+  .then(({ data }) => data)
 
 export const updateDataDeliveryOrder = (id, newData) => axios.patch(`${API_DELIVERY_ORDERS}/${id}`, newData)
   .then(({ data }) => data)
@@ -71,13 +73,15 @@ export const deleteDeliveryOrderApi = (id) => axios.delete(`${API_DELIVERY_ORDER
 export const deleteProductDeliveryOrder = (id, index) => axios.delete(`${API_DELIVERY_ORDERS}/${id}/product/${index}`)
   .then(({ data }) => data)
 
-export const addProductToDeliveryOrder = (idDeliveryOrder, product) => axios.post(`${API_DELIVERY_ORDERS}/${idDeliveryOrder}/product`, product).then(({ data }) => data)
+export const addProductToDeliveryOrder = (idDeliveryOrder, product) => axios.post(`${API_DELIVERY_ORDERS}/${idDeliveryOrder}/product`, product)
+  .then(({ data }) => data)
 
 export const updateProductOfDeliveryOrder = ({
   id,
   index,
   model
-}) => axios.put(`${API_DELIVERY_ORDERS}/${id}/product/${index}`, model).then(({ data }) => data)
+}) => axios.put(`${API_DELIVERY_ORDERS}/${id}/product/${index}`, model)
+  .then(({ data }) => data)
 /* Client Invoice */
 export const deleteProductClientInvoice = ({
   invoice,
@@ -111,6 +115,20 @@ export const updateProductClientInvoice = ({
 
 /* Invoice */
 
+export const createInvoiceApi = ({
+  deliveryOrders,
+  concept = CONCEPT.COMPRAS,
+  bookColumn = COLUMNS_INVOICES.COMPRAS
+}) => axios.post(API_INVOICES, {
+  deliveryOrders,
+  concept,
+  bookColumn
+})
+  .then(({ data }) => data)
+
+export const createInvoiceExpenseApi = (data) => axios.post(API_INVOICES_EXPENSE, data)
+  .then(({ data }) => data)
+
 export const updateInvoiceData = (id, data) => axios.patch(
   `${API_INVOICES}/${id}`,
   data
@@ -135,6 +153,8 @@ export const createReminderApi = (message) => axios.post(`${API_CREATE_REMINDER}
 export const createProviderApi = (data) => axios.post(`${API_PROVIDERS}`, data)
   .then(({ data }) => data)
 
+export const updateProviderApi = (id, data) => axios.put(`${API_PROVIDERS}/${id}`, data)
+
 /** Payments **/
 export const confirmPaymentApi = (id, data) => axios.patch(`${API_PAYMENTS}/${id}/confirm`, data)
   .then(({ data }) => data)
@@ -152,6 +172,9 @@ export const deleteNoteApi = (id) => axios.delete(`${API_NOTES}/${id}`)
   .then(({ data }) => data)
 
 export const createProductClient = (data) => axios.post(`${API_PRODUCTS_CLIENT}`, data)
+  .then(({ data }) => data)
+
+export const createProductApi = (data) => axios.post(`${API_PRODUCTS}`, data)
   .then(({ data }) => data)
 
 export const updateProductApi = (id, data) => axios.put(`${API_PRODUCTS}/${id}`, data)

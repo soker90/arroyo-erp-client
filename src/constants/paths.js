@@ -4,6 +4,7 @@ export const PATH_CLIENT_BILLING = '/app/clientes/facturacion'
 export const PATH_PROVIDER_BILLING = '/app/informes/facturacion'
 export const PATH_PROVIDERS = `${BASE_PATH}/proveedores`
 export const PATH_DELIVERY_ORDERS = `${BASE_PATH}/albaranes`
+export const PATH_INVOICES = `${BASE_PATH}/facturas`
 
 export const API_DASHBOARD = 'dashboard'
 export const API_CREATE_REMINDER = `${API_DASHBOARD}/createReminder`
@@ -11,8 +12,12 @@ export const API_DELETE_REMINDER = `${API_DASHBOARD}/deleteReminder`
 export const API_CLIENT_BILLING_DOWNLOAD = 'client/invoices/billing'
 export const API_PROVIDER_BILLING_DOWNLOAD = 'billings'
 export const API_CLIENTS = 'clients'
+
 export const API_INVOICES = 'invoices'
+export const API_INVOICES_EXPENSE = `${API_INVOICES}/expense`
+export const API_INVOICES_SHORT = `${API_INVOICES}/short`
 export const API_INVOICES_SWAP = `${API_INVOICES}/swap`
+
 export const API_BILLINGS = 'billings'
 export const API_CLIENT_INVOICES = 'client/invoices'
 export const API_CLIENT_INVOICES_SHORT = `${API_CLIENT_INVOICES}/short`

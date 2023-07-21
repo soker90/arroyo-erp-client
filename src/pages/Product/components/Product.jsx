@@ -2,8 +2,9 @@ import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
 import { LoadingScreen, Page, PricesChart } from 'components'
+import { useProduct } from 'hooks'
 
-import { useLastDeliveryOrder, useProduct } from '../hooks'
+import { useLastDeliveryOrder } from '../hooks'
 import Header from './Header'
 import ProductData from './ProductData'
 import PricesTable from './PricesTable'

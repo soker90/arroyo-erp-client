@@ -7,7 +7,6 @@ import { LoadingBar } from 'react-redux-loading-bar'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
 
-import { ModalRoot } from 'components'
 import Auth from 'components/Auth'
 import NotificationLegacy from 'components/Notification'
 import Notification from 'components/Notification/components/Notification'
@@ -43,7 +42,6 @@ const App = () => {
                   <Auth>
                     <ScrollReset />
                     <Routes />
-                    <ModalRoot />
                   </Auth>
                 </BrowserRouter>
               </Suspense>

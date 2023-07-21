@@ -1,28 +1,28 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Container, Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'react-feather'
 
 import {
   Header, ListActions, LoadingScreen, Page, PricesChart
 } from 'components'
-import { useStyles } from './ProductsReport.styles'
-import { useProduct } from 'pages/Product/hooks'
+import { useProducts, useProduct, useProviders } from 'hooks'
 
-const ProductsReport = ({
-  providers,
-  getProducts,
-  products
-}) => {
+import { useStyles } from './ProductsReport.styles'
+
+const ProductsReport = () => {
   const classes = useStyles()
+  const [providersSelected, setProvidersSelected] = useState(undefined)
   const [productSelected, setProductSelected] = useState(undefined)
+
+  const { providers } = useProviders()
+  const { products } = useProducts(providersSelected, true)
   const {
     prices,
     pvps
   } = useProduct(productSelected)
 
   const _handleClickProvider = ({ _id }) => {
-    getProducts(_id)
+    setProvidersSelected(_id)
   }
 
   const _handleClickProduct = ({ _id }) => {
@@ -71,12 +71,6 @@ const ProductsReport = ({
       </Container>
     </Page>
   )
-}
-
-ProductsReport.propTypes = {
-  providers: PropTypes.array.isRequired,
-  getProducts: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired
 }
 
 export default ProductsReport

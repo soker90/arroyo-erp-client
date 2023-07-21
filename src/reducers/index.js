@@ -3,7 +3,6 @@ import providers from 'modules/providers'
 import products from 'modules/products'
 
 import notifications from './notifications'
-import modal from './modal'
 import account from './account'
 
 const rootReducer = combineReducers({
@@ -13,8 +12,7 @@ const rootReducer = combineReducers({
   /**
    * Reducers del sistema
    */
-  notifications,
-  modal
+  notifications
 })
 
 export default rootReducer

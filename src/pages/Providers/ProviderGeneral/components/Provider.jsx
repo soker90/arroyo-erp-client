@@ -4,10 +4,10 @@ import {
 import {
   Box, Container
 } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useLocation, useParams } from 'react-router'
 
 import { HashTabs, Page, ProviderExpandedInfo } from 'components'
+import { useProvider } from 'hooks'
 import { HASH_TABS, TABS } from '../constants'
 import Header from './Header'
 import { useStyles } from './Provider.styles'
@@ -16,22 +16,17 @@ const DeliveryOrders = lazy(() => import('./DeliveryOrder'))
 const Products = lazy(() => import('./ProductsTable'))
 const Invoices = lazy(() => import('components/ProviderInvoices'))
 
-const Provider = ({
-  provider,
-  billing,
-  getProvider,
-  ...props
-}) => {
+const Provider = () => {
   const classes = useStyles()
   const { hash } = useLocation()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
   const [currentTab, setCurrentTab] = useState(TABS.DELIVERY_ORDERS)
   const [deliveryOrdersSelected, setDeliveryOrdersSelected] = useState([])
-
-  useEffect(() => {
-    if (idProvider) getProvider(idProvider)
-  }, [idProvider])
+  const {
+    provider,
+    billing
+  } = useProvider(idProvider)
 
   useEffect(() => {
     HASH_TABS[hash] &&
@@ -67,7 +62,6 @@ const Provider = ({
           resetSelected={_resetSelectedOrders}
           note={provider?.note}
           nameProvider={provider?.name}
-          {...props}
         />
         <ProviderExpandedInfo
           expanded={expand}
@@ -82,10 +76,11 @@ const Provider = ({
             <DeliveryOrders
               selected={deliveryOrdersSelected}
               setSelected={setDeliveryOrdersSelected}
+              idProvider={idProvider}
             />
           )}
-          {currentTab === TABS.INVOICES && <Invoices />}
-          {currentTab === TABS.PRODUCTS && <Products />}
+          {currentTab === TABS.INVOICES && <Invoices idProvider={idProvider} />}
+          {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider} />}
         </Box>
 
       </Container>
@@ -93,15 +88,4 @@ const Provider = ({
   )
 }
 
-Provider.propTypes = {
-  provider: PropTypes.object.isRequired,
-  billing: PropTypes.object,
-  getProvider: PropTypes.func.isRequired,
-  showEditProductModal: PropTypes.func.isRequired,
-  createInvoice: PropTypes.func.isRequired
-}
-
-Provider.displayName = 'Providers'
-
-export const story = Provider
 export default Provider

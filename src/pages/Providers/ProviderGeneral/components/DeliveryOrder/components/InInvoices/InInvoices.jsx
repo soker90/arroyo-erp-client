@@ -18,8 +18,7 @@ const InInvoices = ({
     count,
     hasCanal
   },
-  idProvider,
-  getDeliveryOrders
+  updateFilters
 }) => {
   const [canal, setCanal] = useState('')
   const classes = useStyles()
@@ -27,8 +26,7 @@ const InInvoices = ({
 
   useEffect(() => {
     debounce(() => {
-      getDeliveryOrders({
-        provider: idProvider,
+      updateFilters({
         canal
       })
     }, 500)
@@ -38,12 +36,11 @@ const InInvoices = ({
     offset,
     limit
   }) => {
-    getDeliveryOrders({
-      provider: idProvider,
+    updateFilters({
       offset,
       limit
     })
-  }, [idProvider])
+  }, [])
 
   const _handleSearch = useCallback(({
     target: {
@@ -67,7 +64,6 @@ const InInvoices = ({
     },
     {
       title: 'Total',
-      // eslint-disable-next-line react/prop-types
       render: ({ total }) => <TextEuro num={total} />
     },
     {
@@ -107,11 +103,7 @@ InInvoices.propTypes = {
     data: PropTypes.array,
     count: PropTypes.number,
     hasCanal: PropTypes.bool
-  }).isRequired,
-  getDeliveryOrders: PropTypes.func.isRequired,
-  idProvider: PropTypes.string.isRequired
+  }).isRequired
 }
-
-InInvoices.displayName = 'InInvoices'
 
 export default InInvoices
