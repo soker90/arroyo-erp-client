@@ -10,11 +10,11 @@ import LabelPending from '../LabelPending'
 import { useInvoicesByProvider } from 'hooks'
 
 const ProviderInvoices = ({
-  idProvider,
+  idProvider
 }) => {
   const { updateFilters, invoices, count, isLoading } = useInvoicesByProvider(idProvider)
 
-  if (isLoading || !idProvider) return <LoadingScreen/>
+  if (isLoading || !idProvider) return <LoadingScreen />
 
   const _refresh = ({
     offset,
@@ -41,14 +41,14 @@ const ProviderInvoices = ({
    * @return {JSX.Element|boolean}
    * @private
    */
-  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon/> : false)
+  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false)
 
   return idProvider && (
     <TableMaterial
       columns={[
         {
           title: 'Nº de Orden',
-          render: ({ nOrder }) => nOrder || <LabelPending/>
+          render: ({ nOrder }) => nOrder || <LabelPending />
         },
         {
           title: 'Fecha de factura',
@@ -61,7 +61,7 @@ const ProviderInvoices = ({
         {
           title: 'Importe',
           // eslint-disable-next-line react/prop-types
-          render: ({ total }) => <TextEuro num={total}/>
+          render: ({ total }) => <TextEuro num={total} />
         },
         {
           title: 'Pago',
@@ -92,7 +92,7 @@ const ProviderInvoices = ({
 }
 
 ProviderInvoices.propTypes = {
-  idProvider: PropTypes.string,
+  idProvider: PropTypes.string
 }
 
 export default ProviderInvoices

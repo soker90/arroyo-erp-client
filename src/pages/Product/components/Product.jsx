@@ -28,7 +28,7 @@ const Product = () => {
     nextToLast
   } = useLastDeliveryOrder(id)
 
-  if (!product._id) return <LoadingScreen/>
+  if (!product._id) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={`${product.name} | Producto`}>
@@ -51,14 +51,14 @@ const Product = () => {
         {Boolean(prices.length) &&
           (
             <>
-              <PricesChart prices={reversePrices} className={classes.chart}/>
+              <PricesChart prices={reversePrices} className={classes.chart} />
               {Boolean(pvps?.length) && <PricesChart
                 prices={pvps} className={classes.chart}
-                title="Gráfica de precios de venta"
-                tooltip="Venta"
-                lineColor="#f73378"
-              />}
-              <PricesTable prices={prices} provider={product.provider} deletePrice={deletePrice}/>
+                title='Gráfica de precios de venta'
+                tooltip='Venta'
+                lineColor='#f73378'
+                                        />}
+              <PricesTable prices={prices} provider={product.provider} deletePrice={deletePrice} />
             </>
           )}
 

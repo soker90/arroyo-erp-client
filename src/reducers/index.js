@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   /**
    * Reducers del sistema
    */
-  notifications,
+  notifications
 })
 
 export default rootReducer

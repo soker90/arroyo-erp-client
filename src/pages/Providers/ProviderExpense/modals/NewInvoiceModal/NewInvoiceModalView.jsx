@@ -1,11 +1,10 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router'
 
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm
 } from 'components'
-import { format, navigateTo } from 'utils'
+import { format } from 'utils'
 import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices'
 import AutocompleteForm from 'components/Forms/AutocompleteForm'
 import { useCreateInvoiceExpense } from '../../hooks/index.js'
@@ -177,9 +176,9 @@ const NewInvoiceModal = ({
       disableClearable
       options={EXPENSE_CONCEPTS}
       value={state.concept}
-      name="concept"
-      label="Concepto"
-      margin="normal"
+      name='concept'
+      label='Concepto'
+      margin='normal'
       onChange={_handleChangeAutocomplete}
     />
   )
@@ -198,7 +197,7 @@ const NewInvoiceModal = ({
       show={show}
       close={close}
       action={_handleSubmit}
-      title="Crear factura"
+      title='Crear factura'
     >
       {_renderInput('nInvoice', 'Nº Factura', { autoFocus: true })}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}

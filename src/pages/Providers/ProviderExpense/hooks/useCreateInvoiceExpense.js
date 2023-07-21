@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router'
 
 import { PATH_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
-import {  createInvoiceExpenseApi } from 'services/apiService'
+import { createInvoiceExpenseApi } from 'services/apiService'
 
 export const useCreateInvoiceExpense = () => {
   const navigate = useNavigate()

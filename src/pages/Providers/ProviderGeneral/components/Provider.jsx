@@ -69,7 +69,7 @@ const Provider = () => {
           provider={provider}
         />
 
-        <HashTabs currentTab={currentTab} tabs={Object.values(TABS)}/>
+        <HashTabs currentTab={currentTab} tabs={Object.values(TABS)} />
 
         <Box py={3} pb={6}>
           {currentTab === TABS.DELIVERY_ORDERS && (
@@ -79,8 +79,8 @@ const Provider = () => {
               idProvider={idProvider}
             />
           )}
-          {currentTab === TABS.INVOICES && <Invoices idProvider={idProvider}/>}
-          {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider}/>}
+          {currentTab === TABS.INVOICES && <Invoices idProvider={idProvider} />}
+          {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider} />}
         </Box>
 
       </Container>

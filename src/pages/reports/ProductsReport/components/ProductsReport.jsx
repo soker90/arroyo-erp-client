@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Container, Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'react-feather'
 
@@ -29,26 +28,26 @@ const ProductsReport = () => {
   const _handleClickProduct = ({ _id }) => {
     setProductSelected(_id)
   }
-  if (!providers.length) return <LoadingScreen/>
+  if (!providers.length) return <LoadingScreen />
 
   return (
-    <Page className={classes.root} title="Informes de producto">
+    <Page className={classes.root} title='Informes de producto'>
       <Container maxWidth={false}>
-        <Header title="Informes de producto"/>
+        <Header title='Informes de producto' />
         <Grid container spacing={2} className={classes.container}>
           <Grid item xs={6} md={2}>
             <ListActions
               data={providers}
-              icon={<Users/>}
-              title="Proveedores"
+              icon={<Users />}
+              title='Proveedores'
               onClick={_handleClickProvider}
             />
           </Grid>
           <Grid item xs={6} md={2}>
             <ListActions
               data={products}
-              icon={<ShoppingCart/>}
-              title="Productos"
+              icon={<ShoppingCart />}
+              title='Productos'
               onClick={_handleClickProduct}
             />
           </Grid>
@@ -56,12 +55,12 @@ const ProductsReport = () => {
             {Boolean(prices?.length) &&
               (
                 <div className={classes.charts}>
-                  <PricesChart prices={structuredClone(prices).reverse()}/>
+                  <PricesChart prices={structuredClone(prices).reverse()} />
                   <PricesChart
                     prices={pvps}
-                    title="Gráfica de precios de venta"
-                    tooltip="Venta"
-                    lineColor="#f73378"
+                    title='Gráfica de precios de venta'
+                    tooltip='Venta'
+                    lineColor='#f73378'
                     className={classes.secondChart}
                   />
                 </div>

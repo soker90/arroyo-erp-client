@@ -26,7 +26,7 @@ const ProviderExpense = () => {
     setExpand(!expand)
   }
 
-  if (!idProvider || isLoading) return <LoadingScreen/>
+  if (!idProvider || isLoading) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={provider.name}>
@@ -45,7 +45,7 @@ const ProviderExpense = () => {
         />
 
         <Box py={3} pb={6}>
-          <ProviderInvoices idProvider={idProvider}/>
+          <ProviderInvoices idProvider={idProvider} />
         </Box>
 
       </Container>

@@ -32,6 +32,6 @@ export const useInvoicesByProvider = (providerId) => {
     count: data?.count || 0,
     isLoading,
     filters,
-    updateFilters,
+    updateFilters
   }
 }

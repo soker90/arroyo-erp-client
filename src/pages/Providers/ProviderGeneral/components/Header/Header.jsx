@@ -42,7 +42,7 @@ const HeaderProvider = ({
     () => {
       setOpenModalProduct(false)
     },
-    [],
+    []
   )
 
   const _buttons = useMemo(() => (
@@ -65,7 +65,7 @@ const HeaderProvider = ({
   const _renderNote = () => (
     <Label
       className={classes.label}
-      color="warning"
+      color='warning'
     >
       {note}
     </Label>
@@ -96,7 +96,8 @@ const HeaderProvider = ({
       />
       <NewProductModal
         createProduct={createProduct} show={openModalProduct} close={_closeModalProduct}
-        idProvider={idProvider}/>
+        idProvider={idProvider}
+      />
     </>
   )
 }
