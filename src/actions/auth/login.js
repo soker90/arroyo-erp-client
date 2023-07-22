@@ -1,6 +1,5 @@
 import authService from 'services/authService'
 import { LOGIN } from 'actions/types'
-import { initialize } from 'actions/initializeAction'
 
 /**
  * Request action
@@ -64,7 +63,6 @@ export const login = (username, password) => async dispatch => {
 
     dispatch(_loginSuccess())
     dispatch(_loginSet(user))
-    dispatch(initialize())
   } catch (error) {
     console.error(error)
     dispatch(_loginError(error))

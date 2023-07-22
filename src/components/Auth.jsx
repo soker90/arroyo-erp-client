@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import SplashScreen from 'components/SplashScreen'
 import { setUserData, logout } from 'actions/auth'
 import authService from 'services/authService'
-import { initialize } from 'actions/initializeAction'
 
 const Auth = ({ children }) => {
   const dispatch = useDispatch()
@@ -23,7 +22,6 @@ const Auth = ({ children }) => {
       if (authService.isAuthenticated()) {
         const user = await authService.loginInWithToken()
         await dispatch(setUserData(user))
-        dispatch(initialize())
       }
 
       setLoading(false)
