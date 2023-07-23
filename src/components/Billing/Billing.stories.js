@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
 import RoutesWrapper from 'story/RoutesWrapper'
-import { ReduxProvider } from 'story'
 import { story as Billing } from './Billing'
 
 export default {
@@ -11,11 +10,9 @@ export default {
     componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
-    <ReduxProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </ReduxProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }

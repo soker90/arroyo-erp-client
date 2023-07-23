@@ -2,6 +2,7 @@ export {
   default as useDebounce
 } from './useDebounce'
 export * from '../pages/reports/Billing/hooks/useBillings'
+export * from './useAuth'
 export * from './useCreateDeliveryOrder'
 export * from './useCreateInvoice'
 export * from './useInvoicesByProvider'

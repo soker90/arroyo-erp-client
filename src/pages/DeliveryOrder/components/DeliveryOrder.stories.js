@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import { ReduxProvider, DatePickerProvider } from 'story'
+import { DatePickerProvider } from 'story'
 import RoutesWrapper from 'story/RoutesWrapper'
 import { story as DeliveryOrder } from './DeliveryOrder'
 
@@ -11,13 +11,11 @@ export default {
     componentSubtitle: 'Vista de albarán'
   },
   decorators: [storyFn => (
-    <ReduxProvider>
-      <DatePickerProvider>
-        <RoutesWrapper>
-          {storyFn()}
-        </RoutesWrapper>
-      </DatePickerProvider>
-    </ReduxProvider>
+    <DatePickerProvider>
+      <RoutesWrapper>
+        {storyFn()}
+      </RoutesWrapper>
+    </DatePickerProvider>
   )
   ]
 }

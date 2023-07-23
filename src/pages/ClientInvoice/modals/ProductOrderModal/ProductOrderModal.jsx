@@ -2,11 +2,9 @@ import {
   useEffect, useReducer, useRef
 } from 'react'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
 
 import { AutocompleteForm, InputForm, ModalGrid } from 'components'
-import { useProducts } from 'hooks'
-import { addNotification } from 'reducers/notifications'
+import { useNotifications, useProducts } from 'hooks'
 import { fields, INITIAL_STATE } from './constants'
 
 const ProductOrderModal = ({
@@ -19,11 +17,14 @@ const ProductOrderModal = ({
   updateProduct,
   ...rest
 }) => {
-  const dispatch = useDispatch()
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
+  const {
+    showError
+  } = useNotifications()
+
   const {
     products,
     productsList
@@ -74,11 +75,7 @@ const ProductOrderModal = ({
       }, (callback || close))
     } catch (e) {
       console.error(e)
-      dispatch(addNotification({
-        level: 'error',
-        message: 'El precio o las unidades no son correctas',
-        dismissible: true
-      }))
+      showError('El precio o las unidades no son correctas')
     }
   }
 

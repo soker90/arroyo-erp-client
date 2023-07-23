@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions'
 
-import { ReduxProvider } from 'story'
 import RoutesWrapper from 'story/RoutesWrapper'
 import { story as Providers } from './Providers'
 
@@ -11,7 +10,7 @@ export default {
     componentSubtitle: 'Vista de proveedores'
   },
   decorators: [storyFn =>
-    <ReduxProvider><RoutesWrapper>{storyFn()}</RoutesWrapper></ReduxProvider>]
+    <RoutesWrapper>{storyFn()}</RoutesWrapper>]
 }
 
 const providers = [

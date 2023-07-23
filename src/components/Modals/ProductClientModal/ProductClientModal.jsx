@@ -1,10 +1,7 @@
-/* eslint-disable react/prop-types */
-
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
 
 import { InputForm, ModalGrid } from 'components'
-import { addNotification } from 'reducers/notifications'
+import { useNotifications } from 'hooks'
 import { fields } from './constants'
 
 const ProductClientModal = ({
@@ -15,7 +12,9 @@ const ProductClientModal = ({
   action,
   ...rest
 }) => {
-  const dispatch = useDispatch()
+  const {
+    showError
+  } = useNotifications()
 
   /**
    * Handle event onChange input
@@ -45,11 +44,7 @@ const ProductClientModal = ({
       action(model, close)
     } catch (e) {
       console.error(e)
-      dispatch(addNotification({
-        level: 'error',
-        message: 'El precio no es correcto',
-        dismissible: true
-      }))
+      showError('El precio no es correcto')
     }
   }
 
@@ -106,6 +101,4 @@ ProductClientModal.propTypes = {
   action: PropTypes.func.isRequired
 }
 
-ProductClientModal.displayName = 'ProductClientModal'
-export const story = ProductClientModal
 export default ProductClientModal

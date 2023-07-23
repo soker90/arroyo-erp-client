@@ -1,4 +1,3 @@
-import { ReduxProvider } from 'story'
 import { story as InvoiceTotals } from './InvoiceTotals'
 
 export default {
@@ -6,12 +5,7 @@ export default {
   parameters: {
     component: InvoiceTotals,
     componentSubtitle: 'Totales'
-  },
-  decorators: [storyFn => (
-    <ReduxProvider>
-      {storyFn()}
-    </ReduxProvider>
-  )]
+  }
 }
 
 const InvoiceTotalsStory = () => (

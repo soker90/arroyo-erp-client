@@ -1,12 +1,10 @@
 import { useRef, useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import {
   Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import { logout } from 'actions/auth'
-import { useNavigate } from 'react-router'
+
+import { useAuth } from 'hooks'
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -22,10 +20,8 @@ const useStyles = makeStyles(theme => ({
 const Account = () => {
   const classes = useStyles()
   const ref = useRef(null)
-  const dispatch = useDispatch()
-  const account = useSelector(state => state.account)
+  const { user, logout } = useAuth()
   const [isOpen, setOpen] = useState(false)
-  const navigate = useNavigate()
 
   const handleOpen = () => {
     setOpen(true)
@@ -37,7 +33,7 @@ const Account = () => {
 
   const handleLogout = () => {
     handleClose()
-    dispatch(logout(navigate))
+    logout()
   }
 
   return (
@@ -59,7 +55,7 @@ const Account = () => {
             variant='h6'
             color='inherit'
           >
-            {account.user}
+            {user}
           </Typography>
         </Hidden>
       </Box>
@@ -70,22 +66,10 @@ const Account = () => {
           horizontal: 'center'
         }}
         keepMounted
-        PaperProps={{ className: classes.popover }}
+        slotProps={{ paper: { className: classes.popover } }}
         anchorEl={ref.current}
         open={isOpen}
       >
-        <MenuItem
-          component={RouterLink}
-          to='/app/social/profile'
-        >
-          Perfil
-        </MenuItem>
-        <MenuItem
-          component={RouterLink}
-          to='/app/account'
-        >
-          Cuenta
-        </MenuItem>
         <MenuItem onClick={handleLogout}>
           Salir
         </MenuItem>

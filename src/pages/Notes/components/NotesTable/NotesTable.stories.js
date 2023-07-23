@@ -1,5 +1,4 @@
 import RoutesWrapper from 'story/RoutesWrapper'
-import { ReduxProvider } from 'story'
 import DatePickerProvider from 'contexts/DatePickerProvider'
 import { story as NotesTable } from './NotesTable'
 
@@ -11,11 +10,9 @@ export default {
   },
   decorators: [storyFn => (
     <DatePickerProvider>
-      <ReduxProvider>
-        <RoutesWrapper>
-          {storyFn()}
-        </RoutesWrapper>
-      </ReduxProvider>
+      <RoutesWrapper>
+        {storyFn()}
+      </RoutesWrapper>
     </DatePickerProvider>
   )
   ]

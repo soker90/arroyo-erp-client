@@ -1,34 +1,32 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router'
 import PropTypes from 'prop-types'
+
 import SplashScreen from 'components/SplashScreen'
-import { setUserData, logout } from 'actions/auth'
+import { useAuth } from 'hooks'
 import authService from 'services/authService'
 
 const Auth = ({ children }) => {
-  const dispatch = useDispatch()
   const [isLoading, setLoading] = useState(true)
-  const navigate = useNavigate()
+  const { logout, setUserData } = useAuth()
 
   useEffect(() => {
     const initAuth = async () => {
       authService.setAxiosInterceptors({
-        onLogout: () => dispatch(logout(navigate))
+        onLogout: logout
       })
 
       authService.handleAuthentication()
 
       if (authService.isAuthenticated()) {
         const user = await authService.loginInWithToken()
-        await dispatch(setUserData(user))
+        setUserData(user)
       }
 
       setLoading(false)
     }
 
     initAuth()
-  }, [dispatch])
+  }, [])
 
   if (isLoading) return <SplashScreen />
 
