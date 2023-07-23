@@ -1,3 +1,6 @@
+# [3.5.0] - 23/07/2023
+  - Terminada eliminación de redux
+
 # [3.4.3] - 13/07/2023
   - Añadida opción para agregar el canal al añadir un producto en un albarán nuevo
 
