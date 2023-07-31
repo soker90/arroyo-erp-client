@@ -34,7 +34,7 @@
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.2",
     "@mui/styles": "^5.14.1",
-    "@mui/x-date-pickers": "^6.10.1",
+    "@mui/x-date-pickers": "^6.10.2",
     "axios": "^1.4.0",
     "chart.js": "^4.3.2",
     "clsx": "^2.0.0",
