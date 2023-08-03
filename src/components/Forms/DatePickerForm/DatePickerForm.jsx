@@ -36,7 +36,7 @@ const DatePickerForm = (
         closeOnSelect={autoOk}
         slotProps={{
           textField: { variant, fullWidth: true, disabled },
-          actionBar: { actions: [...(clearable ? ['clear'] : ''), 'accept', 'cancel'] },
+          actionBar: { actions: [...(clearable ? ['clear'] : ''), 'accept', 'cancel'] }
         }}
         value={value === null ? null : dayjs(value)}
         {...rest}
