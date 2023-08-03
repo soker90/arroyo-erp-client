@@ -13,6 +13,7 @@ const DatePickerForm = (
     autoOk = true,
     value = null,
     disabled,
+    clearable,
     ...rest
   }
 ) => {
@@ -26,14 +27,18 @@ const DatePickerForm = (
     >
       <MobileDatePicker
         disableToolbar
+        clearable
         allowSameDateSelection
         className={classes.picker}
         showToolbar={false}
         format={format}
         inputVariant={variant}
         closeOnSelect={autoOk}
-        slotProps={{ textField: { variant, fullWidth: true, disabled } }}
-        value={dayjs(value)}
+        slotProps={{
+          textField: { variant, fullWidth: true, disabled },
+          actionBar: { actions: [...(clearable ? ['clear'] : ''), 'accept', 'cancel'] },
+        }}
+        value={value === null ? null : dayjs(value)}
         {...rest}
       />
     </Grid>
