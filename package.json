@@ -51,7 +51,7 @@
     "react-perfect-scrollbar": "^1.5.8",
     "react-router": "^6.16.0",
     "react-router-dom": "^6.16.0",
-    "swr": "^2.2.2",
+    "swr": "^2.2.3",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
