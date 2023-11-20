@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { IconButton, TableCell, Tooltip } from '@mui/material'
-import uniqId from 'uniqid'
 
 import { useStyles } from './styles'
 
@@ -34,7 +33,7 @@ const BodyActionsButtons = ({
           icon: Icon, tooltip, onClick, to, disabled, ...restButton
         }) => (
           <Tooltip
-            key={uniqId()}
+            key={window.crypto.randomUUID()}
             title={tooltip}
             className={classes.tooltip}
             disabled={_isDisabled(disabled)}

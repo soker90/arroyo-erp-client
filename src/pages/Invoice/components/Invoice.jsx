@@ -1,6 +1,5 @@
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
-import uniqId from 'uniqid'
 
 import { LoadingScreen, Page } from 'components'
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
@@ -50,7 +49,7 @@ const Invoice = () => {
 
         <div className={classes.orders}>
           {deliveryOrders?.map(props => (
-            <DeliveryOrderExpand {...props} key={uniqId()} />
+            <DeliveryOrderExpand {...props} key={props._id} />
           ))}
         </div>
 

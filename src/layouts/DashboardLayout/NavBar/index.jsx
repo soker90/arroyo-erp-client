@@ -9,7 +9,6 @@ import {
   Box, Divider, Drawer, Hidden, List, ListSubheader, Typography
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import uniqId from 'uniqid'
 
 import Logo from 'components/Logo'
 import { navConfig } from 'layouts/DashboardLayout/NavBar/navConfig'
@@ -155,7 +154,7 @@ const NavBar = ({
         <Box p={2}>
           {navConfig.map(config => (
             <List
-              key={uniqId()}
+              key={config.subheader}
               subheader={(
                 <ListSubheader
                   disableGutters

@@ -10,7 +10,6 @@ import {
   Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
-import uniqId from 'uniqid'
 
 import { ItemCard } from 'components'
 import { itemsCard } from './utils'
@@ -37,7 +36,7 @@ const ClientInvoiceTotals = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Editar' key={uniqId()}>
+      <Tooltip title='Editar' key='edit-client-invoice-totals'>
         <IconButton
           size='small'
           onClick={_handleEditClick}
@@ -58,7 +57,7 @@ const ClientInvoiceTotals = ({
 
             {itemsCard(totals)
               .map(itemProps => (
-                <Grid item xs={12} md={4} key={uniqId()}>
+                <Grid item xs={12} md={4} key={itemProps.label}>
                   <ItemCard {...itemProps} />
                 </Grid>
               ))}

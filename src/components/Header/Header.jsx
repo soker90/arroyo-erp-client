@@ -7,7 +7,6 @@ import {
   Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box
 } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import uniqId from 'uniqid'
 
 import { useStyles } from './Header.styles'
 
@@ -25,7 +24,7 @@ const Header = ({
    */
   const _itemNav = (link, title) => (
     <Link
-      key={uniqId()}
+      key={title}
       variant='body1'
       color='inherit'
       to={link}
@@ -51,7 +50,7 @@ const Header = ({
     color, variant, disableSvg, Icon, label, ...rest
   }) => (
     <Button
-      key={uniqId()}
+      key={label}
       color={color || 'secondary'}
       variant={variant || 'contained'}
       className={classes.action}

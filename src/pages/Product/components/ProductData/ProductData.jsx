@@ -4,7 +4,6 @@ import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
-import uniqId from 'uniqid'
 
 import ProductItemCard from './ProductItemCard'
 import { generateLabels } from './utils'
@@ -38,7 +37,7 @@ const ProductData = ({
         <CardHeader
           title='Totales'
           action={provider && [
-            <Tooltip title='Editar' key={uniqId()}>
+            <Tooltip title='Editar' key='edit-product-data'>
               <IconButton
                 size='small'
                 onClick={_handleEditClick}
@@ -52,7 +51,7 @@ const ProductData = ({
         <CardContent>
           <Grid container spacing={3}>
             {generateLabels(product, provider)
-              .map(item => <ProductItemCard {...item} key={uniqId()} />)}
+              .map(item => <ProductItemCard {...item} key={item.title} />)}
           </Grid>
         </CardContent>
       </Card>

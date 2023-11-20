@@ -10,7 +10,7 @@ import {
   Tooltip,
   Typography
 } from '@mui/material'
-import uniqId from 'uniqid'
+
 import EditIcon from '@mui/icons-material/Edit'
 
 import { ItemCard, Label } from 'components'
@@ -47,7 +47,7 @@ const InvoiceData = ({
    * @private
    */
   const _getActions = () => [
-    <Tooltip title='Editar' key={uniqId()}>
+    <Tooltip title='Editar' key='editar-invoice-data'>
       <IconButton
         size='small'
         onClick={_handleEditClick}

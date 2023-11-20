@@ -3,7 +3,7 @@ import {
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import uniqId from 'uniqid'
+
 import AddIcon from '@mui/icons-material/Add'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useCallback, useState } from 'react'
@@ -69,7 +69,7 @@ const DeliveryOrderInvoice = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Añadir producto' key={uniqId()}>
+      <Tooltip title='Añadir producto' key='add-delivery-order'>
         <IconButton
           size='small'
           onClick={_handleAddClick}
@@ -77,7 +77,7 @@ const DeliveryOrderInvoice = ({
           <AddIcon />
         </IconButton>
       </Tooltip>,
-      <Tooltip title='Eliminar albarán' key={uniqId()}>
+      <Tooltip title='Eliminar albarán' key='remove-delivery-order'>
         <IconButton
           size='small'
           onClick={_handleDeleteClick}

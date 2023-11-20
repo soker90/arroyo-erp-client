@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import {
   Box, TableBody, TableCell, TableRow, Checkbox
 } from '@mui/material'
-import uniqId from 'uniqid'
+
 import { Link } from 'react-router-dom'
 
 import BodyActionsButtons from './components/BodyActionsButtons'
@@ -17,7 +17,7 @@ const BodyTable = ({
         <TableRow
           onMouseDown={() => onRowClick?.(row)}
           hover
-          key={uniqId()}
+          key={index}
           selected={isSelected}
           className={rowClass?.(row) || ''}
         >
@@ -31,7 +31,7 @@ const BodyTable = ({
             </TableCell>
           )}
           {columns.map(({ field, render }) => (
-            <TableCell key={uniqId()}>
+            <TableCell key={window.crypto.randomUUID()}>
               <Box
                 {...(href && {
                   component: Link,

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import {
   Card, CardContent, CardHeader, Divider, Grid, List
 } from '@mui/material'
-import uniqId from 'uniqid'
 
 import { ItemCard } from 'components'
 import { useStyles } from './ProviderBilling.styles'
@@ -32,7 +31,7 @@ const ProviderBilling = (
                 label={`${index + 1}º trimestre`}
                 value={value}
                 variant='euro'
-                key={uniqId()}
+                key={index}
               />
             ))}
             <ItemCard

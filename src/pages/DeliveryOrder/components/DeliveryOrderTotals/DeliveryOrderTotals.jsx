@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {
   Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
 } from '@mui/material'
-import uniqId from 'uniqid'
 
 import { EditTotalsModal, ItemCard } from 'components'
 import EditIcon from '@mui/icons-material/Edit'
@@ -29,7 +28,7 @@ const DeliveryOrderTotals = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Editar' key={uniqId()}>
+      <Tooltip title='Editar' key='edit-devlivery-order-totals'>
         <IconButton
           size='small'
           onClick={_handleEditClick}
@@ -50,7 +49,7 @@ const DeliveryOrderTotals = ({
 
             {itemsCard(totals)
               .map(({ size, ...itemProps }) => (
-                <Grid item xs={12} md={size} key={uniqId()}>
+                <Grid item xs={12} md={size} key={itemProps.label}>
                   <ItemCard {...itemProps} />
                 </Grid>
               ))}

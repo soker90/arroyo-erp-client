@@ -7,7 +7,7 @@ import {
 import { ItemCard } from 'components'
 import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal'
 import { format } from 'utils'
-import uniqId from 'uniqid'
+
 import EditIcon from '@mui/icons-material/Edit'
 
 const InvoicePayment = ({
@@ -24,7 +24,7 @@ const InvoicePayment = ({
    * @private
    */
   const actions = [
-    <Tooltip title='Editar' key={uniqId()}>
+    <Tooltip title='Editar' key='edit-invoice-payment'>
       <IconButton
         size='small'
         onClick={() => setShowModal(true)}
