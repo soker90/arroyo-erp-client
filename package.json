@@ -50,7 +50,7 @@
     "react-helmet": "^6.1.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-router": "^6.21.0",
-    "react-router-dom": "^6.21.0",
+    "react-router-dom": "^6.21.1",
     "swr": "^2.2.4",
     "uniqid": "^5.4.0"
   },
