@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
 import { API_HOST } from 'config'
 import {
@@ -12,22 +12,13 @@ import {
 } from '../apiResponses'
 
 export const dashboardHandlers = [
-  rest.get(`${API_HOST}/${API_DASHBOARD}`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json(dashboardResponse())
-    )
+  http.get(`${API_HOST}/${API_DASHBOARD}`, () => HttpResponse.json(dashboardResponse())),
+  http.post(`${API_HOST}/${API_CREATE_REMINDER}`, ({ request }) => {
+    const message = request.json()
+      .then(({ message }) => message)
+
+    return HttpResponse.json(remindersResponse(message))
   }),
-  rest.post(`${API_HOST}/${API_CREATE_REMINDER}`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json(remindersResponse(req.json().message))
-    )
-  }),
-  rest.delete(`${API_HOST}/${API_DELETE_REMINDER}/:id`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json(remindersResponse())
-    )
-  })
+  http.delete(`${API_HOST}/${API_DELETE_REMINDER}/:id`, () => HttpResponse.json(remindersResponse()))
+
 ]

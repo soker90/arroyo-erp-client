@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
 import { API_HOST } from 'config'
 import {
@@ -13,24 +13,18 @@ import {
 } from '../apiResponses'
 
 export const clientInvoicesHandlers = [
-  rest.get(`${API_HOST}/${PATH_CLIENT_BILLING}`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json(clientBillingsResponse())
-    )
-  }),
-  rest.get(`${API_HOST}/${API_CLIENT_INVOICES}`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json(clientInvoicesResponse())
-    )
-  }),
-  rest.get(`${API_HOST}/${API_CLIENT_INVOICES_SHORT}`, (req, res, ctx) => {
-    const offset = req.url.searchParams.get('offset') || 0
-    const limit = req.url.searchParams.get('limit') || 10
-    return res(
-      ctx.status(200),
-      ctx.json(clientInvoicesShortResponse({ offset, limit }))
+  http.get(`${API_HOST}/${PATH_CLIENT_BILLING}`, () => HttpResponse.json(clientBillingsResponse())),
+  http.get(`${API_HOST}/${API_CLIENT_INVOICES}`, () => HttpResponse.json(clientInvoicesResponse())),
+
+  http.get(`${API_HOST}/${API_CLIENT_INVOICES_SHORT}`, ({ request }) => {
+    const url = new URL(request.url)
+    const offset = url.searchParams.get('offset') || 0
+    const limit = url.searchParams.get('limit') || 10
+    return HttpResponse.json(
+      clientInvoicesShortResponse({
+        offset,
+        limit
+      })
     )
   })
 ]
