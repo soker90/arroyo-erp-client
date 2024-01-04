@@ -97,9 +97,9 @@ const Chart = ({
         borderWidth: 1,
         borderColor: theme.palette.divider,
         backgroundColor: theme.palette.background.default,
-        titleFontColor: theme.palette.text.primary,
-        bodyFontColor: theme.palette.text.secondary,
-        footerFontColor: theme.palette.text.secondary,
+        titleColor: theme.palette.text.primary,
+        bodyColor: theme.palette.text.secondary,
+        footerColor: theme.palette.text.secondary,
         callbacks: {
           title: () => {
           },

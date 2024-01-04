@@ -3,7 +3,7 @@
   "author": "Eduardo Parra Mazuecos",
   "email": "eduparra90@gmail.com",
   "licence": "MIT",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "private": true,
   "type": "module",
   "scripts": {
