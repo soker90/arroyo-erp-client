@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { Button, Collapse, ListItem } from '@mui/material'
+import { Collapse, ListItem } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import { Button } from 'components'
 
 const useStyles = makeStyles(theme => ({
   item: {
@@ -94,7 +95,8 @@ const NavItem = ({
         {...rest}
       >
         <Button
-          className={classes.button}
+          variant='ghost'
+          className='capitalize text-[#546e7a] hover:text-[#546e7a] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
           onClick={handleToggle}
           style={style}
         >
@@ -135,9 +137,13 @@ const NavItem = ({
       key={title}
       {...rest}
     >
-      <RouterLink to={href} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+      <RouterLink
+        to={href}
+        className={({ isActive }) => (isActive ? 'text-secondary hover:text-secondary' : 'text-[#546e7a] hover:text-[#546e7a]')}
+      >
         <Button
-          className={clsx(classes.buttonLeaf, `depth-${depth}`)}
+          variant='ghost'
+          className='capitalize w-full px-4 py-2'
           style={style}
         >
           {Icon && (

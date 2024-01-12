@@ -6,9 +6,9 @@ import {
   CardContent,
   CardActions,
   Grid,
-  Divider,
-  Button
+  Divider
 } from '@mui/material'
+import { Button } from 'components'
 
 import { useStyles } from './ModalGrid.styles'
 
@@ -31,11 +31,11 @@ const ModalGrid = ({
    */
   const _renderButtons = () => (
     <>
-      <Button onClick={close || onClose} className={classes.buttonCancel}>
+      <Button onClick={close || onClose} variant='ghost' className={classes.buttonCancel}>
         {action ? 'Cancelar' : 'Cerrar'}
       </Button>
       {action && (
-        <Button onClick={action} color='primary' variant='contained'>
+        <Button onClick={action}>
           Aceptar
         </Button>
       )}

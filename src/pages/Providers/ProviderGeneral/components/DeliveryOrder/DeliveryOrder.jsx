@@ -2,13 +2,11 @@ import {
   lazy, useState
 } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from '@mui/material'
 
-import { LoadingScreen } from 'components'
+import { LoadingScreen, Button } from 'components'
 import { useDeliveryOrders } from '../../hooks'
 import NoInvoices from './components/NoInvoices'
 import DeliveryOrderSelectedSum from './components/DeliveryOrderSelectedSum'
-import { useStyles } from './DeliveryOrder.styles'
 
 const InInvoices = lazy(() => import('./components/InInvoices'))
 
@@ -17,7 +15,6 @@ const DeliveryOrder = ({
   selected,
   setSelected
 }) => {
-  const classes = useStyles()
   const [showInInvoices, setShowInInvoices] = useState(false)
   const {
     free,
@@ -42,10 +39,8 @@ const DeliveryOrder = ({
       />
 
       <Button
-        color='primary'
         onClick={_handleShowClick}
-        variant='outlined'
-        className={classes.button}
+        className='mt-6 mb-2'
       >
         {showInInvoices ? 'Ocultar' : 'Mostrar'}
         {' '}

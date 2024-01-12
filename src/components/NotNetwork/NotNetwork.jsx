@@ -1,7 +1,8 @@
 import {
-  Typography,
-  Button
+  Typography
 } from '@mui/material'
+
+import { Button } from 'components'
 import { useStyles } from './NotNetwork.styles'
 
 const NotNetwork = () => {
@@ -57,9 +58,7 @@ const NotNetwork = () => {
       </div>
       <div className={classes.buttonContainer}>
         <Button
-          color='primary'
           onClick={() => window.location.reload()}
-          variant='outlined'
         >
           Refrescar
         </Button>

@@ -4,10 +4,11 @@ import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import {
-  Breadcrumbs, Button, Grid, Link, SvgIcon, Typography, Box
+  Breadcrumbs, Grid, Link, SvgIcon, Typography, Box
 } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import uniqId from 'uniqid'
+import { Button } from 'components'
 
 import { useStyles } from './Header.styles'
 
@@ -52,8 +53,7 @@ const Header = ({
   }) => (
     <Button
       key={uniqId()}
-      color={color || 'secondary'}
-      variant={variant || 'contained'}
+      variant={variant}
       className={classes.action}
       {...rest}
     >

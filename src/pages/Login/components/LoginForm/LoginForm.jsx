@@ -1,8 +1,9 @@
 import { useState, memo } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Box, Button, TextField, Typography
+  Box, TextField, Typography
 } from '@mui/material'
+import { Button } from 'components/ui/button'
 import { useStyles } from './LoginForm.styles'
 
 const LoginForm = memo(({ login, loginError, isLoading }) => {
@@ -100,12 +101,10 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
       })}
       {renderError()}
       <Button
-        className={classes.signInButton}
+        className='mt-4'
         color='primary'
         disabled={!username || !password || isLoading}
-        fullWidth
-        size='large'
-        variant='contained'
+        size='full'
         onClick={handleSubmit}
       >
         Entrar
