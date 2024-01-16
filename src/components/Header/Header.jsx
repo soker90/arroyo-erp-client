@@ -2,7 +2,6 @@
 
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
 import {
   Breadcrumbs, Grid, Link, SvgIcon, Typography, Box
 } from '@mui/material'
@@ -10,13 +9,9 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import uniqId from 'uniqid'
 import { Button } from 'components'
 
-import { useStyles } from './Header.styles'
-
 const Header = ({
   className, routes, title, description, buttons, buttonsSecondary, ...rest
 }) => {
-  const classes = useStyles()
-
   /**
    * Renderiza un elemento de la cabecera de navegación
    * @param {String} link
@@ -54,15 +49,15 @@ const Header = ({
     <Button
       key={uniqId()}
       variant={variant}
-      className={classes.action}
+      className='mb-2 ml-2'
       {...rest}
     >
       {disableSvg
-        ? <Icon className={classes.actionIcon} />
+        ? <Icon className='mr-1' />
         : (
           <SvgIcon
             fontSize='small'
-            className={classes.actionIcon}
+            className='mr-1'
           >
             <Icon />
           </SvgIcon>
@@ -76,7 +71,7 @@ const Header = ({
       container
       spacing={3}
       justifyContent='space-between'
-      className={clsx(classes.root, className)}
+      className={className}
       {...rest}
     >
       <Grid item>
