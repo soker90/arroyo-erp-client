@@ -35,17 +35,17 @@ Se declaran en los archivos `.env` del proyecto y en las properties, y van prece
 
 ### Instalar dependencias
 
-`npm install`
+`pnpm install`
 
 ### Ejecución
 
 *NOTA: *Necesita tener backend levantado en local*
 
-`npm start`
+`pnpm start`
 
 Con mocks:
 
-`npm run dev`
+`pnpm dev`
 
 Se sirve en <http://localhost:5173>
 

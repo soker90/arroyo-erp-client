@@ -1,13 +1,11 @@
-import { Link as RouterLink } from 'react-router-dom'
 import {
   Typography,
-  Button,
   Container,
   Box,
   useTheme,
   useMediaQuery
 } from '@mui/material'
-import Page from 'components/Page'
+import { Page, Button } from 'components'
 import { useStyles } from './NotFound.styles'
 
 const NotFound = () => {
@@ -37,10 +35,8 @@ const NotFound = () => {
         </Box>
         <Box mt={6} display='flex' justifyContent='center'>
           <Button
-            color='secondary'
-            component={RouterLink}
             to='/'
-            variant='outlined'
+            variant='outline'
           >
             Volver a la página inicial
           </Button>

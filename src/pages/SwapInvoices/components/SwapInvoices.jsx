@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -12,7 +11,7 @@ import PropTypes from 'prop-types'
 import SearchIcon from '@mui/icons-material/Search'
 
 import {
-  InputForm, Page
+  InputForm, Page, Button
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'
@@ -80,10 +79,8 @@ const SwapInvoices = () => {
               />
               <Grid item md={2} xs={12}>
                 <Button
-                  color='primary'
-                  variant='contained'
-                  className={classes.button}
                   onClick={swapInvoices}
+                  className='mt-1'
                 >
                   Intercambiar
                 </Button>
