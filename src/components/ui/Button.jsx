@@ -47,7 +47,7 @@ const buttonVariants = cva(
   }
 )
 
-export const Button = forwardRef(({ className, variant, size, disabled, to, asChild = false, ...props }, ref) => {
+const Button = forwardRef(({ className, variant, size, disabled, to, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : 'button'
   const Link = to ? RouterLink : Fragment
 
@@ -64,3 +64,5 @@ export const Button = forwardRef(({ className, variant, size, disabled, to, asCh
 })
 
 Button.displayName = 'Button'
+
+export default Button

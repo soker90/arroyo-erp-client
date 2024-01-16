@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   Box, TextField, Typography
 } from '@mui/material'
-import { Button } from 'components/ui/button'
+import { Button } from 'components'
 import { useStyles } from './LoginForm.styles'
 
 const LoginForm = memo(({ login, loginError, isLoading }) => {
