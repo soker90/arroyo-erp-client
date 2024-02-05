@@ -62,7 +62,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
     "@testing-library/react": "^14.2.1",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/coverage-v8": "^1.2.2",
     "autoprefixer": "^10.4.17",
     "happy-dom": "^13.3.8",
