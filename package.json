@@ -33,7 +33,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.7",
     "@mui/material": "^5.15.4",
-    "@mui/styles": "^5.15.4",
+    "@mui/styles": "^5.15.9",
     "@mui/x-date-pickers": "^6.19.3",
     "@radix-ui/react-slot": "^1.0.2",
     "axios": "^1.6.7",
