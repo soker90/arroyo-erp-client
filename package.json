@@ -60,7 +60,7 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.4.0",
+    "@faker-js/faker": "^8.4.1",
     "@testing-library/react": "^14.2.1",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/coverage-v8": "^1.2.2",
