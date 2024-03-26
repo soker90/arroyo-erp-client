@@ -27,10 +27,10 @@ export const usePayments = (changeSelected) => {
 
   const confirmPayment = (id, data, callback) => {
     confirmPaymentApi(id, data)
-      .then(({ data }) => {
+      .then(() => {
         showSuccess('Pago aplicado')
         callback()
-        return mutate(data)
+        return mutate() // Todo: Revisar, a veces al pagar la tabla se queda en blanco
       })
       .catch((error) => {
         showError(error.message)
