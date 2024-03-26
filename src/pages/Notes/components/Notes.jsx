@@ -1,7 +1,6 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import Header from './Header'
 import NotesTable from './NotesTable'
 import { useStyles } from './Notes.styles'
@@ -15,7 +14,7 @@ const Notes = () => {
 
   return (
     <Page className={classes.root} title='Notas'>
-      <Container maxWidth={false}>
+      <Container>
         <Header year={year} createNote={createNote} />
 
         <NotesTable notes={notes} editNote={editNote} deleteNote={deleteNote} />

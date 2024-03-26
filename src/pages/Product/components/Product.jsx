@@ -1,7 +1,6 @@
 import { useParams } from 'react-router'
-import { Container } from '@mui/material'
 
-import { LoadingScreen, Page, PricesChart } from 'components'
+import { LoadingScreen, Page, PricesChart, Container } from 'components'
 import { useProduct } from 'hooks'
 
 import { useLastDeliveryOrder } from '../hooks'
@@ -32,7 +31,7 @@ const Product = () => {
 
   return (
     <Page className={classes.root} title={`${product.name} | Producto`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           provider={product.provider}
           nameProvider={product.nameProvider}

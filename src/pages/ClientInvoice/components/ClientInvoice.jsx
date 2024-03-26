@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
-import { Container } from '@mui/material'
 
-import { Page, BannerPaid } from 'components'
+import { Page, BannerPaid, Container } from 'components'
 import Header from './Header'
 import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
@@ -69,7 +68,7 @@ const ClientInvoice = () => {
 
   return (
     <Page className={classes.root} title={`${nameClient} | Factura`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           client={invoice?.client}
           nameClient={invoice?.nameClient}

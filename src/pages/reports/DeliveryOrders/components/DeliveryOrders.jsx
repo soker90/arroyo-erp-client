@@ -1,7 +1,6 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import { useDOCountFree } from '../hooks'
 import DeliveryOrdersTable from './DeliveryOrdersTable'
 import Header from './Header'
@@ -14,7 +13,7 @@ const DeliveryOrders = () => {
 
   return (
     <Page className={classes.root} title={`Albaranes ${year}`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header year={Number(year)} />
 
         <DeliveryOrdersTable doCount={doCount} />

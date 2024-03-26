@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Container,
   Divider,
   Grid, IconButton, InputAdornment, Tooltip
 } from '@mui/material'
@@ -11,7 +10,7 @@ import PropTypes from 'prop-types'
 import SearchIcon from '@mui/icons-material/Search'
 
 import {
-  InputForm, Page, Button
+  InputForm, Page, Button, Container
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'
@@ -49,7 +48,7 @@ const SwapInvoices = () => {
   }
   return (
     <Page className={classes.root} title='Intercambiar nº orden'>
-      <Container maxWidth={false}>
+      <Container>
         <Header />
 
         <Card className={classes.card}>

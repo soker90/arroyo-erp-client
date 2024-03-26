@@ -1,11 +1,10 @@
 import {
   Typography,
-  Container,
   Box,
   useTheme,
   useMediaQuery
 } from '@mui/material'
-import { Page, Button } from 'components'
+import { Page, Button, Container } from 'components'
 import { useStyles } from './NotFound.styles'
 
 const NotFound = () => {
@@ -15,7 +14,7 @@ const NotFound = () => {
 
   return (
     <Page className={classes.root} title='Error 404: Página no encontrada'>
-      <Container maxWidth='lg'>
+      <Container maxWidth>
         <Typography
           align='center'
           variant={mobileDevice ? 'h4' : 'h1'}

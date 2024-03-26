@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import {
-  Box, Container
+  Box
 } from '@mui/material'
 import { useParams } from 'react-router'
 
 import {
-  LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices
+  LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices, Container
 } from 'components'
 import { useProvider } from 'hooks'
 import Header from './Header'
@@ -30,7 +30,7 @@ const ProviderExpense = () => {
 
   return (
     <Page className={classes.root} title={provider.name}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           expanded={expand}
           onExpand={_toggleExpand}

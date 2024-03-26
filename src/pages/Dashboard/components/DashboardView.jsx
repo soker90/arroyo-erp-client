@@ -1,9 +1,9 @@
 import {
   useCallback, useState
 } from 'react'
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 
-import { Header, Page, TotalsReportBoxes } from 'components'
+import { Header, Page, TotalsReportBoxes, Container } from 'components'
 import { useStyles } from './DashboardView.styles'
 import Reminders from './Reminders'
 import DeleteConfirmationModal from '../modals/DeleteConfirmationModal'
@@ -23,9 +23,7 @@ const DashboardView = () => {
         className={classes.root}
         title='Inicio'
       >
-        <Container
-          maxWidth={false}
-        >
+        <Container>
           <Header title='Panel' description='Efectivo y recordatorios' />
 
           <TotalsReportBoxes totals={cash} className={classes.cashBoxes} />

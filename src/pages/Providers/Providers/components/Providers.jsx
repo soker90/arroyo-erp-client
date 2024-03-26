@@ -1,12 +1,12 @@
 import { useCallback, useState } from 'react'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import { PlusCircle as PlusCircleIcon } from 'react-feather'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { BASE_PATH } from 'constants/index'
-import { Header, Page, TableMaterial } from 'components'
+import { Header, Page, TableMaterial, Container } from 'components'
 import { useProviders } from 'hooks'
 import { useStyles } from './Providers.styles'
 import NewProviderModal from '../modals/NewProviderModal'
@@ -32,7 +32,7 @@ const Providers = () => {
   return (
     <>
       <Page className={classes.root} title='Proveedores'>
-        <Container maxWidth={false}>
+        <Container>
           <Header
             title='Provedores'
             buttons={[

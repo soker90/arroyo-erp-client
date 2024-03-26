@@ -2,11 +2,11 @@ import {
   lazy, useCallback, useEffect, useState
 } from 'react'
 import {
-  Box, Container
+  Box
 } from '@mui/material'
 import { useLocation, useParams } from 'react-router'
 
-import { HashTabs, Page, ProviderExpandedInfo } from 'components'
+import { HashTabs, Page, ProviderExpandedInfo, Container } from 'components'
 import { useProvider } from 'hooks'
 import { HASH_TABS, TABS } from '../constants'
 import Header from './Header'
@@ -51,7 +51,7 @@ const Provider = () => {
 
   return (
     <Page className={classes.root} title={provider.name}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           currentTab={currentTab}
           expanded={expand}

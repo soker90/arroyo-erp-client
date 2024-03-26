@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'react-feather'
 
 import {
-  Header, ListActions, LoadingScreen, Page, PricesChart
+  Header, ListActions, LoadingScreen, Page, PricesChart, Container
 } from 'components'
 import { useProducts, useProduct, useProviders } from 'hooks'
 
@@ -32,7 +32,7 @@ const ProductsReport = () => {
 
   return (
     <Page className={classes.root} title='Informes de producto'>
-      <Container maxWidth={false}>
+      <Container>
         <Header title='Informes de producto' />
         <Grid container spacing={2} className={classes.container}>
           <Grid item xs={6} md={2}>

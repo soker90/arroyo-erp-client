@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Container } from '@mui/material'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import { usePayments } from '../hooks'
 import Header from './Header'
 import PaymentsTable from './PaymentsTable'
@@ -23,7 +22,7 @@ const Payments = () => {
 
   return (
     <Page className={classes.root} title='Pagos'>
-      <Container maxWidth={false}>
+      <Container>
         <Header selected={selected} mergePayments={mergePayments} />
 
         <PaymentsTable

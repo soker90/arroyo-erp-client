@@ -1,7 +1,6 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page, TotalsReportBoxes } from 'components'
+import { Page, TotalsReportBoxes, Container } from 'components'
 import Header from './Header'
 import ChequesTable from './ChequesTable'
 import { useStyles } from './PaymentsReportView.styles'
@@ -17,9 +16,7 @@ const PaymentsReportView = () => {
       className={classes.root}
       title='Informe de pagos'
     >
-      <Container
-        maxWidth={false}
-      >
+      <Container>
         <Header year={year} />
 
         <TotalsReportBoxes

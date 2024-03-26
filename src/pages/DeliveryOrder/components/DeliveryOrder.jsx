@@ -1,7 +1,7 @@
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { LoadingScreen, Page } from 'components'
+import { LoadingScreen, Page, Container } from 'components'
 
 import DeliveryOrderProducts from './DeliveryOrderProducts'
 import DeliveryOrderData from './DeliveryOrderData'
@@ -38,7 +38,7 @@ const DeliveryOrder = () => {
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Albarán`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           nameProvider={nameProvider}
           provider={provider}
