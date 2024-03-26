@@ -1,5 +1,6 @@
 import { useMemo, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import clsx from 'clsx'
 
 import { ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -21,28 +22,31 @@ const App = () => {
   const { settings } = useSettings()
   const theme = useMemo(() => createTheme(settings), [settings.theme])
 
+  const themeMode = settings.theme === 'LIGHT' ? 'light' : 'dark'
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <RootStyles>
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
-            <NotificationsProvider>
-              <Suspense fallback={<LoadingScreen />}>
-                <BrowserRouter>
-                  <AuthProvider>
-                    <Notification />
-                    <Auth>
-                      <ScrollReset />
-                      <Routes />
-                    </Auth>
-                  </AuthProvider>
-                </BrowserRouter>
-              </Suspense>
-            </NotificationsProvider>
-          </LocalizationProvider>
-        </RootStyles>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <div className={clsx(themeMode, 'h-full')}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <RootStyles>
+            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
+              <NotificationsProvider>
+                <Suspense fallback={<LoadingScreen />}>
+                  <BrowserRouter>
+                    <AuthProvider>
+                      <Notification />
+                      <Auth>
+                        <ScrollReset />
+                        <Routes />
+                      </Auth>
+                    </AuthProvider>
+                  </BrowserRouter>
+                </Suspense>
+              </NotificationsProvider>
+            </LocalizationProvider>
+          </RootStyles>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </div>
   )
 }
 

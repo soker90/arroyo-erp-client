@@ -3,64 +3,9 @@ import { NavLink as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { Collapse, ListItem } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import { Button } from 'components'
-
-const useStyles = makeStyles(theme => ({
-  item: {
-    display: 'block',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  itemLeaf: {
-    display: 'flex',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  button: {
-    color: theme.palette.text.secondary,
-    padding: '10px 8px',
-    justifyContent: 'flex-start',
-    textTransform: 'none',
-    letterSpacing: 0,
-    width: '100%'
-  },
-  buttonLeaf: {
-    color: theme.palette.text.secondary,
-    padding: '10px 8px',
-    justifyContent: 'flex-start',
-    textTransform: 'none',
-    letterSpacing: 0,
-    width: '100%',
-    fontWeight: theme.typography.fontWeightRegular,
-    '&.depth-0': {
-      '& $title': {
-        fontWeight: theme.typography.fontWeightMedium
-      }
-    }
-  },
-  icon: {
-    display: 'flex',
-    alignItems: 'center',
-    marginRight: theme.spacing(1)
-  },
-  title: {
-    marginRight: 'auto'
-  },
-  active: {
-    '& button': {
-      color: theme.palette.secondary.main,
-      '& $title': {
-        fontWeight: theme.typography.fontWeightMedium
-      },
-      '& $icon': {
-        color: theme.palette.secondary.main
-      }
-    }
-  }
-}))
 
 const NavItem = ({
   title,
@@ -73,7 +18,6 @@ const NavItem = ({
   info: Info,
   ...rest
 }) => {
-  const classes = useStyles()
   const [open, setOpen] = useState(openProp)
 
   const handleToggle = () => {
@@ -89,24 +33,24 @@ const NavItem = ({
   if (children) {
     return (
       <ListItem
-        className={clsx(classes.item, className)}
+        className={clsx('block py-0', className)}
         disableGutters
         key={title}
         {...rest}
       >
         <Button
-          variant='ghost'
-          className='capitalize text-[#546e7a] hover:text-[#546e7a] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
+          variant='ghost  '
+          className='capitalize text-[#546e7a] dark:text-[#adb0bb] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
           onClick={handleToggle}
           style={style}
         >
           {Icon && (
             <Icon
-              className={classes.icon}
+              className='flex items-center mr-2'
               size='20'
             />
           )}
-          <span className={classes.title}>
+          <span className='mr-auto'>
             {title}
           </span>
           {open
@@ -132,7 +76,7 @@ const NavItem = ({
 
   return (
     <ListItem
-      className={clsx(classes.itemLeaf, className)}
+      className={clsx('flex py-0', className)}
       disableGutters
       key={title}
       {...rest}
@@ -143,19 +87,19 @@ const NavItem = ({
       >
         <Button
           variant='ghost'
-          className='capitalize w-full px-4 py-2'
+          className='capitalize w-full px-4 py-2 dark:text-[#adb0bb]'
           style={style}
         >
           {Icon && (
             <Icon
-              className={classes.icon}
+              className='flex items-center mr-2'
               size='20'
             />
           )}
-          <span className={classes.title}>
+          <span className='mr-auto'>
             {title}
           </span>
-          {Info && <Info className={classes.info} />}
+          {Info && <Info />}
         </Button>
       </RouterLink>
     </ListItem>
