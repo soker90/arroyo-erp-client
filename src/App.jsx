@@ -11,6 +11,7 @@ import { AuthProvider } from 'contexts/AuthProvider'
 import Auth from 'components/Auth'
 import Notification from 'components/Notification'
 import ScrollReset from 'components/ScrollReset'
+import { TooltipProvider } from 'components'
 import useSettings from 'hooks/useSettings'
 import { createTheme } from 'theme'
 import RootStyles from 'theme/RootStyles'
@@ -30,17 +31,19 @@ const App = () => {
           <RootStyles>
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
               <NotificationsProvider>
-                <Suspense fallback={<LoadingScreen />}>
-                  <BrowserRouter>
-                    <AuthProvider>
-                      <Notification />
-                      <Auth>
-                        <ScrollReset />
-                        <Routes />
-                      </Auth>
-                    </AuthProvider>
-                  </BrowserRouter>
-                </Suspense>
+                <TooltipProvider>
+                  <Suspense fallback={<LoadingScreen />}>
+                    <BrowserRouter>
+                      <AuthProvider>
+                        <Notification />
+                        <Auth>
+                          <ScrollReset />
+                          <Routes />
+                        </Auth>
+                      </AuthProvider>
+                    </BrowserRouter>
+                  </Suspense>
+                </TooltipProvider>
               </NotificationsProvider>
             </LocalizationProvider>
           </RootStyles>

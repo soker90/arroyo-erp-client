@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
 import {
-  Box, TableBody, TableCell, TableRow, Checkbox
+  Box
 } from '@mui/material'
+import {
+  Checkbox,
+  TableBody, TableCell, TableRow
+} from 'components'
 import uniqId from 'uniqid'
 import { Link } from 'react-router-dom'
 
@@ -16,7 +20,6 @@ const BodyTable = ({
       return (
         <TableRow
           onMouseDown={() => onRowClick?.(row)}
-          hover
           key={uniqId()}
           selected={isSelected}
           className={rowClass?.(row) || ''}

@@ -1,3 +1,6 @@
 export { default as Button } from './Button'
 export * from './Alert'
 export * from './Container'
+export * from './Table'
+export * from './Tooltip'
+export * from './Checkbox'

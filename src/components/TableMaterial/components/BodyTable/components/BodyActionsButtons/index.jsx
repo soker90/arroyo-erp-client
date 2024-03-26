@@ -1,15 +1,11 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { IconButton, TableCell, Tooltip } from '@mui/material'
+import { TableCell, Tooltip, TooltipTrigger, TooltipContent, Button } from 'components'
 import uniqId from 'uniqid'
-
-import { useStyles } from './styles'
 
 const BodyActionsButtons = ({
   row, index, actions
 }) => {
-  const classes = useStyles()
-
   const actionsFiltered = useMemo(
     () => actions.filter(({ isFreeAction }) => !isFreeAction),
     [actions]
@@ -35,19 +31,21 @@ const BodyActionsButtons = ({
         }) => (
           <Tooltip
             key={uniqId()}
-            title={tooltip}
-            className={classes.tooltip}
             disabled={_isDisabled(disabled)}
-            component='span'
           >
-            <IconButton
-              {...(onClick && { onClick: () => onClick(row, index) })}
-              {...(to && { to: to(row, index) })}
-              {...restButton}
-              size='large'
-            >
-              <Icon className={classes.actionIcon} />
-            </IconButton>
+            <TooltipContent>{tooltip}</TooltipContent>
+            <TooltipTrigger>
+              <Button
+                variant='text'
+                {...(onClick && { onClick: () => onClick(row, index) })}
+                {...(to && { to: to(row, index) })}
+                {...restButton}
+                size='large'
+                className='p-0 mr-3 text-muted-foreground'
+              >
+                <Icon />
+              </Button>
+            </TooltipTrigger>
           </Tooltip>
         ))}
     </TableCell>

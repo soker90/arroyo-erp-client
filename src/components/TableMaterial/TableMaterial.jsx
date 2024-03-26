@@ -6,9 +6,10 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
   Box,
   Card,
-  Table,
   TablePagination
 } from '@mui/material'
+
+import { Table } from 'components'
 
 import NoData from './components/NoData'
 import HeadTable from './components/HeadTable'

@@ -51,15 +51,24 @@ const Button = forwardRef(({ className, variant, size, disabled, to, asChild = f
   const Comp = asChild ? Slot : 'button'
   const Link = to ? RouterLink : Fragment
 
-  return (
-    <Link to={to}>
-      <Comp
-        className={cn(buttonVariants({ variant, size, disabled, className }))}
-        ref={ref}
-        disabled={disabled}
-        {...props}
+  const isLink = !!to
+
+  if (isLink) {
+    return (
+      <Link
+        to={to} disabled={disabled} className={cn(buttonVariants({ variant, size, disabled, className }))}
+        ref={ref} {...props}
       />
-    </Link>
+    )
+  }
+
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, disabled, className }))}
+      ref={ref}
+      disabled={disabled}
+      {...props}
+    />
   )
 })
 

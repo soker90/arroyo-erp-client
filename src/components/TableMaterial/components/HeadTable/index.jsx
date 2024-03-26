@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types'
-import { TableCell, TableHead, TableRow } from '@mui/material'
+
+import { TableHead, TableHeader, TableRow } from 'components'
 
 const HeadTable = ({ columns, actions, multiSelect }) => (
-  <TableHead styles={{ fontSize: 20 }}>
+  <TableHeader>
     <TableRow>
-      {multiSelect && <TableCell />}
+      {multiSelect && <TableHead />}
       {columns.map(({ title }) => (
-        <TableCell key={title}>
+        <TableHead key={title}>
           {title}
-        </TableCell>
+        </TableHead>
       ))}
       {actions &&
       (
-        <TableCell align='right'>
+        <TableHead align='right'>
           Acciones
-        </TableCell>
+        </TableHead>
       )}
     </TableRow>
-  </TableHead>
+  </TableHeader>
 )
 
 HeadTable.propTypes = {
