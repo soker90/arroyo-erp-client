@@ -83,11 +83,11 @@ const NavItem = ({
     >
       <RouterLink
         to={href}
-        className={({ isActive }) => (isActive ? 'text-secondary hover:text-secondary' : 'text-[#546e7a] hover:text-[#546e7a]')}
+        className={({ isActive }) => (isActive ? 'text-secondary hover:text-secondary' : 'text-[#546e7a] hover:text-[#546e7a] dark:text-[#adb0bb]')}
       >
         <Button
           variant='ghost'
-          className='capitalize w-full px-4 py-2 dark:text-[#adb0bb]'
+          className='capitalize w-full px-4 py-2'
           style={style}
         >
           {Icon && (
