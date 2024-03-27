@@ -25,11 +25,10 @@ const BodyTable = ({
           className={rowClass?.(row) || ''}
         >
           {Boolean(multiSelect) && (
-            <TableCell padding='checkbox'>
+            <TableCell>
               <Checkbox
                 checked={isSelected}
-                onChange={event => onSelected(event, row)}
-                value={isSelected}
+                onCheckedChange={checked => onSelected(checked, row)}
               />
             </TableCell>
           )}
@@ -48,13 +47,13 @@ const BodyTable = ({
           ))}
 
           {actions &&
-          (
-            <BodyActionsButtons
-              actions={actions}
-              index={index}
-              row={row}
-            />
-          )}
+            (
+              <BodyActionsButtons
+                actions={actions}
+                index={index}
+                row={row}
+              />
+            )}
         </TableRow>
       )
     })}
