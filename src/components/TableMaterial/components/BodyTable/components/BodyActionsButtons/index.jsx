@@ -24,7 +24,7 @@ const BodyActionsButtons = ({
   )
 
   return (
-    <TableCell align='right'>
+    <TableCell className='flex justify-end'>
       {actionsFiltered
         .map(({
           icon: Icon, tooltip, onClick, to, disabled, ...restButton
@@ -36,6 +36,7 @@ const BodyActionsButtons = ({
             <TooltipContent>{tooltip}</TooltipContent>
             <TooltipTrigger>
               <Button
+                asChild
                 variant='text'
                 {...(onClick && { onClick: () => onClick(row, index) })}
                 {...(to && { to: to(row, index) })}
@@ -43,7 +44,9 @@ const BodyActionsButtons = ({
                 size='large'
                 className='p-0 mr-3 text-muted-foreground'
               >
-                <Icon />
+                <span>
+                  <Icon />
+                </span>
               </Button>
             </TooltipTrigger>
           </Tooltip>
