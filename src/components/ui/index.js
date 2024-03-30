@@ -1,6 +1,9 @@
-export { default as Button } from './Button'
 export * from './Alert'
+export * from './Checkbox'
 export * from './Container'
 export * from './Table'
 export * from './Tooltip'
-export * from './Checkbox'
+export {
+  default as Typography
+} from './Typography'
+export { default as Button } from './Button'

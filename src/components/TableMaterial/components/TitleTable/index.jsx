@@ -1,22 +1,12 @@
 import PropTypes from 'prop-types'
-import { Box, Typography } from '@mui/material'
+import { Typography } from 'components'
 
 const TitleTable = ({ title }) => (
   title
     ? (
-      <Box p={2}>
-        <Box
-          display='flex'
-          alignItems='center'
-        >
-          <Typography
-            variant='h4'
-            color='textPrimary'
-          >
-            {title}
-          </Typography>
-        </Box>
-      </Box>
+      <Typography variant='h4' className='p-4'>
+        {title}
+      </Typography>
       )
     : null
 )
@@ -26,5 +16,4 @@ TitleTable.propTypes = {
 }
 
 TitleTable.displayName = 'TitleTable'
-export const story = TitleTable
 export default TitleTable

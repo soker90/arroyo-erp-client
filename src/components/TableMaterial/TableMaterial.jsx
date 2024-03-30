@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
-  Box,
   Card,
   TablePagination
 } from '@mui/material'
@@ -51,24 +50,22 @@ const TableMaterial = ({
     >
       <TitleTable title={title} />
       <PerfectScrollbar>
-        <Box>
-          <Table>
-            <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
-            <BodyTable
-              columns={columns}
-              actions={actions}
-              classes={classes}
-              data={data}
-              href={href}
-              onRowClick={onRowClick}
-              multiSelect={multiSelect}
-              onSelected={onSelected}
-              rowClass={rowClass}
-            />
-          </Table>
+        <Table>
+          <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
+          <BodyTable
+            columns={columns}
+            actions={actions}
+            classes={classes}
+            data={data}
+            href={href}
+            onRowClick={onRowClick}
+            multiSelect={multiSelect}
+            onSelected={onSelected}
+            rowClass={rowClass}
+          />
+        </Table>
 
-          <NoData elements={data.length} />
-        </Box>
+        <NoData elements={data.length} />
       </PerfectScrollbar>
       {Boolean(count) &&
       (
