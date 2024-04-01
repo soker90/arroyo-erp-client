@@ -3,7 +3,7 @@ import {
   Box, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import { Settings as SettingsIcon } from 'react-feather'
+import { Settings as SettingsIcon } from 'lucide-react'
 
 import { Button } from 'components'
 import useSettings from 'hooks/useSettings'

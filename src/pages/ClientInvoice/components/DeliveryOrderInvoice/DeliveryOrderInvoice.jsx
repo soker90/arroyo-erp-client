@@ -4,7 +4,7 @@ import {
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import uniqId from 'uniqid'
-import AddIcon from '@mui/icons-material/Add'
+import { Plus } from 'lucide-react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useCallback, useState } from 'react'
 
@@ -74,7 +74,7 @@ const DeliveryOrderInvoice = ({
           size='small'
           onClick={_handleAddClick}
         >
-          <AddIcon />
+          <Plus />
         </IconButton>
       </Tooltip>,
       <Tooltip title='Eliminar albarán' key={uniqId()}>

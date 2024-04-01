@@ -3,7 +3,7 @@ import {
 } from 'react'
 
 import { Link } from 'react-router-dom'
-import { ShoppingCart } from 'react-feather'
+import { ShoppingCart } from 'lucide-react'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import DeleteIcon from '@mui/icons-material/Delete'

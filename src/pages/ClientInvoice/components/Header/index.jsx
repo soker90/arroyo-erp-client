@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
 import PropTypes from 'prop-types'
-import GetAppIcon from '@mui/icons-material/GetApp'
-import { PlusCircle as PlusCircleIcon, Trash2 } from 'react-feather'
+import { PlusCircle as PlusCircleIcon, Trash2, ArrowDownToLine } from 'lucide-react'
 
 import { Header } from 'components'
 import { downloadFile } from 'utils'
@@ -46,7 +45,7 @@ const HeaderClientInvoice = ({
         buttons={[{
           onClick: _handleClickDownload(),
           color: 'primary',
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'Descargar',
           variant: 'contained'
         }, {

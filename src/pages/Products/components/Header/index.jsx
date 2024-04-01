@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { Header } from 'components'
-import AddIcon from '@mui/icons-material/Add'
+import { Plus } from 'lucide-react'
 import NewProductModal from '../../modals/NewProductModal'
 
 const HeaderProductsClients = ({ createProduct }) => {
@@ -24,7 +24,7 @@ const HeaderProductsClients = ({ createProduct }) => {
         buttons={[{
           variant: 'contained',
           onClick: () => setShowModal(true),
-          Icon: AddIcon,
+          Icon: Plus,
           disableSvg: true,
           label: 'Nuevo producto'
         }]}

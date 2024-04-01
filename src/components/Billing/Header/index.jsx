@@ -1,8 +1,6 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import GetAppIcon from '@mui/icons-material/GetApp';
+import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react';
 
 import { Header } from 'components';
 import { NavLink } from 'react-router-dom';
@@ -35,27 +33,27 @@ const HeaderBook = ({
       buttons={[
         {
           onClick: _handleClickDownload(true),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: '347',
           variant: 'contained',
         },
         {
           onClick: _handleClickDownload(),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'Descargar',
           variant: 'contained',
         },
         {
           component: NavLink,
           to: `${getRoute(type)}/${year - 1}`,
-          Icon: SkipPreviousIcon,
+          Icon: SkipBack,
           label: `${year - 1}`,
           variant: 'outlined',
         },
         {
           component: NavLink,
           to: `${getRoute(type)}/${year + 1}`,
-          Icon: SkipNextIcon,
+          Icon: SkipForward,
           label: `${year + 1}`,
           variant: 'outlined',
         },

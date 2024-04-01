@@ -1,5 +1,4 @@
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
+import { SkipForward, SkipBack } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
@@ -12,25 +11,22 @@ const HeaderPaymentsReport = ({ year }) => (
     buttons={[{
       component: NavLink,
       to: `/app/informes/pagares/${year - 1}`,
-      Icon: SkipPreviousIcon,
+      Icon: SkipBack,
       label: `${year - 1}`,
       variant: 'outlined'
     },
     {
       component: NavLink,
       to: `/app/informes/pagares/${+year + 1}`,
-      Icon: SkipNextIcon,
+      Icon: SkipForward,
       label: `${+year + 1}`,
       variant: 'outlined'
     }]}
   />
 )
 
-HeaderPaymentsReport.displayName = 'HeaderPaymentsReport'
-
 HeaderPaymentsReport.propTypes = {
   year: PropTypes.string.isRequired
 }
 
-export const story = HeaderPaymentsReport
 export default HeaderPaymentsReport

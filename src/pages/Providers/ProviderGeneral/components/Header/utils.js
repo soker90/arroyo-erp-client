@@ -1,6 +1,6 @@
-import AddIcon from '@mui/icons-material/Add'
+import { Plus, ArrowDownToLine } from 'lucide-react'
 import PostAddIcon from '@mui/icons-material/PostAdd'
-import GetAppIcon from '@mui/icons-material/GetApp'
+
 import { downloadFile } from 'utils'
 import { TABS } from '../../constants'
 
@@ -18,13 +18,13 @@ export const getButtons = ({
 }) => ({
   [TABS.PRODUCTS]: [{
     onClick: _handleClickDownloadProducts(idProvider, nameProvider),
-    Icon: GetAppIcon,
+    Icon: ArrowDownToLine,
     label: 'Descargar',
     variant: 'contained'
   }, {
     variant: 'contained',
     onClick: showEditProductModal,
-    Icon: AddIcon,
+    Icon: Plus,
     disableSvg: true,
     label: 'Nuevo producto'
   }],
@@ -39,7 +39,7 @@ export const getButtons = ({
   {
     variant: 'contained',
     onClick: _handleClickNewDeliveryOrder,
-    Icon: AddIcon,
+    Icon: Plus,
     disableSvg: true,
     label: 'Nuevo albarán'
   }],

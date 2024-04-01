@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { Box } from '@mui/material'
-import { PlusCircle as PlusCircleIcon } from 'react-feather'
+import { PlusCircle as PlusCircleIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 

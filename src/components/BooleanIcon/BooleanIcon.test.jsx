@@ -2,17 +2,17 @@
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { Icon, IconFalse } from './BooleanIcon.stories'
+import BooleanIcon from './BooleanIcon.jsx'
 
 describe('BooleanIcon', () => {
   it('renders the icon', async () => {
-    const { findByTestId } = render(<Icon />)
+    const { findByTestId } = render(<BooleanIcon value />)
     expect(await findByTestId('checkIcon'))
       .toBeDefined()
   })
 
   it('renders false icon', async () => {
-    const { findByTestId } = render(<IconFalse />)
+    const { findByTestId } = render(<BooleanIcon value={false} />)
     expect(await findByTestId('closeIcon'))
       .toBeDefined()
   })

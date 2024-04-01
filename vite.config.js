@@ -18,7 +18,7 @@ export default defineConfig({
           materialLegacyStyles: ['@mui/styles'],
           materialPicker: ['@mui/x-date-pickers'],
           materialIcons: ['@mui/icons-material'],
-          feather: ['react-feather']
+          lucid: ['lucide-react']
         }
       }
     }

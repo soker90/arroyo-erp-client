@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Users as UsersIcon } from 'react-feather'
+import { Users as UsersIcon } from 'lucide-react'
 
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'

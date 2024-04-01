@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import AddIcon from '@mui/icons-material/Add'
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
+import { SkipForward, SkipBack, Plus } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
@@ -28,19 +26,19 @@ const HeaderNotes = ({ year, createNote }) => {
           {
             component: NavLink,
             to: `/app/notas/${year - 1}`,
-            Icon: SkipPreviousIcon,
+            Icon: SkipBack,
             label: `${year - 1}`,
             variant: 'outlined'
           },
           {
             component: NavLink,
             to: `/app/notas/${+year + 1}`,
-            Icon: SkipNextIcon,
+            Icon: SkipForward,
             label: `${+year + 1}`,
             variant: 'outlined'
           },
           {
-            Icon: AddIcon,
+            Icon: Plus,
             label: 'Nueva',
             onClick: () => {
               setShowModal(true)
@@ -53,12 +51,9 @@ const HeaderNotes = ({ year, createNote }) => {
   )
 }
 
-HeaderNotes.displayName = 'HeaderNotes'
-
 HeaderNotes.propTypes = {
   year: PropTypes.string.isRequired,
   createNote: PropTypes.func.isRequired
 }
 
-export const story = HeaderNotes
 export default HeaderNotes

@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { AlertCircle } from 'react-feather'
+import { AlertCircle } from 'lucide-react'
 
 import { cn } from 'utils'
 

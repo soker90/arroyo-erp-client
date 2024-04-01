@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import AddIcon from '@mui/icons-material/Add'
 import DescriptionIcon from '@mui/icons-material/Description'
-import { Trash2 } from 'react-feather'
+import { Trash2, Plus } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { Header } from 'components'
@@ -60,8 +59,7 @@ const HeaderDeliveryOrder = ({
         }, {
           variant: 'contained',
           onClick: _openAddModal,
-          Icon: AddIcon,
-          disableSvg: true,
+          Icon: Plus,
           label: 'Producto',
           disabled: readOnly
         }]}
@@ -87,7 +85,5 @@ HeaderDeliveryOrder.propTypes = {
   addProduct: PropTypes.func.isRequired,
   hasCanal: PropTypes.bool
 }
-
-HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder'
 
 export default HeaderDeliveryOrder

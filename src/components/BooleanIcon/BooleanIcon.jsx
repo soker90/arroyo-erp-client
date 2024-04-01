@@ -1,38 +1,34 @@
+import { X, Check } from 'lucide-react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import CheckIcon from '@mui/icons-material/Check'
-import CloseIcon from '@mui/icons-material/Close'
-import { useStyles } from './BooleanIcon.styles'
+
+import { cn } from 'utils'
 
 const BooleanIcon = (
   {
     className,
     value
   }
-) => {
-  const classes = useStyles()
-
-  return value
+) => (
+  value
     ? (
-      <CheckIcon
+      <Check
         data-testid='checkIcon'
-        className={clsx(classes.iconActive, className)}
+        className={cn('text-green-600', className)}
         fontSize='small'
       />
       )
     : (
-      <CloseIcon
+      <X
         data-testid='closeIcon'
-        className={clsx(classes.iconInactive, className)}
+        className={cn('text-red-600', className)}
         fontSize='small'
       />
       )
-}
+)
 
 BooleanIcon.propTypes = {
   className: PropTypes.string,
   value: PropTypes.bool.isRequired
 }
 
-export const story = BooleanIcon
 export default BooleanIcon

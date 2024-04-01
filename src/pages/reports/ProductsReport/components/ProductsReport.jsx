@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Grid } from '@mui/material'
-import { ShoppingCart, Users } from 'react-feather'
+import { ShoppingCart, Users } from 'lucide-react'
 
 import {
   Header, ListActions, LoadingScreen, Page, PricesChart, Container
