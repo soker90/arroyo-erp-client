@@ -6,18 +6,18 @@ import { cn } from 'utils'
 // TODO: In progress
 
 const typographyVariants = cva(
-  'm-0 font-normal text-base leading-1.5 tracking-tight',
+  'm-0 font-normal text-base leading-1.5 tracking-tight text-foreground',
   {
     variants: {
       variant: {
-        h1: '',
+        h1: 'font-medium text-4xl leading-4',
         h2: '',
         h3: '',
         h4: 'font-medium tracking-normal text-xl leading-5 font-semibold',
         h5: '',
         h6: '',
         subtitle1: '',
-        subtitle2: '',
+        subtitle2: 'font-medium leading-relaxed tracking-normal',
         body1: '',
         body2: '',
         caption: '',

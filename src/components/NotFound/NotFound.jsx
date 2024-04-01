@@ -1,10 +1,9 @@
 import {
-  Typography,
   Box,
   useTheme,
   useMediaQuery
 } from '@mui/material'
-import { Page, Button, Container } from 'components'
+import { Page, Button, Container, Typography } from 'components'
 import { useStyles } from './NotFound.styles'
 
 const NotFound = () => {
@@ -18,11 +17,11 @@ const NotFound = () => {
         <Typography
           align='center'
           variant={mobileDevice ? 'h4' : 'h1'}
-          color='textPrimary'
+          className='mt-3 font-semibold'
         >
           Error 404: Página no encontrada
         </Typography>
-        <Typography align='center' variant='subtitle2' color='textSecondary'>
+        <Typography className='text-muted-foreground text-center mt-4' variant='subtitle2'>
           ¡Oh, no! No encontramos la pàgina que estás buscando
         </Typography>
         <Box mt={6} display='flex' justifyContent='center'>
