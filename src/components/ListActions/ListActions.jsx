@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import {
   Card,
@@ -9,26 +8,15 @@ import {
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-  ListSubheader,
-  Tooltip,
-  Typography
+  ListSubheader, SvgIcon,
+  Tooltip
 } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import { InputForm } from '../Forms'
+import { ChevronRight } from 'lucide-react'
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  fontWeightMedium: {
-    fontWeight: theme.typography.fontWeightMedium
-  },
-  listItem: {
-    cursor: 'pointer'
-  },
-  input: {
-    padding: theme.spacing(2)
-  }
-}))
+import { cn } from 'utils'
+
+import { InputForm } from '../Forms'
+import { Typography } from '../ui'
 
 const ListActions = ({
   className,
@@ -38,7 +26,6 @@ const ListActions = ({
   onClick,
   ...rest
 }) => {
-  const classes = useStyles()
   const [filter, setFilter] = useState('')
   const [selected, setSelected] = useState(null)
 
@@ -64,7 +51,7 @@ const ListActions = ({
 
   return (
     <Card
-      className={clsx(classes.root, className)}
+      className={className}
       {...rest}
     >
       <List
@@ -79,14 +66,14 @@ const ListActions = ({
           onChange={_handleChangeFilter}
           size={12}
           placeholder='Filtrar...'
-          className={classes.input}
+          className='p-4'
         />
         {_filterList.map((item, i) => (
           <ListItem
             divider={i < data.length - 1}
             key={item._id}
             onClick={() => _handleClick(item)}
-            className={classes.listItem}
+            className='cursor-pointer'
           >
             <ListItemIcon>
               {icon}
@@ -94,21 +81,21 @@ const ListActions = ({
             <ListItemText>
               <Typography
                 variant='body2'
-                color={selected === item._id ? 'secondary' : 'textSecondary'}
+                className={cn(selected === item._id ? 'text-primary' : 'text-muted-foreground')}
               >
-                <span className={classes.fontWeightMedium}>
+                <span className='font-medium'>
                   {item.name}
                 </span>
               </Typography>
             </ListItemText>
             <ListItemSecondaryAction>
-              <Tooltip title=' View'>
+              <Tooltip title='View'>
                 <IconButton
                   edge='end'
                   size='small'
                   onClick={() => _handleClick(item)}
                 >
-                  <NavigateNextIcon />
+                  <ChevronRight />
                 </IconButton>
               </Tooltip>
             </ListItemSecondaryAction>

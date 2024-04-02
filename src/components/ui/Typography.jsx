@@ -19,7 +19,7 @@ const typographyVariants = cva(
         subtitle1: '',
         subtitle2: 'font-medium leading-relaxed tracking-normal',
         body1: '',
-        body2: '',
+        body2: 'text-sm leading-normal',
         caption: '',
         button: '',
         overline: ' '

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {
   Breadcrumbs, Grid, Link, SvgIcon, Typography, Box
 } from '@mui/material'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { ChevronRight } from 'lucide-react'
 import uniqId from 'uniqid'
 import { Button } from 'components'
 
@@ -76,7 +76,7 @@ const Header = ({
     >
       <Grid item>
         <Breadcrumbs
-          separator={<NavigateNextIcon fontSize='small' />}
+          separator={<ChevronRight size={18} />}
           aria-label='breadcrumb'
         >
           {_itemNav('/app', 'Inicio')}
