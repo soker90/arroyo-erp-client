@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-  ListSubheader, SvgIcon,
+  ListSubheader,
   Tooltip
 } from '@mui/material'
 import { ChevronRight } from 'lucide-react'
