@@ -1,30 +1,28 @@
-/* eslint-disable */
-import PropTypes from 'prop-types';
-import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react';
+import PropTypes from 'prop-types'
+import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react'
 
-import { Header } from 'components';
-import { NavLink } from 'react-router-dom';
-import { downloadFile } from 'utils';
+import { Header } from 'components'
+import { downloadFile } from 'utils'
 import {
   API_CLIENT_BILLING_DOWNLOAD, API_PROVIDER_BILLING_DOWNLOAD,
   PATH_CLIENT_BILLING,
-  PATH_PROVIDER_BILLING,
-} from 'constants/paths';
-import { isClient } from '../utils';
+  PATH_PROVIDER_BILLING
+} from 'constants/paths'
+import { isClient } from '../utils'
 
-const getRoute = type => (isClient(type) ? PATH_CLIENT_BILLING : PATH_PROVIDER_BILLING);
+const getRoute = type => (isClient(type) ? PATH_CLIENT_BILLING : PATH_PROVIDER_BILLING)
 const getDownloadLink = type => (isClient(type)
   ? API_CLIENT_BILLING_DOWNLOAD
-  : API_PROVIDER_BILLING_DOWNLOAD);
+  : API_PROVIDER_BILLING_DOWNLOAD)
 
 const HeaderBook = ({
   year,
-  type,
+  type
 }) => {
   const _handleClickDownload = short => () => downloadFile(
     `${getDownloadLink(type)}/export?year=${year}${short ? '&short=true' : ''}`,
-    `${short ? '347 -' : 'Facturación'} ${type || ''} ${year}.ods`,
-  );
+    `${short ? '347 -' : 'Facturación'} ${type || ''} ${year}.ods`
+  )
 
   return (
     <Header
@@ -35,37 +33,35 @@ const HeaderBook = ({
           onClick: _handleClickDownload(true),
           Icon: ArrowDownToLine,
           label: '347',
-          variant: 'contained',
+          variant: 'contained'
         },
         {
           onClick: _handleClickDownload(),
           Icon: ArrowDownToLine,
           label: 'Descargar',
-          variant: 'contained',
+          variant: 'contained'
         },
         {
-          component: NavLink,
           to: `${getRoute(type)}/${year - 1}`,
           Icon: SkipBack,
           label: `${year - 1}`,
-          variant: 'outlined',
+          variant: 'outlined'
         },
         {
-          component: NavLink,
           to: `${getRoute(type)}/${year + 1}`,
           Icon: SkipForward,
           label: `${year + 1}`,
-          variant: 'outlined',
-        },
+          variant: 'outlined'
+        }
       ]}
     />
-  );
-};
+  )
+}
 
 HeaderBook.propTypes = {
   year: PropTypes.number.isRequired,
-  type: PropTypes.string,
-};
+  type: PropTypes.string
+}
 
-export const story = HeaderBook;
-export default HeaderBook;
+export const story = HeaderBook
+export default HeaderBook
