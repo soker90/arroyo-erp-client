@@ -36,7 +36,7 @@ const ProductData = ({
     <>
       <Card className={className}>
         <CardHeader
-          title='Totales'
+          title='Datos'
           action={provider && [
             <Tooltip title='Editar' key={uniqId()}>
               <IconButton
