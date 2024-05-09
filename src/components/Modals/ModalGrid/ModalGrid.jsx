@@ -1,22 +1,17 @@
 import PropTypes from 'prop-types'
 import {
   Modal,
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
   Grid,
   Divider
 } from '@mui/material'
-import { Button } from 'components'
-
-import { useStyles } from './ModalGrid.styles'
+import { Button, Card, CardHeader, CardContent, CardActions } from 'components'
+import useSettings from 'hooks/useSettings'
 
 const ModalGrid = ({
   show, close, title, children, action, actions, setShow
 }) => {
-  const classes = useStyles()
-
+  const { settings } = useSettings()
+  const themeMode = settings.theme === 'LIGHT' ? 'light' : 'dark'
   /**
    * Close Modal
    */
@@ -61,9 +56,10 @@ const ModalGrid = ({
     <Modal
       onClose={close || onClose}
       open={show}
+      className={themeMode}
     >
       <Card
-        className={classes.root}
+        className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 outline-none shadow-sm lg:shadow-lg w-[700px] max-h-full overflow-y-auto max-w-full'
       >
         <form>
           <CardHeader title={title} />
@@ -77,7 +73,7 @@ const ModalGrid = ({
             </Grid>
           </CardContent>
           <Divider />
-          <CardActions className={classes.actions}>
+          <CardActions className='justify-end'>
             {actions?.map(_renderButton) || _renderButtons()}
           </CardActions>
         </form>

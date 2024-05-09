@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
   Grid,
   IconButton,
@@ -12,7 +9,9 @@ import {
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
 
-import { ItemCard, EditTotalsModal } from 'components'
+import {
+  ItemCard, EditTotalsModal, Card, CardContent, CardHeader
+} from 'components'
 
 const InvoiceTotals = ({
   iva,
@@ -66,12 +65,12 @@ const InvoiceTotals = ({
                 <ItemCard label='Base imponible' value={taxBase} variant='euro' />
               </Grid>
             )}
-            {iva && (
+            {Boolean(iva) && (
               <Grid item xs={12} md={3}>
                 <ItemCard label='IVA' value={iva} variant='euro' />
               </Grid>
             )}
-            {re && (
+            {Boolean(re) && (
               <Grid item xs={12} md={3}>
                 <ItemCard label='RE' value={re} variant='euro' />
               </Grid>

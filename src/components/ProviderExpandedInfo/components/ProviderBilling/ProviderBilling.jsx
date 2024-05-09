@@ -1,51 +1,44 @@
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, List
+  Divider, Grid, List
 } from '@mui/material'
 import uniqId from 'uniqid'
 
-import { ItemCard } from 'components'
-import { useStyles } from './ProviderBilling.styles'
+import { Card, CardContent, CardHeader, ItemCard } from 'components'
 
 const ProviderBilling = (
   {
     year, trimesters, annual
   }
-) => {
-  const classes = useStyles()
-
-  return (
-    <Grid
-      item
-      md={6}
-      xs={12}
-    >
-      <Card
-        className={classes.root}
-      >
-        <CardHeader title={`Facturación ${year}`} />
-        <Divider />
-        <CardContent className={classes.content}>
-          <List>
-            {trimesters.map((value, index) => (
-              <ItemCard
-                label={`${index + 1}º trimestre`}
-                value={value}
-                variant='euro'
-                key={uniqId()}
-              />
-            ))}
+) => (
+  <Grid
+    item
+    md={6}
+    xs={12}
+  >
+    <Card>
+      <CardHeader title={`Facturación ${year}`} />
+      <Divider />
+      <CardContent className='pt-0'>
+        <List>
+          {trimesters.map((value, index) => (
             <ItemCard
-              label='Anual'
-              value={annual}
+              label={`${index + 1}º trimestre`}
+              value={value}
               variant='euro'
+              key={uniqId()}
             />
-          </List>
-        </CardContent>
-      </Card>
-    </Grid>
-  )
-}
+          ))}
+          <ItemCard
+            label='Anual'
+            value={annual}
+            variant='euro'
+          />
+        </List>
+      </CardContent>
+    </Card>
+  </Grid>
+)
 
 ProviderBilling.propTypes = {
   trimesters: PropTypes.array,

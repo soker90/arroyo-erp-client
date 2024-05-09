@@ -10,19 +10,19 @@ const typographyVariants = cva(
   {
     variants: {
       variant: {
-        h1: 'font-medium text-4xl leading-4',
-        h2: '',
-        h3: '',
+        h1: 'font-light text-6xl leading-10 tracking-wide',
+        h2: 'font-light text-3xl leading-8 tracking-normal',
+        h3: 'text-2xl leading-7 tracking-norma font-semibold',
         h4: 'font-medium tracking-normal text-xl leading-5 font-semibold',
-        h5: '',
-        h6: '',
-        subtitle1: '',
+        h5: 'text-lg leading-6 tracking-normal',
+        h6: 'font-medium leading-9 tracking-normal',
+        subtitle1: 'text-sm leading-8 tracking-normal',
         subtitle2: 'font-medium leading-relaxed tracking-normal',
-        body1: '',
+        body1: 'text-sm leading-7 tracking-normal',
         body2: 'text-sm leading-normal',
-        caption: '',
-        button: '',
-        overline: ' '
+        button: 'font-medium text-xs leading-8 tracking-wide uppercase',
+        caption: 'text-xs leading-5 tracking-wide',
+        overline: 'text-xs leading-14 tracking-widest uppercase'
       }
     },
     defaultVariants: {

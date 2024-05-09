@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card,
   IconButton,
   List,
   ListItem,
@@ -13,10 +12,10 @@ import {
 } from '@mui/material'
 import { ChevronRight } from 'lucide-react'
 
+import { Card, Typography } from 'components'
 import { cn } from 'utils'
 
 import { InputForm } from '../Forms'
-import { Typography } from '../ui'
 
 const ListActions = ({
   className,

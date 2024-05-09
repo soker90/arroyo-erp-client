@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
-  Box, Card, CardContent, CardHeader, Divider
+  Box, Divider
 } from '@mui/material'
+
+import { Card, CardContent, CardHeader } from 'components'
 import { format } from 'utils'
 import Chart from './Chart'
 import { useStyles } from './PricesChart.styles'

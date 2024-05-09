@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@mui/material'
+import { Card, CardContent } from '../../'
 import { story as ItemCard } from './ItemCard'
 import { ThemeWrapper } from '../../../story'
 

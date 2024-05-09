@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
-import { Card, Tab, Tabs } from '@mui/material'
+import { Tab, Tabs } from '@mui/material'
 import { useNavigate } from 'react-router'
 
-import { useStyles } from './HashTabs.styles'
+import { Card } from 'components'
 
 const HashTabs = ({
   currentTab,
   tabs
 }) => {
-  const classes = useStyles()
   const navigate = useNavigate()
 
   /**
@@ -22,7 +21,7 @@ const HashTabs = ({
   }
 
   return (
-    <Card className={classes.tabs}>
+    <Card>
       <Tabs
         onChange={_handleTabsChange}
         scrollButtons='auto'
