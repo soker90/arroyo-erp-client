@@ -10,7 +10,7 @@ import uniqId from 'uniqid'
 import { Button } from 'components'
 
 const Header = ({
-  className, routes, title, description, buttons, buttonsSecondary, ...rest
+  className, routes = [], title, description, buttons, buttonsSecondary, ...rest
 }) => {
   /**
    * Renderiza un elemento de la cabecera de navegación
@@ -144,10 +144,6 @@ Header.propTypes = {
     onClick: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired
   }))
-}
-
-Header.defaultProps = {
-  routes: []
 }
 
 export default Header

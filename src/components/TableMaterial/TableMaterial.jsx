@@ -18,8 +18,21 @@ import { labelOfRows } from './utils'
 import { useStyles } from './TableMaterial.styles'
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect,
-  onSelected, rowClass, rowsPerPageOptions, ...rest
+  className,
+  columns,
+  actions,
+  data = [],
+  title,
+  refresh,
+  count = 0,
+  onRowClick,
+  withCard = true,
+  href,
+  multiSelect,
+  onSelected,
+  rowClass,
+  rowsPerPageOptions,
+  ...rest
 }) => {
   const classes = useStyles()
   const [page, setPage] = useState(0)
@@ -68,19 +81,19 @@ const TableMaterial = ({
         <NoData elements={data.length} />
       </PerfectScrollbar>
       {Boolean(count) &&
-      (
-        <TablePagination
-          component='div'
-          count={count}
-          onPageChange={handlePageChange}
-          onRowsPerPageChange={handleLimitChange}
-          page={page}
-          rowsPerPage={limit}
-          rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
-          labelRowsPerPage='filas'
-          labelDisplayedRows={labelOfRows}
-        />
-      )}
+        (
+          <TablePagination
+            component='div'
+            count={count}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleLimitChange}
+            page={page}
+            rowsPerPage={limit}
+            rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
+            labelRowsPerPage='filas'
+            labelDisplayedRows={labelOfRows}
+          />
+        )}
     </Wrapper>
   )
 }
@@ -100,12 +113,6 @@ TableMaterial.propTypes = {
   onSelected: PropTypes.func,
   rowClass: PropTypes.func,
   rowsPerPageOptions: PropTypes.array
-}
-
-TableMaterial.defaultProps = {
-  data: [],
-  count: 0,
-  withCard: true
 }
 
 export const story = TableMaterial

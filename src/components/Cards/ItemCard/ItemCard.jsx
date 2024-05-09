@@ -6,7 +6,7 @@ import ItemCardVariant from './ItemCard.variants'
 import { useStyles } from './ItemCard.styles'
 
 const ItemCard = ({
-  label, value, divider, className, variant
+  label, value, divider = true, className, variant = 'default'
 }) => {
   const classes = useStyles()
 
@@ -29,11 +29,6 @@ ItemCard.propTypes = {
   divider: PropTypes.bool,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['default', 'boolean', 'euro'])
-}
-
-ItemCard.defaultProps = {
-  divider: true,
-  variant: 'default'
 }
 
 ItemCard.displayName = 'ItemCard'
