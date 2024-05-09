@@ -3,7 +3,7 @@
 ![](https://github.com/soker90/arroyo-erp-client/workflows/Node.js%20CI/badge.svg)
 [![codecov](https://codecov.io/gh/soker90/arroyo-erp-client/branch/master/graph/badge.svg?token=YAYNYU2EI2)](https://codecov.io/gh/soker90/arroyo-erp-client)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soker90_arroyo-erp-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soker90_arroyo-erp-client)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/soker90/arroyo-erp-client)](https://hub.docker.com/r/soker90/arroyo-erp-client)
+![Docker Image Version (tag)](https://img.shields.io/docker/v/soker90/arroyo-erp-client/latest)
 
 ## Descripción
 Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas.
@@ -22,7 +22,7 @@ Es un proyecto desarrollado en `React`. (v.18.2) y gestiona el **state** de la a
 
 Para realizar la ejecución de tests:
 
-`npm test`
+`pnpm test`
 
 ## Puesta en marcha
 
@@ -157,128 +157,10 @@ export const useData = () => {
   sendError('Mi mensaje') // Envía un mensaje de error al usuario
   showSuccess('Mi mensaje') // Envía un mensaje satisfactorio al usuario
   
-  
 }
 ````
 
-### Container
-#### ⚠️ Código obsoleto ⚠️
-
-El contenedor es el responsable de inyectar Redux o cualquier otro accesorio desde el exterior.
-
-```js
-import {connect} from 'react-redux'
-
-import Route from '../components/Route'
-import {myAction} from '../modules/actions'
-
-const mapStateToProps = ({myState}) => ({ // Receiver (state)
-  hello: myState.hello,
-})
-
-const mapDispatchToProps = {
-  myAction,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Route)
-
-
-```
-
-### Modules
-#### ⚠️ Código obsoleto ⚠️
-Este archivo es responsable de manejar las acciones de redux y de gestionar el estado de la ruta, pueden crearse modules fuera de una ruta en caso de ser necesario.
-
-#### Action
-#### ⚠️ Código obsoleto ⚠️
-
-```js
-import {GET_MY_DATA} from '../types'
-import axios from 'axios'
-
-/**
- * Return actions for init request model
- * @private
- */
-const _getMyDataRequest = () => ({
-  type: GET_MY_DATA.REQUEST,
-})
-
-/**
- * Return actions for success request model
- */
-const _getMyDataSuccess = () => ({
-  type: GET_MY_DATA.SUCCESS,
-  payload: {
-    level: 'success',
-    message: 'El middleware de notificaciones mostrará este mensaje' // Mas información en la documentación de Storybook
-  }
-})
-
-/**
- * Set data in redux
- * @param {Array} data
- * @private
- */
-const _getMyDataSet = ({data}) => ({
-  type: GET_MY_DATA.SET,
-  payload: {
-    myData: data,
-  },
-})
-
-/**
- * Return action with error cause
- * @param {Object}  error
- * @returns {{payload: {error: *}, type: *}}
- */
-const _getMyDataError = error => ({
-  type: GET_MY_DATA.FAILURE,
-  error,
-})
-
-
-export const getMyData = () => async dispatch => {
-  dispatch(_getMyDataRequest());
-
-  try {
-    const response = await axios('api/getMyData');
-
-    dispatch(_getMyDataSuccess());
-    dispatch(_getMyDataSet(response));
-  } catch (error) {
-    console.log(error);
-    dispatch(_getMyDataError(error));
-  }
-}
-```
-
-#### Reducer
-#### ⚠️ Código obsoleto ⚠️
-```js
-import {GET_MY_DATA} from './types'
-import {createReducer, setPayload} from 'store/utils'
-
-const INITIAL_STATE = {
-  myData: [],
-};
-
-//Esto es posible que cambie
-const ACTION_HANDLERS = {
-  [GET_MY_DATA.SET]: setPayload,
-}
-
-export default createReducer(INITIAL_STATE, ACTION_HANDLERS)
-```
-
-#### Types
-#### ⚠️ Código obsoleto ⚠️
-```js
-import {requestActions} from 'utils'
-
-export const GET_MY_DATA = requestActions('@route/GET_MY_DATA')
-
-```
 
 ### Styles
-Desarrollar: Material UI Overrides y makeStyles
+Migrando componentes MUI a tailwind con radix-ui
+
