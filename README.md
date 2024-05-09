@@ -8,7 +8,7 @@
 ## Descripción
 Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas.
 
-Es un proyecto desarrollado en `React`. (v.18.2) y gestiona el **state** de la aplicación mediante `redux` (v.4.2). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v.6.9) se haga cargo de la gestión de las **URLS**.
+Es un proyecto desarrollado en `React`. (v18). Debe servirse como **SPA** redirigiendo las peticiones a `index.html` para que el router de react `react-router-dom` (v6) se haga cargo de la gestión de las **URLS**.
 
 # Forman parte de este proyecto
 - [API](https://github.com/soker90/arroyo-erp-api) 
