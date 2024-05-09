@@ -1,14 +1,12 @@
-/* eslint-disable max-len */
 import { useMemo, useState } from 'react'
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
-  Card,
   TablePagination
 } from '@mui/material'
 
-import { Table } from 'components'
+import { Table, Card } from 'components'
+import { cn } from 'utils'
 
 import NoData from './components/NoData'
 import HeadTable from './components/HeadTable'
@@ -41,16 +39,14 @@ const TableMaterial = ({
   const handlePageChange = (event, newPage) => {
     setPage(newPage)
     refresh({
-      offset: newPage * limit,
-      limit
+      offset: newPage * limit, limit
     })
   }
 
   const handleLimitChange = event => {
     setLimit(event.target.value)
     refresh({
-      offset: page * event.target.value,
-      limit: event.target.value
+      offset: page * event.target.value, limit: event.target.value
     })
   }
 
@@ -58,7 +54,7 @@ const TableMaterial = ({
 
   return (
     <Wrapper
-      className={clsx(classes.root, className)}
+      className={cn('w-auto overflow-x-auto', className)}
       {...rest}
     >
       <TitleTable title={title} />
@@ -80,20 +76,17 @@ const TableMaterial = ({
 
         <NoData elements={data.length} />
       </PerfectScrollbar>
-      {Boolean(count) &&
-        (
-          <TablePagination
-            component='div'
-            count={count}
-            onPageChange={handlePageChange}
-            onRowsPerPageChange={handleLimitChange}
-            page={page}
-            rowsPerPage={limit}
-            rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
-            labelRowsPerPage='filas'
-            labelDisplayedRows={labelOfRows}
-          />
-        )}
+      {Boolean(count) && (<TablePagination
+        component='div'
+        count={count}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleLimitChange}
+        page={page}
+        rowsPerPage={limit}
+        rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
+        labelRowsPerPage='filas'
+        labelDisplayedRows={labelOfRows}
+                          />)}
     </Wrapper>
   )
 }

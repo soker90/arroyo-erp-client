@@ -48,7 +48,7 @@ CardContent.displayName = 'CardContent'
 const CardActions = forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex items-center p-2', className)}
+    className={cn('flex items-center p-2 gap-4', className)}
     {...props}
   />
 ))
