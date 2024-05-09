@@ -3,7 +3,7 @@
 ![](https://github.com/soker90/arroyo-erp-client/workflows/Node.js%20CI/badge.svg)
 [![codecov](https://codecov.io/gh/soker90/arroyo-erp-client/branch/master/graph/badge.svg?token=YAYNYU2EI2)](https://codecov.io/gh/soker90/arroyo-erp-client)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soker90_arroyo-erp-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soker90_arroyo-erp-client)
-![Docker Image Version (tag)](https://img.shields.io/docker/v/soker90/arroyo-erp-client/latest)
+[![Docker Image Version (tag)](https://img.shields.io/docker/v/soker90/arroyo-erp-client/latest)](https://hub.docker.com/r/soker90/arroyo-erp-client/tags)
 
 ## Descripción
 Parte frontal del proyecto de ERP Arroyo, un backoffice para la gestión administrativa y contable de pequeñas empresas.
