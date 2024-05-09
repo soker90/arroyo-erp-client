@@ -5,16 +5,16 @@ import {
   Hidden,
   Input,
   List,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Paper,
   Popper
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
+import { useProviders } from 'hooks'
 import { navigateTo } from 'utils'
 import { useStyles } from './Search.styles'
 
@@ -27,7 +27,7 @@ const Search = () => {
   const [openSearchPopover, setOpenSearchPopover] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   // eslint-disable-next-line no-shadow
-  const providers = useSelector(({ providers }) => providers.providers)
+  const { providers } = useProviders()
   const navigate = useNavigate()
 
   /**
@@ -79,15 +79,14 @@ const Search = () => {
    * Renderiza un elemento de la busqueda
    * @param {String} _id,
    * @param {String} name
-   * @return {ListItem}
+   * @return {JSX.Element}
    * @private
    */
   const _renderSearchedItem = ({
     _id,
     name
   }) => (
-    <ListItem
-      button
+    <ListItemButton
       key={_id}
       onClick={() => _handleSelectProvider(_id)}
     >
@@ -95,7 +94,7 @@ const Search = () => {
         <SearchIcon />
       </ListItemIcon>
       <ListItemText primary={name} />
-    </ListItem>
+    </ListItemButton>
   )
 
   return (
@@ -124,8 +123,7 @@ const Search = () => {
             elevation={3}
           >
             <List>
-              {providers
-                .filter(_filterPossibles)
+              {providers?.filter(_filterPossibles)
                 .map(_renderSearchedItem)}
             </List>
           </Paper>

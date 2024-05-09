@@ -36,10 +36,8 @@ const DeleteConfirmationModal = ({
 DeleteConfirmationModal.propTypes = {
   close: PropTypes.func,
   show: PropTypes.bool,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
   deleteProductOfDeliveryOrder: PropTypes.func.isRequired
 }
 
-DeleteConfirmationModal.displayName = 'DeleteConfirmationModal'
-export const story = DeleteConfirmationModal
 export default DeleteConfirmationModal

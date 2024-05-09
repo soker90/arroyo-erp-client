@@ -1,1 +1,1 @@
-export { default } from './ProductsTableContainer'
+export { default } from './ProductsTable'

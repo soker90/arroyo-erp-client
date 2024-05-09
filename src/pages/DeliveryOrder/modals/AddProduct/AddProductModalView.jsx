@@ -1,9 +1,10 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router'
+import { useSWRConfig } from 'swr'
 
+import { API_PRICES_CHANGES_UNREAD_COUNT } from 'constants/paths'
 import GenericProductModal from 'pages/DeliveryOrder/modals/GenericProductModal'
-import { useProducts } from 'hooks'
+import { useProducts, useCreateDeliveryOrder } from 'hooks'
 import { INITIAL_STATE } from './constants'
 import { hasInitialData } from './utils'
 
@@ -11,17 +12,16 @@ const AddProductModal = ({
   show,
   close,
   addProductToDeliveryOrder,
-  createDeliveryOrder,
   idProvider,
-  hasCanal,
-  pricesChangesUnreadCount
+  hasCanal
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
-  const navigate = useNavigate()
   const { products } = useProducts(idProvider)
+  const { mutate } = useSWRConfig()
+  const { createDeliveryOrder } = useCreateDeliveryOrder(idProvider)
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE)
@@ -54,7 +54,7 @@ const AddProductModal = ({
     _saveProduct(() => {
       close()
       setState(INITIAL_STATE)
-      pricesChangesUnreadCount()
+      return mutate(API_PRICES_CHANGES_UNREAD_COUNT)
     })
   }
 
@@ -65,11 +65,7 @@ const AddProductModal = ({
   const _handleSaveAndNew = () => {
     // eslint-disable-next-line
     hasInitialData(state)
-      ? createDeliveryOrder({
-        provider: idProvider,
-        callback: close,
-        navigate
-      })
+      ? createDeliveryOrder(close)
       : _saveProduct(() => {
         setState(INITIAL_STATE)
       })
@@ -113,12 +109,8 @@ AddProductModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   addProductToDeliveryOrder: PropTypes.func.isRequired,
-  createDeliveryOrder: PropTypes.func.isRequired,
   idProvider: PropTypes.string,
-  hasCanal: PropTypes.bool,
-  pricesChangesUnreadCount: PropTypes.func.isRequired
+  hasCanal: PropTypes.bool
 }
 
-AddProductModal.displayName = 'AddProductModal'
-export const story = AddProductModal
 export default AddProductModal

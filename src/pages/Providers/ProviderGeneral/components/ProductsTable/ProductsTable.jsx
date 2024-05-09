@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -6,17 +5,17 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/common'
 import { calcProfit, format } from 'utils'
+import { useProducts } from 'hooks'
 
 const ProductsTable = ({
-  products,
-  getProducts,
   idProvider
 }) => {
-  useEffect(() => {
-    if (idProvider) getProducts(idProvider)
-  }, [getProducts, idProvider])
+  const {
+    products,
+    isLoading
+  } = useProducts(idProvider, true)
 
-  if (!idProvider) return null
+  if (!idProvider || isLoading) return null
 
   return (
     <TableMaterial
@@ -71,11 +70,7 @@ const ProductsTable = ({
 }
 
 ProductsTable.propTypes = {
-  products: PropTypes.array.isRequired,
-  idProvider: PropTypes.string,
-  getProducts: PropTypes.func.isRequired
+  idProvider: PropTypes.string
 }
-
-ProductsTable.displayName = 'ProductsTable'
 
 export default ProductsTable

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import EditIcon from '@mui/icons-material/Edit'
 import { Link } from 'react-router-dom'
@@ -9,25 +7,20 @@ import { LoadingScreen, TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
 import LabelPending from '../LabelPending'
+import { useInvoicesByProvider } from 'hooks'
 
 const ProviderInvoices = ({
-  invoices,
-  getInvoicesByProvider,
-  idProvider,
-  invoicesCount
+  idProvider
 }) => {
-  useEffect(() => {
-    if (idProvider) getInvoicesByProvider({ provider: idProvider })
-  }, [getInvoicesByProvider, idProvider])
+  const { updateFilters, invoices, count, isLoading } = useInvoicesByProvider(idProvider)
 
-  if (!idProvider) return <LoadingScreen />
+  if (isLoading || !idProvider) return <LoadingScreen />
 
   const _refresh = ({
     offset,
     limit
   }) => {
-    getInvoicesByProvider({
-      provider: idProvider,
+    updateFilters({
       offset,
       limit
     })
@@ -39,6 +32,8 @@ const ProviderInvoices = ({
    * @private
    */
   const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null)
+
+  const _renderPaymentDate = ({ payment }) => (payment?.paid ? format.date(payment?.paymentDate) : null)
 
   /**
    * Render mail icon
@@ -73,6 +68,10 @@ const ProviderInvoices = ({
           render: _renderPaymentType
         },
         {
+          title: 'Fecha de pago',
+          render: _renderPaymentDate
+        },
+        {
           title: 'Por correo',
           render: _renderEmail
         }
@@ -86,19 +85,14 @@ const ProviderInvoices = ({
           to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`
         }
       ]}
-      count={invoicesCount}
+      count={count}
       refresh={_refresh}
     />
   )
 }
 
 ProviderInvoices.propTypes = {
-  invoices: PropTypes.array.isRequired,
-  idProvider: PropTypes.string,
-  getInvoicesByProvider: PropTypes.func.isRequired,
-  invoicesCount: PropTypes.number.isRequired
+  idProvider: PropTypes.string
 }
-
-ProviderInvoices.displayName = 'ProviderInvoices'
 
 export default ProviderInvoices

@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { fakerES as faker } from '@faker-js/faker'
 import { rangeFill } from 'utils'
 
 const generateReminder = () => ({
@@ -7,7 +7,7 @@ const generateReminder = () => ({
 })
 
 export const remindersResponse = (reminder) => {
-  const reminders = rangeFill(faker.datatype.number({
+  const reminders = rangeFill(faker.number.int({
     max: 40,
     min: 2
   }), generateReminder)
@@ -21,13 +21,13 @@ export const remindersResponse = (reminder) => {
 
 export const dashboardResponse = () => ({
   cash: {
-    1: faker.datatype.float(),
-    2: faker.datatype.float(),
-    3: faker.datatype.float(),
-    4: faker.datatype.float(),
-    total: faker.datatype.float()
+    1: faker.number.float(),
+    2: faker.number.float(),
+    3: faker.number.float(),
+    4: faker.number.float(),
+    total: faker.number.float()
   },
-  reminders: rangeFill(faker.datatype.number({
+  reminders: rangeFill(faker.number.int({
     max: 40,
     min: 2
   }), generateReminder)

@@ -1,7 +1,3 @@
-import { faker } from '@faker-js/faker'
-
-faker.setLocale('es')
-
 export * from './account'
 export * from './billings'
 export * from './clientInvoices'

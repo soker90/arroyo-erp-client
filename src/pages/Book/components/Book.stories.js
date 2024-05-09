@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import { DatePickerProvider, ReduxProvider } from 'story'
+import { DatePickerProvider } from 'story'
 import RoutesWrapper from 'story/RoutesWrapper'
 import Book from './Book'
 
@@ -11,13 +11,11 @@ export default {
     componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
-    <ReduxProvider>
-      <DatePickerProvider>
-        <RoutesWrapper>
-          {storyFn()}
-        </RoutesWrapper>
-      </DatePickerProvider>
-    </ReduxProvider>
+    <DatePickerProvider>
+      <RoutesWrapper>
+        {storyFn()}
+      </RoutesWrapper>
+    </DatePickerProvider>
   )
   ]
 }

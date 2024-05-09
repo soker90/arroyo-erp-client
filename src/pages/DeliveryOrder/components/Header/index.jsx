@@ -13,7 +13,10 @@ const HeaderDeliveryOrder = ({
   provider,
   nameProvider,
   readOnly,
-  invoice
+  invoice,
+  deleteDeliveryOrder,
+  addProduct,
+  hasCanal
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -21,6 +24,7 @@ const HeaderDeliveryOrder = ({
   const _openAddModal = useCallback(() => setShowAddModal(true), [setShowAddModal])
   const _closeDeleteModal = useCallback(() => setShowDeleteModal(false), [setShowDeleteModal])
   const _openDeleteModal = useCallback(() => setShowDeleteModal(true), [setShowDeleteModal])
+
   return (
     <>
       <Header
@@ -62,8 +66,14 @@ const HeaderDeliveryOrder = ({
           disabled: readOnly
         }]}
       />
-      <AddProductModal idProvider={provider} show={showAddModal} close={_closeAddModal} />
-      <DeleteDeliveryOrderModal show={showDeleteModal} close={_closeDeleteModal} />
+      <AddProductModal
+        idProvider={provider} show={showAddModal} close={_closeAddModal}
+        hasCanal={hasCanal} addProductToDeliveryOrder={addProduct}
+      />
+      <DeleteDeliveryOrderModal
+        show={showDeleteModal} close={_closeDeleteModal}
+        deleteDeliveryOrder={deleteDeliveryOrder} providerId={provider}
+      />
     </>
   )
 }
@@ -72,9 +82,12 @@ HeaderDeliveryOrder.propTypes = {
   provider: PropTypes.string,
   nameProvider: PropTypes.string,
   readOnly: PropTypes.bool.isRequired,
-  invoice: PropTypes.string
+  invoice: PropTypes.string,
+  deleteDeliveryOrder: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
+  hasCanal: PropTypes.bool
 }
 
 HeaderDeliveryOrder.displayName = 'Header-DeliveryOrder'
-export const story = HeaderDeliveryOrder
+
 export default HeaderDeliveryOrder

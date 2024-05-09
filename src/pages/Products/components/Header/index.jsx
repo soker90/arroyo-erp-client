@@ -1,10 +1,11 @@
 import { useCallback, useState } from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+
 import { Header } from 'components'
 import AddIcon from '@mui/icons-material/Add'
 import NewProductModal from '../../modals/NewProductModal'
 
-const HeaderProductsClients = () => {
+const HeaderProductsClients = ({ createProduct }) => {
   const [showModal, setShowModal] = useState(false)
 
   const _close = useCallback(() => {
@@ -28,11 +29,12 @@ const HeaderProductsClients = () => {
           label: 'Nuevo producto'
         }]}
       />
-      <NewProductModal show={showModal} close={_close} />
+      <NewProductModal show={showModal} close={_close} createProduct={createProduct} />
     </>
   )
 }
 
-HeaderProductsClients.displayName = 'HeaderProductsClients'
-export const story = HeaderProductsClients
+HeaderProductsClients.propTypes = {
+  createProduct: PropTypes.func.isRequired
+}
 export default HeaderProductsClients

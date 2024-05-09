@@ -1,24 +1,32 @@
-import PropTypes from 'prop-types'
+import { useState } from 'react'
 import { Container, Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'react-feather'
 
 import {
   Header, ListActions, LoadingScreen, Page, PricesChart
 } from 'components'
+import { useProducts, useProduct, useProviders } from 'hooks'
+
 import { useStyles } from './ProductsReport.styles'
 
-const ProductsReport = ({
-  prices, providers, getProducts, products, getProduct, resetProduct
-}) => {
+const ProductsReport = () => {
   const classes = useStyles()
+  const [providersSelected, setProvidersSelected] = useState(undefined)
+  const [productSelected, setProductSelected] = useState(undefined)
+
+  const { providers } = useProviders()
+  const { products } = useProducts(providersSelected, true)
+  const {
+    prices,
+    pvps
+  } = useProduct(productSelected)
 
   const _handleClickProvider = ({ _id }) => {
-    resetProduct()
-    getProducts(_id)
+    setProvidersSelected(_id)
   }
 
   const _handleClickProduct = ({ _id }) => {
-    getProduct(_id)
+    setProductSelected(_id)
   }
   if (!providers.length) return <LoadingScreen />
 
@@ -46,7 +54,16 @@ const ProductsReport = ({
           <Grid item xs={12} md={8}>
             {Boolean(prices?.length) &&
               (
-                <PricesChart prices={prices.reverse()} className={classes.chart} />
+                <div className={classes.charts}>
+                  <PricesChart prices={structuredClone(prices).reverse()} />
+                  <PricesChart
+                    prices={pvps}
+                    title='Gráfica de precios de venta'
+                    tooltip='Venta'
+                    lineColor='#f73378'
+                    className={classes.secondChart}
+                  />
+                </div>
               )}
           </Grid>
         </Grid>
@@ -56,15 +73,4 @@ const ProductsReport = ({
   )
 }
 
-ProductsReport.propTypes = {
-  prices: PropTypes.array.isRequired,
-  providers: PropTypes.array.isRequired,
-  getProducts: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired,
-  getProduct: PropTypes.func.isRequired,
-  resetProduct: PropTypes.func.isRequired
-}
-
-ProductsReport.displayName = 'Product'
-export const story = ProductsReport
 export default ProductsReport

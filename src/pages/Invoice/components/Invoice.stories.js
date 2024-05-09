@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 
 import DatePickerProvider from 'contexts/DatePickerProvider'
-import { RoutesWrapper, ReduxProvider } from 'story'
+import { RoutesWrapper } from 'story'
 import { number } from '@storybook/addon-knobs'
 import { story as Invoice } from './Invoice'
 
@@ -13,11 +13,9 @@ export default {
   },
   decorators: [storyFn => (
     <DatePickerProvider>
-      <ReduxProvider>
-        <RoutesWrapper>
-          {storyFn()}
-        </RoutesWrapper>
-      </ReduxProvider>
+      <RoutesWrapper>
+        {storyFn()}
+      </RoutesWrapper>
     </DatePickerProvider>
   )
   ]

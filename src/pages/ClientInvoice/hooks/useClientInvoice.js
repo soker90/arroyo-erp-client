@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { API_CLIENT_INVOICES } from 'constants/paths'
 import { useNotifications } from 'hooks'
@@ -15,15 +15,22 @@ import {
 } from 'services/apiService'
 
 export const useClientInvoice = (id) => {
+  const [cachedData, setCachedData] = useState({})
   const {
     data,
     error,
     mutate
-  } = useSWR(() => `${API_CLIENT_INVOICES}/${id}`)
+  } = useSWR(`${API_CLIENT_INVOICES}/${id}`)
   const {
     showError,
     showSuccess
   } = useNotifications()
+
+  useEffect(() => {
+    if (data) {
+      setCachedData(data)
+    }
+  }, [data])
 
   useEffect(() => {
     if (error) {
@@ -177,7 +184,7 @@ export const useClientInvoice = (id) => {
   }
 
   return {
-    invoice: data,
+    invoice: cachedData,
     isLoading: !data,
     confirmInvoice,
     updateDataClientInvoice,

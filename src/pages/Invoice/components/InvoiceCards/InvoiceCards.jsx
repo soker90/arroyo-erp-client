@@ -11,7 +11,8 @@ const InvoiceCards = ({
   data,
   totals,
   payment,
-  id
+  id,
+  updateData
 }) => {
   const classes = useStyles()
 
@@ -19,9 +20,18 @@ const InvoiceCards = ({
 
   return (
     <>
-      <InvoiceData {...data} className={classes.data} id={id} />
-      <InvoiceTotals {...totals} isEditable={isEditable} className={classes.totals} />
-      {payment && <InvoicePayment payment={payment} className={classes.data} id={id} />}
+      <InvoiceData
+        {...data} className={classes.data} id={id} updateData={updateData}
+        total={totals?.total}
+      />
+      <InvoiceTotals
+        {...totals} isEditable={isEditable} className={classes.totals}
+        updateData={updateData}
+      />
+      {payment && <InvoicePayment
+        payment={payment} className={classes.data} id={id}
+        updateData={updateData}
+                  />}
     </>
   )
 }
@@ -30,7 +40,8 @@ InvoiceCards.propTypes = {
   totals: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   payment: PropTypes.object,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  updateData: PropTypes.func.isRequired
 }
 
 InvoiceCards.displayName = 'InvoiceCards'

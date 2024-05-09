@@ -3,7 +3,6 @@ import { version } from '../../package.json'
 export const APP_VERSION = version
 export const API_HOST = import.meta.env.VITE_API_HOST
 export const API_BASE_URL = '/api'
-export const ENABLE_REDUX_LOGGER = false
 export const ARROYO_TOKEN = 'ARROYO_TOKEN'
 
 export default {}

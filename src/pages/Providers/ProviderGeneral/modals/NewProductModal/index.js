@@ -1,1 +1,1 @@
-export { default } from './NewProductModalContainer'
+export { default } from './NewProductModalView'

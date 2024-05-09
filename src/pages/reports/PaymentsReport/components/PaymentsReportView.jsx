@@ -1,7 +1,3 @@
-import {
-  useEffect
-} from 'react'
-import PropTypes from 'prop-types'
 import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
@@ -9,24 +5,12 @@ import { Page, TotalsReportBoxes } from 'components'
 import Header from './Header'
 import ChequesTable from './ChequesTable'
 import { useStyles } from './PaymentsReportView.styles'
+import { useTotals } from '../hooks/index.js'
 
-const PaymentsReportView = ({
-  getTotals,
-  getCheques,
-  cheques,
-  totals,
-  countCheques
-}) => {
+const PaymentsReportView = () => {
   const classes = useStyles()
   const { year } = useParams()
-
-  useEffect(() => {
-    getTotals(year)
-    getCheques({
-      year,
-      limit: 10
-    })
-  }, [getTotals, getCheques, year])
+  const { totals } = useTotals(year)
 
   return (
     <Page
@@ -43,9 +27,6 @@ const PaymentsReportView = ({
           className={classes.paymentsBoxes}
         />
         <ChequesTable
-          cheques={cheques}
-          getCheques={getCheques}
-          count={countCheques}
           year={year}
         />
       </Container>
@@ -53,14 +34,4 @@ const PaymentsReportView = ({
   )
 }
 
-PaymentsReportView.displayName = 'PaymentsReportView'
-
-PaymentsReportView.propTypes = {
-  totals: PropTypes.object.isRequired,
-  getTotals: PropTypes.func.isRequired,
-  cheques: PropTypes.array.isRequired,
-  getCheques: PropTypes.func.isRequired,
-  countCheques: PropTypes.number.isRequired
-}
-export const story = PaymentsReportView
 export default PaymentsReportView

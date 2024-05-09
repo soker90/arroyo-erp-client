@@ -1,37 +1,32 @@
-import { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 import { Container } from '@mui/material'
 
 import { LoadingScreen, Page, PricesChart } from 'components'
-import Header from './Header'
-import { useStyles } from './Product.styles'
-import ProductData from './ProductData/ProductData'
-import PricesTable from './PricesTable'
+import { useProduct } from 'hooks'
 
-const Product = ({
-  product,
-  prices,
-  getProduct,
-  getLastDeliveryOrder,
-  nextToLast,
-  last
-}) => {
+import { useLastDeliveryOrder } from '../hooks'
+import Header from './Header'
+import ProductData from './ProductData'
+import PricesTable from './PricesTable'
+import { useStyles } from './Product.styles'
+
+const Product = () => {
   const { id } = useParams()
   const classes = useStyles()
-  const [reversePrices, setReversePrices] = useState([])
+  const {
+    product,
+    prices,
+    reversePrices,
+    editProduct,
+    deleteProduct,
+    deletePrice,
+    pvps
+  } = useProduct(id)
 
-  useEffect(() => {
-    if (id) {
-      getProduct(id)
-      getLastDeliveryOrder(id)
-    }
-  }, [id])
-
-  useEffect(() => {
-    const clone = prices.slice()
-    setReversePrices(clone.reverse())
-  }, [prices])
+  const {
+    last,
+    nextToLast
+  } = useLastDeliveryOrder(id)
 
   if (!product._id) return <LoadingScreen />
 
@@ -44,30 +39,32 @@ const Product = ({
           product={product.name}
           lastDeliveryOrder={last}
           nextToLastDeliveryOrder={nextToLast}
+          editProduct={editProduct}
+          deleteProduct={deleteProduct}
         />
 
-        <ProductData product={product} className={classes.table} provider={product.provider} />
+        <ProductData
+          product={product} className={classes.table} provider={product.provider}
+          editProduct={editProduct}
+        />
 
         {Boolean(prices.length) &&
           (
             <>
               <PricesChart prices={reversePrices} className={classes.chart} />
-              <PricesTable prices={prices} provider={product.provider} />
+              {Boolean(pvps?.length) && <PricesChart
+                prices={pvps} className={classes.chart}
+                title='Gráfica de precios de venta'
+                tooltip='Venta'
+                lineColor='#f73378'
+                                        />}
+              <PricesTable prices={prices} provider={product.provider} deletePrice={deletePrice} />
             </>
           )}
 
       </Container>
     </Page>
   )
-}
-
-Product.propTypes = {
-  getProduct: PropTypes.func.isRequired,
-  product: PropTypes.object.isRequired,
-  prices: PropTypes.array.isRequired,
-  getLastDeliveryOrder: PropTypes.func.isRequired,
-  last: PropTypes.string,
-  nextToLast: PropTypes.string
 }
 
 export const story = Product

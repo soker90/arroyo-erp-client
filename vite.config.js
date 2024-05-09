@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import * as path from 'path'
 
 import { version } from './package.json'
@@ -17,7 +17,6 @@ export default defineConfig({
           material: ['@mui/material'],
           materialLegacyStyles: ['@mui/styles'],
           materialPicker: ['@mui/x-date-pickers'],
-          moment: ['moment'],
           materialIcons: ['@mui/icons-material'],
           feather: ['react-feather']
         }

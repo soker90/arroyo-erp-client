@@ -1,1 +1,1 @@
-export { default } from './containers/ExpensesContainer'
+export { default } from './components/Expenses'

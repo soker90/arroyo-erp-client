@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import { story as DeleteConfirmationModal } from './DeletePriceChangeModal'
+import DeleteConfirmationModal from './DeletePriceChangeModal'
 
 export default {
   title: 'Rutas/Albarán/Modales/Eliminar prducto',

@@ -1,11 +1,12 @@
 import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather'
-import MenuBookIcon from '@mui/icons-material/MenuBook'
-import EuroIcon from '@mui/icons-material/Euro'
-import PostAddIcon from '@mui/icons-material/PostAdd'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import DescriptionIcon from '@mui/icons-material/Description'
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
+import EuroIcon from '@mui/icons-material/Euro'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
+import PostAddIcon from '@mui/icons-material/PostAdd'
 import ReceiptIcon from '@mui/icons-material/Receipt'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import UpdateIcon from '@mui/icons-material/Update'
 
 const year = new Date().getFullYear()
@@ -95,6 +96,11 @@ export const navConfig = [
         title: 'Pagarés',
         icon: UpdateIcon,
         href: `/app/informes/pagares/${year}`
+      },
+      {
+        title: 'Errores',
+        icon: ErrorOutlineIcon,
+        href: '/app/informes/errores-precios'
       }
     ]
   },

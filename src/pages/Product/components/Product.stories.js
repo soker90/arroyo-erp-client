@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import { RoutesWrapper, ReduxProvider } from 'story'
+import { RoutesWrapper } from 'story'
 import { story as Product } from './Product'
 
 export default {
@@ -10,11 +10,9 @@ export default {
     componentSubtitle: 'Vista de producto'
   },
   decorators: [storyFn => (
-    <ReduxProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </ReduxProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }

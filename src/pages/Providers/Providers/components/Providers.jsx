@@ -7,12 +7,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial } from 'components'
+import { useProviders } from 'hooks'
 import { useStyles } from './Providers.styles'
 import NewProviderModal from '../modals/NewProviderModal'
 
-const Providers = ({ providers }) => {
+const Providers = () => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
+  const { providers, createProvider } = useProviders()
 
   /**
    * Navega al proveedor seleccionado
@@ -69,7 +71,7 @@ const Providers = ({ providers }) => {
           </Box>
         </Container>
       </Page>
-      <NewProviderModal show={showModal} close={_closeModal} />
+      <NewProviderModal show={showModal} close={_closeModal} createProvider={createProvider} />
     </>
   )
 }
@@ -78,7 +80,4 @@ Providers.propTypes = {
   providers: PropTypes.array.isRequired
 }
 
-Providers.displayName = 'Providers'
-
-export const story = Providers
 export default Providers

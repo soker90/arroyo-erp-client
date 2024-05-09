@@ -1,1 +1,1 @@
-export { default } from './NewNoteModalContainer'
+export { default } from './NewNoteModalView'

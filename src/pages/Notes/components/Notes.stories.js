@@ -1,9 +1,8 @@
 import { action } from '@storybook/addon-actions'
 
 import RoutesWrapper from 'story/RoutesWrapper'
-import { ReduxProvider } from 'story'
 import DatePickerProvider from 'contexts/DatePickerProvider'
-import { story as Notes } from './Notes'
+import Notes from './Notes'
 
 const NOTES = [
   {
@@ -42,11 +41,9 @@ export default {
   },
   decorators: [storyFn => (
     <DatePickerProvider>
-      <ReduxProvider>
-        <RoutesWrapper>
-          {storyFn()}
-        </RoutesWrapper>
-      </ReduxProvider>
+      <RoutesWrapper>
+        {storyFn()}
+      </RoutesWrapper>
     </DatePickerProvider>
   )
   ]

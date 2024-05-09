@@ -43,7 +43,4 @@ DeleteNoteModal.propTypes = {
   id: PropTypes.string,
   deleteNote: PropTypes.func.isRequired
 }
-
-DeleteNoteModal.displayName = 'DeleteConfirmationModal'
-export const story = DeleteNoteModal
 export default DeleteNoteModal

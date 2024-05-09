@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { useAuth } from 'hooks'
 
 const AuthGuard = ({ children }) => {
-  const account = useSelector(state => state.account)
+  const { user } = useAuth()
 
-  if (!account.user) return <Navigate to='/login' replace />
+  if (!user) return <Navigate to='/login' replace />
 
   return children
 }

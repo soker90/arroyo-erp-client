@@ -1,7 +1,6 @@
 import RoutesWrapper from 'story/RoutesWrapper'
 import { action } from '@storybook/addon-actions'
 import PaymentsReportView from './PaymentsReportView'
-import { ReduxProvider } from '../../../../story'
 
 export default {
   title: 'Rutas/Informes/Pagares',
@@ -9,11 +8,9 @@ export default {
     component: PaymentsReportView
   },
   decorators: [Story => (
-    <ReduxProvider>
-      <RoutesWrapper route='/path/:year' path='/path/2020'>
-        <Story />
-      </RoutesWrapper>
-    </ReduxProvider>
+    <RoutesWrapper route='/path/:year' path='/path/2020'>
+      <Story />
+    </RoutesWrapper>
   )
   ]
 }

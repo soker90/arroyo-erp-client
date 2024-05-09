@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
 
 import { InputForm, ModalGrid } from 'components'
-import { addNotification } from 'reducers/notifications'
+import { useNotifications } from 'hooks'
 
 const ProductModal = ({
   show, close, state, setState, action, ...rest
 }) => {
-  const dispatch = useDispatch()
+  const {
+    showError
+  } = useNotifications()
 
   /**
    * Handle event onChange input
@@ -37,11 +38,7 @@ const ProductModal = ({
       action(model, close)
     } catch (e) {
       console.error(e)
-      dispatch(addNotification({
-        level: 'error',
-        message: 'El IVA, el recargo o la tasa no son correctos',
-        dismissible: true
-      }))
+      showError('El IVA, el recargo o la tasa no son correctos')
     }
   }
 
@@ -98,6 +95,4 @@ ProductModal.propTypes = {
   action: PropTypes.func.isRequired
 }
 
-ProductModal.displayName = 'ProductModal'
-export const story = ProductModal
 export default ProductModal

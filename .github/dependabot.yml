@@ -12,3 +12,11 @@ updates:
     open-pull-requests-limit: 15
     assignees:
       - "soker90"
+  
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "github-actions"
+      - "dependencies"

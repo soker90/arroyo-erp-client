@@ -1,6 +1,5 @@
 import { useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router'
 
 import {
   DatePickerForm, InputForm, ModalGrid, SelectForm
@@ -8,6 +7,7 @@ import {
 import { format } from 'utils'
 import { COLUMNS_INVOICES, EXPENSE_CONCEPTS, TYPE_PAYMENT } from 'constants/invoices'
 import AutocompleteForm from 'components/Forms/AutocompleteForm'
+import { useCreateInvoiceExpense } from '../../hooks/index.js'
 
 const INITIAL_STATE = {
   nInvoice: '',
@@ -23,14 +23,13 @@ const INITIAL_STATE = {
 const NewInvoiceModal = ({
   show,
   close,
-  createInvoiceExpense,
   idProvider
 }) => {
   const [state, setState] = useReducer(
     (oldState, newState) => ({ ...oldState, ...newState }),
     INITIAL_STATE
   )
-  const navigate = useNavigate()
+  const { createInvoiceExpense } = useCreateInvoiceExpense()
 
   useEffect(() => {
     if (!show) setState(INITIAL_STATE)
@@ -64,7 +63,7 @@ const NewInvoiceModal = ({
       ...(paymentDate && { paymentDate: format.dateToSend(paymentDate) }),
       type,
       bookColumn
-    }, navigate)
+    })
   }
 
   /**
@@ -216,10 +215,7 @@ const NewInvoiceModal = ({
 NewInvoiceModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  createInvoiceExpense: PropTypes.func.isRequired,
   idProvider: PropTypes.string
 }
-
-NewInvoiceModal.displayName = 'NewInvoiceModal'
 
 export default NewInvoiceModal

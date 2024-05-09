@@ -30,6 +30,7 @@ const Provider = lazy(() => import('pages/Providers/Provider'))
 const ProviderExpense = lazy(() => import('pages/Providers/ProviderExpense'))
 const ProviderGeneral = lazy(() => import('pages/Providers/ProviderGeneral'))
 const SwapInvoices = lazy(() => import('pages/SwapInvoices'))
+const WrongPrices = lazy(() => import('pages/reports/WrongPrices'))
 
 const year = new Date().getFullYear()
 
@@ -85,6 +86,10 @@ const routesConfig = [
       {
         path: 'informes/pagares',
         element: <Navigate to={`/app/informes/pagares/${year}`} replace />
+      },
+      {
+        path: 'informes/errores-precios',
+        element: <WrongPrices />
       },
       {
         path: 'proveedores',

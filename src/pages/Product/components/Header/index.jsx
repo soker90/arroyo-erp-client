@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import ReceiptIcon from '@mui/icons-material/Receipt'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { useCallback, useState } from 'react'
 
 import { Header } from 'components'
+import DeleteProductModal from '../../modals/DeleteProductModal'
 
 const headerClient = [{
   link: '/app/clientes',
@@ -17,8 +20,16 @@ const HeaderProduct = ({
   nameProvider,
   product,
   lastDeliveryOrder,
-  nextToLastDeliveryOrder
+  nextToLastDeliveryOrder,
+  editProduct,
+  deleteProduct
 }) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const _close = useCallback(() => {
+    setShowModal(false)
+  }, [setShowModal])
+
   const headerProvider = [
     {
       link: '/app/proveedores',
@@ -33,25 +44,37 @@ const HeaderProduct = ({
     }]
 
   return (
-    <Header
-      routes={provider ? headerProvider : headerClient}
-      title={product}
-      buttons={[{
-        label: 'Penúltimo albarán',
-        component: NavLink,
-        to: `/app/albaranes/${nextToLastDeliveryOrder}`,
-        Icon: ReceiptIcon,
-        variant: 'outlined',
-        disabled: !nextToLastDeliveryOrder
-      }, {
-        label: 'Último albarán',
-        component: NavLink,
-        to: `/app/albaranes/${lastDeliveryOrder}`,
-        Icon: ReceiptIcon,
-        variant: 'outlined',
-        disabled: !lastDeliveryOrder
-      }]}
-    />
+    <>
+      <Header
+        routes={provider ? headerProvider : headerClient}
+        title={product}
+        buttons={[{
+          label: 'Eliminar',
+          Icon: DeleteIcon,
+          variant: 'contained',
+          color: 'error',
+          onClick: () => setShowModal(true)
+        }, {
+          label: 'Penúltimo albarán',
+          component: NavLink,
+          to: `/app/albaranes/${nextToLastDeliveryOrder}`,
+          Icon: ReceiptIcon,
+          variant: 'outlined',
+          disabled: !nextToLastDeliveryOrder
+        }, {
+          label: 'Último albarán',
+          component: NavLink,
+          to: `/app/albaranes/${lastDeliveryOrder}`,
+          Icon: ReceiptIcon,
+          variant: 'outlined',
+          disabled: !lastDeliveryOrder
+        }]}
+      />
+      <DeleteProductModal
+        deleteProduct={deleteProduct} show={showModal}
+        close={_close}
+      />
+    </>
   )
 }
 
@@ -60,7 +83,9 @@ HeaderProduct.propTypes = {
   provider: PropTypes.string,
   product: PropTypes.string.isRequired,
   lastDeliveryOrder: PropTypes.string,
-  nextToLastDeliveryOrder: PropTypes.string
+  nextToLastDeliveryOrder: PropTypes.string,
+  editProduct: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired
 }
 
 export default HeaderProduct

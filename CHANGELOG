@@ -1,3 +1,58 @@
+# [3.5.2] - 04/01/2024
+  - Corregido el color de texto de los tooltips de las graficas con el tema claro
+
+# [3.5.1] - 03/08/2023
+  - Corregidos botón de borrar en los date pickers
+
+# [3.5.0] - 23/07/2023
+  - Terminada eliminación de redux
+
+# [3.4.3] - 13/07/2023
+  - Añadida opción para agregar el canal al añadir un producto en un albarán nuevo
+
+# [3.4.2] - 13/07/2023
+  - Corregida visualización de los totales en la modal de editar totales de un albarán
+
+# [3.4.1] - 13/07/2023
+  - Corregida base imponible en el modal de editar totales de una factura
+
+# [3.4.0] - 10/07/2023
+  - Añadido botón para corregir los errores de precio de los productos
+
+# [3.3.2] - 04/04/2023
+  - Al modificar el total de una factura y pulsar intro, recargaba la página y no actualizaba
+
+# [3.3.1] - 29/03/2023
+  - Corregida página de cheques, antes solo mostraba los tres uĺtimos cheques siempre
+
+# [3.3.0] - 18/03/2023
+  - Botón y modal para borrar el precio de un producto
+  - Añadida gráfica de precios de venta en la pantalla de producto y en la de los informes de producto
+  - Corregidas graficas de informes de producto, que a veces salía al revés
+
+# [3.2.4] - 02/03/2023
+  - Correción undefined
+
+# [3.2.3] - 02/03/2023
+  - Correción elemento deprecado de material ui
+
+# [3.2.2] - 02/03/2023
+  - Correción de librerias
+
+# [3.2.1] - 02/03/2023
+  - Añadida columna Fecha de pago a las facturas del proveedor
+
+# [3.2.0] - 20/01/2023
+  - Añadido precio actual a la pantalla del producto
+  - Corregido error por el que se borraba el precio de venta al actualizar datos de un producto
+  - Añadido botón para borrar un producto de proveedor junto con su histórico de precios
+
+# [3.1.0] - 19/01/2023
+  - Añadida nueva pantalla para ver los productos en los que no coincide el precio guardado con el del último albarán
+
+# [3.0.4] - 08/12/2022
+  - Al modificar un albarán de clientes ya no se mueve el scroll al principio de la página
+
 # [3.0.3] - 29/11/2022
   - Mejoras al actualizar los datos de las facturas de clientes, ahora se refrescan sin cerrar la modal
 
@@ -30,7 +85,7 @@
 
 # [2.5.1] - 20/08/2022
   - Cambiada imagen de la pantalla de iniciar sesión
-  
+
 # [2.5.0] - 12/08/2022
   - Añadido porcentaje de beneficio a la tabla de productos del proveedor y a la pantalla de producto
 

@@ -9,7 +9,7 @@ import EditNoteModal from '../../modals/EditNoteModal'
 import DeleteNoteModal from '../../modals/DeleteNoteModal'
 import { useStyles } from './NotesTable.styles'
 
-const NotesTable = ({ notes }) => {
+const NotesTable = ({ notes, editNote, deleteNote }) => {
   const classes = useStyles()
   const [noteEdit, setNoteEdit] = useState(null)
   const [noteDelete, setNoteDelete] = useState(null)
@@ -89,16 +89,15 @@ const NotesTable = ({ notes }) => {
           }
         ]}
       />
-      <EditNoteModal note={noteEdit} close={_handleEditClose} />
-      <DeleteNoteModal id={noteDelete} close={_handleDeleteClose} />
+      <EditNoteModal note={noteEdit} close={_handleEditClose} editNote={editNote} />
+      <DeleteNoteModal id={noteDelete} close={_handleDeleteClose} deleteNote={deleteNote} />
     </>
   )
 }
 
 NotesTable.propTypes = {
-  notes: PropTypes.array.isRequired
+  notes: PropTypes.array.isRequired,
+  editNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired
 }
-
-NotesTable.displayName = 'NotesTable'
-export const story = NotesTable
 export default NotesTable

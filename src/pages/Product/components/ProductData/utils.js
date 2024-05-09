@@ -48,11 +48,17 @@ const generateProviderLabels = ({
   re,
   rate,
   sale,
-  cost
+  cost,
+  price
 }) => [{
   title: 'Código',
   value: code
-}, {
+},
+{
+  title: 'Precio actual',
+  value: format.euro(price)
+},
+{
   title: 'IVA',
   value: format.percent(iva)
 }, {

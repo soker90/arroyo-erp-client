@@ -13,18 +13,22 @@ import EditProductModal from '../../modals/EditProductModal'
 import DeleteProductModal from '../../modals/DeleteProductModal'
 import { useStyles } from './ProductsTable.styles'
 
-const ProductsTable = ({ products }) => {
+const ProductsTable = ({
+  products,
+  editProduct,
+  deleteProduct
+}) => {
   const classes = useStyles()
   const [selectedProduct, setSelectedProduct] = useState(null)
-  const [deleteProduct, setDeleteProduct] = useState(null)
+  const [deleteProductSelected, setDeleteProductSelected] = useState(null)
 
   const _close = useCallback(() => {
     setSelectedProduct(null)
   }, [setSelectedProduct])
 
   const _closeDelete = useCallback(() => {
-    setDeleteProduct(null)
-  }, [setDeleteProduct])
+    setDeleteProductSelected(null)
+  }, [setDeleteProductSelected])
 
   return (
     <Box mt={3}>
@@ -56,20 +60,27 @@ const ProductsTable = ({ products }) => {
           {
             icon: DeleteIcon,
             tooltip: 'Eliminar',
-            onClick: product => setDeleteProduct(product)
+            onClick: product => setDeleteProductSelected(product)
           }
         ]}
       />
-      <EditProductModal product={selectedProduct} show={Boolean(selectedProduct)} close={_close} />
-      <DeleteProductModal product={deleteProduct} close={_closeDelete} />
+
+      <EditProductModal
+        product={selectedProduct} show={Boolean(selectedProduct)} close={_close}
+        editProduct={editProduct}
+      />
+      <DeleteProductModal
+        product={deleteProductSelected} close={_closeDelete}
+        deleteProduct={deleteProduct}
+      />
     </Box>
   )
 }
 
 ProductsTable.propTypes = {
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
+  editProduct: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired
 }
-
-ProductsTable.displayName = 'BillingTable'
 
 export default ProductsTable

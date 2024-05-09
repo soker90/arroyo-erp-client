@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import {
-  useCallback, useEffect, useState
+  useCallback, useState
 } from 'react'
 import { Container } from '@mui/material'
-import PropTypes from 'prop-types'
+
 import { Link } from 'react-router-dom'
 import { ShoppingCart } from 'react-feather'
 import ReceiptIcon from '@mui/icons-material/Receipt'
@@ -16,19 +15,18 @@ import { addSelectedToState, format, removeSelectedFromState } from 'utils'
 import DeletePriceChangeModal from '../modals/DeletePriceChangeModal'
 import { useStyles } from './PriceChanges.styles'
 import Header from './Header'
+import { usePriceChanges } from '../hooks'
 
-const PriceChanges = ({
-  priceChanges,
-  getPriceChanges,
-  changeReadPrice
-}) => {
+const PriceChanges = () => {
   const classes = useStyles()
   const [deleteId, setDeleteId] = useState(undefined)
   const [selected, setSelected] = useState([])
-
-  useEffect(() => {
-    getPriceChanges()
-  }, [getPriceChanges])
+  const {
+    priceChanges,
+    changeReadPrice,
+    deleteManyChangesPrice,
+    deletePriceChanges
+  } = usePriceChanges()
 
   const _rowStyle = ({ read }) => (!read && classes.unread)
 
@@ -65,6 +63,8 @@ const PriceChanges = ({
           <Header
             selected={selected}
             setSelected={setSelected}
+            deleteManyChangesPrice={deleteManyChangesPrice}
+            deletePriceChanges={deletePriceChanges}
           />
           <TableMaterial
             className={classes.table}
@@ -122,17 +122,13 @@ const PriceChanges = ({
           />
         </Container>
       </Page>
-      <DeletePriceChangeModal id={deleteId} close={_close} />
+      <DeletePriceChangeModal
+        id={deleteId} close={_close}
+        deleteManyChangesPrice={deleteManyChangesPrice}
+        deletePriceChanges={deletePriceChanges}
+      />
     </>
   )
 }
 
-PriceChanges.propTypes = {
-  priceChanges: PropTypes.array.isRequired,
-  getPriceChanges: PropTypes.func.isRequired
-}
-
-PriceChanges.displayName = 'PriceChanges'
-
-export const story = PriceChanges
 export default PriceChanges

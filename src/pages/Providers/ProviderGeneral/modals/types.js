@@ -1,1 +1,0 @@
-export const NEW_PRODUCT_MODAL = 'NEW_PRODUCT_MODAL'

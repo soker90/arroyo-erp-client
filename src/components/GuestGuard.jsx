@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const GuestGuard = ({ children }) => {
-  const account = useSelector(state => state.account)
+import { useAuth } from 'hooks'
 
-  if (account.user) return <Navigate to='/app' replace />
+const GuestGuard = ({ children }) => {
+  const { user } = useAuth()
+
+  if (user) return <Navigate to='/app' replace />
 
   return children
 }

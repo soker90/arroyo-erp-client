@@ -6,7 +6,7 @@ import { TYPE_PAYMENT } from 'constants/invoices'
 import { format } from 'utils'
 
 const ConfirmInvoiceModal = ({
-  confirmInvoice, id, setShow, ...rest
+  confirmInvoice, setShow, ...rest
 }) => {
   const [paymentDate, setPaymentDate] = useState(null)
   const [type, setType] = useState('?')
@@ -16,7 +16,7 @@ const ConfirmInvoiceModal = ({
   }
 
   const _handleSend = () => {
-    confirmInvoice(id, {
+    confirmInvoice({
       paymentDate: format.dateToSend(paymentDate),
       type
     })
@@ -91,7 +91,6 @@ const ConfirmInvoiceModal = ({
 
 ConfirmInvoiceModal.propTypes = {
   setShow: PropTypes.func,
-  id: PropTypes.string.isRequired,
   confirmInvoice: PropTypes.func.isRequired
 }
 

@@ -1,4 +1,4 @@
-FROM node:16.18.0 as build
+FROM node:18.15.0 as build
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . ./
 RUN npm run build
 
 # production environment
-FROM nginx:1.22.0
+FROM nginx:1.23.3
 
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import { story as DeleteNoteModal } from './DeleteNoteModal'
+import DeleteNoteModal from './DeleteNoteModal'
 
 export default {
   title: 'Rutas/Notas/Modales/Eliminar',

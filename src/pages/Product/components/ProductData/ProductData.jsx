@@ -13,7 +13,8 @@ import EditProductModal from '../../modals/EditProductModal'
 const ProductData = ({
   product,
   className,
-  provider
+  provider,
+  editProduct
 }) => {
   const [showModal, setShowModal] = useState(false)
 
@@ -55,7 +56,10 @@ const ProductData = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditProductModal show={showModal} close={_closeModal} product={product} />
+      <EditProductModal
+        show={showModal} close={_closeModal} product={product}
+        editProduct={editProduct}
+      />
     </>
   )
 }
@@ -63,7 +67,8 @@ const ProductData = ({
 ProductData.propTypes = {
   product: PropTypes.object.isRequired,
   className: PropTypes.string,
-  provider: PropTypes.string
+  provider: PropTypes.string,
+  editProduct: PropTypes.func.isRequired
 }
 
 export const story = ProductData

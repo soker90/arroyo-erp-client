@@ -7,7 +7,9 @@ import DeletePriceChangeModal from '../../modals/DeletePriceChangeModal'
 
 const HeaderPriceChanges = ({
   selected,
-  setSelected
+  setSelected,
+  deletePriceChanges,
+  deleteManyChangesPrice
 }) => {
   const [showDelete, setShowDelete] = useState(false)
 
@@ -32,16 +34,20 @@ const HeaderPriceChanges = ({
           disabled: !selected.length
         }]}
       />
-      <DeletePriceChangeModal show={showDelete} ids={selected} close={_close} />
+      <DeletePriceChangeModal
+        show={showDelete} ids={selected} close={_close}
+        deletePriceChanges={deletePriceChanges}
+        deleteManyChangesPrice={deleteManyChangesPrice}
+      />
     </>
   )
 }
 
 HeaderPriceChanges.propTypes = {
   selected: PropTypes.array.isRequired,
-  setSelected: PropTypes.func.isRequired
+  setSelected: PropTypes.func.isRequired,
+  deletePriceChanges: PropTypes.func.isRequired,
+  deleteManyChangesPrice: PropTypes.func.isRequired
 }
 
-HeaderPriceChanges.displayName = 'HeaderPriceChanges'
-export const story = HeaderPriceChanges
 export default HeaderPriceChanges

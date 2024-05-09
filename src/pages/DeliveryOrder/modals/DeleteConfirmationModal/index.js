@@ -1,1 +1,1 @@
-export { default } from './DeleteConfirmationModalContainer'
+export { default } from './DeleteConfirmationModal'

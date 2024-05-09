@@ -10,7 +10,7 @@ import NewInvoiceModal from '../../modals/NewInvoiceModal'
 
 const HeaderProvider = ({
   title, onExpand, expanded,
-  note
+  note, idProvider
 }) => {
   const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
@@ -62,7 +62,7 @@ const HeaderProvider = ({
           label: 'Crear factura'
         }]}
       />
-      <NewInvoiceModal show={showModal} close={() => setShowModal(false)} />
+      <NewInvoiceModal show={showModal} close={() => setShowModal(false)} idProvider={idProvider} />
     </>
   )
 }

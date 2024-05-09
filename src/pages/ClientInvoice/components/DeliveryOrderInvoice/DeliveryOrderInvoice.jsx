@@ -109,6 +109,7 @@ const DeliveryOrderInvoice = ({
             label='Fecha'
             readOnly={!isEditable}
             onChange={_handleChangePicker}
+            clearable
           />
           <PerfectScrollbar>
             <ClientInvoiceProducts

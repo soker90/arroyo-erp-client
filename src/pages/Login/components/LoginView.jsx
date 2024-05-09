@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import { Grid, LinearProgress } from '@mui/material'
+
 import GuestGuard from 'components/GuestGuard'
+import { useAuth } from 'hooks'
+
 import AuthLayout from './AuthLayout'
 import LoginForm from './LoginForm'
 import { useStyles } from './Login.styles'
 
-const LoginView = ({
-  login,
-  loginError,
-  isLoading
-}) => {
+const LoginView = () => {
   const classes = useStyles()
+  const { loginError, login, isLoading } = useAuth()
 
   /**
    * Render loading bar

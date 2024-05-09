@@ -1,27 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Box, Container
 } from '@mui/material'
-import PropTypes from 'prop-types'
 import { useParams } from 'react-router'
 
 import {
   LoadingScreen, Page, ProviderExpandedInfo, ProviderInvoices
 } from 'components'
+import { useProvider } from 'hooks'
 import Header from './Header'
 
 import { useStyles } from './Provider.styles'
 
-const ProviderExpense = ({
-  provider, billing, getProvider, ...props
-}) => {
+const ProviderExpense = () => {
   const classes = useStyles()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
-
-  useEffect(() => {
-    if (idProvider) getProvider(idProvider)
-  }, [idProvider])
+  const { provider, billing, isLoading } = useProvider(idProvider)
 
   /**
    * Expande o contrae la información
@@ -31,7 +26,7 @@ const ProviderExpense = ({
     setExpand(!expand)
   }
 
-  if (!idProvider) return <LoadingScreen />
+  if (!idProvider || isLoading) return <LoadingScreen />
 
   return (
     <Page className={classes.root} title={provider.name}>
@@ -42,7 +37,6 @@ const ProviderExpense = ({
           title={provider?.name}
           idProvider={idProvider}
           note={provider?.note}
-          {...props}
         />
         <ProviderExpandedInfo
           expanded={expand}
@@ -51,7 +45,7 @@ const ProviderExpense = ({
         />
 
         <Box py={3} pb={6}>
-          <ProviderInvoices />
+          <ProviderInvoices idProvider={idProvider} />
         </Box>
 
       </Container>
@@ -59,11 +53,4 @@ const ProviderExpense = ({
   )
 }
 
-ProviderExpense.propTypes = {
-  provider: PropTypes.object.isRequired,
-  billing: PropTypes.object,
-  getProvider: PropTypes.func.isRequired
-}
-
-export const story = ProviderExpense
 export default ProviderExpense

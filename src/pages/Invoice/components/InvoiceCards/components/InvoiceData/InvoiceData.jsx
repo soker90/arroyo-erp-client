@@ -26,14 +26,16 @@ const InvoiceData = ({
   className,
   concept,
   id,
-  mailSend
+  mailSend,
+  updateData,
+  total = 0
 }) => {
   const [showModal, setShowModal] = useState(false)
   const classes = useStyles()
 
   useEffect(() => {
-    if (id && !nInvoice) setShowModal(true)
-  }, [id])
+    if (!nInvoice) setShowModal(true)
+  }, [])
 
   const _handleEditClick = () => {
     setShowModal(true)
@@ -98,7 +100,17 @@ const InvoiceData = ({
           </Grid>
         </CardContent>
       </Card>
-      <EditInvoiceDataModal show={showModal} setShow={setShowModal} />
+      <EditInvoiceDataModal
+        show={showModal}
+        setShow={setShowModal}
+        updateData={updateData}
+        nInvoice={nInvoice}
+        dateInvoice={dateInvoice}
+        dateRegister={dateRegister}
+        concept={concept}
+        total={total}
+        mailSend={mailSend}
+      />
     </>
   )
 }
@@ -111,7 +123,9 @@ InvoiceData.propTypes = {
   className: PropTypes.string.isRequired,
   concept: PropTypes.string,
   id: PropTypes.string.isRequired,
-  mailSend: PropTypes.bool
+  mailSend: PropTypes.bool,
+  updateData: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired
 }
 
 InvoiceData.displayName = 'InvoiceData'
