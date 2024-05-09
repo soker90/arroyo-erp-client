@@ -1,16 +1,13 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
   IconButton,
   Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard } from 'components'
+import { ItemGroupsCard, Card, CardContent, CardHeader } from 'components'
 import { adapterClientInfo } from '../../utils'
 import { EditClientModal } from '../../modals'
 import { useStyles } from './ClientExpandedInfo.styles'

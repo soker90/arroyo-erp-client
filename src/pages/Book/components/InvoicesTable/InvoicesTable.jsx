@@ -14,7 +14,7 @@ const InvoicesTable = ({ invoices, count, setFilters }) => {
 
   return (
     <TableMaterial
-      className={classes.table}
+      className='mt-4'
       columns={[
         {
           title: 'Nº de Orden',
