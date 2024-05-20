@@ -18,8 +18,8 @@ dependencies:
     specifier: ^5.15.17
     version: 5.15.17(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(react-dom@18.3.1)(react@18.3.1)
   '@mui/styles':
-    specifier: ^5.15.17
-    version: 5.15.17(react@18.3.1)
+    specifier: ^5.15.18
+    version: 5.15.18(react@18.3.1)
   '@mui/x-date-pickers':
     specifier: ~6.19.9
     version: 6.19.9(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@mui/material@5.15.17)(@mui/system@5.15.15)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1)(react@18.3.1)
@@ -813,8 +813,8 @@ packages:
       react: 18.3.1
     dev: false
 
-  /@mui/styles@5.15.17(react@18.3.1):
-    resolution: {integrity: sha512-PyZkFvUHDNcpCO+5Mr9t2g/De1JT7UAxjKgd5ojeoGmFiEhVQdZxbdHr6CZ1kBznqKU5nsWf1EmvI60iR3Nl+w==}
+  /@mui/styles@5.15.18(react@18.3.1):
+    resolution: {integrity: sha512-dKfd804Wu2JSsQTbK55sHonzfx0/mt9QxPtLZ/sm9qYuWshzIbmvSYbMIxlVigvVQxNy6l8MkCdEwtvE+fmkUg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
