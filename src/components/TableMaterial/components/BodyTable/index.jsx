@@ -14,7 +14,6 @@ const BodyTable = ({
   onRowClick,
   columns,
   href,
-  classes,
   actions,
   multiSelect,
   onSelected,
@@ -50,7 +49,7 @@ const BodyTable = ({
                   {...(href && {
                     component: Link,
                     to: href(row),
-                    className: classes.cell
+                    className: 'no-underline text-inherit'
                   })}
                 >
                   {render?.(row) || row[field]}
@@ -78,13 +77,10 @@ BodyTable.propTypes = {
   onRowClick: PropTypes.func,
   columns: PropTypes.array.isRequired,
   href: PropTypes.func,
-  classes: PropTypes.object,
   actions: PropTypes.array,
   multiSelect: PropTypes.func,
   onSelected: PropTypes.func,
   rowClass: PropTypes.func
 }
 
-BodyTable.displayName = 'BodyTable'
-export const story = BodyTable
 export default BodyTable

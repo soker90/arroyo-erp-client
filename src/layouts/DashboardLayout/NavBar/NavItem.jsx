@@ -14,7 +14,7 @@ const NavItem = ({
   children,
   icon: Icon,
   className,
-  open: openProp,
+  open: openProp = false,
   info: Info,
   ...rest
 }) => {
@@ -115,10 +115,6 @@ NavItem.propTypes = {
   info: PropTypes.any,
   open: PropTypes.bool,
   title: PropTypes.string.isRequired
-}
-
-NavItem.defaultProps = {
-  open: false
 }
 
 export default NavItem

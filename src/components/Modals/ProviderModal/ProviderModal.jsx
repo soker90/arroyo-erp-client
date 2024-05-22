@@ -5,7 +5,7 @@ import { InputForm, ModalGrid, SelectForm } from 'components'
 import { TYPE_PROVIDER_LIST } from '../../../constants'
 
 const ProviderModal = ({
-  show, close, state, setState, action, hasType, ...rest
+  show, close, state, setState, action, hasType = false, ...rest
 }) => {
   /**
    * Handle event onChange input
@@ -103,7 +103,7 @@ const ProviderModal = ({
               name='canal'
               color='primary'
             />
-        )}
+          )}
           label='Tiene canal'
         />
       )}
@@ -118,10 +118,6 @@ ProviderModal.propTypes = {
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
   hasType: PropTypes.bool
-}
-
-ProviderModal.defaultProps = {
-  hasType: false
 }
 
 ProviderModal.displayName = 'ProviderModal'

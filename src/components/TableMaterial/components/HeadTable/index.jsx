@@ -4,7 +4,7 @@ import { TableHead, TableHeader, TableRow } from 'components'
 
 const HeadTable = ({ columns, actions, multiSelect }) => (
   <TableHeader>
-    <TableRow>
+    <TableRow focusable={false}>
       {multiSelect && <TableHead />}
       {columns.map(({ title }) => (
         <TableHead key={title}>

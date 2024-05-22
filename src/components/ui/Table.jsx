@@ -21,7 +21,7 @@ TableHeader.displayName = 'TableHeader'
 const TableBody = React.forwardRef(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn('[&_tr:last-child]:border-0', className)}
+    className={className}
     {...props}
   />
 ))
@@ -40,7 +40,7 @@ const TableRow = React.forwardRef(({ className, selected, focusable = true, ...p
   <tr
     ref={ref}
     className={cn(
-      'border-b transition-colors data-[state=selected]:bg-muted', selected && 'bg-primary/20', focusable && 'hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-[rgba(255,255,255,0.04)]',
+      'border-b border-border transition-colors data-[state=selected]:bg-muted', selected && 'bg-primary/20', focusable && 'hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-[rgba(255,255,255,0.04)]',
       className
     )}
     {...props}
@@ -63,7 +63,7 @@ TableHead.displayName = 'TableHead'
 const TableCell = React.forwardRef(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn('p-4 align-middle [&:has([role=checkbox])]:pr-0', className)}
+    className={cn('px-4 align-middle [&:has([role=checkbox])]:pr-0 min-h-11', className)}
     {...props}
   />
 ))

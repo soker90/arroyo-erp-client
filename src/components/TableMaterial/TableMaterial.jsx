@@ -5,6 +5,10 @@ import {
   TablePagination
 } from '@mui/material'
 
+import {
+  Pagination
+} from 'components/ui/pagination'
+
 import { Table, Card } from 'components'
 import { cn } from 'utils'
 
@@ -13,7 +17,6 @@ import HeadTable from './components/HeadTable'
 import BodyTable from './components/BodyTable'
 import TitleTable from './components/TitleTable'
 import { labelOfRows } from './utils'
-import { useStyles } from './TableMaterial.styles'
 
 const TableMaterial = ({
   className,
@@ -32,11 +35,10 @@ const TableMaterial = ({
   rowsPerPageOptions,
   ...rest
 }) => {
-  const classes = useStyles()
   const [page, setPage] = useState(0)
   const [limit, setLimit] = useState(rowsPerPageOptions?.[0] || 10)
 
-  const handlePageChange = (event, newPage) => {
+  const handlePageChange = (newPage) => {
     setPage(newPage)
     refresh({
       offset: newPage * limit, limit
@@ -64,7 +66,6 @@ const TableMaterial = ({
           <BodyTable
             columns={columns}
             actions={actions}
-            classes={classes}
             data={data}
             href={href}
             onRowClick={onRowClick}
@@ -83,10 +84,22 @@ const TableMaterial = ({
         onRowsPerPageChange={handleLimitChange}
         page={page}
         rowsPerPage={limit}
-        rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
+        rowsPerPageOptions={rowsPerPageOptions || [20, 30, 40]}
         labelRowsPerPage='filas'
         labelDisplayedRows={labelOfRows}
                           />)}
+
+      {Boolean(count) && (<Pagination
+        count={count}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleLimitChange}
+        page={page}
+        rowsPerPage={limit}
+        rowsPerPageOptions={rowsPerPageOptions || [20, 30, 40]}
+        labelRowsPerPage='filas'
+        labelDisplayedRows={labelOfRows}
+                          />)}
+
     </Wrapper>
   )
 }
