@@ -1,9 +1,6 @@
 import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import {
-  TablePagination
-} from '@mui/material'
 
 import {
   Pagination
@@ -16,7 +13,6 @@ import NoData from './components/NoData'
 import HeadTable from './components/HeadTable'
 import BodyTable from './components/BodyTable'
 import TitleTable from './components/TitleTable'
-import { labelOfRows } from './utils'
 
 const TableMaterial = ({
   className,
@@ -77,17 +73,6 @@ const TableMaterial = ({
 
         <NoData elements={data.length} />
       </PerfectScrollbar>
-      {Boolean(count) && (<TablePagination
-        component='div'
-        count={count}
-        onPageChange={handlePageChange}
-        onRowsPerPageChange={handleLimitChange}
-        page={page}
-        rowsPerPage={limit}
-        rowsPerPageOptions={rowsPerPageOptions || [20, 30, 40]}
-        labelRowsPerPage='filas'
-        labelDisplayedRows={labelOfRows}
-                          />)}
 
       {Boolean(count) && (<Pagination
         count={count}
@@ -96,8 +81,7 @@ const TableMaterial = ({
         page={page}
         rowsPerPage={limit}
         rowsPerPageOptions={rowsPerPageOptions || [20, 30, 40]}
-        labelRowsPerPage='filas'
-        labelDisplayedRows={labelOfRows}
+        className='py-2'
                           />)}
 
     </Wrapper>

@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
+import { forwardRef } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { cn } from 'utils'
-import { buttonVariants } from './Button'
+import { SelectForm } from '../Forms'
 
 /**
  * Devuelve el literal indicador de página
@@ -19,28 +19,43 @@ export const labelOfRows = ({ from, to, count }) => `${from}-${
     : `más de ${to}`
 }`
 
-const Pagination = ({
-  className,
-  count,
-  page,
-  rowsPerPage,
-  onPageChange,
-  ...props
-}) => {
-  const offset = page * rowsPerPage
+const Pagination = (
+  {
+    className,
+    count,
+    page,
+    rowsPerPage,
+    rowsPerPageOptions,
+    onPageChange,
+    onRowsPerPageChange,
+    ...props
+  }) => {
+  const numRows = +rowsPerPage
+  const offset = page * numRows
   const firstItem = offset + 1
-  const lastItem = Math.min(offset + rowsPerPage, count)
+  const lastItem = Math.min(offset + numRows, count)
 
   return (
     <nav
       role='navigation'
       aria-label='pagination'
-      className={cn('mx-auto flex w-full justify-center items-center', className)}
+      className={cn('mx-auto flex w-full items-center justify-end', className)}
       {...props}
     >
+      <p className='text-sm'> filas</p>
+      <SelectForm
+        className='w-14 ml-2 mr-9' value={numRows} onChange={onRowsPerPageChange} InputLabelProps={{
+          shrink: true
+        }}
+      >
+        {rowsPerPageOptions.map((option) => (
+          <option className='text-sm' key={option} value={option}>{option}</option>
+        ))}
+      </SelectForm>
+
       <p className='text-sm'>{labelOfRows({ from: firstItem, to: lastItem, count })}</p>
-      <PaginationContent>
-        <PaginationPrevious onClick={onPageChange} page={page} disabled={firstItem === 1} />
+      <PaginationContent className='ml-5'>
+        <PaginationPrevious onClick={onPageChange} page={page} disabled={firstItem === 1} className='mr-2' />
 
         <PaginationNext onClick={onPageChange} page={page} disabled={lastItem === count} />
 
@@ -50,93 +65,56 @@ const Pagination = ({
 }
 Pagination.displayName = 'Pagination'
 
-const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    className={cn('flex items-center gap-1', className)}
-    {...props}
-  />
-))
+const PaginationContent = forwardRef(({ className, ...props }, ref) => (<ul
+  ref={ref}
+  className={cn('flex items-center', className)}
+  {...props}
+                                                                        />))
 PaginationContent.displayName = 'PaginationContent'
 
-const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn('', className)} {...props} />
-))
-PaginationItem.displayName = 'PaginationItem'
-
 const PaginationLink = ({
-  className,
-  isActive,
-  size = 'icon',
-  ...props
-}) => (
-  <button
-    aria-current={isActive ? 'page' : undefined}
-    className={cn(buttonVariants({
-      variant: isActive ? 'outline' : 'ghost',
-      size
-    }), 'rounded-full', className)}
-    {...props}
-  />
-)
+  className, isActive, size = 'icon', ...props
+}) => (<button
+  aria-current={isActive ? 'page' : undefined}
+  className={cn('hover:bg-accent hover:text-accent-foreground text-default rounded-full p-2', className)}
+  {...props}
+       />)
 PaginationLink.displayName = 'PaginationLink'
 
-const PaginationPrevious = ({
-  className,
-  onClick,
-  page,
-  ...props
-}) => (
-  <PaginationLink
-    aria-label='Ir a la página anterior'
-    size='default'
-    className={cn('gap-1 pl-2.5', className)}
-    onClick={() => onClick(page - 1)}
-    {...props}
-  >
-    <ChevronLeft className='h-4 w-4' />
-  </PaginationLink>
+const PaginationPrevious = (
+  {
+    className, onClick, page, ...props
+  }) => (
+    <PaginationLink
+      aria-label='Ir a la página anterior'
+      size='default'
+      className={cn('gap-1 pl-2.5', props?.disabled && 'opacity-25', className)}
+      onClick={() => onClick(page - 1)}
+      {...props}
+    >
+      <ChevronLeft className='h-5 w-5' />
+    </PaginationLink>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({
-  className,
-  onClick,
-  page,
-  ...props
+  className, onClick, page, ...props
 }) => (
   <PaginationLink
     aria-label='Go to next page'
     size='default'
-    className={cn('gap-1 pr-2.5', className)}
+    className={cn('gap-1 pr-2.5', props?.disabled && 'opacity-25', className)}
     onClick={() => onClick(page + 1)}
     {...props}
   >
-    <ChevronRight className='h-4 w-4' />
+    <ChevronRight className='h-5 w-5 ' />
   </PaginationLink>
 )
 PaginationNext.displayName = 'PaginationNext'
 
-const PaginationEllipsis = ({
-  className,
-  ...props
-}) => (
-  <span
-    aria-hidden
-    className={cn('flex h-9 w-9 items-center justify-center', className)}
-    {...props}
-  >
-    <MoreHorizontal className='h-4 w-4' />
-    <span className='sr-only'>More pages</span>
-  </span>
-)
-PaginationEllipsis.displayName = 'PaginationEllipsis'
-
 export {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious

@@ -7,7 +7,7 @@ import { Grid, TextField } from '@mui/material'
  * como children del componente.
  */
 const SelectForm = ({
-  size, children, variant = 'standard', ...rest
+  size = 6, children, variant = 'standard', ...rest
 }) => (
   <Grid
     item
@@ -31,16 +31,12 @@ const SelectForm = ({
 SelectForm.propTypes = {
   size: PropTypes.number,
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   variant: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
-}
-
-SelectForm.defaultProps = {
-  size: 6
 }
 
 SelectForm.displayName = 'SelectForm'

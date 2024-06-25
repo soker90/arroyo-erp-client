@@ -2,8 +2,9 @@ import PropTypes from 'prop-types'
 import { FormControlLabel, Grid, Switch } from '@mui/material'
 
 const SwitchForm = ({
-  size,
+  size = 6,
   label,
+  color = 'primary',
   ...rest
 }) => (
   <Grid
@@ -14,6 +15,7 @@ const SwitchForm = ({
     <FormControlLabel
       control={(
         <Switch
+          color={color}
           {...rest}
         />
       )}
@@ -32,12 +34,4 @@ SwitchForm.propTypes = {
   disabled: PropTypes.bool
 }
 
-SwitchForm.defaultProps = {
-  size: 6,
-  color: 'primary'
-}
-
-SwitchForm.displayName = 'SwitchForm'
-
-export const story = SwitchForm
 export default SwitchForm
