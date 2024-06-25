@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.15.20
     version: 5.15.20(react@18.3.1)
   '@mui/x-date-pickers':
-    specifier: ~6.20.0
-    version: 6.20.2(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@mui/material@5.15.20)(@mui/system@5.15.20)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1)(react@18.3.1)
+    specifier: ~7.7.1
+    version: 7.7.1(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@mui/material@5.15.20)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1)(react@18.3.1)
   '@radix-ui/react-checkbox':
     specifier: ^1.1.0
     version: 1.1.0(react-dom@18.3.1)(react@18.3.1)
@@ -974,16 +974,15 @@ packages:
       react-is: 18.3.1
     dev: false
 
-  /@mui/x-date-pickers@6.20.2(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@mui/material@5.15.20)(@mui/system@5.15.20)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-x1jLg8R+WhvkmUETRfX2wC+xJreMii78EXKLl6r3G+ggcAZlPyt0myID1Amf6hvJb9CtR7CgUo8BwR+1Vx9Ggw==}
+  /@mui/x-date-pickers@7.7.1(@emotion/react@11.11.4)(@emotion/styled@11.11.5)(@mui/material@5.15.20)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-p7/TY8QcdQd6RelNqzW5q89GeUFctvZnDHTfQVEC0l0nAy7ArE6u21uNF8QWGrijZoJXCM+OlIRzlZADaUPpWA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
-      '@mui/material': ^5.8.6
-      '@mui/system': ^5.8.0
+      '@mui/material': ^5.15.14
       date-fns: ^2.25.0 || ^3.2.0
-      date-fns-jalali: ^2.13.0-0
+      date-fns-jalali: ^2.13.0-0 || ^3.2.0-0
       dayjs: ^1.10.7
       luxon: ^3.0.2
       moment: ^2.29.4
