@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types'
 import { format } from 'utils'
 import clsx from 'clsx'
-import { useStyles } from './styles'
 
 const TextEuro = ({
   num, Component = 'span', className, decimals = 2, ...rest
 }) => {
-  const classes = useStyles()
-  const getColorAmount = (num < 0 ? classes.red : '')
+  const getColorAmount = (num < 0 ? 'text-red-600' : '')
 
   return (
     <Component
@@ -26,6 +24,4 @@ TextEuro.propTypes = {
   decimals: PropTypes.number
 }
 
-TextEuro.displayName = 'TextEuro'
-export const story = TextEuro
 export default TextEuro
