@@ -21,8 +21,8 @@ importers:
         specifier: ^5.15.18
         version: 5.15.20(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/styles':
-        specifier: ^5.15.20
-        version: 5.15.20(@types/react@18.3.3)(react@18.3.1)
+        specifier: ^5.15.21
+        version: 5.15.21(@types/react@18.3.3)(react@18.3.1)
       '@mui/x-date-pickers':
         specifier: ~6.20.0
         version: 6.20.2(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.15.20(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mui/system@5.15.20(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(dayjs@1.11.11)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -564,8 +564,8 @@ packages:
       '@emotion/styled':
         optional: true
 
-  '@mui/styles@5.15.20':
-    resolution: {integrity: sha512-zpXYhNxQ9A4zxF3IRQRZRUg7fXYj6Wfa3nB+7yOLVecokhjCAr1zY2VC5Uznf5qs2cfgBRfmDkBYqvQjHWf2uA==}
+  '@mui/styles@5.15.21':
+    resolution: {integrity: sha512-XYGRd25kE31GCapoftHrWrhr3zCNZypraBO+UAWNaguSRZ24HAHEOxEkAOTXt71BzFgW7S0qoE4jmyx8DfgZIg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
@@ -3629,7 +3629,7 @@ snapshots:
       '@emotion/react': 11.11.4(@types/react@18.3.3)(react@18.3.1)
       '@emotion/styled': 11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
 
-  '@mui/styles@5.15.20(@types/react@18.3.3)(react@18.3.1)':
+  '@mui/styles@5.15.21(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.7
       '@emotion/hash': 0.9.1
