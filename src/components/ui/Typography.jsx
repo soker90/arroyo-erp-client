@@ -11,7 +11,7 @@ const typographyVariants = cva(
     variants: {
       variant: {
         h1: 'font-light text-6xl leading-10 tracking-wide',
-        h2: 'font-light text-3xl leading-8 tracking-normal',
+        h2: 'font-bold text-3xl leading-5 tracking-tight',
         h3: 'text-2xl leading-7 tracking-norma font-semibold',
         h4: 'font-medium tracking-normal text-xl leading-5 font-semibold',
         h5: 'text-lg leading-6 tracking-normal',
@@ -57,7 +57,7 @@ const Typography = ({
 
   return (
     <Component
-      className={cn(typographyVariants({ variant }), className)}
+      className={cn(typographyVariants({ variant }), className, '')}
       {...rest}
     >{children}
     </Component>

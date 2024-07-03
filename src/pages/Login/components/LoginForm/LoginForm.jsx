@@ -1,16 +1,11 @@
 import { useState, memo } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Box, TextField, Typography
-} from '@mui/material'
-import { Button } from 'components'
-import { useStyles } from './LoginForm.styles'
+
+import { Button, TextField, Typography } from 'components'
 
 const LoginForm = memo(({ login, loginError, isLoading }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
-  const classes = useStyles()
 
   /**
    * Handle change input function
@@ -35,14 +30,9 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
    * @returns {boolean || Box}
    */
   const renderError = () => loginError && (
-    <Box
-      bgcolor='error.main'
-      color='secondary.contrastText'
-      p={2}
-      className={classes.error}
-    >
+    <p className='mt-4 p-4 bg-destructive text-white rounded-md'>
       {loginError}
-    </Box>
+    </p>
   )
 
   /**
@@ -57,13 +47,12 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
     label, set, value, type
   }) => (
     <TextField
-      className={classes.textField}
-      fullWidth
+      className='mt-4'
       label={label}
       type={type}
       onChange={ev => handleChange(ev, set)}
       value={value}
-      variant='outlined'
+      name='username'
     />
   )
 
@@ -78,11 +67,11 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
 
   return (
     <form
-      className={classes.form}
-      onKeyPress={_handleKeyPress}
+      className='px-4 md:px-24 basis-[700px] pb-32'
+      onKeyUp={_handleKeyPress}
     >
       <Typography
-        className={classes.title}
+        className='text-white mt-6'
         variant='h2'
       >
         Inicio de Sesión
@@ -101,7 +90,7 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
       })}
       {renderError()}
       <Button
-        className='mt-4'
+        className='my-4'
         color='primary'
         disabled={!username || !password || isLoading}
         size='full'

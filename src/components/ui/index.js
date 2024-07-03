@@ -7,4 +7,5 @@ export * from './Tooltip'
 export {
   default as Typography
 } from './Typography'
+export * from './TextField'
 export { default as Button } from './Button'

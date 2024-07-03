@@ -27,8 +27,7 @@ export const AuthProvider = ({ children }) => {
       if (setLoginError) setLoginError(undefined)
       setUser(loginUser)
     } catch (error) {
-      console.error(error)
-      setLoginError(error?.response?.data?.message)
+      setLoginError(error?.message)
     }
 
     setIsLoading(false)

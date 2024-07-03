@@ -6,10 +6,8 @@ import { useAuth } from 'hooks'
 
 import AuthLayout from './AuthLayout'
 import LoginForm from './LoginForm'
-import { useStyles } from './Login.styles'
 
 const LoginView = () => {
-  const classes = useStyles()
   const { loginError, login, isLoading } = useAuth()
 
   /**
@@ -21,26 +19,25 @@ const LoginView = () => {
   return (
     <GuestGuard>
       <AuthLayout>
-        <div className={classes.root}>
+        <div className='h-full bg-background'>
           <Grid
-            className={classes.grid}
+            className='h-full'
             container
           >
             <Grid
-              className={classes.quoteContainer}
+              className='hidden lg:block'
               item
               lg={5}
             >
-              <div className={classes.quote} />
+              <div className='h-full bg-[url("/static/images/auth.png")] bg-cover bg-center' />
             </Grid>
             <Grid
-              className={classes.content}
               item
               lg={7}
               xs={12}
             >
-              <div className={classes.content}>
-                <div className={classes.contentBody}>
+              <div className='h-full flex'>
+                <div className='flex flex-grow items-center'>
                   <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
                 </div>
                 {renderLoadingBar()}
@@ -59,7 +56,7 @@ LoginView.propTypes = {
   isLoading: PropTypes.bool
 }
 
-LoginView.displayName = 'LoginView'
+LoginView.displayName = ' LoginView'
 
 export const story = LoginView
 export default LoginView
