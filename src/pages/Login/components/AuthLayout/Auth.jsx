@@ -4,15 +4,14 @@ import { LinearProgress } from '@mui/material'
 import TopBar from './TopBar'
 
 const Auth = ({ children }) => (
-  <>
+  <div className='flex flex-col h-screen'>
     <TopBar />
-    <main className='h-full'>
-
+    <main className='flex-1'>
       <Suspense fallback={<LinearProgress />}>
         {children}
       </Suspense>
     </main>
-  </>
+  </div>
 )
 
 Auth.propTypes = {

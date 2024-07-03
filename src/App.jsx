@@ -25,7 +25,7 @@ const App = () => {
 
   const themeMode = settings.theme === 'LIGHT' ? 'light' : 'dark'
   return (
-    <div className={clsx(themeMode, 'h-full')}>
+    <div className={clsx(themeMode, 'h-screen')}>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <RootStyles>
