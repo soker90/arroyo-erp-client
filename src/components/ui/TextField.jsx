@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { cn } from 'utils'
 
-const TextField = forwardRef(({ className, name, type, label, ...props }, ref) => (
+const TextField = forwardRef(({ className, name, label, ...props }, ref) => (
   <div ref={ref} className={cn('space-y-2', className)}>
     <label
       className='font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground'

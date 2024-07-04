@@ -35,7 +35,7 @@ export const buttonVariants = cva(
         large: 'h-11 rounded-md px-8' // legacy
       },
       disabled: {
-        true: 'opacity-50',
+        true: 'opacity-50 pointer-events-none',
         false: ''
       }
     },
@@ -68,7 +68,6 @@ const Button = forwardRef(({
   to,
   asChild = false,
   isLoading = false,
-  children,
   ...props
 }, ref) => {
   const Comp = asChild ? Slot : 'button'
@@ -92,8 +91,10 @@ const Button = forwardRef(({
       disabled={disabled}
       {...props}
     >
-      {isLoading && <Loading />}
-      {children}
+      <>
+        {isLoading && <Loading />}
+        {props.children}
+      </>
     </Comp>
   )
 })
