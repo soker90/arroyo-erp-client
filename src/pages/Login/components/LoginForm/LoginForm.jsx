@@ -95,6 +95,7 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
         disabled={!username || !password || isLoading}
         size='full'
         onClick={handleSubmit}
+        isLoading={isLoading}
       >
         Entrar
       </Button>

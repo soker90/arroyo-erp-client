@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { LinearProgress } from '@mui/material'
 
 import GuestGuard from 'components/GuestGuard'
 import { useAuth } from 'hooks'
@@ -10,12 +9,6 @@ import LoginForm from './LoginForm'
 const LoginView = () => {
   const { loginError, login, isLoading } = useAuth()
 
-  /**
-   * Render loading bar
-   * @returns {JSX.Element}
-   */
-  const renderLoadingBar = () => isLoading && <LinearProgress />
-
   return (
     <GuestGuard>
       <AuthLayout>
@@ -24,12 +17,9 @@ const LoginView = () => {
             <div className='h-full bg-[url("/static/images/auth.png")] bg-cover bg-center' />
           </div>
           <div className='lg:col-span-7 col-span-1'>
-            <div className='h-full flex'>
+            <div className='h-full flex flex-col'>
               <div className='flex flex-grow items-center'>
                 <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
-              </div>
-              <div className='text-center'>
-                {renderLoadingBar()}
               </div>
             </div>
           </div>

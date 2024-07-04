@@ -1,13 +1,14 @@
 import { Suspense, memo } from 'react'
 import PropTypes from 'prop-types'
-import { LinearProgress } from '@mui/material'
+
+import { LoadingBar } from 'components'
 import TopBar from './TopBar'
 
 const Auth = ({ children }) => (
   <div className='flex flex-col h-screen'>
     <TopBar />
     <main className='flex-1'>
-      <Suspense fallback={<LinearProgress />}>
+      <Suspense fallback={<LoadingBar />}>
         {children}
       </Suspense>
     </main>
