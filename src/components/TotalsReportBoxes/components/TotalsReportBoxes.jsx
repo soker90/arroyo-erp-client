@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Grid } from '@mui/material'
+import { Grid } from 'components'
 import { TOTALS_BOXES } from '../constans'
 import TotalsReportBox from './TotalsReportBox'
 

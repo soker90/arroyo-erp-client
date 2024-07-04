@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import {
-  Divider, Grid, List
+  Divider, List
 } from '@mui/material'
 import uniqId from 'uniqid'
 
-import { Card, CardContent, CardHeader, ItemCard } from 'components'
+import { Card, CardContent, CardHeader, ItemCard, Grid } from 'components'
 
 const ProviderBilling = (
   {

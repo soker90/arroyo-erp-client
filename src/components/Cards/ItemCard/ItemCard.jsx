@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { ListItem, Typography } from '@mui/material'
+
+import { Typography, ListItem } from 'components'
+import { cn } from 'utils'
 
 import ItemCardVariant from './ItemCard.variants'
-import { useStyles } from './ItemCard.styles'
 
 const ItemCard = ({
   label, value, divider = true, className, variant = 'default'
-}) => {
-  const classes = useStyles()
-
-  return (
-    <ListItem
-      className={clsx(classes.listItem, className)}
-      disableGutters
-      divider={divider}
-    >
-      <Typography variant='subtitle2' className={classes.label}>{label}</Typography>
-      <ItemCardVariant value={value} variant={variant} />
-
-    </ListItem>
-  )
-}
+}) => (
+  <ListItem
+    className={cn('py-4 justify-between', className)}
+    divider={divider}
+  >
+    <Typography variant='subtitle2' className='text-teal-500 mr-2 lg:mr-4'>{label}</Typography>
+    <ItemCardVariant value={value} variant={variant} />
+  </ListItem>
+)
 
 ItemCard.propTypes = {
   label: PropTypes.string.isRequired,

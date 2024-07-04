@@ -3,11 +3,12 @@
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
-  Breadcrumbs, Grid, Link, SvgIcon, Typography, Box
+  Breadcrumbs, Link, SvgIcon, Typography, Box
 } from '@mui/material'
 import { ChevronRight } from 'lucide-react'
 import uniqId from 'uniqid'
-import { Button } from 'components'
+import { Button, Grid } from 'components'
+import { cn } from '../../utils/index.js'
 
 const Header = ({
   className, routes = [], title, description, buttons, buttonsSecondary, ...rest
@@ -68,10 +69,7 @@ const Header = ({
 
   return (
     <Grid
-      container
-      spacing={3}
-      justifyContent='space-between'
-      className={className}
+      className={cn('justify-between', className)}
       {...rest}
     >
       <Grid item>

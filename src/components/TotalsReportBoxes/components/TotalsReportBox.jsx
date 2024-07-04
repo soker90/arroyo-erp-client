@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import {
-  Avatar, Box, Grid
+  Avatar, Box
 } from '@mui/material'
 
 import EuroIcon from '@mui/icons-material/Euro'
 
-import { Card, Typography } from 'components'
+import { Card, Typography, Grid } from 'components'
 import { format } from 'utils'
 
 const TotalsReportBox = ({

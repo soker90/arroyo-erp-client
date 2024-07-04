@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import { Grid, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
+import { Grid } from 'components'
 
 /**
  * BUG: Si cuando cargue el input el label y el value se superpone,

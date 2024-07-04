@@ -2,13 +2,10 @@
 import PropTypes from 'prop-types'
 import uniqId from 'uniqid'
 
-import { Grid, List } from '@mui/material'
-import { ItemCard } from 'components/Cards'
-import { sliceToGroups } from 'utils'
-import { useStyles } from 'components/Cards/ItemGroupsCard/ItemGroupsCard.styles'
+import { Grid, ItemCard } from 'components'
+import { cn, sliceToGroups } from 'utils'
 
-const ItemGroupsCard = ({ groups, items }) => {
-  const classes = useStyles()
+const ItemGroupsCard = ({ groups = 2, items }) => {
   const size = 12 / groups
 
   /**
@@ -39,18 +36,14 @@ const ItemGroupsCard = ({ groups, items }) => {
    */
   const _renderGroup = (group, idx) => (
     <Grid item xs={12} md={size} key={uniqId()}>
-      <List className={idx === 0 ? classes.listFirst : classes.list}>
+      <div className={cn(idx === 0 ? 'flex flex-col ml-4' : 'flex flex-col')}>
         {group.map(_renderItem)}
-      </List>
+      </div>
     </Grid>
   )
 
   return (
-    <Grid
-      container
-      spacing={3}
-      className={classes.grid}
-    >
+    <Grid className='w-full pb-6'>
       {sliceToGroups(items, groups)
         .map(_renderGroup)}
     </Grid>
@@ -63,10 +56,6 @@ ItemGroupsCard.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.any
   })).isRequired
-}
-
-ItemGroupsCard.defaultProps = {
-  groups: 2
 }
 
 ItemGroupsCard.displayName = 'ItemGroupsCard'

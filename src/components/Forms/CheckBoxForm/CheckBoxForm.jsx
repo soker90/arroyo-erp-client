@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import { Grid, Checkbox, FormControlLabel } from '@mui/material'
+import { Checkbox, FormControlLabel } from '@mui/material'
+import { Grid } from 'components'
 
 /**
  * NOTA: Si cuando cargue el input el label y el value se superponen

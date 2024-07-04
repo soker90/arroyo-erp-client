@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import { Grid, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
+import { Grid } from 'components'
 
 /**
  * TODO: Cambiar por select con material o posibilitar elegir

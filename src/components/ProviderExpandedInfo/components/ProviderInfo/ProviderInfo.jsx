@@ -1,13 +1,12 @@
 import { useCallback, useState } from 'react'
 import {
   Divider,
-  Grid,
   IconButton,
   Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard, Card, CardContent, CardHeader } from 'components'
+import { ItemGroupsCard, Card, CardContent, CardHeader, Grid } from 'components'
 import { useStyles } from './ProviderInfo.styles'
 import { adapterProviderInfo } from './adapterProviderInfo'
 import EditProviderModal from '../../modals/EditProviderModal'

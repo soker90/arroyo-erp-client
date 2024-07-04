@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import { Typography } from '@mui/material'
 
-import { BooleanIcon, TextEuro } from 'components'
+import { BooleanIcon, TextEuro, Typography } from 'components'
 
 const ItemCardVariant = ({ value, variant = 'default' }) => {
   const COMPONENT_VARIANT = {
