@@ -1,5 +1,5 @@
 import {
-  Divider, IconButton, Tooltip
+  IconButton, Tooltip
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -101,7 +101,7 @@ const DeliveryOrderInvoice = ({
           action={_getActions()}
           ref={refHeader}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <DatePickerForm
             value={date}

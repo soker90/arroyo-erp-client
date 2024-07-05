@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types'
-import {
-  Divider, List
-} from '@mui/material'
 import uniqId from 'uniqid'
 
-import { Card, CardContent, CardHeader, ItemCard, Grid } from 'components'
+import { Card, CardContent, CardHeader, ItemCard, Grid, List } from 'components'
 
-const ProviderBilling = (
-  {
-    year, trimesters, annual
-  }
-) => (
+const ProviderBilling = ({
+  year = '', trimesters = [], annual = 0
+}) => (
   <Grid
     item
     md={6}
@@ -18,7 +13,7 @@ const ProviderBilling = (
   >
     <Card>
       <CardHeader title={`Facturación ${year}`} />
-      <Divider />
+      <hr />
       <CardContent className='pt-0'>
         <List>
           {trimesters.map((value, index) => (
@@ -44,12 +39,6 @@ ProviderBilling.propTypes = {
   trimesters: PropTypes.array,
   year: PropTypes.number,
   annual: PropTypes.number
-}
-
-ProviderBilling.defaultProps = {
-  year: '',
-  trimesters: [],
-  annual: 0
 }
 
 ProviderBilling.displayName = 'ProviderBilling'

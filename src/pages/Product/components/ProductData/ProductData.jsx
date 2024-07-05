@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Divider, Grid, IconButton, Tooltip
+  Grid, IconButton, Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
@@ -50,7 +50,7 @@ const ProductData = ({
             </Tooltip>
           ]}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             {generateLabels(product, provider)

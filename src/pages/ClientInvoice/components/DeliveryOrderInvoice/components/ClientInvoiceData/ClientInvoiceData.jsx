@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid
+  Card, CardContent, CardHeader, Grid
 } from '@mui/material'
 
 import { DatePickerForm, ItemCard } from 'components'
@@ -24,7 +24,7 @@ const ClientInvoiceData = ({
   return (
     <Card>
       <CardHeader title='Datos de la factura' />
-      <Divider />
+      <hr />
       <CardContent>
         <Grid container spacing={3} className={classes.cards}>
           <DatePickerForm

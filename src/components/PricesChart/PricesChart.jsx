@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
-  Box, Divider
+  Box
 } from '@mui/material'
 
 import { Card, CardContent, CardHeader } from 'components'
@@ -30,7 +30,7 @@ const PricesChart = ({
       <CardHeader
         title={title}
       />
-      <Divider />
+      <hr />
       <CardContent>
         <PerfectScrollbar>
           <Box

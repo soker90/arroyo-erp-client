@@ -3,7 +3,6 @@
 import PropTypes from 'prop-types'
 import {
   Grid,
-  Divider,
   CardHeader
 } from '@mui/material'
 
@@ -71,7 +70,7 @@ const SearchForm = ({
       <CardHeader
         title='Búsqueda'
       />
-      <Divider />
+      <hr />
       <CardContent>
         <Grid spacing={3} container>
           <DatePickerForm

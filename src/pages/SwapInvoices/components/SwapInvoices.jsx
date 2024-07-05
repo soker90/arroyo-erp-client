@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Divider,
   Grid, IconButton, InputAdornment, Tooltip
 } from '@mui/material'
 import PropTypes from 'prop-types'
@@ -53,7 +52,7 @@ const SwapInvoices = () => {
 
         <Card className={classes.card}>
           <CardHeader title='Intercambiar números de orden' />
-          <Divider />
+          <hr />
           <CardContent>
             <Grid spacing={3} container>
               <InputForm

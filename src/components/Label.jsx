@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 const Label = ({
   className,
-  color,
+  color = 'secondary',
   children,
   style,
   ...rest
@@ -73,11 +73,6 @@ Label.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   color: PropTypes.oneOf(['primary', 'secondary', 'error', 'warning', 'success'])
-}
-
-Label.defaultProps = {
-  className: '',
-  color: 'secondary'
 }
 
 export default Label

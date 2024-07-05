@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import PropTypes from 'prop-types'
 import {
-  Box, Divider, Drawer, Hidden, List, ListSubheader, Typography
+  Box, Drawer, Hidden, List, ListSubheader, Typography
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import uniqId from 'uniqid'
@@ -151,7 +151,7 @@ const NavBar = ({
             </Typography>
           </Box>
         </Box>
-        <Divider />
+        <hr />
         <Box p={2}>
           {navConfig.map(config => (
             <List

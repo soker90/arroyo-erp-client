@@ -1,5 +1,5 @@
 import {
-  Box, Card, CardHeader, Divider, Grid, List
+  Box, Card, CardHeader, Grid, List
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -22,7 +22,7 @@ const Reminders = ({
       <CardHeader
         title='Recordatorios'
       />
-      <Divider />
+      <hr />
       <PerfectScrollbar>
         <Box minWidth={400}>
           <List>

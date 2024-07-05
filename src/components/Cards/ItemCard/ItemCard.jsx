@@ -9,7 +9,7 @@ const ItemCard = ({
   label, value, divider = true, className, variant = 'default'
 }) => (
   <ListItem
-    className={cn('py-4 justify-between', className)}
+    className={cn('py-4 justify-between flex-wrap', className)}
     divider={divider}
   >
     <Typography variant='subtitle2' className='text-teal-500 mr-2 lg:mr-4'>{label}</Typography>

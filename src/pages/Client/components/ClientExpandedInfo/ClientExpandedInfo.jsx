@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Divider,
   IconButton,
   Tooltip
 } from '@mui/material'
@@ -48,7 +47,7 @@ const ClientExpandedInfo = ({
           action={_renderEditButton()}
           title='Datos de contacto'
         />
-        <Divider />
+        <hr />
         <CardContent className={classes.content}>
           <ItemGroupsCard items={adapterClientInfo(client)} groups={3} />
         </CardContent>

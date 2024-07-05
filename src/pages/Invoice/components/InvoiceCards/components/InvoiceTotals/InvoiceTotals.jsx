@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Divider,
   Grid,
   IconButton,
   Tooltip
@@ -57,7 +56,7 @@ const InvoiceTotals = ({
           title='Totales'
           action={_getActions()}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             {taxBase && (

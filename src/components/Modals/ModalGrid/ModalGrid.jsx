@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import {
-  Modal,
-  Divider
+  Modal
 } from '@mui/material'
 import { Grid, Button, Card, CardHeader, CardContent, CardActions } from 'components'
 import useSettings from 'hooks/useSettings'
@@ -62,7 +61,7 @@ const ModalGrid = ({
       >
         <form>
           <CardHeader title={title} />
-          <Divider />
+          <hr />
           <CardContent>
             <Grid
               container
@@ -71,7 +70,7 @@ const ModalGrid = ({
               {children}
             </Grid>
           </CardContent>
-          <Divider />
+          <hr />
           <CardActions className='justify-end'>
             {actions?.map(_renderButton) || _renderButtons()}
           </CardActions>

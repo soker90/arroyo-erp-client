@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react'
 import {
-  Divider,
   IconButton,
   Tooltip
 } from '@mui/material'
@@ -47,7 +46,7 @@ const ProviderInfo = props => {
             action={_renderEditButton()}
             title='Datos de contacto'
           />
-          <Divider />
+          <hr />
           <CardContent className={classes.content}>
             <ItemGroupsCard items={adapterProviderInfo(props)} />
           </CardContent>

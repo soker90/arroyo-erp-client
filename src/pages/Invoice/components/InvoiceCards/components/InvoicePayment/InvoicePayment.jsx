@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Divider, Grid, IconButton, Tooltip
+  Grid, IconButton, Tooltip
 } from '@mui/material'
 
 import { ItemCard, Card, CardContent, CardHeader } from 'components'
@@ -41,7 +41,7 @@ const InvoicePayment = ({
           title='Datos de pago'
           action={payment && actions}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>

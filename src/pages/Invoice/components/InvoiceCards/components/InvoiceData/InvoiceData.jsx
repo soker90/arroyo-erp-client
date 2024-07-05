@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Divider,
   Grid,
   IconButton,
   Tooltip,
@@ -72,7 +71,7 @@ const InvoiceData = ({
           )}
           action={_getActions()}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid spacing={3} container>
             <Grid item xs={12} md={3}>
