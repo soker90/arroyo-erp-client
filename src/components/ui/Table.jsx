@@ -39,7 +39,7 @@ const TableRow = forwardRef(({ className, selected, focusable = true, ...props }
   <tr
     ref={ref}
     className={cn(
-      'border-b border-border transition-colors data-[state=selected]:bg-muted', selected && 'bg-primary/20', focusable && 'hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-[rgba(255,255,255,0.04)]',
+      'border-b border-border transition-colors data-[state=selected]:bg-muted h-10 [&>tr:has([role=checkbox])]:h-auto [&>tr>button]:h-auto', selected && 'bg-primary/20', focusable && 'hover:bg-[rgba(0,0,0,0.04)] dark:hover:bg-[rgba(255,255,255,0.04)]',
       className
     )}
     {...props}
@@ -62,7 +62,7 @@ TableHead.displayName = 'TableHead'
 const TableCell = forwardRef(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn('px-4 align-middle [&:has([role=checkbox])]:pr-0 min-h-11', className)}
+    className={cn('px-4 align-middle [&:has([role=checkbox])]:pr-0', className)}
     {...props}
   />
 ))

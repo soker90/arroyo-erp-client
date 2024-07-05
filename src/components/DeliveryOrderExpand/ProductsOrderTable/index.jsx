@@ -1,35 +1,25 @@
 /* eslint-disable react/prop-types */
 
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
-import { Typography } from '@mui/material'
 
-import { TableMaterial, TextEuro } from 'components'
+import { TableMaterial, TextEuro, Typography } from 'components'
 import { format } from 'utils'
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%'
-  }
-})
-
-const ProductsOrderTable = ({ products }) => {
-  const classes = useStyles()
-
+const ProductsOrderTable = ({ products, className }) => {
   /**
    * Render message for delivery orders without products
    * @return {Typography}
    * @private
    */
   const _renderNoProducts = () => (
-    <Typography color='textSecondary'>
+    <Typography className='text-muted-foreground' variant='body1'>
       No hay productos
     </Typography>
   )
 
   const _renderTable = () => (
     <TableMaterial
-      className={classes.root}
+      className={className}
       columns={[
         {
           title: 'Producto',

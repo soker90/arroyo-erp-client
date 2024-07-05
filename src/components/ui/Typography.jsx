@@ -18,7 +18,7 @@ const typographyVariants = cva(
         h6: 'font-medium leading-9 tracking-normal text-sm',
         subtitle1: 'text-sm leading-9 tracking-normal',
         subtitle2: 'font-bold tracking-normal text-sm leading-relaxed',
-        body1: 'text-sm leading-7 tracking-normal',
+        body1: 'leading-7 tracking-normal',
         body2: 'text-sm leading-normal',
         button: 'font-medium text-xs leading-8 tracking-wide uppercase',
         caption: 'text-xs leading-5 tracking-wide',
@@ -30,6 +30,8 @@ const typographyVariants = cva(
     }
   }
 )
+
+// buildVariant(fontWeightRegular, 16, 1.5, 0.15),
 
 const variantMapping = {
   h1: 'h1',

@@ -4,11 +4,11 @@ import { Link as RouterLink } from 'react-router-dom'
 import {
   FormControlLabel,
   IconButton,
-  Tooltip,
-  Typography
+  Tooltip
 } from '@mui/material'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
+import { Typography } from 'components'
 import { format } from 'utils'
 import TextEuro from '../../TextEuro'
 import { getTotals } from './utils'
@@ -20,7 +20,7 @@ const DeliveryOrderExpandHeader = ({
   const classes = useStyles()
 
   return (
-    <>
+    <div className='flex items-center'>
       <FormControlLabel
         onClick={event => event.stopPropagation()}
         onFocus={event => event.stopPropagation()}
@@ -34,7 +34,7 @@ const DeliveryOrderExpandHeader = ({
               </IconButton>
             </Tooltip>
           </>
-      )}
+        )}
         label=''
       />
 
@@ -42,14 +42,15 @@ const DeliveryOrderExpandHeader = ({
         color='textPrimary'
         variant='body1'
         style={{ marginTop: '0.75rem' }}
+        className='flex flex-wrap'
       >
         <strong className={classes.total}>{format.date(date)}</strong>
         {getTotals(props)
           .map(total => (
-            <Fragment key={total.label}>
+            <p key={total.label}>
               {` ${total.label} `}
               <TextEuro num={total.value} className={classes.total} />
-            </Fragment>
+            </p>
           ))}
       </Typography>
       <Typography
@@ -59,7 +60,7 @@ const DeliveryOrderExpandHeader = ({
       >
         {note}
       </Typography>
-    </>
+    </div>
   )
 }
 

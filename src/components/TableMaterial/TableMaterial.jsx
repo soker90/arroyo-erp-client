@@ -52,7 +52,7 @@ const TableMaterial = ({
 
   return (
     <Wrapper
-      className={cn('w-auto overflow-x-auto', className)}
+      className={cn('w-auto overflow-x-auto text-foreground', className)}
       {...rest}
     >
       <TitleTable title={title} />
