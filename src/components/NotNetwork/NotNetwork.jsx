@@ -1,8 +1,4 @@
-import {
-  Typography
-} from '@mui/material'
-
-import { Button } from 'components'
+import { Button, Typography } from 'components'
 import { useStyles } from './NotNetwork.styles'
 
 const NotNetwork = () => {
@@ -66,7 +62,5 @@ const NotNetwork = () => {
     </div>
   )
 }
-
-NotNetwork.displayName = 'NotFound'
 
 export default NotNetwork

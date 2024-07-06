@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import {
-  Box
-} from '@mui/material'
 
 import { Card, CardContent, CardHeader } from 'components'
 import { format } from 'utils'
 import Chart from './Chart'
-import { useStyles } from './PricesChart.styles'
 
 const PricesChart = ({
   className,
@@ -17,8 +13,6 @@ const PricesChart = ({
   lineColor,
   ...rest
 }) => {
-  const classes = useStyles()
-
   const data = prices.map(({ price }) => Math.round(price * 100) / 100)
   const labels = prices.map(({ date }) => format.date(date))
 
@@ -33,18 +27,15 @@ const PricesChart = ({
       <hr />
       <CardContent>
         <PerfectScrollbar>
-          <Box
-            height={375}
-            minWidth={500}
-          >
+          <div className='h-[375px] min-h-[500px]'>
             <Chart
-              className={classes.chart}
+              className='h-full'
               data={data}
               labels={labels}
               tooltip={tooltip}
               lineColor={lineColor}
             />
-          </Box>
+          </div>
         </PerfectScrollbar>
       </CardContent>
     </Card>
