@@ -60,7 +60,7 @@ const InvoicePayment = ({
                 <ItemCard label='Pago conjunto' value={payment.invoicesOrder} />
               </Grid>
             )}
-            <Grid item xs={12} md={1}>
+            <Grid item xs={12} md={2} lg={1}>
               <ItemCard label='Pagado' value={payment.paid} variant='boolean' />
             </Grid>
           </Grid>
