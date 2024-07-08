@@ -8,7 +8,7 @@ const alertVariants = cva(
   {
     variants: {
       severity: {
-        success: 'bg-success/10 dark:bg-success/20',
+        success: 'bg-success dark:bg-success/80 text-white',
         error: 'bg-destructive text-destructive-foreground'
       }
     },

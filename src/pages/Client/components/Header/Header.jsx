@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import PostAddIcon from '@mui/icons-material/PostAdd'
 import { useNavigate } from 'react-router'
 
@@ -31,8 +30,7 @@ const HeaderClient = ({
       buttonsSecondary={[{
         variant: 'text',
         onClick: onExpand,
-        Icon: expanded ? ExpandLessIcon : ExpandMoreIcon,
-        disableSvg: true,
+        Icon: expanded ? ChevronUp : ChevronDown,
         label: expanded ? 'Ocultar información' : 'Mostrar información'
       }]}
       buttons={[{

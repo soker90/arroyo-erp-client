@@ -2,10 +2,8 @@ import PropTypes from 'prop-types'
 import {
   Accordion,
   AccordionContent, AccordionItem,
-  AccordionTrigger,
-  Paper
+  AccordionTrigger
 } from 'components'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import ProductsOrderTable from './ProductsOrderTable'
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader'

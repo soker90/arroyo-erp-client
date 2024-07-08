@@ -39,7 +39,7 @@ module.exports = {
           DEFAULT: 'hsl(var(--success))'
         },
         warning: {
-          DEFAULT: 'hsl(var(--warning))',
+          DEFAULT: 'hsl(var(--warning))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -56,6 +56,9 @@ module.exports = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
+        },
+        header: {
+          DEFAULT: 'hsl(var(--header))'
         }
       },
       borderRadius: {

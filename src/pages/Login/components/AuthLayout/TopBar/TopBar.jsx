@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 const TopBar = () => {
   return (
-    <div className='bg-background min-h-16 flex items-center'>
+    <div className='bg-header min-h-16 flex items-center'>
       <nav className='px-6'>
         <img
           alt='Logo'

@@ -62,7 +62,7 @@ const Grid = ({ children, className, item, md, xs, lg }) => {
   const type = item ? 'item' : 'container'
 
   return (
-    <div className={cn(gridVariants({ className, type, xs, md, lg }), 'grid-cols-2')}>
+    <div className={cn(gridVariants({ className, type, xs, md, lg }))}>
       {children}
     </div>
   )

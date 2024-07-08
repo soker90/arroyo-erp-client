@@ -1,14 +1,13 @@
-/* eslint-disable react/prop-types, no-shadow */
-
-import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {
-  Breadcrumbs, Link, SvgIcon, Typography, Box
-} from '@mui/material'
-import { ChevronRight } from 'lucide-react'
 import uniqId from 'uniqid'
-import { Button, Grid } from 'components'
-import { cn } from '../../utils/index.js'
+
+import {
+  Button, Grid, Typography, Breadcrumb,
+  BreadcrumbLink,
+  BreadcrumbPage
+} from 'components'
+
+import { cn } from 'utils'
 
 const Header = ({
   className, routes = [], title, description, buttons, buttonsSecondary, ...rest
@@ -21,16 +20,12 @@ const Header = ({
    * @private
    */
   const _itemNav = (link, title) => (
-    <Link
+    <BreadcrumbLink
       key={uniqId()}
-      variant='body1'
-      color='inherit'
       to={link}
-      component={RouterLink}
-      underline='none'
     >
       {title}
-    </Link>
+    </BreadcrumbLink>
   )
 
   /**
@@ -53,16 +48,8 @@ const Header = ({
       className='mb-2 ml-2'
       {...rest}
     >
-      {disableSvg
-        ? <Icon className='mr-1' />
-        : (
-          <SvgIcon
-            fontSize='small'
-            className='mr-1'
-          >
-            <Icon />
-          </SvgIcon>
-          )}
+      <Icon className='mr-1 text-sm' />
+
       {label}
     </Button>
   )
@@ -73,21 +60,14 @@ const Header = ({
       {...rest}
     >
       <Grid item>
-        <Breadcrumbs
-          separator={<ChevronRight size={18} />}
-          aria-label='breadcrumb'
-        >
+        <Breadcrumb>
           {_itemNav('/app', 'Inicio')}
           {
             routes.map(({ link, title }) => _itemNav(link, title))
           }
-          <Typography
-            variant='body1'
-            color='textPrimary'
-          >
-            {title}
-          </Typography>
-        </Breadcrumbs>
+
+          <BreadcrumbPage>{title}</BreadcrumbPage>
+        </Breadcrumb>
         <Typography
           variant='h3'
           color='textPrimary'
@@ -97,9 +77,9 @@ const Header = ({
         {
           buttonsSecondary &&
           (
-            <Box mt={2}>
+            <div className='mt-4'>
               {buttonsSecondary.map(_renderButton)}
-            </Box>
+            </div>
           )
         }
       </Grid>
