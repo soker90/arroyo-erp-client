@@ -57,7 +57,7 @@
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.0",
     "swr": "^2.2.5",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "uniqid": "^5.4.0"
   },
