@@ -13,7 +13,7 @@ const TextField = forwardRef(({ className, name, label, ...props }, ref) => (
     <input
       name={name}
       className={cn(
-        'flex h-12 w-full rounded-md border px-3 py-2 ring-offset-background bg-transparent placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-12 w-full rounded-md border px-3 py-2 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 text-foreground',
         className
       )}
       ref={ref}
