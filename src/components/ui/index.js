@@ -5,6 +5,7 @@ export * from './Checkbox'
 export * from './Container'
 export * from './Table'
 export * from './Tooltip'
+export * from './Tabs'
 export {
   default as Typography
 } from './Typography'

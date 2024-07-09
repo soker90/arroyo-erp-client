@@ -1,5 +1,4 @@
-import { Plus, ArrowDownToLine } from 'lucide-react'
-import PostAddIcon from '@mui/icons-material/PostAdd'
+import { Plus, ArrowDownToLine, ListPlus } from 'lucide-react'
 
 import { downloadFile } from 'utils'
 import { TABS } from '../../constants'
@@ -25,14 +24,12 @@ export const getButtons = ({
     variant: 'contained',
     onClick: showEditProductModal,
     Icon: Plus,
-    disableSvg: true,
     label: 'Nuevo producto'
   }],
   [TABS.DELIVERY_ORDERS]: [{
     variant: 'contained',
     onClick: _handleClickNewInvoice,
-    Icon: PostAddIcon,
-    disableSvg: true,
+    Icon: ListPlus,
     label: 'Crear factura',
     disabled: deliveryOrdersSelected.length === 0
   },
@@ -40,7 +37,6 @@ export const getButtons = ({
     variant: 'contained',
     onClick: _handleClickNewDeliveryOrder,
     Icon: Plus,
-    disableSvg: true,
     label: 'Nuevo albarán'
   }],
   [TABS.INVOICES]: []

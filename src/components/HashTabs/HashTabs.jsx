@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
-import { Tab, Tabs } from '@mui/material'
 import { useNavigate } from 'react-router'
 
-import { Card } from 'components'
+import { Card, Tabs } from 'components'
 
 const HashTabs = ({
   currentTab,
@@ -23,21 +22,10 @@ const HashTabs = ({
   return (
     <Card>
       <Tabs
+        currentTab={currentTab}
+        tabs={tabs}
         onChange={_handleTabsChange}
-        scrollButtons='auto'
-        textColor='secondary'
-        value={currentTab}
-        variant='scrollable'
-        indicatorColor='primary'
-      >
-        {tabs.map(tab => (
-          <Tab
-            key={tab}
-            value={tab}
-            label={tab}
-          />
-        ))}
-      </Tabs>
+      />
     </Card>
   )
 }
