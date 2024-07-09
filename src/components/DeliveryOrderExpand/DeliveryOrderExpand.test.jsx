@@ -61,7 +61,7 @@ describe('DeliveryOrderExpandHeader', () => {
     )
 
     fireEvent(
-      container.querySelector('[role="button"]'),
+      container.querySelector('[type="button"]'),
       new window.MouseEvent('click', {
         bubbles: true,
         cancelable: true
