@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { cn } from 'utils'
 import { SelectForm } from '../Forms'
+import Grid from '../Grid'
 
 /**
  * Devuelve el literal indicador de página
@@ -42,16 +43,20 @@ const Pagination = (
       className={cn('mx-auto flex w-full items-center justify-end', className)}
       {...props}
     >
-      <p className='text-sm'> filas</p>
-      <SelectForm
-        className='w-14 ml-2 mr-9' value={numRows} onChange={onRowsPerPageChange} InputLabelProps={{
-          shrink: true
-        }}
-      >
-        {rowsPerPageOptions.map((option) => (
-          <option className='text-sm' key={option} value={option}>{option}</option>
-        ))}
-      </SelectForm>
+      <Grid>
+        <Grid item>
+          <span className='text-sm'> filas</span>
+        </Grid>
+        <SelectForm
+          className='w-14 ml-2 mr-9' value={numRows} onChange={onRowsPerPageChange} InputLabelProps={{
+            shrink: true
+          }}
+        >
+          {rowsPerPageOptions.map((option) => (
+            <option className='text-sm' key={option} value={option}>{option}</option>
+          ))}
+        </SelectForm>
+      </Grid>
 
       <p className='text-sm'>{labelOfRows({ from: firstItem, to: lastItem, count })}</p>
       <PaginationContent className='ml-5'>
