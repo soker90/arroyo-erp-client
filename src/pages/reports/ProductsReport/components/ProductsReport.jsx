@@ -38,7 +38,7 @@ const ProductsReport = () => {
           <Grid item xs={6} md={2}>
             <ListActions
               data={providers}
-              icon={<Users />}
+              Icon={Users}
               title='Proveedores'
               onClick={_handleClickProvider}
             />
@@ -46,7 +46,7 @@ const ProductsReport = () => {
           <Grid item xs={6} md={2}>
             <ListActions
               data={products}
-              icon={<ShoppingCart />}
+              Icon={ShoppingCart}
               title='Productos'
               onClick={_handleClickProduct}
             />

@@ -39,7 +39,7 @@ const NavItem = ({
         {...rest}
       >
         <Button
-          variant='ghost  '
+          variant='ghost'
           className='capitalize text-[#546e7a] dark:text-[#adb0bb] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
           onClick={handleToggle}
           style={style}
