@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Typography } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { TableMaterial, TextEuro } from 'components'
@@ -110,7 +110,7 @@ const DeliveryOrderProducts = ({
         data={products}
         actions={[
           {
-            icon: VisibilityIcon,
+            icon: Eye,
             tooltip: 'Ver producto',
             component: Link,
             to: ({ _id }) => `${BASE_PATH}/productos/${_id}`

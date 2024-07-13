@@ -1,14 +1,11 @@
 import { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Link as RouterLink } from 'react-router-dom'
 import {
-  FormControlLabel,
-  IconButton,
-  Tooltip
+  FormControlLabel
 } from '@mui/material'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 
-import { Typography } from 'components'
+import { Button, Typography, Tooltip, TooltipContent, TooltipTrigger } from 'components'
 import { format } from 'utils'
 import TextEuro from '../../TextEuro'
 import { getTotals } from './utils'
@@ -29,9 +26,14 @@ const DeliveryOrderExpandHeader = ({
           <>
             {children}
             <Tooltip title='Ver'>
-              <IconButton component={RouterLink} to={`/app/albaranes/${_id}`} size='large'>
-                <VisibilityIcon />
-              </IconButton>
+              <TooltipContent>
+                Ver
+              </TooltipContent>
+              <TooltipTrigger asChild>
+                <Button to={`/app/albaranes/${_id}`} size='icon' variant='icon'>
+                  <Eye />
+                </Button>
+              </TooltipTrigger>
             </Tooltip>
           </>
         )}

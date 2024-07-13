@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react'
 import { Box } from '@mui/material'
-import { PlusCircle as PlusCircleIcon } from 'lucide-react'
+import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial, Container } from 'components'
@@ -59,7 +58,7 @@ const Providers = () => {
               title={`Proveedores (${providers.length})`}
               actions={[
                 {
-                  icon: VisibilityIcon,
+                  icon: Eye,
                   tooltip: 'Editar',
                   component: Link,
                   to: ({ _id }) => `${BASE_PATH}/proveedores/general/${_id}`

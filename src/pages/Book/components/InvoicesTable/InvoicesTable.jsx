@@ -1,4 +1,4 @@
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
@@ -46,7 +46,7 @@ const InvoicesTable = ({ invoices, count, setFilters }) => {
       data={invoices}
       actions={[
         {
-          icon: VisibilityIcon,
+          icon: Eye,
           tooltip: 'Ver',
           component: Link,
           to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`
