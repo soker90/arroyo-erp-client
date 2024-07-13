@@ -86,7 +86,7 @@ const Header = ({
       {
         buttons &&
         (
-          <Grid item>
+          <Grid item className='flex'>
             {buttons.map(_renderButton)}
           </Grid>
         )

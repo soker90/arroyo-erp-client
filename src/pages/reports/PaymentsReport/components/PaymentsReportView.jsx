@@ -3,17 +3,15 @@ import { useParams } from 'react-router'
 import { Page, TotalsReportBoxes, Container } from 'components'
 import Header from './Header'
 import ChequesTable from './ChequesTable'
-import { useStyles } from './PaymentsReportView.styles'
-import { useTotals } from '../hooks/index.js'
+import { useTotals } from '../hooks'
 
 const PaymentsReportView = () => {
-  const classes = useStyles()
   const { year } = useParams()
   const { totals } = useTotals(year)
 
   return (
     <Page
-      className={classes.root}
+      className='py-6'
       title='Informe de pagos'
     >
       <Container>
@@ -21,7 +19,7 @@ const PaymentsReportView = () => {
 
         <TotalsReportBoxes
           totals={totals}
-          className={classes.paymentsBoxes}
+          className='mt-0'
         />
         <ChequesTable
           year={year}

@@ -1,16 +1,12 @@
 import { useState } from 'react'
-import { Grid } from '@mui/material'
 import { ShoppingCart, Users } from 'lucide-react'
 
 import {
-  Header, ListActions, LoadingScreen, Page, PricesChart, Container
+  Header, ListActions, LoadingScreen, Page, PricesChart, Container, Grid
 } from 'components'
 import { useProducts, useProduct, useProviders } from 'hooks'
 
-import { useStyles } from './ProductsReport.styles'
-
 const ProductsReport = () => {
-  const classes = useStyles()
   const [providersSelected, setProvidersSelected] = useState(undefined)
   const [productSelected, setProductSelected] = useState(undefined)
 
@@ -31,10 +27,10 @@ const ProductsReport = () => {
   if (!providers.length) return <LoadingScreen />
 
   return (
-    <Page className={classes.root} title='Informes de producto'>
+    <Page className='py-6' title='Informes de producto'>
       <Container>
         <Header title='Informes de producto' />
-        <Grid container spacing={2} className={classes.container}>
+        <Grid container spacing={2} className='mt-1'>
           <Grid item xs={6} md={2}>
             <ListActions
               data={providers}
@@ -54,14 +50,14 @@ const ProductsReport = () => {
           <Grid item xs={12} md={8}>
             {Boolean(prices?.length) &&
               (
-                <div className={classes.charts}>
+                <div className='sticky top-6'>
                   <PricesChart prices={structuredClone(prices).reverse()} />
                   <PricesChart
                     prices={pvps}
                     title='Gráfica de precios de venta'
                     tooltip='Venta'
                     lineColor='#f73378'
-                    className={classes.secondChart}
+                    className='mt-4'
                   />
                 </div>
               )}

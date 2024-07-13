@@ -24,7 +24,7 @@ const BodyActionsButtons = ({
   )
 
   return (
-    <TableCell className='flex justify-end'>
+    <TableCell className='flex justify-end h-10'>
       {actionsFiltered
         .map(({
           icon: Icon, tooltip, onClick, to, disabled, ...restButton

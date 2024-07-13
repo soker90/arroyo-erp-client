@@ -1,17 +1,15 @@
 import { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import DescriptionIcon from '@mui/icons-material/Description'
+import { FileText } from 'lucide-react'
 import { useNavigate } from 'react-router'
 
 import { TableMaterial, TextEuro } from 'components'
 import { format, navigateTo } from 'utils'
-import { useStyles } from './ChequesTable.styles'
-import { useCheques } from '../../hooks/index.js'
+import { useCheques } from '../../hooks'
 
 const ChequesTable = ({
   year
 }) => {
-  const classes = useStyles()
   const navigate = useNavigate()
   const { cheques, count, updateFilters } = useCheques({ year, limit: 10 })
 
@@ -31,7 +29,7 @@ const ChequesTable = ({
   }, [year])
   return (
     <TableMaterial
-      className={classes.table}
+      className='mt-4'
       columns={[
         {
           title: 'Nº de Cheque',
@@ -60,7 +58,7 @@ const ChequesTable = ({
       count={count}
       actions={[
         {
-          icon: DescriptionIcon,
+          icon: FileText,
           tooltip: 'Ver factura',
           onClick: _handleInvoiceButton
         }

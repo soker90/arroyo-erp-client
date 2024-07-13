@@ -1,23 +1,18 @@
 import { useState } from 'react'
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Grid, IconButton, InputAdornment, Tooltip
+  InputAdornment, Tooltip
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import SearchIcon from '@mui/icons-material/Search'
 
 import {
-  InputForm, Page, Button, Container
+  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'
 import Header from './Header'
-import { useStyles } from './SwapInvoices.styles'
 
 const SwapInvoices = () => {
-  const classes = useStyles()
   const [invoiceA, setInvoiceA] = useState('')
   const [invoiceB, setInvoiceB] = useState('')
   const {
@@ -35,9 +30,9 @@ const SwapInvoices = () => {
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
-        <IconButton onClick={onClick} size='large'>
+        <Button variant='icon' size='icon' onClick={onClick}>
           <SearchIcon />
-        </IconButton>
+        </Button>
       </Tooltip>
     </InputAdornment>
   )
@@ -46,11 +41,11 @@ const SwapInvoices = () => {
     set(value)
   }
   return (
-    <Page className={classes.root} title='Intercambiar nº orden'>
+    <Page className='py-6' title='Intercambiar nº orden'>
       <Container>
         <Header />
 
-        <Card className={classes.card}>
+        <Card className='mt-2'>
           <CardHeader title='Intercambiar números de orden' />
           <hr />
           <CardContent>
