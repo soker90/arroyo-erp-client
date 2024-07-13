@@ -34,9 +34,8 @@ const BodyActionsButtons = ({
             disabled={_isDisabled(disabled)}
           >
             <TooltipContent>{tooltip}</TooltipContent>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button
-                asChild
                 variant='text'
                 {...(onClick && { onClick: () => onClick(row, index) })}
                 {...(to && { to: to(row, index) })}

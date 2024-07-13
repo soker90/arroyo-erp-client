@@ -74,7 +74,6 @@ const Settings = () => {
         </Typography>
         <Box mt={2}>
           <TextField
-            fullWidth
             label='Tema'
             name='theme'
             onChange={event => handleChange('theme', event.target.value)}

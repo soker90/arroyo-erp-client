@@ -1,5 +1,4 @@
-import { Fragment } from 'react'
-import { Slot } from '@radix-ui/react-slot'
+import { forwardRef, Fragment } from 'react'
 import { cva } from 'class-variance-authority'
 import { Link as RouterLink } from 'react-router-dom'
 
@@ -64,17 +63,17 @@ const Loading = () => (
   </svg>
 )
 
-const Button = ({
+const Button = forwardRef(({
   className,
   variant,
   size,
   disabled,
   to,
-  asChild = false,
+  type = 'text',
   isLoading = false,
+  onClick,
   ...props
-}) => {
-  const Comp = asChild ? Slot : 'button'
+}, ref) => {
   const Link = to ? RouterLink : Fragment
 
   const isLink = !!to
@@ -82,6 +81,7 @@ const Button = ({
   if (isLink) {
     return (
       <Link
+        ref={ref}
         to={to} disabled={disabled} className={cn(buttonVariants({ variant, size, disabled, className }))}
         {...props}
       />
@@ -89,18 +89,26 @@ const Button = ({
   }
 
   return (
-    <Comp
+    <button
+      ref={ref}
       className={cn(buttonVariants({ variant, size, disabled, className }))}
       disabled={disabled}
+      type={type}
+      {...(onClick && {
+        onClick: (evt) => {
+          evt?.preventDefault()
+          onClick(evt)
+        }
+      })}
       {...props}
     >
       <>
         {isLoading && <Loading />}
         {props.children}
       </>
-    </Comp>
+    </button>
   )
-}
+})
 
 Button.displayName = 'Button'
 
@@ -109,8 +117,8 @@ Button.propTypes = {
   size: PropTypes.oneOf(Object.keys(VARIANTS.size)),
   disabled: PropTypes.bool,
   to: PropTypes.string,
-  asChild: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  type: PropTypes.string
 }
 
 export default Button

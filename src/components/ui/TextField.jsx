@@ -1,10 +1,9 @@
-import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { cn } from 'utils'
 
-const TextField = forwardRef(({ className, name, label, ...props }, ref) => (
-  <div ref={ref} className={cn('space-y-2', className)}>
+const TextField = ({ className, name, label, ...props }) => (
+  <div className={cn('space-y-2', className)}>
     <label
       className='font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground'
       htmlFor={name}
@@ -13,14 +12,13 @@ const TextField = forwardRef(({ className, name, label, ...props }, ref) => (
     <input
       name={name}
       className={cn(
-        'flex h-12 w-full rounded-md border px-3 py-2 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 text-foreground',
+        'flex w-full px-2 py-1 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 text-foreground border-b border-muted-foreground focus:outline-none focus:border-primary',
         className
       )}
-      ref={ref}
       {...props}
     />
   </div>
-))
+)
 
 TextField.propTypes = {
   className: PropTypes.string,

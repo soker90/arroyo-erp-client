@@ -16,7 +16,6 @@ const SelectForm = ({
     xs={12}
   >
     <TextField
-      fullWidth
       select
       variant={variant}
       SelectProps={{

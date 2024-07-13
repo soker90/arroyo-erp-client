@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import { TextField } from '@mui/material'
-import { Grid } from 'components'
+import { Grid, TextField } from 'components'
 
 /**
  * BUG: Si cuando cargue el input el label y el value se superpone,
@@ -16,7 +15,6 @@ const InputForm = ({
     xs={12}
   >
     <TextField
-      fullWidth
       disabled={disabled}
       variant={variant}
       {...rest}
