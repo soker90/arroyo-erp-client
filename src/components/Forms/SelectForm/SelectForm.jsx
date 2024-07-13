@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { TextField } from '@mui/material'
 import { Grid } from 'components'
 
 /**
@@ -8,23 +7,26 @@ import { Grid } from 'components'
  * como children del componente.
  */
 const SelectForm = ({
-  size = 6, children, variant = 'standard', ...rest
+  size = 6, children, variant = 'standard', label, name, ...rest
 }) => (
   <Grid
     item
     md={size}
     xs={12}
+    className='space-y-2'
   >
-    <TextField
-      select
-      variant={variant}
-      SelectProps={{
-        native: true
-      }}
+    <label
+      className='font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground'
+      htmlFor={name}
+    >{label}
+    </label>
+    <select
+      className='w-full appearance-none px-4 py-2 pr-8 leading-tight bg-transparent text-foreground border-b border-muted-foreground focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-50'
+      name={name}
       {...rest}
     >
       {children}
-    </TextField>
+    </select>
   </Grid>
 )
 
