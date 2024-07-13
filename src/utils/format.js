@@ -1,9 +1,15 @@
-import { capitalize } from '@mui/material'
 import dayjs from 'dayjs'
 import weekYear from 'dayjs/plugin/weekOfYear'
+
 dayjs.extend(weekYear)
 
-const date = cell => cell && new Date(cell).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })
+const capitalize = (str = '') => str.charAt(0).toUpperCase() + str.slice(1)
+
+const date = cell => cell && new Date(cell).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+})
 
 /**
  * Número de la semana del año

@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
-
 import PropTypes from 'prop-types'
-import {
-  Grid,
-  CardHeader
-} from '@mui/material'
 
-import { DatePickerForm, InputForm, SwitchForm, Card, CardContent } from 'components'
+import {
+  DatePickerForm, InputForm, SwitchForm, Card, CardContent, Grid,
+  CardHeader
+} from 'components'
 
 import { fields } from '../../constans'
 
