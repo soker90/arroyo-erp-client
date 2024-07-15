@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { RoutesWrapper } from 'story'
-import { story as DeliveryOrderExpand } from './index'
+import DeliveryOrderExpand from './index'
 
 export default {
   title: 'Componentes/DeliveryOrderExpand',

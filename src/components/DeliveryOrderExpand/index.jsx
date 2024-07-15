@@ -33,6 +33,4 @@ DeliveryOrderExpand.propTypes = {
   _id: PropTypes.string.isRequired
 }
 
-DeliveryOrderExpand.displayName = 'DeliveryOrderExpand'
-export const story = DeliveryOrderExpand
 export default DeliveryOrderExpand

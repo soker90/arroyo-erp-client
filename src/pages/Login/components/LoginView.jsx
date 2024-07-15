@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 import GuestGuard from 'components/GuestGuard'
 import { useAuth } from 'hooks'
 
@@ -29,13 +27,4 @@ const LoginView = () => {
   )
 }
 
-LoginView.propTypes = {
-  login: PropTypes.func.isRequired,
-  loginError: PropTypes.string,
-  isLoading: PropTypes.bool
-}
-
-LoginView.displayName = ' LoginView'
-
-export const story = LoginView
 export default LoginView

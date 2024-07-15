@@ -6,12 +6,10 @@ import {
 import EditIcon from '@mui/icons-material/Edit'
 
 import { ItemGroupsCard, Card, CardContent, CardHeader, Grid } from 'components'
-import { useStyles } from './ProviderInfo.styles'
 import { adapterProviderInfo } from './adapterProviderInfo'
 import EditProviderModal from '../../modals/EditProviderModal'
 
 const ProviderInfo = props => {
-  const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
 
   /**
@@ -39,7 +37,6 @@ const ProviderInfo = props => {
         item
         md={6}
         xs={12}
-        className={classes.root}
       >
         <Card>
           <CardHeader
@@ -47,7 +44,7 @@ const ProviderInfo = props => {
             title='Datos de contacto'
           />
           <hr />
-          <CardContent className={classes.content}>
+          <CardContent className='pb-0'>
             <ItemGroupsCard items={adapterProviderInfo(props)} />
           </CardContent>
         </Card>
