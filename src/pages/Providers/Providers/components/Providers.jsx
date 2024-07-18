@@ -1,16 +1,13 @@
 import { useCallback, useState } from 'react'
-import { Box } from '@mui/material'
 import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial, Container } from 'components'
 import { useProviders } from 'hooks'
-import { useStyles } from './Providers.styles'
 import NewProviderModal from '../modals/NewProviderModal'
 
 const Providers = () => {
-  const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
   const { providers, createProvider } = useProviders()
 
@@ -29,7 +26,7 @@ const Providers = () => {
 
   return (
     <>
-      <Page className={classes.root} title='Proveedores'>
+      <Page className='py-6' title='Proveedores'>
         <Container>
           <Header
             title='Provedores'
@@ -41,9 +38,8 @@ const Providers = () => {
               }
             ]}
           />
-          <Box mt={3}>
+          <div className='mt-6'>
             <TableMaterial
-              className={classes.table}
               columns={[
                 {
                   title: 'Nombre',
@@ -66,7 +62,7 @@ const Providers = () => {
               ]}
               href={_hrefRow}
             />
-          </Box>
+          </div>
         </Container>
       </Page>
       <NewProviderModal show={showModal} close={_closeModal} createProvider={createProvider} />
