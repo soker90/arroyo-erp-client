@@ -54,7 +54,7 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-perfect-scrollbar": "^1.5.8",
-    "react-router": "^6.23.1",
+    "react-router": "^6.26.0",
     "react-router-dom": "^6.23.0",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.4.0",
