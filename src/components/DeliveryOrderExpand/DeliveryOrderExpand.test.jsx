@@ -2,8 +2,9 @@
 import { fireEvent, render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
+import { TooltipProvider } from 'components'
 import { RoutesWrapper, ThemeWrapper } from '../../story'
-import { story as DeliveryOrderExpand } from './index'
+import DeliveryOrderExpand from './index'
 
 const products = [
   {
@@ -37,7 +38,9 @@ describe('DeliveryOrderExpandHeader', () => {
     const { findByTestId } = render(
       <RoutesWrapper>
         <ThemeWrapper>
-          <DeliveryOrderExpandStory />
+          <TooltipProvider>
+            <DeliveryOrderExpandStory />
+          </TooltipProvider>
         </ThemeWrapper>
       </RoutesWrapper>
     )
@@ -55,7 +58,9 @@ describe('DeliveryOrderExpandHeader', () => {
     } = render(
       <RoutesWrapper>
         <ThemeWrapper>
-          <DeliveryOrderExpandStory />
+          <TooltipProvider>
+            <DeliveryOrderExpandStory />
+          </TooltipProvider>
         </ThemeWrapper>
       </RoutesWrapper>
     )

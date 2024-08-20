@@ -10,7 +10,7 @@ const DeliveryOrderExpandHeader = ({
   children, _id, date, note, ...props
 }) => {
   return (
-    <div className='flex items-center'>
+    <div className='flex items-center' data-testid='delivery-order-expand-header'>
       {children}
 
       <Tooltip title='Ver'>

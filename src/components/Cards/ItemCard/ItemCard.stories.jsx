@@ -1,5 +1,5 @@
 import { Card, CardContent } from '../../'
-import { story as ItemCard } from './ItemCard'
+import ItemCard from './ItemCard'
 import { ThemeWrapper } from '../../../story'
 
 export default {
