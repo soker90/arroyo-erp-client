@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
-import { FormControlLabel, Switch } from '@mui/material'
 
-import { InputForm, ModalGrid, SelectForm } from 'components'
+import { InputForm, ModalGrid, SelectForm, SwitchForm } from 'components'
 import { TYPE_PROVIDER_LIST } from '../../../constants'
 
 const ProviderModal = ({
-  show, close, state, setState, action, hasType, ...rest
+  show, close, state, setState, action, hasType = false, ...rest
 }) => {
   /**
    * Handle event onChange input
@@ -95,15 +94,11 @@ const ProviderModal = ({
       )}
       {/* Todo terminar */}
       {false && (
-        <FormControlLabel
-          control={(
-            <Switch
-              checked={state.canal}
-              onChange={_handleChange}
-              name='canal'
-              color='primary'
-            />
-        )}
+        <SwitchForm
+          checked={state.canal}
+          onChange={_handleChange}
+          name='canal'
+          color='primary'
           label='Tiene canal'
         />
       )}
@@ -118,10 +113,6 @@ ProviderModal.propTypes = {
   setState: PropTypes.func.isRequired,
   action: PropTypes.func.isRequired,
   hasType: PropTypes.bool
-}
-
-ProviderModal.defaultProps = {
-  hasType: false
 }
 
 ProviderModal.displayName = 'ProviderModal'

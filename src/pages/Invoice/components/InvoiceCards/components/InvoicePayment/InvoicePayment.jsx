@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+  Grid, IconButton, Tooltip
 } from '@mui/material'
 
-import { ItemCard } from 'components'
+import { ItemCard, Card, CardContent, CardHeader } from 'components'
 import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal'
 import { format } from 'utils'
 import uniqId from 'uniqid'
@@ -41,7 +41,7 @@ const InvoicePayment = ({
           title='Datos de pago'
           action={payment && actions}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>
@@ -60,7 +60,7 @@ const InvoicePayment = ({
                 <ItemCard label='Pago conjunto' value={payment.invoicesOrder} />
               </Grid>
             )}
-            <Grid item xs={12} md={1}>
+            <Grid item xs={12} md={2} lg={1}>
               <ItemCard label='Pagado' value={payment.paid} variant='boolean' />
             </Grid>
           </Grid>

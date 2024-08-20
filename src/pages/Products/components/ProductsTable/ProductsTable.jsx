@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 import EditProductModal from '../../modals/EditProductModal'
 import DeleteProductModal from '../../modals/DeleteProductModal'
 import { useStyles } from './ProductsTable.styles'
@@ -47,7 +47,7 @@ const ProductsTable = ({
         data={products}
         actions={[
           {
-            icon: VisibilityIcon,
+            icon: Eye,
             tooltip: 'Ver',
             component: Link,
             to: ({ _id }) => `${BASE_PATH}/productos/${_id}`

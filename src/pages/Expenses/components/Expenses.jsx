@@ -1,13 +1,12 @@
 import {
   useCallback, useState
 } from 'react'
-import { Box, Container } from '@mui/material'
-import { PlusCircle as PlusCircleIcon } from 'react-feather'
+import { Box } from '@mui/material'
+import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { BASE_PATH } from 'constants/index'
-import { Header, Page, TableMaterial } from 'components'
+import { Header, Page, TableMaterial, Container } from 'components'
 import NewProviderModal from '../modals/NewProviderModal'
 import { useStyles } from './Expenses.styles'
 import { useProviders } from '../hooks'
@@ -34,7 +33,7 @@ const Expenses = () => {
   return (
     <>
       <Page className={classes.root} title='Gastos'>
-        <Container maxWidth={false}>
+        <Container>
           <Header
             title='Gastos'
             buttons={[
@@ -63,7 +62,7 @@ const Expenses = () => {
               href={_hrefRow}
               actions={[
                 {
-                  icon: VisibilityIcon,
+                  icon: Eye,
                   tooltip: 'Editar',
                   component: Link,
                   to: _hrefRow

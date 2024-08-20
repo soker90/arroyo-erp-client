@@ -1,43 +1,50 @@
-/* eslint-disable max-len */
 import { useMemo, useState } from 'react'
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
+
 import {
-  Box,
-  Card,
-  Table,
-  TablePagination
-} from '@mui/material'
+  Pagination
+} from 'components/ui/pagination'
+
+import { Table, Card } from 'components'
+import { cn } from 'utils'
 
 import NoData from './components/NoData'
 import HeadTable from './components/HeadTable'
 import BodyTable from './components/BodyTable'
 import TitleTable from './components/TitleTable'
-import { labelOfRows } from './utils'
-import { useStyles } from './TableMaterial.styles'
 
 const TableMaterial = ({
-  className, columns, actions, data, title, refresh, count, onRowClick, withCard, href, multiSelect,
-  onSelected, rowClass, rowsPerPageOptions, ...rest
+  className,
+  columns,
+  actions,
+  data = [],
+  title,
+  refresh,
+  count = 0,
+  onRowClick,
+  withCard = true,
+  href,
+  multiSelect,
+  onSelected,
+  rowClass,
+  rowsPerPageOptions,
+  ...rest
 }) => {
-  const classes = useStyles()
   const [page, setPage] = useState(0)
   const [limit, setLimit] = useState(rowsPerPageOptions?.[0] || 10)
 
-  const handlePageChange = (event, newPage) => {
+  const handlePageChange = (newPage) => {
     setPage(newPage)
     refresh({
-      offset: newPage * limit,
-      limit
+      offset: newPage * limit, limit
     })
   }
 
   const handleLimitChange = event => {
     setLimit(event.target.value)
     refresh({
-      offset: page * event.target.value,
-      limit: event.target.value
+      offset: page * event.target.value, limit: event.target.value
     })
   }
 
@@ -45,44 +52,38 @@ const TableMaterial = ({
 
   return (
     <Wrapper
-      className={clsx(classes.root, className)}
+      className={cn('w-auto overflow-x-auto text-foreground', className)}
       {...rest}
     >
       <TitleTable title={title} />
       <PerfectScrollbar>
-        <Box>
-          <Table>
-            <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
-            <BodyTable
-              columns={columns}
-              actions={actions}
-              classes={classes}
-              data={data}
-              href={href}
-              onRowClick={onRowClick}
-              multiSelect={multiSelect}
-              onSelected={onSelected}
-              rowClass={rowClass}
-            />
-          </Table>
+        <Table>
+          <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
+          <BodyTable
+            columns={columns}
+            actions={actions}
+            data={data}
+            href={href}
+            onRowClick={onRowClick}
+            multiSelect={multiSelect}
+            onSelected={onSelected}
+            rowClass={rowClass}
+          />
+        </Table>
 
-          <NoData elements={data.length} />
-        </Box>
+        <NoData elements={data.length} />
       </PerfectScrollbar>
-      {Boolean(count) &&
-      (
-        <TablePagination
-          component='div'
-          count={count}
-          onPageChange={handlePageChange}
-          onRowsPerPageChange={handleLimitChange}
-          page={page}
-          rowsPerPage={limit}
-          rowsPerPageOptions={rowsPerPageOptions || [10, 20, 30]}
-          labelRowsPerPage='filas'
-          labelDisplayedRows={labelOfRows}
-        />
-      )}
+
+      {Boolean(count) && (<Pagination
+        count={count}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleLimitChange}
+        page={page}
+        rowsPerPage={limit}
+        rowsPerPageOptions={rowsPerPageOptions || [20, 30, 40]}
+        className='py-2'
+                          />)}
+
     </Wrapper>
   )
 }
@@ -102,12 +103,6 @@ TableMaterial.propTypes = {
   onSelected: PropTypes.func,
   rowClass: PropTypes.func,
   rowsPerPageOptions: PropTypes.array
-}
-
-TableMaterial.defaultProps = {
-  data: [],
-  count: 0,
-  withCard: true
 }
 
 export const story = TableMaterial

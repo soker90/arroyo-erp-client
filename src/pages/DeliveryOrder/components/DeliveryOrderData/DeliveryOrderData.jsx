@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider
+  Card, CardContent, CardHeader
 } from '@mui/material'
 
 import { DatePickerForm, InputForm } from 'components'
@@ -39,7 +39,7 @@ const DeliveryOrderData = ({
   return (
     <Card>
       <CardHeader title='Datos del albarán' />
-      <Divider />
+      <hr />
       <CardContent>
         <DatePickerForm
           open={showDateModal}

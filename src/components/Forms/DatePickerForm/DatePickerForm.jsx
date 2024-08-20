@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
-import { Grid } from '@mui/material'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
-import dayjs from 'dayjs'
 
-import { useStyles } from './DatePickerForm.styles'
+import { Grid } from 'components'
+import dayjs from 'dayjs'
 
 const DatePickerForm = (
   {
@@ -17,8 +16,6 @@ const DatePickerForm = (
     ...rest
   }
 ) => {
-  const classes = useStyles()
-
   return (
     <Grid
       item
@@ -29,7 +26,7 @@ const DatePickerForm = (
         disableToolbar
         clearable
         allowSameDateSelection
-        className={classes.picker}
+        className='w-full'
         showToolbar={false}
         format={format}
         inputVariant={variant}

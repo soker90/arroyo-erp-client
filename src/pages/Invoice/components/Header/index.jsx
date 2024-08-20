@@ -3,7 +3,7 @@ import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
 import PropTypes from 'prop-types'
 
 import { Header } from 'components'
-import { Trash2 } from 'react-feather'
+import { Trash2 } from 'lucide-react'
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal'
 import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal'
 

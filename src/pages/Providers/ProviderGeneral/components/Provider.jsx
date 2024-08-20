@@ -1,12 +1,9 @@
 import {
   lazy, useCallback, useEffect, useState
 } from 'react'
-import {
-  Box, Container
-} from '@mui/material'
 import { useLocation, useParams } from 'react-router'
 
-import { HashTabs, Page, ProviderExpandedInfo } from 'components'
+import { HashTabs, Page, ProviderExpandedInfo, Container } from 'components'
 import { useProvider } from 'hooks'
 import { HASH_TABS, TABS } from '../constants'
 import Header from './Header'
@@ -51,7 +48,7 @@ const Provider = () => {
 
   return (
     <Page className={classes.root} title={provider.name}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           currentTab={currentTab}
           expanded={expand}
@@ -71,7 +68,7 @@ const Provider = () => {
 
         <HashTabs currentTab={currentTab} tabs={Object.values(TABS)} />
 
-        <Box py={3} pb={6}>
+        <div className='py-6 pb-12'>
           {currentTab === TABS.DELIVERY_ORDERS && (
             <DeliveryOrders
               selected={deliveryOrdersSelected}
@@ -81,7 +78,7 @@ const Provider = () => {
           )}
           {currentTab === TABS.INVOICES && <Invoices idProvider={idProvider} />}
           {currentTab === TABS.PRODUCTS && <Products idProvider={idProvider} />}
-        </Box>
+        </div>
 
       </Container>
     </Page>

@@ -1,65 +1,34 @@
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { alpha } from '@mui/material'
+import { cva } from 'class-variance-authority'
 
-import makeStyles from '@mui/styles/makeStyles'
+import { cn } from 'utils'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    fontFamily: theme.typography.fontFamily,
-    alignItems: 'center',
-    borderRadius: 2,
-    display: 'inline-flex',
-    flexGrow: 0,
-    whiteSpace: 'nowrap',
-    cursor: 'default',
-    flexShrink: 0,
-    fontSize: theme.typography.pxToRem(12),
-    fontWeight: theme.typography.fontWeightMedium,
-    height: 20,
-    justifyContent: 'center',
-    letterSpacing: 0.5,
-    minWidth: 20,
-    padding: theme.spacing(0.5, 1),
-    textTransform: 'uppercase'
-  },
-  primary: {
-    color: theme.palette.primary.main,
-    backgroundColor: alpha(theme.palette.primary.main, 0.08)
-  },
-  secondary: {
-    color: theme.palette.secondary.main,
-    backgroundColor: alpha(theme.palette.secondary.main, 0.08)
-  },
-  error: {
-    color: theme.palette.error.main,
-    backgroundColor: alpha(theme.palette.error.main, 0.08)
-  },
-  success: {
-    color: theme.palette.success.main,
-    backgroundColor: alpha(theme.palette.success.main, 0.08)
-  },
-  warning: {
-    color: theme.palette.warning.main,
-    backgroundColor: alpha(theme.palette.warning.main, 0.08)
+const labelVariants = cva(
+  'items-center rounded-sm inline-flex flex-grow-0 whitespace-nowrap flex-shrink-0 text-xs font-medium h-5 justify-center tracking-wider min-w-[20px] px-2 py-1 uppercase',
+  {
+    variants: {
+      color: {
+        primary: 'text-primary bg-primary/10',
+        secondary: 'text-secondary bg-secondary/10',
+        error: 'text-destructive bg-destructive/10',
+        warning: 'text-warning bg-warning/10',
+        success: 'text-success bg-success/10'
+      }
+    }
   }
-}))
+)
 
 const Label = ({
   className,
-  color,
+  color = 'secondary',
   children,
   style,
   ...rest
 }) => {
-  const classes = useStyles()
-
   return (
     <span
       className={
-        clsx(classes.root, {
-          [classes[color]]: color
-        }, className)
+        cn(labelVariants({ color }), className)
       }
       {...rest}
     >
@@ -73,11 +42,6 @@ Label.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   color: PropTypes.oneOf(['primary', 'secondary', 'error', 'warning', 'success'])
-}
-
-Label.defaultProps = {
-  className: '',
-  color: 'secondary'
 }
 
 export default Label

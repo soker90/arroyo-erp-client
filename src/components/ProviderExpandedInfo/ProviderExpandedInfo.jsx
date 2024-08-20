@@ -1,24 +1,19 @@
 import PropTypes from 'prop-types'
-import { Box, Grid } from '@mui/material'
 
+import { Grid } from 'components'
 import ProviderInfo from './components/ProviderInfo'
 import ProviderBilling from './components/ProviderBilling'
-import { useStyles } from './ProviderExpandedInfo.styles'
 
 const ProviderExpandedInfo = ({
   expanded, provider, billing
 }) => {
-  const classes = useStyles()
-
   if (!expanded) return null
 
   return (
-    <Box mt={3} className={classes.cards}>
-      <Grid container spacing={3}>
-        <ProviderInfo {...provider} />
-        <ProviderBilling {...billing} />
-      </Grid>
-    </Box>
+    <Grid className='mb-6'>
+      <ProviderInfo {...provider} />
+      <ProviderBilling {...billing} />
+    </Grid>
   )
 }
 

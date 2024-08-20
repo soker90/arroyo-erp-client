@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+  Card, CardContent, CardHeader, Grid, IconButton, Tooltip
 } from '@mui/material'
 import uniqId from 'uniqid'
 
@@ -44,7 +44,7 @@ const DeliveryOrderTotals = ({
     <>
       <Card>
         <CardHeader title='Totales' action={_getActions()} />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
 

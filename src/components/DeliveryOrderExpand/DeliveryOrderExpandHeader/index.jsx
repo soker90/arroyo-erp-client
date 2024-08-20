@@ -1,55 +1,41 @@
-import { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Link as RouterLink } from 'react-router-dom'
-import {
-  FormControlLabel,
-  IconButton,
-  Tooltip,
-  Typography
-} from '@mui/material'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 
+import { Button, Typography, Tooltip, TooltipContent, TooltipTrigger } from 'components'
 import { format } from 'utils'
 import TextEuro from '../../TextEuro'
 import { getTotals } from './utils'
-import { useStyles } from './styles'
 
 const DeliveryOrderExpandHeader = ({
   children, _id, date, note, ...props
 }) => {
-  const classes = useStyles()
-
   return (
-    <>
-      <FormControlLabel
-        onClick={event => event.stopPropagation()}
-        onFocus={event => event.stopPropagation()}
-        data-testid='delivery-order-expand-header'
-        control={(
-          <>
-            {children}
-            <Tooltip title='Ver'>
-              <IconButton component={RouterLink} to={`/app/albaranes/${_id}`} size='large'>
-                <VisibilityIcon />
-              </IconButton>
-            </Tooltip>
-          </>
-      )}
-        label=''
-      />
+    <div className='flex items-center' data-testid='delivery-order-expand-header'>
+      {children}
+
+      <Tooltip title='Ver'>
+        <TooltipContent>
+          Ver
+        </TooltipContent>
+        <TooltipTrigger asChild>
+          <Button to={`/app/albaranes/${_id}`} size='icon' variant='icon' className='mr-4 text-foreground'>
+            <Eye />
+          </Button>
+        </TooltipTrigger>
+      </Tooltip>
 
       <Typography
         color='textPrimary'
         variant='body1'
-        style={{ marginTop: '0.75rem' }}
+        className='flex flex-wrap'
       >
-        <strong className={classes.total}>{format.date(date)}</strong>
+        <strong className='mr-20'>{format.date(date)}</strong>
         {getTotals(props)
           .map(total => (
-            <Fragment key={total.label}>
+            <p key={total.label}>
               {` ${total.label} `}
-              <TextEuro num={total.value} className={classes.total} />
-            </Fragment>
+              <TextEuro num={total.value} className='mr-20' />
+            </p>
           ))}
       </Typography>
       <Typography
@@ -59,7 +45,7 @@ const DeliveryOrderExpandHeader = ({
       >
         {note}
       </Typography>
-    </>
+    </div>
   )
 }
 
@@ -74,6 +60,4 @@ DeliveryOrderExpandHeader.propTypes = {
   note: PropTypes.string
 }
 
-DeliveryOrderExpandHeader.displayName = 'DeliveryOrderExpandHeader'
-export const story = DeliveryOrderExpandHeader
 export default DeliveryOrderExpandHeader

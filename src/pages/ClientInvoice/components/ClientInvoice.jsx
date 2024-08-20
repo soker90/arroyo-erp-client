@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
-import { Container } from '@mui/material'
 
-import { Page } from 'components'
+import { Page, BannerPaid, Container } from 'components'
 import Header from './Header'
 import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
 import DeliveryOrderInvoice from './DeliveryOrderInvoice'
-import BannerPaid from '../../../components/BannerPaid'
 import { useClientInvoice } from '../hooks'
 import ProductOrderModal from '../modals/ProductOrderModal/index.js'
 
@@ -70,7 +68,7 @@ const ClientInvoice = () => {
 
   return (
     <Page className={classes.root} title={`${nameClient} | Factura`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           client={invoice?.client}
           nameClient={invoice?.nameClient}
@@ -86,7 +84,7 @@ const ClientInvoice = () => {
             paid={paid}
             paymentType={paymentType}
             paymentDate={paymentDate}
-            className={classes.banner}
+            className='mb-2'
           />
         )}
 

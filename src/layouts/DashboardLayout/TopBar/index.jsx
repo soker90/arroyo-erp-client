@@ -5,7 +5,7 @@ import {
   AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import { Menu as MenuIcon } from 'react-feather'
+import { Menu as MenuIcon } from 'lucide-react'
 
 import Logo from 'components/Logo'
 import { THEMES } from 'constants/common'

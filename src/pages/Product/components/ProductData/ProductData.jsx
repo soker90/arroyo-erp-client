@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Divider, Grid, IconButton, Tooltip
+  Grid, IconButton, Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
+
+import { Card, CardContent, CardHeader } from 'components'
 
 import ProductItemCard from './ProductItemCard'
 import { generateLabels } from './utils'
@@ -36,7 +38,7 @@ const ProductData = ({
     <>
       <Card className={className}>
         <CardHeader
-          title='Totales'
+          title='Datos'
           action={provider && [
             <Tooltip title='Editar' key={uniqId()}>
               <IconButton
@@ -48,7 +50,7 @@ const ProductData = ({
             </Tooltip>
           ]}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             {generateLabels(product, provider)

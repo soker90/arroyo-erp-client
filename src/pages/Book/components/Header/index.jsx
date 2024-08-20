@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
-import GetAppIcon from '@mui/icons-material/GetApp'
+import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { Header } from 'components'
@@ -43,45 +41,45 @@ const HeaderBook = ({ year, filter }) => {
       buttons={[
         {
           onClick: _handleClickDownloadTrimester(1),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'T1',
           variant: 'contained'
         },
         {
           onClick: _handleClickDownloadTrimester(4),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'T2',
           variant: 'contained'
         },
         {
           onClick: _handleClickDownloadTrimester(7),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'T3',
           variant: 'contained'
         },
         {
           onClick: _handleClickDownloadTrimester(10),
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'T4',
           variant: 'contained'
         },
         {
           onClick: _handleClickDownload,
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'Descargar',
           variant: 'contained'
         },
         {
           component: NavLink,
           to: `/app/libro/${year - 1}`,
-          Icon: SkipPreviousIcon,
+          Icon: SkipBack,
           label: `${year - 1}`,
           variant: 'outlined'
         },
         {
           component: NavLink,
           to: `/app/libro/${year + 1}`,
-          Icon: SkipNextIcon,
+          Icon: SkipForward,
           label: `${year + 1}`,
           variant: 'outlined'
         }

@@ -5,7 +5,6 @@ import { isInvoiceEditable } from 'pages/Invoice/utils'
 import InvoiceData from './components/InvoiceData'
 import InvoiceTotals from './components/InvoiceTotals'
 import InvoicePayment from './components/InvoicePayment'
-import { useStyles } from './InvoiceCards.styles'
 
 const InvoiceCards = ({
   data,
@@ -14,22 +13,20 @@ const InvoiceCards = ({
   id,
   updateData
 }) => {
-  const classes = useStyles()
-
   const isEditable = useMemo(() => isInvoiceEditable(data), [data.nOrder, data.concept])
 
   return (
     <>
       <InvoiceData
-        {...data} className={classes.data} id={id} updateData={updateData}
+        {...data} className='mt-4' id={id} updateData={updateData}
         total={totals?.total}
       />
       <InvoiceTotals
-        {...totals} isEditable={isEditable} className={classes.totals}
+        {...totals} isEditable={isEditable} className='mt-4'
         updateData={updateData}
       />
       {payment && <InvoicePayment
-        payment={payment} className={classes.data} id={id}
+        payment={payment} className='mt-4' id={id}
         updateData={updateData}
                   />}
     </>

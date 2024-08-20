@@ -1,34 +1,18 @@
 import PropTypes from 'prop-types'
 import {
-  Avatar, Box, Card, Grid, Typography
+  Avatar, Box
 } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+
 import EuroIcon from '@mui/icons-material/Euro'
 
+import { Card, Typography, Grid } from 'components'
 import { format } from 'utils'
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  avatar: {
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.secondary.contrastText,
-    height: 48,
-    width: 48
-  }
-}))
 
 const TotalsReportBox = ({
   title,
   value,
   size
 }) => {
-  const classes = useStyles()
-
   return (
     <Grid
       item
@@ -36,13 +20,12 @@ const TotalsReportBox = ({
       sm={4}
       xs={12}
     >
-      <Card className={classes.root}>
+      <Card className='p-6 flex items-center justify-between'>
         <Box flexGrow={1}>
           <Typography
             component='h3'
-            gutterBottom
             variant='overline'
-            color='textSecondary'
+            className='text-muted-foreground font-bold'
           >
             {title}
           </Typography>
@@ -50,16 +33,16 @@ const TotalsReportBox = ({
             display='flex'
             alignItems='center'
             flexWrap='wrap'
+            className='mt-2'
           >
             <Typography
               variant='h3'
-              color='textPrimary'
             >
               {format.number(value)}
             </Typography>
           </Box>
         </Box>
-        <Avatar className={classes.avatar}>
+        <Avatar className='bg-secondary text-secondary-foreground h-12 w-12'>
           <EuroIcon />
         </Avatar>
       </Card>

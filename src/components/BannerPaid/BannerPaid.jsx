@@ -1,6 +1,6 @@
-import { Alert } from '@mui/material'
 import PropTypes from 'prop-types'
-import { format } from '../../utils'
+import { Alert } from 'components'
+import { format } from 'utils'
 
 const BannerPaid = ({
   paid,
@@ -8,7 +8,7 @@ const BannerPaid = ({
   paymentType,
   className
 }) => (
-  <Alert severity={paid ? 'success' : 'error'} className={className} variant='filled'>
+  <Alert severity={paid ? 'success' : 'error'} className={className}>
     {!paid && 'NO '}
     PAGADO
     {paid && ` el ${format.date(paymentDate)} con ${paymentType}`}
@@ -22,5 +22,4 @@ BannerPaid.propTypes = {
   paymentType: PropTypes.string
 }
 
-export const story = BannerPaid
 export default BannerPaid

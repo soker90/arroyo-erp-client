@@ -1,29 +1,19 @@
 import { Suspense, memo } from 'react'
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
-import { LinearProgress } from '@mui/material'
+
+import { LoadingBar } from 'components'
 import TopBar from './TopBar'
 
-const useStyles = makeStyles(() => ({
-  content: {
-    height: '100%'
-  }
-}))
-
-const Auth = ({ children }) => {
-  const classes = useStyles()
-
-  return (
-    <>
-      <TopBar />
-      <main className={classes.content}>
-        <Suspense fallback={<LinearProgress />}>
-          {children}
-        </Suspense>
-      </main>
-    </>
-  )
-}
+const Auth = ({ children }) => (
+  <div className='flex flex-col h-screen'>
+    <TopBar />
+    <main className='flex-1'>
+      <Suspense fallback={<LoadingBar />}>
+        {children}
+      </Suspense>
+    </main>
+  </div>
+)
 
 Auth.propTypes = {
   children: PropTypes.object.isRequired

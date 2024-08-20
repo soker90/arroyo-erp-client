@@ -1,7 +1,4 @@
-import {
-  Typography,
-  Button
-} from '@mui/material'
+import { Button, Typography } from 'components'
 import { useStyles } from './NotNetwork.styles'
 
 const NotNetwork = () => {
@@ -57,9 +54,7 @@ const NotNetwork = () => {
       </div>
       <div className={classes.buttonContainer}>
         <Button
-          color='primary'
           onClick={() => window.location.reload()}
-          variant='outlined'
         >
           Refrescar
         </Button>
@@ -67,7 +62,5 @@ const NotNetwork = () => {
     </div>
   )
 }
-
-NotNetwork.displayName = 'NotFound'
 
 export default NotNetwork

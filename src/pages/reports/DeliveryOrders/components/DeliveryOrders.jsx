@@ -1,20 +1,17 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import { useDOCountFree } from '../hooks'
 import DeliveryOrdersTable from './DeliveryOrdersTable'
 import Header from './Header'
-import { useStyles } from './DeliveryOrders.styles'
 
 const DeliveryOrders = () => {
-  const classes = useStyles()
   const { year } = useParams()
   const { doCount } = useDOCountFree(year)
 
   return (
-    <Page className={classes.root} title={`Albaranes ${year}`}>
-      <Container maxWidth={false}>
+    <Page className='py-6' title={`Albaranes ${year}`}>
+      <Container>
         <Header year={Number(year)} />
 
         <DeliveryOrdersTable doCount={doCount} />

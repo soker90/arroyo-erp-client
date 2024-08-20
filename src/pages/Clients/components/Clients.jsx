@@ -1,13 +1,12 @@
 import {
   useCallback, useState
 } from 'react'
-import { Box, Container } from '@mui/material'
-import { PlusCircle as PlusCircleIcon } from 'react-feather'
+import { Box } from '@mui/material'
+import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { BASE_PATH } from 'constants/index'
-import { Header, Page, TableMaterial } from 'components'
+import { Header, Page, TableMaterial, Container } from 'components'
 import { useStyles } from './Clients.styles'
 import NewProviderModal from '../modals/NewClientModal'
 import { useClients } from '../hooks'
@@ -30,7 +29,7 @@ const Clients = () => {
   return (
     <>
       <Page className={classes.root} title='Clientes'>
-        <Container maxWidth={false}>
+        <Container>
           <Header
             title='Clientes'
             buttons={[{
@@ -50,7 +49,7 @@ const Clients = () => {
               data={clients}
               title={`Clientes (${clients?.length})`}
               actions={[{
-                icon: VisibilityIcon, tooltip: 'Editar', component: Link, to: _hrefRow
+                icon: Eye, tooltip: 'Editar', component: Link, to: _hrefRow
               }]}
               href={_hrefRow}
             />

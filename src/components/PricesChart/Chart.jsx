@@ -1,7 +1,5 @@
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { Line } from 'react-chartjs-2'
-import { alpha, useTheme } from '@mui/material'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,8 +11,9 @@ import {
   Legend
 } from 'chart.js'
 
-import makeStyles from '@mui/styles/makeStyles'
 import { useEffect, useRef, useState } from 'react'
+
+import { cn } from 'utils'
 
 ChartJS.register(
   CategoryScale,
@@ -26,12 +25,6 @@ ChartJS.register(
   Legend
 )
 
-const useStyles = makeStyles(() => ({
-  root: {
-    position: 'relative'
-  }
-}))
-
 const Chart = ({
   className,
   data: dataProp,
@@ -40,9 +33,6 @@ const Chart = ({
   lineColor,
   ...rest
 }) => {
-  const classes = useStyles()
-  const theme = useTheme()
-
   const chartRef = useRef(null)
   const [chartData, setChartData] = useState({
     datasets: [],
@@ -53,7 +43,7 @@ const Chart = ({
     // const ctx = canvas.getContext('2d');
     const gradient = chart.ctx.createLinearGradient(0, 0, 0, 400)
 
-    gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.2))
+    gradient.addColorStop(0, 'rgba(138, 133, 255, 0.2)')
     gradient.addColorStop(0.9, 'rgba(255,255,255,0)')
     gradient.addColorStop(1, 'rgba(255,255,255,0)')
 
@@ -62,11 +52,11 @@ const Chart = ({
         {
           data: dataProp,
           backgroundColor: gradient,
-          borderColor: lineColor ?? theme.palette.secondary.main,
-          pointBorderColor: theme.palette.background.default,
+          borderColor: lineColor ?? 'rgb(138, 133, 255)',
+          pointBorderColor: '#fff',
           pointBorderWidth: 3,
           pointRadius: 6,
-          pointBackgroundColor: lineColor ?? theme.palette.secondary.main
+          pointBackgroundColor: lineColor ?? 'rgb(138, 133, 255)'
         }
       ],
       labels
@@ -95,11 +85,11 @@ const Chart = ({
         yPadding: 20,
         xPadding: 20,
         borderWidth: 1,
-        borderColor: theme.palette.divider,
-        backgroundColor: theme.palette.background.default,
-        titleColor: theme.palette.text.primary,
-        bodyColor: theme.palette.text.secondary,
-        footerColor: theme.palette.text.secondary,
+        borderColor: 'rgba(255, 255, 255, 0.12)',
+        backgroundColor: '#fff',
+        titleColor: '#263238',
+        bodyColor: '#546e7a',
+        footerColor: '#546e7a',
         callbacks: {
           title: () => {
           },
@@ -125,7 +115,7 @@ const Chart = ({
           },
           ticks: {
             padding: 20,
-            fontColor: theme.palette.text.secondary
+            fontColor: '#546e7a'
           }
         },
       y:
@@ -133,15 +123,15 @@ const Chart = ({
           gridLines: {
             borderDash: [2],
             borderDashOffset: [2],
-            color: theme.palette.divider,
+            color: 'rgba(0, 0, 0, 0.12)',
             drawBorder: false,
             zeroLineBorderDash: [2],
             zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider
+            zeroLineColor: 'rgba(0, 0, 0, 0.12)'
           },
           ticks: {
             padding: 20,
-            fontColor: theme.palette.text.secondary,
+            fontColor: '#546e7a',
             beginAtZero: true,
             min: 0,
             maxTicksLimit: 7,
@@ -154,7 +144,7 @@ const Chart = ({
 
   return (
     <div
-      className={clsx(classes.root, className)}
+      className={cn('relative', className)}
       {...rest}
     >
       <Line

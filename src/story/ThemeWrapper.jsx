@@ -5,8 +5,7 @@ import { THEMES } from '../constants/common'
 /**
  * Theme wrapper for storybook
  * @param children
- * @param {string} theme
- * @return {ThemeProvider}
+ * @return {JSX.Element}
  * @constructor
  */
 

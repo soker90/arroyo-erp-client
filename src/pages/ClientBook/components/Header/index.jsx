@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
+import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
 
 import { Header } from 'components'
-import { NavLink } from 'react-router-dom'
-import GetAppIcon from '@mui/icons-material/GetApp'
-import { downloadFile } from '../../../../utils'
+import { downloadFile } from 'utils'
 
 const HeaderBook = ({ year }) => {
   const _handleClickDownload = () => {
@@ -23,21 +21,21 @@ const HeaderBook = ({ year }) => {
       buttons={[
         {
           onClick: _handleClickDownload,
-          Icon: GetAppIcon,
+          Icon: ArrowDownToLine,
           label: 'Descargar',
           variant: 'contained'
         },
         {
           component: NavLink,
           to: `/app/clientes/libro/${year - 1}`,
-          Icon: SkipPreviousIcon,
+          Icon: SkipBack,
           label: `${year - 1}`,
           variant: 'outlined'
         },
         {
           component: NavLink,
           to: `/app/clientes/libro/${year + 1}`,
-          Icon: SkipNextIcon,
+          Icon: SkipForward,
           label: `${year + 1}`,
           variant: 'outlined'
         }
@@ -50,6 +48,4 @@ HeaderBook.propTypes = {
   year: PropTypes.number.isRequired
 }
 
-HeaderBook.displayName = 'HeaderBook'
-export const story = HeaderBook
 export default HeaderBook

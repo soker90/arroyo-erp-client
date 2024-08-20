@@ -1,7 +1,6 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import Header from './Header'
 import { useStyles } from './ClientBook.styles'
 import InvoicesTable from './InvoicesTable'
@@ -14,7 +13,7 @@ const ClientBook = () => {
 
   return (
     <Page className={classes.root} title='Libro'>
-      <Container maxWidth={false}>
+      <Container>
         <Header year={Number(year)} />
         <InvoicesTable invoices={invoices} year={year} />
       </Container>

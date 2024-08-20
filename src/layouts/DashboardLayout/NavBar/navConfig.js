@@ -1,4 +1,4 @@
-import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'react-feather'
+import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'lucide-react'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import DescriptionIcon from '@mui/icons-material/Description'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'

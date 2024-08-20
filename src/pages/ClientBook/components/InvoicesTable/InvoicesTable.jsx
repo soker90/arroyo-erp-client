@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 
 import { TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'
@@ -58,7 +58,7 @@ const InvoicesTable = ({ invoices, year }) => {
             disabled: ({ paid }) => paid
           },
           {
-            icon: VisibilityIcon,
+            icon: Eye,
             tooltip: 'Ver',
             component: Link,
             to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`

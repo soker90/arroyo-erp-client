@@ -1,36 +1,31 @@
-import { Container } from '@mui/material'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh'
+import { Eye, Wand } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import { Header, Page, TableMaterial, TextEuro } from 'components'
+import { Header, Page, TableMaterial, TextEuro, Container } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
 
 import { useWrongPrices } from './hooks'
-import { useStyles } from './WrongPrices.styles'
 
 const WrongPrices = () => {
   const { products, fixPrices } = useWrongPrices()
-  const classes = useStyles()
 
   return (
-    <Page className={classes.root} title='Precios erróneos'>
-      <Container maxWidth={false}>
+    <Page className='py-6' title='Precios erróneos'>
+      <Container>
         <Header
           title='Precios erróneos'
           description='Productos con errores en el precio'
           buttons={[{
             onClick: fixPrices,
-            Icon: AutoFixHighIcon,
+            Icon: Wand,
             label: 'Corregir',
-            variant: 'contained',
-            disableSvg: true
+            variant: 'contained'
           }]}
         />
 
         <TableMaterial
-          className={classes.table}
+          className='mt-4'
           columns={[
             {
               title: 'Proveedor',
@@ -56,7 +51,7 @@ const WrongPrices = () => {
           data={products}
           actions={[
             {
-              icon: VisibilityIcon,
+              icon: Eye,
               tooltip: 'Ver producto',
               component: Link,
               to: ({ id }) => `${BASE_PATH}/productos/${id}`

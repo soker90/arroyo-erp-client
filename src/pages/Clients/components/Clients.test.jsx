@@ -2,7 +2,12 @@
 import { render, screen, act, setupMsw } from 'tests/testUtils'
 import { describe, expect, it, beforeEach, vi, afterEach } from 'vitest'
 
+import { SettingsProvider } from 'context/SettingsContext'
+import { restoreSettings } from 'utils/settings'
+
 import Clients from './Clients'
+
+const settings = restoreSettings()
 
 const notificationMock = {
   showError: vi.fn()
@@ -18,7 +23,13 @@ vi.mock('../../../hooks/useNotifications', () => {
 describe('Clients', () => {
   setupMsw()
   beforeEach(() => {
-    act(() => { render(<Clients />) }
+    act(() => {
+      render(
+        <SettingsProvider settings={settings}>
+          <Clients />
+        </SettingsProvider>
+      )
+    }
     )
   })
 

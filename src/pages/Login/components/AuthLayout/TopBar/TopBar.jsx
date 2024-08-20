@@ -1,25 +1,16 @@
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { AppBar, Toolbar } from '@mui/material'
 
-import { useStyles } from './TopBar.styles'
-
-const TopBar = ({ className }) => {
-  const classes = useStyles()
+const TopBar = () => {
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      color='primary'
-    >
-      <Toolbar>
+    <div className='bg-header min-h-16 flex items-center'>
+      <nav className='px-6'>
         <img
           alt='Logo'
           src='/static/logo.png'
-          height='45rem'
-          width='100rem'
+          className='h-12 w-auto'
         />
-      </Toolbar>
-    </AppBar>
+      </nav>
+    </div>
   )
 }
 

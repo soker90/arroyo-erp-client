@@ -1,15 +1,11 @@
-/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types'
 
 import { TableMaterial, TextEuro } from 'components'
-import { useStyles } from './BillingTable.styles'
 
 const BillingTable = ({
   billing,
   type
 }) => {
-  const classes = useStyles()
-
   const renderCell = (
     trimester,
     invoices
@@ -25,7 +21,7 @@ const BillingTable = ({
 
   return (
     <TableMaterial
-      className={classes.table}
+      className='mt-4'
       columns={[
         {
           title: type === 'clientes' ? 'Cliente' : 'Proveedor',

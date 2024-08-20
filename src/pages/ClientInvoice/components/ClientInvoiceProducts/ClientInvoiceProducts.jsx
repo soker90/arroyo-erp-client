@@ -6,13 +6,13 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import { TableMaterial, TextEuro } from 'components'
 import { format } from 'utils'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useStyles } from './ClientInvoiceProducts.styles'
 import { BASE_PATH } from '../../../../constants'
 
 const viewIcon = {
-  icon: VisibilityIcon,
+  icon: Eye,
   tooltip: 'Ver',
   component: Link,
   to: ({ productId }) => `${BASE_PATH}/productos/${productId}`

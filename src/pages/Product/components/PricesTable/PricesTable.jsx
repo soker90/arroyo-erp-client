@@ -1,5 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete'
-import VisibilityIcon from '@mui/icons-material/Visibility'
+import { Eye } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -51,7 +51,7 @@ const PricesTable = ({
             onClick: (product) => setShowDeleteModal(product)
           },
           {
-            icon: VisibilityIcon,
+            icon: Eye,
             tooltip: 'Ver albarán',
             component: Link,
             to: composeDoUrl

@@ -1,26 +1,18 @@
 import { useState } from 'react'
 import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Divider,
-  Grid, IconButton, InputAdornment, Tooltip
+  InputAdornment, Tooltip
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import SearchIcon from '@mui/icons-material/Search'
 
 import {
-  InputForm, Page
+  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'
 import Header from './Header'
-import { useStyles } from './SwapInvoices.styles'
 
 const SwapInvoices = () => {
-  const classes = useStyles()
   const [invoiceA, setInvoiceA] = useState('')
   const [invoiceB, setInvoiceB] = useState('')
   const {
@@ -38,9 +30,9 @@ const SwapInvoices = () => {
   const _renderAdornment = onClick => (
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
-        <IconButton onClick={onClick} size='large'>
+        <Button variant='icon' size='icon' onClick={onClick}>
           <SearchIcon />
-        </IconButton>
+        </Button>
       </Tooltip>
     </InputAdornment>
   )
@@ -49,13 +41,13 @@ const SwapInvoices = () => {
     set(value)
   }
   return (
-    <Page className={classes.root} title='Intercambiar nº orden'>
-      <Container maxWidth={false}>
+    <Page className='py-6' title='Intercambiar nº orden'>
+      <Container>
         <Header />
 
-        <Card className={classes.card}>
+        <Card className='mt-2'>
           <CardHeader title='Intercambiar números de orden' />
-          <Divider />
+          <hr />
           <CardContent>
             <Grid spacing={3} container>
               <InputForm
@@ -80,10 +72,8 @@ const SwapInvoices = () => {
               />
               <Grid item md={2} xs={12}>
                 <Button
-                  color='primary'
-                  variant='contained'
-                  className={classes.button}
                   onClick={swapInvoices}
+                  className='mt-1'
                 >
                   Intercambiar
                 </Button>

@@ -1,16 +1,15 @@
 import {
   useCallback, useState
 } from 'react'
-import { Container } from '@mui/material'
 
 import { Link } from 'react-router-dom'
-import { ShoppingCart } from 'react-feather'
+import { ShoppingCart } from 'lucide-react'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 import { BASE_PATH } from 'constants/index'
-import { Page, TableMaterial, TextEuro } from 'components'
+import { Page, TableMaterial, TextEuro, Container } from 'components'
 import { addSelectedToState, format, removeSelectedFromState } from 'utils'
 import DeletePriceChangeModal from '../modals/DeletePriceChangeModal'
 import { useStyles } from './PriceChanges.styles'
@@ -59,7 +58,7 @@ const PriceChanges = () => {
   return (
     <>
       <Page className={classes.root} title='Cambio de precios'>
-        <Container maxWidth={false}>
+        <Container>
           <Header
             selected={selected}
             setSelected={setSelected}

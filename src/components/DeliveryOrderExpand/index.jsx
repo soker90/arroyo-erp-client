@@ -1,25 +1,24 @@
 import PropTypes from 'prop-types'
 import {
   Accordion,
-  AccordionDetails,
-  AccordionSummary
-} from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+  AccordionContent, AccordionItem,
+  AccordionTrigger
+} from 'components'
 
 import ProductsOrderTable from './ProductsOrderTable'
 import DeliveryOrderExpandHeader from './DeliveryOrderExpandHeader'
 
 const DeliveryOrderExpand = ({ products, ...props }) => (
-  <Accordion TransitionProps={{ unmountOnExit: true }}>
-    <AccordionSummary
-      expandIcon={<ExpandMoreIcon />}
-    >
-      <DeliveryOrderExpandHeader {...props} />
-    </AccordionSummary>
+  <Accordion type='multiple'>
+    <AccordionItem>
+      <AccordionTrigger>
+        <DeliveryOrderExpandHeader {...props} />
+      </AccordionTrigger>
 
-    <AccordionDetails>
-      <ProductsOrderTable products={products} />
-    </AccordionDetails>
+      <AccordionContent>
+        <ProductsOrderTable products={products} />
+      </AccordionContent>
+    </AccordionItem>
   </Accordion>
 )
 
@@ -34,6 +33,4 @@ DeliveryOrderExpand.propTypes = {
   _id: PropTypes.string.isRequired
 }
 
-DeliveryOrderExpand.displayName = 'DeliveryOrderExpand'
-export const story = DeliveryOrderExpand
 export default DeliveryOrderExpand

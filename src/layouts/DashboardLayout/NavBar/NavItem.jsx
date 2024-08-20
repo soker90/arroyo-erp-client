@@ -2,64 +2,10 @@ import { useState } from 'react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { Button, Collapse, ListItem } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { Collapse, ListItem } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-
-const useStyles = makeStyles(theme => ({
-  item: {
-    display: 'block',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  itemLeaf: {
-    display: 'flex',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  button: {
-    color: theme.palette.text.secondary,
-    padding: '10px 8px',
-    justifyContent: 'flex-start',
-    textTransform: 'none',
-    letterSpacing: 0,
-    width: '100%'
-  },
-  buttonLeaf: {
-    color: theme.palette.text.secondary,
-    padding: '10px 8px',
-    justifyContent: 'flex-start',
-    textTransform: 'none',
-    letterSpacing: 0,
-    width: '100%',
-    fontWeight: theme.typography.fontWeightRegular,
-    '&.depth-0': {
-      '& $title': {
-        fontWeight: theme.typography.fontWeightMedium
-      }
-    }
-  },
-  icon: {
-    display: 'flex',
-    alignItems: 'center',
-    marginRight: theme.spacing(1)
-  },
-  title: {
-    marginRight: 'auto'
-  },
-  active: {
-    '& button': {
-      color: theme.palette.secondary.main,
-      '& $title': {
-        fontWeight: theme.typography.fontWeightMedium
-      },
-      '& $icon': {
-        color: theme.palette.secondary.main
-      }
-    }
-  }
-}))
+import { Button } from 'components'
 
 const NavItem = ({
   title,
@@ -68,11 +14,10 @@ const NavItem = ({
   children,
   icon: Icon,
   className,
-  open: openProp,
+  open: openProp = false,
   info: Info,
   ...rest
 }) => {
-  const classes = useStyles()
   const [open, setOpen] = useState(openProp)
 
   const handleToggle = () => {
@@ -88,23 +33,24 @@ const NavItem = ({
   if (children) {
     return (
       <ListItem
-        className={clsx(classes.item, className)}
+        className={clsx('block py-0', className)}
         disableGutters
         key={title}
         {...rest}
       >
         <Button
-          className={classes.button}
+          variant='ghost'
+          className='capitalize text-[#546e7a] dark:text-[#adb0bb] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
           onClick={handleToggle}
           style={style}
         >
           {Icon && (
             <Icon
-              className={classes.icon}
+              className='flex items-center mr-2'
               size='20'
             />
           )}
-          <span className={classes.title}>
+          <span className='mr-auto'>
             {title}
           </span>
           {open
@@ -130,26 +76,30 @@ const NavItem = ({
 
   return (
     <ListItem
-      className={clsx(classes.itemLeaf, className)}
+      className={clsx('flex py-0', className)}
       disableGutters
       key={title}
       {...rest}
     >
-      <RouterLink to={href} className={({ isActive }) => (isActive ? classes.active : undefined)}>
+      <RouterLink
+        to={href}
+        className={({ isActive }) => (isActive ? 'text-secondary hover:text-secondary' : 'text-[#546e7a] hover:text-[#546e7a] dark:text-[#adb0bb]')}
+      >
         <Button
-          className={clsx(classes.buttonLeaf, `depth-${depth}`)}
+          variant='ghost'
+          className='capitalize w-full px-4 py-2'
           style={style}
         >
           {Icon && (
             <Icon
-              className={classes.icon}
+              className='flex items-center mr-2'
               size='20'
             />
           )}
-          <span className={classes.title}>
+          <span className='mr-auto'>
             {title}
           </span>
-          {Info && <Info className={classes.info} />}
+          {Info && <Info />}
         </Button>
       </RouterLink>
     </ListItem>
@@ -165,10 +115,6 @@ NavItem.propTypes = {
   info: PropTypes.any,
   open: PropTypes.bool,
   title: PropTypes.string.isRequired
-}
-
-NavItem.defaultProps = {
-  open: false
 }
 
 export default NavItem

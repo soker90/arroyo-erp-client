@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { LoadingScreen, Page } from 'components'
+import { LoadingScreen, Page, Container } from 'components'
 import ClientExpandedInfo from './ClientExpandedInfo'
 import Header from './Header'
 import ClientInvoices from './ClientInvoices'
@@ -31,7 +31,7 @@ const Client = () => {
 
   return (
     <Page className={classes.root} title={client.name}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           expanded={expand}
           onExpand={_toggleExpand}

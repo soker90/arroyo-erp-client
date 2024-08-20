@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
+import { SkipForward, SkipBack } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { Header } from 'components'
@@ -13,14 +12,14 @@ const HeaderDO = ({ year }) => (
       {
         component: NavLink,
         to: `/app/informes/albaranes/${year - 1}`,
-        Icon: SkipPreviousIcon,
+        Icon: SkipBack,
         label: `${year - 1}`,
         variant: 'outlined'
       },
       {
         component: NavLink,
         to: `/app/informes/albaranes/${year + 1}`,
-        Icon: SkipNextIcon,
+        Icon: SkipForward,
         label: `${year + 1}`,
         variant: 'outlined'
       }
@@ -32,6 +31,4 @@ HeaderDO.propTypes = {
   year: PropTypes.number.isRequired
 }
 
-HeaderDO.displayName = 'HeaderDeliveryOrders'
-export const story = HeaderDO
 export default HeaderDO

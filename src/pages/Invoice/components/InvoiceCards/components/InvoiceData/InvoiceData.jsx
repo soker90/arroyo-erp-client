@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
   Grid,
   IconButton,
   Tooltip,
@@ -13,7 +9,9 @@ import {
 import uniqId from 'uniqid'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemCard, Label } from 'components'
+import {
+  ItemCard, Label, Card, CardContent, CardHeader
+} from 'components'
 import { format } from 'utils'
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal'
 import { useStyles } from './InvoiceData.styles'
@@ -73,7 +71,7 @@ const InvoiceData = ({
           )}
           action={_getActions()}
         />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid spacing={3} container>
             <Grid item xs={12} md={3}>

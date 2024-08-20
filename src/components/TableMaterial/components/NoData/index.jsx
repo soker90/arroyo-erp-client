@@ -1,18 +1,12 @@
 import PropTypes from 'prop-types'
-import { Box, Typography } from '@mui/material'
+import { Typography } from 'components'
 
 const NoData = ({ elements }) => (
   (elements === 0)
     ? (
-      <Box p={2}>
-        <Typography
-          variant='body1'
-          color='textPrimary'
-          align='center'
-        >
-          No se han encontrado datos
-        </Typography>
-      </Box>
+      <Typography className='p-4 text-center' variant='body1'>
+        No se han encontrado datos
+      </Typography>
       )
     : null
 )
@@ -21,6 +15,4 @@ NoData.propTypes = {
   elements: PropTypes.number.isRequired
 }
 
-NoData.displayName = 'NoData'
-export const story = NoData
 export default NoData

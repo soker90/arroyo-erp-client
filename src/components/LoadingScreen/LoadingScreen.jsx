@@ -1,27 +1,11 @@
-import { useEffect } from 'react'
-import NProgress from 'nprogress'
-import { Box, LinearProgress } from '@mui/material'
+import { LoadingBar } from 'components'
 
-import { useStyles } from './LoadingScreen.style'
-
-const LoadingScreen = () => {
-  const classes = useStyles()
-
-  useEffect(() => {
-    NProgress.start()
-
-    return () => {
-      NProgress.done()
-    }
-  }, [])
-
-  return (
-    <div className={classes.root}>
-      <Box width={400}>
-        <LinearProgress />
-      </Box>
+const LoadingScreen = () => (
+  <div className='h-full flex items-center bg-background justify-center'>
+    <div className='w-1/3'>
+      <LoadingBar />
     </div>
-  )
-}
+  </div>
+)
 
 export default LoadingScreen

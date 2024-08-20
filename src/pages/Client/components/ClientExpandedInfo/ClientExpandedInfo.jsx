@@ -1,16 +1,12 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
   IconButton,
   Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard } from 'components'
+import { ItemGroupsCard, Card, CardContent, CardHeader } from 'components'
 import { adapterClientInfo } from '../../utils'
 import { EditClientModal } from '../../modals'
 import { useStyles } from './ClientExpandedInfo.styles'
@@ -51,7 +47,7 @@ const ClientExpandedInfo = ({
           action={_renderEditButton()}
           title='Datos de contacto'
         />
-        <Divider />
+        <hr />
         <CardContent className={classes.content}>
           <ItemGroupsCard items={adapterClientInfo(client)} groups={3} />
         </CardContent>

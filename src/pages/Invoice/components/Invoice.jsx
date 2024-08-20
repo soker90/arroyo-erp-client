@@ -1,8 +1,7 @@
 import { useParams } from 'react-router'
-import { Container } from '@mui/material'
 import uniqId from 'uniqid'
 
-import { LoadingScreen, Page } from 'components'
+import { LoadingScreen, Page, Container } from 'components'
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
 import Header from './Header'
 import { useStyles } from './Invoice.styles'
@@ -34,7 +33,7 @@ const Invoice = () => {
 
   return (
     <Page className={classes.root} title={`${nameProvider} | Factura`}>
-      <Container maxWidth={false}>
+      <Container>
         <Header
           provider={provider}
           nameProvider={nameProvider}

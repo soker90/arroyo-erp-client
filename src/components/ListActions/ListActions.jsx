@@ -1,44 +1,29 @@
 import { useEffect, useMemo, useState } from 'react'
-import clsx from 'clsx'
 import PropTypes from 'prop-types'
+import { ChevronRight } from 'lucide-react'
+
 import {
   Card,
-  IconButton,
-  List,
+  Typography,
+  Button,
   ListItem,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
+  List,
   ListSubheader,
-  Tooltip,
-  Typography
-} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import { InputForm } from '../Forms'
+  ListItemText,
+  ListItemSecondaryAction
+} from 'components'
+import { cn } from 'utils'
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  fontWeightMedium: {
-    fontWeight: theme.typography.fontWeightMedium
-  },
-  listItem: {
-    cursor: 'pointer'
-  },
-  input: {
-    padding: theme.spacing(2)
-  }
-}))
+import { InputForm } from '../Forms'
 
 const ListActions = ({
   className,
   data,
-  icon,
+  Icon,
   title,
   onClick,
   ...rest
 }) => {
-  const classes = useStyles()
   const [filter, setFilter] = useState('')
   const [selected, setSelected] = useState(null)
 
@@ -64,12 +49,12 @@ const ListActions = ({
 
   return (
     <Card
-      className={clsx(classes.root, className)}
+      className={className}
       {...rest}
     >
       <List
         subheader={(
-          <ListSubheader component='div' id='nested-list-subheader'>
+          <ListSubheader>
             {title}
           </ListSubheader>
         )}
@@ -79,38 +64,35 @@ const ListActions = ({
           onChange={_handleChangeFilter}
           size={12}
           placeholder='Filtrar...'
-          className={classes.input}
+          className='pr-4'
         />
         {_filterList.map((item, i) => (
           <ListItem
             divider={i < data.length - 1}
             key={item._id}
             onClick={() => _handleClick(item)}
-            className={classes.listItem}
+            className='cursor-pointer py-2 pr-12 pl-4'
           >
-            <ListItemIcon>
-              {icon}
-            </ListItemIcon>
+            <Icon className='text-muted-foreground mr-2' />
             <ListItemText>
               <Typography
                 variant='body2'
-                color={selected === item._id ? 'secondary' : 'textSecondary'}
+                className={cn(selected === item._id ? 'text-primary' : 'text-muted-foreground')}
               >
-                <span className={classes.fontWeightMedium}>
+                <span className='font-semibold'>
                   {item.name}
                 </span>
               </Typography>
             </ListItemText>
             <ListItemSecondaryAction>
-              <Tooltip title=' View'>
-                <IconButton
-                  edge='end'
-                  size='small'
-                  onClick={() => _handleClick(item)}
-                >
-                  <NavigateNextIcon />
-                </IconButton>
-              </Tooltip>
+              <Button
+                variant={selected === item._id ? 'text' : 'ghost'}
+                size='icon'
+                onClick={() => _handleClick(item)}
+                className='rounded-full'
+              >
+                <ChevronRight />
+              </Button>
             </ListItemSecondaryAction>
           </ListItem>
         ))}
@@ -122,7 +104,7 @@ const ListActions = ({
 ListActions.propTypes = {
   className: PropTypes.string,
   data: PropTypes.array,
-  icon: PropTypes.node,
+  Icon: PropTypes.object,
   title: PropTypes.string,
   onClick: PropTypes.func.isRequired
 }

@@ -1,21 +1,17 @@
-import { Container } from '@mui/material'
 import PropTypes from 'prop-types'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import BillingTable from './BillingTable'
 import Header from './Header'
-import { useStyles } from './Billing.styles'
 
 const Billing = ({
   billing,
   type,
   year
 }) => {
-  const classes = useStyles()
-
   return (
-    <Page className={classes.root} title={`Facturación ${type || ''} ${year}`}>
-      <Container maxWidth={false}>
+    <Page className='py-6' title={`Facturación ${type || ''} ${year}`}>
+      <Container>
         <Header year={Number(year)} type={type} />
 
         <BillingTable billing={billing} type={type} />

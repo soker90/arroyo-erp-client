@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Divider,
   Grid,
   IconButton,
   Tooltip
@@ -52,7 +51,7 @@ const ClientInvoiceTotals = ({
     <>
       <Card>
         <CardHeader title='Totales' action={_getActions()} />
-        <Divider />
+        <hr />
         <CardContent>
           <Grid container spacing={3}>
             {itemsCard(props)

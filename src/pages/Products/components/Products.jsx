@@ -1,6 +1,4 @@
-import { Container } from '@mui/material'
-
-import { Page } from 'components'
+import { Page, Container } from 'components'
 import Header from './Header'
 import ProductsTable from './ProductsTable'
 import { useStyles } from './Products.styles'
@@ -18,7 +16,7 @@ const Products = () => {
 
   return (
     <Page className={classes.root} title='Productos para clientes'>
-      <Container maxWidth={false}>
+      <Container>
         <Header createProduct={createProduct} />
         <ProductsTable products={products} editProduct={editProduct} deleteProduct={deleteProduct} />
       </Container>

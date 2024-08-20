@@ -1,28 +1,16 @@
-/* eslint-disable react/prop-types */
-
 import PropTypes from 'prop-types'
-import {
-  Card,
-  CardContent,
-  Grid,
-  Divider,
-  CardHeader
-} from '@mui/material'
 
 import {
-  DatePickerForm,
-  InputForm, SwitchForm
+  DatePickerForm, InputForm, SwitchForm, Card, CardContent, Grid,
+  CardHeader
 } from 'components'
 
-import { useStyles } from './SearchForm.styles'
 import { fields } from '../../constans'
 
 const SearchForm = ({
   filters,
   setFilters
 }) => {
-  const classes = useStyles()
-
   /**
    * Handle event onChange input
    * @param {String} name
@@ -75,11 +63,11 @@ const SearchForm = ({
   )
 
   return (
-    <Card className={classes.root}>
+    <Card className='mt-4'>
       <CardHeader
         title='Búsqueda'
       />
-      <Divider />
+      <hr />
       <CardContent>
         <Grid spacing={3} container>
           <DatePickerForm

@@ -1,22 +1,15 @@
 import { useCallback, useState } from 'react'
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
   IconButton,
   Tooltip
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard } from 'components'
-import { useStyles } from './ProviderInfo.styles'
+import { ItemGroupsCard, Card, CardContent, CardHeader, Grid } from 'components'
 import { adapterProviderInfo } from './adapterProviderInfo'
 import EditProviderModal from '../../modals/EditProviderModal'
 
 const ProviderInfo = props => {
-  const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
 
   /**
@@ -44,15 +37,14 @@ const ProviderInfo = props => {
         item
         md={6}
         xs={12}
-        className={classes.root}
       >
         <Card>
           <CardHeader
             action={_renderEditButton()}
             title='Datos de contacto'
           />
-          <Divider />
-          <CardContent className={classes.content}>
+          <hr />
+          <CardContent className='pb-0'>
             <ItemGroupsCard items={adapterProviderInfo(props)} />
           </CardContent>
         </Card>

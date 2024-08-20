@@ -1,18 +1,14 @@
-/* eslint-disable react/prop-types */
-
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Users as UsersIcon } from 'react-feather'
+import { Users as UsersIcon } from 'lucide-react'
 
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'
-import { useStyles } from './DeliveryOrdersTable.styles'
 
 const DeliveryOrdersTable = ({ doCount }) => {
-  const classes = useStyles()
   return (
     <TableMaterial
-      className={classes.table}
+      className='mt-4'
       columns={[
         {
           title: 'Proveedor',

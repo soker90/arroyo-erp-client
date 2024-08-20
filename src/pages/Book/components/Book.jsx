@@ -1,7 +1,6 @@
-import { Container } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { Page } from 'components'
+import { Page, Container } from 'components'
 
 import { useInvoices } from '../hooks'
 import Header from './Header'
@@ -23,7 +22,7 @@ const Book = () => {
 
   return (
     <Page className={classes.root} title='Libro'>
-      <Container maxWidth={false}>
+      <Container>
         <Header year={Number(year)} filter={filters} />
         <SearchForm setFilters={setFilters} filters={filters} />
 
