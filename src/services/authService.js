@@ -1,13 +1,13 @@
 /* eslint-disable class-methods-use-this */
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
 import { ARROYO_TOKEN } from 'config'
 
 class AuthService {
   setAxiosInterceptors = ({ onLogout }) => {
     axios.interceptors.response.use(
-      response => response,
-      error => {
+      (response) => response,
+      (error) => {
         if (error.response?.status === 401) {
           this.setSession(null)
 
