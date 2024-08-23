@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
-import {
-  Modal
-} from '@mui/material'
 import { Grid, Button, Card, CardHeader, CardContent, CardActions } from 'components'
 import useSettings from 'hooks/useSettings'
+
+import Modal from '../Modal'
 
 const ModalGrid = ({
   show, close, title, children, action, actions, setShow
