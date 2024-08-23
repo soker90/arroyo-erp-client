@@ -1,6 +1,3 @@
-import {
-  IconButton, Tooltip
-} from '@mui/material'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import uniqId from 'uniqid'
@@ -8,7 +5,7 @@ import { Plus } from 'lucide-react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useCallback, useState } from 'react'
 
-import { DatePickerForm, TextEuro, Card, CardContent, CardHeader } from 'components'
+import { DatePickerForm, TextEuro, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
 import { useStyles } from './DeliveryOrderInvoice.styles'
 import ClientInvoiceProducts from '../ClientInvoiceProducts'
 import DeleteProductModal from '../../modals/DeleteProductModal'
@@ -70,20 +67,20 @@ const DeliveryOrderInvoice = ({
   const _getActions = () => (isEditable
     ? [
       <Tooltip title='Añadir producto' key={uniqId()}>
-        <IconButton
-          size='small'
+        <Button
+          size='icon' variant='icon'
           onClick={_handleAddClick}
         >
           <Plus />
-        </IconButton>
+        </Button>
       </Tooltip>,
       <Tooltip title='Eliminar albarán' key={uniqId()}>
-        <IconButton
-          size='small'
+        <Button
+          size='icon' variant='icon'
           onClick={_handleDeleteClick}
         >
           <DeleteIcon />
-        </IconButton>
+        </Button>
       </Tooltip>
       ]
     : false)

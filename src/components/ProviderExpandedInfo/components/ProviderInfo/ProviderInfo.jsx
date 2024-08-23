@@ -1,11 +1,8 @@
 import { useCallback, useState } from 'react'
-import {
-  IconButton,
-  Tooltip
-} from '@mui/material'
+
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard, Card, CardContent, CardHeader, Grid } from 'components'
+import { ItemGroupsCard, Card, CardContent, CardHeader, Grid, Tooltip, Button } from 'components'
 import { adapterProviderInfo } from './adapterProviderInfo'
 import EditProviderModal from '../../modals/EditProviderModal'
 
@@ -25,9 +22,9 @@ const ProviderInfo = props => {
    */
   const _renderEditButton = () => (
     <Tooltip title='Editar infomación'>
-      <IconButton size='small' onClick={() => setShowModal(true)}>
+      <Button size='icon' variant='icon' onClick={() => setShowModal(true)}>
         <EditIcon />
-      </IconButton>
+      </Button>
     </Tooltip>
   )
 

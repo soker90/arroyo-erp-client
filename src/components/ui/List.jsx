@@ -23,8 +23,8 @@ const ListSubheader = ({ children }) => (
   </Typography>
 )
 
-const ListItemText = ({ children }) => (
-  <div className='flex-1 my-1'>
+const ListItemText = ({ children, className }) => (
+  <div className={cn('flex-1 my-1', className)}>
     {children}
   </div>
 )

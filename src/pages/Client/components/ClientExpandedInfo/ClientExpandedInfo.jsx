@@ -1,12 +1,8 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  IconButton,
-  Tooltip
-} from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { ItemGroupsCard, Card, CardContent, CardHeader } from 'components'
+import { ItemGroupsCard, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
 import { adapterClientInfo } from '../../utils'
 import { EditClientModal } from '../../modals'
 import { useStyles } from './ClientExpandedInfo.styles'
@@ -32,9 +28,9 @@ const ClientExpandedInfo = ({
    */
   const _renderEditButton = () => (
     <Tooltip title='Editar infomación'>
-      <IconButton size='small' onClick={() => setShowModal(true)}>
+      <Button size='icon' variant='icon' onClick={() => setShowModal(true)}>
         <EditIcon />
-      </IconButton>
+      </Button>
     </Tooltip>
   )
 

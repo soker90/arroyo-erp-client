@@ -5,13 +5,12 @@ import {
   CardContent,
   CardHeader,
   Grid,
-  IconButton,
-  Tooltip
+  IconButton
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
 
-import { ItemCard } from 'components'
+import { ItemCard, Tooltip } from 'components'
 import { itemsCard } from './utils'
 import EditClientInvoiceTotalsModal from '../../../../modals/EditClientInvoiceTotalsModal'
 

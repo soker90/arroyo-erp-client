@@ -1,15 +1,9 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Grid,
-  IconButton,
-  Tooltip
-} from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
-import uniqId from 'uniqid'
 
 import {
-  ItemCard, EditTotalsModal, Card, CardContent, CardHeader
+  ItemCard, EditTotalsModal, Card, CardContent, CardHeader, Tooltip, Button, Grid
 } from 'components'
 
 const InvoiceTotals = ({
@@ -38,13 +32,13 @@ const InvoiceTotals = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Editar' key={uniqId()}>
-        <IconButton
-          size='small'
+      <Tooltip title='Editar' key='edit'>
+        <Button
+          size='icon' variant='icon'
           onClick={_handleEditClick}
         >
           <EditIcon />
-        </IconButton>
+        </Button>
       </Tooltip>
       ]
     : false)

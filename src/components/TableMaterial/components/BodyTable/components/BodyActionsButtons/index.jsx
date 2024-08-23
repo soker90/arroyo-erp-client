@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { TableCell, Tooltip, TooltipTrigger, TooltipContent, Button } from 'components'
+import { TableCell, Tooltip, Button } from 'components'
 import uniqId from 'uniqid'
 
 const BodyActionsButtons = ({
@@ -32,22 +32,20 @@ const BodyActionsButtons = ({
           <Tooltip
             key={uniqId()}
             disabled={_isDisabled(disabled)}
+            title={tooltip}
           >
-            <TooltipContent>{tooltip}</TooltipContent>
-            <TooltipTrigger asChild>
-              <Button
-                variant='text'
-                {...(onClick && { onClick: () => onClick(row, index) })}
-                {...(to && { to: to(row, index) })}
-                {...restButton}
-                size='large'
-                className='p-0 mr-3 text-muted-foreground'
-              >
-                <span>
-                  <Icon />
-                </span>
-              </Button>
-            </TooltipTrigger>
+            <Button
+              variant='text'
+              {...(onClick && { onClick: () => onClick(row, index) })}
+              {...(to && { to: to(row, index) })}
+              {...restButton}
+              size='large'
+              className='p-0 mr-3 text-muted-foreground'
+            >
+              <span>
+                <Icon />
+              </span>
+            </Button>
           </Tooltip>
         ))}
     </TableCell>

@@ -1,6 +1,6 @@
 import {
-  Box, Card, CardHeader, Grid, List
-} from '@mui/material'
+  Card, CardHeader, Grid, List
+} from 'components'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -24,7 +24,7 @@ const Reminders = ({
       />
       <hr />
       <PerfectScrollbar>
-        <Box minWidth={400}>
+        <div className='min-w-96'>
           <List>
             {reminders.map(reminder => (
               <Reminder
@@ -35,7 +35,7 @@ const Reminders = ({
             ))}
           </List>
           <AddReminder createReminder={createReminder} />
-        </Box>
+        </div>
       </PerfectScrollbar>
     </Card>
   </Grid>

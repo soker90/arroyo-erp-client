@@ -1,19 +1,15 @@
 import PropTypes from 'prop-types'
 import { Grid } from 'components'
+import { cn } from 'utils'
 
-/**
- * TODO: Cambiar por select con material o posibilitar elegir
- * nativo o material. Y documentar opcion y menuItem para usarlo
- * como children del componente.
- */
 const SelectForm = ({
-  size = 6, children, variant = 'standard', label, name, ...rest
+  size = 6, children, variant = 'standard', label, name, className, ...rest
 }) => (
   <Grid
     item
     md={size}
     xs={12}
-    className='space-y-2'
+    className={cn('space-y-2', className)}
   >
     <label
       className='font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground'
@@ -38,7 +34,8 @@ SelectForm.propTypes = {
   variant: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  className: PropTypes.string
 }
 
 SelectForm.displayName = 'SelectForm'

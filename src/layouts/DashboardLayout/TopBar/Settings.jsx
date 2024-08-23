@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
 import {
-  Box, IconButton, Popover, SvgIcon, TextField, Tooltip, Typography
+  Box, Popover
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { Settings as SettingsIcon } from 'lucide-react'
 
-import { Button } from 'components'
+import { Button, Tooltip, Typography, Grid, SelectForm } from 'components'
 import useSettings from 'hooks/useSettings'
 import { THEMES, THEMES_NAME } from 'constants/common'
 
@@ -50,11 +50,9 @@ const Settings = () => {
   return (
     <>
       <Tooltip title='Ajustes'>
-        <IconButton color='inherit' onClick={handleOpen} ref={ref} size='large'>
-          <SvgIcon fontSize='small'>
-            <SettingsIcon />
-          </SvgIcon>
-        </IconButton>
+        <Button size='icon' variant='icon' className='text-inherit hover:bg-inherit' onClick={handleOpen} ref={ref}>
+          <SettingsIcon />
+        </Button>
       </Tooltip>
       <Popover
         anchorOrigin={{
@@ -68,19 +66,18 @@ const Settings = () => {
       >
         <Typography
           variant='h4'
-          color='textPrimary'
+          className='font-normal text-inherit'
         >
           Configuración
         </Typography>
-        <Box mt={2}>
-          <TextField
+        <Grid className='mt-2'>
+          <SelectForm
             label='Tema'
             name='theme'
             onChange={event => handleChange('theme', event.target.value)}
-            select
-            SelectProps={{ native: true }}
             value={values.theme}
-            variant='outlined'
+            size={12}
+            className='[&_*]:!text-inherit'
           >
             {Object.keys(THEMES)
               .map(theme => (
@@ -88,8 +85,8 @@ const Settings = () => {
                   {THEMES_NAME[theme]}
                 </option>
               ))}
-          </TextField>
-        </Box>
+          </SelectForm>
+        </Grid>
         <Box mt={2}>
           <Button
             variant='secondary'

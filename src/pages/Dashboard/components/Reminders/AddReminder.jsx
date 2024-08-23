@@ -2,11 +2,9 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { InputForm } from 'components'
-import { useStyles } from './AddReminder.styles'
 
 const AddReminder = ({ createReminder }) => {
   const [newReminder, setNewReminder] = useState('')
-  const classes = useStyles()
 
   /**
    * Handle event onChange input
@@ -32,7 +30,7 @@ const AddReminder = ({ createReminder }) => {
 
   return (
     <InputForm
-      className={classes.input}
+      className='pb-4 pr-8'
       size={12}
       value={newReminder}
       onChange={_handleChange}

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import {
-  InputAdornment, Tooltip
+  InputAdornment
 } from '@mui/material'
 import PropTypes from 'prop-types'
 import SearchIcon from '@mui/icons-material/Search'
 
 import {
-  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid
+  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid, Tooltip
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'

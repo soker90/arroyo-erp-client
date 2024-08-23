@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import {
   Grid,
   IconButton,
-  Tooltip,
   Typography
 } from '@mui/material'
 import uniqId from 'uniqid'
 import EditIcon from '@mui/icons-material/Edit'
 
 import {
-  ItemCard, Label, Card, CardContent, CardHeader
+  ItemCard, Label, Card, CardContent, CardHeader, Tooltip
 } from 'components'
 import { format } from 'utils'
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal'

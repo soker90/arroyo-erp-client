@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Card, CardContent, CardHeader, Grid, IconButton, Tooltip
+  Card, CardContent, CardHeader, Grid, IconButton
 } from '@mui/material'
 import uniqId from 'uniqid'
 
-import { EditTotalsModal, ItemCard } from 'components'
+import { EditTotalsModal, ItemCard, Tooltip } from 'components'
 import EditIcon from '@mui/icons-material/Edit'
 import { itemsCard } from './utils'
 

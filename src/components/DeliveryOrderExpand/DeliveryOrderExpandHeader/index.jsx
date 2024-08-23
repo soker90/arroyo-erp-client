@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Eye } from 'lucide-react'
 
-import { Button, Typography, Tooltip, TooltipContent, TooltipTrigger } from 'components'
+import { Button, Typography, Tooltip } from 'components'
 import { format } from 'utils'
 import TextEuro from '../../TextEuro'
 import { getTotals } from './utils'
@@ -14,14 +14,9 @@ const DeliveryOrderExpandHeader = ({
       {children}
 
       <Tooltip title='Ver'>
-        <TooltipContent>
-          Ver
-        </TooltipContent>
-        <TooltipTrigger asChild>
-          <Button to={`/app/albaranes/${_id}`} size='icon' variant='icon' className='mr-4 text-foreground'>
-            <Eye />
-          </Button>
-        </TooltipTrigger>
+        <Button to={`/app/albaranes/${_id}`} size='icon' variant='icon' className='mr-4 text-foreground'>
+          <Eye />
+        </Button>
       </Tooltip>
 
       <Typography

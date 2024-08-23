@@ -1,8 +1,9 @@
 import { NavLink as RouterLink } from 'react-router-dom'
-import { Badge, IconButton, Tooltip } from '@mui/material'
+import { Badge, IconButton } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import EuroIcon from '@mui/icons-material/Euro'
 import { usePricesChangesUnread } from 'hooks'
+import { Tooltip } from 'components'
 
 const useStyles = makeStyles({
   badge: {

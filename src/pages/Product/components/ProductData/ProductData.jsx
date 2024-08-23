@@ -1,12 +1,12 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Grid, IconButton, Tooltip
+  Grid, IconButton
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import uniqId from 'uniqid'
 
-import { Card, CardContent, CardHeader } from 'components'
+import { Card, CardContent, CardHeader, Tooltip } from 'components'
 
 import ProductItemCard from './ProductItemCard'
 import { generateLabels } from './utils'

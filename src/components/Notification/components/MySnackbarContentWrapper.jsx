@@ -6,9 +6,9 @@ import InfoIcon from '@mui/icons-material/Info'
 import CloseIcon from '@mui/icons-material/Close'
 import SnackbarContent from '@mui/material/SnackbarContent'
 import WarningIcon from '@mui/icons-material/Warning'
-import IconButton from '@mui/material/IconButton'
 import { forwardRef } from 'react'
 import { useStyles } from './MySnackbarContentWrapper.styles'
+import { Button } from 'components'
 
 const MySnackbarContentWrapper = forwardRef(({
   className,
@@ -40,16 +40,17 @@ const MySnackbarContentWrapper = forwardRef(({
         </span>
       )}
       action={(
-        <IconButton
+        <Button
+          size='icon'
+          variant='icon'
           key='close'
           aria-label='close'
-          color='inherit'
           onClick={onClose}
           data-cy='notification-btn-close'
-          size='large'
+          className='hover:bg-inherit'
         >
           <CloseIcon className={classes.icon} />
-        </IconButton>
+        </Button>
       )}
       {...other}
     />
