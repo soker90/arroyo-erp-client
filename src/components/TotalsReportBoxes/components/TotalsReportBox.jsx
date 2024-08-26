@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types'
-import {
-  Avatar, Box
-} from '@mui/material'
-
-import EuroIcon from '@mui/icons-material/Euro'
+import { EuroIcon } from 'lucide-react'
 
 import { Card, Typography, Grid } from 'components'
 import { format } from 'utils'
@@ -21,7 +17,7 @@ const TotalsReportBox = ({
       xs={12}
     >
       <Card className='p-6 flex items-center justify-between'>
-        <Box flexGrow={1}>
+        <div className='flex-grow'>
           <Typography
             component='h3'
             variant='overline'
@@ -29,22 +25,17 @@ const TotalsReportBox = ({
           >
             {title}
           </Typography>
-          <Box
-            display='flex'
-            alignItems='center'
-            flexWrap='wrap'
-            className='mt-2'
-          >
+          <div className='flex items-center flex-wrap mt-2'>
             <Typography
               variant='h3'
             >
               {format.number(value)}
             </Typography>
-          </Box>
-        </Box>
-        <Avatar className='bg-secondary text-secondary-foreground h-12 w-12'>
-          <EuroIcon />
-        </Avatar>
+          </div>
+        </div>
+        <div className='bg-secondary text-secondary-foreground h-12 w-12 rounded-full flex items-center justify-center'>
+          <EuroIcon className='h-6 w-6' />
+        </div>
       </Card>
     </Grid>
   )

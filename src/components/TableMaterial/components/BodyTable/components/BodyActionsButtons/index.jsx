@@ -43,7 +43,7 @@ const BodyActionsButtons = ({
               className='p-0 mr-3 text-muted-foreground'
             >
               <span>
-                <Icon />
+                <Icon size={20} />
               </span>
             </Button>
           </Tooltip>

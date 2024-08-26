@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import MailOutlineIcon from '@mui/icons-material/MailOutline'
 
 import { LoadingScreen, TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'
@@ -25,23 +24,12 @@ const ProviderInvoices = ({
       limit
     })
   }
-  /**
-   * Render payment type
-   * @param {object} payment
-   * @returns {string|null}
-   * @private
-   */
+
   const _renderPaymentType = ({ payment }) => (payment?.paid ? payment.type : null)
 
   const _renderPaymentDate = ({ payment }) => (payment?.paid ? format.date(payment?.paymentDate) : null)
 
-  /**
-   * Render mail icon
-   * @param {boolean | undefined} mailSend
-   * @return {JSX.Element|boolean}
-   * @private
-   */
-  const _renderEmail = ({ mailSend }) => (mailSend ? <MailOutlineIcon /> : false)
+  const _renderEmail = ({ mailSend }) => (mailSend ? <Mail size={20} /> : false)
 
   return idProvider && (
     <TableMaterial
@@ -60,7 +48,6 @@ const ProviderInvoices = ({
         },
         {
           title: 'Importe',
-          // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />
         },
         {
@@ -79,7 +66,7 @@ const ProviderInvoices = ({
       data={invoices}
       actions={[
         {
-          icon: EditIcon,
+          icon: PencilIcon,
           tooltip: 'Editar',
           component: Link,
           to: ({ _id }) => `${BASE_PATH}/facturas/${_id}`

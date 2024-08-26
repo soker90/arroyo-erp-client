@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon } from 'lucide-react'
 
 import { ItemGroupsCard, Card, CardContent, CardHeader, Grid, Tooltip, Button } from 'components'
 import { adapterProviderInfo } from './adapterProviderInfo'
@@ -23,7 +23,7 @@ const ProviderInfo = props => {
   const _renderEditButton = () => (
     <Tooltip title='Editar infomación'>
       <Button size='icon' variant='icon' onClick={() => setShowModal(true)}>
-        <EditIcon />
+        <PencilIcon size={20} />
       </Button>
     </Tooltip>
   )
