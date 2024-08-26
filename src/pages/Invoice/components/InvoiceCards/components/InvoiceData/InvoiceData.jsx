@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Grid,
-  IconButton,
-  Typography
-} from '@mui/material'
 import uniqId from 'uniqid'
 import EditIcon from '@mui/icons-material/Edit'
 
 import {
-  ItemCard, Label, Card, CardContent, CardHeader, Tooltip
+  ItemCard, Label, Card, CardContent, CardHeader, Tooltip, Grid, Typography, Button
 } from 'components'
 import { format } from 'utils'
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal'
@@ -45,12 +40,13 @@ const InvoiceData = ({
    */
   const _getActions = () => [
     <Tooltip title='Editar' key={uniqId()}>
-      <IconButton
-        size='small'
+      <Button
+        size='icon'
+        variant='icon'
         onClick={_handleEditClick}
       >
         <EditIcon />
-      </IconButton>
+      </Button>
     </Tooltip>
   ]
 

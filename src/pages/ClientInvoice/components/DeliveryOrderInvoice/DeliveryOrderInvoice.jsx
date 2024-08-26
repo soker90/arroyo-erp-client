@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import uniqId from 'uniqid'
-import { Plus } from 'lucide-react'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { Plus, Trash2 } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
 import { DatePickerForm, TextEuro, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
-import { useStyles } from './DeliveryOrderInvoice.styles'
 import ClientInvoiceProducts from '../ClientInvoiceProducts'
 import DeleteProductModal from '../../modals/DeleteProductModal'
 
@@ -21,7 +19,6 @@ const DeliveryOrderInvoice = ({
   setSelectedProduct
 
 }) => {
-  const classes = useStyles()
   const [date, setDate] = useState(deliveryOrder.date)
 
   const [deleteId, setDeleteId] = useState(false)
@@ -71,7 +68,7 @@ const DeliveryOrderInvoice = ({
           size='icon' variant='icon'
           onClick={_handleAddClick}
         >
-          <Plus />
+          <Plus size={20} />
         </Button>
       </Tooltip>,
       <Tooltip title='Eliminar albarán' key={uniqId()}>
@@ -79,7 +76,7 @@ const DeliveryOrderInvoice = ({
           size='icon' variant='icon'
           onClick={_handleDeleteClick}
         >
-          <DeleteIcon />
+          <Trash2 size={20} />
         </Button>
       </Tooltip>
       ]
@@ -87,12 +84,12 @@ const DeliveryOrderInvoice = ({
 
   return (
     <>
-      <Card className={classes.root}>
+      <Card className='mt-4'>
         <CardHeader
           title={(
             <>
               Albarán
-              <TextEuro num={deliveryOrder.total} className={classes.total} />
+              <TextEuro num={deliveryOrder.total} className='ml-4' />
             </>
           )}
           action={_getActions()}

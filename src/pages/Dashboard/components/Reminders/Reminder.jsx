@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { Trash2 } from 'lucide-react'
 
 import { Tooltip, Button, ListItem, ListItemText, Typography } from 'components'
 
@@ -23,10 +23,10 @@ const Reminder = ({
       <Tooltip title='Eliminar'>
         <Button
           size='icon' variant='icon'
-          className='ml-4 mr-2'
+          className='ml-4 mr-4'
           onClick={_handleClick}
         >
-          <DeleteIcon fontSize='small' />
+          <Trash2 size={20} />
         </Button>
       </Tooltip>
     </ListItem>

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import { Typography } from '@mui/material'
-import { Grid } from 'components'
+import { Grid, Typography } from 'components'
 import { ModalGrid } from '../index'
 
 const ConfirmModal = ({ description, ...props }) => (
