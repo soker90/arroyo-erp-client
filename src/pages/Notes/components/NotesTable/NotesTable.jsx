@@ -1,16 +1,13 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { PencilIcon, TrashIcon } from 'lucide-react'
 
 import { TableMaterial } from 'components'
 import { format } from 'utils'
 import EditNoteModal from '../../modals/EditNoteModal'
 import DeleteNoteModal from '../../modals/DeleteNoteModal'
-import { useStyles } from './NotesTable.styles'
 
 const NotesTable = ({ notes, editNote, deleteNote }) => {
-  const classes = useStyles()
   const [noteEdit, setNoteEdit] = useState(null)
   const [noteDelete, setNoteDelete] = useState(null)
 
@@ -48,7 +45,7 @@ const NotesTable = ({ notes, editNote, deleteNote }) => {
   return (
     <>
       <TableMaterial
-        className={classes.table}
+        className='mt-4'
         columns={[
           {
             title: 'Fecha',
@@ -78,12 +75,12 @@ const NotesTable = ({ notes, editNote, deleteNote }) => {
         data={notes}
         actions={[
           {
-            icon: DeleteIcon,
+            icon: TrashIcon,
             tooltip: 'Borrar',
             onClick: _handleDeleteButton
           },
           {
-            icon: EditIcon,
+            icon: PencilIcon,
             tooltip: 'Editar',
             onClick: _handleEditButton
           }

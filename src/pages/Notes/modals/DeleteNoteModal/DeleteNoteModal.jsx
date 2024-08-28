@@ -24,11 +24,12 @@ const DeleteNoteModal = ({
         {
           onClick: close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button'
+          'data-cy': 'modal-close-button',
+          variant: 'ghost'
         },
         {
           onClick: _handleSend,
-          color: 'secondary',
+          color: 'error',
           variant: 'contained',
           value: 'Eliminar',
           'data-cy': 'modal-close-button'

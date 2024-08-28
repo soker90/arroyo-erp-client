@@ -32,6 +32,9 @@ const VARIANTS = {
     small: 'h-9 rounded-md px-3', // legacy
     large: 'h-11 rounded-md px-8' // legacy
   },
+  color: {
+    default: ''
+  },
   disabled: {
     true: 'opacity-50 pointer-events-none',
     false: ''
@@ -42,10 +45,18 @@ export const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase',
   {
     variants: VARIANTS,
+    compoundVariants: [
+      {
+        variant: 'contained',
+        color: 'error',
+        className: 'bg-destructive text-destructive-foreground hover:bg-destructive/80'
+      }
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'default',
-      disabled: false
+      disabled: false,
+      color: 'default'
     }
   }
 )
@@ -72,6 +83,7 @@ const Button = forwardRef(({
   type = 'text',
   isLoading = false,
   onClick,
+  color,
   ...props
 }, ref) => {
   const Link = to ? RouterLink : Fragment
@@ -82,7 +94,7 @@ const Button = forwardRef(({
     return (
       <Link
         ref={ref}
-        to={to} disabled={disabled} className={cn(buttonVariants({ variant, size, disabled, className }))}
+        to={to} disabled={disabled} className={cn(buttonVariants({ variant, size, disabled, className, color }))}
         {...props}
       />
     )
@@ -91,7 +103,7 @@ const Button = forwardRef(({
   return (
     <button
       ref={ref}
-      className={cn(buttonVariants({ variant, size, disabled, className }))}
+      className={cn(buttonVariants({ variant, size, disabled, className, color }))}
       disabled={disabled}
       type={type}
       {...(onClick && {
@@ -118,7 +130,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   to: PropTypes.string,
   isLoading: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.string,
+  color: PropTypes.oneOf(Object.keys(VARIANTS.color))
 }
 
 export default Button
