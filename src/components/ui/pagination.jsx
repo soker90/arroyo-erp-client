@@ -43,20 +43,17 @@ const Pagination = (
       className={cn('mx-auto flex w-full items-center justify-end', className)}
       {...props}
     >
-      <Grid>
-        <Grid item>
-          <span className='text-sm'> filas</span>
-        </Grid>
-        <SelectForm
-          className='w-14 ml-2 mr-9' value={numRows} onChange={onRowsPerPageChange} InputLabelProps={{
-            shrink: true
-          }}
-        >
-          {rowsPerPageOptions.map((option) => (
-            <option className='text-sm' key={option} value={option}>{option}</option>
-          ))}
-        </SelectForm>
-      </Grid>
+      <span className='text-sm'> filas</span>
+      <SelectForm
+        className='flex !w-16 ml-2 mr-9 items-center !p-0 !-mt-4 !text-sm' value={numRows}
+        onChange={onRowsPerPageChange} InputLabelProps={{
+          shrink: true
+        }}
+      >
+        {rowsPerPageOptions.map((option) => (
+          <option className='text-sm' key={option} value={option}>{option}</option>
+        ))}
+      </SelectForm>
 
       <p className='text-sm'>{labelOfRows({ from: firstItem, to: lastItem, count })}</p>
       <PaginationContent className='ml-5'>

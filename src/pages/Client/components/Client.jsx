@@ -46,11 +46,11 @@ const Client = () => {
           editClient={editClient}
         />
 
-        <Box py={3} pb={6}>
+        <div className='pt-6 pb-12'>
           <ClientInvoices
             idClient={id}
           />
-        </Box>
+        </div>
 
       </Container>
     </Page>
