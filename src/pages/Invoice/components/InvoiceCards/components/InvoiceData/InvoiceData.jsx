@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import uniqId from 'uniqid'
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon } from 'lucide-react'
 
 import {
   ItemCard, Label, Card, CardContent, CardHeader, Tooltip, Grid, Typography, Button
 } from 'components'
 import { format } from 'utils'
 import EditInvoiceDataModal from 'pages/Invoice/modals/EditInvoiceDataModal'
-import { useStyles } from './InvoiceData.styles'
 
 const InvoiceData = ({
   dateRegister,
@@ -23,7 +22,6 @@ const InvoiceData = ({
   total = 0
 }) => {
   const [showModal, setShowModal] = useState(false)
-  const classes = useStyles()
 
   useEffect(() => {
     if (!nInvoice) setShowModal(true)
@@ -45,7 +43,7 @@ const InvoiceData = ({
         variant='icon'
         onClick={_handleEditClick}
       >
-        <EditIcon />
+        <PencilIcon size={20} />
       </Button>
     </Tooltip>
   ]
@@ -58,7 +56,7 @@ const InvoiceData = ({
             <Typography variant='h5'>
               Datos de la factura
               {nOrder && (
-                <Label color='success' className={classes.label}>
+                <Label color='success' className='ml-2'>
                   CONFIRMADA
                 </Label>
               )}

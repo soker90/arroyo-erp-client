@@ -1,14 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Grid, IconButton
-} from '@mui/material'
+import { PencilIcon } from 'lucide-react'
+import uniqId from 'uniqid'
 
-import { ItemCard, Card, CardContent, CardHeader, Tooltip } from 'components'
+import { ItemCard, Card, CardContent, CardHeader, Tooltip, Grid, Button } from 'components'
 import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal'
 import { format } from 'utils'
-import uniqId from 'uniqid'
-import EditIcon from '@mui/icons-material/Edit'
 
 const InvoicePayment = ({
   payment,
@@ -25,12 +22,13 @@ const InvoicePayment = ({
    */
   const actions = [
     <Tooltip title='Editar' key={uniqId()}>
-      <IconButton
-        size='small'
+      <Button
+        size='icon'
+        variant='icon'
         onClick={() => setShowModal(true)}
       >
-        <EditIcon />
-      </IconButton>
+        <PencilIcon size={20} />
+      </Button>
     </Tooltip>
   ]
 

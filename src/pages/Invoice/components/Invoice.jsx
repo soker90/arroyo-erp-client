@@ -4,13 +4,11 @@ import uniqId from 'uniqid'
 import { LoadingScreen, Page, Container } from 'components'
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
 import Header from './Header'
-import { useStyles } from './Invoice.styles'
 import InvoiceCards from './InvoiceCards'
 import { useInvoice } from '../hooks'
 
 const Invoice = () => {
   const { idInvoice } = useParams()
-  const classes = useStyles()
 
   const {
     invoice,
@@ -32,7 +30,7 @@ const Invoice = () => {
   } = invoice
 
   return (
-    <Page className={classes.root} title={`${nameProvider} | Factura`}>
+    <Page className='min-h-full py-6' title={`${nameProvider} | Factura`}>
       <Container>
         <Header
           provider={provider}
@@ -47,7 +45,7 @@ const Invoice = () => {
           updateData={updateData}
         />
 
-        <div className={classes.orders}>
+        <div className='mt-4'>
           {deliveryOrders?.map(props => (
             <DeliveryOrderExpand {...props} key={uniqId()} />
           ))}

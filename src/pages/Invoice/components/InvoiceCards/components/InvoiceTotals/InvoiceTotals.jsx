@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon } from 'lucide-react'
 
 import {
   ItemCard, EditTotalsModal, Card, CardContent, CardHeader, Tooltip, Button, Grid
@@ -37,7 +37,7 @@ const InvoiceTotals = ({
           size='icon' variant='icon'
           onClick={_handleEditClick}
         >
-          <EditIcon />
+          <PencilIcon size={20} />
         </Button>
       </Tooltip>
       ]

@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined'
+import { Trash2, CircleCheckBigIcon } from 'lucide-react'
 import PropTypes from 'prop-types'
 
 import { Header } from 'components'
-import { Trash2 } from 'lucide-react'
 import ConfirmInvoiceModal from '../../modals/ConfirmInvoiceModal'
 import DeleteInvoiceModal from '../../modals/DeleteInvoiceModal'
 
@@ -38,8 +37,7 @@ const HeaderInvoice = ({
           variant: 'contained',
           color: 'primary',
           onClick: () => setShowConfirmModal(true),
-          Icon: CheckCircleOutlinedIcon,
-          disableSvg: true,
+          Icon: CircleCheckBigIcon,
           label: 'Confirmar',
           disabled: Boolean(nOrder)
         }]}
