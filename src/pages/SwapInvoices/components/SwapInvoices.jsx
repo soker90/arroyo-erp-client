@@ -3,7 +3,7 @@ import {
   InputAdornment
 } from '@mui/material'
 import PropTypes from 'prop-types'
-import SearchIcon from '@mui/icons-material/Search'
+import { SearchIcon } from 'lucide-react'
 
 import {
   InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid, Tooltip
@@ -31,7 +31,7 @@ const SwapInvoices = () => {
     <InputAdornment position='end'>
       <Tooltip title='Editar'>
         <Button variant='icon' size='icon' onClick={onClick}>
-          <SearchIcon />
+          <SearchIcon size={20} />
         </Button>
       </Tooltip>
     </InputAdornment>

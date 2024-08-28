@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import EuroIcon from '@mui/icons-material/Euro'
-import CallSplitIcon from '@mui/icons-material/CallSplit'
+import { EuroIcon, SplitIcon } from 'lucide-react'
 
 import { TableMaterial, TextEuro } from 'components'
 import { addSelectedToState, format, removeSelectedFromState } from 'utils'
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal'
 import DividePaymentModal from '../../modals/DividePaymentModal'
-import { useStyles } from './PaymentsTable.styles'
 
 const PaymentsTable = ({
   payments,
@@ -16,7 +14,6 @@ const PaymentsTable = ({
   confirmPayment,
   divide
 }) => {
-  const classes = useStyles()
   const [payment, setPayment] = useState(null)
   const [dividePayment, setDividePayment] = useState(null)
 
@@ -47,7 +44,7 @@ const PaymentsTable = ({
   return (
     <>
       <TableMaterial
-        className={classes.table}
+        className='mt-4'
         columns={[
           {
             title: 'Nº de Orden',
@@ -71,7 +68,6 @@ const PaymentsTable = ({
           },
           {
             title: 'Importe',
-            // eslint-disable-next-line react/prop-types
             render: ({ amount }) => <TextEuro num={amount} />
           },
           {
@@ -87,7 +83,7 @@ const PaymentsTable = ({
             onClick: _handlePaymentButton
           },
           {
-            icon: CallSplitIcon,
+            icon: SplitIcon,
             tooltip: 'Dividir pago',
             onClick: _handleDivideButton,
             disabled: ({ payments: paymentMerged }) => !paymentMerged?.length

@@ -4,7 +4,6 @@ import { Page, Container } from 'components'
 import { usePayments } from '../hooks'
 import Header from './Header'
 import PaymentsTable from './PaymentsTable'
-import { useStyles } from './Payments.styles'
 
 const Payments = () => {
   const [selected, setSelected] = useState([])
@@ -12,7 +11,7 @@ const Payments = () => {
   const changeSelected = (newSelected) => {
     setSelected(newSelected)
   }
-  const classes = useStyles()
+
   const {
     payments,
     mergePayments,
@@ -21,7 +20,7 @@ const Payments = () => {
   } = usePayments(changeSelected)
 
   return (
-    <Page className={classes.root} title='Pagos'>
+    <Page className='min-h-full py-6' title='Pagos'>
       <Container>
         <Header selected={selected} mergePayments={mergePayments} />
 

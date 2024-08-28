@@ -1,17 +1,13 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { Eye } from 'lucide-react'
+import { Eye, EuroIcon } from 'lucide-react'
 
 import { TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
-import EuroIcon from '@mui/icons-material/Euro'
-import { useStyles } from './InvoicesTable.styles'
 import ConfirmPaymentModal from '../../modals/ConfirmPaymentModal'
 
 const InvoicesTable = ({ invoices, year }) => {
-  const classes = useStyles()
   const [invoice, setInvoice] = useState(null)
 
   const _handlePaymentButton = row => {
@@ -21,7 +17,7 @@ const InvoicesTable = ({ invoices, year }) => {
   return (
     <>
       <TableMaterial
-        className={classes.table}
+        className='mt-4'
         columns={[
           {
             title: 'Nº de Factura',
@@ -37,7 +33,6 @@ const InvoicesTable = ({ invoices, year }) => {
           },
           {
             title: 'Importe',
-            // eslint-disable-next-line react/prop-types
             render: ({ total }) => <TextEuro num={total} />
           },
           {
@@ -60,7 +55,6 @@ const InvoicesTable = ({ invoices, year }) => {
           {
             icon: Eye,
             tooltip: 'Ver',
-            component: Link,
             to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`
           }
         ]}

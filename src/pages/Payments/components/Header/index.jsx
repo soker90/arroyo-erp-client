@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import VerticalAlignCenterIcon from '@mui/icons-material/VerticalAlignCenter'
-import { ArrowDownToLine } from 'lucide-react'
+import { ArrowDownToLine, FoldVerticalIcon } from 'lucide-react'
 
 import { Header } from 'components'
 import { downloadFile, format } from 'utils'
@@ -32,7 +31,7 @@ const HeaderPayments = ({
             }
           },
           {
-            Icon: VerticalAlignCenterIcon,
+            Icon: FoldVerticalIcon,
             label: 'Fusionar',
             onClick: () => {
               setShowModal(true)
