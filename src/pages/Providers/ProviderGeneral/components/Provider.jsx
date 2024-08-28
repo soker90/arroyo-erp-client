@@ -7,14 +7,12 @@ import { HashTabs, Page, ProviderExpandedInfo, Container } from 'components'
 import { useProvider } from 'hooks'
 import { HASH_TABS, TABS } from '../constants'
 import Header from './Header'
-import { useStyles } from './Provider.styles'
 
 const DeliveryOrders = lazy(() => import('./DeliveryOrder'))
 const Products = lazy(() => import('./ProductsTable'))
 const Invoices = lazy(() => import('components/ProviderInvoices'))
 
 const Provider = () => {
-  const classes = useStyles()
   const { hash } = useLocation()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
@@ -47,7 +45,7 @@ const Provider = () => {
   }, [setDeliveryOrdersSelected])
 
   return (
-    <Page className={classes.root} title={provider.name}>
+    <Page className='min-h-full py-6' title={provider.name}>
       <Container>
         <Header
           currentTab={currentTab}

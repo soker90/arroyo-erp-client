@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import {
-  Box
-} from '@mui/material'
 import { useParams } from 'react-router'
 
 import {
@@ -10,10 +7,7 @@ import {
 import { useProvider } from 'hooks'
 import Header from './Header'
 
-import { useStyles } from './Provider.styles'
-
 const ProviderExpense = () => {
-  const classes = useStyles()
   const { idProvider } = useParams()
   const [expand, setExpand] = useState(false)
   const { provider, billing, isLoading } = useProvider(idProvider)
@@ -29,7 +23,7 @@ const ProviderExpense = () => {
   if (!idProvider || isLoading) return <LoadingScreen />
 
   return (
-    <Page className={classes.root} title={provider.name}>
+    <Page className='min-h-full py-6' title={provider.name}>
       <Container>
         <Header
           expanded={expand}
@@ -44,9 +38,9 @@ const ProviderExpense = () => {
           provider={provider}
         />
 
-        <Box py={3} pb={6}>
+        <div className='pt-3 pb-6'>
           <ProviderInvoices idProvider={idProvider} />
-        </Box>
+        </div>
 
       </Container>
     </Page>

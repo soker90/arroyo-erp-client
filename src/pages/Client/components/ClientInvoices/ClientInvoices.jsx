@@ -35,7 +35,6 @@ const ClientInvoices = ({
         },
         {
           title: 'Importe',
-          // eslint-disable-next-line react/prop-types
           render: ({ total }) => <TextEuro num={total} />
         }
       ]}

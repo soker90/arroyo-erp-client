@@ -1,12 +1,10 @@
 import { useMemo, useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 
 import { Label, Header } from 'components'
 import { useCreateDeliveryOrder, useCreateInvoice, useProducts } from 'hooks'
 import { getButtons } from './utils'
-import { useStyles } from './styles'
 import NewProductModal from '../../modals/NewProductModal/NewProductModalView'
 
 const HeaderProvider = ({
@@ -20,7 +18,6 @@ const HeaderProvider = ({
   note,
   nameProvider
 }) => {
-  const classes = useStyles()
   const { createDeliveryOrder } = useCreateDeliveryOrder(idProvider)
   const { createInvoice } = useCreateInvoice()
   const { createProduct } = useProducts(idProvider, true)
@@ -64,7 +61,7 @@ const HeaderProvider = ({
    */
   const _renderNote = () => (
     <Label
-      className={classes.label}
+      className='ml-2'
       color='warning'
     >
       {note}
@@ -88,7 +85,7 @@ const HeaderProvider = ({
         buttonsSecondary={[{
           variant: 'text',
           onClick: onExpand,
-          Icon: expanded ? ExpandLessIcon : ExpandMoreIcon,
+          Icon: expanded ? ChevronUpIcon : ChevronDownIcon,
           disableSvg: true,
           label: expanded ? 'Ocultar información' : 'Mostrar información'
         }]}
