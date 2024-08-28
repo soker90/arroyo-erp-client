@@ -1,18 +1,16 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon } from 'lucide-react'
 
 import { ItemGroupsCard, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
 import { adapterClientInfo } from '../../utils'
 import { EditClientModal } from '../../modals'
-import { useStyles } from './ClientExpandedInfo.styles'
 
 const ClientExpandedInfo = ({
   expanded,
   client,
   editClient
 }) => {
-  const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
 
   /**
@@ -29,7 +27,7 @@ const ClientExpandedInfo = ({
   const _renderEditButton = () => (
     <Tooltip title='Editar infomación'>
       <Button size='icon' variant='icon' onClick={() => setShowModal(true)}>
-        <EditIcon />
+        <PencilIcon size={20} />
       </Button>
     </Tooltip>
   )
@@ -38,13 +36,13 @@ const ClientExpandedInfo = ({
 
   return (
     <>
-      <Card className={classes.card}>
+      <Card className='mb-6 mt-2'>
         <CardHeader
           action={_renderEditButton()}
           title='Datos de contacto'
         />
         <hr />
-        <CardContent className={classes.content}>
+        <CardContent className='pt-0'>
           <ItemGroupsCard items={adapterClientInfo(client)} groups={3} />
         </CardContent>
       </Card>

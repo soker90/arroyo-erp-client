@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Box } from '@mui/material'
 import { useParams } from 'react-router'
 
 import { LoadingScreen, Page, Container } from 'components'
@@ -7,10 +6,8 @@ import ClientExpandedInfo from './ClientExpandedInfo'
 import Header from './Header'
 import ClientInvoices from './ClientInvoices'
 import { useClient } from '../hooks'
-import { useStyles } from './Client.styles'
 
 const Client = () => {
-  const classes = useStyles()
   const { id } = useParams()
   const [expand, setExpand] = useState(false)
   const {
@@ -30,7 +27,7 @@ const Client = () => {
   if (!id || !client) return <LoadingScreen />
 
   return (
-    <Page className={classes.root} title={client.name}>
+    <Page className='min-h-full py-6' title={client.name}>
       <Container>
         <Header
           expanded={expand}
@@ -46,7 +43,7 @@ const Client = () => {
           editClient={editClient}
         />
 
-        <div className='pt-6 pb-12'>
+        <div className='mt-2 pb-12'>
           <ClientInvoices
             idClient={id}
           />

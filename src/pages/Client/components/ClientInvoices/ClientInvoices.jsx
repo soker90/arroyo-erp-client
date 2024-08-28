@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
+import { PencilIcon } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import {
@@ -42,7 +42,7 @@ const ClientInvoices = ({
       data={invoices}
       actions={[
         {
-          icon: EditIcon,
+          icon: PencilIcon,
           tooltip: 'Editar',
           component: Link,
           to: ({ _id }) => `${BASE_PATH}/clientes/factura/${_id}`

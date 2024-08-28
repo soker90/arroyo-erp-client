@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import PostAddIcon from '@mui/icons-material/PostAdd'
+import { ChevronDown, ChevronUp, ListPlusIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 
 import { Header } from 'components'
@@ -36,8 +35,7 @@ const HeaderClient = ({
       buttons={[{
         variant: 'contained',
         onClick: _handleClickNewInvoice,
-        Icon: PostAddIcon,
-        disableSvg: true,
+        Icon: ListPlusIcon,
         label: 'Crear factura'
       }]}
     />
