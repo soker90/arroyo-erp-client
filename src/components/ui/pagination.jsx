@@ -3,7 +3,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { cn } from 'utils'
 import { SelectForm } from '../Forms'
-import Grid from '../Grid'
 
 /**
  * Devuelve el literal indicador de página
