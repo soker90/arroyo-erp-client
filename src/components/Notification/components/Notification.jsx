@@ -1,44 +1,34 @@
-import { useState, useEffect } from 'react'
-import Snackbar from '@mui/material/Snackbar'
-
+import { useEffect } from 'react'
+import NotificationWrapper from './NotificationWrapper'
 import { useNotifications } from 'hooks'
-import MySnackbarContentWrapper from './MySnackbarContentWrapper'
-import { useStyles } from './Notification.styles'
 
 const Notification = () => {
-  const classes = useStyles()
-  const [open, setOpen] = useState(false)
   const { notification, clearNotification } = useNotifications()
 
   useEffect(() => {
-    if (notification?.message) setOpen(true)
-  }, [notification])
+    if (notification) {
+      const timer = setTimeout(() => {
+        clearNotification()
+      }, notification.autoDismiss)
+
+      return () => clearTimeout(timer)
+    }
+  }, [notification, clearNotification])
 
   if (!notification) return null
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') return
+  const handleClose = () => {
     clearNotification()
-    setOpen(false)
   }
 
   return (
-    <Snackbar
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'center'
-      }}
-      open={open}
-      autoHideDuration={5000 || notification.autoDismiss}
-      onClose={handleClose}
-      className={classes.root}
-    >
-      <MySnackbarContentWrapper
+    <div className='fixed z-[1500] top-4 right-4'>
+      <NotificationWrapper
         onClose={handleClose}
-        variant={notification.level || 'success'}
+        variant={notification.level}
         message={notification.message}
       />
-    </Snackbar>
+    </div>
   )
 }
 
