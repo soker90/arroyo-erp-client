@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Grid } from '@mui/material'
+import { Grid } from 'components'
 
 import { ItemCard } from 'components/Cards'
 

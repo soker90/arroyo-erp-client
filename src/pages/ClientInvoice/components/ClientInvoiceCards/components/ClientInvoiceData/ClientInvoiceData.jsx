@@ -1,11 +1,7 @@
 import PropTypes from 'prop-types'
-import {
-  Card, CardContent, CardHeader, Grid
-} from '@mui/material'
 
-import { DatePickerForm, ItemCard } from 'components'
+import { DatePickerForm, ItemCard, Card, CardContent, CardHeader, Grid } from 'components'
 import { format } from 'utils'
-import { useStyles } from './ClientInvoiceData.styles'
 
 const ClientInvoiceData = ({
   date,
@@ -14,9 +10,6 @@ const ClientInvoiceData = ({
   nInvoice,
   id
 }) => {
-  // eslint-disable-next-line no-unused-vars
-  const classes = useStyles()
-
   const _handleChangeDate = value => {
     updateData({ date: format.dateToSend(value) })
   }
@@ -26,13 +19,14 @@ const ClientInvoiceData = ({
       <CardHeader title='Datos de la factura' />
       <hr />
       <CardContent>
-        <Grid container spacing={3} className={classes.cards}>
+        <Grid container>
           <DatePickerForm
             size={6}
             label='Fecha'
             value={date}
             onChange={_handleChangeDate}
             readOnly={readOnly}
+            className='pt-2'
           />
           <Grid item xs={12} md={6}>
             <ItemCard label='Nº Factura' value={nInvoice} />

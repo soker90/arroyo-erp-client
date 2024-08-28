@@ -3,7 +3,6 @@ import { useParams } from 'react-router'
 
 import { Page, BannerPaid, Container } from 'components'
 import Header from './Header'
-import { useStyles } from './ClientInvoice.styles'
 import ClientInvoiceCards from './ClientInvoiceCards'
 import DeliveryOrderInvoice from './DeliveryOrderInvoice'
 import { useClientInvoice } from '../hooks'
@@ -11,7 +10,7 @@ import ProductOrderModal from '../modals/ProductOrderModal/index.js'
 
 const ClientInvoice = () => {
   const { idInvoice } = useParams()
-  const classes = useStyles()
+
   const lastDORef = useRef(null)
   const isDOCreated = useRef(false)
   const {
@@ -67,7 +66,7 @@ const ClientInvoice = () => {
   }
 
   return (
-    <Page className={classes.root} title={`${nameClient} | Factura`}>
+    <Page className='min-h-full py-6' title={`${nameClient} | Factura`}>
       <Container>
         <Header
           client={invoice?.client}

@@ -1,12 +1,10 @@
 import { Page, Container } from 'components'
 import Header from './Header'
 import ProductsTable from './ProductsTable'
-import { useStyles } from './Products.styles'
+
 import { useProducts } from '../hooks'
 
 const Products = () => {
-  const classes = useStyles()
-
   const {
     products,
     createProduct,
@@ -15,7 +13,7 @@ const Products = () => {
   } = useProducts()
 
   return (
-    <Page className={classes.root} title='Productos para clientes'>
+    <Page className='min-h-full py-6' title='Productos para clientes'>
       <Container>
         <Header createProduct={createProduct} />
         <ProductsTable products={products} editProduct={editProduct} deleteProduct={deleteProduct} />

@@ -1,5 +1,4 @@
-import DeleteIcon from '@mui/icons-material/Delete'
-import { Eye } from 'lucide-react'
+import { EyeIcon, TrashIcon } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -8,7 +7,6 @@ import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
 
-import { useStyles } from './PricesTable.styles'
 import DeletePriceModal from '../../modals/DeletePriceModal'
 
 const PricesTable = ({
@@ -16,7 +14,6 @@ const PricesTable = ({
   provider,
   deletePrice
 }) => {
-  const classes = useStyles()
   const [showDeleteModal, setShowDeleteModal] = useState(false)
 
   const providerUrl = ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`
@@ -32,7 +29,7 @@ const PricesTable = ({
   return (
     <>
       <TableMaterial
-        className={classes.table}
+        className='mt-6'
         columns={[
           {
             title: 'Fecha',
@@ -46,12 +43,12 @@ const PricesTable = ({
         ]}
         actions={[
           {
-            icon: DeleteIcon,
+            icon: TrashIcon,
             tooltip: 'Eliminar',
             onClick: (product) => setShowDeleteModal(product)
           },
           {
-            icon: Eye,
+            icon: EyeIcon,
             tooltip: 'Ver albarán',
             component: Link,
             to: composeDoUrl

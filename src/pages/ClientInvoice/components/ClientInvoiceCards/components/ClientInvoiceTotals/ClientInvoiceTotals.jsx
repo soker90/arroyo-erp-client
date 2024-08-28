@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+
+import { PencilIcon } from 'lucide-react'
+import uniqId from 'uniqid'
+
 import {
-  Card,
+  EditTotalsModal, ItemCard, Tooltip, Card,
   CardContent,
   CardHeader,
   Grid,
-  IconButton
-} from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import uniqId from 'uniqid'
-
-import { EditTotalsModal, ItemCard, Tooltip } from 'components'
+  Button
+} from 'components'
 import { itemsCard } from './utils'
 
 const ClientInvoiceTotals = ({
@@ -36,12 +36,13 @@ const ClientInvoiceTotals = ({
   const _getActions = () => (isEditable
     ? [
       <Tooltip title='Editar' key={uniqId()}>
-        <IconButton
-          size='small'
+        <Button
+          size='icon'
+          variant='icon'
           onClick={_handleEditClick}
         >
-          <EditIcon />
-        </IconButton>
+          <PencilIcon size={20} />
+        </Button>
       </Tooltip>
       ]
     : false)

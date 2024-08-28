@@ -1,17 +1,13 @@
 import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Typography } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import { Eye } from 'lucide-react'
+import { Eye, PencilIcon, TrashIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import { TableMaterial, TextEuro } from 'components'
+import { TableMaterial, TextEuro, Typography } from 'components'
 import { useProducts } from 'hooks'
 import { format } from 'utils'
 import { BASE_PATH } from 'constants/index'
 import { diffColor } from './utils'
-import { useStyles } from './DeliveryOrderProducts.styles'
 import EditProductModal from '../../modals/EditProduct'
 import DeleteConfirmationModal from '../../modals/DeleteConfirmationModal'
 
@@ -23,7 +19,6 @@ const DeliveryOrderProducts = ({
   idProvider,
   updateProduct
 }) => {
-  const classes = useStyles()
   const [productToEdit, setProductToEdit] = useState(null)
   const [productIndexToDelete, setProductIndexToDelete] = useState(null)
   const { products: productsProvider } = useProducts(idProvider, true)
@@ -74,7 +69,7 @@ const DeliveryOrderProducts = ({
   return (
     <>
       <TableMaterial
-        className={classes.root}
+        className='mt-2'
         columns={[
           {
             title: 'Código',
@@ -118,12 +113,12 @@ const DeliveryOrderProducts = ({
           ...(isEditable
             ? [
                 {
-                  icon: EditIcon,
+                  icon: PencilIcon,
                   tooltip: 'Editar',
                   onClick: _showEditProductModal
                 },
                 {
-                  icon: DeleteIcon,
+                  icon: TrashIcon,
                   tooltip: 'Eliminar',
                   onClick: _showDeleteProductModal
                 }

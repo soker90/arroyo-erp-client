@@ -1,12 +1,10 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Grid, IconButton
-} from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
+
+import { PencilIcon } from 'lucide-react'
 import uniqId from 'uniqid'
 
-import { Card, CardContent, CardHeader, Tooltip } from 'components'
+import { Card, CardContent, CardHeader, Tooltip, Grid, Button } from 'components'
 
 import ProductItemCard from './ProductItemCard'
 import { generateLabels } from './utils'
@@ -41,12 +39,13 @@ const ProductData = ({
           title='Datos'
           action={provider && [
             <Tooltip title='Editar' key={uniqId()}>
-              <IconButton
-                size='small'
+              <Button
+                size='icon'
+                variant='icon'
                 onClick={_handleEditClick}
               >
-                <EditIcon />
-              </IconButton>
+                <PencilIcon size={20} />
+              </Button>
             </Tooltip>
           ]}
         />

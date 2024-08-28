@@ -1,24 +1,19 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
-import { Box } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
 import { Link } from 'react-router-dom'
+import { EyeIcon, TrashIcon, PencilIcon } from 'lucide-react'
 
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'
 import { format } from 'utils'
-import { Eye } from 'lucide-react'
 import EditProductModal from '../../modals/EditProductModal'
 import DeleteProductModal from '../../modals/DeleteProductModal'
-import { useStyles } from './ProductsTable.styles'
 
 const ProductsTable = ({
   products,
   editProduct,
   deleteProduct
 }) => {
-  const classes = useStyles()
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [deleteProductSelected, setDeleteProductSelected] = useState(null)
 
@@ -31,9 +26,9 @@ const ProductsTable = ({
   }, [setDeleteProductSelected])
 
   return (
-    <Box mt={3}>
+    <div className='mt-6'>
       <TableMaterial
-        className={classes.table}
+        className='mt-4'
         columns={[
           {
             title: 'Nombre',
@@ -47,18 +42,18 @@ const ProductsTable = ({
         data={products}
         actions={[
           {
-            icon: Eye,
+            icon: EyeIcon,
             tooltip: 'Ver',
             component: Link,
             to: ({ _id }) => `${BASE_PATH}/productos/${_id}`
           },
           {
-            icon: EditIcon,
+            icon: PencilIcon,
             tooltip: 'Editar',
             onClick: product => setSelectedProduct(product)
           },
           {
-            icon: DeleteIcon,
+            icon: TrashIcon,
             tooltip: 'Eliminar',
             onClick: product => setDeleteProductSelected(product)
           }
@@ -73,7 +68,7 @@ const ProductsTable = ({
         product={deleteProductSelected} close={_closeDelete}
         deleteProduct={deleteProduct}
       />
-    </Box>
+    </div>
   )
 }
 

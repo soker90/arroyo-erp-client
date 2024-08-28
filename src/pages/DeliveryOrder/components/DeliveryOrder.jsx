@@ -7,11 +7,9 @@ import DeliveryOrderProducts from './DeliveryOrderProducts'
 import DeliveryOrderData from './DeliveryOrderData'
 import DeliveryOrderTotals from './DeliveryOrderTotals'
 import Header from './Header'
-import { useStyles } from './DeliveryOrder.styles'
 import { useDeliveryOrder } from '../hooks'
 
 const DeliveryOrder = () => {
-  const classes = useStyles()
   const { idDeliveryOrder } = useParams()
   const {
     deliveryOrder,
@@ -37,7 +35,7 @@ const DeliveryOrder = () => {
   } = deliveryOrder
 
   return (
-    <Page className={classes.root} title={`${nameProvider} | Albarán`}>
+    <Page className='min-h-full py-6' title={`${nameProvider} | Albarán`}>
       <Container>
         <Header
           nameProvider={nameProvider}
@@ -62,7 +60,7 @@ const DeliveryOrder = () => {
           )
         }
 
-        <Grid container spacing={3} className={classes.cards}>
+        <Grid container spacing={3} className='mt-4'>
           <Grid item xs={12} md={4}>
             <DeliveryOrderData
               date={date}

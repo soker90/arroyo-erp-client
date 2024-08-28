@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import ReceiptIcon from '@mui/icons-material/Receipt'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { Trash, ReceiptTextIcon } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
 import { Header } from 'components'
@@ -50,7 +49,7 @@ const HeaderProduct = ({
         title={product}
         buttons={[{
           label: 'Eliminar',
-          Icon: DeleteIcon,
+          Icon: Trash,
           variant: 'contained',
           color: 'error',
           onClick: () => setShowModal(true)
@@ -58,14 +57,14 @@ const HeaderProduct = ({
           label: 'Penúltimo albarán',
           component: NavLink,
           to: `/app/albaranes/${nextToLastDeliveryOrder}`,
-          Icon: ReceiptIcon,
+          Icon: ReceiptTextIcon,
           variant: 'outlined',
           disabled: !nextToLastDeliveryOrder
         }, {
           label: 'Último albarán',
           component: NavLink,
           to: `/app/albaranes/${lastDeliveryOrder}`,
-          Icon: ReceiptIcon,
+          Icon: ReceiptTextIcon,
           variant: 'outlined',
           disabled: !lastDeliveryOrder
         }]}

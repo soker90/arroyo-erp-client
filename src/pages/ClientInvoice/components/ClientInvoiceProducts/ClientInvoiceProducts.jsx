@@ -1,14 +1,9 @@
-/* eslint-disable react/prop-types */
-
 import PropTypes from 'prop-types'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { TrashIcon, PencilIcon, Eye } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { TableMaterial, TextEuro } from 'components'
 import { format } from 'utils'
-import { Eye } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { useStyles } from './ClientInvoiceProducts.styles'
 import { BASE_PATH } from '../../../../constants'
 
 const viewIcon = {
@@ -24,8 +19,6 @@ const ClientInvoiceProducts = ({
   onUpdate,
   onDelete
 }) => {
-  const classes = useStyles()
-
   /**
    * Muesta el modal de confirmación para borrar el elemento
    * @param {Object} row
@@ -46,7 +39,7 @@ const ClientInvoiceProducts = ({
 
   return (
     <TableMaterial
-      className={classes.root}
+      className='mt-4'
       columns={[
         {
           title: 'Producto',
@@ -73,12 +66,12 @@ const ClientInvoiceProducts = ({
         ? [
             viewIcon,
             {
-              icon: EditIcon,
+              icon: PencilIcon,
               tooltip: 'Editar',
               onClick: _showEditProductModal
             },
             {
-              icon: DeleteIcon,
+              icon: TrashIcon,
               tooltip: 'Eliminar',
               onClick: _showDeleteProductModal
             }

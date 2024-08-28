@@ -7,11 +7,10 @@ import { useLastDeliveryOrder } from '../hooks'
 import Header from './Header'
 import ProductData from './ProductData'
 import PricesTable from './PricesTable'
-import { useStyles } from './Product.styles'
 
 const Product = () => {
   const { id } = useParams()
-  const classes = useStyles()
+
   const {
     product,
     prices,
@@ -30,7 +29,7 @@ const Product = () => {
   if (!product._id) return <LoadingScreen />
 
   return (
-    <Page className={classes.root} title={`${product.name} | Producto`}>
+    <Page className='min-h-full py-6' title={`${product.name} | Producto`}>
       <Container>
         <Header
           provider={product.provider}
@@ -43,16 +42,16 @@ const Product = () => {
         />
 
         <ProductData
-          product={product} className={classes.table} provider={product.provider}
+          product={product} className='mt-4' provider={product.provider}
           editProduct={editProduct}
         />
 
         {Boolean(prices.length) &&
           (
             <>
-              <PricesChart prices={reversePrices} className={classes.chart} />
+              <PricesChart prices={reversePrices} className='mt-6' />
               {Boolean(pvps?.length) && <PricesChart
-                prices={pvps} className={classes.chart}
+                prices={pvps} className='mt-6'
                 title='Gráfica de precios de venta'
                 tooltip='Venta'
                 lineColor='#f73378'

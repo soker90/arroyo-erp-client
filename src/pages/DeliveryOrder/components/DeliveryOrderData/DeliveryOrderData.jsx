@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import PropTypes from 'prop-types'
-import {
-  Card, CardContent, CardHeader
-} from '@mui/material'
 
-import { DatePickerForm, InputForm } from 'components'
-import { useStyles } from './DeliveryOrderData.styles'
+import { DatePickerForm, InputForm, Card, CardContent, CardHeader } from 'components'
 
 const DeliveryOrderData = ({
   date,
@@ -15,9 +11,7 @@ const DeliveryOrderData = ({
   note,
   idDeliveryOrder
 }) => {
-  const classes = useStyles()
   const { search } = useLocation()
-  // eslint-disable-next-line no-unused-vars
   const [showDateModal, setShowDateModal] = useState(false)
 
   const _handleChangeDate = value => {
@@ -40,7 +34,7 @@ const DeliveryOrderData = ({
     <Card>
       <CardHeader title='Datos del albarán' />
       <hr />
-      <CardContent>
+      <CardContent className='pl-0'>
         <DatePickerForm
           open={showDateModal}
           size={12}
@@ -55,7 +49,7 @@ const DeliveryOrderData = ({
           <InputForm
             size={12}
             label='Notas'
-            className={classes.notes}
+            className='mt-4'
             defaultValue={note}
             onKeyDown={_handleKeyDownNote}
           />

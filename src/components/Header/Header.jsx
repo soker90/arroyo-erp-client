@@ -40,7 +40,7 @@ const Header = ({
    * @private
    */
   const _renderButton = ({
-    color, variant, disableSvg, Icon, label, ...rest
+    variant, disableSvg, Icon, label, ...rest
   }) => (
     <Button
       key={uniqId()}
@@ -48,7 +48,7 @@ const Header = ({
       className='mb-2 ml-2'
       {...rest}
     >
-      <Icon className='mr-1 text-sm' />
+      <Icon className='mr-1 text-sm' size={20} />
 
       {label}
     </Button>

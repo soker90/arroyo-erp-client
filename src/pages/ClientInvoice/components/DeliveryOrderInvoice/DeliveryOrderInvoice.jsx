@@ -104,6 +104,7 @@ const DeliveryOrderInvoice = ({
             readOnly={!isEditable}
             onChange={_handleChangePicker}
             clearable
+            className='-m-2'
           />
           <PerfectScrollbar>
             <ClientInvoiceProducts

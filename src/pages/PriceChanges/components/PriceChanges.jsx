@@ -1,23 +1,15 @@
-import {
-  useCallback, useState
-} from 'react'
-
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ShoppingCart } from 'lucide-react'
-import ReceiptIcon from '@mui/icons-material/Receipt'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { TrashIcon, ReceiptTextIcon, ShoppingCart, CircleCheckBigIcon } from 'lucide-react'
 
 import { BASE_PATH } from 'constants/index'
 import { Page, TableMaterial, TextEuro, Container } from 'components'
 import { addSelectedToState, format, removeSelectedFromState } from 'utils'
 import DeletePriceChangeModal from '../modals/DeletePriceChangeModal'
-import { useStyles } from './PriceChanges.styles'
 import Header from './Header'
 import { usePriceChanges } from '../hooks'
 
 const PriceChanges = () => {
-  const classes = useStyles()
   const [deleteId, setDeleteId] = useState(undefined)
   const [selected, setSelected] = useState([])
   const {
@@ -27,7 +19,7 @@ const PriceChanges = () => {
     deletePriceChanges
   } = usePriceChanges()
 
-  const _rowStyle = ({ read }) => (!read && classes.unread)
+  const _rowStyle = ({ read }) => (!read && 'bg-gray-200')
 
   const _handleClickRead = ({
     _id,
@@ -57,7 +49,7 @@ const PriceChanges = () => {
 
   return (
     <>
-      <Page className={classes.root} title='Cambio de precios'>
+      <Page className='min-h-full py-6' title='Cambio de precios'>
         <Container>
           <Header
             selected={selected}
@@ -66,7 +58,7 @@ const PriceChanges = () => {
             deletePriceChanges={deletePriceChanges}
           />
           <TableMaterial
-            className={classes.table}
+            className='mt-6'
             columns={[
               {
                 title: 'Fecha',
@@ -93,7 +85,7 @@ const PriceChanges = () => {
             title={`Cambios (${priceChanges.length})`}
             actions={[
               {
-                icon: CheckCircleOutlineIcon,
+                icon: CircleCheckBigIcon,
                 tooltip: 'Marcar leído',
                 onClick: _handleClickRead
               },
@@ -104,13 +96,13 @@ const PriceChanges = () => {
                 to: ({ product }) => `${BASE_PATH}/productos/${product}`
               },
               {
-                icon: ReceiptIcon,
+                icon: ReceiptTextIcon,
                 tooltip: 'Albarán',
                 component: Link,
                 to: ({ deliveryOrder }) => `${BASE_PATH}/albaranes/${deliveryOrder}`
               },
               {
-                icon: DeleteIcon,
+                icon: TrashIcon,
                 tooltip: 'Borrar',
                 onClick: _handleClickDelete
               }

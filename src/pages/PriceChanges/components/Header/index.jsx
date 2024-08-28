@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { TrashIcon } from 'lucide-react'
 
 import { Header } from 'components'
 import DeletePriceChangeModal from '../../modals/DeletePriceChangeModal'
@@ -28,8 +28,7 @@ const HeaderPriceChanges = ({
           onClick: () => {
             setShowDelete(true)
           },
-          Icon: DeleteIcon,
-          disableSvg: true,
+          Icon: TrashIcon,
           label: 'Eliminar',
           disabled: !selected.length
         }]}

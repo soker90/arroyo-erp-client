@@ -1,7 +1,6 @@
-import { Grid } from '@mui/material'
+import { Grid } from 'components'
 import PropTypes from 'prop-types'
 
-import { useStyles } from './ClientInvoiceCards.styles'
 import ClientInvoiceData from './components/ClientInvoiceData'
 import ClientInvoiceTotals from './components/ClientInvoiceTotals'
 
@@ -14,11 +13,9 @@ const ClientInvoiceCards = ({
   nInvoice,
   updateDataClientInvoice
 }) => {
-  const classes = useStyles()
-
   return (
-    <Grid container spacing={3} className={classes.cards}>
-      <Grid item xs={12} md={5}>
+    <Grid container>
+      <Grid item xs={12} md={5} className='mt-2'>
         <ClientInvoiceData
           date={date}
           nInvoice={nInvoice}
@@ -27,7 +24,7 @@ const ClientInvoiceCards = ({
           id={id}
         />
       </Grid>
-      <Grid item xs={12} md={7}>
+      <Grid item xs={12} md={7} className='mt-2'>
         <ClientInvoiceTotals
           total={total}
           taxBase={taxBase}
