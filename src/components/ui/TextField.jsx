@@ -25,7 +25,7 @@ TextField.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   variant: PropTypes.string,
   placeholder: PropTypes.string
 }
