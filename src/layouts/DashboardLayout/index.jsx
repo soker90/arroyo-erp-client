@@ -4,23 +4,21 @@ import { Outlet } from 'react-router-dom'
 import AuthGuard from 'components/AuthGuard'
 import NavBar from './NavBar'
 import TopBar from './TopBar'
-import { useStyles } from './DashBoardLayout.styles'
 
 const DashboardLayout = () => {
-  const classes = useStyles()
   const [isMobileNavOpen, setMobileNavOpen] = useState(false)
 
   return (
     <AuthGuard>
-      <div className={classes.root}>
+      <div className='bg-[#f4f6f8] dark:bg-[#1c2025] flex w-full h-full overflow-hidden'>
         <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
         <NavBar
           onMobileClose={() => setMobileNavOpen(false)}
           openMobile={isMobileNavOpen}
         />
-        <div className={classes.wrapper}>
-          <div className={classes.contentContainer}>
-            <div className={classes.content}>
+        <div className='flex flex-auto overflow-hidden pt-16 pl-0 lg:pl-[236px]'>
+          <div className='flex flex-auto overflow-hidden'>
+            <div className='flex-auto h-full overflow-auto'>
               <Outlet />
             </div>
           </div>

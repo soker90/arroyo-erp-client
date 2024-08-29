@@ -1,8 +1,7 @@
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Typography, Box } from '@mui/material'
 
-import { InputForm, ModalGrid, SelectForm } from 'components'
+import { InputForm, ModalGrid, SelectForm, Typography } from 'components'
 import { replaceCommasByDots } from 'utils'
 
 const GenericProductModal = ({
@@ -23,11 +22,9 @@ const GenericProductModal = ({
         close={close}
         title='Añadir producto'
       >
-        <Box p={3}>
-          <Typography variant='h5'>
-            El proveedor no tiene productos
-          </Typography>
-        </Box>
+        <Typography variant='h5' className='p-6'>
+          El proveedor no tiene productos
+        </Typography>
       </ModalGrid>
     )
   }

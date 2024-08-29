@@ -1,26 +1,19 @@
 import PropTypes from 'prop-types'
-import {
-  Card,
-  Grid
-} from '@mui/material'
+import { Card, Grid } from 'components'
 
 import { useSumSelected } from './hooks'
 import DeliveryOrderSelectedSumItem from './DeliveryOrderSelectedSumItem'
-import { useStyles } from './styles'
 
 const DeliveryOrderSelectedSum = ({
   free, selected
 }) => {
-  const classes = useStyles()
   const sumSelected = useSumSelected({
     free,
     selected
   })
 
   return (
-    <Card
-      className={classes.root}
-    >
+    <Card className='mt-6'>
       <Grid
         alignItems='center'
         container

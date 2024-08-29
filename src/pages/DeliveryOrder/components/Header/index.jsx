@@ -1,8 +1,6 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import DescriptionIcon from '@mui/icons-material/Description'
-import { Trash2, Plus } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Trash2, Plus, FileTextIcon } from 'lucide-react'
 
 import { Header } from 'components'
 import AddProductModal from '../../modals/AddProduct'
@@ -50,11 +48,9 @@ const HeaderDeliveryOrder = ({
         }, {
           variant: 'contained',
           color: 'primary',
-          Icon: DescriptionIcon,
-          disableSvg: true,
+          Icon: FileTextIcon,
           label: 'Factura',
           disabled: !invoice,
-          component: Link,
           to: `/app/facturas/${invoice}`
         }, {
           variant: 'contained',

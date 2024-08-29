@@ -1,7 +1,6 @@
-import { Grid } from '@mui/material'
 import { useParams } from 'react-router'
 
-import { LoadingScreen, Page, Container } from 'components'
+import { LoadingScreen, Page, Container, Grid } from 'components'
 
 import DeliveryOrderProducts from './DeliveryOrderProducts'
 import DeliveryOrderData from './DeliveryOrderData'

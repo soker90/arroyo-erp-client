@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { Collapse, ListItem } from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import { Button } from 'components'
+import { Collapse } from '@mui/material'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+
+import { Button, ListItem } from 'components'
 
 const NavItem = ({
   title,
@@ -55,16 +55,10 @@ const NavItem = ({
           </span>
           {open
             ? (
-              <ExpandLessIcon
-                size='small'
-                color='inherit'
-              />
+              <ChevronUpIcon size={20} />
               )
             : (
-              <ExpandMoreIcon
-                size='small'
-                color='inherit'
-              />
+              <ChevronDownIcon size={20} />
               )}
         </Button>
         <Collapse in={open}>

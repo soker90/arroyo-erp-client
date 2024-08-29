@@ -1,31 +1,23 @@
 import PropTypes from 'prop-types'
 import {
-  Box,
   Grid,
   Typography
-} from '@mui/material'
+} from 'components'
 import Label from 'components/Label'
 import { format } from 'utils'
-import { useStyles } from './styles'
 
 const DeliveryOrderSelectedSum = ({
   label, value
 }) => {
-  const classes = useStyles()
-
   return (
     <Grid
-      className={classes.item}
+      className='p-4 text-center border-r border-b'
       item
       md={3}
       sm={6}
       xs={12}
     >
-      <Box
-        display='flex'
-        alignItems='center'
-        justifyContent='center'
-      >
+      <div className='flex items-center justify-center'>
         <Typography
           component='span'
           variant='h4'
@@ -34,12 +26,12 @@ const DeliveryOrderSelectedSum = ({
           {format.euro(value)}
         </Typography>
         <Label
-          className={classes.label}
+          className='ml-2'
           color='primary'
         >
           {label}
         </Label>
-      </Box>
+      </div>
     </Grid>
   )
 }

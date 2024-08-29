@@ -6,12 +6,9 @@ import { useInvoices } from '../hooks'
 import Header from './Header'
 import InvoicesTable from './InvoicesTable'
 import SearchForm from './SearchForm'
-import { useStyles } from './Book.styles'
 
 const Book = () => {
   const { year } = useParams()
-
-  const classes = useStyles()
 
   const {
     invoices,
@@ -21,7 +18,7 @@ const Book = () => {
   } = useInvoices(year)
 
   return (
-    <Page className={classes.root} title='Libro'>
+    <Page className='py-6' title='Libro'>
       <Container>
         <Header year={Number(year)} filter={filters} />
         <SearchForm setFilters={setFilters} filters={filters} />
