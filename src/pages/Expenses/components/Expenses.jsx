@@ -1,18 +1,15 @@
 import {
   useCallback, useState
 } from 'react'
-import { Box } from '@mui/material'
 import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial, Container } from 'components'
 import NewProviderModal from '../modals/NewProviderModal'
-import { useStyles } from './Expenses.styles'
 import { useProviders } from '../hooks'
 
 const Expenses = () => {
-  const classes = useStyles()
   const [showModal, setShowModal] = useState(false)
   const { providers, createProvider } = useProviders()
 
@@ -32,7 +29,7 @@ const Expenses = () => {
 
   return (
     <>
-      <Page className={classes.root} title='Gastos'>
+      <Page className='py-6' title='Gastos'>
         <Container>
           <Header
             title='Gastos'
@@ -44,32 +41,30 @@ const Expenses = () => {
               }
             ]}
           />
-          <Box mt={3}>
-            <TableMaterial
-              className={classes.table}
-              columns={[
-                {
-                  title: 'Nombre',
-                  field: 'name'
-                },
-                {
-                  title: 'Nota',
-                  field: 'note'
-                }
-              ]}
-              data={providers}
-              title={`Proveedores de gastos (${providers.length})`}
-              href={_hrefRow}
-              actions={[
-                {
-                  icon: Eye,
-                  tooltip: 'Editar',
-                  component: Link,
-                  to: _hrefRow
-                }
-              ]}
-            />
-          </Box>
+          <TableMaterial
+            className='mt-6'
+            columns={[
+              {
+                title: 'Nombre',
+                field: 'name'
+              },
+              {
+                title: 'Nota',
+                field: 'note'
+              }
+            ]}
+            data={providers}
+            title={`Proveedores de gastos (${providers.length})`}
+            href={_hrefRow}
+            actions={[
+              {
+                icon: Eye,
+                tooltip: 'Editar',
+                component: Link,
+                to: _hrefRow
+              }
+            ]}
+          />
         </Container>
       </Page>
       <NewProviderModal show={showModal} close={_closeModal} createProvider={createProvider} />

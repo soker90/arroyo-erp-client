@@ -5,12 +5,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Eye } from 'lucide-react'
 
-import { InputForm, TableMaterial, TextEuro } from 'components'
-import { format } from 'utils'
+import { InputForm, TableMaterial, TextEuro, Card, Grid } from 'components'
 import { BASE_PATH } from 'constants/common'
-import { Card, Grid } from '@mui/material'
 import { useDebounce } from 'hooks'
-import { useStyles } from './InInvoices.styles'
+import { format } from 'utils'
 
 const InInvoices = ({
   deliveryOrders: {
@@ -21,7 +19,6 @@ const InInvoices = ({
   updateFilters
 }) => {
   const [canal, setCanal] = useState('')
-  const classes = useStyles()
   const debounce = useDebounce()
 
   useEffect(() => {
@@ -51,7 +48,7 @@ const InInvoices = ({
   }, [setCanal])
 
   const _renderSearch = () => (
-    <Grid container spacing={2} className={classes.search}>
+    <Grid container spacing={2} className='mt-4 pr-6 -mb-20'>
       <Grid item md={10} />
       <InputForm label='Canal' size={2} value={canal} onChange={_handleSearch} />
     </Grid>
@@ -85,7 +82,7 @@ const InInvoices = ({
     <Card>
       {hasCanal && _renderSearch()}
       <TableMaterial
-        className={classes.table}
+        className='mt-4'
         columns={columns}
         data={data}
         count={count}

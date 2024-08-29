@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import {
-  InputAdornment
-} from '@mui/material'
 import PropTypes from 'prop-types'
-import { SearchIcon } from 'lucide-react'
 
 import {
-  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid, Tooltip
+  InputForm, Page, Button, Container, Card, CardContent, CardHeader, Grid
 } from 'components'
 import { useNotifications } from 'hooks'
 import { swapInvoicesApi } from 'services/apiService'
@@ -27,15 +23,6 @@ const SwapInvoices = () => {
         showError(error.message)
       })
   }
-  const _renderAdornment = onClick => (
-    <InputAdornment position='end'>
-      <Tooltip title='Editar'>
-        <Button variant='icon' size='icon' onClick={onClick}>
-          <SearchIcon size={20} />
-        </Button>
-      </Tooltip>
-    </InputAdornment>
-  )
 
   const _handleChange = set => ({ target: { value } }) => {
     set(value)
@@ -54,10 +41,6 @@ const SwapInvoices = () => {
                 label='Id Factura 1'
                 size={5}
                 onChange={_handleChange(setInvoiceA)}
-                InputProps={{
-                  endAdornment: _renderAdornment(() => {
-                  })
-                }}
                 value={invoiceA}
               />
               <InputForm
@@ -65,10 +48,6 @@ const SwapInvoices = () => {
                 size={5}
                 value={invoiceB}
                 onChange={_handleChange(setInvoiceB)}
-                InputProps={{
-                  endAdornment: _renderAdornment(() => {
-                  })
-                }}
               />
               <Grid item md={2} xs={12}>
                 <Button

@@ -1,17 +1,14 @@
 import {
   useCallback, useState
 } from 'react'
-import { Grid } from '@mui/material'
 
-import { Header, Page, TotalsReportBoxes, Container } from 'components'
-import { useStyles } from './DashboardView.styles'
+import { Header, Page, TotalsReportBoxes, Container, Grid } from 'components'
 import Reminders from './Reminders'
 import DeleteConfirmationModal from '../modals/DeleteConfirmationModal'
 import { useDashboard } from '../hooks'
 
 const DashboardView = () => {
   const { cash, reminders, createReminder, deleteReminder } = useDashboard()
-  const classes = useStyles()
   const [deleteId, setDeleteId] = useState(null)
 
   const _closeModal = useCallback(() => {
@@ -20,13 +17,13 @@ const DashboardView = () => {
   return (
     <>
       <Page
-        className={classes.root}
+        className='min-h-full py-6'
         title='Inicio'
       >
         <Container>
           <Header title='Panel' description='Efectivo y recordatorios' />
 
-          <TotalsReportBoxes totals={cash} className={classes.cashBoxes} />
+          <TotalsReportBoxes totals={cash} className='mt-0 mb-4' />
           <Grid
             container
             spacing={3}

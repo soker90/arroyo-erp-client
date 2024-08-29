@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import {
   Checkbox
-} from '@mui/material'
+} from 'components'
 
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
 
@@ -36,13 +36,13 @@ const NoInvoices = ({
    * @private
    */
   const _handleChangeCheckbox = (id, value) => {
-    // eslint-disable-next-line
-    value ? _addSelected(id) : _removeSelected(id);
+    value ? _addSelected(id) : _removeSelected(id)
   }
 
   return deliveryOrders.map(props => (
     <DeliveryOrderExpand {...props} key={props._id}>
       <Checkbox
+        className='mr-4'
         onChange={(ev, value) => _handleChangeCheckbox(props._id, value)}
         checked={selected.includes(props._id)}
       />
