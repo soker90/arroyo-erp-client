@@ -1,86 +1,55 @@
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import {
-  AppBar, Box, Hidden, IconButton, Toolbar, SvgIcon
-} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
-import { Menu as MenuIcon } from 'lucide-react'
+import { MenuIcon } from 'lucide-react'
 
+import { Button } from 'components'
 import Logo from 'components/Logo'
-import { THEMES } from 'constants/common'
 import Account from './Account'
 import PricesNotification from './PricesNotification'
 import Search from './Search'
 import Settings from './Settings'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    zIndex: theme.zIndex.drawer + 100,
-    ...(theme.name === THEMES.LIGHT
-      ? {
-          boxShadow: 'none',
-          backgroundColor: theme.palette.primary.main
-        }
-      : {}),
-    ...(theme.name === THEMES.ONE_DARK
-      ? {
-          backgroundColor: theme.palette.background.default
-        }
-      : {})
-  },
-  toolbar: {
-    minHeight: 64
-  }
-}))
-
 const TopBar = ({
-  className,
   onMobileNavOpen,
   ...rest
 }) => {
-  const classes = useStyles()
-
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
+    <header
+      className='fixed top-0 left-0 right-0 bg-header text-white shadow-xl z-[1250]'
       {...rest}
     >
-      <Toolbar className={classes.toolbar}>
-        <Hidden lgUp>
-          <IconButton
-            className={classes.menuButton}
-            color='inherit'
-            onClick={onMobileNavOpen}
-            size='large'
-          >
-            <SvgIcon fontSize='small'>
-              <MenuIcon />
-            </SvgIcon>
-          </IconButton>
-        </Hidden>
-        <Hidden lgDown>
-          <RouterLink to='/'>
-            <Logo />
-          </RouterLink>
-        </Hidden>
-        <Box
-          ml={2}
-          flexGrow={1}
-        />
-        <Search />
-        <PricesNotification />
-        <Settings />
-        <Box ml={2}>
-          <Account />
-        </Box>
-      </Toolbar>
-    </AppBar>
+      <div className='mx-auto px-4'>
+        <div className='flex h-16 items-center justify-between'>
+          <div className='flex items-center'>
+            <div className='lg:hidden'>
+              <Button
+                variant='ghost'
+                size='icon'
+                className='text-primary-foreground hover:bg-primary-dark'
+                onClick={onMobileNavOpen}
+              >
+                <MenuIcon className='h-5 w-5' />
+              </Button>
+            </div>
+            <div className='hidden lg:block'>
+              <RouterLink to='/'>
+                <Logo />
+              </RouterLink>
+            </div>
+          </div>
+          <div className='flex items-center space-x-4'>
+            <Search />
+            <PricesNotification />
+            <Settings />
+            <Account />
+          </div>
+        </div>
+      </div>
+    </header>
   )
 }
 
 TopBar.propTypes = {
-  className: PropTypes.string,
   onMobileNavOpen: PropTypes.func
 }
 
