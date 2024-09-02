@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { Collapse } from '@mui/material'
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
-import { Button, ListItem } from 'components'
+import { Collapse, Button, ListItem } from 'components'
 
 const NavItem = ({
   title,
@@ -34,32 +33,25 @@ const NavItem = ({
     return (
       <ListItem
         className={clsx('block py-0', className)}
-        disableGutters
         key={title}
         {...rest}
       >
         <Button
           variant='ghost'
-          className='capitalize text-[#546e7a] dark:text-[#adb0bb] w-full px-4 py-2 justify-content-start letter-spacing-0 pl'
+          className='capitalize text-muted-foreground w-full px-4 py-2 justify-start'
           onClick={handleToggle}
           style={style}
         >
           {Icon && (
             <Icon
-              className='flex items-center mr-2'
-              size='20'
+              className='mr-2'
+              size={20}
             />
           )}
           <span className='mr-auto'>
             {title}
           </span>
-          {open
-            ? (
-              <ChevronUpIcon size={20} />
-              )
-            : (
-              <ChevronDownIcon size={20} />
-              )}
+          {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </Button>
         <Collapse in={open}>
           {children}
@@ -71,13 +63,12 @@ const NavItem = ({
   return (
     <ListItem
       className={clsx('flex py-0', className)}
-      disableGutters
       key={title}
       {...rest}
     >
       <RouterLink
         to={href}
-        className={({ isActive }) => (isActive ? 'text-secondary hover:text-secondary' : 'text-[#546e7a] hover:text-[#546e7a] dark:text-[#adb0bb]')}
+        className={({ isActive }) => (isActive ? 'text-primary hover:text-primary' : 'text-muted-foreground hover:text-muted-foreground')}
       >
         <Button
           variant='ghost'
@@ -86,8 +77,8 @@ const NavItem = ({
         >
           {Icon && (
             <Icon
-              className='flex items-center mr-2'
-              size='20'
+              className='mr-2'
+              size={20}
             />
           )}
           <span className='mr-auto'>
