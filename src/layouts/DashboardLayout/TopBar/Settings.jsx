@@ -1,105 +1,39 @@
-import { useRef, useState } from 'react'
-import {
-  Box, Popover
-} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
-import { Settings as SettingsIcon } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 
-import { Button, Tooltip, Typography, Grid, SelectForm } from 'components'
+import { Button, Tooltip } from 'components'
+import { THEMES } from 'constants/common'
 import useSettings from 'hooks/useSettings'
-import { THEMES, THEMES_NAME } from 'constants/common'
 
-const useStyles = makeStyles(theme => ({
-  popover: {
-    width: 320,
-    padding: theme.spacing(2)
-  }
-}))
-
-const Settings = () => {
-  const classes = useStyles()
-  const ref = useRef(null)
+const ThemeToggle = () => {
   const { settings, saveSettings } = useSettings()
-  const [isOpen, setOpen] = useState(false)
-  const [values, setValues] = useState({
-    direction: settings.direction,
-    responsiveFontSizes: settings.responsiveFontSizes,
-    theme: settings.theme
-  })
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
+  const isDarkMode = settings.theme === THEMES.ONE_DARK
 
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const handleChange = (field, value) => {
-    setValues({
-      ...values,
-      [field]: value
-    })
-  }
-
-  const handleSave = () => {
-    saveSettings(values)
-    setOpen(false)
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? THEMES.LIGHT : THEMES.ONE_DARK
+    saveSettings({ theme: newTheme })
   }
 
   return (
-    <>
-      <Tooltip title='Ajustes'>
-        <Button size='icon' variant='icon' className='text-inherit hover:bg-inherit' onClick={handleOpen} ref={ref}>
-          <SettingsIcon />
-        </Button>
-      </Tooltip>
-      <Popover
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
-        }}
-        classes={{ paper: classes.popover }}
-        anchorEl={ref.current}
-        onClose={handleClose}
-        open={isOpen}
+    <Tooltip title={isDarkMode ? 'Activar modo día' : 'Activar modo noche'}>
+      <Button
+        variant='icon'
+        size='icon'
+        onClick={toggleTheme}
+        className='text-white hover:bg-foreground/10'
       >
-        <Typography
-          variant='h4'
-          className='font-normal text-inherit'
-        >
-          Configuración
-        </Typography>
-        <Grid className='mt-2'>
-          <SelectForm
-            label='Tema'
-            name='theme'
-            onChange={event => handleChange('theme', event.target.value)}
-            value={values.theme}
-            size={12}
-            className='[&_*]:!text-inherit'
-          >
-            {Object.keys(THEMES)
-              .map(theme => (
-                <option key={theme} value={theme}>
-                  {THEMES_NAME[theme]}
-                </option>
-              ))}
-          </SelectForm>
-        </Grid>
-        <Box mt={2}>
-          <Button
-            variant='secondary'
-            className='w-full'
-            onClick={handleSave}
-          >
-            Guardar
-          </Button>
-        </Box>
-      </Popover>
-    </>
+        {isDarkMode
+          ? (
+            <Sun className='h-5 w-5' />
+            )
+          : (
+            <Moon className='h-5 w-5' />
+            )}
+        <span className='sr-only'>Cambiar tema</span>
+      </Button>
+    </Tooltip>
   )
 }
 
-Settings.displayName = 'Settings'
-export default Settings
+ThemeToggle.displayName = 'ThemeToggle'
+export default ThemeToggle

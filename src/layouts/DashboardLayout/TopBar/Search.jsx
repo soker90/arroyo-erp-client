@@ -1,135 +1,69 @@
-/* eslint-disable react/prop-types */
 import { useRef, useState } from 'react'
-import {
-  ClickAwayListener,
-  Hidden,
-  Input,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  Popper
-} from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
 import { useNavigate } from 'react-router'
+import { SearchIcon } from 'lucide-react'
 
 import { useProviders } from 'hooks'
 import { navigateTo } from 'utils'
-import { useStyles } from './Search.styles'
 
 /**
  * Barra de busqueda de proveedores
  */
 const Search = () => {
-  const classes = useStyles()
   const searchRef = useRef(null)
   const [openSearchPopover, setOpenSearchPopover] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  // eslint-disable-next-line no-shadow
   const { providers } = useProviders()
   const navigate = useNavigate()
 
-  /**
-   * Establece el texto buscado en el estado
-   * abre o cierra la lista de sugerencias
-   * @param {String} value
-   * @private
-   */
   const _handleSearchChange = ({ target: { value } }) => {
     setSearchValue(value)
-
-    // eslint-disable-next-line no-unused-expressions
-    value
-      ? !openSearchPopover && setOpenSearchPopover(true)
-      : setOpenSearchPopover(false)
+    value ? !openSearchPopover && setOpenSearchPopover(true) : setOpenSearchPopover(false)
   }
 
-  /**
-   * Cierra la lista de sugerencias a pinchar en otro
-   * sitio de la pantalla
-   * @private
-   */
   const _handleSearchPopverClose = () => {
     setOpenSearchPopover(false)
   }
 
-  /**
-   * Navigate to provider selected
-   * @param {String} idProvider
-   * @private
-   */
-  const _handleSelectProvider = idProvider => {
+  const _handleSelectProvider = (idProvider) => {
     _handleSearchPopverClose()
     navigateTo(`proveedores/${idProvider}`, navigate)
   }
 
-  /**
-   * Filtra los posibles proveedores que coincidan
-   * con la búsqueda
-   * @param {{name: String}} provider
-   * @return {boolean}
-   * @private
-   */
-  const _filterPossibles = provider => provider.name
-    .toLowerCase()
-    .includes(searchValue.toLowerCase())
+  const _filterPossibles = (provider) => provider.name.toLowerCase().includes(searchValue.toLowerCase())
 
-  /**
-   * Renderiza un elemento de la busqueda
-   * @param {String} _id,
-   * @param {String} name
-   * @return {JSX.Element}
-   * @private
-   */
-  const _renderSearchedItem = ({
-    _id,
-    name
-  }) => (
-    <ListItemButton
+  const _renderSearchedItem = ({ _id, name }) => (
+    <button
       key={_id}
+      className='flex items-center w-full px-4 py-2 text-left hover:bg-gray-100'
       onClick={() => _handleSelectProvider(_id)}
     >
-      <ListItemIcon>
-        <SearchIcon />
-      </ListItemIcon>
-      <ListItemText primary={name} />
-    </ListItemButton>
+      <SearchIcon className='mr-4 h-5 w-5' />
+      <span>{name}</span>
+    </button>
   )
 
   return (
-    <Hidden mdDown>
+    <div className='hidden md:block relative'>
       <div
-        className={classes.search}
+        className='bg-white/10 rounded-sm flex items-center px-4 w-72 h-9'
         ref={searchRef}
       >
-        <SearchIcon className={classes.searchIcon} />
-        <Input
-          className={classes.searchInput}
-          disableUnderline
+        <SearchIcon className='mr-4 h-5 w-5' />
+        <input
+          className='bg-transparent text-white placeholder-white/50 focus:outline-none w-full'
           onChange={_handleSearchChange}
           placeholder='Buscar proveedor'
           value={searchValue}
         />
       </div>
-      <Popper
-        anchorEl={searchRef.current}
-        className={classes.searchPopper}
-        open={openSearchPopover}
-      >
-        <ClickAwayListener onClickAway={_handleSearchPopverClose}>
-          <Paper
-            className={classes.searchPopperContent}
-            elevation={3}
-          >
-            <List>
-              {providers?.filter(_filterPossibles)
-                .map(_renderSearchedItem)}
-            </List>
-          </Paper>
-        </ClickAwayListener>
-      </Popper>
-    </Hidden>
+      {openSearchPopover && (
+        <div className='absolute top-full left-0 mt-2 w-full z-10'>
+          <div className='bg-white rounded-md shadow-lg max-h-60 overflow-y-auto text-foreground'>
+            {providers?.filter(_filterPossibles).map(_renderSearchedItem)}
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
