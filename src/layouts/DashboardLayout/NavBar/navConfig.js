@@ -1,13 +1,17 @@
-import { PieChart as PieChartIcon, ShoppingCart, Users as UsersIcon } from 'lucide-react'
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
-import DescriptionIcon from '@mui/icons-material/Description'
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
-import EuroIcon from '@mui/icons-material/Euro'
-import MenuBookIcon from '@mui/icons-material/MenuBook'
-import PostAddIcon from '@mui/icons-material/PostAdd'
-import ReceiptIcon from '@mui/icons-material/Receipt'
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
-import UpdateIcon from '@mui/icons-material/Update'
+import {
+  PieChart,
+  ShoppingCart,
+  Users,
+  Building2,
+  BookOpen,
+  Euro,
+  FileText,
+  Pencil,
+  FileCheck,
+  Clock,
+  AlertTriangle,
+  ArrowLeftRight
+} from 'lucide-react'
 
 const year = new Date().getFullYear()
 
@@ -17,42 +21,42 @@ export const navConfig = [
     items: [
       {
         title: 'Provedores',
-        icon: UsersIcon,
+        icon: Users,
         href: '/app/proveedores'
       },
       {
         title: 'Gastos',
-        icon: AccountBalanceIcon,
+        icon: Building2,
         href: '/app/gastos'
       },
       {
         title: 'Libro',
-        icon: MenuBookIcon,
+        icon: BookOpen,
         href: `/app/libro/${year}`
       },
       {
         title: 'Pagos',
-        icon: EuroIcon,
+        icon: Euro,
         href: '/app/pagos'
       },
       {
         title: 'Clientes',
-        icon: UsersIcon,
+        icon: Users,
         href: '/app/clientes',
         items: [
           {
             title: 'Listado',
-            icon: UsersIcon,
+            icon: Users,
             href: '/app/clientes/listado'
           },
           {
             title: 'Libro',
-            icon: MenuBookIcon,
+            icon: BookOpen,
             href: `/app/clientes/libro/${year}`
           },
           {
             title: 'Facturación',
-            icon: DescriptionIcon,
+            icon: FileText,
             href: `/app/clientes/facturacion/${year}`
           },
           {
@@ -64,7 +68,7 @@ export const navConfig = [
       },
       {
         title: 'Notas',
-        icon: PostAddIcon,
+        icon: Pencil,
         href: `/app/notas/${year}`
       }
     ]
@@ -74,7 +78,7 @@ export const navConfig = [
     items: [
       {
         title: 'Inicio',
-        icon: PieChartIcon,
+        icon: PieChart,
         href: '/app/informes/inicio'
       },
       {
@@ -84,22 +88,22 @@ export const navConfig = [
       },
       {
         title: 'Facturación',
-        icon: DescriptionIcon,
+        icon: FileText,
         href: `/app/informes/facturacion/${year}`
       },
       {
         title: 'Albaranes',
-        icon: ReceiptIcon,
+        icon: FileCheck,
         href: `/app/informes/albaranes/${year}`
       },
       {
         title: 'Pagarés',
-        icon: UpdateIcon,
+        icon: Clock,
         href: `/app/informes/pagares/${year}`
       },
       {
         title: 'Errores',
-        icon: ErrorOutlineIcon,
+        icon: AlertTriangle,
         href: '/app/informes/errores-precios'
       }
     ]
@@ -109,7 +113,7 @@ export const navConfig = [
     items: [
       {
         title: 'Intercambio',
-        icon: SwapHorizIcon,
+        icon: ArrowLeftRight,
         href: '/app/intercambio'
       }
     ]
