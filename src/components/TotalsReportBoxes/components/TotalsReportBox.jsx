@@ -13,7 +13,7 @@ const TotalsReportBox = ({
     <Grid
       item
       lg={size ?? 2}
-      sm={4}
+      md={4}
       xs={12}
     >
       <Card className='p-6 flex items-center justify-between'>

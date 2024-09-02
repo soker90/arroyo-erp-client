@@ -1,80 +1,21 @@
-import { useRef, useState } from 'react'
-import {
-  Avatar, Box, ButtonBase, Hidden, Menu, MenuItem, Typography
-} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { LogOutIcon } from 'lucide-react'
 
 import { useAuth } from 'hooks'
 
-const useStyles = makeStyles(theme => ({
-  avatar: {
-    height: 32,
-    width: 32,
-    marginRight: theme.spacing(1)
-  },
-  popover: {
-    width: 200
-  }
-}))
-
 const Account = () => {
-  const classes = useStyles()
-  const ref = useRef(null)
-  const { user, logout } = useAuth()
-  const [isOpen, setOpen] = useState(false)
-
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const handleLogout = () => {
-    handleClose()
-    logout()
-  }
+  const { logout } = useAuth()
 
   return (
-    <>
-      <Box
-        display='flex'
-        alignItems='center'
-        component={ButtonBase}
-        onClick={handleOpen}
-        ref={ref}
+    <div className='relative'>
+      <button
+        onClick={logout}
+        className='flex items-center focus:outline-none hover:bg-muted-foreground/20 p-2 rounded-lg'
       >
-        <Avatar
-          alt='User'
-          className={classes.avatar}
-          src={null}
-        />
-        <Hidden mdDown>
-          <Typography
-            variant='h6'
-            color='inherit'
-          >
-            {user}
-          </Typography>
-        </Hidden>
-      </Box>
-      <Menu
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
-        }}
-        keepMounted
-        slotProps={{ paper: { className: classes.popover } }}
-        anchorEl={ref.current}
-        open={isOpen}
-      >
-        <MenuItem onClick={handleLogout}>
-          Salir
-        </MenuItem>
-      </Menu>
-    </>
+
+        <span className='hidden md:block text-lg font-semibold'>Salir</span>
+        <LogOutIcon className='w-6 h-6 ml-2' />
+      </button>
+    </div>
   )
 }
 

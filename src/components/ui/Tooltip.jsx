@@ -5,7 +5,7 @@ import { cn } from 'utils'
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = ({ children, title, disabled = false }) => {
+const Tooltip = ({ children, title, disabled = false, ...rest }) => {
   if (disabled) {
     return children
   }
@@ -13,7 +13,7 @@ const Tooltip = ({ children, title, disabled = false }) => {
   return (
     <TooltipPrimitive.Root>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <TooltipContent>{title}</TooltipContent>
+      <TooltipContent {...rest}>{title}</TooltipContent>
     </TooltipPrimitive.Root>
   )
 }

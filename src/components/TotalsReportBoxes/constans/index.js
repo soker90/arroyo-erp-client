@@ -13,7 +13,7 @@ export const TOTALS_BOXES = [
   },
   {
     title: '4º Trimestre',
-    value: '4'
+    value: '4',
   },
   {
     title: 'Anual',

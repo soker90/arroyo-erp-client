@@ -1,32 +1,25 @@
-import { NavLink as RouterLink } from 'react-router-dom'
-import { Badge, IconButton } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
-import EuroIcon from '@mui/icons-material/Euro'
-import { usePricesChangesUnread } from 'hooks'
-import { Tooltip } from 'components'
+import { EuroIcon } from 'lucide-react'
 
-const useStyles = makeStyles({
-  badge: {
-    marginTop: 10,
-    marginRight: 5
-  }
-})
+import { Button, Tooltip } from 'components'
+import { usePricesChangesUnread } from 'hooks'
 
 const PricesNotification = () => {
   const { count } = usePricesChangesUnread()
-  const classes = useStyles()
+
   return (
     <Tooltip title='Precios'>
-      <Badge
-        color='secondary'
-        classes={{ badge: classes.badge }}
-        badgeContent={count}
-        max={99}
-      >
-        <IconButton color='inherit' component={RouterLink} to='/app/precios' size='large'>
-          <EuroIcon />
-        </IconButton>
-      </Badge>
+      <Button to='/app/precios' size='icon' variant='icon' className='mx-4 hover:bg-muted-foreground/40'>
+        <div>
+          <EuroIcon size={20} className='w-6 h-6 ml-4' />
+        </div>
+        {count > 0 && (
+          <span
+            className='px-2 py-1 text-xs font-bold leading-none text-white transform -translate-x-1/2 -translate-y-1/2 bg-secondary rounded-full'
+          >
+            {count > 99 ? '99+' : count}
+          </span>
+        )}
+      </Button>
     </Tooltip>
   )
 }
