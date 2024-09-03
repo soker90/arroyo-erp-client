@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import * as path from 'path'
+// import { visualizer } from 'rollup-plugin-visualizer'
 
 import { version } from './package.json'
 
@@ -11,13 +12,22 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    // rollupOptions: {
-    //   output: {
-    //     manualChunks: {
-    //       lucid: ['lucide-react']
-    //     }
-    //   }
-    // }
+    rollupOptions: {
+      // plugins: [
+      //   visualizer()
+      // ],
+      output: {
+        manualChunks: {
+          lucid: ['lucide-react'],
+          chartjs: ['chart.js'],
+          dateFns: ['date-fns'],
+          axios: ['axios'],
+          swr: ['swr'],
+          daypicker: ['react-day-picker'],
+          tailwindMerge: ['tailwind-merge']
+        }
+      }
+    }
   },
   resolve: {
     alias: [
@@ -91,7 +101,12 @@ export default defineConfig({
       }
     ]
   },
-  plugins: [react()],
+  plugins: [react()
+    // visualizer({
+    //   filename: './dist/stats.html',
+    //   open: true
+    // })
+  ],
   test: {
     globals: true,
     environment: 'happy-dom',

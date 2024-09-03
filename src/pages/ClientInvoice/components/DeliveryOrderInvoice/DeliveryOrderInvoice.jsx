@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import uniqId from 'uniqid'
 import { Plus, Trash2 } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
@@ -63,7 +62,7 @@ const DeliveryOrderInvoice = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Añadir producto' key={uniqId()}>
+      <Tooltip title='Añadir producto' key='add-product-to-delivery-order'>
         <Button
           size='icon' variant='icon'
           onClick={_handleAddClick}
@@ -71,7 +70,7 @@ const DeliveryOrderInvoice = ({
           <Plus size={20} />
         </Button>
       </Tooltip>,
-      <Tooltip title='Eliminar albarán' key={uniqId()}>
+      <Tooltip title='Eliminar albarán' key='remove-deliver-order'>
         <Button
           size='icon' variant='icon'
           onClick={_handleDeleteClick}

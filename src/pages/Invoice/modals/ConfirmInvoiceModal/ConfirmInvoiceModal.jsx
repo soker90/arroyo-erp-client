@@ -75,9 +75,6 @@ const ConfirmInvoiceModal = ({
         value={type}
         onChange={_handleSelect}
         size={6}
-        InputLabelProps={{
-          shrink: true
-        }}
       >
         {TYPE_PAYMENT?.map(item => (
           <option key={item} value={item}>

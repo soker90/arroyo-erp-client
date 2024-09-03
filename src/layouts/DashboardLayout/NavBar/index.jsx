@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 import { Link as RouterLink } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { matchPath, useLocation } from 'react-router'
@@ -106,7 +105,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
         <hr className='border-t border-gray-200 dark:border-gray-700' />
         <div className='p-4'>
           {navConfig.map((config) => (
-            <div key={uniqId()} className='mb-4'>
+            <div key={config.subheader} className='mb-4'>
               <Typography variant='h6' className='mb-1 font-semibold text-gray-500 dark:text-gray-400'>
                 {config.subheader}
               </Typography>

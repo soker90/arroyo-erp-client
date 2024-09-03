@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import uniqId from 'uniqid'
 
 import {
   Checkbox,
@@ -28,7 +27,7 @@ const BodyTable = ({
         return (
           <TableRow
             onMouseDown={() => onRowClick?.(row)}
-            key={uniqId()}
+            key={index}
             selected={isSelected}
             className={rowClass?.(row) || ''}
           >
@@ -43,8 +42,8 @@ const BodyTable = ({
             {columns.map(({
               field,
               render
-            }) => (
-              <TableCell key={uniqId()}>
+            }, index) => (
+              <TableCell key={index}>
                 <CellComponent
                   {...(href && {
                     component: Link,

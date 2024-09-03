@@ -45,9 +45,7 @@ const Pagination = (
       <span className='text-sm'> filas</span>
       <SelectForm
         className='flex !w-16 ml-2 mr-9 items-center !p-0 !-mt-4 !text-sm' value={numRows}
-        onChange={onRowsPerPageChange} InputLabelProps={{
-          shrink: true
-        }}
+        onChange={onRowsPerPageChange}
       >
         {rowsPerPageOptions.map((option) => (
           <option className='text-sm' key={option} value={option}>{option}</option>

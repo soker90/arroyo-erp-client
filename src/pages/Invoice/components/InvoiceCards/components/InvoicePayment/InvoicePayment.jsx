@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { PencilIcon } from 'lucide-react'
-import uniqId from 'uniqid'
 
 import { ItemCard, Card, CardContent, CardHeader, Tooltip, Grid, Button } from 'components'
 import EditPaymentModal from 'pages/Invoice/modals/EditPaymentModal'
@@ -21,7 +20,7 @@ const InvoicePayment = ({
    * @private
    */
   const actions = [
-    <Tooltip title='Editar' key={uniqId()}>
+    <Tooltip title='Editar' key='edit'>
       <Button
         size='icon'
         variant='icon'

@@ -98,9 +98,6 @@ const EditInvoiceDataModalView = ({
       onChange={_handleChange}
       name={name}
       label={label}
-      InputLabelProps={{
-        shrink: true
-      }}
       size={4}
       onKeyPress={_handleKeyPress}
       {...options}
@@ -136,9 +133,6 @@ const EditInvoiceDataModalView = ({
       name='concept'
       onChange={_handleChange}
       size={6}
-      InputLabelProps={{
-        shrink: true
-      }}
       onKeyPress={_handleKeyPress}
     >
       {INVOICE_COMMON_CONCEPTS.map(item => (

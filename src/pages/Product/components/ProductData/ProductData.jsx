@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { PencilIcon } from 'lucide-react'
-import uniqId from 'uniqid'
 
 import { Card, CardContent, CardHeader, Tooltip, Grid, Button } from 'components'
 
@@ -38,7 +37,7 @@ const ProductData = ({
         <CardHeader
           title='Datos'
           action={provider && [
-            <Tooltip title='Editar' key={uniqId()}>
+            <Tooltip title='Editar' key='edit'>
               <Button
                 size='icon'
                 variant='icon'
@@ -53,7 +52,7 @@ const ProductData = ({
         <CardContent>
           <Grid container spacing={3}>
             {generateLabels(product, provider)
-              .map(item => <ProductItemCard {...item} key={uniqId()} />)}
+              .map((item, index) => <ProductItemCard {...item} key={index} />)}
           </Grid>
         </CardContent>
       </Card>

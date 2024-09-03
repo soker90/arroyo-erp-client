@@ -108,9 +108,6 @@ const ConfirmPaymentModal = ({
         value={type}
         onChange={_handleSelect}
         size={4}
-        InputLabelProps={{
-          shrink: true
-        }}
         onKeyPress={_handleKeyPress}
       >
         {TYPE_PAYMENT?.map(item => (

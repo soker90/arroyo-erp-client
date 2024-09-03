@@ -82,9 +82,6 @@ const ConfirmClientPaymentModal = ({
         value={paymentType}
         onChange={_handleSelect}
         size={4}
-        InputLabelProps={{
-          shrink: true
-        }}
         onKeyPress={_handleKeyPress}
       >
         {TYPE_CLIENT_PAYMENT.map(item => (

@@ -75,6 +75,7 @@ const SearchForm = ({
             label='Fecha factura'
             value={filters.dateInvoice}
             onChange={_handleChangePicker}
+            clearable
           />
           {fields.map(_renderInput)}
           <SwitchForm

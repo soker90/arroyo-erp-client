@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
 import { Root, Item, Header, Trigger, Content } from '@radix-ui/react-accordion'
 import { ChevronDown } from 'lucide-react'
-import uniqId from 'uniqid'
 
 import { Paper } from 'components'
 import { cn } from 'utils'
@@ -13,7 +12,7 @@ const AccordionItem = forwardRef(({ className, ...props }, ref) => (
     <Item
       ref={ref}
       className={cn('flex flex-col justify-center no-underline text-inherit min-h-[48px] px-4 py-0 transition-all duration-150 ease-in-out', className)}
-      value={uniqId()} {...props}
+      value={crypto.randomUUID()} {...props}
     />
   </Paper>
 ))

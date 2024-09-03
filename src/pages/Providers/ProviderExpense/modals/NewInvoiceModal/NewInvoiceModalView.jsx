@@ -141,9 +141,6 @@ const NewInvoiceModal = ({
       name={id}
       onChange={_handleChange}
       size={6}
-      InputLabelProps={{
-        shrink: true
-      }}
       onKeyPress={_handleKeyPress}
     >
       {items.map(item => (

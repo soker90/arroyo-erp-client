@@ -1,5 +1,4 @@
 import { useParams } from 'react-router'
-import uniqId from 'uniqid'
 
 import { LoadingScreen, Page, Container } from 'components'
 import DeliveryOrderExpand from 'components/DeliveryOrderExpand'
@@ -46,8 +45,8 @@ const Invoice = () => {
         />
 
         <div className='mt-4'>
-          {deliveryOrders?.map(props => (
-            <DeliveryOrderExpand {...props} key={uniqId()} />
+          {deliveryOrders?.map((props, index) => (
+            <DeliveryOrderExpand {...props} key={index} />
           ))}
         </div>
 

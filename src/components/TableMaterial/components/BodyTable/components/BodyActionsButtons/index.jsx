@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { TableCell, Tooltip, Button } from 'components'
-import uniqId from 'uniqid'
 
 const BodyActionsButtons = ({
   row, index, actions
@@ -30,7 +29,7 @@ const BodyActionsButtons = ({
           icon: Icon, tooltip, onClick, to, disabled, ...restButton
         }) => (
           <Tooltip
-            key={uniqId()}
+            key={tooltip}
             disabled={_isDisabled(disabled)}
             title={tooltip}
           >

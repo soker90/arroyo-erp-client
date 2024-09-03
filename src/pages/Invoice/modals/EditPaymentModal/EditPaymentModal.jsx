@@ -123,9 +123,6 @@ const EditPaymentModal = ({
         onChange={_handleChange}
         name='type'
         size={4}
-        InputLabelProps={{
-          shrink: true
-        }}
         onKeyPress={_handleKeyPress}
       >
         {TYPE_PAYMENT?.map(item => (

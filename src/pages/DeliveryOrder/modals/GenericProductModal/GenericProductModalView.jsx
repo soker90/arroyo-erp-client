@@ -111,9 +111,6 @@ const GenericProductModal = ({
       onChange={_handleChange}
       name={name}
       label={label}
-      InputLabelProps={{
-        shrink: true
-      }}
       onKeyPress={_handleKeyPress}
       {...options}
     />
@@ -132,9 +129,6 @@ const GenericProductModal = ({
       onChange={_handleSelect}
       disabled={productReadOnly || !products?.length}
       size={6}
-      InputLabelProps={{
-        shrink: true
-      }}
       onKeyPress={_handleKeyPress}
     >
       <option value=''>--------</option>

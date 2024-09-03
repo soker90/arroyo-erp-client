@@ -79,9 +79,6 @@ const ProviderModal = ({
           name='type'
           onChange={_handleChange}
           size={6}
-          InputLabelProps={{
-            shrink: true
-          }}
           onKeyPress={_handleKeyPress}
         >
           {TYPE_PROVIDER_LIST.map((item, idx) => (

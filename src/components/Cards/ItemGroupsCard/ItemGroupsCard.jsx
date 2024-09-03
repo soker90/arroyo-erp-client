@@ -1,6 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 
 import { Grid, ItemCard } from 'components'
 import { cn, sliceToGroups } from 'utils'
@@ -18,7 +17,7 @@ const ItemGroupsCard = ({ groups = 2, items }) => {
    * @private
    */
   const _renderItem = ({ label, value, variant }) => (
-    <ItemCard key={uniqId()} label={label} value={value} variant={variant} />
+    <ItemCard key={label} label={label} value={value} variant={variant} />
   )
 
   _renderItem.propTypes = {
@@ -35,7 +34,7 @@ const ItemGroupsCard = ({ groups = 2, items }) => {
    * @private
    */
   const _renderGroup = (group, idx) => (
-    <Grid item xs={12} md={size} key={uniqId()}>
+    <Grid item xs={12} md={size} key={idx}>
       <div className={cn(idx === 0 ? 'flex flex-col ml-4' : 'flex flex-col')}>
         {group.map(_renderItem)}
       </div>

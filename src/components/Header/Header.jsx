@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 
 import {
   Button, Grid, Typography, Breadcrumb,
@@ -21,7 +20,7 @@ const Header = ({
    */
   const _itemNav = (link, title) => (
     <BreadcrumbLink
-      key={uniqId()}
+      key={title}
       to={link}
     >
       {title}
@@ -43,7 +42,7 @@ const Header = ({
     variant, disableSvg, Icon, label, ...rest
   }) => (
     <Button
-      key={uniqId()}
+      key={label}
       variant={variant}
       className='mb-2 ml-2'
       {...rest}

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 
 import { Card, CardContent, CardHeader, ItemCard, Grid, List } from 'components'
 
@@ -21,7 +20,7 @@ const ProviderBilling = ({
               label={`${index + 1}º trimestre`}
               value={value}
               variant='euro'
-              key={uniqId()}
+              key={index}
             />
           ))}
           <ItemCard

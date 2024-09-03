@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 import { PencilIcon } from 'lucide-react'
 
 import {
@@ -37,7 +36,7 @@ const InvoiceData = ({
    * @private
    */
   const _getActions = () => [
-    <Tooltip title='Editar' key={uniqId()}>
+    <Tooltip title='Editar' key='edit'>
       <Button
         size='icon'
         variant='icon'

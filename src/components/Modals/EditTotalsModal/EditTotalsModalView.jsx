@@ -96,9 +96,6 @@ const EditTotalsModalView = ({
       onChange={_handleChange}
       name={name}
       label={label}
-      InputLabelProps={{
-        shrink: true
-      }}
       type='number'
       size={4}
       onKeyPress={_handleKeyPress}
