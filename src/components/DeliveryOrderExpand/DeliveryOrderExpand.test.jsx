@@ -37,9 +37,9 @@ describe('DeliveryOrderExpandHeader', () => {
   it('renders without crash', async () => {
     const { findByTestId } = render(
       <RoutesWrapper>
-          <TooltipProvider>
-            <DeliveryOrderExpandStory />
-          </TooltipProvider>
+        <TooltipProvider>
+          <DeliveryOrderExpandStory />
+        </TooltipProvider>
       </RoutesWrapper>
     )
 
@@ -55,9 +55,9 @@ describe('DeliveryOrderExpandHeader', () => {
       container
     } = render(
       <RoutesWrapper>
-          <TooltipProvider>
-            <DeliveryOrderExpandStory />
-          </TooltipProvider>
+        <TooltipProvider>
+          <DeliveryOrderExpandStory />
+        </TooltipProvider>
       </RoutesWrapper>
     )
 

@@ -7,11 +7,11 @@ import { server } from '../mocks/server.js'
 
 const AllTheProviders = ({ children }) => {
   return (
-      <SwrProvider>
-        <RoutesWrapper>
-          {children}
-        </RoutesWrapper>
-      </SwrProvider>
+    <SwrProvider>
+      <RoutesWrapper>
+        {children}
+      </RoutesWrapper>
+    </SwrProvider>
   )
 }
 

@@ -16,34 +16,34 @@ export default {
 }
 
 const CardDefault = () => (
-    <ItemCard
-      value='Mi texto'
-      label='Etiqueta'
-      divider
-      variant='default'
-    />
+  <ItemCard
+    value='Mi texto'
+    label='Etiqueta'
+    divider
+    variant='default'
+  />
 )
 
 CardDefault.storyName = 'Item Card'
 
 const CardBoolean = () => (
-    <ItemCard
-      value={false}
-      label='Etiqueta'
-      divider
-      variant='boolean'
-    />
+  <ItemCard
+    value={false}
+    label='Etiqueta'
+    divider
+    variant='boolean'
+  />
 )
 
 CardBoolean.storyName = 'Boolean'
 
 const CardEuro = () => (
-    <ItemCard
-      value={12.64}
-      label='Etiqueta'
-      divider
-      variant='euro'
-    />
+  <ItemCard
+    value={12.64}
+    label='Etiqueta'
+    divider
+    variant='euro'
+  />
 )
 
 CardEuro.storyName = 'Euro'
