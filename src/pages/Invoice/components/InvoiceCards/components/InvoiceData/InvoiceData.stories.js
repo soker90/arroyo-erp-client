@@ -1,4 +1,3 @@
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import RoutesWrapper from 'story/RoutesWrapper'
 import { story as InvoiceData } from './InvoiceData'
 
@@ -9,11 +8,9 @@ export default {
     componentSubtitle: 'Datos de la factura'
   },
   decorators: [storyFn => (
-    <DatePickerProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </DatePickerProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }

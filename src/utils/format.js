@@ -1,8 +1,3 @@
-import dayjs from 'dayjs'
-import weekYear from 'dayjs/plugin/weekOfYear'
-
-dayjs.extend(weekYear)
-
 const capitalize = (str = '') => str.charAt(0).toUpperCase() + str.slice(1)
 
 const date = cell => cell && new Date(cell).toLocaleDateString('es-ES', {
@@ -14,13 +9,18 @@ const date = cell => cell && new Date(cell).toLocaleDateString('es-ES', {
 /**
  * Número de la semana del año
  * @param {number} cell
- * @return {string}
+ * @return {number|null}
  */
-const weekOfYear = cell => cell && dayjs(cell).week()
+const weekOfYear = (cell) => {
+  if (!cell) return null
+  const date = new Date(cell)
+  const firstDayOfYear = new Date(date.getFullYear(), 0, 1)
+  const pastDaysOfYear = (date - firstDayOfYear) / 86400000
+  return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)
+}
 
 /**
  * Devuelve el nombre del día de la semana
- * @param {Date} cell
  * @returns {*|string}
  */
 const dayOfWeek = () => capitalize(new Date().toLocaleDateString('es-ES', { weekday: 'long' }))
@@ -38,7 +38,7 @@ const dateToSend = cell => {
 }
 
 /**
- * Return number format with 2 decilms and euro symbol
+ * Return number format with 2 decimals and euro symbol
  * @param {string | number} cell
  * @param {Object} options
  * @return {string}
@@ -70,6 +70,7 @@ const number = cell => {
 /**
  *
  * @param cell
+ * @param options
  * @return {string}
  */
 const percent = (cell, options = {}) => {
@@ -82,7 +83,7 @@ const percent = (cell, options = {}) => {
 }
 
 /**
- * Return Si or No
+ * Return Sí or No
  * @param {boolean} condition
  * @return {string}
  */

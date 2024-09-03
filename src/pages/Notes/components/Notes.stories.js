@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
 import RoutesWrapper from 'story/RoutesWrapper'
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import Notes from './Notes'
 
 const NOTES = [
@@ -40,11 +39,9 @@ export default {
     componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
-    <DatePickerProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </DatePickerProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }

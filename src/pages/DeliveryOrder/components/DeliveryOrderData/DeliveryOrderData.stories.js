@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { boolean } from '@storybook/addon-knobs'
 import { story as DeliveryOrderData } from './DeliveryOrderData'
-import { DatePickerProvider, RoutesWrapper } from '../../../../story'
+import { RoutesWrapper } from '../../../../story'
 
 export default {
   title: 'Rutas/Albarán/Datos',
@@ -11,9 +11,7 @@ export default {
   },
   decorators: [storyFn => (
     <RoutesWrapper>
-      <DatePickerProvider>
-        {storyFn()}
-      </DatePickerProvider>
+      {storyFn()}
     </RoutesWrapper>
   )
   ]

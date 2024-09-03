@@ -2,7 +2,6 @@
 import { action } from '@storybook/addon-actions'
 import { date, text } from '@storybook/addon-knobs'
 
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import { story as EditInvoiceDataModalView } from './EditInvoiceDataModalView'
 
 export default {
@@ -10,8 +9,7 @@ export default {
   parameters: {
     component: EditInvoiceDataModalView,
     componentSubtitle: 'Modal para editar los datos de una factura'
-  },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+  }
 }
 
 const EditInvoiceData = () => (

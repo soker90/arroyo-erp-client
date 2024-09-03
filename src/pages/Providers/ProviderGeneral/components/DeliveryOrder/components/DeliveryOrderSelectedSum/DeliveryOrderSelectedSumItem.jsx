@@ -21,7 +21,6 @@ const DeliveryOrderSelectedSum = ({
         <Typography
           component='span'
           variant='h4'
-          color='textPrimary'
         >
           {format.euro(value)}
         </Typography>

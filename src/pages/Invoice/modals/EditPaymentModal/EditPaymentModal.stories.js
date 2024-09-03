@@ -3,7 +3,6 @@ import {
 } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import { TALON_PAYMENT, TYPE_PAYMENT } from 'constants/invoices'
 import { story as EditPaymentModal } from './EditPaymentModal'
 
@@ -11,13 +10,7 @@ export default {
   title: 'Rutas/Factura/Modales/Editar Pago',
   parameters: {
     component: EditPaymentModal
-  },
-  decorators: [storyFn => (
-    <DatePickerProvider>
-      {storyFn()}
-    </DatePickerProvider>
-  )
-  ]
+  }
 }
 
 const TalonStory = () => (

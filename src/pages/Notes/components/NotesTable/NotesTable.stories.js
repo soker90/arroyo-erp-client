@@ -1,5 +1,4 @@
 import RoutesWrapper from 'story/RoutesWrapper'
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import { story as NotesTable } from './NotesTable'
 
 export default {
@@ -9,11 +8,9 @@ export default {
     componentSubtitle: 'Vista'
   },
   decorators: [storyFn => (
-    <DatePickerProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </DatePickerProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }

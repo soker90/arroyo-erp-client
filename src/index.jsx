@@ -1,6 +1,5 @@
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'nprogress/nprogress.css'
-import 'dayjs/locale/es'
 import 'theme/global.css'
 
 import { createRoot } from 'react-dom/client'

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { action } from '@storybook/addon-actions'
 
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import { story as EditNoteModalView } from './EditNoteModalView'
 
 const NOTE = {
@@ -19,8 +18,7 @@ export default {
   parameters: {
     component: EditNoteModalView,
     componentSubtitle: 'Modal para editar notas'
-  },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+  }
 }
 
 const NoteEdit = () => (

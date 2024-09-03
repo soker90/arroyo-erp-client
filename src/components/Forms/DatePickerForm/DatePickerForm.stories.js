@@ -2,18 +2,15 @@ import {
   boolean, date, number, text
 } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import 'dayjs/locale/es'
 
 import { story as DatePickerForm } from './DatePickerForm'
-import { DatePickerProvider } from '../../../story'
 
 export default {
   title: 'Formularios/DatePicker',
   parameters: {
     component: DatePickerForm,
     componentSubtitle: 'Selector de fecha'
-  },
-  decorators: [storyFn => <DatePickerProvider>{storyFn()}</DatePickerProvider>]
+  }
 }
 
 const Generic = () => (

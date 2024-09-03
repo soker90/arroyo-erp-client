@@ -3,8 +3,6 @@ import { BrowserRouter } from 'react-router-dom'
 import clsx from 'clsx'
 
 import { ThemeProvider, StyledEngineProvider } from '@mui/material'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { LocalizationProvider } from '@mui/x-date-pickers'
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
 import { AuthProvider } from 'contexts/AuthProvider'
 
@@ -29,23 +27,21 @@ const App = () => {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <RootStyles>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
-              <NotificationsProvider>
-                <TooltipProvider>
-                  <Suspense fallback={<LoadingScreen />}>
-                    <BrowserRouter>
-                      <AuthProvider>
-                        <Notification />
-                        <Auth>
-                          <ScrollReset />
-                          <Routes />
-                        </Auth>
-                      </AuthProvider>
-                    </BrowserRouter>
-                  </Suspense>
-                </TooltipProvider>
-              </NotificationsProvider>
-            </LocalizationProvider>
+            <NotificationsProvider>
+              <TooltipProvider>
+                <Suspense fallback={<LoadingScreen />}>
+                  <BrowserRouter>
+                    <AuthProvider>
+                      <Notification />
+                      <Auth>
+                        <ScrollReset />
+                        <Routes />
+                      </Auth>
+                    </AuthProvider>
+                  </BrowserRouter>
+                </Suspense>
+              </TooltipProvider>
+            </NotificationsProvider>
           </RootStyles>
         </ThemeProvider>
       </StyledEngineProvider>

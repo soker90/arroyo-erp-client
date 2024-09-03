@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions'
 
-import DatePickerProvider from 'contexts/DatePickerProvider'
 import { RoutesWrapper } from 'story'
 import { number } from '@storybook/addon-knobs'
 import { story as Invoice } from './Invoice'
@@ -12,11 +11,9 @@ export default {
     componentSubtitle: 'Vista de factura'
   },
   decorators: [storyFn => (
-    <DatePickerProvider>
-      <RoutesWrapper>
-        {storyFn()}
-      </RoutesWrapper>
-    </DatePickerProvider>
+    <RoutesWrapper>
+      {storyFn()}
+    </RoutesWrapper>
   )
   ]
 }
