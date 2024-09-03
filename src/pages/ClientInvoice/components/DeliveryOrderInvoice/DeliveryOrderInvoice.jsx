@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Plus, Trash2 } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
@@ -105,16 +104,14 @@ const DeliveryOrderInvoice = ({
             clearable
             className='-m-2'
           />
-          <PerfectScrollbar>
-            <ClientInvoiceProducts
-              invoice={id}
-              deliveryOrder={deliveryOrder._id}
-              products={deliveryOrder.products}
-              isEditable={isEditable}
-              onUpdate={_handleUpdateClick}
-              onDelete={_handleDeleteProductClick}
-            />
-          </PerfectScrollbar>
+          <ClientInvoiceProducts
+            invoice={id}
+            deliveryOrder={deliveryOrder._id}
+            products={deliveryOrder.products}
+            isEditable={isEditable}
+            onUpdate={_handleUpdateClick}
+            onDelete={_handleDeleteProductClick}
+          />
         </CardContent>
       </Card>
 

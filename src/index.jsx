@@ -1,4 +1,3 @@
-import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'theme/global.css'
 
 import { createRoot } from 'react-dom/client'

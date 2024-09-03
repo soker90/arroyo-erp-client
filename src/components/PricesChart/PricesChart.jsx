@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import PerfectScrollbar from 'react-perfect-scrollbar'
 
 import { Card, CardContent, CardHeader } from 'components'
 import { format } from 'utils'
@@ -26,17 +25,15 @@ const PricesChart = ({
       />
       <hr />
       <CardContent>
-        <PerfectScrollbar>
-          <div className='h-[375px] min-h-[500px]'>
-            <Chart
-              className='h-full'
-              data={data}
-              labels={labels}
-              tooltip={tooltip}
-              lineColor={lineColor}
-            />
-          </div>
-        </PerfectScrollbar>
+        <div className='h-[375px] min-h-[500px]'>
+          <Chart
+            className='h-full'
+            data={data}
+            labels={labels}
+            tooltip={tooltip}
+            lineColor={lineColor}
+          />
+        </div>
       </CardContent>
     </Card>
   )

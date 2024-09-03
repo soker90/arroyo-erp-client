@@ -71,9 +71,6 @@ importers:
       react-helmet:
         specifier: ^6.1.0
         version: 6.1.0(react@18.3.1)
-      react-perfect-scrollbar:
-        specifier: ^1.5.8
-        version: 1.5.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-router:
         specifier: ^6.26.1
         version: 6.26.1(react@18.3.1)
@@ -2218,9 +2215,6 @@ packages:
     resolution: {integrity: sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA==}
     engines: {node: '>= 14.16'}
 
-  perfect-scrollbar@1.5.5:
-    resolution: {integrity: sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==}
-
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
@@ -2351,12 +2345,6 @@ packages:
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
-
-  react-perfect-scrollbar@1.5.8:
-    resolution: {integrity: sha512-bQ46m70gp/HJtiBOF3gRzBISSZn8FFGNxznTdmTG8AAwpxG1bJCyn7shrgjEvGSQ5FJEafVEiosY+ccER11OSA==}
-    peerDependencies:
-      react: '>=16.3.3'
-      react-dom: '>=16.3.3'
 
   react-remove-scroll-bar@2.3.6:
     resolution: {integrity: sha512-DtSYaao4mBmX+HDo5YWYdBWQwYIQQshUV/dVxFxK+KM26Wjwp1gZ6rv6OC3oujI6Bfu6Xyg3TwK533AQutsn/g==}
@@ -4953,8 +4941,6 @@ snapshots:
 
   pathval@2.0.0: {}
 
-  perfect-scrollbar@1.5.5: {}
-
   picocolors@1.1.0: {}
 
   picomatch@2.3.1: {}
@@ -5064,13 +5050,6 @@ snapshots:
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
-
-  react-perfect-scrollbar@1.5.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      perfect-scrollbar: 1.5.5
-      prop-types: 15.8.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   react-remove-scroll-bar@2.3.6(react@18.3.1):
     dependencies:

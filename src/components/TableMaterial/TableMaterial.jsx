@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import PerfectScrollbar from 'react-perfect-scrollbar'
 
 import {
   Pagination
@@ -56,23 +55,21 @@ const TableMaterial = ({
       {...rest}
     >
       <TitleTable title={title} />
-      <PerfectScrollbar>
-        <Table>
-          <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
-          <BodyTable
-            columns={columns}
-            actions={actions}
-            data={data}
-            href={href}
-            onRowClick={onRowClick}
-            multiSelect={multiSelect}
-            onSelected={onSelected}
-            rowClass={rowClass}
-          />
-        </Table>
+      <Table>
+        <HeadTable actions={actions} columns={columns} multiSelect={multiSelect} />
+        <BodyTable
+          columns={columns}
+          actions={actions}
+          data={data}
+          href={href}
+          onRowClick={onRowClick}
+          multiSelect={multiSelect}
+          onSelected={onSelected}
+          rowClass={rowClass}
+        />
+      </Table>
 
-        <NoData elements={data.length} />
-      </PerfectScrollbar>
+      <NoData elements={data.length} />
 
       {Boolean(count) && (<Pagination
         count={count}
