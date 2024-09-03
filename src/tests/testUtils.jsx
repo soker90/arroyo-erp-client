@@ -2,18 +2,16 @@ import { render } from '@testing-library/react'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 
 import SwrProvider from '../contexts/SwrProvider'
-import { RoutesWrapper, ThemeWrapper } from '../story'
+import { RoutesWrapper } from '../story'
 import { server } from '../mocks/server.js'
 
 const AllTheProviders = ({ children }) => {
   return (
-    <ThemeWrapper>
       <SwrProvider>
         <RoutesWrapper>
           {children}
         </RoutesWrapper>
       </SwrProvider>
-    </ThemeWrapper>
   )
 }
 

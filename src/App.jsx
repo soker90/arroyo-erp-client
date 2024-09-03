@@ -1,8 +1,6 @@
-import { useMemo, Suspense } from 'react'
+import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import clsx from 'clsx'
 
-import { ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
 import { AuthProvider } from 'contexts/AuthProvider'
 
@@ -11,40 +9,33 @@ import Notification from 'components/Notification'
 import ScrollReset from 'components/ScrollReset'
 import { TooltipProvider } from 'components'
 import useSettings from 'hooks/useSettings'
-import { createTheme } from 'theme'
-import RootStyles from 'theme/RootStyles'
 import Routes from './Routes'
 import './utils/axios'
 import LoadingScreen from 'components/LoadingScreen'
+import { cn } from './utils'
 
 const App = () => {
   const { settings } = useSettings()
-  const theme = useMemo(() => createTheme(settings), [settings.theme])
 
   const themeMode = settings.theme === 'LIGHT' ? 'light' : 'dark'
+
   return (
-    <div className={clsx(themeMode, 'h-screen')}>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <RootStyles>
-            <NotificationsProvider>
-              <TooltipProvider>
-                <Suspense fallback={<LoadingScreen />}>
-                  <BrowserRouter>
-                    <AuthProvider>
-                      <Notification />
-                      <Auth>
-                        <ScrollReset />
-                        <Routes />
-                      </Auth>
-                    </AuthProvider>
-                  </BrowserRouter>
-                </Suspense>
-              </TooltipProvider>
-            </NotificationsProvider>
-          </RootStyles>
-        </ThemeProvider>
-      </StyledEngineProvider>
+    <div className={cn(themeMode, 'h-screen')}>
+      <NotificationsProvider>
+        <TooltipProvider>
+          <Suspense fallback={<LoadingScreen />}>
+            <BrowserRouter>
+              <AuthProvider>
+                <Notification />
+                <Auth>
+                  <ScrollReset />
+                  <Routes />
+                </Auth>
+              </AuthProvider>
+            </BrowserRouter>
+          </Suspense>
+        </TooltipProvider>
+      </NotificationsProvider>
     </div>
   )
 }

@@ -1,8 +1,6 @@
 import { action } from '@storybook/addon-actions'
-import { number, select } from '@storybook/addon-knobs'
+import { number } from '@storybook/addon-knobs'
 
-import ThemeWrapper from 'story/ThemeWrapper'
-import { THEMES } from 'constants/common'
 import { format } from 'utils'
 import { story as TableMaterial } from './TableMaterial'
 
@@ -37,27 +35,19 @@ const _renderTable = () => (
 )
 
 const TableLight = () => (
-  <ThemeWrapper theme={select('Tema', THEMES, THEMES.LIGHT)}>
+  <div className='light'>
     {_renderTable()}
-  </ThemeWrapper>
+  </div>
 )
 
 TableLight.storyName = 'Estandar'
 
 const TableDark = () => (
-  <ThemeWrapper theme={THEMES.ONE_DARK}>
+  <div className='dark'>
     {_renderTable()}
-  </ThemeWrapper>
+  </div>
 )
 
 TableDark.storyName = 'Oscuro'
 
-const TableUnicorn = () => (
-  <ThemeWrapper theme={THEMES.UNICORN}>
-    {_renderTable()}
-  </ThemeWrapper>
-)
-
-TableUnicorn.storyName = 'Unicornio'
-
-export { TableLight, TableDark, TableUnicorn }
+export { TableLight, TableDark }

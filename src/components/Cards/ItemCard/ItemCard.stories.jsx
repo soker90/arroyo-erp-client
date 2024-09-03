@@ -1,6 +1,5 @@
 import { Card, CardContent } from '../../'
 import ItemCard from './ItemCard'
-import { ThemeWrapper } from '../../../story'
 
 export default {
   title: 'Componentes/Item Card',
@@ -17,40 +16,34 @@ export default {
 }
 
 const CardDefault = () => (
-  <ThemeWrapper>
     <ItemCard
       value='Mi texto'
       label='Etiqueta'
       divider
       variant='default'
     />
-  </ThemeWrapper>
 )
 
 CardDefault.storyName = 'Item Card'
 
 const CardBoolean = () => (
-  <ThemeWrapper>
     <ItemCard
       value={false}
       label='Etiqueta'
       divider
       variant='boolean'
     />
-  </ThemeWrapper>
 )
 
 CardBoolean.storyName = 'Boolean'
 
 const CardEuro = () => (
-  <ThemeWrapper>
     <ItemCard
       value={12.64}
       label='Etiqueta'
       divider
       variant='euro'
     />
-  </ThemeWrapper>
 )
 
 CardEuro.storyName = 'Euro'

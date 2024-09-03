@@ -11,17 +11,13 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          material: ['@mui/material'],
-          materialLegacyStyles: ['@mui/styles'],
-          materialPicker: ['@mui/x-date-pickers'],
-          materialIcons: ['@mui/icons-material'],
-          lucid: ['lucide-react']
-        }
-      }
-    }
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks: {
+    //       lucid: ['lucide-react']
+    //     }
+    //   }
+    // }
   },
   resolve: {
     alias: [

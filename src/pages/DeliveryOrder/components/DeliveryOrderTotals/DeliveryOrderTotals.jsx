@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import uniqId from 'uniqid'
 import { PencilIcon } from 'lucide-react'
 
 import { EditTotalsModal, ItemCard, Tooltip, Card, CardContent, CardHeader, Grid, Button } from 'components'
@@ -26,7 +25,7 @@ const DeliveryOrderTotals = ({
    */
   const _getActions = () => (isEditable
     ? [
-      <Tooltip title='Editar' key={uniqId()}>
+      <Tooltip title='Editar' key='edit'>
         <Button
           size='icon'
           variant='icon'
@@ -47,8 +46,8 @@ const DeliveryOrderTotals = ({
           <Grid container spacing={3}>
 
             {itemsCard(totals)
-              .map(({ size, ...itemProps }) => (
-                <Grid item xs={12} md={size} key={uniqId()}>
+              .map(({ size, ...itemProps }, index) => (
+                <Grid item xs={12} md={size} key={index}>
                   <ItemCard {...itemProps} />
                 </Grid>
               ))}
