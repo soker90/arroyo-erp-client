@@ -29,7 +29,7 @@ jobs:
           cache: 'pnpm'
           node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm lint
 
@@ -47,7 +47,7 @@ jobs:
           cache: 'pnpm'
           node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm build
       - uses: actions/upload-artifact@v4
@@ -70,7 +70,7 @@ jobs:
           cache: 'pnpm'
           node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install --frozen-lockfile
       - uses: actions/download-artifact@v4
         with:
           name: build
