@@ -1,6 +1,7 @@
-# [3.6.0] -
+# [3.6.0] - 04/09/2024
   - Migración de mui a tailwind
   - Corregido a veces al pagar se quedaba unos segundos la tabla de pagos en blanco
+  - Fix tentativo, para evitar que muestre el error "Token expirado" cuando no aplica
 
 # [3.5.2] - 04/01/2024
   - Corregido el color de texto de los tooltips de las graficas con el tema claro

@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         password
       )
 
-      if (setLoginError) setLoginError(undefined)
+      if (loginError) setLoginError(undefined)
       setUser(loginUser)
     } catch (error) {
       setLoginError(error?.message)
@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const setUserData = (username) => {
+    if (loginError) setLoginError(undefined)
     setUser(username)
   }
 
