@@ -6,7 +6,6 @@
   "version": "3.5.2",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.9.0",
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
