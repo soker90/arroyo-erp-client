@@ -1,19 +1,21 @@
-FROM node:18.15.0 as build
+FROM node:20.17.0-alpine3.20 as build
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH /app/node_modules/.bin:$PNPM_HOME:$PATH
+RUN corepack enable
 
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json pnpm-lock.yaml ./
 
-COPY package.json package-lock.json ./
-
-RUN npm i --legacy-peer-deps --silent
+RUN pnpm install --prod --frozen-lockfile
 
 COPY . ./
 
-RUN npm run build
+RUN pnpm run build
 
 # production environment
-FROM nginx:1.23.3
+FROM nginx:1.27.1-alpine3.20
 
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
