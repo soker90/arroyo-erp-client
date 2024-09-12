@@ -1,3 +1,6 @@
+# [3.6.1] - 12/09/2024
+  - Corregida la selección de fecha en los modales, que aparecía detrás del modal
+
 # [3.6.0] - 04/09/2024
   - Migración de mui a tailwind
   - Corregido a veces al pagar se quedaba unos segundos la tabla de pagos en blanco
