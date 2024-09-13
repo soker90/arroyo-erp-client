@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { es } from 'date-fns/locale'
@@ -17,10 +17,15 @@ const DatePickerForm = ({
   label,
   onChange,
   disableFuture,
+  open: initialOpen = false,
   ...rest
 }) => {
   const [date, setDate] = useState(value || null)
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(initialOpen)
+
+  useEffect(() => {
+    setOpen(initialOpen)
+  }, [initialOpen])
 
   const handleDateChange = (newDate) => {
     setDate(newDate)
@@ -118,7 +123,8 @@ DatePickerForm.propTypes = {
   clearable: PropTypes.bool,
   variant: PropTypes.string,
   closeOnSelect: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  open: PropTypes.bool
 }
 
 export const story = DatePickerForm

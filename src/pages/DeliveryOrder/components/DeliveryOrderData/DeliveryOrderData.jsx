@@ -20,7 +20,7 @@ const DeliveryOrderData = ({
   }
 
   useEffect(() => {
-    if (search && !readOnly) setShowDateModal(true)
+    if (search && !readOnly && !date) setShowDateModal(true)
   }, [setShowDateModal, search, idDeliveryOrder])
 
   const _handleKeyDownNote = ({
