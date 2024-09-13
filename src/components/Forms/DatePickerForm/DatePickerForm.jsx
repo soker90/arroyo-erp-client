@@ -65,7 +65,7 @@ const DatePickerForm = ({
             <Calendar className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
           </div>
         </PopoverTrigger>
-        <PopoverContent className='p-0'>
+        <PopoverContent className='p-0 w-full'>
           <DayPicker
             mode='single'
             selected={date}
@@ -94,7 +94,8 @@ const DatePickerForm = ({
               day_outside: 'text-muted-foreground opacity-50',
               day_disabled: 'text-muted-foreground opacity-50',
               day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
-              day_hidden: 'invisible'
+              day_hidden: 'invisible',
+              outside: 'text-muted-foreground opacity-50'
             }}
             components={{
               IconLeft: ({ ...props }) => <ChevronLeft className='h-4 w-4' />,
