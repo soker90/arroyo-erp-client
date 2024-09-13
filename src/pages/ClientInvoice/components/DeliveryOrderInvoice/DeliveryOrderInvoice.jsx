@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Plus, Trash2 } from 'lucide-react'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { DatePickerForm, TextEuro, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
 import ClientInvoiceProducts from '../ClientInvoiceProducts'
@@ -18,6 +18,10 @@ const DeliveryOrderInvoice = ({
 
 }) => {
   const [date, setDate] = useState(deliveryOrder.date)
+
+  useEffect(() => {
+    setDate(deliveryOrder.date)
+  }, [deliveryOrder.date])
 
   const [deleteId, setDeleteId] = useState(false)
 

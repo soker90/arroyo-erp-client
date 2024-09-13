@@ -11,7 +11,7 @@ const DatePickerForm = ({
   size = 6,
   variant = 'standard',
   autoOk = true,
-  value = null,
+  value,
   disabled,
   clearable,
   label,
@@ -21,8 +21,12 @@ const DatePickerForm = ({
   open: initialOpen = false,
   ...rest
 }) => {
-  const [date, setDate] = useState(value || null)
+  const [date, setDate] = useState(value)
   const [open, setOpen] = useState(initialOpen)
+
+  useEffect(() => {
+    setDate(value)
+  }, [value])
 
   useEffect(() => {
     setOpen(initialOpen)

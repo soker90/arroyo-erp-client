@@ -14,7 +14,7 @@ const HeaderDeliveryOrder = ({
   deleteDeliveryOrder,
   addProduct,
   hasCanal,
-  hasDate,
+  hasDate
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
