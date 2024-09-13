@@ -1,4 +1,5 @@
 import 'theme/global.css'
+import 'react-day-picker/style.css'
 
 import { createRoot } from 'react-dom/client'
 import { SettingsProvider } from 'context/SettingsContext'
