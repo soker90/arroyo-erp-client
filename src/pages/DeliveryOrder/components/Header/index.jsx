@@ -13,7 +13,8 @@ const HeaderDeliveryOrder = ({
   invoice,
   deleteDeliveryOrder,
   addProduct,
-  hasCanal
+  hasCanal,
+  hasDate,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -57,7 +58,7 @@ const HeaderDeliveryOrder = ({
           onClick: _openAddModal,
           Icon: Plus,
           label: 'Producto',
-          disabled: readOnly
+          disabled: readOnly || !hasDate
         }]}
       />
       <AddProductModal

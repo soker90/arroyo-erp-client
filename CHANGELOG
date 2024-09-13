@@ -1,3 +1,8 @@
+# [3.6.2] - 13/09/2024
+  - Mejoras visuales del date picker
+  - Corregido error al darle a intro en un input
+  - Corregido que el date picker se abra automáticamente al crear un albarán
+
 # [3.6.1] - 12/09/2024
   - Corregida la selección de fecha en los modales, que aparecía detrás del modal
 

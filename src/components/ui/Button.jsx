@@ -33,7 +33,9 @@ const VARIANTS = {
     large: 'h-11 rounded-md px-8' // legacy
   },
   color: {
-    default: ''
+    default: '',
+    primary: 'bg-primary text-white hover:bg-primary/90',
+    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
   },
   disabled: {
     true: 'opacity-50 pointer-events-none',

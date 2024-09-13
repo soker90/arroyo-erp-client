@@ -17,6 +17,7 @@ const DatePickerForm = ({
   label,
   onChange,
   disableFuture,
+  readOnly = false,
   open: initialOpen = false,
   ...rest
 }) => {
@@ -47,7 +48,7 @@ const DatePickerForm = ({
       md={size}
       xs={12}
     >
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open && !readOnly} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <div className='relative'>
             <TextField

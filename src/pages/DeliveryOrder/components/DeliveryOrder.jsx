@@ -44,6 +44,7 @@ const DeliveryOrder = () => {
           deleteDeliveryOrder={deleteDeliveryOrder}
           addProduct={addProduct}
           hasCanal={deliveryOrder.hasCanal}
+          hasDate={Boolean(date)}
         />
 
         {

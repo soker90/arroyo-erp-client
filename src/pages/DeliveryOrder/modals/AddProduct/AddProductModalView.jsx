@@ -84,7 +84,8 @@ const AddProductModal = ({
         {
           onClick: close,
           value: 'Cerrar',
-          'data-cy': 'modal-close-button'
+          'data-cy': 'modal-close-button',
+          variant: 'text'
         },
         {
           onClick: _handleSave,

@@ -76,9 +76,10 @@ const GenericProductModal = ({
    * @param {string} key
    * @private
    */
-  const _handleKeyPress = ({ key }) => {
+  const _handleKeyPress = (event) => {
     const { actions } = rest
-    if (key === 'Enter') {
+    if (event.key === 'Enter') {
+      event.preventDefault()
       inputCode.current.focus()
       actions[actions.length - 1].onClick()
     }
@@ -111,7 +112,7 @@ const GenericProductModal = ({
       onChange={_handleChange}
       name={name}
       label={label}
-      onKeyPress={_handleKeyPress}
+      onKeyDown={_handleKeyPress}
       {...options}
     />
   )
@@ -129,7 +130,7 @@ const GenericProductModal = ({
       onChange={_handleSelect}
       disabled={productReadOnly || !products?.length}
       size={6}
-      onKeyPress={_handleKeyPress}
+      onKeyDown={_handleKeyPress}
     >
       <option value=''>--------</option>
       {products?.map(item => (

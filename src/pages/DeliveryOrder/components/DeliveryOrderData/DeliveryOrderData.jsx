@@ -42,8 +42,6 @@ const DeliveryOrderData = ({
           value={date}
           onChange={_handleChangeDate}
           readOnly={readOnly}
-          onOpen={() => setShowDateModal(true)}
-          onClose={() => setShowDateModal(false)}
         />
         {date && (
           <InputForm
