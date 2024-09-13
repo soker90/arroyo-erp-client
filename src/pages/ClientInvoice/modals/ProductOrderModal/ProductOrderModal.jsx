@@ -87,7 +87,7 @@ const ProductOrderModal = ({
   const _handleKeyPress = ({ key }) => {
     const callback = show === true && (() => {
       setState(INITIAL_STATE)
-      nameRef.current.focus()
+      nameRef?.current?.focus()
     })
 
     if (key === 'Enter') _handleSubmit(null, callback)
