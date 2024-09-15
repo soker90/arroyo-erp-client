@@ -1,3 +1,6 @@
+# [3.6.3] -
+  - Ahora el selector de fecha se abre al pulsar espacio
+
 # [3.6.2] - 13/09/2024
   - Mejoras visuales del date picker
   - Corregido error al darle a intro en un input

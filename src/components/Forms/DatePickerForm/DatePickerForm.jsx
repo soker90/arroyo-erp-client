@@ -46,6 +46,12 @@ const DatePickerForm = ({
     setOpen(false)
   }
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 32) {
+      setOpen(true)
+    }
+  }
+
   return (
     <Grid
       item
@@ -60,6 +66,7 @@ const DatePickerForm = ({
               disabled={disabled}
               label={label}
               readOnly
+              onKeyDown={handleKeyDown}
               {...rest}
             />
             <Calendar className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
