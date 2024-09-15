@@ -89,7 +89,7 @@ const EditInvoiceDataModalView = ({
    * @param {string} name
    * @param {String} label
    * @param {Object} options
-   * @returns {InputForm}
+   * @returns {JSX.Element}
    * @private
    */
   const _renderInput = (name, label, options = {}) => (
@@ -164,7 +164,7 @@ const EditInvoiceDataModalView = ({
       title='Editar datos de la factura'
       action={_handleSubmit}
     >
-      {_renderInput('nInvoice', 'Nº Factura')}
+      {_renderInput('nInvoice', 'Nº Factura', { autoFocus: true })}
       {_renderDatePicker('Fecha de registro', 'dateRegister')}
       {_renderDatePicker('Fecha de factura', 'dateInvoice')}
       {total < 0 && _renderSelectConcept()}
