@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { es } from 'date-fns/locale'
@@ -23,6 +23,7 @@ const DatePickerForm = ({
 }) => {
   const [date, setDate] = useState(value)
   const [open, setOpen] = useState(initialOpen)
+  const inputRef = useRef()
 
   useEffect(() => {
     setDate(value)
@@ -37,6 +38,7 @@ const DatePickerForm = ({
     onChange(newDate)
     if (autoOk) {
       setOpen(false)
+      inputRef.current?.focus()
     }
   }
 
@@ -44,6 +46,7 @@ const DatePickerForm = ({
     setDate(null)
     onChange(null)
     setOpen(false)
+    inputRef.current?.focus()
   }
 
   const handleKeyDown = (e) => {
@@ -67,6 +70,7 @@ const DatePickerForm = ({
               label={label}
               readOnly
               onKeyDown={handleKeyDown}
+              inputRef={inputRef}
               {...rest}
             />
             <Calendar className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
@@ -79,6 +83,7 @@ const DatePickerForm = ({
             onSelect={handleDateChange}
             disabled={disableFuture ? (date) => date > new Date() : undefined}
             showOutsideDays
+            autoFocus
             locale={es}
             classNames={{
               months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
