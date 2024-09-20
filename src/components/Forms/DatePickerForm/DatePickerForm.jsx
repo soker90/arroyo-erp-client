@@ -142,7 +142,8 @@ DatePickerForm.propTypes = {
   variant: PropTypes.string,
   closeOnSelect: PropTypes.bool,
   disabled: PropTypes.bool,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  autoFocus: PropTypes.bool
 }
 
 export const story = DatePickerForm

@@ -1,5 +1,7 @@
 # [3.6.3] -
-  - Ahora el selector de fecha se abre al pulsar espacio
+  - Ahora el selector de fecha se abre al pulsar espacio y hace foco en el día actual
+  - Al cerrar el selector de fecha, se hace foco en el input de fecha
+  - Al confirmar un pago o una factura, hace foco en el primer input
 
 # [3.6.2] - 13/09/2024
   - Mejoras visuales del date picker

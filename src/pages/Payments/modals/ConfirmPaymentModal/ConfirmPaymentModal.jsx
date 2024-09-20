@@ -101,6 +101,7 @@ const ConfirmPaymentModal = ({
         label='Fecha de cobro'
         value={paymentDate}
         onChange={_handleChangePicker}
+        autoFocus
       />
 
       <SelectForm
