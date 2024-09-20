@@ -19,7 +19,7 @@ const PriceChanges = () => {
     deletePriceChanges
   } = usePriceChanges()
 
-  const _rowStyle = ({ read }) => (!read && 'bg-gray-200')
+  const _rowStyle = ({ read }) => (!read && 'bg-gray-200 dark:bg-gray-800')
 
   const _handleClickRead = ({
     _id,
