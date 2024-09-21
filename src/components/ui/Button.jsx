@@ -35,7 +35,8 @@ const VARIANTS = {
   color: {
     default: '',
     primary: 'bg-primary text-white hover:bg-primary/90',
-    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+    error: 'bg-destructive text-destructive-foreground hover:bg-destructive/90'
   },
   disabled: {
     true: 'opacity-50 pointer-events-none',

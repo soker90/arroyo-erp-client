@@ -90,7 +90,7 @@ const EditTotalsModalView = ({
    * @returns {InputForm}
    * @private
    */
-  const _renderInput = (name, label) => (
+  const _renderInput = (name, label, options = {}) => (
     <InputForm
       value={state[name] || 0}
       onChange={_handleChange}
@@ -100,6 +100,7 @@ const EditTotalsModalView = ({
       size={4}
       onKeyPress={_handleKeyPress}
       error={errors[name]}
+      {...options}
     />
   )
 
@@ -110,7 +111,7 @@ const EditTotalsModalView = ({
       title='Editar totales'
       action={_handleSubmit}
     >
-      {taxBase !== undefined && _renderInput('taxBase', 'Base imponible')}
+      {taxBase !== undefined && _renderInput('taxBase', 'Base imponible', { autoFocus: true })}
       {iva !== undefined && _renderInput('iva', 'IVA')}
       {re !== undefined && _renderInput('re', 'Recargo')}
       {Boolean(rate) && _renderInput('rate', 'Tasa')}

@@ -3,6 +3,9 @@
   - Al cerrar el selector de fecha, se hace foco en el input de fecha
   - Al confirmar un pago o una factura, hace foco en el primer input
   - Corregido modo oscuro en la tabla de cambios de precio
+  - Corregido, al pulsar intro en el input de una modal, se cerraba la modal
+  - Añadido indicador de foco en los switch
+  - Añadido autofoco en la modal de editar totales
 
 # [3.6.2] - 13/09/2024
   - Mejoras visuales del date picker

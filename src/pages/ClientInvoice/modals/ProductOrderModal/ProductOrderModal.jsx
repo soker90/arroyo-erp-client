@@ -81,16 +81,19 @@ const ProductOrderModal = ({
 
   /**
    * Handle press enter key
-   * @param {string} key
+   * @param event
    * @private
    */
-  const _handleKeyPress = ({ key }) => {
+  const _handleKeyPress = (event) => {
     const callback = show === true && (() => {
       setState(INITIAL_STATE)
       nameRef?.current?.focus()
     })
 
-    if (key === 'Enter') _handleSubmit(null, callback)
+    if (event?.key === 'Enter') {
+      event?.preventDefault()
+      _handleSubmit(null, callback)
+    }
   }
 
   const _handleChangeAutocomplete = value => {

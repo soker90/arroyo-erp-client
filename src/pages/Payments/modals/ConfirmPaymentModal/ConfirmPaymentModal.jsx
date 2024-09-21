@@ -61,11 +61,13 @@ const ConfirmPaymentModal = ({
 
   /**
    * Handle press enter key
-   * @param {string} key
    * @private
    */
-  const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSend()
+  const _handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      _handleSend()
+    }
   }
 
   /**

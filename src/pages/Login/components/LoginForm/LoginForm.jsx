@@ -58,11 +58,13 @@ const LoginForm = memo(({ login, loginError, isLoading }) => {
 
   /**
    * Press Enter key event
-   * @param {Object} ev
    * @private
    */
-  const _handleKeyPress = ev => {
-    if (ev.key === 'Enter') handleSubmit(ev)
+  const _handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleSubmit(event)
+    }
   }
 
   return (

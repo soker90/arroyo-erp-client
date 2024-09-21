@@ -41,6 +41,13 @@ const ConfirmInvoiceModal = ({
     setType(value)
   }
 
+  const _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      _handleSend()
+    }
+  }
+
   return (
     <ModalGrid
       {...rest}
@@ -76,6 +83,7 @@ const ConfirmInvoiceModal = ({
         value={type}
         onChange={_handleSelect}
         size={6}
+        onKeyPress={_handleKeyPress}
       >
         {TYPE_PAYMENT?.map(item => (
           <option key={item} value={item}>

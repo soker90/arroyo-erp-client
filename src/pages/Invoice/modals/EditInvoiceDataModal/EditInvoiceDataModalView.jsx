@@ -67,11 +67,13 @@ const EditInvoiceDataModalView = ({
 
   /**
    * Handle press enter key
-   * @param {string} key
    * @private
    */
-  const _handleKeyPress = ({ key }) => {
-    if (key === 'Enter') _handleSubmit()
+  const _handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      _handleSubmit()
+    }
   }
 
   /**
@@ -151,6 +153,7 @@ const EditInvoiceDataModalView = ({
     <SwitchForm
       checked={state.mailSend}
       onChange={_handleChange}
+      onKeyPress={_handleKeyPress}
       name='mailSend'
       color='primary'
       label='En correo electrónico'
