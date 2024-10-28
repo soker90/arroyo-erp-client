@@ -75,8 +75,8 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(chart.js@4.4.5)(react@18.3.1)
       react-day-picker:
-        specifier: 9.1.4
-        version: 9.1.4(react@18.3.1)
+        specifier: 9.2.1
+        version: 9.2.1(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -2313,8 +2313,8 @@ packages:
       chart.js: ^4.1.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  react-day-picker@9.1.4:
-    resolution: {integrity: sha512-S5ixQz32vl9OTvtu8STGhZH6yQnqAqWTTeiTBgaYNgrVda5+cAUL3+cgvozG3BUruiXETAnVXDFkFmoB2brkwQ==}
+  react-day-picker@9.2.1:
+    resolution: {integrity: sha512-rCoK4oJi9NBXt1nNdQFSa7gBG+hWsqVCtoLFLxvMzkVxDp+rSqsuUQ0LccJyLigwp/hX8XnAokTsT03+5lbjyA==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=16.8.0'
@@ -5000,7 +5000,7 @@ snapshots:
       chart.js: 4.4.5
       react: 18.3.1
 
-  react-day-picker@9.1.4(react@18.3.1):
+  react-day-picker@9.2.1(react@18.3.1):
     dependencies:
       '@date-fns/tz': 1.1.2
       date-fns: 4.1.0
