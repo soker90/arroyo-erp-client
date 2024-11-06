@@ -1,5 +1,6 @@
 # [3.6.4] - 06/11/2024
   - Eliminada la persistencia de SRW en localstorage
+  - Test fixes
 
 # [3.6.3] - 21/09/2024
   - Ahora el selector de fecha se abre al pulsar espacio y hace foco en el día actual
