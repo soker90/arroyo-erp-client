@@ -2,6 +2,7 @@
 import { render, screen, act, setupMsw } from 'tests/testUtils'
 import { describe, expect, it, beforeEach, vi, afterEach } from 'vitest'
 
+import { TooltipProvider } from 'components'
 import { SettingsProvider } from 'context/SettingsContext'
 import { restoreSettings } from 'utils/settings'
 
@@ -26,7 +27,9 @@ describe('Clients', () => {
     act(() => {
       render(
         <SettingsProvider settings={settings}>
-          <Clients />
+          <TooltipProvider>
+            <Clients />
+          </TooltipProvider>
         </SettingsProvider>
       )
     }
@@ -46,9 +49,9 @@ describe('Clients', () => {
       .toHaveBeenCalled()
   })
 
-  it('when user click the Nuevo Cliente button should render the modal', () => {
-    const button = screen.getByText('Nuevo Cliente')
-    act(() => {
+  it('when user click the Nuevo Cliente button should render the modal', async () => {
+    await act(async () => {
+      const button = screen.getByText('Nuevo Cliente')
       button.click()
     })
     const newClient = screen.getByText('Crear cliente')

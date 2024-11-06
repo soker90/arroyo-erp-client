@@ -23,6 +23,7 @@ const DeliveryOrderExpandHeader = ({
         color='textPrimary'
         variant='body1'
         className='flex flex-wrap'
+        component='span'
       >
         <strong className='mr-20'>{format.date(date)}</strong>
         {getTotals(props)

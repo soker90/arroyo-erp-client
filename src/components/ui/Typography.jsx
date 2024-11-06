@@ -1,9 +1,8 @@
 import { cva } from 'class-variance-authority'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 import { cn } from 'utils'
-
-// TODO: In progress
 
 const typographyVariants = cva(
   'm-0 font-normal text-base leading-1.5 tracking-tight text-foreground',
@@ -31,8 +30,6 @@ const typographyVariants = cva(
   }
 )
 
-// buildVariant(fontWeightRegular, 16, 1.5, 0.15),
-
 const variantMapping = {
   h1: 'h1',
   h2: 'h2',
@@ -53,16 +50,18 @@ const Typography = ({
   variant,
   children,
   className,
+  component,
   ...rest
 }) => {
-  const Component = variantMapping[variant] || 'span'
+  const Component = component || variantMapping[variant] || 'span'
 
-  return (
-    <Component
-      className={cn(typographyVariants({ variant }), className, '')}
-      {...rest}
-    >{children}
-    </Component>
+  return React.createElement(
+    Component,
+    {
+      className: cn(typographyVariants({ variant }), className),
+      ...rest
+    },
+    children
   )
 }
 
@@ -83,7 +82,8 @@ Typography.propTypes = {
     'overline'
   ]).isRequired,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  component: PropTypes.elementType
 }
 
 export default Typography
