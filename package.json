@@ -3,10 +3,10 @@
   "author": "Eduardo Parra Mazuecos",
   "email": "eduparra90@gmail.com",
   "licence": "MIT",
-  "version": "3.6.3",
+  "version": "3.6.4",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
