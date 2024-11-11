@@ -113,13 +113,13 @@ importers:
         version: 16.0.1(@testing-library/dom@10.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@vitest/coverage-v8':
         specifier: ^2.1.1
-        version: 2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.0(@types/node@22.5.4)))
+        version: 2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.4(@types/node@22.5.4)))
       happy-dom:
         specifier: ^15.11.0
         version: 15.11.0
       msw:
-        specifier: ^2.6.0
-        version: 2.6.0(@types/node@22.5.4)
+        specifier: ^2.6.4
+        version: 2.6.4(@types/node@22.5.4)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -131,7 +131,7 @@ importers:
         version: 17.1.2
       vitest:
         specifier: ^2.1.1
-        version: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.0(@types/node@22.5.4))
+        version: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.4(@types/node@22.5.4))
 
 packages:
 
@@ -175,8 +175,8 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bundled-es-modules/cookie@2.0.0':
-    resolution: {integrity: sha512-Or6YHg/kamKHpxULAdSqhGqnWFneIXu1NKvvfBBzKGwpVsYuFIQ5aBPHDnnoR3ghW1nvSkALd+EF9iMtY7Vjxw==}
+  '@bundled-es-modules/cookie@2.0.1':
+    resolution: {integrity: sha512-8o+5fRPLNbjbdGRRmJj3h6Hh1AQJf2dk3qQ/5ZFb+PXkRNiSoMGGUKlsgLfrxneb72axVJyIYji64E2+nNfYyw==}
 
   '@bundled-es-modules/statuses@1.0.1':
     resolution: {integrity: sha512-yn7BklA5acgcBr+7w064fGV+SGIFySjCKpqjcWgBAIfrAkY+4GQTJJHQMeT3V/sgz23VTEVV8TtOmkvJAhFVfg==}
@@ -1273,8 +1273,8 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+  cookie@0.7.2:
+    resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
 
   cross-spawn@7.0.3:
@@ -2051,8 +2051,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  msw@2.6.0:
-    resolution: {integrity: sha512-n3tx2w0MZ3H4pxY0ozrQ4sNPzK/dGtlr2cIIyuEsgq2Bhy4wvcW6ZH2w/gXM9+MEUY6HC1fWhqtcXDxVZr5Jxw==}
+  msw@2.6.4:
+    resolution: {integrity: sha512-Pm4LmWQeytDsNCR+A7gt39XAdtH6zQb6jnIKRig0FlvYOn8eksn3s1nXxUfz5KYUjbckof7Z4p2ewzgffPoCbg==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -2935,9 +2935,9 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bundled-es-modules/cookie@2.0.0':
+  '@bundled-es-modules/cookie@2.0.1':
     dependencies:
-      cookie: 0.5.0
+      cookie: 0.7.2
 
   '@bundled-es-modules/statuses@1.0.1':
     dependencies:
@@ -3561,7 +3561,7 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.0(@types/node@22.5.4)))':
+  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.4(@types/node@22.5.4)))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -3575,7 +3575,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.0(@types/node@22.5.4))
+      vitest: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.4(@types/node@22.5.4))
     transitivePeerDependencies:
       - supports-color
 
@@ -3586,13 +3586,13 @@ snapshots:
       chai: 5.1.1
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(msw@2.6.0(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))':
+  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(msw@2.6.4(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))':
     dependencies:
       '@vitest/spy': 2.1.1
       estree-walker: 3.0.3
       magic-string: 0.30.11
     optionalDependencies:
-      msw: 2.6.0(@types/node@22.5.4)
+      msw: 2.6.4(@types/node@22.5.4)
       vite: 5.4.11(@types/node@22.5.4)
 
   '@vitest/pretty-format@2.1.1':
@@ -3882,7 +3882,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  cookie@0.5.0: {}
+  cookie@0.7.2: {}
 
   cross-spawn@7.0.3:
     dependencies:
@@ -4754,9 +4754,9 @@ snapshots:
 
   ms@2.1.3: {}
 
-  msw@2.6.0(@types/node@22.5.4):
+  msw@2.6.4(@types/node@22.5.4):
     dependencies:
-      '@bundled-es-modules/cookie': 2.0.0
+      '@bundled-es-modules/cookie': 2.0.1
       '@bundled-es-modules/statuses': 1.0.1
       '@bundled-es-modules/tough-cookie': 0.1.6
       '@inquirer/confirm': 5.0.1(@types/node@22.5.4)
@@ -5526,10 +5526,10 @@ snapshots:
       '@types/node': 22.5.4
       fsevents: 2.3.3
 
-  vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.0(@types/node@22.5.4)):
+  vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.0)(msw@2.6.4(@types/node@22.5.4)):
     dependencies:
       '@vitest/expect': 2.1.1
-      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(msw@2.6.0(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))
+      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(msw@2.6.4(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))
       '@vitest/pretty-format': 2.1.1
       '@vitest/runner': 2.1.1
       '@vitest/snapshot': 2.1.1
