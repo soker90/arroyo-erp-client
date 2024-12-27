@@ -64,7 +64,7 @@
     "vite": "^5.4.11"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.2.0",
+    "@faker-js/faker": "^9.3.0",
     "@testing-library/react": "^16.0.1",
     "@vitest/coverage-v8": "^2.1.1",
     "happy-dom": "^15.11.7",
