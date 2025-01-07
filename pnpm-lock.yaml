@@ -113,13 +113,13 @@ importers:
         version: 16.0.1(@testing-library/dom@10.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@vitest/coverage-v8':
         specifier: ^2.1.1
-        version: 2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.6.9(@types/node@22.5.4)))
+        version: 2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.7.0(@types/node@22.5.4)))
       happy-dom:
         specifier: ^15.11.7
         version: 15.11.7
       msw:
-        specifier: ^2.6.9
-        version: 2.6.9(@types/node@22.5.4)
+        specifier: ^2.7.0
+        version: 2.7.0(@types/node@22.5.4)
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -131,7 +131,7 @@ importers:
         version: 17.1.2
       vitest:
         specifier: ^2.1.1
-        version: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.6.9(@types/node@22.5.4))
+        version: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.7.0(@types/node@22.5.4))
 
 packages:
 
@@ -2137,8 +2137,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  msw@2.6.9:
-    resolution: {integrity: sha512-b2z9MvsEOYG5G7jtJasXO3ucHDcqCjf046e9wELIixBbYCRZCEmB4gqcb+C7ASyXBafNBR0D2u31YtG01OdX3A==}
+  msw@2.7.0:
+    resolution: {integrity: sha512-BIodwZ19RWfCbYTxWTUfTXc+sg4OwjCAgxU1ZsgmggX/7S3LdUifsbUPJs61j0rWb19CZRGY5if77duhc0uXzw==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -3718,7 +3718,7 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.6.9(@types/node@22.5.4)))':
+  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.7.0(@types/node@22.5.4)))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -3732,7 +3732,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.6.9(@types/node@22.5.4))
+      vitest: 2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.7.0(@types/node@22.5.4))
     transitivePeerDependencies:
       - supports-color
 
@@ -3743,13 +3743,13 @@ snapshots:
       chai: 5.1.1
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(msw@2.6.9(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))':
+  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(msw@2.7.0(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))':
     dependencies:
       '@vitest/spy': 2.1.1
       estree-walker: 3.0.3
       magic-string: 0.30.11
     optionalDependencies:
-      msw: 2.6.9(@types/node@22.5.4)
+      msw: 2.7.0(@types/node@22.5.4)
       vite: 5.4.11(@types/node@22.5.4)
 
   '@vitest/pretty-format@2.1.1':
@@ -4887,7 +4887,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  msw@2.6.9(@types/node@22.5.4):
+  msw@2.7.0(@types/node@22.5.4):
     dependencies:
       '@bundled-es-modules/cookie': 2.0.1
       '@bundled-es-modules/statuses': 1.0.1
@@ -4898,12 +4898,12 @@ snapshots:
       '@open-draft/until': 2.1.0
       '@types/cookie': 0.6.0
       '@types/statuses': 2.0.5
-      chalk: 4.1.2
       graphql: 16.9.0
       headers-polyfill: 4.0.3
       is-node-process: 1.2.0
       outvariant: 1.4.3
       path-to-regexp: 6.3.0
+      picocolors: 1.1.1
       strict-event-emitter: 0.5.1
       type-fest: 4.26.1
       yargs: 17.7.2
@@ -5655,10 +5655,10 @@ snapshots:
       '@types/node': 22.5.4
       fsevents: 2.3.3
 
-  vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.6.9(@types/node@22.5.4)):
+  vitest@2.1.1(@types/node@22.5.4)(happy-dom@15.11.7)(msw@2.7.0(@types/node@22.5.4)):
     dependencies:
       '@vitest/expect': 2.1.1
-      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(msw@2.6.9(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))
+      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(msw@2.7.0(@types/node@22.5.4))(vite@5.4.11(@types/node@22.5.4))
       '@vitest/pretty-format': 2.1.1
       '@vitest/runner': 2.1.1
       '@vitest/snapshot': 2.1.1
