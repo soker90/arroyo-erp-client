@@ -1,4 +1,4 @@
-FROM node:20.17.0-alpine3.20 as build
+FROM node:22.17.1-alpine3.22 as build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH /app/node_modules/.bin:$PNPM_HOME:$PATH
@@ -15,7 +15,7 @@ COPY . ./
 RUN pnpm run build
 
 # production environment
-FROM nginx:1.27.1-alpine3.20
+FROM nginx:1.29.0-alpine3.22
 
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
