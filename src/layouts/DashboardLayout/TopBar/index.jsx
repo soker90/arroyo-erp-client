@@ -15,7 +15,7 @@ const TopBar = ({
 }) => {
   return (
     <header
-      className='fixed top-0 left-0 right-0 bg-header text-white shadow-xl z-[1250]'
+      className='fixed top-0 left-0 right-0 bg-header text-white shadow-xl z-1250'
       {...rest}
     >
       <div className='mx-auto px-4'>

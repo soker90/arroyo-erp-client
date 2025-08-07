@@ -22,7 +22,7 @@ const Notification = () => {
   }
 
   return (
-    <div className='fixed z-[1500] top-16 left-1/2 transform -translate-x-1/2'>
+    <div className='fixed z-1500 top-16 left-1/2 transform -translate-x-1/2'>
       <NotificationWrapper
         onClose={handleClose}
         variant={notification.level}

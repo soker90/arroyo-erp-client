@@ -16,7 +16,7 @@ const LoginView = () => {
           </div>
           <div className='lg:col-span-7 col-span-1'>
             <div className='h-full flex flex-col'>
-              <div className='flex flex-grow items-center'>
+              <div className='flex grow items-center'>
                 <LoginForm login={login} loginError={loginError} isLoading={isLoading} />
               </div>
             </div>

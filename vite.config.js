@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import * as path from 'path'
+import tailwindcss from "@tailwindcss/vite";
 // import { visualizer } from 'rollup-plugin-visualizer'
 
 import { version } from './package.json'
@@ -101,7 +102,8 @@ export default defineConfig({
       }
     ]
   },
-  plugins: [react()
+  plugins: [react(),
+    tailwindcss(),
     // visualizer({
     //   filename: './dist/stats.html',
     //   open: true

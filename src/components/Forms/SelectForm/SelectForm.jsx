@@ -17,7 +17,7 @@ const SelectForm = ({
     >{label}
     </label>
     <select
-      className='w-full appearance-none px-4 py-2 pr-8 leading-tight bg-transparent text-foreground border-b border-muted-foreground focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-50'
+      className='w-full appearance-none px-4 py-2 pr-8 leading-tight bg-transparent text-foreground border-b border-muted-foreground focus:outline-hidden focus:border-primary disabled:cursor-not-allowed disabled:opacity-50'
       name={name}
       {...rest}
     >

@@ -45,12 +45,12 @@ const Search = () => {
   return (
     <div className='hidden md:block relative'>
       <div
-        className='bg-white/10 rounded-sm flex items-center px-4 w-72 h-9'
+        className='bg-white/10 rounded-xs flex items-center px-4 w-72 h-9'
         ref={searchRef}
       >
         <SearchIcon className='mr-4 h-5 w-5' />
         <input
-          className='bg-transparent text-white placeholder-white/50 focus:outline-none w-full'
+          className='bg-transparent text-white placeholder-white/50 focus:outline-hidden w-full'
           onChange={_handleSearchChange}
           placeholder='Buscar proveedor'
           value={searchValue}

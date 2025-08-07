@@ -86,14 +86,14 @@ const NavBar = ({ openMobile, onMobileClose }) => {
 
   const content = (
     <div className='flex flex-col h-full'>
-      <ScrollArea className='flex-grow'>
+      <ScrollArea className='grow'>
         <div className='lg:hidden p-4 flex justify-center'>
           <RouterLink to='/'>
             <Logo />
           </RouterLink>
         </div>
         <div className='p-4'>
-          <div className='p-4 rounded bg-gray-100 dark:bg-gray-800'>
+          <div className='p-4 rounded-sm bg-gray-100 dark:bg-gray-800'>
             <Typography variant='h6' className='font-semibold'>
               {format.dayOfWeek(new Date())}, {format.date(new Date())}
             </Typography>
@@ -128,7 +128,7 @@ const NavBar = ({ openMobile, onMobileClose }) => {
             <Menu className='h-4 w-4' />
           </Button>
         </SheetTrigger>
-        <SheetContent side='left' className='w-64 p-0 z-[2100]'>
+        <SheetContent side='left' className='w-64 p-0 z-2100'>
           {content}
         </SheetContent>
       </Sheet>

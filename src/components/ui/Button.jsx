@@ -1,4 +1,4 @@
-import { forwardRef, Fragment } from 'react'
+import { Fragment } from 'react';
 import { cva } from 'class-variance-authority'
 import { Link as RouterLink } from 'react-router'
 
@@ -45,7 +45,7 @@ const VARIANTS = {
 }
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase',
   {
     variants: VARIANTS,
     compoundVariants: [
@@ -77,18 +77,21 @@ const Loading = () => (
   </svg>
 )
 
-const Button = forwardRef(({
-  className,
-  variant,
-  size,
-  disabled,
-  to,
-  type = 'text',
-  isLoading = false,
-  onClick,
-  color,
-  ...props
-}, ref) => {
+const Button = (
+  {
+    ref,
+    className,
+    variant,
+    size,
+    disabled,
+    to,
+    type = 'text',
+    isLoading = false,
+    onClick,
+    color,
+    ...props
+  }
+) => {
   const Link = to ? RouterLink : Fragment
 
   const isLink = !!to
@@ -123,7 +126,7 @@ const Button = forwardRef(({
       </>
     </button>
   )
-})
+}
 
 Button.displayName = 'Button'
 

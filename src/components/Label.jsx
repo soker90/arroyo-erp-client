@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
 import { cn } from 'utils'
 
 const labelVariants = cva(
-  'items-center rounded-sm inline-flex flex-grow-0 whitespace-nowrap flex-shrink-0 text-xs font-medium h-5 justify-center tracking-wider min-w-[20px] px-2 py-1 uppercase',
+  'items-center rounded-xs inline-flex grow-0 whitespace-nowrap shrink-0 text-xs font-medium h-5 justify-center tracking-wider min-w-[20px] px-2 py-1 uppercase',
   {
     variants: {
       color: {

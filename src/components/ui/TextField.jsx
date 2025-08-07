@@ -12,7 +12,7 @@ const TextField = ({ className, name, label, inputRef, ...props }) => (
     <input
       name={name}
       className={cn(
-        'flex w-full px-2 py-1 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 text-foreground border-b border-muted-foreground focus:outline-none focus:border-primary',
+        'flex w-full px-2 py-1 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 text-foreground border-b border-muted-foreground focus:outline-hidden focus:border-primary',
         className
       )}
       ref={inputRef}

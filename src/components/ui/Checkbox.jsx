@@ -1,19 +1,22 @@
-import { useEffect, forwardRef, useState } from 'react'
+import { useEffect, useState } from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { Check } from 'lucide-react'
 
 import { cn } from 'utils'
 
-const Checkbox = forwardRef(({
-  className,
-  checked,
-  defaultChecked,
-  onChange,
-  indeterminate,
-  disabled,
-  size = 'medium',
-  ...props
-}, ref) => {
+const Checkbox = (
+  {
+    ref,
+    className,
+    checked,
+    defaultChecked,
+    onChange,
+    indeterminate,
+    disabled,
+    size = 'medium',
+    ...props
+  }
+) => {
   const [isChecked, setIsChecked] = useState(defaultChecked || false)
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const Checkbox = forwardRef(({
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        'peer shrink-0 rounded-sm border border-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+        'peer shrink-0 rounded-xs border border-foreground ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
         sizeClasses[size],
         className
       )}
@@ -63,7 +66,7 @@ const Checkbox = forwardRef(({
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
-})
+}
 
 Checkbox.displayName = 'Checkbox'
 

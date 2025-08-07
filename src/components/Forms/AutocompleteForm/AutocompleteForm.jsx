@@ -22,7 +22,7 @@ const SuggestionsList = ({ suggestions, selectedIndex, onSuggestionClick, inputR
   return createPortal(
     <ul
       ref={listRef}
-      className='fixed z-[1352] bg-background border border-input rounded-md mt-1 max-h-60 overflow-auto shadow-lg'
+      className='fixed z-1352 bg-background border border-input rounded-md mt-1 max-h-60 overflow-auto shadow-lg'
       style={{
         top: `${inputRect.bottom}px`,
         left: `${inputRect.left}px`,

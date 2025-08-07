@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { cn } from 'utils'
@@ -44,7 +43,7 @@ const Pagination = (
     >
       <span className='text-sm'> filas</span>
       <SelectForm
-        className='flex !w-16 ml-2 mr-9 items-center !p-0 !-mt-4 !text-sm' value={numRows}
+        className='flex w-16! ml-2 mr-9 items-center p-0! -mt-4! text-sm!' value={numRows}
         onChange={onRowsPerPageChange}
       >
         {rowsPerPageOptions.map((option) => (
@@ -64,11 +63,17 @@ const Pagination = (
 }
 Pagination.displayName = 'Pagination'
 
-const PaginationContent = forwardRef(({ className, ...props }, ref) => (<ul
+const PaginationContent = (
+  {
+    ref,
+    className,
+    ...props
+  }
+) => (<ul
   ref={ref}
   className={cn('flex items-center', className)}
   {...props}
-                                                                        />))
+                                                                        />)
 PaginationContent.displayName = 'PaginationContent'
 
 const PaginationLink = ({

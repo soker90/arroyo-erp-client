@@ -28,12 +28,12 @@ const Modal = ({ open, onClose, children, className }) => {
   /* TODO Change z-index */
   return createPortal(
     <div
-      className={`fixed inset-0 z-[1301] flex items-center justify-center bg-black bg-opacity-50 ${className}`}
+      className={`fixed inset-0 z-1301 flex items-center justify-center bg-black/50 ${className}`}
       onClick={onClose}
     >
       <div
         ref={modalRef}
-        className='outline-none'
+        className='outline-hidden'
         onClick={(e) => e.stopPropagation()}
         role='dialog'
         aria-modal='true'

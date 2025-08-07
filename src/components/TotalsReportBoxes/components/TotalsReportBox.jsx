@@ -17,7 +17,7 @@ const TotalsReportBox = ({
       xs={12}
     >
       <Card className='p-6 flex items-center justify-between'>
-        <div className='flex-grow'>
+        <div className='grow'>
           <Typography
             component='h3'
             variant='overline'

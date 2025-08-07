@@ -9,7 +9,7 @@ const Account = () => {
     <div className='relative'>
       <button
         onClick={logout}
-        className='flex items-center focus:outline-none hover:bg-muted-foreground/20 p-2 rounded-lg'
+        className='flex items-center focus:outline-hidden hover:bg-muted-foreground/20 p-2 rounded-lg'
       >
 
         <span className='hidden md:block text-lg font-semibold'>Salir</span>
