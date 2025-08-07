@@ -1,6 +1,6 @@
 import { Eye } from 'lucide-react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { TableMaterial, TextEuro } from 'components'
 import { BASE_PATH, INVOICE_COMMON_CONCEPTS } from 'constants/index'

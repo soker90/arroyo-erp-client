@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink as RouterLink } from 'react-router-dom'
+import { NavLink as RouterLink } from 'react-router'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { ChevronDown, ChevronUp } from 'lucide-react'

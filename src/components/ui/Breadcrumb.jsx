@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import { Children } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { cn } from 'utils'
 import { Typography } from './index.js'

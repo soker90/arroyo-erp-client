@@ -2,7 +2,7 @@ import {
   useCallback, useEffect, useMemo, useState
 } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { Eye } from 'lucide-react'
 
 import { InputForm, TableMaterial, TextEuro, Card, Grid } from 'components'

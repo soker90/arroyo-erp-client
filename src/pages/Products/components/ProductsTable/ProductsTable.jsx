@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { EyeIcon, TrashIcon, PencilIcon } from 'lucide-react'
 
 import { TableMaterial } from 'components'

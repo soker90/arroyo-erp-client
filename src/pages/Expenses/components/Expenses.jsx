@@ -2,7 +2,7 @@ import {
   useCallback, useState
 } from 'react'
 import { PlusCircle as PlusCircleIcon, Eye } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { BASE_PATH } from 'constants/index'
 import { Header, Page, TableMaterial, Container } from 'components'

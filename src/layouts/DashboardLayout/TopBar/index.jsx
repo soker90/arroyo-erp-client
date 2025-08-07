@@ -1,4 +1,4 @@
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router'
 import PropTypes from 'prop-types'
 import { MenuIcon } from 'lucide-react'
 

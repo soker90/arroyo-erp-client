@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Eye, PencilIcon, TrashIcon } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { TableMaterial, TextEuro, Typography } from 'components'
 import { useProducts } from 'hooks'

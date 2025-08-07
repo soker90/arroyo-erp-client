@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 import { Trash, ReceiptTextIcon } from 'lucide-react'
 import { useCallback, useState } from 'react'
 

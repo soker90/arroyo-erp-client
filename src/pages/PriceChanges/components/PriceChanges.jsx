@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { TrashIcon, ReceiptTextIcon, ShoppingCart, CircleCheckBigIcon } from 'lucide-react'
 
 import { BASE_PATH } from 'constants/index'

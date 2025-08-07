@@ -1,4 +1,4 @@
-import { MemoryRouter, Route, Router } from 'react-router-dom'
+import { MemoryRouter, Route, Router } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { createBrowserHistory } from 'history'

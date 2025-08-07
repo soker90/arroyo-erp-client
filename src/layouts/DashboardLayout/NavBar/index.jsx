@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router'
 import { Menu } from 'lucide-react'
 import { matchPath, useLocation } from 'react-router'
 import { useState, useEffect } from 'react'

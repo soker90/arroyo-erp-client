@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router'
 
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
 import { AuthProvider } from 'contexts/AuthProvider'

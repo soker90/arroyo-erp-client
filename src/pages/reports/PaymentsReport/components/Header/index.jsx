@@ -1,6 +1,6 @@
 import { SkipForward, SkipBack } from 'lucide-react'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 
 import { Header } from 'components'
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { PencilIcon, Mail } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { LoadingScreen, TableMaterial, TextEuro } from 'components'
 import { BASE_PATH } from 'constants/index'

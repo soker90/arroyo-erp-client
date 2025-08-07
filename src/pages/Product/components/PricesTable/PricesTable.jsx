@@ -1,7 +1,7 @@
 import { EyeIcon, TrashIcon } from 'lucide-react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { TableMaterial } from 'components'
 import { BASE_PATH } from 'constants/index'

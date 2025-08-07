@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { TrashIcon, PencilIcon, Eye } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { TableMaterial, TextEuro } from 'components'
 import { format } from 'utils'

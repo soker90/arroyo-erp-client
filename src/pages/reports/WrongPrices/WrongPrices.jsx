@@ -1,5 +1,5 @@
 import { Eye, Wand } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 import { Header, Page, TableMaterial, TextEuro, Container } from 'components'
 import { BASE_PATH } from 'constants/index'

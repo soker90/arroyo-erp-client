@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { SkipForward, SkipBack, ArrowDownToLine } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 
 import { Header } from 'components'
 import { downloadFile, format, objectToParams } from 'utils'

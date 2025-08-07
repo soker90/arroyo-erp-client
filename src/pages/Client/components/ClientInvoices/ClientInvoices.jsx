@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { PencilIcon } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router'
 
 import {
   LoadingScreen, TableMaterial, TextEuro

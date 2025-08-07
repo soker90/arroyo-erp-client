@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { lazy } from 'react'
-import { Navigate, useRoutes } from 'react-router-dom'
+import { Navigate, useRoutes } from 'react-router'
 
 import DashboardLayout from 'layouts/DashboardLayout'
 import NotFound from 'components/NotFound'
