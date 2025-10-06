@@ -69,7 +69,7 @@
     "happy-dom": "^15.11.7",
     "msw": "^2.10.4",
     "prettier": "^3.6.2",
-    "rollup-plugin-visualizer": "^6.0.3",
+    "rollup-plugin-visualizer": "^6.0.4",
     "standard": "^17.1.2",
     "vitest": "^3.2.4"
   },
