@@ -1,3 +1,4 @@
+/* global localStorage */
 import { useState } from 'react'
 import { mutate } from 'swr'
 import { API_BILLINGS } from 'constants/paths'

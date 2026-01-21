@@ -10,30 +10,30 @@ const RecalcChangesAlert = ({ year, changesData, onDismiss }) => {
   const totalInvoices = changesData.changes.reduce((sum, provider) => sum + provider.invoices.length, 0)
 
   return (
-    <div className="my-6 bg-green-600 text-white p-4 rounded-md shadow-lg flex items-center justify-between">
-      <span className="flex items-center flex-1">
-        <CheckCircle className="h-5 w-5 mr-2 flex-shrink-0" />
+    <div className='my-6 bg-green-600 text-white p-4 rounded-md shadow-lg flex items-center justify-between'>
+      <span className='flex items-center flex-1'>
+        <CheckCircle className='h-5 w-5 mr-2 flex-shrink-0' />
         <span>
-          <span className="font-semibold">Facturación recalculada:</span>
+          <span className='font-semibold'>Facturación recalculada:</span>
           {' '}
           Se han encontrado y corregido {totalInvoices} {totalInvoices === 1 ? 'factura' : 'facturas'} en {changesData.updated} {changesData.updated === 1 ? 'proveedor' : 'proveedores'}
         </span>
       </span>
-      <div className="flex gap-2 ml-4 flex-shrink-0">
+      <div className='flex gap-2 ml-4 flex-shrink-0'>
         <Button
           to={`/app/informes/facturacion/${year}/recalc-changes`}
-          variant="contained"
-          size="sm"
-          className="bg-white text-green-600 hover:bg-green-50"
+          variant='contained'
+          size='sm'
+          className='bg-white text-green-600 hover:bg-green-50'
         >
-          <Eye className="mr-1" size={16} />
+          <Eye className='mr-1' size={16} />
           Detalle
         </Button>
         <Button
           onClick={onDismiss}
-          variant="ghost"
-          size="sm"
-          className="text-white hover:bg-green-700"
+          variant='ghost'
+          size='sm'
+          className='text-white hover:bg-green-700'
         >
           <X size={20} />
         </Button>

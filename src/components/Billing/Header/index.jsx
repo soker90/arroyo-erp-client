@@ -33,13 +33,15 @@ const HeaderBook = ({
 
   const buttons = [
     // Botón de recalcular solo para proveedores
-    ...(!isClient(type) ? [{
-      onClick: _recreateSumBilling,
-      Icon: RefreshCcwIcon,
-      label: isRecalculating ? 'Recalculando...' : 'Recalcular',
-      variant: 'warning',
-      disabled: isRecalculating
-    }] : []),
+    ...(!isClient(type)
+      ? [{
+          onClick: _recreateSumBilling,
+          Icon: RefreshCcwIcon,
+          label: isRecalculating ? 'Recalculando...' : 'Recalcular',
+          variant: 'warning',
+          disabled: isRecalculating
+        }]
+      : []),
     {
       onClick: _handleClickDownload(true),
       Icon: ArrowDownToLine,

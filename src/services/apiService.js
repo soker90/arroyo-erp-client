@@ -198,5 +198,3 @@ export const deletePriceChangesApi = id => axios.delete(`${API_PRICES_CHANGES}/$
 /* Billings */
 export const recalcProviderBillingsApi = (year) => axios.post(`${API_BILLINGS_RECALC}?year=${year}`)
   .then(({ data }) => data)
-
-
