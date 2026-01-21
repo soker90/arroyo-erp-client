@@ -1,3 +1,7 @@
+# [3.7.0] - 21/01/2026
+  - Añadido botón "Recalcular" en facturación de proveedores con notificación persistente
+  - Nueva página de detalles mostrando facturas corregidas por proveedor
+
 # [3.6.4] - 06/11/2024
   - Eliminada la persistencia de SRW en localstorage
   - Test fixes

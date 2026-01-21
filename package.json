@@ -3,7 +3,7 @@
   "author": "Eduardo Parra Mazuecos",
   "email": "eduparra90@gmail.com",
   "licence": "MIT",
-  "version": "3.6.4",
+  "version": "3.7.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@9.12.3",

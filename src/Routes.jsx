@@ -6,6 +6,7 @@ import DashboardLayout from 'layouts/DashboardLayout'
 import NotFound from 'components/NotFound'
 
 const Billing = lazy(() => import('pages/reports/Billing'))
+const BillingRecalcChanges = lazy(() => import('pages/reports/Billing/RecalcChangesDetail'))
 const Book = lazy(() => import('pages/Book'))
 const Client = lazy(() => import('pages/Client'))
 const ClientBilling = lazy(() => import('pages/reports/ClientBilling'))
@@ -66,6 +67,10 @@ const routesConfig = [
       {
         path: 'informes/facturacion/:year',
         element: <Billing />
+      },
+      {
+        path: 'informes/facturacion/:year/recalc-changes',
+        element: <BillingRecalcChanges />
       },
       {
         path: 'informes/facturacion',
