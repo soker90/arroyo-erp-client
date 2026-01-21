@@ -15,7 +15,9 @@ import {
   API_PRICES_CHANGES,
   API_INVOICES,
   API_DELIVERY_ORDERS,
-  API_PRODUCTS_WRONG_PRICES, API_INVOICES_EXPENSE
+  API_PRODUCTS_WRONG_PRICES,
+  API_INVOICES_EXPENSE,
+  API_BILLINGS_RECALC
 } from 'constants/paths'
 import { format } from 'utils'
 import { COLUMNS_INVOICES, CONCEPT } from '../constants/index.js'
@@ -192,3 +194,9 @@ export const swapInvoicesApi = (invoiceA, invoiceB) => axios.patch(`${API_INVOIC
 export const changeReadPriceApi = (id, read) => axios.patch(`${API_PRICES_CHANGES}/${id}`, { read })
 export const deleteManyChangesPriceApi = ids => axios.post(`${API_PRICES_CHANGES}/deletemany`, { ids })
 export const deletePriceChangesApi = id => axios.delete(`${API_PRICES_CHANGES}/${id}`)
+
+/* Billings */
+export const recalcProviderBillingsApi = (year) => axios.post(`${API_BILLINGS_RECALC}?year=${year}`)
+  .then(({ data }) => data)
+
+

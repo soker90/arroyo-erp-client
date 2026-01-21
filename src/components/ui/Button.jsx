@@ -21,7 +21,8 @@ const VARIANTS = {
     ghosted: 'hover:bg-accent hover:text-accent-foreground',
     link: 'text-primary underline-offset-4 hover:underline',
     text: 'text-primary underline-offset-4',
-    icon: 'rounded-full hover:bg-muted'
+    icon: 'rounded-full hover:bg-muted',
+    warning: 'border border-input bg-foreground/10 hover:bg-accent-foreground/20 text-warning',
   },
   size: {
     default: 'h-10 px-4 py-2',

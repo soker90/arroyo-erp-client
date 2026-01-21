@@ -19,6 +19,7 @@ export const API_INVOICES_SHORT = `${API_INVOICES}/short`
 export const API_INVOICES_SWAP = `${API_INVOICES}/swap`
 
 export const API_BILLINGS = 'billings'
+export const API_BILLINGS_RECALC = `${API_BILLINGS}/recalc`
 export const API_CLIENT_INVOICES = 'client/invoices'
 export const API_CLIENT_INVOICES_SHORT = `${API_CLIENT_INVOICES}/short`
 export const API_INVOICES_TOTALS = 'invoices/totals'
