@@ -107,52 +107,104 @@ const RecalcChangesDetail = () => {
               <p className='text-sm text-muted-foreground mb-4'>
                 Trimestres afectados: {provider.trimesters.map(t => `T${t}`).join(', ')}
               </p>
-              <TableMaterial
-                columns={[
-                  {
-                    title: 'Nº Factura',
-                    field: 'nInvoice',
-                    render: ({ nInvoice, invoiceId }) => nInvoice || invoiceId
-                  },
-                  {
-                    title: 'Trimestre',
-                    render: ({ trimester }) => (
-                      <span className='inline-flex items-center px-2 py-1 text-xs font-semibold rounded bg-primary/10 text-primary'>
-                        T{trimester}
-                      </span>
-                    )
-                  },
-                  {
-                    title: 'Total Anterior',
-                    render: ({ oldTotal }) => <TextEuro num={oldTotal} />
-                  },
-                  {
-                    title: 'Total Correcto',
-                    render: ({ newTotal }) => <TextEuro num={newTotal} className='font-semibold' />
-                  },
-                  {
-                    title: 'Diferencia',
-                    render: ({ oldTotal, newTotal }) => {
-                      const diff = newTotal - oldTotal
-                      return (
-                        <span className={`font-medium ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                          {diff > 0 ? '+' : ''}{format.euro(diff)}
+
+              {/* Tabla de facturas con errores */}
+              {provider.invoices && provider.invoices.length > 0 && (
+                <TableMaterial
+                  columns={[
+                    {
+                      title: 'Nº Factura',
+                      field: 'nInvoice',
+                      render: ({ nInvoice, invoiceId }) => nInvoice || invoiceId
+                    },
+                    {
+                      title: 'Trimestre',
+                      render: ({ trimester }) => (
+                        <span className='inline-flex items-center px-2 py-1 text-xs font-semibold rounded bg-primary/10 text-primary'>
+                          T{trimester}
                         </span>
                       )
+                    },
+                    {
+                      title: 'Total Anterior',
+                      render: ({ oldTotal }) => <TextEuro num={oldTotal} />
+                    },
+                    {
+                      title: 'Total Correcto',
+                      render: ({ newTotal }) => <TextEuro num={newTotal} className='font-semibold' />
+                    },
+                    {
+                      title: 'Diferencia',
+                      render: ({ oldTotal, newTotal }) => {
+                        const diff = newTotal - oldTotal
+                        return (
+                          <span className={`font-medium ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                            {diff > 0 ? '+' : ''}{format.euro(diff)}
+                          </span>
+                        )
+                      }
                     }
-                  }
-                ]}
-                data={provider.invoices}
-                actions={[
-                  {
-                    icon: FileText,
-                    tooltip: 'Ver factura',
-                    component: Link,
-                    to: ({ invoiceId }) => `${PATH_INVOICES}/${invoiceId}`
-                  }
-                ]}
-                withCard={false}
-              />
+                  ]}
+                  data={provider.invoices}
+                  actions={[
+                    {
+                      icon: FileText,
+                      tooltip: 'Ver factura',
+                      component: Link,
+                      to: ({ invoiceId }) => `${PATH_INVOICES}/${invoiceId}`
+                    }
+                  ]}
+                  withCard={false}
+                />
+              )}
+
+              {/* Tabla de errores de suma */}
+              {provider.sumErrors && provider.sumErrors.length > 0 && (
+                <div className='mt-4'>
+                  <h4 className='text-sm font-semibold mb-2 text-orange-600'>Errores de suma detectados</h4>
+                  <TableMaterial
+                    columns={[
+                      {
+                        title: 'Tipo',
+                        render: ({ type, trimester }) => (
+                          type === 'trimester'
+                            ? (
+                              <span className='inline-flex items-center px-2 py-1 text-xs font-semibold rounded bg-orange-100 text-orange-700'>
+                                Trimestre {trimester}
+                              </span>
+                              )
+                            : (
+                              <span className='inline-flex items-center px-2 py-1 text-xs font-semibold rounded bg-red-100 text-red-700'>
+                                Total Anual
+                              </span>
+                              )
+                        )
+                      },
+                      {
+                        title: 'Total Guardado (Incorrecto)',
+                        render: ({ oldTotal }) => <TextEuro num={oldTotal} className='text-red-600' />
+                      },
+                      {
+                        title: 'Total Correcto',
+                        render: ({ newTotal }) => <TextEuro num={newTotal} className='font-semibold text-green-600' />
+                      },
+                      {
+                        title: 'Diferencia',
+                        render: ({ oldTotal, newTotal }) => {
+                          const diff = newTotal - oldTotal
+                          return (
+                            <span className={`font-medium ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                              {diff > 0 ? '+' : ''}{format.euro(diff)}
+                            </span>
+                          )
+                        }
+                      }
+                    ]}
+                    data={provider.sumErrors}
+                    withCard={false}
+                  />
+                </div>
+              )}
             </Card>
           ))}
         </div>
