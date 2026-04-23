@@ -11,15 +11,15 @@ const WrongPrices = () => {
   const { products, fixPrices } = useWrongPrices()
 
   return (
-    <Page className='py-6' title='Precios erróneos'>
+    <Page className='py-6' title='Precios y costos erróneos'>
       <Container>
         <Header
-          title='Precios erróneos'
-          description='Productos con errores en el precio'
+          title='Precios y costos erróneos'
+          description='Productos con errores en el precio o el costo'
           buttons={[{
             onClick: fixPrices,
             Icon: Wand,
-            label: 'Corregir',
+            label: 'Corregir todos',
             variant: 'contained'
           }]}
         />
@@ -40,12 +40,28 @@ const WrongPrices = () => {
               render: ({ date }) => format.date(date)
             },
             {
-              title: 'Bueno',
-              render: ({ goodPrice }) => <TextEuro num={goodPrice} />
+              title: 'Precio',
+              render: ({ badPrice, goodPrice, wrongPrice }) => wrongPrice
+                ? (
+                  <span className='text-sm'>
+                    <TextEuro num={badPrice} className='text-red-600 line-through' />
+                    {' → '}
+                    <TextEuro num={goodPrice} className='font-semibold text-green-600' />
+                  </span>
+                )
+                : <TextEuro num={goodPrice} />
             },
             {
-              title: 'Malo',
-              render: ({ badPrice }) => <TextEuro num={badPrice} />
+              title: 'Costo',
+              render: ({ badCost, goodCost, wrongCost }) => wrongCost
+                ? (
+                  <span className='text-sm'>
+                    <TextEuro num={badCost} className='text-red-600 line-through' />
+                    {' → '}
+                    <TextEuro num={goodCost} className='font-semibold text-green-600' />
+                  </span>
+                )
+                : <TextEuro num={goodCost} />
             }
           ]}
           data={products}
