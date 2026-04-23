@@ -1,3 +1,8 @@
+# [3.8.1] - 23/04/2026
+  - Añadidos los errores de costes a la tabla de errores de precio
+  - Los errores muestran el valor incorrecto tachado en rojo y el correcto en verde
+  - Corregido error de navegación en el menú al añadir submenú sin href
+
 # [3.8.0] - 09/03/2026
   - Mejorado diseño de notificación de recálculo con interfaz alineada
   - Actualizado formato de tabla de detalles de cambios con botones como enlaces

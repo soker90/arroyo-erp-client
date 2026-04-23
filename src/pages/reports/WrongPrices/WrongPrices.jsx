@@ -48,7 +48,7 @@ const WrongPrices = () => {
                     {' → '}
                     <TextEuro num={goodPrice} className='font-semibold text-green-600' />
                   </span>
-                )
+                  )
                 : <TextEuro num={goodPrice} />
             },
             {
@@ -60,7 +60,7 @@ const WrongPrices = () => {
                     {' → '}
                     <TextEuro num={goodCost} className='font-semibold text-green-600' />
                   </span>
-                )
+                  )
                 : <TextEuro num={goodCost} />
             }
           ]}
