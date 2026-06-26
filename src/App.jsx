@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { BrowserRouter } from 'react-router'
 
 import { NotificationsProvider } from 'contexts/NotificationsProvider'
@@ -18,6 +18,12 @@ const App = () => {
   const { settings } = useSettings()
 
   const themeMode = settings.theme === 'LIGHT' ? 'light' : 'dark'
+
+  useEffect(() => {
+    const root = window.document.documentElement
+    root.classList.remove('light', 'dark')
+    root.classList.add(themeMode)
+  }, [themeMode])
 
   return (
     <div className={cn(themeMode, 'h-screen')}>

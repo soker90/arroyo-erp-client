@@ -106,12 +106,18 @@ const DatePickerForm = ({
               day_outside: 'text-muted-foreground opacity-50',
               day_disabled: 'text-muted-foreground opacity-50',
               day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
-              day_hidden: 'invisible',
-              outside: 'text-muted-foreground opacity-50'
+              day_hidden: 'invisible'
             }}
             components={{
-              IconLeft: ({ ...props }) => <ChevronLeft className='h-4 w-4' />,
-              IconRight: ({ ...props }) => <ChevronRight className='h-4 w-4' />
+              Chevron: ({ orientation }) => {
+                if (orientation === 'left') {
+                  return <ChevronLeft className='h-4 w-4' />
+                }
+                if (orientation === 'right') {
+                  return <ChevronRight className='h-4 w-4' />
+                }
+                return null
+              }
             }}
           />
           <div className='flex justify-end space-x-2 p-2 border-t'>

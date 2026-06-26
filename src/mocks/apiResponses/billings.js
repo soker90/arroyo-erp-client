@@ -2,7 +2,7 @@ import { fakerES as faker } from '@faker-js/faker'
 import { rangeFill } from 'utils'
 
 const generateBilling = () => ({
-  name: faker.company.bsNoun(),
+  name: faker.company.buzzNoun(),
   businessName: faker.company.name(),
   trimester1: faker.number.float({
     min: 0

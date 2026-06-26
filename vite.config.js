@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import * as path from 'path'
 // import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -17,14 +18,16 @@ export default defineConfig({
       //   visualizer()
       // ],
       output: {
-        manualChunks: {
-          lucid: ['lucide-react'],
-          chartjs: ['chart.js'],
-          dateFns: ['date-fns'],
-          axios: ['axios'],
-          swr: ['swr'],
-          daypicker: ['react-day-picker'],
-          tailwindMerge: ['tailwind-merge']
+        manualChunks (id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('lucide-react')) return 'lucid'
+            if (id.includes('chart.js') || id.includes('react-chartjs-2')) return 'chartjs'
+            if (id.includes('date-fns')) return 'dateFns'
+            if (id.includes('axios')) return 'axios'
+            if (id.includes('swr')) return 'swr'
+            if (id.includes('react-day-picker')) return 'daypicker'
+            if (id.includes('tailwind-merge')) return 'tailwindMerge'
+          }
         }
       }
     }
@@ -101,7 +104,9 @@ export default defineConfig({
       }
     ]
   },
-  plugins: [react()
+  plugins: [
+    react(),
+    tailwindcss()
     // visualizer({
     //   filename: './dist/stats.html',
     //   open: true

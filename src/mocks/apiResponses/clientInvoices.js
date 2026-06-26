@@ -4,7 +4,7 @@ import { TYPE_CLIENT_PAYMENT } from 'constants/invoices'
 
 const generateClientBilling = () => ({
   _id: faker.database.mongodbObjectId(),
-  name: faker.company.bsNoun(),
+  name: faker.company.buzzNoun(),
   invoices: faker.number.int({
     min: 0,
     max: 100
@@ -23,7 +23,7 @@ export const clientBillingsResponse = () => rangeFill(faker.number.int({
 
 const generateClientInvoice = () => ({
   _id: faker.database.mongodbObjectId(),
-  nameClient: faker.company.bsNoun(),
+  nameClient: faker.company.buzzNoun(),
   date: faker.date.past()
     .getTime(),
   total: faker.number.float({
