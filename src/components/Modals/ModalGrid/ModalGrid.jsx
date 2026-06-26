@@ -42,7 +42,7 @@ const ModalGrid = ({
    * @returns {Button}
    * @private
    */
-  // eslint-disable-next-line react/prop-types
+
   const _renderButton = ({ value, ...rest }, index) => (
     <Button key={index} {...rest}>
       {value}

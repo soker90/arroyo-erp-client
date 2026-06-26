@@ -1,5 +1,5 @@
 import {
-  lazy, useCallback, useEffect, useState
+  lazy, useCallback, useState
 } from 'react'
 import { useLocation, useParams } from 'react-router'
 
@@ -23,10 +23,12 @@ const Provider = () => {
     billing
   } = useProvider(idProvider)
 
-  useEffect(() => {
-    HASH_TABS[hash] &&
-    setCurrentTab(HASH_TABS[hash])
-  }, [hash])
+  // Sync the active tab with the URL hash during render.
+  const [prevHash, setPrevHash] = useState(hash)
+  if (hash !== prevHash) {
+    setPrevHash(hash)
+    if (HASH_TABS[hash]) setCurrentTab(HASH_TABS[hash])
+  }
 
   /**
    * Expande o contrae la información

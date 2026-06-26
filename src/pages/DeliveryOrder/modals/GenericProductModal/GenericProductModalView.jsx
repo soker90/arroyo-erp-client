@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { InputForm, ModalGrid, SelectForm, Typography } from 'components'
-import { replaceCommasByDots } from 'utils'
+import { evalArithmetic, replaceCommasByDots } from 'utils'
 
 const GenericProductModal = ({
   show,
@@ -86,16 +86,12 @@ const GenericProductModal = ({
   }
 
   const _handleLostFocus = () => {
-    let evalNum
-    try {
-      evalNum = replaceCommasByDots(state.quantity)
-      // eslint-disable-next-line no-eval
-      evalNum = eval(evalNum)
-      evalNum = evalNum.toFixed(3)
-    } catch (e) {
+    const evalNum = evalArithmetic(replaceCommasByDots(state.quantity))
+    if (evalNum === null) {
       console.error('La cantidad no es numérica')
+      return
     }
-    if (evalNum) setState({ quantity: evalNum })
+    if (evalNum) setState({ quantity: evalNum.toFixed(3) })
   }
 
   /**

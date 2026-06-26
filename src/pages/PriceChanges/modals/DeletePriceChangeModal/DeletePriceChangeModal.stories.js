@@ -12,7 +12,7 @@ export default {
 
 const DeleteModal = () => (
   <DeleteConfirmationModal
-    // eslint-disable-next-line
+
     show={true}
     close={action('Cerrar modal')}
     deleteProductOfDeliveryOrder={action('deleteProductOfDeliveryOrder')}

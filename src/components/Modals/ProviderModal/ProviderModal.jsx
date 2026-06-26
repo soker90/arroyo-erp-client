@@ -84,7 +84,7 @@ const ProviderModal = ({
           onKeyPress={_handleKeyPress}
         >
           {TYPE_PROVIDER_LIST.map((item, idx) => (
-            // eslint-disable-next-line react/no-array-index-key
+
             <option key={idx} value={item}>
               {item}
             </option>

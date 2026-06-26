@@ -70,9 +70,13 @@ const AutocompleteForm = ({
   const [inputRect, setInputRect] = useState(null)
   const wrapperRef = useRef(null)
 
-  useEffect(() => {
+  // Sync the input with the controlled `value` prop during render instead of
+  // in an effect (see "adjusting state when a prop changes" in the React docs).
+  const [prevValue, setPrevValue] = useState(value)
+  if (value !== prevValue) {
+    setPrevValue(value)
     setInputValue(value || '')
-  }, [value])
+  }
 
   const updateInputRect = () => {
     if (wrapperRef.current) {

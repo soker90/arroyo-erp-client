@@ -43,7 +43,6 @@ const ProductsTable = ({
         {
           title: '%',
           render: props => {
-            // eslint-disable-next-line react/prop-types
             if (!props.sale) return ' -- '
             return format.percent(
               calcProfit(props),

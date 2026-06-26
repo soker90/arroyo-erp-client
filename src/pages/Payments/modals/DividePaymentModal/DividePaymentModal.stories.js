@@ -12,7 +12,7 @@ export default {
 
 const DeleteModal = () => (
   <DividePaymentModal
-    // eslint-disable-next-line
+
     show={true}
     setShow={action('setShow')}
     dividePayment={action('dividePayment')}

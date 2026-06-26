@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { ModalGrid } from 'components/Modals'
 import { DatePickerForm, SelectForm } from 'components/Forms'
@@ -16,12 +16,16 @@ const ConfirmClientPaymentModal = ({
   const [paymentType, setPaymentType] = useState('?')
   const { confirmPayment } = useConfirmClientPayment(year)
 
-  useEffect(() => {
+  // Reset the form whenever a new invoice is opened (during render instead of
+  // in an effect).
+  const [prevInvoice, setPrevInvoice] = useState(invoice)
+  if (invoice !== prevInvoice) {
+    setPrevInvoice(invoice)
     if (invoice) {
       setPaymentType('?')
       setPaymentDate(null)
     }
-  }, [invoice])
+  }
 
   const _close = () => {
     setShow(null)

@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import PropTypes from 'prop-types'
 
 import { Grid, ItemCard } from 'components'
@@ -11,7 +10,6 @@ const ItemGroupsCard = ({ groups = 2, items }) => {
    * Render a single data label with value
    * @param {String} label
    * @param {any} value
-   * @param {string} label
    * @param {string} variant
    * @returns {ItemCard}
    * @private
@@ -19,12 +17,6 @@ const ItemGroupsCard = ({ groups = 2, items }) => {
   const _renderItem = ({ label, value, variant }) => (
     <ItemCard key={label} label={label} value={value} variant={variant} />
   )
-
-  _renderItem.propTypes = {
-    label: PropTypes.string.isRequired,
-    value: PropTypes.any,
-    variant: PropTypes.string
-  }
 
   /**
    * Render group of data label

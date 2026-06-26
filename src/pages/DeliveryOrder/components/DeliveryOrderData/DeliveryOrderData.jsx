@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation } from 'react-router'
 import PropTypes from 'prop-types'
 
@@ -12,16 +12,19 @@ const DeliveryOrderData = ({
   idDeliveryOrder
 }) => {
   const { search } = useLocation()
-  const [showDateModal, setShowDateModal] = useState(false)
+  const [showDateModal, setShowDateModal] = useState(Boolean(search && !readOnly && !date))
 
   const _handleChangeDate = value => {
     updateData({ date: value })
     setShowDateModal(false)
   }
 
-  useEffect(() => {
+  // Open the date modal when a different delivery order without date is loaded.
+  const [prevId, setPrevId] = useState(idDeliveryOrder)
+  if (idDeliveryOrder !== prevId) {
+    setPrevId(idDeliveryOrder)
     if (search && !readOnly && !date) setShowDateModal(true)
-  }, [setShowDateModal, search, idDeliveryOrder])
+  }
 
   const _handleKeyDownNote = ({
     key,

@@ -29,7 +29,7 @@ const DeliveryOrderProducts = ({
    * @return {Typography}
    * @private
    */
-  // eslint-disable-next-line react/prop-types
+
   const _formatDiff = ({ diff }) => (
     diff !== undefined
       ? (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { PencilIcon } from 'lucide-react'
 
@@ -20,11 +20,8 @@ const InvoiceData = ({
   updateData,
   total = 0
 }) => {
-  const [showModal, setShowModal] = useState(false)
-
-  useEffect(() => {
-    if (!nInvoice) setShowModal(true)
-  }, [])
+  // Open the edit modal on mount when there is no invoice number yet.
+  const [showModal, setShowModal] = useState(!nInvoice)
 
   const _handleEditClick = () => {
     setShowModal(true)

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { ModalGrid } from 'components/Modals'
 import { DatePickerForm, InputForm, SelectForm } from 'components/Forms'
@@ -12,13 +12,16 @@ const ConfirmPaymentModal = ({
   const [type, setType] = useState('?')
   const [numCheque, setNumCheque] = useState(null)
 
-  useEffect(() => {
+  // Populate the form from the payment whenever it changes, during render.
+  const [prevPayment, setPrevPayment] = useState(payment)
+  if (payment !== prevPayment) {
+    setPrevPayment(payment)
     if (payment) {
       setType(payment.type)
       setPaymentDate(payment.paymentDate || null)
       setNumCheque(null)
     }
-  }, [payment])
+  }
 
   const _close = () => {
     setShow(false)

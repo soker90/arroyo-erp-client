@@ -63,7 +63,6 @@ const AddProductModal = ({
    * @private
    */
   const _handleSaveAndNew = () => {
-    // eslint-disable-next-line
     hasInitialData(state)
       ? createDeliveryOrder(close)
       : _saveProduct(() => {

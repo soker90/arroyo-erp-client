@@ -57,7 +57,6 @@ const ClientInvoice = () => {
     setShowProduct(doAndProduct)
   }, [])
 
-  // eslint-disable-next-line no-unsafe-optional-chaining
   const _isLastDO = index => invoice?.deliveryOrders?.length - 1 === index
 
   const createDOAndRedirect = id => {

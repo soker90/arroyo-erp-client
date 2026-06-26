@@ -8,8 +8,8 @@
   "type": "module",
   "packageManager": "pnpm@9.12.3",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "vite",
     "dev": "VITE_MOCKS=true npm start",
     "build": "vite build",
@@ -63,21 +63,22 @@
     "vite": "^8.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^8.0.0",
     "@faker-js/faker": "^10.5.0",
+    "@rolldown/plugin-babel": "0.2.3",
     "@tailwindcss/vite": "^4.3.1",
     "@testing-library/react": "^16.3.2",
     "@vitest/coverage-v8": "^4.1.9",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.7.0",
     "happy-dom": "^20.10.6",
     "msw": "^2.14.6",
+    "neostandard": "^0.13.0",
     "prettier": "^3.8.5",
     "rollup-plugin-visualizer": "^7.0.1",
-    "standard": "^17.1.2",
     "vitest": "^4.1.9"
-  },
-  "eslintConfig": {
-    "extends": [
-      "./node_modules/standard/eslintrc.json"
-    ]
   },
   "msw": {
     "workerDirectory": "public"

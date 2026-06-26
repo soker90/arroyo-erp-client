@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { es } from 'date-fns/locale'
@@ -25,13 +25,19 @@ const DatePickerForm = ({
   const [open, setOpen] = useState(initialOpen)
   const inputRef = useRef()
 
-  useEffect(() => {
+  // Sync internal state with controlled props during render (instead of in an
+  // effect) following the official "adjusting state when a prop changes" guide.
+  const [prevValue, setPrevValue] = useState(value)
+  if (value !== prevValue) {
+    setPrevValue(value)
     setDate(value)
-  }, [value])
+  }
 
-  useEffect(() => {
+  const [prevInitialOpen, setPrevInitialOpen] = useState(initialOpen)
+  if (initialOpen !== prevInitialOpen) {
+    setPrevInitialOpen(initialOpen)
     setOpen(initialOpen)
-  }, [initialOpen])
+  }
 
   const handleDateChange = (newDate) => {
     setDate(newDate)

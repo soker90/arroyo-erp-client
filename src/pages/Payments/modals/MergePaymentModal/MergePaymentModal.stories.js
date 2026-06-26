@@ -14,7 +14,7 @@ const MergeModal = () => (
   <MergePaymentModal
     selected={[]}
     mergePayments={action('mergePayments')}
-    // eslint-disable-next-line
+
     show={true}
     close={action('Cerrar modal')}
     deleteProductOfDeliveryOrder={action('deleteProductOfDeliveryOrder')}

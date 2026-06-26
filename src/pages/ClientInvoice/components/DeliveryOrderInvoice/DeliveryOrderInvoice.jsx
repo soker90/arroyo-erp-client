@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Plus, Trash2 } from 'lucide-react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { DatePickerForm, TextEuro, Card, CardContent, CardHeader, Tooltip, Button } from 'components'
 import ClientInvoiceProducts from '../ClientInvoiceProducts'
@@ -19,9 +19,12 @@ const DeliveryOrderInvoice = ({
 }) => {
   const [date, setDate] = useState(deliveryOrder.date)
 
-  useEffect(() => {
+  // Keep the local date in sync with the delivery order during render.
+  const [prevDate, setPrevDate] = useState(deliveryOrder.date)
+  if (deliveryOrder.date !== prevDate) {
+    setPrevDate(deliveryOrder.date)
     setDate(deliveryOrder.date)
-  }, [deliveryOrder.date])
+  }
 
   const [deleteId, setDeleteId] = useState(false)
 

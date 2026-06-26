@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { ChevronRight } from 'lucide-react'
 
@@ -27,9 +27,13 @@ const ListActions = ({
   const [filter, setFilter] = useState('')
   const [selected, setSelected] = useState(null)
 
-  useEffect(() => {
+  // Reset the selection whenever the data changes (during render instead of
+  // in an effect, per the React "adjusting state on prop change" guidance).
+  const [prevData, setPrevData] = useState(data)
+  if (data !== prevData) {
+    setPrevData(data)
     setSelected(null)
-  }, [data])
+  }
 
   const _handleClick = item => {
     setSelected(item._id)

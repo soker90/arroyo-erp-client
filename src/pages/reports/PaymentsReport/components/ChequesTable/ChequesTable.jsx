@@ -49,7 +49,7 @@ const ChequesTable = ({
         },
         {
           title: 'Importe',
-          // eslint-disable-next-line react/prop-types
+
           render: ({ total }) => <TextEuro num={total} />
         }
       ]}

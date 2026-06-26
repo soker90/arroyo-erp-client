@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { ModalGrid } from 'components/Modals'
 import {
@@ -21,7 +21,13 @@ const EditPaymentModal = ({
   const [paid, setPaid] = useState(false)
   const [invoicesOrder, setInvoicesOrder] = useState('')
 
-  useEffect(() => {
+  // Populate the form from the payment whenever it (or the modal visibility)
+  // changes, during render instead of in an effect.
+  const [prevPayment, setPrevPayment] = useState(payment)
+  const [prevShow, setPrevShow] = useState(show)
+  if (payment !== prevPayment || show !== prevShow) {
+    setPrevPayment(payment)
+    setPrevShow(show)
     if (payment) {
       setType(payment.type)
       setPaymentDate(payment.paymentDate || null)
@@ -29,7 +35,7 @@ const EditPaymentModal = ({
       setPaid(payment.paid)
       setInvoicesOrder(payment.invoicesOrder || '')
     }
-  }, [payment, show])
+  }
 
   const _close = () => {
     setShow(false)

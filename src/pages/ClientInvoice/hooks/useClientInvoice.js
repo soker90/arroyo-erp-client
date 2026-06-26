@@ -26,11 +26,13 @@ export const useClientInvoice = (id) => {
     showSuccess
   } = useNotifications()
 
-  useEffect(() => {
-    if (data) {
-      setCachedData(data)
-    }
-  }, [data])
+  // Keep the last non-empty payload during render (SWR keeps previous data on
+  // revalidation, so we just mirror it without an effect).
+  const [prevData, setPrevData] = useState(data)
+  if (data && data !== prevData) {
+    setPrevData(data)
+    setCachedData(data)
+  }
 
   useEffect(() => {
     if (error) {

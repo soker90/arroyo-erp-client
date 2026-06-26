@@ -59,7 +59,7 @@ const NoteModal = ({
    * @returns {InputForm}
    * @private
    */
-  // eslint-disable-next-line react/prop-types
+
   const _renderInput = ({ name, label }) => (
     <InputForm
       key={name}

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { lazy } from 'react'
 import { Navigate, useRoutes } from 'react-router'
 

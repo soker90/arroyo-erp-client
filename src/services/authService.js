@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
 import { ARROYO_TOKEN } from 'config'

@@ -43,7 +43,7 @@ const ClientModal = ({
    * @returns {InputForm}
    * @private
    */
-  // eslint-disable-next-line react/prop-types
+
   const _renderInput = ({ id, label, options = {} }) => (
     <InputForm
       key={id}

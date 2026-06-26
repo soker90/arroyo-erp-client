@@ -66,9 +66,12 @@ const NavBar = ({ openMobile, onMobileClose }) => {
   const location = useLocation()
   const [isOpen, setIsOpen] = useState(openMobile)
 
-  useEffect(() => {
+  // Mirror the `openMobile` prop into state during render instead of an effect.
+  const [prevOpenMobile, setPrevOpenMobile] = useState(openMobile)
+  if (openMobile !== prevOpenMobile) {
+    setPrevOpenMobile(openMobile)
     setIsOpen(openMobile)
-  }, [openMobile])
+  }
 
   useEffect(() => {
     if (isOpen && onMobileClose) {

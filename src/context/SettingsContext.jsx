@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { THEMES } from 'constants/common'
